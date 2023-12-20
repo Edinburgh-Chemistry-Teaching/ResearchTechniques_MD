@@ -1,0 +1,39 @@
+
+; VARIOUS PREPROCESSING OPTIONS
+title                    = NVT simulation
+
+; RUN CONTROL PARAMETERS
+integrator               = md
+dt                       = 0.001
+nsteps                   = 5000
+
+; OUTPUT CONTROL OPTIONS
+nstxout                  = 0                    ; No output, except for last frame (coordinates)
+nstvout                  = 0                    ; No output, except for last frame (velocities)
+nstfout                  = 0                    ; No output, except for last frame (forces)
+nstlog                   = 1                    ; Write every step to the log 
+nstxtcout                = 0                    ; Do not write a compressed trajectory
+energygrps               = Protein Non-Protein  ; Write energy information separately for these groups
+
+; NEIGHBORSEARCHING PARAMETERS
+cutoff-scheme			 = Verlet
+pbc                      = xyz
+rlist                    = 1.2
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+coulombtype              = PME
+rcoulomb                 = 1.2
+vdw-type                 = Cut-off
+rvdw                     = 1.2
+
+; Temperature coupling  
+tcoupl                   = V-rescale
+tc-grps                  = Protein  Non-Protein
+tau_t                    = 0.1      0.1
+ref_t                    = 300      300
+
+; Pressure coupling     
+pcoupl                   = no
+
+
+
