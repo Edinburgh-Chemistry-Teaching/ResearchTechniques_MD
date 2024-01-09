@@ -3,6 +3,7 @@
 - Eddie: module load script
 - Run scripts
 - Marking scheme
+- Session HTML stylesheet
 
 ### Sessions:
 - [ ] **Session1:** Valentina
