@@ -50,6 +50,12 @@ An individual project (started during Session 4) is submitted in the form of a s
 Please see the Template Report (and marking scheme) prepared based on the material of Session 3.
 
 
+**Use of AI tools:**
+
+ChatGPT and other AI tools are ... [ref to uni things] - smth on declaration of use
+Also, mention on the references and issues...
+
+
 ----
 
 
