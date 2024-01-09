@@ -74,6 +74,14 @@ In this session, we will:
 - [ TBC - overleaf/latex ]
 
 
+This session is based upon [**The Unix Shell**](https://swcarpentry.github.io/shell-novice/) course by the [Software Carpentry](https://swcarpentry.github.io)
+ 
+Summary of basic commands: https://swcarpentry.github.io/shell-novice/reference
+
+
+
+
+
 
 ## SHELL
 
@@ -82,17 +90,9 @@ Command line interface between YOU and UNIX (& its friends)
 
 **WHY?**
 Introduce some fundamental ideas of using computers:
-						_repetitive tasks be gone!_
-
-Things depend on it – supercomputers, installing programs, …
-
-Gives you access to tools/resources
-
-
-
-Summary of basic commands: https://swcarpentry.github.io/shell-novice/reference
-
-Extra learning materials are found Software Carpentry:  https://swcarpentry.github.io
+						_repetitive tasks be gone!_ <br>
+Things depend on it – supercomputers, installing programs, … <br>
+Gives you access to tools/resources <br>
 
 
 
@@ -100,17 +100,17 @@ Extra learning materials are found Software Carpentry:  https://swcarpentry.gith
 
 ### How to name files/ directories
 
-no spaces:
-		❌	north pacific gyre 
-		✅ 	north-pacific-gyre
+- no spaces: <br>
+		❌	`north pacific gyre` <br>
+		✅ `north-pacific-gyre`
 			
-no strange symbols:
-	❌ 	Peter & Mary
-	✅ 	Peter_Mary
+- no strange symbols: <br>
+	❌ 	`Peter & Mary` <br>
+	✅ `Peter_Mary`
 	
-with extensions:
-		❌ 	mydocument
-		✅ 	mydocument.txt
+- with extensions: <br>
+		❌ `mydocument` <br>
+		✅ 	`mydocument.txt`
 		
 		
 		
