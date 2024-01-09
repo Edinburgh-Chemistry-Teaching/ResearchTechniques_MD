@@ -74,6 +74,11 @@ no loops
 ### Scripts 
 
 
+---
+## Git?
+
+too much - mb just run this command to update the files
+
 
 ---
 ## HPC
