@@ -1,8 +1,12 @@
 # Computational Exercise
 
 **Contact** 
-Dr Valentina Erastova [valentina.erastova@ed.ac.uk]
-Office B21 (Office hours Wedn 10.00-12.00 in weeks 3, 4 and 5).
+Dr Valentina Erastova 
+
+valentina.erastova@ed.ac.uk
+
+Office B21 (Office hours Wedn 10.00-12.00 in weeks 3, 4 and 5)
+
 
 **Demonstrators:**
 Hannah Pollak, 
@@ -19,6 +23,7 @@ Audrey ...,
 -	Understanding of the limitations of the computational chemistry techniques used.
 -	Reporting of the methodology and observations in a condensed written format.
 -	Group working, encouraged and developed through the practicals.
+
 
 **Overview:**
 
@@ -61,30 +66,71 @@ Also, mention on the references and issues...
 
 # Session 1: Intro to Linux
 
+In this session, we will:
 
-
-Session 2 - simulations overview
-
-Session 3 - overview of material modeling
-
-Session 4 - start the programm 
-
-
-Assessment on the course: 
-
-
-- report writing - note on chatgpt
-
-- references 
-
-
-
-
-
-Topics session 1:
-
-- linux 
-- bash
-- HPC - log into eddie?
-
+- learn what is Linux and why we use it 
+- begin using shell
+- learn about comp chem resources 
 - [ TBC - overleaf/latex ]
+
+
+
+## SHELL
+
+**WHAT?**
+Command line interface between YOU and UNIX (& its friends)
+
+**WHY?**
+Introduce some fundamental ideas of using computers:
+						_repetitive tasks be gone!_
+
+Things depend on it – supercomputers, installing programs, …
+
+Gives you access to tools/resources
+
+
+
+Summary of basic commands: https://swcarpentry.github.io/shell-novice/reference
+
+Extra learning materials are found Software Carpentry:  https://swcarpentry.github.io
+
+
+
+
+
+### How to name files/ directories
+
+no spaces:
+		❌	north pacific gyre 
+		✅ 	north-pacific-gyre
+			
+no strange symbols:
+	❌ 	Peter & Mary
+	✅ 	Peter_Mary
+	
+with extensions:
+		❌ 	mydocument
+		✅ 	mydocument.txt
+		
+		
+		
+### WARNING ⚠️
+
+```bash
+$ rm text.txt
+```
+will remove the file completely from the machine (there is no Bin/Trash/...)
+
+```bash
+$ rm –i text.txt
+  rm: remove regular file ‘text.txt’? 
+```
+prompts you to confirm by typing  `y`
+or cancel by typing  	`n`
+
+
+
+### Pipe & Loop 
+Do we need this? 
+
+
