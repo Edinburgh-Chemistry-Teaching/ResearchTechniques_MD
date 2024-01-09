@@ -34,7 +34,7 @@ Computational techniques have become an integral part of the research, with thei
 
 Session 1: Introduction to Linux and command-line.
 
-Session 2: Introduction to molecular dynamics simulations on a practical simulation of a protein.
+[Session 2](./test_session2_HTML/Day2_Protein_Sims.html): Introduction to molecular dynamics simulations on a practical simulation of a protein.
 
 Session 3: Molecular simulation set up of system with an interface.
 

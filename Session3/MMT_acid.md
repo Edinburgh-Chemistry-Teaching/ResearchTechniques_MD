@@ -116,9 +116,9 @@ G. Add salt. MMT is a negatively charged clay, that needs to be charge-balanced.
 
 
 ### PROD
+submit to Eddie and go away
 
-
-
+How long do you expect it to take?
 
 
 
@@ -128,7 +128,7 @@ G. Add salt. MMT is a negatively charged clay, that needs to be charge-balanced.
 
 ## ANALYSIS
 
-
+independent work
 
 
 
