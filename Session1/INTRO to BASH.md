@@ -10,10 +10,11 @@ In this session, we will:
 
 
 
-This session is based upon [**The Unix Shell**](https://swcarpentry.github.io/shell-novice/) course by the [Software Carpentry](https://swcarpentry.github.io)
+This session is based upon [**The Unix Shell**](https://swcarpentry.github.io/shell-novice/) and the  [**Introduction to Using the Shell in a High-Performance Computing Context**](http://www.hpc-carpentry.org/hpc-shell/) courses by the [Software Carpentry](https://swcarpentry.github.io)
  
-Summary of basic commands [https://swcarpentry.github.io/shell-novice/reference](https://swcarpentry.github.io/shell-novice/reference)
+Summary of basic bash commands [https://swcarpentry.github.io/shell-novice/reference](https://swcarpentry.github.io/shell-novice/reference)
 
+---
 
 The lesson outline:
 
@@ -23,7 +24,9 @@ The lesson outline:
 * PART 3 -- Pipes and Filters
 * Nelle’s Pipeline: Checking Files
 * PART 4 -- Loops
+* Nelle’s Pipeline: Processing Files
 * PART 5 -- Shell Script
+* Nelle’s Pipeline: Creating a Script
 * PART 6 -- Finding things
 * PART 7 -- Connecting to the remote machine 
 
@@ -183,29 +186,28 @@ $ cd Practical1
 
 We have now navigated from the *home directory* to the *current working directory*. 
  
-> #### Let's have a look at how the file system is organised.
-> 
-> ![filesystem](filesystem.svg)
-> 
-> The filesystem looks like an upside-down tree. The topmost directory is the *root directory* that holds everything else. We refer to it using a slash character, `/`, on its own; this character is the leading slash in `/Users/nelle`.
-> 
-> Inside that directory are several other directories: 
-> 
-> * `bin` (this is not the rubbish bin, but where  some built-in programs are stored), 
-> * `data` (for miscellaneous data files), 
-> * `Users` (where users’ personal directories are located), 
-> * `tmp` (for temporary files that don’t need to be stored long-term).
-> 
-> We know that our current working directory `/Users/nelle` is stored inside `/Users` because `/Users` is the first part of its name. Similarly, we know that `/Users` is stored inside the root directory `/` because its name begins with `/`.
->
->
-> ![home-dirs](home-directories.svg)
-> 
-> Underneath `/Users`, we find one directory for each user with an account on Nelle’s machine, her colleagues `imhotep` and `larry`.  
-> Their files are stored in `/Users/Imhotep` and in `/Users/larry`, respectively.
-> While Nelle’s are in `/Users/nelle`.
-> 
->  Nelle is the user in our examples here; therefore, we get `/Users/nelle` as our home directory. Typically, when you open a new command prompt, you will be in your home directory to start.
+#### Let's have a look at how the file system is organised.
+ 
+![filesystem](filesystem.svg)
+ 
+The filesystem looks like an upside-down tree. The topmost directory is the *root directory* that holds everything else. We refer to it using a slash character, `/`, on its own; this character is the leading slash in `/Users/nelle`.
+ 
+Inside that directory are several other directories: 
+
+* `bin` (this is not the rubbish bin, but where  some built-in programs are stored), 
+* `data` (for miscellaneous data files), 
+* `Users` (where users’ personal directories are located), 
+* `tmp` (for temporary files that don’t need to be stored long-term).
+ 
+We know that our current working directory `/Users/nelle` is stored inside `/Users` because `/Users` is the first part of its name. Similarly, we know that `/Users` is stored inside the root directory `/` because its name begins with `/`.
+
+![home-dirs](home-directories.svg)
+ 
+Underneath `/Users`, we find one directory for each user with an account on Nelle’s machine, her colleagues `imhotep` and `larry`.  
+Their files are stored in `/Users/Imhotep` and in `/Users/larry`, respectively.
+While Nelle’s are in `/Users/nelle`.
+
+Nelle is the user in our examples here; therefore, we get `/Users/nelle` as our home directory. Typically, when you open a new command prompt, you will be in your home directory to start.
 
 
 ### 4. Exploring the contents of the directory
@@ -256,7 +258,7 @@ $ ls
 ```
 
 ```bash
-alkanes       animal-counts creatures     numbers.txt   writing
+alkanes/       animal-counts/ creatures/     numbers.txt   writing/
 ```
 
 From our current directory, we can move into the `north-pacific-gyre` - a subdirectory of the parent directory `shell-lesson-data`, we first need to move a level up:
@@ -273,7 +275,7 @@ $ ls -a
 ```
 
 ```bash
-.                  ..                 exercise-data      north-pacific-gyre
+.                  ..                 exercise-data/      north-pacific-gyre/
 ```
 
 now we can descend into the desired directory:
@@ -282,11 +284,11 @@ now we can descend into the desired directory:
 $ cd north-pacific-gyre
 ```
 
-> So far, when specifying directory names, or even a directory path (as above), we have been using *relative paths*. When you use a relative path with a command like `ls` or `cd`, it tries to find that location from where we are right now, rather than from the root of the file system.
-> 
-> However, it is possible to specify the *absolute path* to a directory by including its entire path from the root directory, which is indicated by a leading slash. The leading `/` tells the computer to follow the path from the root of the file system, so it always refers to exactly one directory, no matter where we are when we run the command.
+So far, when specifying directory names, or even a directory path (as above), we have been using *relative paths*. When you use a relative path with a command like `ls` or `cd`, it tries to find that location from where we are right now, rather than from the root of the file system.
 
->This allows us to move to our `shell-lesson-data directory` from anywhere on the filesystem (including from inside `exercise-data`). To find the absolute path we’re looking for, we can use `pwd` and then extract the piece we need to move to `shell-lesson-data`.
+However, it is possible to specify the *absolute path* to a directory by including its entire path from the root directory, which is indicated by a leading slash. The leading `/` tells the computer to follow the path from the root of the file system, so it always refers to exactly one directory, no matter where we are when we run the command.
+
+This allows us to move to our `shell-lesson-data directory` from anywhere on the filesystem (including from inside `exercise-data`). To find the absolute path we’re looking for, we can use `pwd` and then extract the piece we need to move to `shell-lesson-data`.
 
 
 ```bash
@@ -296,9 +298,8 @@ $ cd /Users/nelle/Desktop/Practical1/shell-lesson-data
 ```
 Remember, that the commands are after prompt `$` while the output of the terminal starts on a new line and has no prompt symbol in front.
 
-> The other way to indicate an absolute path, with respect to the current user’s home directory, is by using the tilde `~` character at the start of a path. For example, if Nelle’s home directory is `/Users/nelle`, then `~/dat`a is equivalent to `/Users/nelle/data`.
+The other way to indicate an absolute path, with respect to the current user’s home directory, is by using the tilde `~` character at the start of a path. For example, if Nelle’s home directory is `/Users/nelle`, then `~/data` is equivalent to `/Users/nelle/data`.
  
-
 ```bash
 $ pwd
 /Users/nelle/Desktop/Practical1/shell-lesson-data
@@ -306,11 +307,7 @@ $ cd ~/Desktop/Practical1/shell-lesson-data/exercise-data
 ```
 
 
-
-
 ---
-### Some Questions [with Answers]
-
 #### QUESTION 1:
 
 Starting from `/Users/nelle/data`, which of the following commands could Nelle use to navigate to her home directory, which is `/Users/nelle`?
@@ -380,8 +377,7 @@ Using the filesystem diagram above, if `pwd` displays /Users/backup, and `-r` te
 </details>
 
 
-
-----
+---
 ## Help Nelle organise the files
  
 Knowing this much about files and directories, Nelle is ready to organize the files that the protein assay machine will create.
@@ -419,7 +415,7 @@ goodiff.sh   goostats.sh
 This is called tab completion, and we will see it in many other tools as we go on.
 
 
-> 
+---
 > ### KEY POINTS PART 1
 > 
 > * The file system is responsible for managing information on the disk.
@@ -435,9 +431,9 @@ This is called tab completion, and we will see it in many other tools as we go o
 > * A relative path specifies a location starting from the current location.
 > * `.` on its own means ‘the current directory’; `..` means ‘the directory above the current one’.
 
+--- 
 
 <!--End of 1st hour-->
-
 
 
 ## PART 2 -- Working With Files and Directories
@@ -516,7 +512,6 @@ Once our file is saved, we can use `Ctrl+X` to quit the editor and return to the
 
 `nano` doesn’t leave any output on the screen after it exits, but `ls` now shows that we have created a file called `draft.txt`
 
-
 ```bash
 $ ls
 LittleWomen.txt draft.txt       haiku.txt       thesis/
@@ -578,7 +573,6 @@ ls: cannot access 'thesis/quotes.txt': No such file or directory
 ```
 
 
-
 ### 4. Copying files and directories
 
 
@@ -613,8 +607,7 @@ quotations.txt
 ```
 
 
-### Some Questions [with Answers]
-
+---
 #### QUESTION 1
 
 Suppose that you created a plain-text file in your current directory to contain a list of the statistical tests you will need to do to analyze your data, and named it `statstics.txt`
@@ -668,7 +661,7 @@ We start in the `/Users/jamie/data` directory, and create a new folder called `r
 4. No, see explanation above. `proteins-saved.dat` is located at `/Users/jamie`
 </details>
 
-
+---
 
 
 ### 5. Removing files and directories
@@ -739,8 +732,8 @@ Wildcards can be used in combination with each other:
 *  `???ane.pdb` indicates three characters followed by `ane.pdb`, giving `cubane.pdb ethane.pdb octane.pdb`.
 
 
-### TASKS
 
+---
 #### TASK 1:
 
 When run in the `alkanes` directory, which `ls` command(s) will produce this output?
@@ -1038,9 +1031,9 @@ $ cat sorted-lengths.txt
 > * `head` coupled with `-n 5` will display only first 5 lines
 > * `tail` same as `head`, coupled with `-n` will display only the given number of last lines (default is 10)
 
+---
 
-#### TASK 4:
-**WHAT DOES `>>` MEAN?**
+#### TASK 4: **WHAT DOES `>>` MEAN?**
 
 We have seen the use of `>`, but there is a similar operator `>>` which works slightly differently. Learn about the differences between these two operators by printing some strings. We can use the echo command to print strings e.g.:
 
@@ -1061,7 +1054,6 @@ $ echo hello >> testfile02.txt
 ```
 
 **Hint**: Try executing each command twice in a row and then examining the output files.
-
 
 <details>
   <summary>**SOLUTION 4:**</summary>
@@ -1095,7 +1087,7 @@ Option 3 is correct. For option 1 to be correct, we would only run the `head` co
   
 </details>
 
-
+---
 
 ### 4. Combining multiple commands
 
@@ -1125,7 +1117,7 @@ $ wc -l *.pdb | sort -n | head -n 1
 > ![redirects-and-pipes](redirects-and-pipes.svg)
 
 
-
+---
 #### TASK 6
 
 In our current directory, we want to find the 3 files which have the least number of lines. Which command listed below would work?
@@ -1180,8 +1172,6 @@ The `head` command extracts the first 5 lines from `animals.csv`. Then, the last
 </details>
 
 
-
-
 #### TASK 8
 For the file `animals.csv` from the previous exercise, consider the following command:
 
@@ -1214,8 +1204,6 @@ $ cut -d , -f 2 animals.csv | sort | uniq
 </details>
 
 
-
-
 #### TASK 9
 
 The file `animals.csv` contains 8 lines of data formatted as follows:
@@ -1236,15 +1224,13 @@ The `uniq` command has a `-c` option which gives a count of the number of times 
 4. `cut -d, -f 2 animals.csv | sort | uniq -c`
 5. `cut -d, -f 2 animals.csv | sort | uniq -c | wc -l`
 
-
-
 <details>
   <summary>**QUESTION 3:**</summary>
   
 Option 4. is the correct answer. If you have difficulty understanding why, try running the commands, or sub-sections of the pipelines (make sure you are in the `shell-lesson-data/exercise-data/animal-counts` directory).
 </details>
 
-
+---
 #### Question 3 
 
 Suppose you want to delete your processed data files, and only keep your raw files and processing script to save storage. The raw files end in `.dat` and the processed files end in `.txt`. Which of the following would remove all the processed data files, and only the processed data files?
@@ -1263,7 +1249,7 @@ Suppose you want to delete your processed data files, and only keep your raw fil
 1. The shell expands `*.*` to match all filenames containing at least one `.`, including the processed files (`.txt`) and raw files (`.dat`).
 </details>
 
-
+---
 
 ## Nelle’s Pipeline: Checking Files
 
@@ -1317,7 +1303,7 @@ NENE01971Z.txt    NENE02040Z.txt
 
 Sure enough, when she checks the log on her laptop, there’s no depth recorded for either of those samples. Since it’s too late to get the information any other way, she must exclude those two files from her analysis. She could delete them using `rm`, but there are actually some analyses she might do later where depth doesn’t matter, so instead, she’ll have to be careful later on to select files using the wildcard expressions `NENE*A.txt` `NENE*B.txt`.
 
-
+---
 > ### KEY POINTS PART 3
 > 
 > * `wc` counts lines, words, and characters in its inputs.
@@ -1330,7 +1316,7 @@ Sure enough, when she checks the log on her laptop, there’s no depth recorded 
 > * `[first] | [second]` is a pipeline: the output of the first command is used as the input to the second.
 > * The best way to use the shell is to use pipes to combine simple single-purpose programs (filters).
 
-
+---
 
 ## PART 4 -- Loops 
 
@@ -1415,8 +1401,6 @@ In the above examples, the variables (`thing`, `filename`, `x` and `temperature`
 
 Note also that loops can be used for other things than filenames, like a list of numbers or a subset of data.
 
-==TASKS ???==
-
 Let’s continue with our example in the `shell-lesson-data/exercise-data/creatures` directory. Here’s a slightly more complicated loop:
 
 ```
@@ -1478,7 +1462,7 @@ $ for filename in *.dat
 > done
 ```
 
-This loop runs the cp command once for each filename. The first time, when $filename expands to `basilisk.dat`, the shell executes:
+This loop runs the cp command once for each filename. The first time, when `$filename` expands to `basilisk.dat`, the shell executes:
 
 ```bash
 cp basilisk.dat original-basilisk.dat
@@ -1503,6 +1487,7 @@ The following diagram shows what happens when the modified loop is executed and 
 ![](shell_script_for_loop_flow_chart.svg)
 
 
+----
 
 ## Nelle’s Pipeline: Processing Files
 
@@ -1523,6 +1508,7 @@ $ for datafile in NENE*A.txt NENE*B.txt
 >     echo $datafile
 > done
 ```
+
 ```
 NENE01729A.txt
 NENE01729B.txt
@@ -1582,10 +1568,9 @@ NENE01736A.txt
 ```
 1518 times 5 seconds, divided by 60, tells her that her script will take about two hours to run. As a final check, she opens another terminal window, goes into `north-pacific-gyre`, and uses `cat stats-NENE01729B.txt` to examine one of the output files. It looks good, so she decides to get some coffee and catch up on her reading.
 
+Another way to repeat previous work is to use the `history` command to get a list of the last few hundred commands that have been executed, and then to use `!123` (where `123` is replaced by the command number) to repeat one of those commands. 
 
-> Another way to repeat previous work is to use the `history` command to get a list of the last few hundred commands that have been executed, and then to use `!123` (where `123` is replaced by the command number) to repeat one of those commands. 
- 
-
+---
 > ### KEY POINTS PART 4
 > 
 > * A for loop repeats commands once for every thing in a list.
@@ -1597,23 +1582,770 @@ NENE01736A.txt
 > * Use `Ctrl+R` to search through the previously entered commands.
 > * Use `history` to display recent commands and `![number]` to repeat a command by number.> 
 
+---
 <!--End of 2nd hour-->
+
 
 
 ## PART 5 -- Shell Script
 
+**This is an advanced topic and extra material**
+
+
+We are finally ready to see what makes the shell such a powerful programming environment. We are going to take the commands we repeat frequently and save them in files so that we can re-run all those operations again later by typing a single command. For historical reasons, a bunch of commands saved in a file is usually called a *shell script*, but make no mistake — these are actually small programs.
+
+Not only will writing shell scripts make your work faster, but also you won’t have to retype the same commands over and over again. It will also make it more accurate (fewer chances for typos) and more reproducible. If you come back to your work later (or if someone else finds your work and wants to build on it), you will be able to reproduce the same results simply by running your script, rather than having to remember or retype a long list of commands.
+
+
+Let’s start by going back to alkanes/ and creating a new file, `middle.sh` which will become our shell script:
+
+```bash
+$ cd alkanes
+$ nano middle.sh
+```
+
+The command `nano middle.sh` opens the file `middle.sh` within the text editor nano (which runs within the shell). If the file does not exist, it will be created. We can use the text editor to directly edit the file by inserting the following line:
+
+```
+head -n 15 octane.pdb | tail -n 5
+```
+
+This is a variation on the pipe we constructed earlier, which selects lines 11-15 of the file `octane.pdb`. Remember, we are not running it as a command just yet; we are only incorporating the commands in a file.
+
+Then we save the file (`Ctrl-O` in nano) and exit the text editor (`Ctrl-X` in nano). Check that the directory alkanes now contains a file called `middle.sh`.
+
+Once we have saved the file, we can ask the shell to execute the commands it contains. Our shell is called bash, so we run the following command:
+
+```bash
+$ bash middle.sh
+ATOM      9  H           1      -4.502   0.681   0.785  1.00  0.00
+ATOM     10  H           1      -5.254  -0.243  -0.537  1.00  0.00
+ATOM     11  H           1      -4.357   1.252  -0.895  1.00  0.00
+ATOM     12  H           1      -3.009  -0.741  -1.467  1.00  0.00
+ATOM     13  H           1      -3.172  -1.337   0.206  1.00  0.00
+```
+Sure enough, our script’s output is exactly what we would get if we ran that pipeline directly.
+
+What if we want to select lines from an arbitrary file? We could edit middle.sh each time to change the filename, but that would probably take longer than typing the command out again in the shell and executing it with a new file name. Instead, let’s edit `middle.sh` and make it more versatile:
+
+```
+$ nano middle.sh
+```
+
+Now, within “nano”, replace the text `octane.pdb` with the special variable called `$1`:
+
+```
+head -n 15 "$1" | tail -n 5
+```
+
+Inside a shell script, `$1` means ‘the first filename (or other argument) on the command line’. We can now run our script like this:
+
+```
+$ bash middle.sh octane.pdb
+ATOM      9  H           1      -4.502   0.681   0.785  1.00  0.00
+ATOM     10  H           1      -5.254  -0.243  -0.537  1.00  0.00
+ATOM     11  H           1      -4.357   1.252  -0.895  1.00  0.00
+ATOM     12  H           1      -3.009  -0.741  -1.467  1.00  0.00
+ATOM     13  H           1      -3.172  -1.337   0.206  1.00  0.00
+```
+
+or on a different file like this:
+
+```
+$ bash middle.sh pentane.pdb
+ATOM      9  H           1       1.324   0.350  -1.332  1.00  0.00
+ATOM     10  H           1       1.271   1.378   0.122  1.00  0.00
+ATOM     11  H           1      -0.074  -0.384   1.288  1.00  0.00
+ATOM     12  H           1      -0.048  -1.362  -0.205  1.00  0.00
+ATOM     13  H           1      -1.183   0.500  -1.412  1.00  0.00
+```
+
+For the same reason that we put the loop variable inside double-quotes, in case the filename happens to contain any spaces, we surround `$1` with double-quotes.
+
+Currently, we need to edit `middle.sh` each time we want to adjust the range of lines that is returned. Let’s fix that by configuring our script to instead use three command-line arguments. After the first command-line argument (`$1`), each additional argument that we provide will be accessible via the special variables `$1`, `$2`, `$3`, which refer to the first, second, third command-line arguments, respectively.
+
+Knowing this, we can use additional arguments to define the range of lines to be passed to head and tail respectively:
+
+bash```
+$ nano middle.sh
+```
+and edit to:
+```
+head -n "$2" "$1" | tail -n "$3"
+```
+
+We can now run:
+
+```
+$ bash middle.sh pentane.pdb 15 5
+ATOM      9  H           1       1.324   0.350  -1.332  1.00  0.00
+ATOM     10  H           1       1.271   1.378   0.122  1.00  0.00
+ATOM     11  H           1      -0.074  -0.384   1.288  1.00  0.00
+ATOM     12  H           1      -0.048  -1.362  -0.205  1.00  0.00
+ATOM     13  H           1      -1.183   0.500  -1.412  1.00  0.00
+```
+
+By changing the arguments to our command, we can change our script’s behaviour:
+
+```
+$ bash middle.sh pentane.pdb 20 5
+ATOM     14  H           1      -1.259   1.420   0.112  1.00  0.00
+ATOM     15  H           1      -2.608  -0.407   1.130  1.00  0.00
+ATOM     16  H           1      -2.540  -1.303  -0.404  1.00  0.00
+ATOM     17  H           1      -3.393   0.254  -0.321  1.00  0.00
+TER      18              1
+```
+
+This works, but it may take the next person who reads `middle.sh` a moment to figure out what it does. We can improve our script by adding some comments at the top:
+
+```bash
+$ nano middle.sh
+```
+
+and edit:
+
+```
+# Select lines from the middle of a file.
+# Usage: bash middle.sh filename end_line num_lines
+head -n "$2" "$1" | tail -n "$3"
+```
+
+A comment starts with a `#` character and runs to the end of the line. The computer ignores comments, but they’re invaluable for helping people (including your future self) understand and use scripts. The only caveat is that each time you modify the script, you should check that the comment is still accurate. An explanation that sends the reader in the wrong direction is worse than none at all.
+
+What if we want to process many files in a single pipeline? For example, if we want to sort our .pdb files by length, we would type:
+
+```bash
+$ wc -l *.pdb | sort -n
+```
+
+because `wc -l` lists the number of lines in the files (recall that `wc` stands for ‘word count’, adding the `-l` option means ‘count lines’ instead) and `sort -n` sorts things numerically. We could put this in a file, but then it would only ever sort a list of `.pdb` files in the current directory. If we want to be able to get a sorted list of other kinds of files, we need a way to get all those names into the script. We can’t use `$1`, `$2`, and so on because we don’t know how many files there are. Instead, we use the special variable `$@`, which means, ‘All of the command-line arguments to the shell script’. We also should put `$@` inside double-quotes to handle the case of arguments containing spaces (`"$@"` is special syntax and is equivalent to `"$1" "$2" …`).
+
+
+Here’s an example:
+
+```bash
+$ nano sorted.sh
+```
+
+edit to:
+
+```bash
+# Sort files by their length.
+# Usage: bash sorted.sh one_or_more_filenames
+wc -l "$@" | sort -n
+```
+and run:
+
+```bash
+$ bash sorted.sh *.pdb ../creatures/*.dat
+9 methane.pdb
+12 ethane.pdb
+15 propane.pdb
+20 cubane.pdb
+21 pentane.pdb
+30 octane.pdb
+163 ../creatures/basilisk.dat
+163 ../creatures/minotaur.dat
+163 ../creatures/unicorn.dat
+596 total
+```
+
+
+---
+
+## Nelle’s Pipeline: Creating a Script
+
+
+Nelle’s supervisor insisted that all her analytics must be reproducible. The easiest way to capture all the steps is in a script.
+
+First, we return to Nelle’s project directory:
+
+```bash
+$ cd ../../north-pacific-gyre/
+```
+She creates a file using nano …
+
+```bash
+$ nano do-stats.sh
+```
+…which contains the following:
+
+```
+# Calculate stats for data files.
+for datafile in "$@"
+do
+    echo $datafile
+    bash goostats.sh $datafile stats-$datafile
+done
+```
+
+She saves this in a file called `do-stats.sh` so that she can now re-do the first stage of her analysis by typing:
+
+```bash
+$ bash do-stats.sh NENE*A.txt NENE*B.txt
+```
+She can also do this:
+
+```bash
+$ bash do-stats.sh NENE*A.txt NENE*B.txt | wc -l
+```
+so that the output is just the number of files processed rather than the names of the files that were processed.
+
+One thing to note about Nelle’s script is that it lets the person running it decide what files to process. She could have written it as:
+
+```bash
+# Calculate stats for Site A and Site B data files.
+for datafile in NENE*A.txt NENE*B.txt
+do
+    echo $datafile
+    bash goostats.sh $datafile stats-$datafile
+done
+```
+
+The advantage is that this always selects the right files: she doesn’t have to remember to exclude the ‘Z’ files. The disadvantage is that it always selects just those files — she can’t run it on all files (including the ‘Z’ files), or on the ‘G’ or ‘H’ files her colleagues in Antarctica are producing, without editing the script. If she wanted to be more adventurous, she could modify her script to check for command-line arguments, and use `NENE*A.txt` `NENE*B.txt` if none were provided. Of course, this introduces another tradeoff between flexibility and complexity.
+
+
+> ### KEY POINTS PART 5
+> 
+> * Save commands in files (usually called shell scripts) for re-use.
+> * `bash [filename]` runs the commands saved in a file.
+> * `$@` refers to all of a shell script’s command-line arguments.
+> * `$1`, `$2`, etc., refer to the first command-line argument, the second command-line argument, etc.
+> * Place variables in quotes if the values might have spaces in them.
+> * Letting users decide what files to process is more flexible and more consistent with built-in Unix commands.
+
 
 ## PART 6 -- Finding things
 
+**This is an advanced topic and extra material**
 
-## PART 7 -- Connecting to the remote machine 
+### 1. Searching within the file
+
+In the same way that many of us now use ‘Google’ as a verb meaning ‘to find’, Unix programmers often use the word `grep`. `grep` is a contraction of **g**lobal/**r**egular **e**xpression/**p**rint’, a common sequence of operations in early Unix text editors. It is also the name of a very useful command-line program.
+
+`grep` finds and prints lines in files that match a pattern. For our examples, we will use a file that contains three haiku taken from a [1998 competition](https://web.archive.org/web/19991201042211/http://salon.com/21st/chal/1998/01/26chal.html) in Salon magazine (Credit to authors Bill Torcaso, Howard Korder, and Margaret Segall, respectively). For this set of examples, we’re going to be working in the writing subdirectory:
+
+```bash
+$ cd
+$ cd Desktop/shell-lesson-data/exercise-data/writing
+$ cat haiku.txt
 
 
-What is HPC, and why do we need it?
+The Tao that is seen
+Is not the true Tao, until
+You bring fresh toner.
 
-Using Eddie HPC
+With searching comes loss
+and the presence of absence:
+"My Thesis" not found.
 
+Yesterday it worked
+Today it is not working
+Software is like that.
+
+```
+
+Let’s find lines that contain the word ‘not’:
+
+```
+$ grep not haiku.txt
+
+Is not the true Tao, until
+"My Thesis" not found
+Today it is not working
+```
+
+Here, not is the pattern we’re searching for. The grep command searches through the file, looking for matches to the pattern specified. To use it type `grep`, then the pattern we’re searching for and finally the name of the file (or files) we’re searching in.
+
+The output is the three lines in the file that contain the letters ‘not’.
+
+By default, grep searches for a pattern in a case-sensitive way. In addition, the search pattern we have selected does not have to form a complete word, as we will see in the next example.
+
+Let’s search for the pattern: ‘The’.
+
+```
+$ grep The haiku.txt
+
+The Tao that is seen
+"My Thesis" not found.
+```
+
+This time, two lines that include the letters ‘The’ are outputted, one of which contained our search pattern within a larger word, ‘Thesis’.
+
+To restrict matches to lines containing the word ‘The’ on its own, we can give `grep` the `-w` option. This will limit matches to word boundaries.
+
+Later in this lesson, we will also see how we can change the search behavior of grep with respect to its case sensitivity.
+
+```
+$ grep -w The haiku.txt
+
+The Tao that is seen
+```
+
+Note that a ‘word boundary’ includes the start and end of a line, so not just letters surrounded by spaces. Sometimes we don’t want to search for a single word, but a phrase. We can also do this with `grep` by putting the phrase in quotes.
+
+```
+$ grep -w "is not" haiku.txt
+
+Today it is not working
+```
+
+We’ve now seen that you don’t have to have quotes around single words, but it is useful to use quotes when searching for multiple words. It also helps to make it easier to distinguish between the search term or phrase and the file being searched. We will use quotes in the remaining examples.
+
+Another useful option is `-n`, which numbers the lines that match:
+
+```
+$ grep -n "it" haiku.txt
+
+5:With searching comes loss
+9:Yesterday it worked
+10:Today it is not working
+```
+
+Here, we can see that lines 5, 9, and 10 contain the letters ‘it’.
+
+We can combine options (i.e. flags) as we do with other Unix commands. For example, let’s find the lines that contain the word ‘the’. We can combine the option `-w` to find the lines that contain the word ‘the’ and `-n` to number the lines that match:
+
+```
+$ grep -n -w "the" haiku.txt
+
+2:Is not the true Tao, until
+6:and the presence of absence:
+```
+
+Now we want to use the option -i to make our search case-insensitive:
+
+```
+$ grep -n -w -i "the" haiku.txt
+
+1:The Tao that is seen
+2:Is not the true Tao, until
+6:and the presence of absence:
+```
+
+Now, we want to use the option `-v` to invert our search, i.e., we want to output the lines that do not contain the word ‘the’.
+
+```
+$ grep -n -w -v "the" haiku.txt
+
+1:The Tao that is seen
+3:You bring fresh toner.
+4:
+5:With searching comes loss
+7:"My Thesis" not found.
+8:
+9:Yesterday it worked
+10:Today it is not working
+11:Software is like that.
+```
+
+If we use the `-r` (recursive) option, grep can search for a pattern recursively through a set of files in subdirectories.
+
+Let’s search recursively for Yesterday in the `shell-lesson-data/exercise-data/writing` directory:
+
+```$ grep -r Yesterday .
+
+./LittleWomen.txt:"Yesterday, when Aunt was asleep and I was trying to be as still as a
+./LittleWomen.txt:Yesterday at dinner, when an Austrian officer stared at us and then
+./LittleWomen.txt:Yesterday was a quiet day spent in teaching, sewing, and writing in my
+./haiku.txt:Yesterday it worked
+```
+
+`grep` has lots of other options. To find out what they are, we can type:
+
+```
+$ grep --help
+Usage: grep [OPTION]... PATTERN [FILE]...
+Search for PATTERN in each FILE or standard input.
+PATTERN is, by default, a basic regular expression (BRE).
+Example: grep -i 'hello world' menu.h main.c
+
+Regexp selection and interpretation:
+  -E, --extended-regexp     PATTERN is an extended regular expression (ERE)
+  -F, --fixed-strings       PATTERN is a set of newline-separated fixed strings
+  -G, --basic-regexp        PATTERN is a basic regular expression (BRE)
+  -P, --perl-regexp         PATTERN is a Perl regular expression
+  -e, --regexp=PATTERN      use PATTERN for matching
+  -f, --file=FILE           obtain PATTERN from FILE
+  -i, --ignore-case         ignore case distinctions
+  -w, --word-regexp         force PATTERN to match only whole words
+  -x, --line-regexp         force PATTERN to match only whole lines
+  -z, --null-data           a data line ends in 0 byte, not newline
+
+Miscellaneous:
+...        ...        ...
+```
+
+
+### 2. Finding the file
+
+While grep finds lines in files, the find command finds files themselves. Again, it has a lot of options; to show how the simplest ones work, we’ll use the shell-lesson-data/exercise-data directory tree shown below.
+
+```
+.
+├── animal-counts/
+│   └── animals.csv
+├── creatures/
+│   ├── basilisk.dat
+│   ├── minotaur.dat
+│   └── unicorn.dat
+├── numbers.txt
+├── alkanes/
+│   ├── cubane.pdb
+│   ├── ethane.pdb
+│   ├── methane.pdb
+│   ├── octane.pdb
+│   ├── pentane.pdb
+│   └── propane.pdb
+└── writing/
+    ├── haiku.txt
+    └── LittleWomen.txt
+```
+    
+The exercise-data directory contains one file, `numbers.txt` and four directories: `animal-counts`, `creatures`, `alkanes` and `writing` containing various files.
+
+For our first command, let’s run `find .` (remember to run this command from the `shell-lesson-data/exercise-data folder`).
+
+```
+$ find .
+
+.
+./writing
+./writing/LittleWomen.txt
+./writing/haiku.txt
+./creatures
+./creatures/basilisk.dat
+./creatures/unicorn.dat
+./creatures/minotaur.dat
+./animal-counts
+./animal-counts/animals.csv
+./numbers.txt
+./alkanes
+./alkanes/ethane.pdb
+./alkanes/propane.pdb
+./alkanes/octane.pdb
+./alkanes/pentane.pdb
+./alkanes/methane.pdb
+./alkanes/cubane.pdb
+```
+
+As always, the `.` on its own means the current working directory, which is where we want our search to start. find’s output is the names of every file and directory under the current working directory. This can seem useless at first but find has many options to filter the output and in this lesson we will discover some of them.
+
+The first option in our list is `-type d` that means ‘things that are directories’. Sure enough, find’s output is the names of the five directories (including .):
+
+```
+$ find . -type d
+
+.
+./writing
+./creatures
+./animal-counts
+./alkanes
+```
+
+Notice that the objects find finds are not listed in any particular order. If we change `-type d` to `-type f`, we get a listing of all the files instead:
+
+```
+$ find . -type f
+
+./writing/LittleWomen.txt
+./writing/haiku.txt
+./creatures/basilisk.dat
+./creatures/unicorn.dat
+./creatures/minotaur.dat
+./animal-counts/animals.csv
+./numbers.txt
+./alkanes/ethane.pdb
+./alkanes/propane.pdb
+./alkanes/octane.pdb
+./alkanes/pentane.pdb
+./alkanes/methane.pdb
+./alkanes/cubane.pdb
+```
+
+
+Now let’s try matching by name:
+
+```
+$ find . -name *.txt
+
+./numbers.txt
+```
+We expected it to find all the text files, but it only prints out `./numbers.txt`. The problem is that the shell expands wildcard characters like `*` before commands run. Since `*.txt` in the current directory expands to `./numbers.txt`, the command we actually ran was:
+
+```
+$ find . -name numbers.txt
+```
+
+find did what we asked; we just asked for the wrong thing.
+
+To get what we want, let’s do what we did with `grep`: put `*.txt` in quotes to prevent the shell from expanding the `*` wildcard. This way, find actually gets the pattern `*.txt`, not the expanded filename `numbers.tx`t:
+
+```
+$ find . -name "*.txt"
+
+./writing/LittleWomen.txt
+./writing/haiku.txt
+./numbers.txt
+```
+
+### 3. Combing the commands
+
+As we said earlier, the command line’s power lies in combining tools. We’ve seen how to do that with pipes; let’s look at another technique. As we just saw, `find . -name "*.txt"` gives us a list of all text files in or below the current directory. How can we combine that with `wc -l` to count the lines in all those files?
+
+The simplest way is to put the find command inside `$()`:
+
+```
+$ wc -l $(find . -name "*.txt")
+
+  21022 ./writing/LittleWomen.txt
+     11 ./writing/haiku.txt
+      5 ./numbers.txt
+  21038 total
+```
+  
+When the shell executes this command, the first thing it does is run whatever is inside the `$()`. It then replaces the `$()` expression with that command’s output. Since the output of find is the three filenames `./writing/LittleWomen.txt`, `./writing/haiku.txt`, and `./numbers.txt`, the shell constructs the command:
+
+```
+$ wc -l ./writing/LittleWomen.txt ./writing/haiku.txt ./numbers.txt
+```
+
+which is what we wanted. This expansion is exactly what the shell does when it expands wildcards like `*` and `?`, but lets us use any command we want as our own ‘wildcard’.
+
+It’s very common to use find and grep together. The first finds files that match a pattern; the second looks for lines inside those files that match another pattern. Here, for example, we can find txt files that contain the word “searching” by looking for the string ‘searching’ in all the `.txt` files in the current directory:
+
+```
+$ grep "searching" $(find . -name "*.txt")
+
+./writing/LittleWomen.txt:sitting on the top step, affected to be searching for her book, but was
+./writing/haiku.txt:With searching comes loss 
+```
+
+The Unix shell is older than most of the people who use it. It has survived so long because it is one of the most productive programming environments ever created — maybe even the most productive. Its syntax may be cryptic, but people who have mastered it can experiment with different commands interactively, then use what they have learned to automate their work. Graphical user interfaces may be easier to use at first, but once learned, the productivity in the shell is unbeatable. And as Alfred North Whitehead wrote in 1911, ‘Civilization advances by extending the number of important operations which we can perform without thinking about them.’
+
+---
+> ### KEY POINTS PART 5
+> 
+> * `find` finds files with specific properties that match patterns.
+> * `grep` selects lines in files that match patterns.
+> * `--help` is an option supported by many bash commands, and programs that can be run from within Bash, to display more information on how to use these commands or programs.
+> * `man [command]` displays the manual page for a given command.
+> * `$([command])` inserts a command’s output in place.
+
+---
+
+
+
+## PART 6 -- Using high performance computers
+
+We have seen above how using a command-line interface instead of a GUI and creating scripts can save us valuable time running the analysis. Still, depending on the job we need to do, the time-limiting step can be the performance of our laptop/desktop. In this case, we need access to a more powerful machine. There are numerous large computers -- with shared computing resources -- available, from smaller machines in research groups to the University ones to national facilities.  
+
+These resources on these machines usually have larger number and size of central processing units (CPUs), CPUs that operate at higher speeds, more memory, more storage, and faster connections with other computer systems. They are frequently called “clusters”, “supercomputers” or resources for “high performance computing” or HPC. In this lesson, we will usually use the terminology of HPC and HPC cluster.
+
+Using a cluster often has the following advantages for researchers:
+
+* **Speed**. With many more CPU cores, often with higher performance specs, than a typical laptop or desktop, HPC systems can offer significant speed up.
+* **Volume**. Many HPC systems have both the processing memory (RAM) and disk storage to handle very large amounts of data. Terabytes of RAM and petabytes of storage are available for research projects.
+* **Efficiency**. Many HPC systems operate a pool of resources that are drawn on by many users. In most cases, when the pool is large and diverse enough, the resources on the system are used almost constantly. This also means that the user can run jobs in parallel and a number of jobs simultaniously.
+* **Cost**. Bulk purchasing and government funding mean that the cost to the research community for using these systems in significantly less that it would be otherwise.
+* **Convenience**. Maybe your calculations just take a long time to run or are otherwise inconvenient to run on your personal computer. There’s no need to tie up your own computer for hours when you can use someone else’s instead.
+
+
+University of Edinburgh has a supercomputer [Eddie](https://www.ed.ac.uk/information-services/research-support/research-computing/ecdf/high-performance-computing), which we will be using during this practical. Furthermore, UoE is a host to national supercomputing facilities [ARCHER2](https://www.archer2.ac.uk) and [Cirrus](https://www.cirrus.ac.uk), available to researchers in the UK.
+
+
+In this session we will apply the bash skills we have learned earlier to connect to Eddie HPC. We will be using Eddie HPC in the following sessions to run our calculations.
+
+### 1. Connecting to a remote machine
+
+Connecting to an HPC system is most often done through a tool known as “SSH” (Secure SHell) and usually SSH is run through a terminal. So, to begin using an HPC system we need to begin by opening a terminal. 
+
+Into the terminal, type without brackets:
+
+```bash
+ssh <YOUR UUN>@eddie.ecdf.ed.ac.uk
+```
+where `<YOUR UUN>` should be replaced with your personal user name, for example:
+
+```
+ssh s123456@eddie.ecdf.ed.ac.uk
+```
+
+The terminal will prompt you for the password, which is your university password. Note that there will be no spaces filling up when you are typing password in. When you are done, hit 'Enter'.
+
+When successfully logged in, you will see:
+
+```
+         _______    _     _ _       
+        (_______)  | |   | (_)      
+         _____   _ | | _ | |_  ____ 
+        |  ___) / || |/ || | |/ _  )
+        | |____( (_| ( (_| | ( (/ / 
+        |_______)____|\____|_|\____)
+
+	WELCOME TO Eddie
+
+        www.ecdf.ed.ac.uk
+_____________________________________________________________________
+
+A guide to getting started is available here:
+https://www.wiki.ed.ac.uk/display/ResearchServices/Quickstart
+
+Service documentation is here:
+https://www.wiki.ed.ac.uk/display/ResearchServices/Eddie
+
+Please report any issues to IS.Helpline@ed.ac.uk
+_____________________________________________________________________
+```
+
+### 2. Telling the difference between local and remote terminal 
+
+You may have also noticed that the prompt changed when you logged into the remote system from `$` to a more complete `[nelle@login03(eddie) ~]$ `.
+
+This change is important because it makes it clear on which system the commands you type will be run when you pass them into the terminal. Exactly what is reported before the `$` in the terminal when it is connected to the local system and the remote system will typically be different for every user.
+
+Just like on your local machine, you can use the commands `cd`, `ls`, `pwd`, etc. to navigate around, as well as all the other commands we have used above. 
+
+### 3. File structure
+
+Unlike your local machine, the file structure of Eddie is different, offering a variety of storage options/locations to cater for different types of work. 
+
+When you log into the machine you automatically land at your home directory. Check what it is by typing 
+
+```bash
+[nelle@login03(eddie) ~]$ pwd
+```
+which will show
+
+```
+/home/nelle
+```
+This space is small, default only 10 Gb, and can be used to store cluster configuration files/ job scripts and small amounts of persistent data. It is not suitable for the large files produced by the simulations. 
+
+Instead, there is a large 2 Tb space, shared by all users of Eddie, where we will be running our simulations from. 
+
+> ***WARNING*** ⚠️  *Files older than one month will be deleted from Scratch directory.*
+> This is enough time for the duration of our course, but if you would like to keep your data, it will have to be moved onto your personal Datastore.
+
+
+Let's explore that space:
+
+```bash
+[nelle@login03(eddie) ~]$ cd /exports/eddie/scratch/<UUN>
+```
+
+Replace `<UUN>` with your username, for Nelle her user name is `nelle` and therefore this is:
+
+```bash
+[nelle@login03(eddie) ~]$ cd /exports/eddie/scratch/nelle
+```
+
+
+
+<!--To make it easier to return to this space later, we can create a soft link in our home directory:
+or may be we dont want this?
+skipping
+-->
+
+
+Have you noticed that the prompt has changed? 
+Instead of `~`, standing for 'home directory', it is now showing the directory you are currently in, i.e. `[nelle@login03(eddie) nelle]$`
+
+In this directory, let's create a folder `Practical1` and descend into it:
+
+```bash
+[nelle@login03(eddie) nelle]$ mkdir Practical1
+[nelle@login03(eddie) nelle]$ cd Practical1
+[nelle@login03(eddie) Practical1]$ pwd
+/exports/eddie/scratch/nelle/Practical1
+```
+
+Let's remember this location, as it will be the destination for the file transfers.
+
+
+### 4. Transferring files to the remote machine
+
+Secure copy
+
+```
+scp file <YOUR UUN>@eddie.ecdf.ed.ac.uk:/destination/directory/
+```
 transfer of a simple file (=shell script) across and run it
+
+
+You should be prompted for your credentials after entering your password. 
+
+To upload, you transfer from your local machine to the remote cluster:
+
+`scp /home/user/file.txt $USER@$CLUSTER_NAME.shef.ac.uk:/home/$USER/`
+
+To download, you transfer from the remote cluster to your local machine:
+
+`scp $USER@$CLUSTER_NAME.shef.ac.uk:/home/$USER/file.txt /home/user/`
+
+To copy a whole directory, we add the -r flag, for “recursive”
+
+`scp -r $USER@$CLUSTER_NAME.shef.ac.uk:/home/$USER/my_results /home/user/`
+
+
+
+
+### 5. Using modules 
+
+Eddie HPC provides a number of [applications](https://www.wiki.ed.ac.uk/display/ResearchServices/Applications) = software to cater for various types of calculations that may be performed. 
+
+Unlike on our personal machine, where all of the applications are always available to us, here the seer number of applications will make it very demanding to load up in one go for every user. Therefore, users will need to load the modules they need:
+
+You can see what modules are available with the command:
+```module available```
+and you can make them available, by loading them::
+```module load <MODULENAME/MODULEVERSION>```
+For a list of currently loaded modules, run:
+```module list```
+
+
+### 6. Understanding the resources
+
+
+
+### 7. Running jobs
+
+The jobs are run with a script. Since Eddie HPC is a shared resource, the jobs will queue. 
+
+
+
+submit a job
+
+`qsub`
+
+which will be queuing  
+
+monitoring the job
+
+`qstat`
+
+cancelling the job
+
+`qdel JobId`
+
+
+
+### 8. Logging out
+
+`exit`
+
+jobs will continue to queue / run 
+
+
+
+
+
+
+### Moving data to datastore?
+
+Stagging  - i.e. data transfer to datastore?
+
+
 
 <!--End of 3rd hour-->
 
