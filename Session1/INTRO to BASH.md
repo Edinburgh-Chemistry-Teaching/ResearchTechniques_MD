@@ -2254,7 +2254,7 @@ Instead of `~`, standing for 'home directory', it is now showing the directory y
 In this directory, let's create a folder `Practical1` and descend into it:
 
 ```bash
-[nelle@login03(eddie) nelle]$ mkdir Practical1
+[nelle@ç(eddie) nelle]$ mkdir Practical1
 [nelle@login03(eddie) nelle]$ cd Practical1
 [nelle@login03(eddie) Practical1]$ pwd
 /exports/eddie/scratch/nelle/Practical1
@@ -2290,7 +2290,67 @@ To copy a whole directory, we add the -r flag, for “recursive”
 
 
 
-### 5. Using modules 
+### 5. Using the resources
+
+The HPC has log-in nodes, which you see in your prompt as `login03`, and compute nodes.
+
+The calculations are carried out on the compute nodes. There are different types of these nodes available, to cater for various needs. 
+
+Therefore, the simulations should be performed on these compute nodes and NOT on the log-in ones. 
+
+To run a job, you will need to submit a Grid Engine job submission script, that contains details of the program to run as well as requests for resources. 
+
+You have just copied over an example job script `myjob.sh`. Let's examine it:
+
+```
+#!/bin/sh
+# Grid Engine options (lines prefixed with #$)
+#$ -N hello              
+#$ -cwd                  
+#$ -l h_rt=00:05:00 
+#$ -l h_vmem=1G
+#  These options are:
+#  job name: -N
+#  use the current working directory: -cwd
+#  runtime limit of 5 minutes: -l h_rt
+#  memory limit of 1 Gbyte: -l h_vmem
+# Initialise the environment modules
+. /etc/profile.d/modules.sh
+
+# Load Python
+module load python/3.4.3
+
+# Run the program
+python hello.py
+```
+
+You then submit this job script to the cluster with the `qsub` command.
+
+
+submit a job
+
+`qsub`
+
+Since Eddie HPC is a shared resource, the jobs will queue. 
+
+monitoring the job
+
+`qstat`
+
+cancelling the job
+
+`qdel JobId`
+
+
+The output of the job:
+
+when job is running, two extra files will be created: `ooo` and `eee` which contain information from the HPC on the job.
+
+
+
+
+
+### 7. Using modules 
 
 Eddie HPC provides a number of [applications](https://www.wiki.ed.ac.uk/display/ResearchServices/Applications) = software to cater for various types of calculations that may be performed. 
 
@@ -2303,30 +2363,6 @@ and you can make them available, by loading them::
 For a list of currently loaded modules, run:
 ```module list```
 
-
-### 6. Understanding the resources
-
-
-
-### 7. Running jobs
-
-The jobs are run with a script. Since Eddie HPC is a shared resource, the jobs will queue. 
-
-
-
-submit a job
-
-`qsub`
-
-which will be queuing  
-
-monitoring the job
-
-`qstat`
-
-cancelling the job
-
-`qdel JobId`
 
 
 
