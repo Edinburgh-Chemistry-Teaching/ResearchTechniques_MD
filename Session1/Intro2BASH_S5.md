@@ -228,6 +228,7 @@ The advantage is that this always selects the right files: she doesn’t have to
 > * `$1`, `$2`, etc., refer to the first command-line argument, the second command-line argument, etc.
 > * Place variables in quotes if the values might have spaces in them.
 > * Letting users decide what files to process is more flexible and more consistent with built-in Unix commands.
+
 ---
 
 👆[Go to the main menu](Intro2BASH.md) <br>

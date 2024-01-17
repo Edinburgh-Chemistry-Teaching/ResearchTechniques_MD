@@ -14,29 +14,32 @@
 
 ### 2. Open a terminal on your computer
 
-**Something here on how to get started on the VM** 
+Click on the terminal app at the bottom of the desktop:
+![terminal](terminal.png)
 
-<==**PICTURE** of the screenshot of the desktop where to find the terminal on the machine==>
+Which will open a window:
+![commandline](commandline.png)
 
-Let's check what we see:
+Here, each line starts with the prompt `$` (can be another user-defined symbol). This is where you will be typing in the commands we give you, for example:
 
-<==**PICTURE** of the terminal==>
-
-Here, each line starts with the prompt `$` (can be another user-defined symbol)
-
+```bash
+$ date
+```
 
 _**IMPORTANT**: do not type the prompt_`$`_when typing commands!_
 Only type the command that follows the prompt. This rule applies both in these lessons and in lessons from other sources. 
 After you type a command, you have to press the `ENTER` key to execute it.
 
+
 The prompt is followed by a *text cursor*, a flashing [or solid black] cursor that indicates the position where your typing will appear.
 
-Often, before the prompt symbol, there will be some information on the user, the machine, and even the directory currently in, for example:
+Often, before the prompt symbol, there will be some information on the user, the machine, and even the directory currently in, for example on the figure above:
 
 ```bash
-[nelle@login04(eddie) ~]$ 
+[test@instance-test-2:~]$ 
 ```
 Do not worry about all this; just make sure to type in only what is given after `$` into your terminal.
+
 
 
 ### 3. Navigate to the working directory
@@ -56,12 +59,12 @@ $ pwd
 `pwd` stands for **p**rint **w**orking **d**irectory
 
 
-Which will return the line:
+Which will return the line, like:
 
 ```bash
 /Users/nelle
 ```
-Every time you type in `cd` without anything after, you will land in this location.
+Every time you type in `cd` without anything after the command, you will land in this location.
 
 
 Use the command `ls` to **l**i**s**t the contents of this current directory:
@@ -88,7 +91,7 @@ shell will inform you that it does not exist:
 kls: command not found
 ```
 
-Now, continue into the directory `Practical1` you downloaded earlier:
+Now, continue into the directory `Practical1` you downloaded earlier.
 
 First, go to the directory `Desktop`:
 
@@ -109,28 +112,29 @@ $ cd Practical1
 
 We have now navigated from the *home directory* to the *current working directory*. 
  
-#### Let's have a look at how the file system is organised.
  
-![filesystem](filesystem.svg)
- 
-The filesystem looks like an upside-down tree. The topmost directory is the *root directory* that holds everything else. We refer to it using a slash character, `/`, on its own; this character is the leading slash in `/Users/nelle`.
- 
-Inside that directory are several other directories: 
-
-* `bin` (this is not the rubbish bin, but where  some built-in programs are stored), 
-* `data` (for miscellaneous data files), 
-* `Users` (where users’ personal directories are located), 
-* `tmp` (for temporary files that don’t need to be stored long-term).
- 
-We know that our current working directory `/Users/nelle` is stored inside `/Users` because `/Users` is the first part of its name. Similarly, we know that `/Users` is stored inside the root directory `/` because its name begins with `/`.
-
-![home-dirs](home-directories.svg)
- 
-Underneath `/Users`, we find one directory for each user with an account on Nelle’s machine, her colleagues `imhotep` and `larry`.  
-Their files are stored in `/Users/Imhotep` and in `/Users/larry`, respectively.
-While Nelle’s are in `/Users/nelle`.
-
-Nelle is the user in our examples here; therefore, we get `/Users/nelle` as our home directory. Typically, when you open a new command prompt, you will be in your home directory to start.
+> ### Let's have a look at how the file system is organised.
+>  
+> ![filesystem](filesystem.svg)
+>  
+> The filesystem looks like an upside-down tree. The topmost directory is the *root directory* that holds everything else. We refer to it using a slash character, `/`, on its own; this character is the leading slash in `/Users/nelle`.
+>  
+> Inside that directory are several other directories: 
+> 
+> * `bin` (this is not the rubbish bin, but where  some built-in programs are stored), 
+> * `data` (for miscellaneous data files), 
+> * `Users` (where users’ personal directories are located), 
+> * `tmp` (for temporary files that don’t need to be stored long-term).
+>  
+> We know that our current working directory `/Users/nelle` is stored inside `/Users` because `/Users` is the first part of its name. Similarly, we know that `/Users` is stored inside the root directory `/` because its name begins with `/`.
+> 
+> ![home-dirs](home-directories.svg)
+>  
+> Underneath `/Users`, we find one directory for each user with an account on Nelle’s machine, her colleagues `imhotep` and `larry`.  
+> Their files are stored in `/Users/Imhotep` and in `/Users/larry`, respectively.
+> While Nelle’s are in `/Users/nelle`.
+> 
+> Nelle is the user in our examples here; therefore, we get `/Users/nelle` as our home directory. Typically, when you open a new command prompt, you will be in your home directory to start.
 
 
 ### 4. Exploring the contents of the directory
@@ -145,8 +149,9 @@ $ ls
 that returns contents of current directory:
 
 ```bash
-shell-lesson-data
+eddie-hpc-data/    shell-lesson-data/
 ```
+
 and then list the contents of `shell-lesson-data`, without descending into the directory:
 
 ```bash
@@ -155,7 +160,7 @@ $ ls Practical1/shell-lesson-data
 
 that returns:
 ```bash
-exercise-data      north-pacific-gyre
+exercise-data/      north-pacific-gyre/
 ```
 
 Now, let's descent into the `exercise-data` in one step:
@@ -228,6 +233,7 @@ $ pwd
 /Users/nelle/Desktop/Practical1/shell-lesson-data
 $ cd ~/Desktop/Practical1/shell-lesson-data/exercise-data
 ```
+
 
 
 ---

@@ -10,7 +10,7 @@ In this session, we will:
 
 
 
-This session is based upon [**The Unix Shell**](https://swcarpentry.github.io/shell-novice/), the [**Introduction to Using the Shell in a High-Performance Computing Context**](http://www.hpc-carpentry.org/hpc-shell/) and [**Introduction to High-Performance Computing**](https://epcced.github.io/hpc-intro/) courses by the [Software Carpentry](https://swcarpentry.github.io)
+This session is based upon [**The Unix Shell**](https://swcarpentry.github.io/shell-novice/), the [**Introduction to Using the Shell in a High-Performance Computing Context**](http://www.hpc-carpentry.org/hpc-shell/) and [**Introduction to High-Performance Computing**](https://epcced.github.io/hpc-intro/) courses.
  
 Summary of basic bash commands [https://swcarpentry.github.io/shell-novice/reference](https://swcarpentry.github.io/shell-novice/reference)
 
@@ -78,23 +78,23 @@ In order to achieve her task, Nelle needs to know how to:
 
 **Click on the links below to continue through the parts today's session:** 
 
-PART 1 -- Navigating Files and Directories (Help Nelle organise the files)
+PART 1 -- [**Navigating Files and Directories**](Intro2BASH_S1.md) (Help Nelle organise the files)
 
 <!-- End of 1st hour-->
 
-PART 2 -- Working With Files and Directories
+PART 2 -- [**Working With Files and Directories**](Intro2BASH_S2.md)
 
-PART 3 -- Pipes and Filters (Nelle’s Pipeline: Checking Files)
+PART 3 -- [**Pipes and Filters**](Intro2BASH_S3.md) (Nelle’s Pipeline: Checking Files)
 
-PART 4 -- Loops (Nelle’s Pipeline: Processing Files)
+PART 4 -- [**Loops**](Intro2BASH_S4.md) (Nelle’s Pipeline: Processing Files)
 
 <!-- End of 2nd hour-->
 
-PART 5 -- Shell Script (Nelle’s Pipeline: Creating a Script)
+PART 5 -- [**Shell Script**](Intro2BASH_S5.md) (Nelle’s Pipeline: Creating a Script)
 
-PART 6 -- Finding things
+PART 6 -- [**Finding things**](Intro2BASH_S6.md)
 
-PART 7 -- Using high-performance computers
+PART 7 -- [**Using high-performance computers**](Intro2BASH_S7.md)
 
 <!-- End of 3rd hour-->
 

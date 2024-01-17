@@ -275,6 +275,33 @@ To log out from Eddie just type `exit`
 
 
 
+> ### KEY POINTS PART 7
+> 
+> * Connect to a remote HPC: `ssh yourUsername@remote.computer.address`
+> * Copy files between two machines with `scp`
+> * HPCs have log-in nodes and compute-nodes
+> * Schedulers optimise the use of resources and manage job submission, queuing and running.
+> * To submit a job one needs a script `qsub myjob.sh`
+> * `qstat` allows to check on the status of the submitted jobs
+
+---
+
+
+## A Favour
+
+This is the first time we are running the course -- please help us improve it by filling in this [feedback form](https://forms.office.com/e/AQH06hukpu?origin=lprLink):
+
+<img src="FB1.png" alt="fb" width="200"/>
+
+
+
+## Thank You!
+
+
+👆[Go to the main menu](Intro2BASH.md) <br>
+👈[Go to the previous part -- Pipes and Filters](Intro2BASH_S6.md)<br>
+
+
 <!-- to be moved to the next session
 
 ### 7. Using modules 
@@ -300,7 +327,3 @@ For a list of currently loaded modules, run:
 Stagging  - i.e. data transfer to datastore?
 
 -->
-
-
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Pipes and Filters](Intro2BASH_S6.md)<br>
