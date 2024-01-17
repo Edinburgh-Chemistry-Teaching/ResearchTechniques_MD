@@ -15,10 +15,10 @@
 ### 2. Open a terminal on your computer
 
 Click on the terminal app at the bottom of the desktop:
-![terminal](terminal.png)
+![terminal](./fig/terminal.png)
 
 Which will open a window:
-![commandline](commandline.png)
+![commandline](./fig/commandline.png)
 
 Here, each line starts with the prompt `$` (can be another user-defined symbol). This is where you will be typing in the commands we give you, for example:
 
@@ -115,7 +115,7 @@ We have now navigated from the *home directory* to the *current working director
  
 > ### Let's have a look at how the file system is organised.
 >  
-> ![filesystem](filesystem.svg)
+> ![filesystem](./fig/filesystem.svg)
 >  
 > The filesystem looks like an upside-down tree. The topmost directory is the *root directory* that holds everything else. We refer to it using a slash character, `/`, on its own; this character is the leading slash in `/Users/nelle`.
 >  
@@ -128,7 +128,7 @@ We have now navigated from the *home directory* to the *current working director
 >  
 > We know that our current working directory `/Users/nelle` is stored inside `/Users` because `/Users` is the first part of its name. Similarly, we know that `/Users` is stored inside the root directory `/` because its name begins with `/`.
 > 
-> ![home-dirs](home-directories.svg)
+> ![home-dirs](./fig/home-directories.svg)
 >  
 > Underneath `/Users`, we find one directory for each user with an account on Nelle’s machine, her colleagues `imhotep` and `larry`.  
 > Their files are stored in `/Users/Imhotep` and in `/Users/larry`, respectively.
@@ -276,7 +276,7 @@ Using the filesystem diagram below, if `pwd` displays `/Users/thing`, what will 
 3. `2012-12-01/ 2013-01-08/ 2013-01-27/`
 4. `original/ pnas_final/ pnas_sub/`
 
-![filesystem-challenge](filesystem-challenge.svg)
+![filesystem-challenge](./fig/filesystem-challenge.svg)
 
 <details>
   <summary>**ANSWER 2**</summary>

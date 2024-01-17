@@ -4,7 +4,7 @@
 👈[Go to the previous part -- Loops](Intro2BASH_S4.md)<br>
 👉[Go to the next part -- Finding things](Intro2BASH_S6.md)
 
-**This is an advanced topic and extra material**
+<span style="color:blue"> **This is an advanced topic and extra material** </span>
 
 
 We are finally ready to see what makes the shell such a powerful programming environment. We are going to take the commands we repeat frequently and save them in files so that we can re-run all those operations again later by typing a single command. For historical reasons, a bunch of commands saved in a file is usually called a *shell script*, but make no mistake — these are actually small programs.
@@ -12,7 +12,7 @@ We are finally ready to see what makes the shell such a powerful programming env
 Not only will writing shell scripts make your work faster, but also you won’t have to retype the same commands over and over again. It will also make it more accurate (fewer chances for typos) and more reproducible. If you come back to your work later (or if someone else finds your work and wants to build on it), you will be able to reproduce the same results simply by running your script, rather than having to remember or retype a long list of commands.
 
 
-Let’s start by going back to alkanes/ and creating a new file, `middle.sh` which will become our shell script:
+Let’s start by going back to `alkanes/` and creating a new file, `middle.sh` which will become our shell script:
 
 ```bash
 $ cd alkanes
@@ -21,7 +21,7 @@ $ nano middle.sh
 
 The command `nano middle.sh` opens the file `middle.sh` within the text editor nano (which runs within the shell). If the file does not exist, it will be created. We can use the text editor to directly edit the file by inserting the following line:
 
-```
+```bash
 head -n 15 octane.pdb | tail -n 5
 ```
 
@@ -41,21 +41,21 @@ ATOM     13  H           1      -3.172  -1.337   0.206  1.00  0.00
 ```
 Sure enough, our script’s output is exactly what we would get if we ran that pipeline directly.
 
-What if we want to select lines from an arbitrary file? We could edit middle.sh each time to change the filename, but that would probably take longer than typing the command out again in the shell and executing it with a new file name. Instead, let’s edit `middle.sh` and make it more versatile:
+What if we want to select lines from an arbitrary file? We could edit `middle.sh` each time to change the filename, but that would probably take longer than typing the command out again in the shell and executing it with a new file name. Instead, let’s edit `middle.sh` and make it more versatile:
 
-```
+```bash
 $ nano middle.sh
 ```
 
 Now, within “nano”, replace the text `octane.pdb` with the special variable called `$1`:
 
-```
+```bash
 head -n 15 "$1" | tail -n 5
 ```
 
 Inside a shell script, `$1` means ‘the first filename (or other argument) on the command line’. We can now run our script like this:
 
-```
+```bash
 $ bash middle.sh octane.pdb
 ATOM      9  H           1      -4.502   0.681   0.785  1.00  0.00
 ATOM     10  H           1      -5.254  -0.243  -0.537  1.00  0.00
@@ -66,7 +66,7 @@ ATOM     13  H           1      -3.172  -1.337   0.206  1.00  0.00
 
 or on a different file like this:
 
-```
+```bash
 $ bash middle.sh pentane.pdb
 ATOM      9  H           1       1.324   0.350  -1.332  1.00  0.00
 ATOM     10  H           1       1.271   1.378   0.122  1.00  0.00
@@ -79,19 +79,21 @@ For the same reason that we put the loop variable inside double-quotes, in case 
 
 Currently, we need to edit `middle.sh` each time we want to adjust the range of lines that is returned. Let’s fix that by configuring our script to instead use three command-line arguments. After the first command-line argument (`$1`), each additional argument that we provide will be accessible via the special variables `$1`, `$2`, `$3`, which refer to the first, second, third command-line arguments, respectively.
 
-Knowing this, we can use additional arguments to define the range of lines to be passed to head and tail respectively:
+Knowing this, we can use additional arguments to define the range of lines to be passed to head and tail, respectively:
 
-bash```
+```bash
 $ nano middle.sh
 ```
+
 and edit to:
-```
+
+```bash
 head -n "$2" "$1" | tail -n "$3"
 ```
 
 We can now run:
 
-```
+```bash
 $ bash middle.sh pentane.pdb 15 5
 ATOM      9  H           1       1.324   0.350  -1.332  1.00  0.00
 ATOM     10  H           1       1.271   1.378   0.122  1.00  0.00
@@ -102,7 +104,7 @@ ATOM     13  H           1      -1.183   0.500  -1.412  1.00  0.00
 
 By changing the arguments to our command, we can change our script’s behaviour:
 
-```
+```bash
 $ bash middle.sh pentane.pdb 20 5
 ATOM     14  H           1      -1.259   1.420   0.112  1.00  0.00
 ATOM     15  H           1      -2.608  -0.407   1.130  1.00  0.00
@@ -119,7 +121,7 @@ $ nano middle.sh
 
 and edit:
 
-```
+```bash
 # Select lines from the middle of a file.
 # Usage: bash middle.sh filename end_line num_lines
 head -n "$2" "$1" | tail -n "$3"
@@ -165,6 +167,48 @@ $ bash sorted.sh *.pdb ../creatures/*.dat
 596 total
 ```
 
+#### TASK 1
+
+Leah has several hundred data files, each of which is formatted like this:
+
+```bash
+2013-11-05,deer,5
+2013-11-05,rabbit,22
+2013-11-05,raccoon,7
+2013-11-06,rabbit,19
+2013-11-06,deer,2
+2013-11-06,fox,1
+2013-11-07,rabbit,18
+2013-11-07,bear,1
+```
+
+An example of this type of file is given in `shell-lesson-data/exercise-data/animal-counts/animals.csv`.
+
+We can use the command `cut -d , -f 2 animals.csv | sort | uniq` to produce the unique species in `animals.csv`. In order to avoid having to type out this series of commands every time, a scientist may choose to write a shell script instead.
+
+Write a shell script called `species.sh` that takes any number of filenames as command-line arguments and uses a variation of the above command to print a list of the unique species appearing in each of those files separately.
+
+
+<details>
+  <summary>**SOLUTION 1**</summary>
+  
+```bash
+  
+# Script to find unique species in csv files where species is the second data field
+# This script accepts any number of file names as command line arguments
+
+# Loop over all files
+for file in $@
+do
+    echo "Unique species in $file:"
+    # Extract species names
+    cut -d , -f 2 $file | sort | uniq
+done
+```
+
+</details>
+
+
 
 ---
 
@@ -185,7 +229,7 @@ $ nano do-stats.sh
 ```
 …which contains the following:
 
-```
+```bash
 # Calculate stats for data files.
 for datafile in "$@"
 do

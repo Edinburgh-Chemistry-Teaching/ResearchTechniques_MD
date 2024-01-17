@@ -3,7 +3,7 @@
 👈[Go to the previous part -- Shell Script ](Intro2BASH_S5.md)<br>
 👉[Go to the next part -- Using high-performance computers](Intro2BASH_S7.md)
 
-**This is an advanced topic and extra material**
+<span style="color:blue"> **This is an advanced topic and extra material** </span>
 
 ### 1. Searching within the file
 
@@ -33,7 +33,7 @@ Software is like that.
 
 Let’s find lines that contain the word ‘not’:
 
-```
+```bash
 $ grep not haiku.txt
 
 Is not the true Tao, until
@@ -49,7 +49,7 @@ By default, grep searches for a pattern in a case-sensitive way. In addition, th
 
 Let’s search for the pattern: ‘The’.
 
-```
+```bash
 $ grep The haiku.txt
 
 The Tao that is seen
@@ -62,7 +62,7 @@ To restrict matches to lines containing the word ‘The’ on its own, we can gi
 
 Later in this lesson, we will also see how we can change the search behavior of grep with respect to its case sensitivity.
 
-```
+```bash
 $ grep -w The haiku.txt
 
 The Tao that is seen
@@ -70,7 +70,7 @@ The Tao that is seen
 
 Note that a ‘word boundary’ includes the start and end of a line, so not just letters surrounded by spaces. Sometimes we don’t want to search for a single word, but a phrase. We can also do this with `grep` by putting the phrase in quotes.
 
-```
+```bash
 $ grep -w "is not" haiku.txt
 
 Today it is not working
@@ -80,7 +80,7 @@ We’ve now seen that you don’t have to have quotes around single words, but i
 
 Another useful option is `-n`, which numbers the lines that match:
 
-```
+```bash
 $ grep -n "it" haiku.txt
 
 5:With searching comes loss
@@ -92,7 +92,7 @@ Here, we can see that lines 5, 9, and 10 contain the letters ‘it’.
 
 We can combine options (i.e. flags) as we do with other Unix commands. For example, let’s find the lines that contain the word ‘the’. We can combine the option `-w` to find the lines that contain the word ‘the’ and `-n` to number the lines that match:
 
-```
+```bash
 $ grep -n -w "the" haiku.txt
 
 2:Is not the true Tao, until
@@ -101,7 +101,7 @@ $ grep -n -w "the" haiku.txt
 
 Now we want to use the option -i to make our search case-insensitive:
 
-```
+```bash
 $ grep -n -w -i "the" haiku.txt
 
 1:The Tao that is seen
@@ -111,7 +111,7 @@ $ grep -n -w -i "the" haiku.txt
 
 Now, we want to use the option `-v` to invert our search, i.e., we want to output the lines that do not contain the word ‘the’.
 
-```
+```bash
 $ grep -n -w -v "the" haiku.txt
 
 1:The Tao that is seen
@@ -129,7 +129,8 @@ If we use the `-r` (recursive) option, grep can search for a pattern recursively
 
 Let’s search recursively for Yesterday in the `shell-lesson-data/exercise-data/writing` directory:
 
-```$ grep -r Yesterday .
+```bash
+$ grep -r Yesterday .
 
 ./LittleWomen.txt:"Yesterday, when Aunt was asleep and I was trying to be as still as a
 ./LittleWomen.txt:Yesterday at dinner, when an Austrian officer stared at us and then
@@ -139,7 +140,7 @@ Let’s search recursively for Yesterday in the `shell-lesson-data/exercise-data
 
 `grep` has lots of other options. To find out what they are, we can type:
 
-```
+```bash
 $ grep --help
 Usage: grep [OPTION]... PATTERN [FILE]...
 Search for PATTERN in each FILE or standard input.
@@ -163,11 +164,92 @@ Miscellaneous:
 ```
 
 
+#### QUESTION 1
+
+Which command would result in the following output:
+
+```bash
+and the presence of absence:
+```
+
+1. `grep "of" haiku.txt`
+2. `grep -E "of" haiku.txt`
+3. `grep -w "of" haiku.txt`
+4. `grep -i "of" haiku.txt`
+
+
+<details>
+  <summary>**ANSWER 1**</summary>
+
+The correct answer is 3, because the `-w` option looks only for whole-word matches. The other options will also match ‘of’ when part of another word.
+
+</details>
+
+
+
+#### TASK 1
+
+Leah has several hundred data files saved in one directory, each of which is formatted like this:
+
+```bash
+2012-11-05,deer,5
+2012-11-05,rabbit,22
+2012-11-05,raccoon,7
+2012-11-06,rabbit,19
+2012-11-06,deer,2
+2012-11-06,fox,4
+2012-11-07,rabbit,16
+2012-11-07,bear,1
+```
+
+She wants to write a shell script that takes a species as the first command-line argument and a directory as the second argument. The script should return one file called `<species>.txt` containing a list of dates and the number of that species seen on each date. For example using the data shown above, `rabbit.txt` would contain:
+
+```bash
+2012-11-05,22
+2012-11-06,19
+2012-11-07,16
+```
+
+Below, each line contains an individual command, or pipe. Arrange their sequence in one command in order to achieve Leah’s goal:
+
+```bash
+cut -d : -f 2
+>
+|
+grep -w $1 -r $2
+|
+$1.txt
+cut -d , -f 1,3
+```
+
+**Hint**: use `man grep` to look for how to grep text recursively in a directory and `man cut` to select more than one field in a line.
+
+An example of such a file is provided in `shell-lesson-data/exercise-data/animal-counts/animals.csv`
+
+<details>
+  <summary>**SOLUTION 1**</summary>
+  
+```bash
+  grep -w $1 -r $2 | cut -d : -f 2 | cut -d , -f 1,3 > $1.txt
+
+```
+Actually, you can swap the order of the two cut commands and it still works. At the command line, try changing the order of the cut commands, and have a look at the output from each step to see why this is the case.
+
+You would call the script above like this:
+
+```bash
+$ bash count-species.sh bear .
+```
+
+</details>
+
+
+
 ### 2. Finding the file
 
 While grep finds lines in files, the find command finds files themselves. Again, it has a lot of options; to show how the simplest ones work, we’ll use the shell-lesson-data/exercise-data directory tree shown below.
 
-```
+```bash
 .
 ├── animal-counts/
 │   └── animals.csv
@@ -192,7 +274,7 @@ The exercise-data directory contains one file, `numbers.txt` and four directorie
 
 For our first command, let’s run `find .` (remember to run this command from the `shell-lesson-data/exercise-data folder`).
 
-```
+```bash
 $ find .
 
 .
@@ -219,7 +301,7 @@ As always, the `.` on its own means the current working directory, which is wher
 
 The first option in our list is `-type d` that means ‘things that are directories’. Sure enough, find’s output is the names of the five directories (including .):
 
-```
+```bash
 $ find . -type d
 
 .
@@ -231,7 +313,7 @@ $ find . -type d
 
 Notice that the objects find finds are not listed in any particular order. If we change `-type d` to `-type f`, we get a listing of all the files instead:
 
-```
+```bash
 $ find . -type f
 
 ./writing/LittleWomen.txt
@@ -252,14 +334,14 @@ $ find . -type f
 
 Now let’s try matching by name:
 
-```
+```bash
 $ find . -name *.txt
 
 ./numbers.txt
 ```
 We expected it to find all the text files, but it only prints out `./numbers.txt`. The problem is that the shell expands wildcard characters like `*` before commands run. Since `*.txt` in the current directory expands to `./numbers.txt`, the command we actually ran was:
 
-```
+```bash
 $ find . -name numbers.txt
 ```
 
@@ -267,7 +349,7 @@ find did what we asked; we just asked for the wrong thing.
 
 To get what we want, let’s do what we did with `grep`: put `*.txt` in quotes to prevent the shell from expanding the `*` wildcard. This way, find actually gets the pattern `*.txt`, not the expanded filename `numbers.tx`t:
 
-```
+```bash
 $ find . -name "*.txt"
 
 ./writing/LittleWomen.txt
@@ -281,7 +363,7 @@ As we said earlier, the command line’s power lies in combining tools. We’ve 
 
 The simplest way is to put the find command inside `$()`:
 
-```
+```bash
 $ wc -l $(find . -name "*.txt")
 
   21022 ./writing/LittleWomen.txt
@@ -292,7 +374,7 @@ $ wc -l $(find . -name "*.txt")
   
 When the shell executes this command, the first thing it does is run whatever is inside the `$()`. It then replaces the `$()` expression with that command’s output. Since the output of find is the three filenames `./writing/LittleWomen.txt`, `./writing/haiku.txt`, and `./numbers.txt`, the shell constructs the command:
 
-```
+```bash
 $ wc -l ./writing/LittleWomen.txt ./writing/haiku.txt ./numbers.txt
 ```
 
@@ -300,7 +382,7 @@ which is what we wanted. This expansion is exactly what the shell does when it e
 
 It’s very common to use find and grep together. The first finds files that match a pattern; the second looks for lines inside those files that match another pattern. Here, for example, we can find txt files that contain the word “searching” by looking for the string ‘searching’ in all the `.txt` files in the current directory:
 
-```
+```bash
 $ grep "searching" $(find . -name "*.txt")
 
 ./writing/LittleWomen.txt:sitting on the top step, affected to be searching for her book, but was
@@ -308,6 +390,7 @@ $ grep "searching" $(find . -name "*.txt")
 ```
 
 The Unix shell is older than most of the people who use it. It has survived so long because it is one of the most productive programming environments ever created — maybe even the most productive. Its syntax may be cryptic, but people who have mastered it can experiment with different commands interactively, then use what they have learned to automate their work. Graphical user interfaces may be easier to use at first, but once learned, the productivity in the shell is unbeatable. And as Alfred North Whitehead wrote in 1911, ‘Civilization advances by extending the number of important operations which we can perform without thinking about them.’
+
 
 ---
 > ### KEY POINTS PART 5

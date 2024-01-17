@@ -71,7 +71,7 @@ Note that there are other text editors available. Nano and [Vi](https://www.vim.
 
 Let's type in a couple of words using nano and save into the `draft.txt`
 
-![nano-screenshot](nano-screenshot.png)
+![nano-screenshot](./fig/nano-screenshot.png)
 
 Once we’re happy with our text, we can press `Ctrl+O` (press the `Ctrl` or `Control` key and, while holding it down, press the `O` key) to write our data to disk. We will be asked to provide a name for the file that will contain our text. Press Return to accept the suggested default of `draft.txt`.
 

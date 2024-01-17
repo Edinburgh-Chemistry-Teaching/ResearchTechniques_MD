@@ -42,6 +42,8 @@ $ ssh s1234567@eddie.ecdf.ed.ac.uk
 
 The terminal will prompt you for the password, which is your university password. Note, that there will be no spaces/stars/symbols filling up when you are typing the password in, the display will not change. When you are done, hit 'Enter'.
 
+Note, if logging in for the first time, your computer may ask to remember the remote machine, reply 'yes'.
+
 When successfully logged in, you will see:
 
 ```
@@ -287,11 +289,13 @@ To log out from Eddie just type `exit`
 ---
 
 
-## A Favour
+## Feedback
 
-This is the first time we are running the course -- please help us improve it by filling in this [feedback form](https://forms.office.com/e/AQH06hukpu?origin=lprLink):
+We would like to aks you for a favour to give us regular feedback on this course and the session. This is the first time we are running the course and your feedback will help us improve it. 
 
-<img src="FB1.png" alt="fb" width="200"/>
+Please fill in this [feedback form by clicking the link](https://forms.office.com/e/AQH06hukpu?origin=lprLink) or use your phone to scan the code:
+
+<img src="./fig/FB1.png" alt="fb" width="200"/>
 
 
 

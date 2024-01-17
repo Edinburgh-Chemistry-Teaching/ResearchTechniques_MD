@@ -3,7 +3,8 @@
 👈[Go to the previous part -- Working With Files and Directories](Intro2BASH_S2.md)<br>
 👉[Go to the next part -- Loops](Intro2BASH_S4.md)
 
-**This is an advanced topic and extra material**
+<span style="color:blue"> **This is an advanced topic and extra material** </span>.
+
 
 ### 1. Processing files 
 
@@ -214,7 +215,7 @@ $ wc -l *.pdb | sort -n | head -n 1
 > **In summary:**
 > 
 > 
-> ![redirects-and-pipes](redirects-and-pipes.svg)
+> ![redirects-and-pipes](./fig/redirects-and-pipes.svg)
 
 
 ---
@@ -325,7 +326,7 @@ The `uniq` command has a `-c` option which gives a count of the number of times 
 5. `cut -d, -f 2 animals.csv | sort | uniq -c | wc -l`
 
 <details>
-  <summary>**QUESTION 3:**</summary>
+  <summary>**SOLUTION 9:**</summary>
   
 Option 4. is the correct answer. If you have difficulty understanding why, try running the commands, or sub-sections of the pipelines (make sure you are in the `shell-lesson-data/exercise-data/animal-counts` directory).
 </details>
@@ -415,6 +416,7 @@ Sure enough, when she checks the log on her laptop, there’s no depth recorded 
 > * command `>> [file]` appends a command’s output to a file.
 > * `[first] | [second]` is a pipeline: the output of the first command is used as the input to the second.
 > * The best way to use the shell is to use pipes to combine simple single-purpose programs (filters).
+
 ---
 
 👆[Go to the main menu](Intro2BASH.md) <br>
