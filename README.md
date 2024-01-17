@@ -6,7 +6,7 @@
 - Figure out username/password for students
 
 ### Files:
- Eddie: module load script (sarah's latest from `Group-Scripts/Clays/Simulations/` ?)
+- Eddie: module load script (sarah's latest from `Group-Scripts/Clays/Simulations/` ?)
 - Run scripts
 - Marking scheme
 - Session HTML stylesheet
