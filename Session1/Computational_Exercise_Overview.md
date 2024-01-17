@@ -12,7 +12,8 @@ Office B21 (Office hours Wedn 10.00-12.00 in weeks 3, 4 and 5)
 Hannah Pollak, 
 Audrey ..., 
 ..., ???
- 
+
+
 
 **Learning Outcomes:**
 
@@ -47,8 +48,7 @@ Session 4: Beginning of the individual projects.
 
 Each session is 3 hours long; students are expected to carry out work independently after each session. 
 
-**Drop-in** sessions with demonstrators are scheduled on Wedn **XXX** in weeks 3, 4 and 5.
-
+**Drop-in** sessions with demonstrators are scheduled on ==Wedn **XXX**== in weeks 3, 4 and 5.
 
 
 **Assessment:**
