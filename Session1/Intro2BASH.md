@@ -10,7 +10,7 @@ In this session, we will:
 
 
 
-This session is based upon [**The Unix Shell**](https://swcarpentry.github.io/shell-novice/) and the  [**Introduction to Using the Shell in a High-Performance Computing Context**](http://www.hpc-carpentry.org/hpc-shell/) courses by the [Software Carpentry](https://swcarpentry.github.io)
+This session is based upon [**The Unix Shell**](https://swcarpentry.github.io/shell-novice/), the [**Introduction to Using the Shell in a High-Performance Computing Context**](http://www.hpc-carpentry.org/hpc-shell/) and [**Introduction to High-Performance Computing**](https://epcced.github.io/hpc-intro/) courses by the [Software Carpentry](https://swcarpentry.github.io)
  
 Summary of basic bash commands [https://swcarpentry.github.io/shell-novice/reference](https://swcarpentry.github.io/shell-novice/reference)
 
@@ -28,7 +28,7 @@ The lesson outline:
 * PART 5 -- Shell Script
 * Nelle’s Pipeline: Creating a Script
 * PART 6 -- Finding things
-* PART 7 -- Connecting to the remote machine 
+* PART 7 -- Using high performance computers
 
 There are many questions and small tasks given, all have Answers/Solutions in a drop-down under. 
 These are practice exercises to be attended after the session (or only if you have time during the session). 
@@ -1855,7 +1855,7 @@ Is not the true Tao, until
 Today it is not working
 ```
 
-Here, not is the pattern we’re searching for. The grep command searches through the file, looking for matches to the pattern specified. To use it type `grep`, then the pattern we’re searching for and finally the name of the file (or files) we’re searching in.
+Here, not is the pattern we’re searching for. The grep command searches through the file, looking for matches to the pattern specified. To use it type `grep`, then the pattern we’re searching for and finally, the name of the file (or files) we’re searching in.
 
 The output is the three lines in the file that contain the letters ‘not’.
 
@@ -2138,9 +2138,9 @@ The Unix shell is older than most of the people who use it. It has survived so l
 
 ## PART 6 -- Using high performance computers
 
-We have seen above how using a command-line interface instead of a GUI and creating scripts can save us valuable time running the analysis. Still, depending on the job we need to do, the time-limiting step can be the performance of our laptop/desktop. In this case, we need access to a more powerful machine. There are numerous large computers -- with shared computing resources -- available, from smaller machines in research groups to the University ones to national facilities.  
+We have seen above how using a command-line interface instead of a GUI and creating scripts can save us valuable time running the analysis. Still, depending on the job we need to do, the time-limiting step can be the performance of our laptop/desktop. In this case, we need access to a more powerful machine. There are numerous large computers with shared computing resources available: from smaller machines in research groups, to the University ones, to national facilities.  
 
-These resources on these machines usually have larger number and size of central processing units (CPUs), CPUs that operate at higher speeds, more memory, more storage, and faster connections with other computer systems. They are frequently called “clusters”, “supercomputers” or resources for “high performance computing” or HPC. In this lesson, we will usually use the terminology of HPC and HPC cluster.
+These resources on these machines typically have larger numbers and sizes of central processing units (CPUs), CPUs that operate at higher speeds, more memory, more storage, and faster connections with other computer systems. They are frequently called “clusters”, “supercomputers” or resources for “high-performance computing” or HPC. 
 
 Using a cluster often has the following advantages for researchers:
 
@@ -2148,30 +2148,33 @@ Using a cluster often has the following advantages for researchers:
 * **Volume**. Many HPC systems have both the processing memory (RAM) and disk storage to handle very large amounts of data. Terabytes of RAM and petabytes of storage are available for research projects.
 * **Efficiency**. Many HPC systems operate a pool of resources that are drawn on by many users. In most cases, when the pool is large and diverse enough, the resources on the system are used almost constantly. This also means that the user can run jobs in parallel and a number of jobs simultaniously.
 * **Cost**. Bulk purchasing and government funding mean that the cost to the research community for using these systems in significantly less that it would be otherwise.
-* **Convenience**. Maybe your calculations just take a long time to run or are otherwise inconvenient to run on your personal computer. There’s no need to tie up your own computer for hours when you can use someone else’s instead.
+* **Convenience**. Maybe your calculations just take a long time to run or are otherwise inconvenient to run on your personal computer. There’s no need to tie up your own computer for hours when you can use someone else’s instead;)
 
 
-University of Edinburgh has a supercomputer [Eddie](https://www.ed.ac.uk/information-services/research-support/research-computing/ecdf/high-performance-computing), which we will be using during this practical. Furthermore, UoE is a host to national supercomputing facilities [ARCHER2](https://www.archer2.ac.uk) and [Cirrus](https://www.cirrus.ac.uk), available to researchers in the UK.
+The University of Edinburgh has a supercomputer [Eddie](https://www.ed.ac.uk/information-services/research-support/research-computing/ecdf/high-performance-computing), which we will be using during this practical. Furthermore, UoE is a host to national supercomputing facilities [ARCHER2](https://www.archer2.ac.uk) and [Cirrus](https://www.cirrus.ac.uk), available to researchers in the UK.
 
 
-In this session we will apply the bash skills we have learned earlier to connect to Eddie HPC. We will be using Eddie HPC in the following sessions to run our calculations.
+In this part of the session we will apply the bash skills we have learned earlier to connect and use Eddie HPC. In the following sessions, we will be using Eddie HPC to run our calculations.
+
 
 ### 1. Connecting to a remote machine
 
-Connecting to an HPC system is most often done through a tool known as “SSH” (Secure SHell) and usually SSH is run through a terminal. So, to begin using an HPC system we need to begin by opening a terminal. 
+Connecting to an HPC system is most often done through a tool known as SSH, for **s**ecure **sh**ell, and usually SSH is run through a terminal. So, to begin using an HPC system, we need to open a terminal. 
 
-Into the terminal, type without brackets:
+We suggest opening a new terminal, so you can have two terminals in parallel - one for working on local machine, one for working on Eddie.
+
+Into the terminal type without brackets:
 
 ```bash
-ssh <YOUR UUN>@eddie.ecdf.ed.ac.uk
+$ ssh <UUN>@eddie.ecdf.ed.ac.uk
 ```
-where `<YOUR UUN>` should be replaced with your personal user name, for example:
+where `<UUN>` should be replaced with your university credentials, typically starting with `s`, for example:
 
 ```
-ssh s123456@eddie.ecdf.ed.ac.uk
+$ ssh s1234567@eddie.ecdf.ed.ac.uk
 ```
 
-The terminal will prompt you for the password, which is your university password. Note that there will be no spaces filling up when you are typing password in. When you are done, hit 'Enter'.
+The terminal will prompt you for the password, which is your university password. Note, that there will be no spaces/stars/symbols filling up when you are typing the password in, the display will not change. When you are done, hit 'Enter'.
 
 When successfully logged in, you will see:
 
@@ -2210,19 +2213,19 @@ Just like on your local machine, you can use the commands `cd`, `ls`, `pwd`, etc
 
 Unlike your local machine, the file structure of Eddie is different, offering a variety of storage options/locations to cater for different types of work. 
 
-When you log into the machine you automatically land at your home directory. Check what it is by typing 
+When you log into the machine, you automatically land at your **home directory**. Check what it is by typing:
 
 ```bash
 [nelle@login03(eddie) ~]$ pwd
 ```
-which will show
+which will show:
 
 ```
 /home/nelle
 ```
-This space is small, default only 10 Gb, and can be used to store cluster configuration files/ job scripts and small amounts of persistent data. It is not suitable for the large files produced by the simulations. 
+This home directory space is small, default only 10 Gb, and can be used to store cluster configuration files/ job scripts and small amounts of persistent data. It is not suitable for the large files produced by the simulations. 
 
-Instead, there is a large 2 Tb space, shared by all users of Eddie, where we will be running our simulations from. 
+Instead, there is a **scratch directory**, a large 2 Tb space, shared by all users of Eddie, where we will be running our simulations from. 
 
 > ***WARNING*** ⚠️  *Files older than one month will be deleted from Scratch directory.*
 > This is enough time for the duration of our course, but if you would like to keep your data, it will have to be moved onto your personal Datastore.
@@ -2233,28 +2236,19 @@ Let's explore that space:
 ```bash
 [nelle@login03(eddie) ~]$ cd /exports/eddie/scratch/<UUN>
 ```
-
-Replace `<UUN>` with your username, for Nelle her user name is `nelle` and therefore this is:
+Replace `<UUN>` with your username, for Nelle her user name is `nelle`, and therefore, this is:
 
 ```bash
 [nelle@login03(eddie) ~]$ cd /exports/eddie/scratch/nelle
 ```
 
-
-
-<!--To make it easier to return to this space later, we can create a soft link in our home directory:
-or may be we dont want this?
-skipping
--->
-
-
-Have you noticed that the prompt has changed? 
+*Have you noticed that the prompt has changed?*
 Instead of `~`, standing for 'home directory', it is now showing the directory you are currently in, i.e. `[nelle@login03(eddie) nelle]$`
 
 In this directory, let's create a folder `Practical1` and descend into it:
 
 ```bash
-[nelle@ç(eddie) nelle]$ mkdir Practical1
+[nelle@login03(eddie) nelle]$ mkdir Practical1
 [nelle@login03(eddie) nelle]$ cd Practical1
 [nelle@login03(eddie) Practical1]$ pwd
 /exports/eddie/scratch/nelle/Practical1
@@ -2265,90 +2259,157 @@ Let's remember this location, as it will be the destination for the file transfe
 
 ### 4. Transferring files to the remote machine
 
-Secure copy
+To transfer files across computers, we will use `scp`, which stands for **s**ecure **c**o**p**y. The command works like `cp` that we use when copying files within our own machine, i.e., the command is followed by the file to copy and the location to copy to.
+
+To copy a file from your local machine to your remote machine, there are two options:
+
+1 - When run on your local machine:
+```
+$ scp /location/directory/file <YOUR UUN>@eddie.ecdf.ed.ac.uk:/destination/directory/
+```
+
+2 - When run on your remote machine: 
 
 ```
-scp file <YOUR UUN>@eddie.ecdf.ed.ac.uk:/destination/directory/
+[<UUN>@login03(eddie) Practical1]$ scp <localname>@<localIP>:/location/directory/file /destination/directory/.
 ```
-transfer of a simple file (=shell script) across and run it
+
+Let's transfer files `hello.sh` and `myjob.sh` stored within the `Practical1/eddie-hpc-data` directory to the `Practical1` folder we have just created on Eddie. Since both files are `.sh`, instead of typing each in we can use a `*` wildcard.
+
+```bash
+$ cd eddie-hpc-data
+$ scp *sh nelle@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/nelle/Practical1
+```
+You will be prompted for the password, then you will see the report on the file transfer:
+```
+hello.sh                                                                    100%  271    44.3KB/s   00:00    
+myjob.sh                                                                    100%  316    62.2KB/s   00:00  
+``` 
+
+If we now check the files from Eddie.
+
+```bash
+[nelle@login03(eddie) Practical1]$ pwd
+/exports/eddie/scratch/nelle/Practical1
+[nelle@login03(eddie) Practical1]$ ls -lrth
+total 1.0K
+-rw-r--r-- 1 nelle eddie_users 271 Jan 17 11:42 hello.sh
+-rw-r--r-- 1 nelle eddie_users 316 Jan 17 11:42 myjob.sh
+
+```
+Command `ls -lrth` lists the contents of the directory in an expanded format `-l`, ordering them by time, `-t`, in a reverse, `-r`, order with the newest files at the bottom, and shows the showing the file sizes in human-readable format, `-h`. Explore further options of listing files with `ls --help`.
 
 
-You should be prompted for your credentials after entering your password. 
+#### Question 
+If you wanted to transfer the whole directory `eddie-hpc-data`, what would you type?
 
-To upload, you transfer from your local machine to the remote cluster:
 
-`scp /home/user/file.txt $USER@$CLUSTER_NAME.shef.ac.uk:/home/$USER/`
+<details>
+  <summary>**Answer:**</summary>
 
-To download, you transfer from the remote cluster to your local machine:
-
-`scp $USER@$CLUSTER_NAME.shef.ac.uk:/home/$USER/file.txt /home/user/`
-
-To copy a whole directory, we add the -r flag, for “recursive”
-
-`scp -r $USER@$CLUSTER_NAME.shef.ac.uk:/home/$USER/my_results /home/user/`
-
+To copy a whole directory, we add the `-r` flag, for “recursive”
+  
+```
+$ scp -r eddie-hpc-data nelle@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/nelle/Practical1
+```
+</details>
 
 
 
 ### 5. Using the resources
 
-The HPC has log-in nodes, which you see in your prompt as `login03`, and compute nodes.
+The HPC is composed of *nodes*, which are individual computers, and they come in different types. 
 
-The calculations are carried out on the compute nodes. There are different types of these nodes available, to cater for various needs. 
+The node we are logged into is the *head node*, which you see in your prompt as `login03`. This node is made for login, file transfer and manipulation, but it is _not for calculations_. 
 
-Therefore, the simulations should be performed on these compute nodes and NOT on the log-in ones. 
+The calculations are done on the *compute nodes*. There are different types of these nodes available, to cater for various needs. 
 
-To run a job, you will need to submit a Grid Engine job submission script, that contains details of the program to run as well as requests for resources. 
+To run a job, you will need to submit a Grid Engine job submission script, that contains details of the program to run as well as requests for resources (compute nodes, memory, time, etc). 
 
-You have just copied over an example job script `myjob.sh`. Let's examine it:
+You have just copied over an example job script, `myjob.sh`. Let's examine it  (open it with your favourite command, such as `more myjob.sh`:
 
 ```
 #!/bin/sh
 # Grid Engine options (lines prefixed with #$)
-#$ -N hello              
-#$ -cwd                  
-#$ -l h_rt=00:05:00 
-#$ -l h_vmem=1G
-#  These options are:
 #  job name: -N
-#  use the current working directory: -cwd
-#  runtime limit of 5 minutes: -l h_rt
+#$ -N hello  
+#  use the current working directory: -cwd            
+#$ -cwd 
+#  runtime limit of 5 minutes: -l h_rt                 
+#$ -l h_rt=00:05:00 
 #  memory limit of 1 Gbyte: -l h_vmem
-# Initialise the environment modules
-. /etc/profile.d/modules.sh
+#$ -l h_vmem=1G
 
-# Load Python
-module load python/3.4.3
 
 # Run the program
-python hello.py
+bash hello.sh 
 ```
 
-You then submit this job script to the cluster with the `qsub` command.
+This script tells Eddie to run a job named `hello` from the current working directory, requesting a maximum of 5 minutes run time and a maximum memory of 1 GB.
+The job itself is a bash script named `hello.sh`.
 
 
-submit a job
+We can now submit `myjob.sh` using the scheduler command `qsub`. 
 
-`qsub`
+```bash
+[nelle@login03(eddie) Practical1]$ qsub myjob.sh 
+Your job 38945036 ("hello") has been submitted
+```
+The scheduler assigns this job an ID and reports that the job has been submitted. The scheduler will queue the job, while waiting for the resources to become available.
 
-Since Eddie HPC is a shared resource, the jobs will queue. 
+We can monitor the progress of our job with the command `qstat`:
 
-monitoring the job
+```bash
+[nelle@login03(eddie) Practical1]$ qstat -u nelle
+job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID 
+------------------------------------------------------------------------------------------------------------------------------------------------
+  38945036 0.00000 hello      nelle     qw    01/17/2024 12:13:09                                                                   1        
+```
+This tells us that the job is currently queuing `qw` for resources; since we are not asking for much, it should not take long for it to run, and then the state will show as `r`. Nevertheless, the job is very small and will take an instance to run, so we may even miss it.
 
-`qstat`
-
-cancelling the job
-
-`qdel JobId`
-
-
-The output of the job:
-
-when job is running, two extra files will be created: `ooo` and `eee` which contain information from the HPC on the job.
+If you have made a mistake and want to cancel the job, you can do it with the command `qdel JobId`, where `JobID` is the number that was assigned to your job by the scheduler, here `38945036`.
 
 
+Unlike on a personal machine, running jobs do not print onto your screen (imagine the mess it would make if you were running many jobs at the same time). Instead, the two extra files are written:
+
+- `<name>.o<JobID>` that contains the output you would normally receive on the screen;
+- `<name>.e<JobID>` that contains any errors or HPC-related info.
+
+Let's examine the files you got:
+
+```bash
+[nelle@login03(eddie) Practical1]$ ls -lrth
+total 1.5K
+-rw-r--r-- 1 nelle eddie_users 271 Jan 17 11:42 hello.sh
+-rw-r--r-- 1 nelle eddie_users 316 Jan 17 11:42 myjob.sh
+-rw-r--r-- 1 nelle eddie_users   0 Jan 17 12:13 hello.e38945036
+-rw-r--r-- 1 nelle eddie_users 104 Jan 17 12:13 hello.o38945036
+```
+And now read the `hello.o38945036`:
+
+```bash
+[nelle@login03(eddie) Practical1]$ more hello.o38945036 
+Hello World!
+I am: nelle
+It is now: Wed 17 Jan 12:13:25 GMT 2024
+I am using: node2c01.ecdf.ed.ac.uk
+
+```
+This is the output of our `hello.sh` script - feel free to modify it to your liking.
+
+### 7. Logging out
+Not every job will run over a few minutes, but using an HPC with a job scheduler means that you do not need ot remain logged in for the job to be running. HPC will continue to do its job while you are sleeping, away or on holiday.
+
+To log out from Eddie just type `exit`
+
+```bash
+[nelle@login03(eddie) Practical1]$ exit
+```
 
 
+
+
+<!-- to be moved to the next session
 
 ### 7. Using modules 
 
@@ -2363,25 +2424,30 @@ and you can make them available, by loading them::
 For a list of currently loaded modules, run:
 ```module list```
 
+-->
 
 
-
-### 8. Logging out
-
-`exit`
-
-jobs will continue to queue / run 
-
-
-
-
-
+<!-- for another session
 
 ### Moving data to datastore?
 
 Stagging  - i.e. data transfer to datastore?
 
+-->
+
+----
+
+### At the end of Session 1, you should be able to:
+
+* Understand what is shell and command line interface, know when one would use it
+* Be able to navigate around directories and look up their contents 
+* Use options and arguments to change the behaviour of shell commands
+* Know what is the path, be able to translate a relative path into an absolute and vice-versa 
+* Create, edit, move and delete files and directories 
+* Edit text using `nano`
+* Know what is a script and be able to run it
+* Connect to an HPC
+* Transfer files between a local and a remote machine
 
 
 <!--End of 3rd hour-->
-
