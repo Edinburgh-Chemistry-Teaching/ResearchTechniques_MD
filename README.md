@@ -15,7 +15,7 @@
 - [ ] **Session1:** Valentina
 - [x] **Session2** 
 - [ ] **Session3:** Hannah
-  - Overleaf template (skip)
+  - Overleaf template (skip?)
   - Example report 
 - [ ] **Session4**
       
