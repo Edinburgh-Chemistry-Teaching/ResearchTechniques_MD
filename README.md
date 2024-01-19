@@ -1,23 +1,25 @@
 ## To-Dos:
-- Get students permission to run on Eddie (Access to Eddie form)
-- symlink to datastore to get data from VM
-- Link to space on datastore for updating course materials
-- Create new course datastore (Talk to David)
-- Figure out username/password for students
+- [x] Get students permission to run on Eddie (Access to Eddie form)
+- [x] Create new course datastore (Talk to David)
+- [x] symlink to datastore to get data from VM
+- [] Link to space on datastore for updating course materials
+- [] Figure out username/password for students
+
+
 ### Files:
-- Eddie: module load script
+- Eddie: module load script (Sarah's latest from `Group-Scripts/Clays/Simulations/` ?)
 - Run scripts
 - Marking scheme
 - Session HTML stylesheet
 
-
 ### Sessions:
-- [ ] **Session1:** Valentina
-- [x] **Session2**
+- [x] **Session1:** Valentina
+- [x] **Session2** 
+ 	- Need to add running on Eddie for the final sim
 - [ ] **Session3:** Hannah
-  - Overleaf template
-  - Example report
+  - Overleaf template (skip?)
+  - Example report & marking scheme
 - [ ] **Session4**
-      
-  Projects
+
+#### Projects
   - ...
