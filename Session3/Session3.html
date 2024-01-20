@@ -344,19 +344,20 @@
             <h3 id="toc_9">Task</h3>
             <ol>
                 <li>Generate a topology file for the system (<code>MMT_slab.top</code>):</li>
-                <li>Open the topology file stub <code>MMT_slab.top</code> in a text editor to fill in missing sections.<br>
+                <li>Open the topology file stub <code>MMT_slab.top</code> in a text editor to fill in missing
+                    sections.<br>
                 </li>
-<!--                <li>Include the definition files for combination rules (<code>'forcefield.itp</code>) from ClayFF.-->
-<!--                    <blockquote>-->
-<!--                        <pre>#include "FF/charmm36.ff/forcefield.itp"</pre>-->
-<!--                        All force field folders (<code>&lt;ForceFieldName.ff&gt;</code>) are located within the-->
-<!--                        <code>FF</code> directory. The force field for clay and water is ClayFF, for organics and ions-->
-<!--                        it is CHARMM36 and for ions it is Ions.-->
-<!--                        Inside each of the folders, you can find the <code>.itp</code> files that contain the various-->
-<!--                        force field parameters.-->
-<!--                        The combination rules are only be specified once and will be the same for all atoms even if-->
-<!--                        their parameters belong to different force fields.-->
-<!--                    </blockquote>-->
+                <!--                <li>Include the definition files for combination rules (<code>'forcefield.itp</code>) from ClayFF.-->
+                <!--                    <blockquote>-->
+                <!--                        <pre>#include "FF/charmm36.ff/forcefield.itp"</pre>-->
+                <!--                        All force field folders (<code>&lt;ForceFieldName.ff&gt;</code>) are located within the-->
+                <!--                        <code>FF</code> directory. The force field for clay and water is ClayFF, for organics and ions-->
+                <!--                        it is CHARMM36 and for ions it is Ions.-->
+                <!--                        Inside each of the folders, you can find the <code>.itp</code> files that contain the various-->
+                <!--                        force field parameters.-->
+                <!--                        The combination rules are only be specified once and will be the same for all atoms even if-->
+                <!--                        their parameters belong to different force fields.-->
+                <!--                    </blockquote>-->
                 </li>
                 <li>Add nonbonded parameter files (<code>ffnonbonded.itp</code>) for clay, organics and ions.
                     <blockquote>
@@ -367,8 +368,9 @@
                         force field parameters. <br>
                         Clay and water share the same atom types. Therefore, no separate
                         <code>ffnonbonded.itp</code> file needs to be added for water.<br>
-                        <em>Remember:</em> Everything that comes after a <code>;</code> will be trated as a comment and is
-                    not read by GROMACS.
+                        <em>Remember:</em> Everything that comes after a <code>;</code> will be trated as a comment and
+                        is
+                        not read by GROMACS.
                     </blockquote>
                 </li>
                 <li>Add bonded parameters for organics (<code>ffbonded.itp</code>).</li>
@@ -378,7 +380,7 @@
                 <li>Complete the molecules section.
                     <blockquote>Add entries for all molecules in your <code>.gro</code> file.<br>
                         E.g. for two <abbr>MMT</abbr> <abbr>UCs</abbr> and one decanoic acid, the entry would be:
-                <pre>
+                        <pre>
 [ molecules ]
 ; Compound  # mols
 MMT           2
@@ -387,9 +389,62 @@ DEC           1
                     </blockquote>
 
                 </li>
-                </ol>
+            </ol>
         </div>
-<pre>NOTE 3 [file MMT_slab_fertig.top, line 40]:
+        <p>
+            Now that you have a topology file, you can use GROMACS <code>solvate</code> the box.
+        </p>
+        <div class="bbox">
+            <h3 id="toc_10">Task</h3>
+            <ul>
+                <li value="">Use <code>solvate</code> to solvate the box with water (<code>MMT_dec.gro</code>):</li>
+                <li>Usage of <code>solvate</code>: <br>
+                    <blockquote>
+                        <pre>gmx solvate -cp MMT_dec.gro -o MMT_dec_solv.gro -p MMT_slab.top -po MMT_dec_solv.top</pre>
+                        <code>-cp</code> specifies the structure file of the system to solvate.<br>
+                        <code>-o</code> specifies the output file name.<br>
+                        <code>-p</code> specifies the topology file.<br>
+                        <code>-po</code> specifies the output topology file name.<br>
+                        <p>GROMACS will try to fill the available space with solvent and update the number of water
+                            (<code>SOL</code>)
+                            molecules in the output topology file.
+                        </p>
+                    </blockquote>
+                </li>
+            </ul>
+        </div>
+        <p>
+            Now that you have a solvated system, but because of the substitutions in the clay sheet and the deprotonated
+            decanoic acid molecules, the system has a net negative charge.
+            It is not possible to run a simulation with a charged system. Therefore, you need to neutralise the system
+            with cations.
+            You can use <code>genion</code> to add ions and neutralise the system.
+        </p>
+        <div class="bbox">
+            <h3 id="toc_11">Task</h3>
+            <ol>
+                <li>Neutralise the system with Na<sup>+</sup> ions:</li>
+                <li>Generate a run <abbr>TPR</abbr> file for the system (<code>MMT_dec_solv.tpr</code>):</li>
+                Since <code>genion</code> is a type of <abbr>MD</abbr> run, you need to first use <code>grompp</code> to
+                generate a <code>TPR</code> file. The contents of the <code>MDP</code> input file is not important for
+                this step, but it has to be given.
+                <p>Usage of <code>grompp</code>:</p>
+                <blockquote>
+                    <pre>gmx grompp -f genion.mdp -c MMT_dec_solv.gro -p MMT_dec_solv.top -o MMT_dec_solv.tpr -pp MMT_dec_solv_ions.top</pre>
+                    <code>-f</code> specifies the <abbr>MDP</abbr> input file.<br>
+                    <code>-c</code> specifies the structure file of the system to solvate.<br>
+                    <code>-p</code> specifies the topology file.<br>
+                    <code>-o</code> specifies the output file name.<br>
+                    <code>-pp</code> specifies the output topology file name.<br>
+                    <p><em>Note:</em> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>-pp</code> option
+                        to generate a new topology file with ions is used here rather than with the <code>genion</code>
+                        command.</p>
+                </blockquote>
+                <p>
+                    <code>grompp</code> will generate a note similar to this one:
+                </p>
+                <pre>
+NOTE 3 [file MMT_slab_dec_solv.top, line 40]:
 In moleculetype 'MMT' 32 atoms are not bound by a potential or constraint
 to any other atom in the same moleculetype. Although technically this
 might not cause issues in a simulation, this often means that the user
@@ -397,46 +452,57 @@ forgot to add a bond/potential/constraint or put multiple molecules in
 the same moleculetype definition by mistake. Run with -v to get
 information for each atom.
 </pre>
-                <pre>
-        ; params for CHARMM, this is where defaults are
-        #include "./charmm36.ff/forcefield.itp"
+                <p>
+                    This note is not an error, but a warning that the atoms in the clay sheet are not bonded to each
+                    other. Because ClayFF is a non-bonded force field, this is not an error, and you can ignore this
+                    message.
+                </p>
+                </li>
+                <li>Use <code>genion</code> to neutralise the system with Na<sup>+</sup> ions:
+                    <p>Usage of <code>genion</code>: </p>
+                    <blockquote>
+                        <pre>gmx genion -s MMT_dec_solv.tpr -o MMT_dec_solv_ion.gro -p MMT_dec_solv.top -pname Na -nname Cl -neutral</pre>
+                        <code>-s</code> specifies the structure file of the system to solvate.<br>
+                        <code>-o</code> specifies the output file name.<br>
+                        <code>-p</code> specifies the topology file.<br>
+                        <code>-pname</code> specifies the name of the positive ion.<br>
+                        <code>-nname</code> specifies the name of the negative ion.<br>
+                        <code>-neutral</code> specifies that the system should be neutralised.<br>
+                        <p>GROMACS will try to fill the available space with solvent and update the number of water
+                            (<code>SOL</code>)
+                            molecules in the output topology file.</p>
+                    </blockquote>
 
-        ; params for ClayFF
-        #include "./ClayFF.ff/ffnonbonded.itp"
-
-        ; params for organic
-        #include "dec_acid.prm"
-        #include "dec_acid.itp"
-
-        ; params for MMT
-        #include "MMT.itp"
-
-        ; params for spc water and ions
-        #include "./charmm36.ff/spc.itp"
-        #include "./charmm36.ff/ions.itp"
-
-        [ system ]
-        ; Name
-        MMT oil brine
-
-        [ molecules ]
-        ; Compound        #mols
-        MMT                   24
-        DEC                   10
-        </pre>
-
-                <dl>
-                    <dt>Building a slab of clay from 24 montmorillonite <abbr>MMT</abbr> unit cell</dt>
-                    <dd>
-                        <ul>
-                            <li>How many unit cells (<abbr>UCs</abbr>) do you need to multiply in x- and y-direction?
-                            </li>
-                        </ul>
-                    </dd>
-
-                    <dt></dt>
-                </dl>
+                </li>
+            </ol>
         </div>
+        <p>
+            Now your system is ready for simulation.
+        </p>
+        <p>
+            You can follow the same procedure as in the previous session to run the simulation.
+        </p>
+        <div class="bbox">
+            <h3 id="toc_12">Task</h3>
+            <ol>
+                <li>Use the following <code>MDP</code> template files inside the <code>MDP</code> directory and fill in
+                    the
+                    missing sections:
+                </li>
+                <li>Energy minimisation: <code>em.mdp</code>
+                    <br>Set the maximum number of steps to 5000 and the force tolerance to 1000 kJ mol<sup>-1</sup>
+                        nm<sup>-1</sup>.
+                </li>
+                <li>Equilibration: <code>eq.mdp</code><br>
+                    Set the run time to 100 ps and the time step to 1 fs.
+                </li>
+                </li>
+                <li>Production: <code>prod.mdp</code><br>
+                    Set the run time to 10 ns and the time step to 2 fs.
+                </li>
+            </ol>
+        </div>
+
 
         <article id="post-448" class="post-448 page type-page status-publish has-post-thumbnail hentry">
             <header class="entry-header">
