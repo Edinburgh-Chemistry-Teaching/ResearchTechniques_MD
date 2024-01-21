@@ -19,10 +19,11 @@ p {
 /*body > *:last-child {*/
 /*  margin-bottom: 0 !important; }*/
 
-/*a {*/
-/*  color: #004f71; }*/
-/*a.absent {*/
-/*  color: #a50034; }*/
+a {
+  color: #004f71; }
+
+a.absent {
+  color: #a50034; }
 /*a.anchor {*/
 /*  display: block;*/
 /*  padding-left: 30px;*/
@@ -714,7 +715,6 @@ pre[class*="language-"] {
 }
 
 .bbox ol li:not(:first-child) {
-    /*content: none;*/
     counter-increment: start 1;
 }
 
@@ -769,6 +769,55 @@ pre[class*="language-"] {
     color: #393939;
     padding-right: 0;
     margin-right: 0;
+}
+
+.bbox ol ul > li:first-child,
+.bbox ol ul > li:not(:first-child),
+.bbox ul ul > li:first-child,
+.bbox ul ul > li:not(:first-child) {
+    list-style-type: disc;
+    font-size-adjust: initial;
+    line-height: initial;
+    font-weight: initial;
+    line-style: none;
+}
+
+.bbox ol ol {
+    counter-reset: nested 0;
+    list-style: none;
+    font-weight: initial;
+}
+
+.bbox ul > li ul, .bbox ol > li ul {
+    list-style-type: none;
+    list-style: none;
+}
+
+.bbox ol ol li:first-child, .bbox ol ol li:not(:first-child) {
+    counter-increment: nested 1;
+    list-style: none;
+    font-weight: initial;
+    font-size-adjust: initial;
+    line-height: initial;
+    color: initial;
+}
+
+.bbox ol ol li:first-child::before, .bbox ol ol li:not(:first-child)::before {
+    list-style-type: lower-alpha;
+    content: counter(nested, lower-roman) ". ";
+    list-style: none;
+
+}
+
+.bbox ol ul li:first-child, .bbox ol ul li:not(:first-child) {
+    list-style: disc;
+    content: none;
+}
+
+.bbox ol ul li::before,
+.bbox ol ul li:not(:first-child)::before {
+    list-style-type: none;
+    content: none;
 }
 
 /*.bbox ul > li pre {*/
