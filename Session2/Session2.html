@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en-UK">
+<!--xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">-->
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+    <meta name="description" content="Session 2: Protein Simulations"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="../style.css"/>
+    <title>Session 2</title>
+</head>
+
+<body>
+
+<div class="box">
+    <h1 id="toc_0">Protein Simulations</h1>
+    <p><strong>Contact:</strong><br/>
+        Dr Valentina Erastova (<a href="mailto:valentina.erastova@ed.ac.uk">valentina.erastova@ed.ac.uk</a>)<br/>
+        Office B21 (Office hours Wedn 10.00-12.00 in weeks 3, 4 and 5)
+    </p>
+    <p><strong>Demonstrators:</strong></p>
+    <ul>
+        <li>Hannah Pollak</li>
+        <li>Audrey Noumbissi Ngambia</li>
+        <li>Sarah Stewart</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h2 id="toc_1">Learning Outcomes</h2>
+    <p>
+        By the end of this session you should be able to
+    </p>
+    <ul>
+        <li>Understand the basics of molecular dynamics simulations</li>
+        <li>Set up a simulation of a protein in water</li>
+        <li>Run a simulation with GROMACS and analyse the output</li>
+        <li>Visualise the structures and trajectories in VMD</li>
+        <li>Visualise analysis results with XMGrace</li>
+    </ul>
+</div>
+
+<div class="box">
+    <h2 id="toc_2">Overview</h2>
+
+    <p>
+        In this practical session, we will learn the basics of Molecular Dynamics (MD) simulations with GROMACS, and use
+        of assisting software (e.g., VMD, xmgrace, gedit) to visualise and manipulate the data.
+    </p>
+    <p>
+        <span style="font-weight: bolder"><abbr>GROMACS</abbr></span> (GROningen MAchine for Chemical Simulations) is a
+        software package for <abbr>MD</abbr>
+        simulations.
+    <blockquote>
+        <p>GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion
+            for
+            systems with hundreds to millions of particles and is a community-driven project.
+            [...] It is primarily designed for biochemical molecules like proteins, lipids and nucleic acids that have a
+            lot of
+            complicated bonded interactions, but since GROMACS is extremely fast at calculating the nonbonded
+            interactions
+            (that usually dominate simulations) many groups are also using it for research on non-biological systems,
+            e.g.
+            polymers.</p>
+
+        <footer>from <cite>About GROMACS (<a href="https://www.gromacs.org/about.html">www.gromacs.org/about.html)</a>
+        </cite></footer>
+    </blockquote>
+    <p>For everyday general molecular simulations, GROMACS is one of the fastest MD programs. It is also quite flexible,
+        so
+        apart from proteins and biomolecules in general, it can be used to simulate a vast range of different types of
+        molecules. If you want to use it on your own machine, you can download GROMACS from <a
+                href="https://manual.gromacs.org/current/download.html">manual.gromacs.org/current/download.html</a> or
+        on Linux use <code>apt-get install
+            gromacs</code> and on Mac via homebrew <code>brew install gromacs</code>.</p>
+
+    <p>GROMACS is commonly available on <abbr>HPCs</abbr> (high performance computers), including the University&rsquo;s
+        Eddie <abbr>HPC</abbr>, and also
+        Tier 2 and Tier 1 (national supercomputers) such as Cirrus or Archer.</p>
+    <p>
+        It was originally developed in the University of Groningen, but now is
+        maintained and extended at different places, including the University of Uppsala, University of Stockholm and
+        the Max Planck Institute for Polymer Research. It is an open source software, released under the
+        <abbr>GPL</abbr> (general public licence), which means that is free to use.
+        There are many more tutorials for GROMACS available. Some can be found on: <a
+            href="http://www.mdtutorials.com/gmx/">www.mdtutorials.com/gmx</a>.
+    </p>
+
+    <p>
+        <span style="font-weight: bolder"><abbr>VMD</abbr></span> (Visual Molecular Dynamics) is a program for
+        visualising molecules, and can be used to view
+        the output of GROMACS simulations. It is also free and can run on Linux, Mac and Windows.
+        It can be downloaded from <a href="https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD">www.ks.uiuc.edu/Development/Download/</a>.
+        An
+        extensive user guide and tutorials are available at <a href="https://www.ks.uiuc.edu/Research/vmd/current/ug/">www.ks.uiuc.edu/Research/vmd/current/ug</a>
+        and <a href="https://www.ks.uiuc.edu/Training/Tutorials/">www.ks.uiuc.edu/Training/Tutorials</a>.
+
+    </p>
+    <p>
+        <span style="font-weight: bolder"><abbr>XMGrace</abbr></span> is a free program for plotting data that runs on
+        Linux, Mac and Windows. It
+        can be downloaded from <a href="https://plasma-gate.weizmann.ac.il/pub/grace/">plasma-gate.weizmann.ac.il/pub/grace</a>.
+        An user guide for can be found at <a href="https://plasma-gate.weizmann.ac.il/Grace/doc/UsersGuide.html">plasma-gate.weizmann.ac.il/Grace/doc/UsersGuide.html</a>.
+    </p>
+    <p>
+        <span style="font-weight: bolder"><abbr>gedit</abbr></span> is a free text editor for Linux, Mac and Windows
+        Installation instructions can be found at <a
+            href="https://wiki.gnome.org/Apps/Gedit">wiki.gnome.org/Apps/Gedit</a>.
+    </p>
+</div>
+
+<div class="box">
+    <h2 id="toc_3">Introduction</h2>
+    <p>
+        <em>This tutorial is based upon the adaptation of <a href="http://www.mdtutorials.com/gmx/lysozyme/index.html">Justin
+            Lemkuhl tutorial</a> (Living J. Comp. Mol. Sci. 2018, 1, 5068) by <a
+                href="https://tutorials.gromacs.org/docs/md-intro-tutorial.html">Alessandra Villa</a>.</em>
+    </p>
+    <p>Every simulation needs to start with a structure. Even though a lot of computational efforts have been done, it
+        is
+        still not possible to computationally predict tertiary structure of the protein from its primary one, i.e. its
+        amino
+        acid sequence. This would require inaccessible computational powers and times. </p>
+
+    <p>For this reason, normally a 3D structure predicted from X-ray diffraction is used as a starting point. Here, we
+        will
+        be downloading a protein structure from the <abbr>PDB</abbr> (Protein Data Dank) <a
+                href="https://www.rcsb.org">www.rcsb.org</a></p>
+
+    <blockquote>
+        <p>A quick word of warning is appropriate. Experimental data is not perfect. Therefore, it is possible for
+            crystal
+            structures in the PDB database to contain errors such as missing atoms. These &ldquo;errors&ldquo; are
+            usually caused by
+            experiment
+            being unable to clearly &ldquo;see&ldquo; amino acid side-chains within the protein crystal because of its
+            molecular
+            motion.
+            In some cases, it is necessary to &ldquo;clean up&ldquo; a protein structure before using it in a simulation
+            study. Good
+            programs for doing this include, coot <a
+                    href="https://sbcb.bioch.ox.ac.uk/teaching/coot_tutorial.pdf">sbcb.bioch.ox.ac.uk/teaching/coot_tutorial.pdf</a>
+            and the Swiss-PdbViewer
+            (DeepView) <a href="https://spdbv.unil.ch/">spdbv.unil.ch</a></p>
+    </blockquote>
+
+    <p>The structures in the PDB are stored by a codename. Here is a selection of structures that do not require any
+        further
+        processing, so make a pick for a structure to work with: </p>
+
+    <ul>
+        <li>Human prion - <a href="https://www.rcsb.org/structure/1QLZ">1QLZ</a></li>
+        <li>Elk prion - <a href="https://www.rcsb.org/structure/1XYW">1XYW</a></li>
+        <li>Chicken prion - <a href="https://www.rcsb.org/structure/1U3M">1U3M</a></li>
+        <li>Clawed frog prion - <a href="https://www.rcsb.org/structure/1XU0">1XU0</a></li>
+        <li>Hen egg-white lysozyme - <a href="https://www.rcsb.org/structure/1AKI">1AKI</a></li>
+        <li>Spider toxin - <a href="https://www.rcsb.org/structure/1OMB">1OMB</a></li>
+        <li>Ubiquin - <a href="https://www.rcsb.org/structure/1UBQ">1UBQ</a></li>
+    </ul>
+
+
+    <p>The figure below shows a typical protocol for the simulation of protein in the box. In this tutorial, we will
+        follow
+        this same protocol.</p>
+    <!--    <div class="flex-figure">-->
+    <!--        <div class="flex-figure-img">-->
+    <!--            <figure>-->
+    <!--                <img src="img/gmx_workflow.png" alt="gmx workflow">-->
+    <!--                <figcaption>Typical flowchart of a simulation of protein in water, often a number of simulations have to-->
+    <!--                    be performed-->
+    <!--                    to prepare the system for a production MD run, the interactive flowchart can be found at <a-->
+    <!--                            href="https://manual.gromacs.org/current/user-guide/flow.html">manual.gromacs.org/current/user-guide/flow.html</a>-->
+    <!--                </figcaption>-->
+    <!--            </figure>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <div class="flex-figure">
+        <div class="flex-figure-img">
+            <figure>
+                <div class="graphviz"><img
+                        src="https://manual.gromacs.org/current/_images/graphviz-546f8676b043be7a824d2ab2320a5e60473f82fc.png"
+                        alt="digraph flowchart {
+node [ shape=box, width=1.5 ]
+
+input_pdb [
+  label=&quot;eiwit.pdb&quot;
+  tooltip=&quot;Protein Databank file&quot;
+  URL=&quot;../reference-manual/file-formats.html#pdb&quot;
+  shape=none, width=0, height=0, margin=0
+  group=input
+]
+pdb2gmx [
+  label=&quot;Generate a GROMACS topology\ngmx pdb2gmx&quot;
+  tooltip=&quot;Convert PDB file to GROMACS coordinate file and topology&quot;
+  URL=&quot;../onlinehelp/gmx-pdb2gmx.html&quot;
+  width=3
+  group=main
+]
+
+input_pdb -> pdb2gmx [ headport=e ]
+
+editconf [
+  label=&quot;Enlarge the box\ngmx editconf&quot;
+  tooltip=&quot;Adjust box size and placement of molecule&quot;
+  URL=&quot;../onlinehelp/gmx-editconf.html&quot;
+]
+
+pdb2gmx -> editconf [
+  label=&quot;conf.gro&quot;
+  labeltooltip=&quot;GROMACS coordinate file containing molecules from PDB file&quot;
+  URL=&quot;../reference-manual/file-formats.html#gro&quot;
+]
+
+solvate [
+  label=&quot;Solvate protein\ngmx solvate&quot;
+  tooltip=&quot;Fill box with water (solvate molecule)&quot;
+  URL=&quot;../onlinehelp/gmx-solvate.html&quot;
+  width=3
+  group=main
+]
+
+pdb2gmx -> solvate [
+  label=&quot;topol.top&quot;
+  labeltooltip=&quot;GROMACS ascii topology file&quot;
+  URL=&quot;../reference-manual/file-formats.html#top&quot;
+]
+editconf -> solvate [
+  label=&quot;conf.gro&quot;
+  labeltooltip=&quot;GROMACS coordinate file with adjusted box etc.&quot;
+  URL=&quot;../reference-manual/file-formats.html#gro&quot;
+]
+
+input_mdp [
+  label=&quot;grompp.mdp&quot;
+  tooltip=&quot;Parameter file from grompp (controls all MD parameters)&quot;
+  URL=&quot;../reference-manual/file-formats.html#mdp&quot;
+  shape=none, width=0, height=0, margin=0
+  group=input
+]
+grompp [
+  label=&quot;Generate mdrun input file\ngmx grompp&quot;
+  tooltip=&quot;Process parameters, coordinates and topology and write binary topology&quot;
+  URL=&quot;../onlinehelp/gmx-grompp.html&quot;
+  width=3
+  group=main
+]
+
+input_pdb -> input_mdp [ style=invis, minlen=3 ]
+
+input_mdp -> grompp [ headport=e, weight=0 ]
+solvate -> grompp [
+  label=&quot;conf.gro&quot;
+  labeltooltip=&quot;GROMACS coordinate file with water molecules added&quot;
+  URL=&quot;../reference-manual/file-formats.html#gro&quot;
+]
+solvate -> grompp [
+  label=&quot;topol.top&quot;
+  labeltooltip=&quot;GROMACS ascii topology file with water molecules added&quot;
+  URL=&quot;../reference-manual/file-formats.html#top&quot;
+]
+
+mdrun [
+  label=&quot;Run the simulation (EM or MD)\ngmx mdrun&quot;
+  tooltip=&quot;The moment you have all been waiting for! START YOUR MD RUN&quot;
+  URL=&quot;../onlinehelp/gmx-mdrun.html&quot;
+  width=3
+  group=main
+]
+
+grompp -> mdrun [
+  label=&quot;topol.tpr&quot;
+  labeltooltip=&quot;Portable GROMACS binary run input file (contains all information to start MD run)&quot;
+  URL=&quot;../reference-manual/file-formats.html#tpr&quot;
+]
+mdrun -> mdrun [
+  label=&quot;Continuation\nstate.cpt&quot;
+  labeltooltip=&quot;Checkpoint file&quot;
+  URL=&quot;../reference-manual/file-formats.html#cpt&quot;
+]
+
+analysis [
+  label=&quot;Analysis\ngmx ...&quot;
+  tooltip=&quot;Your favourite GROMACS analysis tool&quot;
+  URL=&quot;cmdline.html#commands-by-topic&quot;
+]
+
+mdrun -> analysis [
+  label=&quot;traj.xtc / traj.trr&quot;
+  labeltooltip=&quot;Portable compressed trajectory / full precision portable trajectory&quot;
+  URL=&quot;../reference-manual/file-formats.html#xtc&quot;
+]
+
+energy [
+  label=&quot;Analysis\ngmx energy&quot;
+  tooltip=&quot;Energy plots, averages and fluctuations&quot;
+  URL=&quot;../onlinehelp/gmx-energy.html&quot;
+]
+
+mdrun -> energy [
+  label=&quot;ener.edr&quot;
+  labeltooltip=&quot;Portable energy file&quot;
+  URL=&quot;../reference-manual/file-formats.html#edr&quot;
+]
+}" usemap="#flowchart" class="graphviz">
+                </div>
+                <map id="flowchart" name="flowchart">
+                    <area shape="rect" id="node1" href="../reference-manual/file-formats.html#pdb"
+                          title="Protein Databank file" alt="" coords="413,5,503,25">
+                    <area shape="rect" id="node2" href="../onlinehelp/gmx-pdb2gmx.html"
+                          title="Convert PDB file to GROMACS coordinate file and topology" alt=""
+                          coords="67,75,391,125">
+                    <area shape="rect" id="node5" href="../reference-manual/file-formats.html#mdp"
+                          title="Parameter file from grompp (controls all MD parameters)" alt=""
+                          coords="397,327,519,347">
+                    <area shape="rect" id="node3" href="../onlinehelp/gmx-editconf.html"
+                          title="Adjust box size and placement of molecule" alt="" coords="5,193,180,244">
+                    <area shape="poly" id="edge2" href="../reference-manual/file-formats.html#gro" title="conf.gro"
+                          alt="" coords="169,128,135,151,111,182,107,179,131,147,166,123">
+                    <area shape="rect" id="edge2-label" href="../reference-manual/file-formats.html#gro"
+                          title="GROMACS coordinate file containing molecules from PDB file" alt=""
+                          coords="133,149,210,169">
+                    <area shape="rect" id="node4" href="../onlinehelp/gmx-solvate.html"
+                          title="Fill box with water (solvate molecule)" alt="" coords="85,312,373,363">
+                    <area shape="poly" id="edge3" href="../reference-manual/file-formats.html#top" title="topol.top"
+                          alt="" coords="231,126,231,298,226,298,226,126">
+                    <area shape="rect" id="edge3-label" href="../reference-manual/file-formats.html#top"
+                          title="GROMACS ascii topology file" alt="" coords="229,209,314,229">
+                    <area shape="poly" id="edge4" href="../reference-manual/file-formats.html#gro" title="conf.gro"
+                          alt="" coords="105,243,118,265,135,286,157,303,154,307,131,290,113,268,100,246">
+                    <area shape="rect" id="edge4-label" href="../reference-manual/file-formats.html#gro"
+                          title="GROMACS coordinate file with adjusted box etc." alt="" coords="133,268,210,288">
+                    <area shape="rect" id="node6" href="../onlinehelp/gmx-grompp.html"
+                          title="Process parameters, coordinates and topology and write binary topology" alt=""
+                          coords="66,431,354,481">
+                    <area shape="poly" id="edge7" href="../reference-manual/file-formats.html#gro" title="conf.gro"
+                          alt="" coords="196,364,179,388,177,403,182,418,177,420,172,403,174,386,192,361">
+                    <area shape="rect" id="edge7-label" href="../reference-manual/file-formats.html#gro"
+                          title="GROMACS coordinate file with water molecules added" alt="" coords="177,387,254,407">
+                    <area shape="poly" id="edge8" href="../reference-manual/file-formats.html#top" title="topol.top"
+                          alt="" coords="249,362,258,384,257,407,250,421,245,418,251,406,253,385,244,364">
+                    <area shape="rect" id="edge8-label" href="../reference-manual/file-formats.html#top"
+                          title="GROMACS ascii topology file with water molecules added" alt=""
+                          coords="255,387,341,407">
+                    <area shape="rect" id="node7" href="../onlinehelp/gmx-mdrun.html"
+                          title="The moment you have all been waiting for! START YOUR MD RUN" alt=""
+                          coords="49,549,371,600">
+                    <area shape="poly" id="edge9" href="../reference-manual/file-formats.html#tpr" title="topol.tpr"
+                          alt="" coords="213,481,213,536,207,536,207,481">
+                    <area shape="rect" id="edge9-label" href="../reference-manual/file-formats.html#tpr"
+                          title="Portable GROMACS binary run input file (contains all information to start MD run)"
+                          alt="" coords="210,505,294,525">
+                    <area shape="poly" id="edge10" href="../reference-manual/file-formats.html#cpt"
+                          title="Continuation\nstate.cpt" alt=""
+                          coords="372,563,390,567,398,575,386,583,384,579,393,574,388,572,371,569">
+                    <area shape="rect" id="edge10-label" href="../reference-manual/file-formats.html#cpt"
+                          title="Checkpoint file" alt="" coords="395,555,519,595">
+                    <area shape="rect" id="node8" href="cmdline.html#commands-by-topic"
+                          title="Your favourite GROMACS analysis tool" alt="" coords="46,668,190,719">
+                    <area shape="poly" id="edge11" href="../reference-manual/file-formats.html#xtc"
+                          title="traj.xtc / traj.trr" alt=""
+                          coords="145,602,132,613,122,625,116,639,115,654,109,654,111,638,117,623,128,609,142,598">
+                    <area shape="rect" id="edge11-label" href="../reference-manual/file-formats.html#xtc"
+                          title="Portable compressed trajectory / full precision portable trajectory" alt=""
+                          coords="119,624,273,644">
+                    <area shape="rect" id="node9" href="../onlinehelp/gmx-energy.html"
+                          title="Energy plots, averages and fluctuations" alt="" coords="230,668,374,719">
+                    <area shape="poly" id="edge12" href="../reference-manual/file-formats.html#edr" title="ener.edr"
+                          alt="" coords="250,598,275,622,292,654,288,656,271,626,246,602">
+                    <area shape="rect" id="edge12-label" href="../reference-manual/file-formats.html#edr"
+                          title="Portable energy file" alt="" coords="283,624,363,644">
+                </map>
+                <figcaption>
+                    <figcaption>Typical flowchart of a simulation of protein in water, often a number of simulations
+                        have to
+                        be performed
+                        to prepare the system for a production MD run, the interactive flowchart can be found at <a
+                                href="https://manual.gromacs.org/current/user-guide/flow.html">manual.gromacs.org/current/user-guide/flow.html</a>
+                    </figcaption>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+
+<div class="box">
+    <h2 id="toc_4">Preparing the system for simulation</h2>
+    <p>
+        Let's get started! Choose your favourite protein structure from the list above and go through the tasks below.
+    </p>
+    <div class="bbox">
+        <h3 id="toc_5">Task</h3>
+        <ol>
+            <li>Download the protein structure</li>
+            <li>Create a new working directory (here we will call it <code>practical</code>)</li>
+            <li>Download the protein structure file into the directory<br>
+                There are two ways to do download the structure:
+                <ol>
+                    <li>
+                        Download the file in the terminal using <code>wget</code> command:<br>
+                        Usage of <code>wget</code>:
+                        <blockquote>
+                            <pre>wget URL</pre>
+                            E.g. for the protein 1xyw.pdb, the command would be:
+                            <pre><code>wget http://www.rcsb.org/pdb/files/1xyw.pdb .</code></pre>
+                            <em>Note: </em>The <code>.</code> at the end of the command means that the file will be
+                            downloaded into the current directory so make sure you are in the newly created
+                            <code>practical</code> directory before running the command.
+                        </blockquote>
+                    </li>
+                    <li>
+                        Download the file manually from the web (<a href="http://www.rcsb.org">www.rcsb.org</a>) and
+                        move it
+                        into the <code>practical</code> directory.
+                    </li>
+                </ol>
+            </li>
+            <li>Use the <code>more</code> or <code>less</code> command to read through the file.
+
+                <blockquote>
+                    <pre>more 1xyw.pdb</pre>
+                    <pre>less 1xyw.pdb</pre>
+                    To scroll down use <code>Space</code>, to exit the viewer press <code>Ctrl+C</code>.
+                    Familiarise yourself with the file format. The file contains information about the protein amino
+                    acid residue (e.g. LEU and GLY etc.) and also the atom name inside the residue.
+                    <ul>
+                        <li>
+                            <code>REMARK</code> lines are comments.
+                        </li>
+                        <li>
+                            <code>ATOM</code> lines contain atom coordinates
+                        </li>
+                        <li>
+                            <code>CONNECT</code> lines contain connection information. (Note however there is little
+                            information available on bonding in the file &ldquo; bonds can be inferred from atomic
+                            positions
+                            by the programs below).
+                        </li>
+                    </ul>
+                </blockquote>
+            </li>
+
+        </ol>
+    </div>
+    <p>
+        Now that you have the protein structure, you can visualise it in VMD.
+    </p>
+    <div class="bbox">
+        <h3 id="toc_6">Task</h3>
+        <ol>
+            <li>Open VMD and visualise the protein structure</li>
+            <li>Open VMD<br>
+                Open a terminal window and type <code>vmd</code> to open VMD.
+            </li>
+            <li>Load the protein structure into VMD:
+                <blockquote>
+                    In the main window, click <code>File</code> &#8594;
+                    <code>New Molecule ...</code> and select the your <code>.pdb</code> file.
+                </blockquote>
+            </li>
+            <li>Play around with the visualisation options
+                <blockquote>
+                    You can move the molecule around by clicking and dragging the mouse.
+                    Press <code>R</code> to rotate the molecule (default), <code>T</code> to translate it and
+                    <code>S</code> to scale it.
+                    Click on <code>Display</code> &#8594; <code>Reset view</code> to reset the view.
+                </blockquote>
+            </li>
+            <li>Change the representation of the molecule
+                <blockquote>
+                    Click on <code>Graphics</code> &#8594; <code>Representations</code> and change <code>Drawing
+                    Method</code> or <code>Coloring Method</code> to see how the molecule representation changes.
+                    For proteins, the <code>New Cartoon</code> representation is often used. It only shows the backbone
+                    and is useful to visualise the higher structure of the protein. <br>
+                    You can also change the representation of a subset of atoms by selecting them in the <code>Graphical
+                    Representations</code> window.
+                    For this, click on <code>Create Rep</code> inside the <code>Graphical Representations</code> window.
+                    In the <code>Selected Atoms</code> field you can replace the <code>all</code> by a selection
+                    command.
+                    E.g. to select all atoms of the residue with the number 10, you can use <code>resid 10</code>, for
+                    all atoms of the residue with the name <code>GLY</code> use <code>resname GLY</code>, etc.
+                    You can find more information about selection commands in the <abbr>VMD</abbr> user guide: <a
+                        href="https://www.ks.uiuc.edu/Research/vmd/current/ug/node89.html">www.ks.uiuc.edu/Research/vmd/current/ug/node89.html</a>.
+                </blockquote>
+            </li>
+        </ol>
+        <p><abbr>VMD</abbr> has a lot of other useful features, which you can explore in your own time.
+            <br>Besides
+            visualising
+            molecules, it can also be used to render images and movies of structures and trajectories. Among others,
+            it even has functionalities to build and manipulate molecules and analyse trajectories.
+        </p>
+    </div>
+    <h3 id="toc_7">Notes on organising and naming files</h3>
+    <p>
+        As you start to work on the tutorial, let's talk about how to organise your work. Over the course of tutorial, a
+        lot of files will be generated. Unless you specify the names of outpout files, GROMACS will use default names
+        for them. This will cause existing files to be overwritten by new ones.</p>
+    <p>
+        <em>Note:</em> GROMACS does back up old files, renaming
+        them to <code>&lt;#filename&gt;.&lt;extension&gt;.1#</code> before overwriting.</p>
+    <p>
+        To be able to retrieve your data
+        later and to not get confused, make sure to keep your work organised and name files coherently.
+        Itr would be advisable to run each simulation step in a different subdirectory or to (re)name input and output
+        files
+        in a descriptive matter.</p>
+    <p><em>Remember:</em><br>
+        You can copy files with
+        <code>cp &lt;old_file.gro&gt; &lt;new_file&gt;</code><br> and move files with
+        <code>mv &lt;old_file.gro&gt; &lt;new_file&gt;</code>
+    </p>
+    <p><em>Note: </em> The second option is riskier as you might not be aware of all the files
+        that get by GROMACS generated and all the output names that you might need to specify.</p>
+
+    <h3 id="toc_8">Checking the input protein structure</h3>
+    <p>
+        As mentioned before, it is quite common for some residues or atoms to be missing in an experimental protein
+        structure. It is, therefore, essential to first check and fix all errors in the input structure
+        before running any <abbr>MD</abbr> simulation. </p>
+    <p>
+        The structures of the proteins used in this tutorial are fully resolved, so you
+        do not need to worry about this step.
+        However, it is worth mentioning that one of the biggest tasks for a biological simulation in practice is prepare
+        and check structures prior to simulation. </p>
+    <p>Another challenge is posed by non&ldquo;standard groups in molecules.
+        These could consist of non&ldquo;standard residues, modified residues or ligands, for which force field
+        parameters
+        are not yet available. Considerable work is often required to either eliminate these groups, modify them, or
+        determine the missing force field parameters by reference to the literature and/or use of quantum chemical
+        calculations. The structures in this tutorial only consist of natural amino acids, for which quite reasonable
+        force field parameters exist for use with GROMACS.</p>
+    <p>
+        Additionaly, after the refinement process in crystal structure determination, the resulting structure should be
+        checked for:
+    </p>
+    <ul>
+        <li>Proper orientations of glutamine and asparagine amide groups</li>
+        <li>Consistent protonation state and side chain orientation of histidine residues</li>
+        <li>Any other problems with the system</li>
+    </ul>
+    <p>
+        A number of tools have been developed specifically for this purpose, but here, we will assume that the crystal
+        structures obtained from the <abbr>PDB</abbr> are correct.
+    </p>
+    <h3 id="toc_9">Creating a topology</h3>
+    <p>
+        Since <abbr>MD</abbr> simulations rely on force fields to describe the interactions of atoms, having an atomic
+        structure alone is not enough. We need to add a topology (i.e. a description of the system's
+        covalent network).
+        Connectivity information is necessary in order to calculate inter&ldquo;atomic interactions as defined in the
+        force field used in the simulation. GROMACS comes with a good set of force fields and a program,
+        <code>pdb2gmx</code>,
+        to assign those (only works on perfect proteins). Note, since GROMACS version 5.X, all commands come with a
+        prefix <code>gmx</code> or <code>gmx_mpi</code> (when compiled to run parallel):
+    </p>
+    <p><em>Note:</em> All GROMACS commands have a help menu that can be displayed with <code>&dash;h</code>.</p>
+    <blockquote>
+        E.g. <code>gmx pdb2gmx &dash;h</code>
+    </blockquote>
+    <p>
+        A useful resource when getting started with GROMACS is the <a
+            href="https://manual.gromacs.org/documentation/current/user-guide/mdp-options.html">GROMACS user guide</a>.
+        You can use
+    </p>
+</div>
+
+<h3 id="toc_6">4) Creating topology</h3>
+
+<p>Since MD simulations rely on force fields to describe the interactions of atoms, having an atomic structure is not
+    enough. We need to assign a topology (i.e. a description of the atoms&rsquo; covalent network). Connectivity
+    information
+    is necessary in order to calculate inter&ldquo;atomic interactions as described in the force field used to your
+    simulation. GROMACS comes with a good set of force fields and a program, <code>pdb2gmx</code>, to assign those (only
+    works on perfect proteins). Note, since GROMACS version 5.X, all commands come with a prefix <code>gmx</code> or
+    <code>gmx_mpi</code> (when compiled to run parallel):</p>
+
+<p>As all GROMACS commands come with a help menu that can be called with <code>&ndash;h</code></p>
+
+<div>
+    <pre><code>gmx pdb2gmx &ldquo;h</code></pre>
+</div>
+
+<p>have a look through the help manual. GROMACS programs ask for a set of inputs and will provide a set of outputs, if
+    those are named by default name there is no need to specify their input/output name. For this practical call the
+    command:</p>
+
+<div>
+    <pre><code>gmx pdb2gmx &ldquo;f protein.pdb &ldquo;o protein.gro &ldquo;p protein.top &ldquo;ignh </code></pre>
+</div>
+
+<p><em>What does each variable stand for?</em></p>
+
+<p>You need to advise the program on the choice of force fields. Lets use CHARMM force field (type in <code>8</code> and
+    press <code>enter</code>) and then the when the program asks which water model to use &ndash; chose SPC
+    (<code>5</code> + <code>enter</code>).</p>
+
+<p>Again, check what files have been generated with <code>ls –lrth</code></p>
+
+<p><em>What files were generated? What information do they contain?</em></p>
+
+<p>Look through them with <code>more</code> or <code>gedit</code> tools.</p>
+
+<p>a) <strong>protein.gro</strong> &ldquo; this file contains the protein coordinates in GROMACS format. Note that the
+    file
+    contains information about the protein amino acid residue (e.g. LEU and GLY etc.) and also the atom name inside the
+    residue. The atom name links to the force field files.</p>
+
+<p>b) <strong>protein.top</strong> – this file contains information about the topology of your system. It includes the
+    information on each molecules, here protein, linking associated force fields used to calculate interactions between
+    atoms (either explicitly stated, or referenced from another file). </p>
+
+<p>Near the top of the file, you will see a line, which reads:</p>
+
+<div>
+    <pre><code>#include &quot;charmm27.ff/forcefield.itp&quot;</code></pre>
+</div>
+
+<p>this line will link your GROMACS simulation to this force field directory (<code>charmm27.ff</code>), which contains
+    individual spring constants etc. for the force field. As you scroll down (press space bar) the topology file, you
+    will see entries for atoms, their names, charges, declaration of bonds, angles, dihedrals between atoms, etc. To
+    exit the <code>more</code> view, press <code>Ctrl+C</code>.</p>
+
+<p>The topology file can also link include topology tiles:</p>
+
+<div>
+    <pre><code>#include &quot;charmm27.ff/spc.itp&quot;</code></pre>
+</div>
+
+<p>These contain all the topology information for components of the system, here the example is for the SPC water
+    molecule, which is within the CHARMM force field directory.</p>
+
+<p>Towards the bottom of the file, under section <code>[ molecules ]</code> you will find the system composition. Keep
+    an eye how it changes as we solvate the system and add ions. You can do it with the <code>tail</code> command:</p>
+
+<div>
+    <pre><code>tail &ldquo;10 protein.top</code></pre>
+</div>
+
+<p>showing the last 10 lines of the file, currently only reading:</p>
+
+<div><pre><code>[ molecules ]
+; Compound        #mols
+Protein_chain_A     1</code></pre>
+</div>
+
+<p>c) <strong>posre.itp</strong> &ldquo; is another include topology file, but here it contains position restraints for
+    all
+    the heavy atoms in your original pdb file (more about these later – we will use them to restrain the protein during
+    some initial MD simulation steps).</p>
+
+<h3 id="toc_7">5) Creating a simulation box around protein</h3>
+
+<p>Add a box around the protein with periodic boundary conditions. This can be done with <code>editconf</code></p>
+
+<div>
+    <pre><code
+    >gmx editconf &ldquo;f protein.gro &ldquo;o protein&ldquo;pbc.gro &ldquo;bt dodecahedron &ldquo;d 1.0 &ldquo;c</code></pre>
+</div>
+
+<p><em>What do the above options mean?</em></p>
+
+<p>The box does not have to be cubic to be periodic (think of honeycombs). For spherical proteins, an obvious choice
+    might be a rhombic dodecahedron as periodic box, because it corresponds closely to a spherical shape (but unlike a
+    sphere – does fill space!). To stop direct interactions between periodic protein images, we will set a minimal
+    distance of 1.0 nm between the protein and the wall of the box, i.e. no two neighbour proteins in adjacent boxes
+    will be not closer than 2.0 nm.</p>
+
+<p>Use the Linux command tail to see the end of the new file, where the box is defined.</p>
+
+<p>GROMACS uses a triclinic matrix representation, with the first three numbers specifying the diagonal elements (xx,
+    yy, zz) and the last six giving the off&ldquo;diagonal elements (xy, xz, yx, yz, zx, zy).</p>
+
+<p>Visualise the resulting protein in a box with <code>vmd</code>.</p>
+
+<div>
+    <pre><code>vmd protein&ldquo;pbc.gro</code></pre>
+</div>
+
+<p>It is possible to also visualise the box by typing <code>pbc box</code>into the terminal/console window, after <code>vmd
+    &gt;</code></p>
+
+<p><a name="minim"></a></p>
+
+<h3 id="toc_8">6) Minimisation run</h3>
+
+<p>Now we can perform an energy minimisation simulation.
+    For this you will need an .mdp (MD Parameter) file, that tells the MD engine what to do.</p>
+
+<p>These mdp files are stored in the directory <code>Session2/MDP/</code>.
+    Copy these files to your current working directory:</p>
+
+<div>
+    <pre><code>cp ~/Desktop/Session2/MDP/* .</code></pre>
+</div>
+
+<!-- <span style="color: red;">
+You can download the zip with all necessary mdp files for this practical from HERE, or you can use
+</span>
+
+    wget https://erastova.files.wordpress.com/2018/02/mdp.zip 
+
+and then unzip the file
+
+    unzip mdp.zip
+
+-->
+
+<p>For this part, we will use <code>minim.mdp</code>. Look through this file, every keyword within the file is
+    described, but for full information see <a
+            href="https://manual.gromacs.org/documentation/current/user-guide/mdp-options.html">manual.gromacs.org/documentation/current/user-guide/mdp-options.html</a>
+</p>
+
+<p>In GROMACS, you need to <strong>first compile</strong> the structure, topology and parameter files, <strong>then you
+    can run</strong> the simulation. This is done with the command <code>grompp</code>, that is also useful as will pick
+    out any errors you may have done while setting up.</p>
+
+<div>
+    <pre><code>gmx grompp -v -f minim.mdp -c protein-pbc.gro -p protein.top</code></pre>
+</div>
+
+<p>Now we are ready to perform an MD run.</p>
+
+<div>
+    <pre><code>gmx mdrun -v</code></pre>
+</div>
+
+<p>since <code>grompp</code> output default named <code>topol.tpr</code> and <code>mdout.mdp</code>, we do not need to
+    specify these. The verbose mode <code>–v</code> of mdrun will tell you the approximate time to completion of the
+    simulation.</p>
+
+<p>You may find you need to use the option<code>–nt 2</code> (defines how many threads should be used to run the
+    simulation). Since this is a small simulation, 2 threads is enough.</p>
+
+<p>The simulation will produce a file called <code>confout.gro</code>, that you can view in VMD.</p>
+
+<h3 id="toc_9">7) Solvating protein in a periodic box</h3>
+
+<p>Now we can add water to the box. Remember we have chosen SPC water when assigning topology. It is one of a few water
+    models available, it is quite simple, computationally light and versatile.</p>
+
+<div>
+    <pre><code
+    >gmx solvate -cp confout.gro -cs spc216.gro -o protein-solvated  -p protein.top</code></pre>
+</div>
+
+<p><em>How did protein.top change?</em></p>
+
+<p>Use <code>tail</code> command to see how many water molecules been added to the system.</p>
+
+<p>The proteins are often charged, so it is important to neutralise the total charge of the system by adding salt ions.
+    This can be done with the <code>genion</code> program, that will read the charges from files and neutralise the box.
+    Like for <code>mdrun</code>, we need to compile our system first:</p>
+
+<div>
+    <pre><code>gmx grompp -f minim.mdp -c protein-solvated.gro -p protein.top</code></pre>
+</div>
+
+<p>Since we did not specify the name of the output file, the default name <code>topol.tpr</code> will be used, and the
+    old files would be overwritten and backed up to, for example, <code>#topol.tpr.1#</code>.
+    <code>genion</code> automatically identifies whether a file with default name should be used, so in this case there
+    is no need to explicitly specify the name of the input file when calling the program.</p>
+
+<div>
+    <pre><code>gmx genion -s -o protein-solvated.gro -conc 0.15 -neutral -pname NA -nname CL -p protein.top</code></pre>
+</div>
+
+<p>We specify a concentration of 0.15 M (<code>-conc 0.15</code>) of Na/Cl ̄ (<code>-pname NA -nname CL</code>) to be
+    added and indicate that an excess of one species of ion has to be added to neutralise the system
+    (<code>-neutral</code>).
+    <code>genion</code> will prompt you for a group of molecules to be used to partly replace with ions. The group
+    <code>SOL</code> (i.e. the water solvent) should be chosen.</p>
+
+<p>Have a look at the generated files. Since files are quite large now you can use <code>grep</code></p>
+
+<div>
+    <pre><code>grep NA protein.top</code></pre>
+</div>
+
+<p>you can also use <strong>word count</strong>, command <code>wc</code>, to see how many cations are are there in the
+    coordinate file. It should match with the topology.</p>
+
+<div>
+    <pre><code>grep NA protein-solvated.gro |wc</code></pre>
+</div>
+
+<p>Now we have a system which we can work with in terms of a full protein molecular dynamics simulation, i.e. a protein
+    with corrected structure, which has been solvated, has counter ions added and has been put in an appropriate
+    electrolyte concentration.</p>
+
+<p>We must now build gradually to a full production simulation run by first energy minimisation to remove any strain in
+    the system, that could lead to high forces, then we gradually turn on temperature and pressure coupling, before the
+    final production. </p>
+
+<h3 id="toc_10">8) Energy minimisation</h3>
+
+<p>Like in the <a href="#minim">section before</a>, prepare the system and launch the simulation with
+    <code>grompp</code> and <code>mdrun</code>. Note, that here you will be using the <code>protein-solvated.gro</code>
+    file, with the newly updated topology and the same MDP file, as for the earlier minimisation. </p>
+
+<p>If you use flag <code>-v</code> the MD simulation will display on the screen and show how the energy and force
+    evolve. A successful energy minimisation will result in a negative potential energy <code>Epot</code> (for a pure
+    protein it will be in the order of e+04 kJ/mol, for a bigger solvated system e+05 kJ/mol) and also ensure that
+    maximum force <code>Fmax</code> is below your tolerance value (see MDP file <code>emtol</code>) and generally will
+    be less than e+03 kJ/(mol nm). If the <code>Fmax</code> is higher, it indicates some clash on the atoms listed by
+    the simulation - you should examine this area with VMD.</p>
+
+<h3 id="toc_11">9) Relaxation of the solvent and hydrogens</h3>
+
+<p>For this step we want to keep protein restrained, while allowing water and hydrogens to relax around it. In
+    simulations it is possible to restrain certain parts only, by applying an energy penalty for the movement that is
+    not desired. In this case we will restrain heavy atoms. For this you will need the <code>pr.mdp</code> script that
+    you can find in the <code>Session2/MDP/</code>.</p>
+
+<p>Have a look at this file and note the integrator used and the define statement. The latter is used to allow flow
+    control in the topology file. <code>define = -DPOSRES</code> will cause the keyword &ldquo;POSRES&rdquo; to be
+    globally defined. Have a look at the end of the topology file to see how this is used to turn on position
+    restraints.</p>
+
+<p>Again, <code>grompp</code>  output from previous energy minimisation (as a default named <code>confout.gro</code>)
+    with the <code>pr.mdp</code>. You will also need to provide a <code>-r restraint.gro</code> file. This can be your
+    <code>protein-solvated.gro</code>. Your command line is then:</p>
+
+<div>
+    <pre><code
+    >gmx grompp -v -f pr.mdp -c confout.gro -p protein.top -r protein-solvated.gro  </code></pre>
+</div>
+
+<p>Followed by <code>mdrun –v</code>(add <code>&amp;</code> to end of the line for the simulation to run on a
+    background).</p>
+
+<p>Meanwhile, you can check the evolution of the energy through the run with <code>gmx energy</code>. Choose (enter the
+    number and press enter) the <code>Total-Energy</code> or <code>Potential</code> or <code>Kinetic-En</code>, or all
+    three, you will obtain <code>energy.xvg</code> that you can plot with <code>xmgrace</code>.</p>
+
+<div>
+    <pre><code>xmgrace energy.xvg</code></pre>
+</div>
+
+<p>If you have chosen all three energies, you can plot them together as:</p>
+
+<div>
+    <pre><code>xmgrace -nxy energy.xvg</code></pre>
+</div>
+
+<p>If you have saved each output into an individual file using the <code>-o</code> option, resulting in, for example,
+    <code>energy1.xvg</code>, <code>energy2.xvg</code> and <code>energy3.xvg</code> you can plot them as:</p>
+
+<div>
+    <pre><code>xmgrace energy*.xvg -legend load</code></pre>
+</div>
+
+<p>where the symbol <code>*</code> is wildcard, i.e. any file that starts with <code>energy</code> and finishes with
+    <code>.xvg</code> will be plotted. </p>
+
+<h3 id="toc_12">10) Temperature and pressure coupled MD simulations</h3>
+
+<p>We now will introduce temperature and pressure into the simulation, creating a system representing more realistic
+    conditions. This will be done by first coupling the system to a heat bath, then to a pressure bath.</p>
+
+<h4 id="toc_13">NVT – constant number of particles, volume and temperature</h4>
+
+<p>Use the <code>nvt.mdp</code> file, read through the input file, compile and run the MD simulation as done previously.
+</p>
+
+<p>after the run is finished, you can check the energies with energy</p>
+
+<p>Check: temperature, pressure, potential and kinetic energy. Save those files to later compare with NPT run. Use<code>energy
+    -o</code> option to save file under given name.</p>
+
+<p><em>Examine the output with <code>xmgrace</code>, what do you see?</em> The large fluctuation initially are due to
+    thermodynamic averaging over small number of particles, aiming to represent a realistic (many body) thermodynamic
+    ensemble.</p>
+
+<h4 id="toc_14">NPT - constant number of particles, pressure and temperature</h4>
+
+<p>For this part use the <code>npt.mdp</code> file. And follow the earlier procedure. Analyse with <code>gmx
+    energy</code> to obtain the pressure per each step of the simulation.</p>
+
+<p><em>How does the pressure change in NPT ensemble vs NVT?</em></p>
+
+<h3 id="toc_15">11) Production</h3>
+
+<p>Finally!</p>
+
+<p><span style="color: red;">
+add a generated sim of 10 ns, if they don&rsquo;t want to wait!
+</span></p>
+
+<p><span style="color: red;">
+We now will run a very short (for typical MD) simulation of <strong>5 nanoseconds.</strong>
+<strong>check and edit MDP file!</strong>
+</span></p>
+
+<p>Use the  <code>md.mdp</code> file and look at contents of it, you will need to edit it to make it run for <span
+        style="color: red;"> 5000 ps or 5 ns </span> and to produce 1000 sets of coordinate data to the output.</p>
+
+<p>When your MDP file is ready, compile it with <code>grompp</code> and run with <code>mdrun</code>.</p>
+
+<p>From the output of your earlier simulations, you can know approximate performance on your computer. For example: </p>
+
+<div><pre><code>              Core t (s)   Wall t (s)        (%)
+      Time:    24776.900     3097.115      800.0
+                     51:37
+                 (ns/day)    (hour/ns)
+Performance:        1.395       17.206</code></pre>
+</div>
+
+<p>So you know approximately that this simulation will take
+    <span style="color: red;"> ~100 hours. </span>
+    This is also what you will find from the <code>gmx mdrun -v</code>. </p>
+
+<p>You can convert the trajectory with <code>gmx trjconv</code> to extract a smaller trajectory, or to remove water
+    molecules, or to centre your protein in the box. Importantly you can unite together the bonds that will appear
+    broken across the periodic boundary. </p>
+
+<div>
+    <pre><code>gmx trjconv -o traj_center.xtc -center -pbc mol </code></pre>
+</div>
+
+<p>It will prompt you to select group for centering, which is <code>Protein</code> and the group for output. Choose
+    <code>System</code>.</p>
+
+<p>Note, we have written out the .xtc format for the output. It is a compressed format, that will lighter for us to
+    handle. Nevertheless, to load into VMD we need to have both the .gro file and the .xtc. </p>
+
+<h3 id="toc_16">12) Rendering the publication-ready figures with VMD</h3>
+
+<p>It is useful to be able to produce an image of your simulation, for a report or a publication. For example image
+    below is rendered with VMD. In this section we will learn how to do it. </p>
+
+<p><img src="Session2/render.png" alt="render.png"></p>
+
+<p>Figure 2: Elk prion protein in a simulation box created with VMD: Backbone is shown in red, Na ions as blue spheres,
+    Cl ions as green spheres, water is shown as a surface representation, also highlighting the size of the simulation
+    box.</p>
+
+<p>Load your system into the VMD.</p>
+
+<div>
+    <pre><code>vmd confout.gro </code></pre>
+</div>
+
+<p>Then in the <code>VMD Main</code> window, click on the line of confout.gro, selecting it. From here right click
+    <code>Load Data Into Molecule...</code>, <code>Browse</code> to select the <code>traj_center.xtc</code>, VMD will
+    automatically identify the format, press <code>Load</code>.</p>
+
+<p>Now, lets change the visualisation. </p>
+
+<ul>
+    <li>Change the background to white: <code>Graphics &gt; Color &gt; Categories:Display &gt; Names:Background &gt; 8
+        white</code></li>
+    <li>Change the display from perspective: <code>Display &gt; Orthographic</code></li>
+    <li>Turn off the axis: <code>Display &gt; Axes &gt; Off</code></li>
+</ul>
+
+<p>It is up to you how you would like to represent this system, here are some suggestions.</p>
+
+<p>Go to <code>Graphics &gt; Representations</code> there you can <code>Create Rep</code> for each individual selection,
+    choosing the way it is displayed, colours, materials. Tab <code>Selections</code> will assist you in
+    <code>Keywords</code>, some tips:
+    - <code>not water</code> will display everything but water;
+    - a protein can be rendered showing only backbone
+    - Drawing method <code>QuickSurf</code> is great to show the surface of an object, but should be done in transparent
+    materials, such as <code>BlownGlass</code>;
+    - Ions are best as <code>VDW</code>;
+    - If you plan to render the image, good materials are the <code>AO</code> range ;
+    - You may want to change the <code>Display &gt; Rendermode &gt; GLSL</code> to be able to see the visuals;
+    - Note tha not every computer will display image in the same quality as it will be rendered.</p>
+
+<p>To render an image <code>File &gt; Render &gt; using Tachyon (internal, in-memory rendering) &gt; ...</code>
+    <code>&gt; Browse /directory/NAME.png &gt; Start Rendering</code>, choosing the location and naming the file. </p>
+
+<p>More advanced instructions on achieving high quality images, as well as comparisons of renderings, can be found <a
+        href="https://skblnw.github.io/mkvmd_render/">here</a>.</p>
+
+<h3 id="toc_17">13) Analysis of the simulation</h3>
+
+<h4 id="toc_18">RMSD</h4>
+
+<p>The first assessment is the root mean square deviation (RMSD) between the first frame and all the sequential ones. It
+    can inform us on the convergence of the simulation and on the structural stability of our protein. The analysis is
+    done with <code>gmx rms</code> command. We advise you to carry out yhe analysis for the whole system, as well as for
+    the protein only and for the back-bone of the protein only.</p>
+
+<div><pre><code>gmx rms -f traj_center.xtc -o rmsd_system -tu ns
+gmx rms -f traj_center.xtc -o rmsd_protein -tu ns
+gmx rms -f traj_center.xtc -o rmsd_protein_bb -tu ns</code></pre>
+</div>
+
+<p>Compare these by plotting together with <code>xmgrace</code>.</p>
+
+<h4 id="toc_19">Radius of gyration</h4>
+
+<p>Radius of gyration allows us to access how compact is our protein and how it changes through time. If the radius of
+    gyration does not change, the protein is stable and does not undergo unfolding events (which one would not
+    realistically be able to observe on such a short simulation). </p>
+
+<p>Again, for protein-only calculate radius of gyration using <code>gmx gyrate</code> and plot it with
+    <code>xmgrace</code></p>
+
+<div>
+    <pre><code>gmx gyrate -f traj_center.xtc -o gyrate_protein.xvg</code></pre>
+</div>
+
+<h4 id="toc_20">Generating index file</h4>
+
+<p>Many Gromacs tools rely on using index files. These can be generated by <code>gmx make_ndx</code> tool:</p>
+
+<div>
+    <pre><code>gmx make_ndx -f topol.tpr </code></pre>
+</div>
+
+<p>This tool allows to create groups of atoms for analysis. Lets make 3 groups, containing all hydrophilic, all
+    hydrophobic and all amphiphatic amino acids, using their residue <code>r</code> names.</p>
+
+<p>When prompted by <code>&gt;</code> enter:</p>
+
+<ul>
+    <li><code>r GLY PRO PHE ALA ILE LEU VAL</code></li>
+    <li><code>r SER TYR ASP GLU CYS ASN GLN ARG HIS</code></li>
+    <li><code>r LYS TRP TYR MET</code></li>
+</ul>
+
+<p>If you now hit enter, it will show you the lists made. The entries we generated look a bit untidy, so we can rename
+    them by typing <code>name</code> followed by group number, followed by the name you want to give it, i.e.:</p>
+
+<ul>
+    <li><code>name 17 Phobe</code></li>
+    <li><code>name 18 Phil</code></li>
+    <li><code>name 19 Amphi</code></li>
+</ul>
+
+<p>to write out the <code>index.ndx</code>, type</p>
+
+<ul>
+    <li><code>q</code></li>
+</ul>
+
+<h4 id="toc_21">Hydrogen bonds</h4>
+
+<p>Run the H-bond 3 times, to analyse each of your groups against water, for example:</p>
+
+<div>
+    <pre><code>gmx hbond -f traj_center.xtc -n index.ndx -num hbnum_phil.xvg</code></pre>
+</div>
+
+<p>Selecting group <code>18</code> for hydrophilic groups and <code>12</code> for water (or the numbers corresponding to
+    these in your index).</p>
+
+<p>Plot all three sets together </p>
+
+<div>
+    <pre><code>xmgrace hbnum_* -legend load </code></pre>
+</div>
+
+<p>While the data will not be normalised by the number of residues of each type, hopefully you should still be able to
+    see how the number of H-bonds changes with simulation, with large numbers early on, when system is still actively
+    equilibrating (see RMSD and energy), and slowly reducing over time, with significantly less H-bonds formed by
+    hydrophobic groups and a large number by hydrophilic. T</p>
+
+<h4 id="toc_22">Reporting on the procedure</h4>
+
+<p>To help you write a report, there is a handy tool, that produces a summary of your system info:</p>
+
+<div>
+    <pre><code>gmx report-methods -s topol.tpr</code></pre>
+</div>
+
+<p>You will get something like this, that should </p>
+
+<div><pre><code>             :-) GROMACS - gmx report-methods, 2023.1-Homebrew (-:
+
+Executable:   /usr/local/bin/../Cellar/gromacs/2023.1/bin/gmx
+Data prefix:  /usr/local/bin/../Cellar/gromacs/2023.1
+Working dir:  /Users/valentina/Desktop/PGT_course/Session2/practical
+Command line:
+  gmx report-methods -s topol.tpr
+
+Reading file topol.tpr, VERSION 2023.1-Homebrew (single precision)
+section: Methods
+subsection: Simulation system
+A system of 9241 molecules (29383 atoms) was simulated.
+
+subsection: Simulation settings
+A total of 0.05 ns were simulated with a time step of 1 fs.
+Neighbor searching was performed every 10 steps.
+The PME algorithm was used for electrostatic interactions.
+with a cut-off of 1.2 nm.
+A reciprocal grid of 64 x 64 x 64 cells was used with 4th order B-spline interpolation.
+A single cut-off of 1.2 nm was used for Van der Waals interactions.
+Temperature coupling was done with the V-rescale algorithm.
+Pressure coupling was done with the C-rescale algorithm.
+
+GROMACS reminds you: &quot;The use of COBOL cripples the mind; its teaching should therefore be regarded as a criminal offense.&quot; (Edsger Dijkstra)</code></pre>
+</div>
+
+<p>Furthermore, all the MD parameters are stored in the <code>mdout.mdp</code> file. </p>
+
+
+<script type="text/javascript">
+    var _self = "undefined" != typeof window ? window : "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? self : {},
+        Prism = function () {
+            var e = /\blang(?:uage)?-(\w+)\b/i, t = 0, n = _self.Prism = {
+                util: {
+                    encode: function (e) {
+                        return e instanceof a ? new a(e.type, n.util.encode(e.content), e.alias) : "Array" === n.util.type(e) ? e.map(n.util.encode) : e.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\u00a0/g, " ")
+                    }, type: function (e) {
+                        return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]
+                    }, objId: function (e) {
+                        return e.__id || Object.defineProperty(e, "__id", {value: ++t}), e.__id
+                    }, clone: function (e) {
+                        var t = n.util.type(e);
+                        switch (t) {
+                            case"Object":
+                                var a = {};
+                                for (var r in e) e.hasOwnProperty(r) && (a[r] = n.util.clone(e[r]));
+                                return a;
+                            case"Array":
+                                return e.map && e.map(function (e) {
+                                    return n.util.clone(e)
+                                })
+                        }
+                        return e
+                    }
+                }, languages: {
+                    extend: function (e, t) {
+                        var a = n.util.clone(n.languages[e]);
+                        for (var r in t) a[r] = t[r];
+                        return a
+                    }, insertBefore: function (e, t, a, r) {
+                        r = r || n.languages;
+                        var l = r[e];
+                        if (2 == arguments.length) {
+                            a = arguments[1];
+                            for (var i in a) a.hasOwnProperty(i) && (l[i] = a[i]);
+                            return l
+                        }
+                        var o = {};
+                        for (var s in l) if (l.hasOwnProperty(s)) {
+                            if (s == t) for (var i in a) a.hasOwnProperty(i) && (o[i] = a[i]);
+                            o[s] = l[s]
+                        }
+                        return n.languages.DFS(n.languages, function (t, n) {
+                            n === r[e] && t != e && (this[t] = o)
+                        }), r[e] = o
+                    }, DFS: function (e, t, a, r) {
+                        r = r || {};
+                        for (var l in e) e.hasOwnProperty(l) && (t.call(e, l, e[l], a || l), "Object" !== n.util.type(e[l]) || r[n.util.objId(e[l])] ? "Array" !== n.util.type(e[l]) || r[n.util.objId(e[l])] || (r[n.util.objId(e[l])] = !0, n.languages.DFS(e[l], t, l, r)) : (r[n.util.objId(e[l])] = !0, n.languages.DFS(e[l], t, null, r)))
+                    }
+                }, plugins: {}, highlightAll: function (e, t) {
+                    var a = {
+                        callback: t,
+                        selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
+                    };
+                    n.hooks.run("before-highlightall", a);
+                    for (var r, l = a.elements || document.querySelectorAll(a.selector), i = 0; r = l[i++];) n.highlightElement(r, e === !0, a.callback)
+                }, highlightElement: function (t, a, r) {
+                    for (var l, i, o = t; o && !e.test(o.className);) o = o.parentNode;
+                    o && (l = (o.className.match(e) || [, ""])[1], i = n.languages[l]), t.className = t.className.replace(e, "").replace(/\s+/g, " ") + " language-" + l, o = t.parentNode, /pre/i.test(o.nodeName) && (o.className = o.className.replace(e, "").replace(/\s+/g, " ") + " language-" + l);
+                    var s = t.textContent, u = {element: t, language: l, grammar: i, code: s};
+                    if (!s || !i) return n.hooks.run("complete", u), void 0;
+                    if (n.hooks.run("before-highlight", u), a && _self.Worker) {
+                        var c = new Worker(n.filename);
+                        c.onmessage = function (e) {
+                            u.highlightedCode = e.data, n.hooks.run("before-insert", u), u.element.innerHTML = u.highlightedCode, r && r.call(u.element), n.hooks.run("after-highlight", u), n.hooks.run("complete", u)
+                        }, c.postMessage(JSON.stringify({language: u.language, code: u.code, immediateClose: !0}))
+                    } else u.highlightedCode = n.highlight(u.code, u.grammar, u.language), n.hooks.run("before-insert", u), u.element.innerHTML = u.highlightedCode, r && r.call(t), n.hooks.run("after-highlight", u), n.hooks.run("complete", u)
+                }, highlight: function (e, t, r) {
+                    var l = n.tokenize(e, t);
+                    return a.stringify(n.util.encode(l), r)
+                }, tokenize: function (e, t) {
+                    var a = n.Token, r = [e], l = t.rest;
+                    if (l) {
+                        for (var i in l) t[i] = l[i];
+                        delete t.rest
+                    }
+                    e:for (var i in t) if (t.hasOwnProperty(i) && t[i]) {
+                        var o = t[i];
+                        o = "Array" === n.util.type(o) ? o : [o];
+                        for (var s = 0; s < o.length; ++s) {
+                            var u = o[s], c = u.inside, g = !!u.lookbehind, h = !!u.greedy, f = 0, d = u.alias;
+                            u = u.pattern || u;
+                            for (var p = 0; p < r.length; p++) {
+                                var m = r[p];
+                                if (r.length > e.length) break e;
+                                if (!(m instanceof a)) {
+                                    u.lastIndex = 0;
+                                    var y = u.exec(m), v = 1;
+                                    if (!y && h && p != r.length - 1) {
+                                        var b = r[p + 1].matchedStr || r[p + 1], k = m + b;
+                                        if (p < r.length - 2 && (k += r[p + 2].matchedStr || r[p + 2]), u.lastIndex = 0, y = u.exec(k), !y) continue;
+                                        var w = y.index + (g ? y[1].length : 0);
+                                        if (w >= m.length) continue;
+                                        var _ = y.index + y[0].length, P = m.length + b.length;
+                                        if (v = 3, P >= _) {
+                                            if (r[p + 1].greedy) continue;
+                                            v = 2, k = k.slice(0, P)
+                                        }
+                                        m = k
+                                    }
+                                    if (y) {
+                                        g && (f = y[1].length);
+                                        var w = y.index + f, y = y[0].slice(f), _ = w + y.length, S = m.slice(0, w),
+                                            O = m.slice(_), j = [p, v];
+                                        S && j.push(S);
+                                        var A = new a(i, c ? n.tokenize(y, c) : y, d, y, h);
+                                        j.push(A), O && j.push(O), Array.prototype.splice.apply(r, j)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return r
+                }, hooks: {
+                    all: {}, add: function (e, t) {
+                        var a = n.hooks.all;
+                        a[e] = a[e] || [], a[e].push(t)
+                    }, run: function (e, t) {
+                        var a = n.hooks.all[e];
+                        if (a && a.length) for (var r, l = 0; r = a[l++];) r(t)
+                    }
+                }
+            }, a = n.Token = function (e, t, n, a, r) {
+                this.type = e, this.content = t, this.alias = n, this.matchedStr = a || null, this.greedy = !!r
+            };
+            if (a.stringify = function (e, t, r) {
+                if ("string" == typeof e) return e;
+                if ("Array" === n.util.type(e)) return e.map(function (n) {
+                    return a.stringify(n, t, e)
+                }).join("");
+                var l = {
+                    type: e.type,
+                    content: a.stringify(e.content, t, r),
+                    tag: "span",
+                    classes: ["token", e.type],
+                    attributes: {},
+                    language: t,
+                    parent: r
+                };
+                if ("comment" == l.type && (l.attributes.spellcheck = "true"), e.alias) {
+                    var i = "Array" === n.util.type(e.alias) ? e.alias : [e.alias];
+                    Array.prototype.push.apply(l.classes, i)
+                }
+                n.hooks.run("wrap", l);
+                var o = "";
+                for (var s in l.attributes) o += (o ? " " : "") + s + '="' + (l.attributes[s] || "") + '"';
+                return "<" + l.tag + ' class="' + l.classes.join(" ") + '" ' + o + ">" + l.content + "</" + l.tag + ">"
+            }, !_self.document) return _self.addEventListener ? (_self.addEventListener("message", function (e) {
+                var t = JSON.parse(e.data), a = t.language, r = t.code, l = t.immediateClose;
+                _self.postMessage(n.highlight(r, n.languages[a], a)), l && _self.close()
+            }, !1), _self.Prism) : _self.Prism;
+            var r = document.currentScript || [].slice.call(document.getElementsByTagName("script")).pop();
+            return r && (n.filename = r.src, document.addEventListener && !r.hasAttribute("data-manual") && document.addEventListener("DOMContentLoaded", n.highlightAll)), _self.Prism
+        }();
+    "undefined" != typeof module && module.exports && (module.exports = Prism), "undefined" != typeof global && (global.Prism = Prism);
+</script>
+
+<script type="text/x-mathjax-config">
+    (function () {
+
+    MathJax.Hub.Config({
+        'showProcessingMessages': false,
+        'messageStyle': 'none'
+    });
+
+    if (typeof MathJaxListener !== 'undefined') {
+        MathJax.Hub.Register.StartupHook('End', function () {
+            MathJaxListener.invokeCallbackForKey_('End');
+        });
+    }
+
+    })();
+</script>
+
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+</body>
+</html>
