@@ -2,15 +2,15 @@
 - [x] Get students permission to run on Eddie (Access to Eddie form)
 - [x] Create new course datastore (Talk to David)
 - [x] symlink to datastore to get data from VM
-- [] Link to space on datastore for updating course materials
-- [] Figure out username/password for students
+- [x] Link to space on datastore for updating course materials
+- [ ] Figure out username/password for students
 
 
 ### Files:
-- Eddie: module load script (Sarah's latest from `Group-Scripts/Clays/Simulations/` ?)
-- Run scripts
-- Marking scheme
-- Session HTML stylesheet
+- [ ] Eddie: module load script (Sarah's latest from `Group-Scripts/Clays/Simulations/` ?)
+- [ ] Run scripts
+- [ ] Marking scheme
+- [x] Session HTML stylesheet
 
 ### Sessions:
 - [x] **Session1:** Valentina
@@ -22,4 +22,9 @@
 - [ ] **Session4**
 
 #### Projects
-  - ...
+  - AC:
+    - ...
+  - MBC:
+    - ...
+  - MC
+    - ...
