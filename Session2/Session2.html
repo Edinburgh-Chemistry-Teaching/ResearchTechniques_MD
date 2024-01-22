@@ -22,19 +22,19 @@
         Dr Valentina Erastova (<a href="mailto:valentina.erastova@ed.ac.uk">valentina.erastova@ed.ac.uk</a>)<br/>
         Office B21 (Office hours Wedn 10.00-12.00 in weeks 3, 4 and 5)
     </p>
-    <p><strong>Demonstrators:</strong>
+    <p><strong>Demonstrators:</strong></p>
     <ul>
         <li>Hannah Pollak</li>
         <li>Audrey Noumbissi Ngambia</li>
         <li>Sarah Stewart</li>
     </ul>
-    </p>
 </div>
 
 <div class="box">
     <h2 id="toc_1">Learning Outcomes</h2>
     <p>
         By the end of this session you should be able to
+    </p>
     <ul>
         <li>Understand the basics of molecular dynamics simulations</li>
         <li>Set up a simulation of a protein in water</li>
@@ -42,7 +42,6 @@
         <li>Visualise the structures and trajectories in VMD</li>
         <li>Visualise analysis results with XMGrace</li>
     </ul>
-    </p>
 </div>
 
 <div class="box">
@@ -73,7 +72,7 @@
     </blockquote>
     <p>For everyday general molecular simulations, GROMACS is one of the fastest MD programs. It is also quite flexible,
         so
-        apart of proteins and biomolecules in general, it can be used to simulate a vast range of different types of
+        apart from proteins and biomolecules in general, it can be used to simulate a vast range of different types of
         molecules. If you want to use it on your own machine, you can download GROMACS from <a
                 href="https://manual.gromacs.org/current/download.html">manual.gromacs.org/current/download.html</a> or
         on Linux use <code>apt-get install
@@ -82,13 +81,11 @@
     <p>GROMACS is commonly available on <abbr>HPCs</abbr> (high performance computers), including the University&rsquo;s
         Eddie <abbr>HPC</abbr>, and also
         Tier 2 and Tier 1 (national supercomputers) such as Cirrus or Archer.</p>
-    </p>
     <p>
         It was originally developed in the University of Groningen, but now is
         maintained and extended at different places, including the University of Uppsala, University of Stockholm and
         the Max Planck Institute for Polymer Research. It is an open source software, released under the
-        <abbr>GPL></abbr> (general
-        public license), which means that is free to use.
+        <abbr>GPL</abbr> (general public licence), which means that is free to use.
         There are many more tutorials for GROMACS available. Some can be found on: <a
             href="http://www.mdtutorials.com/gmx/">www.mdtutorials.com/gmx</a>.
     </p>
@@ -137,11 +134,14 @@
     <blockquote>
         <p>A quick word of warning is appropriate. Experimental data is not perfect. Therefore, it is possible for
             crystal
-            structures in the PDB database to contain errors such as missing atoms. These “errors” are usually caused by
+            structures in the PDB database to contain errors such as missing atoms. These &ldquo;errors&ldquo; are
+            usually caused by
             experiment
-            being unable to clearly “see” amino acid side-chains within the protein crystal because of its molecular
+            being unable to clearly &ldquo;see&ldquo; amino acid side-chains within the protein crystal because of its
+            molecular
             motion.
-            In some cases, it is necessary to “clean up” a protein structure before using it in a simulation study. Good
+            In some cases, it is necessary to &ldquo;clean up&ldquo; a protein structure before using it in a simulation
+            study. Good
             programs for doing this include, coot <a
                     href="https://sbcb.bioch.ox.ac.uk/teaching/coot_tutorial.pdf">sbcb.bioch.ox.ac.uk/teaching/coot_tutorial.pdf</a>
             and the Swiss-PdbViewer
@@ -166,19 +166,226 @@
     <p>The figure below shows a typical protocol for the simulation of protein in the box. In this tutorial, we will
         follow
         this same protocol.</p>
+    <!--    <div class="flex-figure">-->
+    <!--        <div class="flex-figure-img">-->
+    <!--            <figure>-->
+    <!--                <img src="img/gmx_workflow.png" alt="gmx workflow">-->
+    <!--                <figcaption>Typical flowchart of a simulation of protein in water, often a number of simulations have to-->
+    <!--                    be performed-->
+    <!--                    to prepare the system for a production MD run, the interactive flowchart can be found at <a-->
+    <!--                            href="https://manual.gromacs.org/current/user-guide/flow.html">manual.gromacs.org/current/user-guide/flow.html</a>-->
+    <!--                </figcaption>-->
+    <!--            </figure>-->
+    <!--        </div>-->
+    <!--    </div>-->
     <div class="flex-figure">
         <div class="flex-figure-img">
             <figure>
-                <img src="img/gmx_workflow.png" alt="gmx workflow">
-                <figcaption>Typical flowchart of a simulation of protein in water, often a number of simulations have to
-                    be performed
-                    to prepare the system for a production MD run, the interactive flowchart can be found at <a
-                            href="https://manual.gromacs.org/current/user-guide/flow.html">manual.gromacs.org/current/user-guide/flow.html</a>
+                <div class="graphviz"><img
+                        src="https://manual.gromacs.org/current/_images/graphviz-546f8676b043be7a824d2ab2320a5e60473f82fc.png"
+                        alt="digraph flowchart {
+node [ shape=box, width=1.5 ]
+
+input_pdb [
+  label=&quot;eiwit.pdb&quot;
+  tooltip=&quot;Protein Databank file&quot;
+  URL=&quot;../reference-manual/file-formats.html#pdb&quot;
+  shape=none, width=0, height=0, margin=0
+  group=input
+]
+pdb2gmx [
+  label=&quot;Generate a GROMACS topology\ngmx pdb2gmx&quot;
+  tooltip=&quot;Convert PDB file to GROMACS coordinate file and topology&quot;
+  URL=&quot;../onlinehelp/gmx-pdb2gmx.html&quot;
+  width=3
+  group=main
+]
+
+input_pdb -> pdb2gmx [ headport=e ]
+
+editconf [
+  label=&quot;Enlarge the box\ngmx editconf&quot;
+  tooltip=&quot;Adjust box size and placement of molecule&quot;
+  URL=&quot;../onlinehelp/gmx-editconf.html&quot;
+]
+
+pdb2gmx -> editconf [
+  label=&quot;conf.gro&quot;
+  labeltooltip=&quot;GROMACS coordinate file containing molecules from PDB file&quot;
+  URL=&quot;../reference-manual/file-formats.html#gro&quot;
+]
+
+solvate [
+  label=&quot;Solvate protein\ngmx solvate&quot;
+  tooltip=&quot;Fill box with water (solvate molecule)&quot;
+  URL=&quot;../onlinehelp/gmx-solvate.html&quot;
+  width=3
+  group=main
+]
+
+pdb2gmx -> solvate [
+  label=&quot;topol.top&quot;
+  labeltooltip=&quot;GROMACS ascii topology file&quot;
+  URL=&quot;../reference-manual/file-formats.html#top&quot;
+]
+editconf -> solvate [
+  label=&quot;conf.gro&quot;
+  labeltooltip=&quot;GROMACS coordinate file with adjusted box etc.&quot;
+  URL=&quot;../reference-manual/file-formats.html#gro&quot;
+]
+
+input_mdp [
+  label=&quot;grompp.mdp&quot;
+  tooltip=&quot;Parameter file from grompp (controls all MD parameters)&quot;
+  URL=&quot;../reference-manual/file-formats.html#mdp&quot;
+  shape=none, width=0, height=0, margin=0
+  group=input
+]
+grompp [
+  label=&quot;Generate mdrun input file\ngmx grompp&quot;
+  tooltip=&quot;Process parameters, coordinates and topology and write binary topology&quot;
+  URL=&quot;../onlinehelp/gmx-grompp.html&quot;
+  width=3
+  group=main
+]
+
+input_pdb -> input_mdp [ style=invis, minlen=3 ]
+
+input_mdp -> grompp [ headport=e, weight=0 ]
+solvate -> grompp [
+  label=&quot;conf.gro&quot;
+  labeltooltip=&quot;GROMACS coordinate file with water molecules added&quot;
+  URL=&quot;../reference-manual/file-formats.html#gro&quot;
+]
+solvate -> grompp [
+  label=&quot;topol.top&quot;
+  labeltooltip=&quot;GROMACS ascii topology file with water molecules added&quot;
+  URL=&quot;../reference-manual/file-formats.html#top&quot;
+]
+
+mdrun [
+  label=&quot;Run the simulation (EM or MD)\ngmx mdrun&quot;
+  tooltip=&quot;The moment you have all been waiting for! START YOUR MD RUN&quot;
+  URL=&quot;../onlinehelp/gmx-mdrun.html&quot;
+  width=3
+  group=main
+]
+
+grompp -> mdrun [
+  label=&quot;topol.tpr&quot;
+  labeltooltip=&quot;Portable GROMACS binary run input file (contains all information to start MD run)&quot;
+  URL=&quot;../reference-manual/file-formats.html#tpr&quot;
+]
+mdrun -> mdrun [
+  label=&quot;Continuation\nstate.cpt&quot;
+  labeltooltip=&quot;Checkpoint file&quot;
+  URL=&quot;../reference-manual/file-formats.html#cpt&quot;
+]
+
+analysis [
+  label=&quot;Analysis\ngmx ...&quot;
+  tooltip=&quot;Your favourite GROMACS analysis tool&quot;
+  URL=&quot;cmdline.html#commands-by-topic&quot;
+]
+
+mdrun -> analysis [
+  label=&quot;traj.xtc / traj.trr&quot;
+  labeltooltip=&quot;Portable compressed trajectory / full precision portable trajectory&quot;
+  URL=&quot;../reference-manual/file-formats.html#xtc&quot;
+]
+
+energy [
+  label=&quot;Analysis\ngmx energy&quot;
+  tooltip=&quot;Energy plots, averages and fluctuations&quot;
+  URL=&quot;../onlinehelp/gmx-energy.html&quot;
+]
+
+mdrun -> energy [
+  label=&quot;ener.edr&quot;
+  labeltooltip=&quot;Portable energy file&quot;
+  URL=&quot;../reference-manual/file-formats.html#edr&quot;
+]
+}" usemap="#flowchart" class="graphviz">
+                </div>
+                <map id="flowchart" name="flowchart">
+                    <area shape="rect" id="node1" href="../reference-manual/file-formats.html#pdb"
+                          title="Protein Databank file" alt="" coords="413,5,503,25">
+                    <area shape="rect" id="node2" href="../onlinehelp/gmx-pdb2gmx.html"
+                          title="Convert PDB file to GROMACS coordinate file and topology" alt=""
+                          coords="67,75,391,125">
+                    <area shape="rect" id="node5" href="../reference-manual/file-formats.html#mdp"
+                          title="Parameter file from grompp (controls all MD parameters)" alt=""
+                          coords="397,327,519,347">
+                    <area shape="rect" id="node3" href="../onlinehelp/gmx-editconf.html"
+                          title="Adjust box size and placement of molecule" alt="" coords="5,193,180,244">
+                    <area shape="poly" id="edge2" href="../reference-manual/file-formats.html#gro" title="conf.gro"
+                          alt="" coords="169,128,135,151,111,182,107,179,131,147,166,123">
+                    <area shape="rect" id="edge2-label" href="../reference-manual/file-formats.html#gro"
+                          title="GROMACS coordinate file containing molecules from PDB file" alt=""
+                          coords="133,149,210,169">
+                    <area shape="rect" id="node4" href="../onlinehelp/gmx-solvate.html"
+                          title="Fill box with water (solvate molecule)" alt="" coords="85,312,373,363">
+                    <area shape="poly" id="edge3" href="../reference-manual/file-formats.html#top" title="topol.top"
+                          alt="" coords="231,126,231,298,226,298,226,126">
+                    <area shape="rect" id="edge3-label" href="../reference-manual/file-formats.html#top"
+                          title="GROMACS ascii topology file" alt="" coords="229,209,314,229">
+                    <area shape="poly" id="edge4" href="../reference-manual/file-formats.html#gro" title="conf.gro"
+                          alt="" coords="105,243,118,265,135,286,157,303,154,307,131,290,113,268,100,246">
+                    <area shape="rect" id="edge4-label" href="../reference-manual/file-formats.html#gro"
+                          title="GROMACS coordinate file with adjusted box etc." alt="" coords="133,268,210,288">
+                    <area shape="rect" id="node6" href="../onlinehelp/gmx-grompp.html"
+                          title="Process parameters, coordinates and topology and write binary topology" alt=""
+                          coords="66,431,354,481">
+                    <area shape="poly" id="edge7" href="../reference-manual/file-formats.html#gro" title="conf.gro"
+                          alt="" coords="196,364,179,388,177,403,182,418,177,420,172,403,174,386,192,361">
+                    <area shape="rect" id="edge7-label" href="../reference-manual/file-formats.html#gro"
+                          title="GROMACS coordinate file with water molecules added" alt="" coords="177,387,254,407">
+                    <area shape="poly" id="edge8" href="../reference-manual/file-formats.html#top" title="topol.top"
+                          alt="" coords="249,362,258,384,257,407,250,421,245,418,251,406,253,385,244,364">
+                    <area shape="rect" id="edge8-label" href="../reference-manual/file-formats.html#top"
+                          title="GROMACS ascii topology file with water molecules added" alt=""
+                          coords="255,387,341,407">
+                    <area shape="rect" id="node7" href="../onlinehelp/gmx-mdrun.html"
+                          title="The moment you have all been waiting for! START YOUR MD RUN" alt=""
+                          coords="49,549,371,600">
+                    <area shape="poly" id="edge9" href="../reference-manual/file-formats.html#tpr" title="topol.tpr"
+                          alt="" coords="213,481,213,536,207,536,207,481">
+                    <area shape="rect" id="edge9-label" href="../reference-manual/file-formats.html#tpr"
+                          title="Portable GROMACS binary run input file (contains all information to start MD run)"
+                          alt="" coords="210,505,294,525">
+                    <area shape="poly" id="edge10" href="../reference-manual/file-formats.html#cpt"
+                          title="Continuation\nstate.cpt" alt=""
+                          coords="372,563,390,567,398,575,386,583,384,579,393,574,388,572,371,569">
+                    <area shape="rect" id="edge10-label" href="../reference-manual/file-formats.html#cpt"
+                          title="Checkpoint file" alt="" coords="395,555,519,595">
+                    <area shape="rect" id="node8" href="cmdline.html#commands-by-topic"
+                          title="Your favourite GROMACS analysis tool" alt="" coords="46,668,190,719">
+                    <area shape="poly" id="edge11" href="../reference-manual/file-formats.html#xtc"
+                          title="traj.xtc / traj.trr" alt=""
+                          coords="145,602,132,613,122,625,116,639,115,654,109,654,111,638,117,623,128,609,142,598">
+                    <area shape="rect" id="edge11-label" href="../reference-manual/file-formats.html#xtc"
+                          title="Portable compressed trajectory / full precision portable trajectory" alt=""
+                          coords="119,624,273,644">
+                    <area shape="rect" id="node9" href="../onlinehelp/gmx-energy.html"
+                          title="Energy plots, averages and fluctuations" alt="" coords="230,668,374,719">
+                    <area shape="poly" id="edge12" href="../reference-manual/file-formats.html#edr" title="ener.edr"
+                          alt="" coords="250,598,275,622,292,654,288,656,271,626,246,602">
+                    <area shape="rect" id="edge12-label" href="../reference-manual/file-formats.html#edr"
+                          title="Portable energy file" alt="" coords="283,624,363,644">
+                </map>
+                <figcaption>
+                    <figcaption>Typical flowchart of a simulation of protein in water, often a number of simulations
+                        have to
+                        be performed
+                        to prepare the system for a production MD run, the interactive flowchart can be found at <a
+                                href="https://manual.gromacs.org/current/user-guide/flow.html">manual.gromacs.org/current/user-guide/flow.html</a>
+                    </figcaption>
                 </figcaption>
             </figure>
         </div>
     </div>
 </div>
+
 <div class="box">
     <h2 id="toc_4">Preparing the system for simulation</h2>
     <p>
@@ -191,25 +398,26 @@
             <li>Create a new working directory (here we will call it <code>practical</code>)</li>
             <li>Download the protein structure file into the directory<br>
                 There are two ways to do download the structure:
+                <ol>
+                    <li>
+                        Download the file in the terminal using <code>wget</code> command:<br>
+                        Usage of <code>wget</code>:
+                        <blockquote>
+                            <pre>wget URL</pre>
+                            E.g. for the protein 1xyw.pdb, the command would be:
+                            <pre><code>wget http://www.rcsb.org/pdb/files/1xyw.pdb .</code></pre>
+                            <em>Note: </em>The <code>.</code> at the end of the command means that the file will be
+                            downloaded into the current directory so make sure you are in the newly created
+                            <code>practical</code> directory before running the command.
+                        </blockquote>
+                    </li>
+                    <li>
+                        Download the file manually from the web (<a href="http://www.rcsb.org">www.rcsb.org</a>) and
+                        move it
+                        into the <code>practical</code> directory.
+                    </li>
+                </ol>
             </li>
-            <ol>
-                <li>
-                    Download the file in the terminal using <code>wget</code> command:<br>
-                    Usage of <code>wget</code>:
-                    <blockquote>
-                        <pre>wget URL</pre>
-                        E.g. for the protein 1xyw.pdb, the command would be:
-                        <pre><code>wget http://www.rcsb.org/pdb/files/1xyw.pdb .</code></pre>
-                        <em>Note: </em>The <code>.</code> at the end of the command means that the file will be
-                        downloaded into the current directory so make sure you are in the newly created
-                        <code>practical</code> directory before running the command.
-                    </blockquote>
-                </li>
-                <li>
-                    Download the file manually from the web (<a href="http://www.rcsb.org">www.rcsb.org</a>) and move it
-                    into the <code>practical</code> directory.
-                </li>
-            </ol>
             <li>Use the <code>more</code> or <code>less</code> command to read through the file.
 
                 <blockquote>
@@ -227,7 +435,8 @@
                         </li>
                         <li>
                             <code>CONNECT</code> lines contain connection information. (Note however there is little
-                            information available on bonding in the file – bonds can be inferred from atomic positions
+                            information available on bonding in the file &ldquo; bonds can be inferred from atomic
+                            positions
                             by the programs below).
                         </li>
                     </ul>
@@ -285,63 +494,94 @@
             it even has functionalities to build and manipulate molecules and analyse trajectories.
         </p>
     </div>
-</div>
+    <h3 id="toc_7">Notes on organising and naming files</h3>
+    <p>
+        As you start to work on the tutorial, let's talk about how to organise your work. Over the course of tutorial, a
+        lot of files will be generated. Unless you specify the names of outpout files, GROMACS will use default names
+        for them. This will cause existing files to be overwritten by new ones.</p>
+    <p>
+        <em>Note:</em> GROMACS does back up old files, renaming
+        them to <code>&lt;#filename&gt;.&lt;extension&gt;.1#</code> before overwriting.</p>
+    <p>
+        To be able to retrieve your data
+        later and to not get confused, make sure to keep your work organised and name files coherently.
+        Itr would be advisable to run each simulation step in a different subdirectory or to (re)name input and output
+        files
+        in a descriptive matter.</p>
+    <p><em>Remember:</em><br>
+        You can copy files with
+        <code>cp &lt;old_file.gro&gt; &lt;new_file&gt;</code><br> and move files with
+        <code>mv &lt;old_file.gro&gt; &lt;new_file&gt;</code>
+    </p>
+    <p><em>Note: </em> The second option is riskier as you might not be aware of all the files
+        that get by GROMACS generated and all the output names that you might need to specify.</p>
 
-<p>VMD is an extremely versatile program, not only allowing to visualise a system and produce beautiful images and
-    videos, but also to carry out complex analysis with TCL scripts. It is also free and can run on Linux, Mac and
-    Windows.</p>
-
-<h3 id="toc_5">3) Organisation of your work</h3>
-
-<p>As we start to work on the tutorial, a lot of files will be generated. Old files with the same name as newly
-    generated ones will be overwritten (GROMACS backs up old files in the format of <code>#filename.extention.1#</code>)
-    To be able to retrieve the data later, you have to keep your work organised, naming files coherently. Personally, I
-    advise to run each simulation step in a different sub-directory or to make input and output files in a manner that
-    you will be able to identify after.</p>
-
-<div>
-    <pre><code>cp 1xyw.pdb protein.pdb</code></pre>
-</div>
-
-<blockquote>
-    <p>As mentioned before, it is quite common to have missing residues and missing atoms in a protein structure. These
-        need to be repaired before any molecular dynamics can take place. In this tutorial, the protein examples have
-        deliberately been chosen to be free from any of these errors. However, one of the biggest tasks for a biological
-        simulator in practice is to prepare and check structures prior to simulation.</p>
-
-    <p>Non-standard groups are the other common issue in MD simulations. These could consist of non-standard residues,
-        modified residues or ligands, for which force field parameters are not yet available. Considerable work is often
-        required to either eliminate these groups, modify them, or determine missing force field parameters by reference
-        to the literature and/or use of quantum chemical calculations. The structures in this tutorial only consist of
-        natural amino acids, for which quite reasonable force field parameters exist for use with GROMACS.</p>
-
-    <p>In general, it is also good to run checks on a protein structure to make sure that the refinement process in
-        crystal structure determination has:</p>
-
+    <h3 id="toc_8">Checking the input protein structure</h3>
+    <p>
+        As mentioned before, it is quite common for some residues or atoms to be missing in an experimental protein
+        structure. It is, therefore, essential to first check and fix all errors in the input structure
+        before running any <abbr>MD</abbr> simulation. </p>
+    <p>
+        The structures of the proteins used in this tutorial are fully resolved, so you
+        do not need to worry about this step.
+        However, it is worth mentioning that one of the biggest tasks for a biological simulation in practice is prepare
+        and check structures prior to simulation. </p>
+    <p>Another challenge is posed by non&ldquo;standard groups in molecules.
+        These could consist of non&ldquo;standard residues, modified residues or ligands, for which force field
+        parameters
+        are not yet available. Considerable work is often required to either eliminate these groups, modify them, or
+        determine the missing force field parameters by reference to the literature and/or use of quantum chemical
+        calculations. The structures in this tutorial only consist of natural amino acids, for which quite reasonable
+        force field parameters exist for use with GROMACS.</p>
+    <p>
+        Additionaly, after the refinement process in crystal structure determination, the resulting structure should be
+        checked for:
+    </p>
     <ul>
-        <li>given proper orientations of glutamine and asparagine amide groups;</li>
-        <li>that the protonation state and side chain orientation of histidine residues are consistent;</li>
-        <li>no other problems exist with the system.</li>
+        <li>Proper orientations of glutamine and asparagine amide groups</li>
+        <li>Consistent protonation state and side chain orientation of histidine residues</li>
+        <li>Any other problems with the system</li>
     </ul>
-
-    <p>A number of tools have been developed specifically for this purpose but we will be assuming for this practical
-        that the structures given by the X-ray are OK.
-         </p>
-</blockquote>
+    <p>
+        A number of tools have been developed specifically for this purpose, but here, we will assume that the crystal
+        structures obtained from the <abbr>PDB</abbr> are correct.
+    </p>
+    <h3 id="toc_9">Creating a topology</h3>
+    <p>
+        Since <abbr>MD</abbr> simulations rely on force fields to describe the interactions of atoms, having an atomic
+        structure alone is not enough. We need to add a topology (i.e. a description of the system's
+        covalent network).
+        Connectivity information is necessary in order to calculate inter&ldquo;atomic interactions as defined in the
+        force field used in the simulation. GROMACS comes with a good set of force fields and a program,
+        <code>pdb2gmx</code>,
+        to assign those (only works on perfect proteins). Note, since GROMACS version 5.X, all commands come with a
+        prefix <code>gmx</code> or <code>gmx_mpi</code> (when compiled to run parallel):
+    </p>
+    <p><em>Note:</em> All GROMACS commands have a help menu that can be displayed with <code>&dash;h</code>.</p>
+    <blockquote>
+        E.g. <code>gmx pdb2gmx &dash;h</code>
+    </blockquote>
+    <p>
+        A useful resource when getting started with GROMACS is the <a
+            href="https://manual.gromacs.org/documentation/current/user-guide/mdp-options.html">GROMACS user guide</a>.
+        You can use
+    </p>
+</div>
 
 <h3 id="toc_6">4) Creating topology</h3>
 
 <p>Since MD simulations rely on force fields to describe the interactions of atoms, having an atomic structure is not
-    enough. We need to assign a topology (i.e. a description of the atoms’ covalent network). Connectivity information
-    is necessary in order to calculate inter-atomic interactions as described in the force field used to your
+    enough. We need to assign a topology (i.e. a description of the atoms&rsquo; covalent network). Connectivity
+    information
+    is necessary in order to calculate inter&ldquo;atomic interactions as described in the force field used to your
     simulation. GROMACS comes with a good set of force fields and a program, <code>pdb2gmx</code>, to assign those (only
     works on perfect proteins). Note, since GROMACS version 5.X, all commands come with a prefix <code>gmx</code> or
     <code>gmx_mpi</code> (when compiled to run parallel):</p>
 
-<p>As all GROMACS commands come with a help menu that can be called with <code>–h</code></p>
+<p>As all GROMACS commands come with a help menu that can be called with <code>&ndash;h</code></p>
 
 <div>
-    <pre><code>gmx pdb2gmx -h</code></pre>
+    <pre><code>gmx pdb2gmx &ldquo;h</code></pre>
 </div>
 
 <p>have a look through the help manual. GROMACS programs ask for a set of inputs and will provide a set of outputs, if
@@ -349,7 +589,7 @@
     command:</p>
 
 <div>
-    <pre><code>gmx pdb2gmx -f protein.pdb -o protein.gro -p protein.top -ignh </code></pre>
+    <pre><code>gmx pdb2gmx &ldquo;f protein.pdb &ldquo;o protein.gro &ldquo;p protein.top &ldquo;ignh </code></pre>
 </div>
 
 <p><em>What does each variable stand for?</em></p>
@@ -364,7 +604,8 @@
 
 <p>Look through them with <code>more</code> or <code>gedit</code> tools.</p>
 
-<p>a) <strong>protein.gro</strong> - this file contains the protein coordinates in GROMACS format. Note that the file
+<p>a) <strong>protein.gro</strong> &ldquo; this file contains the protein coordinates in GROMACS format. Note that the
+    file
     contains information about the protein amino acid residue (e.g. LEU and GLY etc.) and also the atom name inside the
     residue. The atom name links to the force field files.</p>
 
@@ -396,7 +637,7 @@
     an eye how it changes as we solvate the system and add ions. You can do it with the <code>tail</code> command:</p>
 
 <div>
-    <pre><code>tail -10 protein.top</code></pre>
+    <pre><code>tail &ldquo;10 protein.top</code></pre>
 </div>
 
 <p>showing the last 10 lines of the file, currently only reading:</p>
@@ -406,7 +647,8 @@
 Protein_chain_A     1</code></pre>
 </div>
 
-<p>c) <strong>posre.itp</strong> - is another include topology file, but here it contains position restraints for all
+<p>c) <strong>posre.itp</strong> &ldquo; is another include topology file, but here it contains position restraints for
+    all
     the heavy atoms in your original pdb file (more about these later – we will use them to restrain the protein during
     some initial MD simulation steps).</p>
 
@@ -416,7 +658,7 @@ Protein_chain_A     1</code></pre>
 
 <div>
     <pre><code
-    >gmx editconf -f protein.gro -o protein-pbc.gro -bt dodecahedron -d 1.0 -c</code></pre>
+    >gmx editconf &ldquo;f protein.gro &ldquo;o protein&ldquo;pbc.gro &ldquo;bt dodecahedron &ldquo;d 1.0 &ldquo;c</code></pre>
 </div>
 
 <p><em>What do the above options mean?</em></p>
@@ -430,12 +672,12 @@ Protein_chain_A     1</code></pre>
 <p>Use the Linux command tail to see the end of the new file, where the box is defined.</p>
 
 <p>GROMACS uses a triclinic matrix representation, with the first three numbers specifying the diagonal elements (xx,
-    yy, zz) and the last six giving the off-diagonal elements (xy, xz, yx, yz, zx, zy).</p>
+    yy, zz) and the last six giving the off&ldquo;diagonal elements (xy, xz, yx, yz, zx, zy).</p>
 
 <p>Visualise the resulting protein in a box with <code>vmd</code>.</p>
 
 <div>
-    <pre><code>vmd protein-pbc.gro</code></pre>
+    <pre><code>vmd protein&ldquo;pbc.gro</code></pre>
 </div>
 
 <p>It is possible to also visualise the box by typing <code>pbc box</code>into the terminal/console window, after <code>vmd
@@ -690,7 +932,7 @@ Performance:        1.395       17.206</code></pre>
 <p>It is useful to be able to produce an image of your simulation, for a report or a publication. For example image
     below is rendered with VMD. In this section we will learn how to do it. </p>
 
-<p><img src="Session2.html/render.png" alt="render.png"></p>
+<p><img src="Session2/render.png" alt="render.png"></p>
 
 <p>Figure 2: Elk prion protein in a simulation box created with VMD: Backbone is shown in red, Na ions as blue spheres,
     Cl ions as green spheres, water is shown as a surface representation, also highlighting the size of the simulation
@@ -1037,7 +1279,5 @@ GROMACS reminds you: &quot;The use of COBOL cripples the mind; its teaching shou
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-
 </body>
-
 </html>

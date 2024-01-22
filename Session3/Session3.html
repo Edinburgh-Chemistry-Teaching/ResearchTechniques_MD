@@ -19,32 +19,28 @@
 
 <div class="box">
     <h1 id="toc_0">Layered Material Setup</h1>
-
     <p><strong>Contact:</strong><br/>
         Dr Valentina Erastova (<a href="mailto:valentina.erastova@ed.ac.uk">valentina.erastova@ed.ac.uk</a>)<br/>
-        Office B21 (Office hours Wedn 10.00-12.00 in weeks 3, 4 and 5)
+        Office B21 (Office hours Wedn 10.00&dash;12.00 in weeks 3, 4 and 5)
     </p>
-    <p><strong>Demonstrators:</strong>
+    <p><strong>Demonstrators:</strong></p>
     <ul>
         <li>Hannah Pollak</li>
         <li>Audrey Noumbissi Ngambia</li>
         <li>Sarah Stewart</li>
     </ul>
-    </p>
 </div>
 <div class="box">
     <h2 id="toc_1">Learning Outcomes</h2>
-    <p>By the end of this session you should be able to:
+    <p>By the end of this session you should be able to:</p>
     <ul>
         <li>Prepare a simple input file for a simulation</li>
         <li>Run a simple simulation of a layered material</li>
         <li>Visualise the results of the simulation</li>
     </ul>
-    </p>
 </div>
 <div class="box">
     <h2 id="toc_2">Overview</h2>
-    <p>
     <ol>
         <li> Assembling the system
             <ol>
@@ -61,7 +57,6 @@
             </ol>
         </li>
     </ol>
-    </p>
 </div>
 <div class="box">
     <h2 id="toc_3">Introduction</h2>
@@ -74,7 +69,8 @@
         = Mg<sup>2+</sup>, Fe<sup>2+</sup>, ...),
         or [M<sup>3+</sup><sub>2</sub>(OH)<sub>2</sub>O<sub>4</sub>] (M<sup>3+</sup> = Al<sup>3+</sup>, Fe<sup>3+</sup>).
         These layers are stacked on top of each other to form a 3D structure.
-        So-called <em>isomorphous substitution</em> of tetrahedral Si<sup>4+</sup> by a M<sup>3+</sup> ion or octahedral
+        So&dash;called <em>isomorphous substitution</em> of tetrahedral Si<sup>4+</sup> by a M<sup>3+</sup> ion or
+        octahedral
         M<sup>3+</sup>/M<sup>2+</sup> by M<sup>2+</sup>/M<sup>1+</sup> ions
         result in a net negative charge on the clay mineral. This negative <em>layer charge</em> is balanced by the
         presence
@@ -84,9 +80,9 @@
     <div class="flex-figure">
         <div class="flex-figure-item">
             <figure>
-                <img fetchpriority="high" width="350px" decoding="auto" src="img/clay_sheet_structure.png"
+                <img width="40%" decoding="auto" src="img/clay_sheet_structure.png"
                      class="fit-picture" alt=""/>
-                <img fetchpriority="high" width="450px" decoding="auto" src="img/clay_with_IL.png" class="fit-picture"
+                <img width="50%" decoding="auto" src="img/clay_with_IL.png" class="fit-picture"
                      alt=""/>
                 <figcaption>
                     Side view illustrations of clay sheet structure and composition (left) and two stacked clay with
@@ -97,38 +93,35 @@
     </div>
 </div>
 <div class="box" style="width: 50%; border: solid 1px dimgray; background-color: #b3d4fc; color: dimgray">
-    Their unique structure dictates their physical and chemical behaviour, as well as their interactions with other
-    molecules and ions.
-    Clays for all the 3 different parts.
+    <p>
+        Their unique structure dictates their physical and chemical behaviour, as well as their interactions with other
+        molecules and ions.
+        Clays for all the 3 different parts.</p>
     <ul>
         <li>Medicinal and Biological chemistry<br>
             Clay minerals have a wide range of applications in the pharmaceutical industry. They are employed as
             excipients and drug delivery agents, as well as, thickeners and absorbents.
         </li>
-
-        </li>
         <li>Materials chemistry<br>
             Clay minerals are used in the production of ceramics, glass, paper, paints, rubber, polymers,
             insecticides and many other industrial and domestic products.
-        </li>
         </li>
         <li>Analytical chemistry<br>
             Clay minerals are used in the analysis of a wide range of materials, including soils, sediments, rocks,
             water and air.
         </li>
-        </li>
     </ul>
 </div>
 <div class="box">
     <p>
-
         Today's system will be a montmorillonite <abbr>MMT</abbr> in contact with water, ions and organic molecules.
         We will start by building the clay sheets from unit cell (<abbr>UC</abbr>) building blocks.
         The composition of this unit cell is the following:
         [Si<sup>4+</sup><sub>8</sub>O<sub>5</sub>][Al<sup>3+</sup><sub>3</sub>Mg<sup>2+</sup>(OH)<sub>2</sub>O<sub>4</sub>]<sup>
-        -1</sup>. The -1 charge originates from one of the octahedral Al<sup>3+</sup> atoms being substituted by a
+        &dash;1</sup>. The &dash;1 charge originates from one of the octahedral Al<sup>3+</sup> atoms being substituted
+        by a
         Mg<sup>2+</sup> atom.
-        In theis session tutorial, the atoms are colour-coded according to the following scheme:
+        In theis session tutorial, the atoms are colour&dash;coded according to the following scheme:</p>
 
     <table>
         <caption>Atom type colours</caption>
@@ -172,9 +165,9 @@
     <div class="flex-container">
         <div class="flex-item">
             <figure>
-                <img fetchpriority="high" width="250px" decoding="auto" src="img/uc_top.png" class="fit-picture"
+                <img width="35%" decoding="auto" src="img/uc_top.png" class="fit-picture"
                      alt=""/>
-                <img fetchpriority="high" width="350px" decoding="auto" src="img/uc_side.png" class="fit-picture"
+                <img width="55%" decoding="auto" src="img/uc_side.png" class="fit-picture"
                      alt=""/>
                 <figcaption>
                     Montmorillonite unit cell top view (left) and side view (right).
@@ -184,8 +177,8 @@
     </div>
 
     <!--        <figure>-->
-    <!--            <img fetchpriority="high" width="250px" decoding="auto" src="img/uc_top.png" class="fit-picture" alt="" />-->
-    <!--            <img fetchpriority="high" width="350px" decoding="auto" src="img/uc_side.png" class="fit-picture" alt="" />-->
+    <!--            <img width="250px" decoding="auto" src="img/uc_top.png" class="fit-picture" alt="" />-->
+    <!--            <img width="350px" decoding="auto" src="img/uc_side.png" class="fit-picture" alt="" />-->
     <!--        <figcaption>-->
     <!--            Montmorillonite unit cell top view (left) and side view (right).-->
     <!--        </figcaption>-->
@@ -197,12 +190,12 @@
 <div class="box">
     <h2 id="toc_5">Building the clay sheets</h2>
     <p>
-        There are two steps in building a system for an <abbr title="Molecular Dynamics">MD</abbr> simulation:
+        There are two steps in building a system for an <abbr title="Molecular Dynamics">MD</abbr> simulation:</p>
     <ol>
         <li> Creating the structure</li>
         <li> Assigning the topology</li>
     </ol>
-    </p>
+
     <p>
         The clay model will consist of a single montmorillonite clay sheet. The first step is to create a sheet by
         multiplying a <abbr>MMT</abbr> <abbr>UCs</abbr>.
@@ -217,14 +210,15 @@
             </li>
             <li>Usage of <code>genconf</code>: <br>
                 <blockquote>
-                    <pre>gmx genconf -f MMT.gro -nbox &lt;x_ucs&gt; &lt;y_ucs&gt; &lt;z_ucs&gt; -o MMT_slab.gro</pre>
-                    <code>-f</code> specifies the structure file of the system to insert into.<br>
-                    <code>-nbox</code> defines the number of unit cells to put in each of <em>x y z</em> directions.<br>
-                    <code>-o</code> specifies the output file name.<br>
-                    If you only want one layer of clay, use 1 in the z-direction.
+                    <pre>gmx genconf &dash;f MMT.gro &dash;nbox &lt;x_ucs&gt; &lt;y_ucs&gt; &lt;z_ucs&gt; &dash;o MMT_slab.gro</pre>
+                    <code>&dash;f</code> specifies the structure file of the system to insert into.<br>
+                    <code>&dash;nbox</code> defines the number of unit cells to put in each of <em>x y z</em>
+                    directions.<br>
+                    <code>&dash;o</code> specifies the output file name.<br>
+                    If you only want one layer of clay, use 1 in the z&dash;direction.
                 </blockquote>
             </li>
-            <li>How many (<abbr>UCs</abbr>) do you need to multiply in x- and y-direction?
+            <li>How many (<abbr>UCs</abbr>) do you need to multiply in x&dash; and y&dash;direction?
                 <blockquote>
                     Check the size of unit cell and remember the size of the box has to be at least 2.5 x the size
                     of your cutoff.<br>
@@ -233,14 +227,14 @@
                 <div class="flex-container">
                     <div class="flex-item">
                         <figure>
-                            <img fetchpriority="high" width="300px" decoding="auto" src="img/sheet_top.png"
+                            <img width="45%" decoding="auto" src="img/sheet_top.png"
                                  class="fit-picture"
                                  alt=""/>
-                            <img fetchpriority="high" width="360px" decoding="auto" src="img/sheet_side.png"
+                            <img width="50%" decoding="auto" src="img/sheet_side.png"
                                  class="fit-picture"
                                  alt=""/>
                             <figcaption>
-                                Montmorillonite sheet model top view (left) and side-view (right).
+                                Montmorillonite sheet model top view (left) and side&dash;view (right).
                             </figcaption>
                         </figure>
                     </div>
@@ -264,7 +258,7 @@
                 <div class="flex-figure">
                     <div class="flex-figure-item">
                         <figure>
-                            <img fetchpriority="high" width="350px" decoding="auto" src="img/sheet_side_ext.png"
+                            <img width="55%" decoding="auto" src="img/sheet_side_ext.png"
                                  class="fit-picture"
                                  alt=""/>
                         </figure>
@@ -273,30 +267,29 @@
             </li>
         </ul>
     </div>
-    Now that you have a clay sheet, you can use <code>insert-molecules</code> insert decanoic acid molecules into
+    Now that you have a clay sheet, you can use <code>insert&dash;molecules</code> insert decanoic acid molecules into
     the vacuum space.
     <div class="bbox">
         <h3 id="toc_8">Task</h3>
         <ul>
-            <li>Use <code>insert-molecules</code> to insert 10 decanoic acid molecules into the vacuum space above
+            <li>Use <code>insert&dash;molecules</code> to insert 10 decanoic acid molecules into the vacuum space above
                 the clay sheet (<code>MMT_slab.gro</code>):
             </li>
-
-            <li>Usage of <code>insert-molecules</code>: <br>
+            <li>Usage of <code>insert&dash;molecules</code>: <br>
                 <blockquote>
-                    <pre>gmx insert-molecules -f MMT_slab.gro -ci dec_acid.gro -nmol &lt;number&gt; -o MMT_dec.gro</pre>
-                    <code>-f</code> specifies the structure file of the system to insert into.<br>
-                    <code>-ci</code> specifies the structure file of the molecule to insert.<br>
-                    <code>-nmol</code> defines the number of molecules to insert.<br>
-                    <code>-o</code> specifies the output file name.<br>
-                    <li>GROMACS will try to fit the requested number of molecules in the available space. It will
+                    <pre>gmx insert&dash;molecules &dash;f MMT_slab.gro &dash;ci dec_acid.gro &dash;nmol &lt;number&gt; &dash;o MMT_dec.gro</pre>
+                    <code>&dash;f</code> specifies the structure file of the system to insert into.<br>
+                    <code>&dash;ci</code> specifies the structure file of the molecule to insert.<br>
+                    <code>&dash;nmol</code> defines the number of molecules to insert.<br>
+                    <code>&dash;o</code> specifies the output file name.<br>
+                    <p>GROMACS will try to fit the requested number of molecules in the available space. It will
                         notify you about whether it was successful or not.
-                    </li>
+                    </p>
                 </blockquote>
                 <div class="flex-figure">
                     <div class="flex-figure-item">
                         <figure>
-                            <img fetchpriority="high" width="350px" decoding="auto" src="img/sheet_side_ext_dec.png"
+                            <img width="55%" decoding="auto" src="img/sheet_side_ext_dec.png"
                                  class="fit-picture"
                                  alt=""/>
                         </figure>
@@ -312,10 +305,9 @@
         topology files.
     </p>
     <p>
-    </p>
-    <p>
         In the first section, the force field parameters are defined. These always include combination rules and
-        non-bonded interaction parameters (atom types, atomic masses, atomic charges, Lennard-Jones parameters).
+        non&dash;bonded interaction parameters (atom types, atomic masses, atomic charges, Lennard&dash;Jones
+        parameters).
         They can optionally include
         bonded interaction definitions (bond, angle and dihedral types with bond, angle and dihedral interaction
         force constants and equilibrium values in this order). A detailed explanation can be found in the GROMACS
@@ -338,7 +330,7 @@
     </p>
     <p> Elements from the first two sections are usually defined in separate files that are included in the topology
         file.
-        The syntax for including files is <code>#include "&lt;filename&gt"</code>.</p>
+        The syntax for including files is <code>#include &quot;&lt;filename&gt;&quot;</code>.</p>
     <p>
         The third section contains the system name and the number of molecules of each type in the system. The
         system section starts with the keyword <code>[ system ]</code> and is followed by a name chosen for the
@@ -367,7 +359,6 @@
             <!--                        The combination rules are only be specified once and will be the same for all atoms even if-->
             <!--                        their parameters belong to different force fields.-->
             <!--                    </blockquote>-->
-            </li>
             <li>Add nonbonded parameter files (<code>ffnonbonded.itp</code>) for clay, organics and ions.
                 <blockquote>
                     All force field folders (<code>&lt;ForceFieldName.ff&gt;</code>) are located within the
@@ -410,11 +401,11 @@ DEC           1
             <li value="">Use <code>solvate</code> to solvate the box with water (<code>MMT_dec.gro</code>):</li>
             <li>Usage of <code>solvate</code>: <br>
                 <blockquote>
-                    <pre>gmx solvate -cp MMT_dec.gro -o MMT_dec_solv.gro -p MMT_slab.top -po MMT_dec_solv.top</pre>
-                    <code>-cp</code> specifies the structure file of the system to solvate.<br>
-                    <code>-o</code> specifies the output file name.<br>
-                    <code>-p</code> specifies the topology file.<br>
-                    <code>-po</code> specifies the output topology file name.<br>
+                    <pre>gmx solvate &dash;cp MMT_dec.gro &dash;o MMT_dec_solv.gro &dash;p MMT_slab.top &dash;po MMT_dec_solv.top</pre>
+                    <code>&dash;cp</code> specifies the structure file of the system to solvate.<br>
+                    <code>&dash;o</code> specifies the output file name.<br>
+                    <code>&dash;p</code> specifies the topology file.<br>
+                    <code>&dash;po</code> specifies the output topology file name.<br>
                     <p>GROMACS will try to fill the available space with solvent and update the number of water
                         (<code>SOL</code>)
                         molecules in the output topology file.
@@ -424,18 +415,19 @@ DEC           1
                     were inserted into or very close to the clay sheets. If this was the case, you can either
                     repeat the solvation step (make sure to delete the <code>SOL</code> line from the topology
                     first) or remove the water molecules manually. In order to manually remove water molecules,
-                    look at the system in VMD and press "1" on your keyboard to select the water molecules that
+                    look at the system in VMD and press &quot;1&quot; on your keyboard to select the water molecules
+                    that
                     are too close to the clay. The label od the selected water molecule will then show you
                     which residue you will need to remove from the <code>.gro</code> file. E.g. if the label
                     shows <code>SOL60:HW1</code> (see figure below), you will need to remove the three
                     <code>SOL60</code> line
                     from the <code>MMT_dec_solv.gro</code> file and change the number of atoms in the header
                     to match the new number of atoms in the file. Make sure to also update the number of water
-                    molecules in the <code>MMT_slab.top</code> file.
+                    molecules in the <code>MMT_slab.top</code> file.</p>
                 <div class="flex-figure">
                     <div class="flex-figure-item">
                         <figure>
-                            <img fetchpriority="high" width="400px" decoding="auto"
+                            <img width="55%" decoding="auto"
                                  src="img/sheet_side_water_mol.png"
                                  class="fit-picture"
                                  alt=""/>
@@ -445,7 +437,6 @@ DEC           1
                         </figure>
                     </div>
                 </div>
-                </p>
             </li>
         </ul>
     </div>
@@ -460,51 +451,56 @@ DEC           1
         <h3 id="toc_11">Task</h3>
         <ol>
             <li>Neutralise the system with Na<sup>+</sup> ions:</li>
-            <li>Generate a run <abbr>TPR</abbr> file for the system (<code>MMT_dec_solv.tpr</code>):</li>
-            Since <code>genion</code> is a type of <abbr>MD</abbr> run, you need to first use <code>grompp</code> to
-            generate a <code>TPR</code> file. The contents of the <code>MDP</code> input file is not important for
-            this step, but it has to be given.
-            <p>Usage of <code>grompp</code>:</p>
-            <blockquote>
-                <pre>gmx grompp -f genion.mdp -c MMT_dec_solv.gro -p MMT_dec_solv.top -o MMT_dec_solv.tpr -pp MMT_dec_solv_ions.top</pre>
-                <code>-f</code> specifies the <abbr>MDP</abbr> input file.<br>
-                <code>-c</code> specifies the structure file of the system to solvate.<br>
-                <code>-p</code> specifies the topology file.<br>
-                <code>-o</code> specifies the output file name.<br>
-                <code>-pp</code> specifies the output topology file name.<br>
-                <p><em>Note:</em> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>-pp</code> option
-                    to generate a new topology file with ions is used here rather than with the <code>genion</code>
-                    command.</p>
+            <li>Generate a run <abbr>TPR</abbr> file for the system (<code>MMT_dec_solv.tpr</code>):
+                <p>
+                    Since <code>genion</code> is a type of <abbr>MD</abbr> run, you need to first use
+                    <code>grompp</code> to
+                    generate a <code>TPR</code> file. The contents of the <code>MDP</code> input file is not important
+                    for
+                    this step, but it has to be given.</p>
+                <p>Usage of <code>grompp</code>:</p>
+                <blockquote>
+                    <pre>gmx grompp &dash;f genion.mdp &dash;c MMT_dec_solv.gro &dash;p MMT_dec_solv.top &dash;o MMT_dec_solv.tpr &dash;pp MMT_dec_solv_ions.top</pre>
+                    <code>&dash;f</code> specifies the <abbr>MDP</abbr> input file.<br>
+                    <code>&dash;c</code> specifies the structure file of the system to solvate.<br>
+                    <code>&dash;p</code> specifies the topology file.<br>
+                    <code>&dash;o</code> specifies the output file name.<br>
+                    <code>&dash;pp</code> specifies the output topology file name.<br>
+                    <p><em>Note:</em> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>&dash;pp</code>
+                        option
+                        to generate a new topology file with ions is used here rather than with the <code>genion</code>
+                        command.</p>
 
-            </blockquote>
-            <p>
-                <code>grompp</code> will generate a note similar to this one:
-            </p>
-            <pre>
+                </blockquote>
+                <p>
+                    <code>grompp</code> will generate a note similar to this one:
+                </p>
+                <pre>
 NOTE 3 [file MMT_slab_dec_solv.top, line 40]:
 In moleculetype 'MMT' 32 atoms are not bound by a potential or constraint
 to any other atom in the same moleculetype. Although technically this
 might not cause issues in a simulation, this often means that the user
 forgot to add a bond/potential/constraint or put multiple molecules in
-the same moleculetype definition by mistake. Run with -v to get
+the same moleculetype definition by mistake. Run with <code>&dash;v</code> to get
 information for each atom.
 </pre>
-            <p>
-                This note is not an error, but a warning that the atoms in the clay sheet are not bonded to each
-                other. Because ClayFF is a non-bonded force field, this is not an error, and you can ignore this
-                message.
-            </p>
+                <p>
+                    This note is not an error, but a warning that the atoms in the clay sheet are not bonded to each
+                    other. Because ClayFF is a non&dash;bonded force field, this is not an error, and you can ignore
+                    this
+                    message.
+                </p>
             </li>
             <li>Use <code>genion</code> to neutralise the system with Na<sup>+</sup> ions:
                 <p>Usage of <code>genion</code>: </p>
                 <blockquote>
-                    <pre>gmx genion -s MMT_dec_solv.tpr -o MMT_dec_solv_ion.gro -p MMT_dec_solv.top -pname Na -nname Cl -neutral</pre>
-                    <code>-s</code> specifies the structure file of the system to solvate.<br>
-                    <code>-o</code> specifies the output file name.<br>
-                    <code>-p</code> specifies the topology file.<br>
-                    <code>-pname</code> specifies the name of the positive ion.<br>
-                    <code>-nname</code> specifies the name of the negative ion.<br>
-                    <code>-neutral</code> specifies that the system should be neutralised.<br>
+                    <pre>gmx genion &dash;s MMT_dec_solv.tpr &dash;o MMT_dec_solv_ion.gro &dash;p MMT_dec_solv.top &dash;pname Na &dash;nname Cl &dash;neutral</pre>
+                    <code>&dash;s</code> specifies the structure file of the system to solvate.<br>
+                    <code>&dash;o</code> specifies the output file name.<br>
+                    <code>&dash;p</code> specifies the topology file.<br>
+                    <code>&dash;pname</code> specifies the name of the positive ion.<br>
+                    <code>&dash;nname</code> specifies the name of the negative ion.<br>
+                    <code>&dash;neutral</code> specifies that the system should be neutralised.<br>
                     <p>GROMACS will try to fill the available space with solvent and update the number of water
                         (<code>SOL</code>)
                         molecules in the output topology file.</p>
@@ -513,7 +509,6 @@ information for each atom.
                         water <code>SOL</code> molecules.
                     </p>
                 </blockquote>
-
             </li>
         </ol>
     </div>
@@ -531,231 +526,44 @@ information for each atom.
                 missing sections:
             </li>
             <li>Energy minimisation: <code>em.mdp</code>
-                <br>Set the maximum number of steps to 5000 and the force tolerance to 1000 kJ mol<sup>-1</sup>
-                nm<sup>-1</sup>.
+                <br>Set the maximum number of steps to 5000 and the force tolerance to 1000 kJ mol<sup>&dash;1</sup>
+                nm<sup>&dash;1</sup>.
             </li>
             <li>Equilibration: <code>eq.mdp</code><br>
                 Set the run time to 100 ps and the time step to 1 fs.
-            </li>
             </li>
             <li>Production: <code>prod.mdp</code><br>
                 Set the run time to 10 ns and the time step to 2 fs.
             </li>
         </ol>
     </div>
-
-
-    <article id="post-448" class="post-448 page type-page status-publish has-post-thumbnail hentry">
-        <header class="entry-header">
-            <h1 class="entry-title">Layered Material Set Up</h1></header>
-        <div class="entry-content">
-            <h5 style="text-align:left;">Example Protocol: Decanoic acid on Montmorillonite in a Brine</h5>
-            <p><strong>Necessary files:</strong></p>
-            <ol>
-                <li>For Clay
-                    <ul>
-                        <li>Clay unit cell: MMT.gro (can be .pdb)</li>
-                        <li>Clay topology: MMT.itp</li>
-                        <li>Forcefield: ClayFF</li>
-                    </ul>
-                </li>
-                <li>For organic
-                    <ul>
-                        <li>Organic structure file: dec_acid.gro (can be .pdb)</li>
-                        <li>Organic topology: dec_acid.itp</li>
-                        <li>If there is a special parameter file: dec_acid.prm</li>
-                        <li>Forcefield: CHARMM36</li>
-                    </ul>
-                </li>
-                <li>For brine
-                    <ul>
-                        <li>ions.itp</li>
-                        <li>water.itp</li>
-                    </ul>
-                </li>
-                <li>For simulation, parameter files
-                    <ul>
-                        <li>energy minimization</li>
-                        <li>equilibration</li>
-                        <li>production</li>
-                    </ul>
-                </li>
-            </ol>
-            <p>An alternative tutorial by Thomas Underwood, incl ClayFF files can be found on <a
-                    href="https://github.com/thomasunderwood/ClayFF" target="_blank" rel="noopener">Tom&#8217;s
-                GitHub</a>
-            </p>
-            <p><strong>Building a system ready for simulation:</strong></p>
-            <p>There are two steps in building the system for simulation: creating a structure and assigning its
-                topology.</p>
-            <p>The easiest way to go about creating the simulation box, is to first build a slab of clay with a
-                vacuum space
-                above it, then populate the vacuum space with organics, water and ions.</p>
-            <ol>
-                <li>Writing a topology file.</li>
-            </ol>
-            <p style="padding-left:60px;">A. Topology file links to force field directories and includes molecule
-                topology
-                files. It then states the number of each component unit cell/molecules/ions in the system.</p>
-            <pre style="padding-left:60px;">; params for CHARMM, this is where defaults are
-#include "./charmm36.ff/forcefield.itp"
-
-; params for ClayFF
-#include "./ClayFF.ff/ffnonbonded.itp"
-
-; params for organic
-#include "dec_acid.prm"
-#include "dec_acid.itp"
-
-; params for MMT
-#include "MMT.itp"
-
-; params for spc water and ions
-#include "./charmm36.ff/spc.itp"
-#include "./charmm36.ff/ions.itp"
-
-[ system ]
-; Name
-MMT oil brine
-
-[ molecules ]
-; Compound        #mols
-MMT                   24
-DEC                   10</pre>
-            <p style="padding-left:60px;">B. Prepare such topology, taking care to correctly link the files. Note
-                that the
-                names of the compounds should match those in the .itp and .gro files.</p>
-            <ol start="2">
-                <li>Building simulation box.</li>
-            </ol>
-            <p style="padding-left:60px;">A.<strong> Create a slab of clay</strong>. Check the size of unit cell,
-                how many
-                of them will you need to create a slab of sufficient size? Remember the size of the box has to be at
-                least
-                2.5 x the size of your cut-off. So, for a cut off at 1.2 nm you have to aim at ~ 3 nm on each side.
-            </p>
-            <pre style="padding-left:60px;">gmx genconf –f MMT.gro –nbox 6 4 1 –o MMT_slab.gro</pre>
-            <p style="padding-left:60px;">-nbox option defines the number of unit cells to put in each of <em>x y
-                z</em>
-                directions. Note that if you only want one layer of clay, use 1 in the <em>z</em>-direction. If you
-                want
-                more, then stack them up now. The vacuum will be added in the <em>z</em>-direction.</p>
-            <div id='gallery-1' class='gallery galleryid-448 gallery-columns-3 gallery-size-thumbnail'>
-                <figure class='gallery-item'>
-                    <div class='gallery-icon portrait'>
-                        <img decoding="async" width="150" height="150"
-                             src="https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-38-48-e1519754346546.png?resize=150%2C150&amp;ssl=1"
-                             class="attachment-thumbnail size-thumbnail" alt="" aria-describedby="gallery-1-426"
-                             srcset="https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-38-48-e1519754346546.png?resize=150%2C150&amp;ssl=1 150w, https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-38-48-e1519754346546.png?zoom=2&amp;resize=150%2C150 300w, https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-38-48-e1519754346546.png?zoom=3&amp;resize=150%2C150 450w"
-                             sizes="(max-width: 150px) 100vw, 150px"/>
-                    </div>
-                    <figcaption class='wp-caption-text gallery-caption' id='gallery-1-426'>
-                        view on xy-plane
-                    </figcaption>
-                </figure>
-                <figure class='gallery-item'>
-                    <div class='gallery-icon landscape'>
-                        <img decoding="async" width="150" height="150"
-                             src="https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-39-19-e1519754914976.png?resize=150%2C150&amp;ssl=1"
-                             class="attachment-thumbnail size-thumbnail" alt="" aria-describedby="gallery-1-427"
-                             srcset="https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-39-19-e1519754914976.png?resize=150%2C150&amp;ssl=1 150w, https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-39-19-e1519754914976.png?zoom=2&amp;resize=150%2C150 300w, https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-39-19-e1519754914976.png?zoom=3&amp;resize=150%2C150 450w"
-                             sizes="(max-width: 150px) 100vw, 150px"/>
-                    </div>
-                    <figcaption class='wp-caption-text gallery-caption' id='gallery-1-427'>
-                        view on zy-plane
-                    </figcaption>
-                </figure>
-            </div>
-
-            <p style="padding-left:60px;">B. Update the number of MMT unit cells in the <strong>topology
-                file</strong>.</p>
-            <p style="padding-left:60px;">C.<strong> Add vacuum</strong> in the <em>z</em>-direction. There are
-                tools to do
-                it within Gromacs, such as editconf. Personally, I would just go into the MMT_slab.gro and edit it
-                manually.
-            </p>
-            <p style="padding-left:60px;">D.<strong> Add organics</strong>. You now have a box with a periodic slab
-                of one
-                clay layer positioned at the bottom and vacuum space. Now you can add the desired number of organic
-                molecules. The program will try to fit the requested number of molecules in the available space. It
-                will
-                notify you about whether it was successful or not.</p>
-            <pre style="padding-left:60px;">gmx insert-molecules –f MMT_slab.gro –ci dec_acid.gro –nmol 10 –o MMT_dec.gro</pre>
-            <p style="padding-left:60px;">E. Update the number of decanoic acids in your <strong>topology
-                file</strong>.</p>
-            <p style="padding-left:60px;">F.<strong> Add water. </strong>The program will try to fill the available
-                space
-                with solvent. Otherwise, you can ask it to add a specific number of water molecules. The program
-                will then
-                try to fit them into a box if enough space is available.</p>
-            <pre style="padding-left:60px;">gmx solvate –cp MMT_dec.gro –o MMT_dec_w.gro –p MMT_slab.top</pre>
-            <p style="padding-left:60px;">–p is optional. If used, the program will automatically update the
-                topology with
-                the correct number of water molecules.</p>
-            <p style="padding-left:60px;">G.<strong> Add salt</strong>. MMT is a negatively charged clay, that needs
-                to be
-                drge charge-balanced. Here, we use Na<sup>+</sup> ions to counterbalance it. You can also add some
-                saline
-                solution. First, you need to compile your simulation, to produce the topol.tpr file using any .mdp
-                file.
-                Then add the ions with genion.</p>
-            <pre style="padding-left:60px;">gmx genion –s topol.tpr –o MMT_dec_w_NaCl.gro –p topol.top –neutral –pname NA –nname CL –conc 0.3</pre>
-            <div id='gallery-2' class='gallery galleryid-448 gallery-columns-4 gallery-size-medium'>
-                <figure class='gallery-item'>
-                    <div class='gallery-icon portrait'>
-                        <img fetchpriority="high" decoding="async" width="278" height="300"
-                             src="https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-532-e1519754854548.png?fit=278%2C300&amp;ssl=1"
-                             class="attachment-medium size-medium" alt="" aria-describedby="gallery-2-438"
-                             srcset="https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-532-e1519754854548.png?w=776&amp;ssl=1 776w, https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-532-e1519754854548.png?resize=278%2C300&amp;ssl=1 278w, https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-532-e1519754854548.png?resize=768%2C827&amp;ssl=1 768w"
-                             sizes="(max-width: 278px) 100vw, 278px"/>
-                    </div>
-                    <figcaption class='wp-caption-text gallery-caption' id='gallery-2-438'>
-                        +vacuum slab
-                    </figcaption>
-                </figure>
-                <figure class='gallery-item'>
-                    <div class='gallery-icon portrait'>
-                        <img loading="lazy" decoding="async" width="278" height="300"
-                             src="https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-591-e1519754875960.png?fit=278%2C300&amp;ssl=1"
-                             class="attachment-medium size-medium" alt="" aria-describedby="gallery-2-439"
-                             srcset="https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-591-e1519754875960.png?w=765&amp;ssl=1 765w, https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-591-e1519754875960.png?resize=278%2C300&amp;ssl=1 278w"
-                             sizes="(max-width: 278px) 100vw, 278px"/>
-                    </div>
-                    <figcaption class='wp-caption-text gallery-caption' id='gallery-2-439'>
-                        +organic
-                    </figcaption>
-                </figure>
-                <figure class='gallery-item'>
-                    <div class='gallery-icon portrait'>
-                        <img loading="lazy" decoding="async" width="281" height="300"
-                             src="https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-331-e1519754811424.png?fit=281%2C300&amp;ssl=1"
-                             class="attachment-medium size-medium" alt="" aria-describedby="gallery-2-436"
-                             srcset="https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-331-e1519754811424.png?w=769&amp;ssl=1 769w, https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-331-e1519754811424.png?resize=281%2C300&amp;ssl=1 281w"
-                             sizes="(max-width: 281px) 100vw, 281px"/>
-                    </div>
-                    <figcaption class='wp-caption-text gallery-caption' id='gallery-2-436'>
-                        +water
-                    </figcaption>
-                </figure>
-                <figure class='gallery-item'>
-                    <div class='gallery-icon portrait'>
-                        <img loading="lazy" decoding="async" width="276" height="300"
-                             src="https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-451-e1519754778855.png?fit=276%2C300&amp;ssl=1"
-                             class="attachment-medium size-medium" alt="" aria-describedby="gallery-2-437"
-                             srcset="https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-451-e1519754778855.png?w=771&amp;ssl=1 771w, https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-451-e1519754778855.png?resize=276%2C300&amp;ssl=1 276w, https://i0.wp.com/www.erastova.xyz/wp-content/uploads/2018/02/screen-shot-2018-02-27-at-17-44-451-e1519754778855.png?resize=768%2C834&amp;ssl=1 768w"
-                             sizes="(max-width: 276px) 100vw, 276px"/>
-                    </div>
-                    <figcaption class='wp-caption-text gallery-caption' id='gallery-2-437'>
-                        +ions
-                    </figcaption>
-                </figure>
-            </div>
-
-            <p style="text-align:center;"><em><strong>Now your system is ready for simulation!</strong></em></p>
-        </div>
-        <footer class="entry-footer">
-        </footer>
-    </article><!-- #post-## -->
-
-
+    <p><em style="font-weight: bolder; font-size-adjust: 1; padding: 0; margin: 0">DONE!</em><br></p>
+    <h2 id="toc_13">Visualising the results</h2>
+    <p>
+        You can use the same procedure as in the setup procedure to visualise the trajectory.
+    </p>
+    <div class="bbox">
+        <h3 id="toc_14">Task</h3>
+        <ol>
+            <li>Open <abbr>VMD</abbr> and load the <code>MMT_dec_solv_ion.gro</code> file.</li>
+            <li>Load the trajectory file into the molecule.
+                <blockquote>
+                    <p>
+                        Right&dash;click on the molecule and select <code>Load Data into Molecule</code>.
+                        Then, select the <code>MMT_dec_solv_ion.trr</code> trajectory file.
+                    </p>
+                    <p><em>Note: </em>The loading of all the frames might take some time. You can speed up the
+                        procedd if
+                        you hide the molecule during this process. To do this, click on the <code>D</code> next to
+                        the molecule
+                        entry in the main menu. It will turn red and the molecule will be hidden. Once the
+                        trajectory is
+                        loaded, you can click on the <code>D</code> again to show the molecule.
+                        Use the <code>Play</code> button to play the trajectory. You can adjust the playback with
+                        the
+                        controls at the bottom of the main window.</p>
+                </blockquote>
+            </li>
+        </ol>
+    </div>
 </body>

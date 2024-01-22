@@ -150,13 +150,25 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p, h1 ol {
     margin-top: 0;
 }
 
-p + ol, p + ul {
-    margin-top: 0;
-    padding-top: 0;
-    margin-bottom: 0;
-    padding-bottom: 0;
+p + ol, p + ul , p > ol, p > ul {
+    margin-top: -10px;
 }
 
+p > ul:first-child, p > ol:last-child {
+    margin-bottom: -10px;
+}
+p > ul:last-child, p > ol:first-child {
+    margin-top: -10px;
+}
+p i > li:first-child {
+    margin-top: -10px;
+    padding-top: -10px;
+
+}
+p i > li:last-child {
+    margin-bottom: -20px;
+    padding-bottom: -10px;
+}
 
 li p.first {
     display: inline-block;
@@ -171,15 +183,26 @@ ul, ol {
     padding-left: 30px;
 }
 
-li ul p, li ol p {
+ul > li p, ol > li p {
     margin-top: 0px;
     margin-bottom: 0px;
     padding: 0px;
+    padding-top: 0px;
 }
 
-ul :first-child, ol :first-child {
-    margin-top: 0;
+/*ul :first-child, ol :first-child {*/
+/*    margin-top: 0;*/
+/*}*/
+
+.box ul, .box ol {
+    padding-bottom: 0px;
+    margin-bottom: 20px;
 }
+
+/*ul :last-child, ol :last-child {*/
+/*    margin-bottom: 0;*/
+/*}*/
+
 
 /*dl {*/
 /*  padding: 0; }*/
@@ -682,25 +705,17 @@ pre[class*="language-"] {
 .box {
     margin: 0 auto;
     max-width: 960px;
-    padding: 0 20px;
-    padding-bottom: 0.5ex;
-    padding-top: 0.5ex;
+    padding: 0.5ex 20px;
     border-bottom: #041E42;
     border-bottom-style: solid;
     border-bottom-width: 1px;
 }
 
 .bbox {
-    margin: 10px auto;
     max-width: 960px;
-    padding: 0 20px;
-    padding-bottom: 0.5ex;
-    padding-top: 0.5ex;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: #041E42;
-    border-style: solid;
-    border-width: 1px;
+    padding: 0.5ex 20px;
+    border: 1px solid #041E42;
+    margin: 20px auto;
 }
 
 .bbox ul, .bbox ol {
@@ -820,8 +835,6 @@ pre[class*="language-"] {
     content: none;
 }
 
-/*.bbox ul > li pre {*/
-/*    margin-right: 0;*/
-/*    margin-left: 10px;*/
-/*}*/
-
+.box:last-of-type {
+    border: none;
+}
