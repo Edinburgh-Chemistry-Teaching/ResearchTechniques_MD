@@ -23,3 +23,7 @@ Include the following:
 Describe your result data with a plot that illustrates your findings and a rendering of the system. 
 Make sure to add all the descriptive captions that are necessary for understanding the figures without the need
 to refer to the text.
+
+## References:
+Include consistently formatted references for relevant literature, structures, force field parameters and software 
+packages used in your project.
