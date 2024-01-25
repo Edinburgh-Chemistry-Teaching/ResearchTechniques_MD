@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Intro2BASH_S4</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+  body {
+    padding: 2cm; 
+  }
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">PART 4 &ndash; Loops</h1>
+
+<p>👆<a href="Session1.html">Go to the main menu</a> <br>
+👈<a href="Intro2BASH_S3.html">Go to the previous part &ndash; Pipes and Filters</a><br>
+👉<a href="Intro2BASH_S5.html">Go to the next part &ndash; Shell Script</a></p>
+
+<p><span style="color:blue"> <strong>This is an advanced topic and extra material</strong> </span></p>
+
+<p><strong>Loops</strong> are a programming construct which allow us to repeat a command or set of commands for each item in a list. As such, they are key to productivity improvements through automation. Similar to wildcards and tab completion, using loops also reduces the amount of typing required (and hence reduces the number of typing mistakes).</p>
+
+<p>Suppose we have several hundred genome data files named <code>basilisk.dat</code>, <code>minotaur.dat</code>, and <code>unicorn.dat</code>. For this example, we’ll use the <code>exercise-data/creatures</code> directory, which only has three example files, but the principles can be applied to many, many more files at once.</p>
+
+<p>The structure of these files is the same: the common name, classification, and updated dates are presented on the first three lines, with DNA sequences on the following lines. Let’s look at the files:</p>
+
+<div><pre><code class="language-bash">$ head -n 5 basilisk.dat minotaur.dat unicorn.dat</code></pre></div>
+
+<p>We would like to print out the classification for each species, which is given on the second line of each file. For each file, we would need to execute the command <code>head -n 2</code> and pipe this to <code>tail -n 1</code>. We’ll use a loop to solve this problem, but first, let’s look at the general form of a loop using the pseudo-code below:</p>
+
+<div><pre><code class="language-bash"># The word &quot;for&quot; indicates the start of a &quot;For-loop&quot; command
+for thing in list_of_things 
+#The word &quot;do&quot; indicates the start of job execution list
+do 
+    # Indentation within the loop is not required but aids legibility
+    operation_using/command $thing 
+# The word &quot;done&quot; indicates the end of a loop
+done </code></pre></div>
+
+<p>and we can apply this to our example,like this:</p>
+
+<div><pre><code class="language-bash">$ for filename in basilisk.dat minotaur.dat unicorn.dat
+&gt; do
+&gt;     echo $filename
+&gt;     head -n 2 $filename | tail -n 1
+&gt; done</code></pre></div>
+
+<div><pre><code class="language-bash">basilisk.dat
+CLASSIFICATION: basiliscus vulgaris
+minotaur.dat
+CLASSIFICATION: bos hominus
+unicorn.dat
+CLASSIFICATION: equus monoceros</code></pre></div>
+
+<blockquote>
+<p>❗️ The shell prompt changes from <code>$</code> to <code>&gt;</code> and back again as we were typing in our loop. The second prompt, <code>&gt;</code>, is different to remind us that we haven’t finished typing a complete command yet. A semicolon, <code>;</code>, can be used to separate two commands written on a single line.</p>
+
+<p>When the shell sees the keyword <code>for</code>, it knows to repeat a command (or group of commands) once for each item in a list. Each time the loop runs (called an iteration), an item in the list is assigned in sequence to the <em>variable</em>, and the commands inside the loop are executed before moving on to the next item in the list. Inside the loop, we call for the variable’s value by putting <code>$</code> in front of it. The <code>$</code> tells the shell interpreter to treat the variable as a variable name and substitute its value in its place, rather than treat it as text or an external command.</p>
+</blockquote>
+
+<p>In this example, the list is three filenames: <code>basilisk.dat</code>, <code>minotaur.dat</code>, and <code>unicorn.dat</code>. Each time the loop iterates, we first use <code>echo</code> to print the value that the variable <code>$filename</code> currently holds. This is not necessary for the result, but beneficial for us here to have an easier time to follow along. Next, we will run the head command on the file currently referred to by <code>$filename</code>. The first time through the loop, <code>$filename</code> is <code>basilisk.dat</code>. The interpreter runs the command <code>head</code> on <code>basilisk.dat</code> and pipes the first two lines to the <code>tail</code> command, which then prints the second line of <code>basilisk.dat</code>. For the second iteration, <code>$filename</code> becomes <code>minotaur.dat</code>. This time, the shell runs <code>head</code> on <code>minotaur.dat</code> and pipes the first two lines to the <code>tail</code> command, which then prints the second line of <code>minotaur.dat</code>. For the third iteration, <code>$filename</code> becomes <code>unicorn.dat</code>, so the shell runs the <code>head</code> command on that file and <code>tail</code> on the output of that. Since the list was only three items, the shell exits the for loop.</p>
+
+<blockquote>
+<p>❗️ Here, we see <code>&gt;</code> being used as a shell prompt, whereas <code>&gt;</code> is also used to redirect output. Similarly, <code>$</code> is used as a shell prompt, but, as we saw earlier, it is also used to ask the shell to get the value of a variable.</p>
+
+<p>If the shell prints <code>&gt;</code> or <code>$</code> then it expects you to type something, and the symbol is a prompt.</p>
+
+<p>If you type <code>&gt;</code> or <code>$</code> yourself, it is an instruction from you that the shell should redirect output or get the value of a variable.</p>
+
+<p>When using variables, it is also possible to put the names into curly braces to clearly delimit the variable name: <code>$filename</code> is equivalent to <code>${filename}</code>, but is different from <code>${file}name</code>. You may find this notation in other people’s programs.</p>
+</blockquote>
+
+<p>We have called the variable in this loop <code>filename</code> in order to make its purpose clearer to human readers. The shell itself doesn’t care what the variable is called; if we wrote this loop as:</p>
+
+<div><pre><code class="language-bash">$ for x in basilisk.dat minotaur.dat unicorn.dat
+&gt; do
+&gt;     head -n 2 $x | tail -n 1
+&gt; done</code></pre></div>
+
+<p>or:</p>
+
+<div><pre><code class="language-bash">$ for temperature in basilisk.dat minotaur.dat unicorn.dat
+&gt; do
+&gt;     head -n 2 $temperature | tail -n 1
+&gt; done</code></pre></div>
+
+<p>it would work exactly the same way. Don’t do this. Programs are only useful if people can understand them, so meaningless names (like <code>x</code>) or misleading names (like <code>temperature</code>) increase the odds that the program won’t do what its readers think it does.</p>
+
+<p>In the above examples, the variables (<code>thing</code>, <code>filename</code>, <code>x</code> and <code>temperature</code>) could have been given any other name, as long as it is meaningful to both the person writing the code and the person reading it.</p>
+
+<p>Note also that loops can be used for other things than filenames, like a list of numbers or a subset of data.</p>
+
+<h4 id="toc_1">TASK 1</h4>
+
+<p>How would you write a loop that echoes all 10 numbers from 0 to 9?</p>
+
+<p><details>
+  <summary><strong>SOLUTION 1</strong></summary></p>
+
+<div><pre><code class="language-bash">$ for loop_variable in 0 1 2 3 4 5 6 7 8 9
+&gt; do
+&gt;     echo $loop_variable
+&gt; done
+</code></pre></div>
+
+<p></details></p>
+
+<h4 id="toc_2">TASK 2</h4>
+
+<p>This exercise refers to the <code>shell-lesson-data/exercise-data/alkanes</code> directory. <code>ls *.pdb</code> gives the following output:</p>
+
+<div><pre><code class="language-bash">cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb</code></pre></div>
+
+<p>What is the output of the following code?</p>
+
+<div><pre><code class="language-bash">$ for datafile in *.pdb
+&gt; do
+&gt;     ls *.pdb
+&gt; done
+</code></pre></div>
+
+<p>Now, what is the output of the following code?</p>
+
+<div><pre><code class="language-bash">$ for datafile in *.pdb
+&gt; do
+&gt;     ls $datafile
+&gt; done</code></pre></div>
+
+<p>Why do these two loops give different outputs?</p>
+
+<p><details>
+  <summary><strong>SOLUTION 2</strong></summary></p>
+
+<p>The first code block gives the same output on each iteration through the loop. Bash expands the wildcard <code>*.pdb</code> within the loop body (as well as before the loop starts) to match all files ending in <code>.pdb</code> and then lists them using <code>ls</code>. The expanded loop would look like this:</p>
+
+<div><pre><code class="language-bash">$ for datafile in cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+&gt; do
+&gt;     ls cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+&gt; done</code></pre></div>
+
+<p>Output is then:
+<code>bash
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+</code></p>
+
+<p>The second code block lists a different file on each loop iteration. The value of the <code>datafile</code> variable is evaluated using <code>$datafile</code>, and then listed using <code>ls</code>.</p>
+
+<div><pre><code class="language-bash">cubane.pdb
+ethane.pdb
+methane.pdb
+octane.pdb
+pentane.pdb
+propane.pdb</code></pre></div>
+
+<p></details></p>
+
+<h4 id="toc_3">Question 1</h4>
+
+<p>What would be the output of running the following loop in the shell-lesson-data/exercise-data/alkanes` directory?</p>
+
+<div><pre><code class="language-bash">$ for filename in c*
+&gt; do
+&gt;     ls $filename
+&gt; done
+</code></pre></div>
+
+<ol>
+<li>No files are listed.</li>
+<li>All files are listed.</li>
+<li>Only cubane.pdb, octane.pdb and pentane.pdb are listed.</li>
+<li>Only cubane.pdb is listed.</li>
+</ol>
+
+<p><details>
+  <summary><strong>ANSWER 1</strong></summary></p>
+
+<p>4 is the correct answer. <code>*</code> matches zero or more characters, so any file name starting with the letter <code>c</code>, followed by zero or more other characters will be matched.</p>
+
+<p></details></p>
+
+<h4 id="toc_4">Question 2</h4>
+
+<p>How would the output differ from using this command instead?</p>
+
+<div><pre><code class="language-bash">$ for filename in *c*
+&gt; do
+&gt;     ls $filename
+&gt; done
+</code></pre></div>
+
+<ol>
+<li>The same files would be listed.</li>
+<li>All the files are listed this time.</li>
+<li>No files are listed this time.</li>
+<li>The files <code>cubane.pdb</code> and <code>octane.pdb</code> will be listed.</li>
+<li>Only the file <code>octane.pdb</code> will be listed.</li>
+</ol>
+
+<p><details>
+  <summary><strong>ANSWER 2</strong></summary></p>
+
+<p>4 is the correct answer. <code>*</code> matches zero or more characters, so a file name with zero or more characters before letter <code>c</code> and zero or more characters after the letter <code>c</code> will be matched.</p>
+
+<p></details></p>
+
+<h4 id="toc_5">Question 3</h4>
+
+<p>In the <code>shell-lesson-data/exercise-data/alkanes</code> directory, what is the effect of this loop?</p>
+
+<div><pre><code class="language-bash">for alkanes in *.pdb
+do
+    echo $alkanes
+    cat $alkanes &gt; alkanes.pdb
+done</code></pre></div>
+
+<ol>
+<li>Prints <code>cubane.pdb</code>, <code>ethane.pdb</code>, <code>methane.pdb</code>, <code>octane.pdb</code>, <code>pentane.pdb</code> and <code>propane.pdb</code>, and the text from <code>propane.pdb</code> will be saved to a file called <code>alkanes.pdb</code>.</li>
+<li>Prints <code>cubane.pdb</code>, <code>ethane.pdb</code>, and <code>methane.pdb</code>, and the text from all three files would be concatenated and saved to a file called <code>alkanes.pdb</code>. </li>
+<li>Prints <code>cubane.pdb</code>, <code>ethane.pdb</code>, <code>methane.pdb</code>, <code>octane.pdb</code>, and <code>pentane.pdb</code>, and the text from <code>propane.pd</code>b will be saved to a file called <code>alkanes.pdb</code>.</li>
+<li>None of the above</li>
+</ol>
+
+<p><details>
+  <summary><strong>ANSWER 3</strong></summary></p>
+
+<p>The text from each file in turn gets written to the <code>alkanes.pdb</code> file. However, the file gets overwritten on each loop iteration, so the final content of<code>alkanes.pdb</code> is the text from the <code>propane.pdb</code> file.
+</details></p>
+
+<h4 id="toc_6">Question 4</h4>
+
+<p>Also in the <code>shell-lesson-data/exercise-data/alkanes</code> directory, what would be the output of the following loop?</p>
+
+<div><pre><code class="language-bash">for datafile in *.pdb
+do
+    cat $datafile &gt;&gt; all.pdb
+done</code></pre></div>
+
+<ol>
+<li>All of the text from <code>cubane.pdb</code>, <code>ethane.pdb</code>, <code>methane.pdb</code>, <code>octane.pdb</code> and <code>pentane.pdb</code>  would be concatenated and saved to a file called <code>all.pdb</code>.</li>
+<li>The text from <code>ethane.pdb</code> will be saved to a file called <code>all.pdb</code>.</li>
+<li>All of the text from <code>cubane.pdb</code>, <code>ethane.pdb</code>, <code>methane.pdb</code>, <code>octane.pdb</code>, <code>pentane.pdb</code>, and <code>propane.pdb</code> would be concatenated and saved to a file called <code>all.pdb</code>.</li>
+<li>All of the text from <code>cubane.pdb</code>, <code>ethane.pdb</code>, <code>methane.pdb</code>, <code>octane.pdb</code>, <code>pentane.pdb</code> and <code>propane.pdb</code> would be printed to the screen and saved to a file called <code>all.pdb</code>.</li>
+</ol>
+
+<p><details>
+  <summary><strong>ANSWER 4</strong></summary></p>
+
+<p>3 is the correct answer. <code>&gt;&gt;</code> appends to a file, rather than overwriting it with the redirected output from a command. Given the output from the <code>cat</code> command has been redirected, nothing is printed to the screen.</p>
+
+<p></details></p>
+
+<p>Let’s continue with our example in the <code>shell-lesson-data/exercise-data/creatures</code> directory. Here’s a slightly more complicated loop:</p>
+
+<div><pre><code class="language-bash">$ for filename in *.dat
+&gt; do
+&gt;     echo $filename
+&gt;     head -n 100 $filename | tail -n 20
+&gt; done</code></pre></div>
+
+<p>The shell starts by expanding <code>*.dat</code> to create the list of files it will process. The loop body then executes two commands for each of those files. </p>
+
+<p>The first command, <code>echo</code>, prints its command-line arguments to standard output. For example:</p>
+
+<div><pre><code class="language-bash">$ echo hello there</code></pre></div>
+
+<p>prints:</p>
+
+<div><pre><code class="language-bash">hello there</code></pre></div>
+
+<p>In this case, since the shell expands <code>$filename</code> to be the name of a file, <code>echo $filename</code> prints the name of the file. Note that we can’t write this as:</p>
+
+<div><pre><code class="language-bash">$ for filename in *.dat
+&gt; do
+&gt;     $filename
+&gt;     head -n 100 $filename | tail -n 20
+&gt; done</code></pre></div>
+
+<p>because then the first time through the loop, when <code>$filename</code> expanded to <code>basilisk.dat</code>, the shell would try to run <code>basilisk.dat</code> as a program. </p>
+
+<p>The second command is <code>head</code> and <code>tail</code> combination. It selects lines 81-100 from whatever file is being processed (assuming the file has at least 100 lines).</p>
+
+<p>We would like to modify each of the files in <code>shell-lesson-data/exercise-data/creatures</code>, but also save a version of the original files. We want to copy the original files to new files named <code>original-basilisk.dat</code> and <code>original-unicorn.dat</code>, for example. We can’t use:</p>
+
+<div><pre><code class="language-bash">$ cp *.dat original-*.dat</code></pre></div>
+
+<p>because that would expand to:</p>
+
+<div><pre><code class="language-bash">$ cp basilisk.dat minotaur.dat unicorn.dat original-*.dat</code></pre></div>
+
+<p>This wouldn’t back up our files, instead, we get an error:</p>
+
+<div><pre><code class="language-bash">cp: target `original-*.dat&#39; is not a directory</code></pre></div>
+
+<p>This problem arises when <code>cp</code> receives more than two inputs. When this happens, it expects the last input to be a directory where it can copy all the files it was passed. Since there is no directory named <code>original-*.dat</code> in the <code>creatures</code> directory, we get an error.</p>
+
+<p>Instead, we can use a loop:</p>
+
+<div><pre><code class="language-bash">$ for filename in *.dat
+&gt; do
+&gt;     cp $filename original-$filename
+&gt; done</code></pre></div>
+
+<p>This loop runs the cp command once for each filename. The first time, when <code>$filename</code> expands to <code>basilisk.dat</code>, the shell executes:</p>
+
+<div><pre><code class="language-bash">cp basilisk.dat original-basilisk.dat</code></pre></div>
+
+<p>The second time, the command is:</p>
+
+<div><pre><code class="language-bash">cp minotaur.dat original-minotaur.dat</code></pre></div>
+
+<p>The third and last time, the command is:</p>
+
+<div><pre><code class="language-bash">cp unicorn.dat original-unicorn.dat</code></pre></div>
+
+<p>Since the <code>cp</code> command does not normally produce any output, it’s hard to check that the loop is working correctly. However, we learned earlier how to print strings using <code>echo</code>, and we can modify the loop to use <code>echo</code> to print our commands without actually executing them. As such, we can check what commands would be run in the unmodified loop.</p>
+
+<p>The following diagram shows what happens when the modified loop is executed and demonstrates how the judicious use of echo is a good debugging technique.</p>
+
+<p><img src="./img/shell_script_for_loop_flow_chart.svg" alt="loop"></p>
+
+<hr>
+
+<h2 id="toc_7">Nelle’s Pipeline: Processing Files</h2>
+
+<p>Nelle is now ready to process her data files using <code>goostats.sh</code> — a shell script written by her supervisor. This calculates some statistics from a protein sample file and takes two arguments:</p>
+
+<ol>
+<li>an input file (containing the raw data)</li>
+<li>an output file (to store the calculated statistics)</li>
+</ol>
+
+<p>Since she’s still learning how to use the shell, she decides to build up the required commands in stages. Her first step is to make sure that she can select the right input files — remember, these are ones whose names end in ‘A’ or ‘B’, rather than ‘Z’. Moving to the <code>north-pacific-gyre</code> directory, Nelle types:</p>
+
+<div><pre><code class="language-bash">$ cd
+$ cd Desktop/shell-lesson-data/north-pacific-gyre
+$ for datafile in NENE*A.txt NENE*B.txt
+&gt; do
+&gt;     echo $datafile
+&gt; done</code></pre></div>
+
+<div><pre><code class="language-bash">NENE01729A.txt
+NENE01729B.txt
+NENE01736A.txt
+...
+NENE02043A.txt
+NENE02043B.txt</code></pre></div>
+
+<p>Her next step is to decide what to call the files that the <code>goostats.sh</code> analysis program will create. Prefixing each input file’s name with ‘stats’ seems simple, so she modifies her loop to do that:</p>
+
+<div><pre><code class="language-bash">$ for datafile in NENE*A.txt NENE*B.txt
+&gt; do
+&gt;     echo $datafile stats-$datafile
+&gt; done</code></pre></div>
+
+<div><pre><code class="language-bash">NENE01729A.txt stats-NENE01729A.txt
+NENE01729B.txt stats-NENE01729B.txt
+NENE01736A.txt stats-NENE01736A.txt
+...
+NENE02043A.txt stats-NENE02043A.txt
+NENE02043B.txt stats-NENE02043B.txt</code></pre></div>
+
+<p>She hasn’t actually run <code>goostats.sh</code> yet, but now she’s sure she can select the right files and generate the right output filenames.</p>
+
+<p>Typing in commands over and over again is becoming tedious, though, and Nelle is worried about making mistakes, so instead of re-entering her loop, she presses <code>↑</code>. In response, the shell redisplays the whole loop on one line (using semi-colons to separate the pieces):</p>
+
+<div><pre><code class="language-bash">$ for datafile in NENE*A.txt NENE*B.txt; do echo $datafile stats-$datafile; done</code></pre></div>
+
+<p>Using the <code>←</code>, Nelle navigates to the echo command and changes it to bash <code>goostats.sh</code>:</p>
+
+<div><pre><code class="language-bash">$ for datafile in NENE*A.txt NENE*B.txt; do bash goostats.sh $datafile stats-$datafile; done</code></pre></div>
+
+<p>When she presses <code>Enter</code>, the shell runs the modified command. However, nothing appears to happen — there is no output. After a moment, Nelle realizes that since her script doesn’t print anything to the screen any longer, she has no idea whether it is running, much less how quickly. She kills the running command by typing <code>Ctrl+C</code>, uses <code>↑</code> to repeat the command, and edits it to read:</p>
+
+<div><pre><code class="language-bash">$ for datafile in NENE*A.txt NENE*B.txt; do echo $datafile;
+bash goostats.sh $datafile stats-$datafile; done</code></pre></div>
+
+<blockquote>
+<p>We can move to the beginning of a line in the shell by typing <code>Ctrl+A</code> and to the end using <code>Ctrl+</code>E.</p>
+</blockquote>
+
+<p>When she runs her program now, it produces one line of output every five seconds or so:</p>
+
+<div><pre><code class="language-bash">NENE01729A.txt
+NENE01729B.txt
+NENE01736A.txt
+...</code></pre></div>
+
+<p>1518 times 5 seconds, divided by 60, tells her that her script will take about two hours to run. As a final check, she opens another terminal window, goes into <code>north-pacific-gyre</code>, and uses <code>cat stats-NENE01729B.txt</code> to examine one of the output files. It looks good, so she decides to get some coffee and catch up on her reading.</p>
+
+<p>Another way to repeat previous work is to use the <code>history</code> command to get a list of the last few hundred commands that have been executed and then to use <code>!123</code> (where <code>123</code> is replaced by the command number) to repeat one of those commands. </p>
+
+<hr>
+
+<blockquote>
+<h3 id="toc_8">KEY POINTS PART 4</h3>
+
+<ul>
+<li>A for loop repeats commands once for every thing in a list.</li>
+<li>Every for loop needs a variable to refer to the thing it is currently operating on.</li>
+<li>Use <code>$name</code> to expand a variable (i.e., get its value). <code>${name}</code> can also be used.</li>
+<li>Do not use spaces, quotes, or wildcard characters such as <code>*’</code> or <code>?</code> in filenames, as it complicates variable expansion.</li>
+<li>Give files consistent names that are easy to match with wildcard patterns to make it easy to select them for looping.</li>
+<li>Use the up-arrow key to scroll up through previous commands to edit and repeat them.</li>
+<li>Use <code>Ctrl+R</code> to search through the previously entered commands.</li>
+<li>Use <code>history</code> to display recent commands and <code>![number]</code> to repeat a command by number.&gt; </li>
+</ul>
+</blockquote>
+
+<hr>
+
+<p>👆<a href="Session1.html">Go to the main menu</a> <br>
+👈<a href="Intro2BASH_S3.html">Go to the previous part &ndash; Pipes and Filters</a><br>
+👉<a href="Intro2BASH_S5.html">Go to the next part &ndash; Shell Script</a></p>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+!function(e){var t={variable:[{pattern:/\$?\(\([\w\W]+?\)\)/,inside:{variable:[{pattern:/(^\$\(\([\w\W]+)\)\)/,lookbehind:!0},/^\$\(\(/],number:/\b-?(?:0x[\dA-Fa-f]+|\d*\.?\d+(?:[Ee]-?\d+)?)\b/,operator:/--?|-=|\+\+?|\+=|!=?|~|\*\*?|\*=|\/=?|%=?|<<=?|>>=?|<=?|>=?|==?|&&?|&=|\^=?|\|\|?|\|=|\?|:/,punctuation:/\(\(?|\)\)?|,|;/}},{pattern:/\$\([^)]+\)|`[^`]+`/,inside:{variable:/^\$\(|^`|\)$|`$/}},/\$(?:[a-z0-9_#\?\*!@]+|\{[^}]+\})/i]};e.languages.bash={shebang:{pattern:/^#!\s*\/bin\/bash|^#!\s*\/bin\/sh/,alias:"important"},comment:{pattern:/(^|[^"{\\])#.*/,lookbehind:!0},string:[{pattern:/((?:^|[^<])<<\s*)(?:"|')?(\w+?)(?:"|')?\s*\r?\n(?:[\s\S])*?\r?\n\2/g,lookbehind:!0,inside:t},{pattern:/(["'])(?:\\\\|\\?[^\\])*?\1/g,inside:t}],variable:t.variable,"function":{pattern:/(^|\s|;|\||&)(?:alias|apropos|apt-get|aptitude|aspell|awk|basename|bash|bc|bg|builtin|bzip2|cal|cat|cd|cfdisk|chgrp|chmod|chown|chroot|chkconfig|cksum|clear|cmp|comm|command|cp|cron|crontab|csplit|cut|date|dc|dd|ddrescue|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|du|egrep|eject|enable|env|ethtool|eval|exec|expand|expect|export|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|getopts|git|grep|groupadd|groupdel|groupmod|groups|gzip|hash|head|help|hg|history|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|jobs|join|kill|killall|less|link|ln|locate|logname|logout|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|make|man|mkdir|mkfifo|mkisofs|mknod|more|most|mount|mtools|mtr|mv|mmv|nano|netstat|nice|nl|nohup|notify-send|nslookup|open|op|passwd|paste|pathchk|ping|pkill|popd|pr|printcap|printenv|printf|ps|pushd|pv|pwd|quota|quotacheck|quotactl|ram|rar|rcp|read|readarray|readonly|reboot|rename|renice|remsync|rev|rm|rmdir|rsync|screen|scp|sdiff|sed|seq|service|sftp|shift|shopt|shutdown|sleep|slocate|sort|source|split|ssh|stat|strace|su|sudo|sum|suspend|sync|tail|tar|tee|test|time|timeout|times|touch|top|traceroute|trap|tr|tsort|tty|type|ulimit|umask|umount|unalias|uname|unexpand|uniq|units|unrar|unshar|uptime|useradd|userdel|usermod|users|uuencode|uudecode|v|vdir|vi|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yes|zip)(?=$|\s|;|\||&)/,lookbehind:!0},keyword:{pattern:/(^|\s|;|\||&)(?:let|:|\.|if|then|else|elif|fi|for|break|continue|while|in|case|function|select|do|done|until|echo|exit|return|set|declare)(?=$|\s|;|\||&)/,lookbehind:!0},"boolean":{pattern:/(^|\s|;|\||&)(?:true|false)(?=$|\s|;|\||&)/,lookbehind:!0},operator:/&&?|\|\|?|==?|!=?|<<<?|>>|<=?|>=?|=~/,punctuation:/\$?\(\(?|\)\)?|\.\.|[{}[\];]/};var a=t.variable[1].inside;a["function"]=e.languages.bash["function"],a.keyword=e.languages.bash.keyword,a.boolean=e.languages.bash.boolean,a.operator=e.languages.bash.operator,a.punctuation=e.languages.bash.punctuation}(Prism);
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>

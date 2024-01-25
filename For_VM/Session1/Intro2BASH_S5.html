@@ -5,7 +5,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Computational_Exercise_Overview</title>
+<title>Intro2BASH_S5</title>
 
 
 <style type="text/css">
@@ -471,68 +471,247 @@ pre[class*="language-"] {
 
 <body>
 
-<h1 id="toc_0">Computational Exercise</h1>
+<h1 id="toc_0">PART 5 &ndash; Shell Script</h1>
 
-<p><strong>Contact</strong> 
-Dr Valentina Erastova </p>
+<p>👆<a href="Session1.html">Go to the main menu</a> <br>
+👈<a href="Intro2BASH_S4.html">Go to the previous part &ndash; Loops</a><br>
+👉<a href="Intro2BASH_S6.html">Go to the next part &ndash; Finding things</a></p>
 
-<p><a href="mailto:valentina.erastova@ed.ac.uk">valentina.erastova@ed.ac.uk</a></p>
+<p><span style="color:blue"> <strong>This is an advanced topic and extra material</strong> </span></p>
 
-<p>Office B21 (Office hours Wedn 10.00-12.00 in weeks 3, 4 and 5)</p>
+<p>We are finally ready to see what makes the shell such a powerful programming environment. We are going to take the commands we repeat frequently and save them in files so that we can re-run all those operations again later by typing a single command. For historical reasons, a bunch of commands saved in a file is usually called a <em>shell script</em>, but make no mistake — these are actually small programs.</p>
 
-<p><strong>Demonstrators:</strong>
-Hannah Pollak, 
-Audrey &hellip;, 
-&hellip;, ???</p>
+<p>Not only will writing shell scripts make your work faster, but also you won’t have to retype the same commands over and over again. It will also make it more accurate (fewer chances for typos) and more reproducible. If you come back to your work later (or if someone else finds your work and wants to build on it), you will be able to reproduce the same results simply by running your script, rather than having to remember or retype a long list of commands.</p>
 
-<p><strong>Learning Outcomes:</strong></p>
+<p>Let’s start by going back to <code>alkanes/</code> and creating a new file, <code>middle.sh</code> which will become our shell script:</p>
 
-<ul>
-<li>  Understanding of the practical aspects of molecular simulations.</li>
-<li>  Basics of the command-line interface and usage high-performance computing resources.</li>
-<li>  Operating common computational chemistry packages to tackle real chemical problems.</li>
-<li>  Preparation of systems for molecular dynamics simulations and troubleshooting the set up, simulations and analysis steps.</li>
-<li>  Understanding of the limitations of the computational chemistry techniques used.</li>
-<li>  Reporting of the methodology and observations in a condensed written format.</li>
-<li>  Group working, encouraged and developed through the practicals.</li>
-</ul>
+<div><pre><code class="language-bash">$ cd alkanes
+$ nano middle.sh</code></pre></div>
 
-<p><strong>Overview:</strong></p>
+<p>The command <code>nano middle.sh</code> opens the file <code>middle.sh</code> within the text editor nano (which runs within the shell). If the file does not exist, it will be created. We can use the text editor to directly edit the file by inserting the following line:</p>
 
-<p>Computational techniques have become an integral part of the research, with their importance and contribution to scientific discovery growing rapidly in recent years. The use of computational techniques in chemistry has made it possible to simulate chemical reactions and predict the properties of molecules with a high degree of accuracy. Additionally, molecular simulations have made it possible to study complex systems that are difficult, if not impossible, to study experimentally, such as large protein complexes, biological membranes, interactions of molecules and materials at the interface, processes in space or in extreme conditions. These methods have had a positive impact on society by accelerating the development of new drugs, materials, and technologies. Therefore, it is essential for students to have a solid understanding of computational techniques and their applications in modern scientific methods. This part of the course, focuses on molecular dynamics simulations, one of the most commonly used methodologies in current research. </p>
+<div><pre><code class="language-bash">head -n 15 octane.pdb | tail -n 5</code></pre></div>
 
-<p><strong>Content:</strong></p>
+<p>This is a variation on the pipe we constructed earlier, which selects lines 11-15 of the file <code>octane.pdb</code>. Remember, we are not running it as a command just yet; we are only incorporating the commands in a file.</p>
 
-<p>Session 1: Introduction to Linux and command-line.</p>
+<p>Then we save the file (<code>Ctrl-O</code> in nano) and exit the text editor (<code>Ctrl-X</code> in nano). Check that the directory alkanes now contains a file called <code>middle.sh</code>.</p>
 
-<p><a href="./test_session2_HTML/Day2_Protein_Sims.html">Session 2</a>: Introduction to molecular dynamics simulations on a practical simulation of a protein.</p>
+<p>Once we have saved the file, we can ask the shell to execute the commands it contains. Our shell is called bash, so we run the following command:</p>
 
-<p>Session 3: Molecular simulation set up of system with an interface.</p>
+<div><pre><code class="language-bash">$ bash middle.sh
+ATOM      9  H           1      -4.502   0.681   0.785  1.00  0.00
+ATOM     10  H           1      -5.254  -0.243  -0.537  1.00  0.00
+ATOM     11  H           1      -4.357   1.252  -0.895  1.00  0.00
+ATOM     12  H           1      -3.009  -0.741  -1.467  1.00  0.00
+ATOM     13  H           1      -3.172  -1.337   0.206  1.00  0.00</code></pre></div>
 
-<p>Session 4: Beginning of the individual projects.</p>
+<p>Sure enough, our script’s output is exactly what we would get if we ran that pipeline directly.</p>
 
-<p><strong>Course organisation:</strong></p>
+<p>What if we want to select lines from an arbitrary file? We could edit <code>middle.sh</code> each time to change the filename, but that would probably take longer than typing the command out again in the shell and executing it with a new file name. Instead, let’s edit <code>middle.sh</code> and make it more versatile:</p>
 
-<p>Each session is 3 hours long; students are expected to carry out work independently after each session. </p>
+<div><pre><code class="language-bash">$ nano middle.sh</code></pre></div>
 
-<p><strong>Drop-in</strong> sessions with demonstrators are scheduled on Wedn <strong>XXX</strong> in weeks 3, 4 and 5.</p>
+<p>Now, within “nano”, replace the text <code>octane.pdb</code> with the special variable called <code>$1</code>:</p>
 
-<p><strong>Assessment:</strong></p>
+<div><pre><code class="language-bash">head -n 15 &quot;$1&quot; | tail -n 5</code></pre></div>
 
-<p>An individual project (started during Session 4) is submitted in the form of a short, written report. 
-Please see the Template Report (and marking scheme) prepared based on the material of Session 3.</p>
+<p>Inside a shell script, <code>$1</code> means ‘the first filename (or other argument) on the command line’. We can now run our script like this:</p>
 
-<p><strong>Use of AI tools:</strong></p>
+<div><pre><code class="language-bash">$ bash middle.sh octane.pdb
+ATOM      9  H           1      -4.502   0.681   0.785  1.00  0.00
+ATOM     10  H           1      -5.254  -0.243  -0.537  1.00  0.00
+ATOM     11  H           1      -4.357   1.252  -0.895  1.00  0.00
+ATOM     12  H           1      -3.009  -0.741  -1.467  1.00  0.00
+ATOM     13  H           1      -3.172  -1.337   0.206  1.00  0.00</code></pre></div>
 
-<p>ChatGPT and other AI tools are &hellip; [ref to uni things] - smth on declaration of use
-Also, mention on the references and issues&hellip;</p>
+<p>or on a different file like this:</p>
+
+<div><pre><code class="language-bash">$ bash middle.sh pentane.pdb
+ATOM      9  H           1       1.324   0.350  -1.332  1.00  0.00
+ATOM     10  H           1       1.271   1.378   0.122  1.00  0.00
+ATOM     11  H           1      -0.074  -0.384   1.288  1.00  0.00
+ATOM     12  H           1      -0.048  -1.362  -0.205  1.00  0.00
+ATOM     13  H           1      -1.183   0.500  -1.412  1.00  0.00</code></pre></div>
+
+<p>For the same reason that we put the loop variable inside double-quotes, in case the filename happens to contain any spaces, we surround <code>$1</code> with double-quotes.</p>
+
+<p>Currently, we need to edit <code>middle.sh</code> each time we want to adjust the range of lines that is returned. Let’s fix that by configuring our script to instead use three command-line arguments. After the first command-line argument (<code>$1</code>), each additional argument that we provide will be accessible via the special variables <code>$1</code>, <code>$2</code>, <code>$3</code>, which refer to the first, second, third command-line arguments, respectively.</p>
+
+<p>Knowing this, we can use additional arguments to define the range of lines to be passed to head and tail, respectively:</p>
+
+<div><pre><code class="language-bash">$ nano middle.sh</code></pre></div>
+
+<p>and edit to:</p>
+
+<div><pre><code class="language-bash">head -n &quot;$2&quot; &quot;$1&quot; | tail -n &quot;$3&quot;</code></pre></div>
+
+<p>We can now run:</p>
+
+<div><pre><code class="language-bash">$ bash middle.sh pentane.pdb 15 5
+ATOM      9  H           1       1.324   0.350  -1.332  1.00  0.00
+ATOM     10  H           1       1.271   1.378   0.122  1.00  0.00
+ATOM     11  H           1      -0.074  -0.384   1.288  1.00  0.00
+ATOM     12  H           1      -0.048  -1.362  -0.205  1.00  0.00
+ATOM     13  H           1      -1.183   0.500  -1.412  1.00  0.00</code></pre></div>
+
+<p>By changing the arguments to our command, we can change our script’s behaviour:</p>
+
+<div><pre><code class="language-bash">$ bash middle.sh pentane.pdb 20 5
+ATOM     14  H           1      -1.259   1.420   0.112  1.00  0.00
+ATOM     15  H           1      -2.608  -0.407   1.130  1.00  0.00
+ATOM     16  H           1      -2.540  -1.303  -0.404  1.00  0.00
+ATOM     17  H           1      -3.393   0.254  -0.321  1.00  0.00
+TER      18              1</code></pre></div>
+
+<p>This works, but it may take the next person who reads <code>middle.sh</code> a moment to figure out what it does. We can improve our script by adding some comments at the top:</p>
+
+<div><pre><code class="language-bash">$ nano middle.sh</code></pre></div>
+
+<p>and edit:</p>
+
+<div><pre><code class="language-bash"># Select lines from the middle of a file.
+# Usage: bash middle.sh filename end_line num_lines
+head -n &quot;$2&quot; &quot;$1&quot; | tail -n &quot;$3&quot;</code></pre></div>
+
+<p>A comment starts with a <code>#</code> character and runs to the end of the line. The computer ignores comments, but they’re invaluable for helping people (including your future self) understand and use scripts. The only caveat is that each time you modify the script, you should check that the comment is still accurate. An explanation that sends the reader in the wrong direction is worse than none at all.</p>
+
+<p>What if we want to process many files in a single pipeline? For example, if we want to sort our .pdb files by length, we would type:</p>
+
+<div><pre><code class="language-bash">$ wc -l *.pdb | sort -n</code></pre></div>
+
+<p>because <code>wc -l</code> lists the number of lines in the files (recall that <code>wc</code> stands for ‘word count’, adding the <code>-l</code> option means ‘count lines’ instead) and <code>sort -n</code> sorts things numerically. We could put this in a file, but then it would only ever sort a list of <code>.pdb</code> files in the current directory. If we want to be able to get a sorted list of other kinds of files, we need a way to get all those names into the script. We can’t use <code>$1</code>, <code>$2</code>, and so on because we don’t know how many files there are. Instead, we use the special variable <code>$@</code>, which means, ‘All of the command-line arguments to the shell script’. We also should put <code>$@</code> inside double-quotes to handle the case of arguments containing spaces (<code>&quot;$@&quot;</code> is special syntax and is equivalent to <code>&quot;$1&quot; &quot;$2&quot; …</code>).</p>
+
+<p>Here’s an example:</p>
+
+<div><pre><code class="language-bash">$ nano sorted.sh</code></pre></div>
+
+<p>edit to:</p>
+
+<div><pre><code class="language-bash"># Sort files by their length.
+# Usage: bash sorted.sh one_or_more_filenames
+wc -l &quot;$@&quot; | sort -n</code></pre></div>
+
+<p>and run:</p>
+
+<div><pre><code class="language-bash">$ bash sorted.sh *.pdb ../creatures/*.dat
+9 methane.pdb
+12 ethane.pdb
+15 propane.pdb
+20 cubane.pdb
+21 pentane.pdb
+30 octane.pdb
+163 ../creatures/basilisk.dat
+163 ../creatures/minotaur.dat
+163 ../creatures/unicorn.dat
+596 total</code></pre></div>
+
+<h4 id="toc_1">TASK 1</h4>
+
+<p>Leah has several hundred data files, each of which is formatted like this:</p>
+
+<div><pre><code class="language-bash">2013-11-05,deer,5
+2013-11-05,rabbit,22
+2013-11-05,raccoon,7
+2013-11-06,rabbit,19
+2013-11-06,deer,2
+2013-11-06,fox,1
+2013-11-07,rabbit,18
+2013-11-07,bear,1</code></pre></div>
+
+<p>An example of this type of file is given in <code>shell-lesson-data/exercise-data/animal-counts/animals.csv</code>.</p>
+
+<p>We can use the command <code>cut -d , -f 2 animals.csv | sort | uniq</code> to produce the unique species in <code>animals.csv</code>. In order to avoid having to type out this series of commands every time, a scientist may choose to write a shell script instead.</p>
+
+<p>Write a shell script called <code>species.sh</code> that takes any number of filenames as command-line arguments and uses a variation of the above command to print a list of the unique species appearing in each of those files separately.</p>
+
+<p><details>
+  <summary><strong>SOLUTION 1</strong></summary></p>
+
+<div><pre><code class="language-bash">  
+# Script to find unique species in csv files where species is the second data field
+# This script accepts any number of file names as command line arguments
+
+# Loop over all files
+for file in $@
+do
+    echo &quot;Unique species in $file:&quot;
+    # Extract species names
+    cut -d , -f 2 $file | sort | uniq
+done</code></pre></div>
+
+<p></details></p>
 
 <hr>
+
+<h2 id="toc_2">Nelle’s Pipeline: Creating a Script</h2>
+
+<p>Nelle’s supervisor insisted that all her analytics must be reproducible. The easiest way to capture all the steps is in a script.</p>
+
+<p>First, we return to Nelle’s project directory:</p>
+
+<div><pre><code class="language-bash">$ cd ../../north-pacific-gyre/</code></pre></div>
+
+<p>She creates a file using nano …</p>
+
+<div><pre><code class="language-bash">$ nano do-stats.sh</code></pre></div>
+
+<p>…which contains the following:</p>
+
+<div><pre><code class="language-bash"># Calculate stats for data files.
+for datafile in &quot;$@&quot;
+do
+    echo $datafile
+    bash goostats.sh $datafile stats-$datafile
+done</code></pre></div>
+
+<p>She saves this in a file called <code>do-stats.sh</code> so that she can now re-do the first stage of her analysis by typing:</p>
+
+<div><pre><code class="language-bash">$ bash do-stats.sh NENE*A.txt NENE*B.txt</code></pre></div>
+
+<p>She can also do this:</p>
+
+<div><pre><code class="language-bash">$ bash do-stats.sh NENE*A.txt NENE*B.txt | wc -l</code></pre></div>
+
+<p>so that the output is just the number of files processed rather than the names of the files that were processed.</p>
+
+<p>One thing to note about Nelle’s script is that it lets the person running it decide what files to process. She could have written it as:</p>
+
+<div><pre><code class="language-bash"># Calculate stats for Site A and Site B data files.
+for datafile in NENE*A.txt NENE*B.txt
+do
+    echo $datafile
+    bash goostats.sh $datafile stats-$datafile
+done</code></pre></div>
+
+<p>The advantage is that this always selects the right files: she doesn’t have to remember to exclude the ‘Z’ files. The disadvantage is that it always selects just those files — she can’t run it on all files (including the ‘Z’ files), or on the ‘G’ or ‘H’ files her colleagues in Antarctica are producing, without editing the script. If she wanted to be more adventurous, she could modify her script to check for command-line arguments, and use <code>NENE*A.txt</code> <code>NENE*B.txt</code> if none were provided. Of course, this introduces another tradeoff between flexibility and complexity.</p>
+
+<blockquote>
+<h3 id="toc_3">KEY POINTS PART 5</h3>
+
+<ul>
+<li>Save commands in files (usually called shell scripts) for re-use.</li>
+<li><code>bash [filename]</code> runs the commands saved in a file.</li>
+<li><code>$@</code> refers to all of a shell script’s command-line arguments.</li>
+<li><code>$1</code>, <code>$2</code>, etc., refer to the first command-line argument, the second command-line argument, etc.</li>
+<li>Place variables in quotes if the values might have spaces in them.</li>
+<li>Letting users decide what files to process is more flexible and more consistent with built-in Unix commands.</li>
+</ul>
+</blockquote>
+
+<hr>
+
+<p>👆<a href="Session1.html">Go to the main menu</a> <br>
+👈<a href="Intro2BASH_S4.html">Go to the previous part &ndash; Loops</a><br>
+👉<a href="Intro2BASH_S6.html">Go to the next part &ndash; Finding things</a></p>
 
 
 
 <script type="text/javascript">
 var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+!function(e){var t={variable:[{pattern:/\$?\(\([\w\W]+?\)\)/,inside:{variable:[{pattern:/(^\$\(\([\w\W]+)\)\)/,lookbehind:!0},/^\$\(\(/],number:/\b-?(?:0x[\dA-Fa-f]+|\d*\.?\d+(?:[Ee]-?\d+)?)\b/,operator:/--?|-=|\+\+?|\+=|!=?|~|\*\*?|\*=|\/=?|%=?|<<=?|>>=?|<=?|>=?|==?|&&?|&=|\^=?|\|\|?|\|=|\?|:/,punctuation:/\(\(?|\)\)?|,|;/}},{pattern:/\$\([^)]+\)|`[^`]+`/,inside:{variable:/^\$\(|^`|\)$|`$/}},/\$(?:[a-z0-9_#\?\*!@]+|\{[^}]+\})/i]};e.languages.bash={shebang:{pattern:/^#!\s*\/bin\/bash|^#!\s*\/bin\/sh/,alias:"important"},comment:{pattern:/(^|[^"{\\])#.*/,lookbehind:!0},string:[{pattern:/((?:^|[^<])<<\s*)(?:"|')?(\w+?)(?:"|')?\s*\r?\n(?:[\s\S])*?\r?\n\2/g,lookbehind:!0,inside:t},{pattern:/(["'])(?:\\\\|\\?[^\\])*?\1/g,inside:t}],variable:t.variable,"function":{pattern:/(^|\s|;|\||&)(?:alias|apropos|apt-get|aptitude|aspell|awk|basename|bash|bc|bg|builtin|bzip2|cal|cat|cd|cfdisk|chgrp|chmod|chown|chroot|chkconfig|cksum|clear|cmp|comm|command|cp|cron|crontab|csplit|cut|date|dc|dd|ddrescue|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|du|egrep|eject|enable|env|ethtool|eval|exec|expand|expect|export|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|getopts|git|grep|groupadd|groupdel|groupmod|groups|gzip|hash|head|help|hg|history|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|jobs|join|kill|killall|less|link|ln|locate|logname|logout|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|make|man|mkdir|mkfifo|mkisofs|mknod|more|most|mount|mtools|mtr|mv|mmv|nano|netstat|nice|nl|nohup|notify-send|nslookup|open|op|passwd|paste|pathchk|ping|pkill|popd|pr|printcap|printenv|printf|ps|pushd|pv|pwd|quota|quotacheck|quotactl|ram|rar|rcp|read|readarray|readonly|reboot|rename|renice|remsync|rev|rm|rmdir|rsync|screen|scp|sdiff|sed|seq|service|sftp|shift|shopt|shutdown|sleep|slocate|sort|source|split|ssh|stat|strace|su|sudo|sum|suspend|sync|tail|tar|tee|test|time|timeout|times|touch|top|traceroute|trap|tr|tsort|tty|type|ulimit|umask|umount|unalias|uname|unexpand|uniq|units|unrar|unshar|uptime|useradd|userdel|usermod|users|uuencode|uudecode|v|vdir|vi|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yes|zip)(?=$|\s|;|\||&)/,lookbehind:!0},keyword:{pattern:/(^|\s|;|\||&)(?:let|:|\.|if|then|else|elif|fi|for|break|continue|while|in|case|function|select|do|done|until|echo|exit|return|set|declare)(?=$|\s|;|\||&)/,lookbehind:!0},"boolean":{pattern:/(^|\s|;|\||&)(?:true|false)(?=$|\s|;|\||&)/,lookbehind:!0},operator:/&&?|\|\|?|==?|!=?|<<<?|>>|<=?|>=?|=~/,punctuation:/\$?\(\(?|\)\)?|\.\.|[{}[\];]/};var a=t.variable[1].inside;a["function"]=e.languages.bash["function"],a.keyword=e.languages.bash.keyword,a.boolean=e.languages.bash.boolean,a.operator=e.languages.bash.operator,a.punctuation=e.languages.bash.punctuation}(Prism);
 </script>
 
 <script type="text/x-mathjax-config">
