@@ -4,12 +4,15 @@
 
 Dr Valentina Erastova, valentina.erastova@ed.ac.uk
 
-Office B21 ==(Office hours Wedn 10.00-12.00 in weeks 3, 4 and 5)==
+Office B21 (Office hours Wedn 10.00-12.00 in weeks 3, 4 and 5)
 
 
 **Demonstrators:**
 
-==Hannah Pollak, Audrey, Sarah, ..., ???==
+- Hannah Pollak
+- Audrey Noumbissi Ngambia
+- Sarah Stewart
+- Finlay Clark
 
 
 ## Learning Outcomes:
@@ -41,24 +44,28 @@ Computational techniques have become an integral part of the research, with thei
 
 ## Course organisation:
 
-Each session is 3 hours long.
+Sessionns 1 - 3 are 3 hours long. Session 4 is 1.5 hours, to introduce the independent projects.
 
 Students are expected to carry out work independently after each session. 
 
-**Drop-in sessions** with demonstrators are scheduled weekly through weens 3, 4 and 5 ==see dates/times==. You are welcome to come over and work, knowing that a demonstrator will be there to help if needed. 
+**Drop-in sessions** with demonstrators are scheduled weekly through weeks 3, 4 and 5. You are welcome to join any session, you do not need to have any specific questions, you can just come ovber and work, knowing that a demonstrator will be there to help if needed. 
 
 
 ## Assessment:
 
-An individual project (started during Session 4) is submitted in the form of a short, written report.
-
-Please see the ==Template Report (and marking scheme)== prepared based on the material of Session 3.
+An individual project (started during Session 4) is submitted in the form of a short, written report. The Templates for the report are provided in the sessions 3 and 4.
 
 
 ## Use of AI tools:
 
-==ChatGPT and other AI tools are ... [ref to uni things] - smth on declaration of use==
+AI tools can be of great help in many aspects of life, including learning. Please be aware that there are limmitations of their applicability. This course is made to teach you how to use tools in computational chemistry, it is not developped around use of AI technologies. Therefore, the use of Generative AI during learning excercises may limmit the uptake of relevant knowledge and hinder the development of necessary skills.
+ 
+We would also want to bring to your attention the use of Generative AI in the assessments. The assessments are expected to contain your original work. All summative submissions will be checked for the presence of AI-generated text and code. Therefore, to prevent misconduct, when AI tools are used to assist you during the assessment preparation, you MUST DECLARE it by stating:
 
-==Also, mention on the references and issues...==
+*  What tool has been used (e.g., ChatGPT-3.5 by OpenAI);
+*  What was the exact prompt;
+*  Link to the output ('link to chat' for ChatGpT or a compilation of outputs as an appendix);
+*  What modifications have been done to the generated output before it was incorporated into the submitted work.
 
+The University Guidance available [here](https://www.ed.ac.uk/sites/default/files/atoms/files/universityguidanceforstudentsonworkingwithgenerativeai.pdf).
 
