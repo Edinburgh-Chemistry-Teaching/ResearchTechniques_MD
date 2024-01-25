@@ -4,13 +4,13 @@
 
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
-    <meta name="description" content="Session 3: Layered material simulations"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+    <meta content="Session 3: Layered material simulations" name="description"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" href="../style.css"/>
+    <link href="../style.css" rel="stylesheet"/>
     <title>Session 3</title>
 </head>
 
@@ -18,7 +18,7 @@
 <body>
 
 <div class="box">
-    <h1 id="toc_0">Layered Material Setup</h1>
+    <h1 id="title">Layered Material Setup</h1>
     <p><strong>Contact:</strong><br/>
         Dr Valentina Erastova (<a href="mailto:valentina.erastova@ed.ac.uk">valentina.erastova@ed.ac.uk</a>)<br/>
         Office B21 (Office hours Wedn 10.00&dash;12.00 in weeks 3, 4 and 5)
@@ -31,7 +31,7 @@
     </ul>
 </div>
 <div class="box">
-    <h2 id="toc_1">Learning Outcomes</h2>
+    <h2 id="outcomes">Learning Outcomes</h2>
     <p>By the end of this session you should be able to:</p>
     <ul>
         <li>Prepare a simple input file for a simulation</li>
@@ -40,26 +40,27 @@
     </ul>
 </div>
 <div class="box">
-    <h2 id="toc_2">Overview</h2>
-    <ol>
-        <li> Assembling the system
-            <ol>
-                <li> Clay</li>
-                <li> Organics</li>
-                <li> Brine</li>
-            </ol>
-        </li>
-        <li> Running the simulation
-            <ol>
-                <li> Energy minimisation</li>
-                <li> Equilibration</li>
-                <li> Production</li>
-            </ol>
-        </li>
-    </ol>
+    <h2 id="overview">Contents</h2>
+
+    <!--    <ol class="toc-list">-->
+    <!--        <li> Assembling the system-->
+    <!--            <ol>-->
+    <!--                <li> Clay</li>-->
+    <!--                <li> Organics</li>-->
+    <!--                <li> Brine</li>-->
+    <!--            </ol>-->
+    <!--        </li>-->
+    <!--        <li> Running the simulation-->
+    <!--            <ol>-->
+    <!--                <li> Energy minimisation</li>-->
+    <!--                <li> Equilibration</li>-->
+    <!--                <li> Production</li>-->
+    <!--            </ol>-->
+    <!--        </li>-->
+    <!--    </ol>-->
 </div>
 <div class="box">
-    <h2 id="toc_3">Introduction</h2>
+    <h2 class="enum" id="toc_1">Introduction</h2>
     <p>
         Clays are a diverse group of minerals that are found in soils and sediments throughout the world.
         Their basic structural unit is a layer composed of one or two sheets of silica tetrahedra,
@@ -80,10 +81,10 @@
     <div class="flex-figure">
         <div class="flex-figure-item">
             <figure>
-                <img width="40%" decoding="auto" src="img/clay_sheet_structure.png"
-                     class="fit-picture" alt=""/>
-                <img width="50%" decoding="auto" src="img/clay_with_IL.png" class="fit-picture"
-                     alt=""/>
+                <img alt="" class="fit-picture" decoding="auto"
+                     src="img/clay_sheet_structure.png" width="40%"/>
+                <img alt="" class="fit-picture" decoding="auto" src="img/clay_with_IL.png"
+                     width="50%"/>
                 <figcaption>
                     Side view illustrations of clay sheet structure and composition (left) and two stacked clay with
                     interlayer space (right).
@@ -165,10 +166,10 @@
     <div class="flex-container">
         <div class="flex-item">
             <figure>
-                <img width="35%" decoding="auto" src="img/uc_top.png" class="fit-picture"
-                     alt=""/>
-                <img width="55%" decoding="auto" src="img/uc_side.png" class="fit-picture"
-                     alt=""/>
+                <img alt="" class="fit-picture" decoding="auto" src="img/uc_top.png"
+                     width="35%"/>
+                <img alt="" class="fit-picture" decoding="auto" src="img/uc_side.png"
+                     width="55%"/>
                 <figcaption>
                     Montmorillonite unit cell top view (left) and side view (right).
                 </figcaption>
@@ -188,22 +189,37 @@
     <!--        </span>-->
 </div>
 <div class="box">
-    <h2 id="toc_5">Building the clay sheets</h2>
+    <h2 class="enum" id="toc_2">Building the clay sheets</h2>
     <p>
-        There are two steps in building a system for an <abbr title="Molecular Dynamics">MD</abbr> simulation:</p>
-    <ol>
-        <li> Creating the structure</li>
-        <li> Assigning the topology</li>
-    </ol>
-
+        Before you start on this practical, let's create a working directory for this session.
+    </p>
+    <div class="bbox">
+        <h3 id="Creating_the_working_directory"></h3>
+        <ul>
+            <li>Create the working directory for this session</li>
+            <li>Copy the <code>session3</code> folder from practicals to your home directory:
+                <p>Open a terminal and type:</p>
+                <pre>cp -r /home/practicals/session3 .</pre>
+            </li>
+            <li>Change into the <code>session3</code> directory:
+                <pre>cd session3</pre>
+            </li>
+        </ul>
+    </div>
+    <!--    <p>-->
+    <!--        There are two steps in building a system for an <abbr title="Molecular Dynamics">MD</abbr> simulation:</p>-->
+    <!--    <ol>-->
+    <!--        <li> Creating the structure</li>-->
+    <!--        <li> Assigning the topology</li>-->
+    <!--    </ol>-->
     <p>
         The clay model will consist of a single montmorillonite clay sheet. The first step is to create a sheet by
-        multiplying a <abbr>MMT</abbr> <abbr>UCs</abbr>.
+        multiplying a single <abbr>MMT</abbr> <abbr>UC</abbr>.
         This can be done using GROMACS <code>genconf</code>.
     </p>
 
     <div class="bbox">
-        <h3 id="toc_6">Task</h3>
+        <h3 id="Create_a_clay_sheet"></h3>
         <ul>
             <li>Use <code>genconf</code> to create a single clay sheet from 24 <abbr>MMT</abbr> <abbr>UCs</abbr>
                 (<code>MMT.gro</code>):
@@ -227,12 +243,12 @@
                 <div class="flex-container">
                     <div class="flex-item">
                         <figure>
-                            <img width="45%" decoding="auto" src="img/sheet_top.png"
-                                 class="fit-picture"
-                                 alt=""/>
-                            <img width="50%" decoding="auto" src="img/sheet_side.png"
-                                 class="fit-picture"
-                                 alt=""/>
+                            <img alt="" class="fit-picture" decoding="auto"
+                                 src="img/sheet_top.png"
+                                 width="45%"/>
+                            <img alt="" class="fit-picture" decoding="auto"
+                                 src="img/sheet_side.png"
+                                 width="50%"/>
                             <figcaption>
                                 Montmorillonite sheet model top view (left) and side&dash;view (right).
                             </figcaption>
@@ -247,7 +263,7 @@
         Therefore, before moving on, you need to change the box height.
     </p>
     <div class="bbox">
-        <h3 id="toc_7">Task</h3>
+        <h3 id="Increase_the_box_height"></h3>
         <ul>
             <li>Edit the gro file to increase the box height</li>
             <li>Increase the box <em>z</em> length by editing the <code>MMT_slab.gro</code> file.
@@ -258,19 +274,20 @@
                 <div class="flex-figure">
                     <div class="flex-figure-item">
                         <figure>
-                            <img width="55%" decoding="auto" src="img/sheet_side_ext.png"
-                                 class="fit-picture"
-                                 alt=""/>
+                            <img alt="" class="fit-picture" decoding="auto"
+                                 src="img/sheet_side_ext.png"
+                                 width="55%"/>
                         </figure>
                     </div>
                 </div>
             </li>
         </ul>
     </div>
+    <h2 class="enum" id="toc_3">Adding decanoic acid molecules</h2>
     Now that you have a clay sheet, you can use <code>insert&dash;molecules</code> insert decanoic acid molecules into
     the vacuum space.
     <div class="bbox">
-        <h3 id="toc_8">Task</h3>
+        <h3 id="Insert_decanoic_acid_molecules"></h3>
         <ul>
             <li>Use <code>insert&dash;molecules</code> to insert 10 decanoic acid molecules into the vacuum space above
                 the clay sheet (<code>MMT_slab.gro</code>):
@@ -278,10 +295,10 @@
             <li>Usage of <code>insert&dash;molecules</code>: <br>
                 <blockquote>
                     <pre>gmx insert&dash;molecules &dash;f MMT_slab.gro &dash;ci dec_acid.gro &dash;nmol &lt;number&gt; &dash;o MMT_dec.gro</pre>
-                    <code>&dash;f</code> specifies the structure file of the system to insert into.<br>
-                    <code>&dash;ci</code> specifies the structure file of the molecule to insert.<br>
+                    <code>&dash;f</code> specifies the coordinate file of the system to insert into.<br>
+                    <code>&dash;ci</code> specifies the coordinate file of the molecule to insert.<br>
                     <code>&dash;nmol</code> defines the number of molecules to insert.<br>
-                    <code>&dash;o</code> specifies the output file name.<br>
+                    <code>&dash;o</code> specifies the output coordinate file name.<br>
                     <p>GROMACS will try to fit the requested number of molecules in the available space. It will
                         notify you about whether it was successful or not.
                     </p>
@@ -289,20 +306,21 @@
                 <div class="flex-figure">
                     <div class="flex-figure-item">
                         <figure>
-                            <img width="55%" decoding="auto" src="img/sheet_side_ext_dec.png"
-                                 class="fit-picture"
-                                 alt=""/>
+                            <img alt="" class="fit-picture" decoding="auto"
+                                 src="img/sheet_side_ext_dec.png"
+                                 width="55%"/>
                         </figure>
                     </div>
                 </div>
             </li>
         </ul>
     </div>
+    <h2 class="enum" id="toc_4">Preparing the topology file</h2>
     <p>
         Before proceeding to the next step in which you will solvate the box, you need to generate a topology
         (<code>.top</code>) file
         that include all molecules present in the system. The following sections explain the structure of GROMACS
-        topology files.
+        topology files in some more detail than in <a href="../Session2/Session2.html">Session2</a>.
     </p>
     <p>
         In the first section, the force field parameters are defined. These always include combination rules and
@@ -313,14 +331,14 @@
         force constants and equilibrium values in this order). A detailed explanation can be found in the GROMACS
         documentation pages: <a
             href="https://manual.gromacs.org/current/reference-manual/topologies/topology-file-formats.html#topfile"
-            target="_blank"
-            rel="noopener">topology files</a>,
-        <a href="https://manual.gromacs.org/current/reference-manual/topologies/topologies.html" target="_blank"
-           rel="noopener">topologies</a> and
+            rel="noopener"
+            target="_blank">topology files</a>,
+        <a href="https://manual.gromacs.org/current/reference-manual/topologies/topologies.html" rel="noopener"
+           target="_blank">topologies</a> and
         <a
                 href="https://manual.gromacs.org/current/reference-manual/functions/functions.html#ff"
-                target="_blank"
-                rel="noopener">force fields</a>.<br>
+                rel="noopener"
+                target="_blank">force fields</a>.<br>
     </p>
     <p>
         Even if they only consist of one atom, all atoms of the system are part of molecules. These <code>[
@@ -342,7 +360,7 @@
 
     </p>
     <div class="bbox">
-        <h3 id="toc_9">Task</h3>
+        <h3 id="Generate_the_topology_file"></h3>
         <ol>
             <li>Generate a topology file for the system (<code>MMT_slab.top</code>):</li>
             <li>Open the topology file stub <code>MMT_slab.top</code> in a text editor to fill in missing
@@ -368,9 +386,9 @@
                     force field parameters. <br>
                     Clay and water share the same atom types. Therefore, no separate
                     <code>ffnonbonded.itp</code> file needs to be added for water.<br>
-                    <em>Remember:</em> Everything that comes after a <code>;</code> will be trated as a comment and
-                    is
-                    not read by GROMACS.
+                    <p class="remember"> Everything that comes after a <code>;</code> will be trated as a comment and
+                        is
+                        not read by GROMACS.</p>
                 </blockquote>
             </li>
             <li>Add bonded parameters for organics (<code>ffbonded.itp</code>).</li>
@@ -392,20 +410,22 @@ DEC           1
             </li>
         </ol>
     </div>
+    <h2 class="enum" id="toc_5">Solvating the system</h2>
     <p>
         Now that you have a topology file, you can use GROMACS <code>solvate</code> the box.
     </p>
     <div class="bbox">
-        <h3 id="toc_10">Task</h3>
+        <h3 id="Solvate_the_box"></h3>
         <ul>
             <li value="">Use <code>solvate</code> to solvate the box with water (<code>MMT_dec.gro</code>):</li>
             <li>Usage of <code>solvate</code>: <br>
                 <blockquote>
-                    <pre>gmx solvate &dash;cp MMT_dec.gro &dash;o MMT_dec_solv.gro &dash;p MMT_slab.top &dash;po MMT_dec_solv.top</pre>
-                    <code>&dash;cp</code> specifies the structure file of the system to solvate.<br>
-                    <code>&dash;o</code> specifies the output file name.<br>
-                    <code>&dash;p</code> specifies the topology file.<br>
-                    <code>&dash;po</code> specifies the output topology file name.<br>
+                    <pre>gmx solvate &dash;cp MMT_dec.gro &dash;cs spc216.gro &dash;o MMT_dec_solv.gro &dash;p MMT_slab.top &dash;po MMT_dec_solv.top</pre>
+                    <code>&dash;cp</code> specifies the input coordinate file of the system to solvate.<br>
+                    <code>&dash;cs</code> specifies the water model coordinate file.<br>
+                    <code>&dash;o</code> specifies the output coordinate file.<br>
+                    <code>&dash;p</code> specifies the input topology file.<br>
+                    <code>&dash;po</code> specifies the output topology file.<br>
                     <p>GROMACS will try to fill the available space with solvent and update the number of water
                         (<code>SOL</code>)
                         molecules in the output topology file.
@@ -427,10 +447,10 @@ DEC           1
                 <div class="flex-figure">
                     <div class="flex-figure-item">
                         <figure>
-                            <img width="55%" decoding="auto"
+                            <img alt="" class="fit-picture"
+                                 decoding="auto"
                                  src="img/sheet_side_water_mol.png"
-                                 class="fit-picture"
-                                 alt=""/>
+                                 width="55%"/>
                             <figcaption>
                                 Water molecule <code>SOL60</code> inside the clay sheet.
                             </figcaption>
@@ -440,6 +460,7 @@ DEC           1
             </li>
         </ul>
     </div>
+    <h2 class="enum" id="toc_6">Adding ions to neutralise the system</h2>
     <p>
         Now that you have a solvated system, but because of the substitutions in the clay sheet and the deprotonated
         decanoic acid molecules, the system has a net negative charge.
@@ -448,7 +469,7 @@ DEC           1
         You can use <code>genion</code> to add ions and neutralise the system.
     </p>
     <div class="bbox">
-        <h3 id="toc_11">Task</h3>
+        <h3 id="Neutralise_the_excess_charge"></h3>
         <ol>
             <li>Neutralise the system with Na<sup>+</sup> ions:</li>
             <li>Generate a run <abbr>TPR</abbr> file for the system (<code>MMT_dec_solv.tpr</code>):
@@ -461,16 +482,15 @@ DEC           1
                 <p>Usage of <code>grompp</code>:</p>
                 <blockquote>
                     <pre>gmx grompp &dash;f genion.mdp &dash;c MMT_dec_solv.gro &dash;p MMT_dec_solv.top &dash;o MMT_dec_solv.tpr &dash;pp MMT_dec_solv_ions.top</pre>
-                    <code>&dash;f</code> specifies the <abbr>MDP</abbr> input file.<br>
-                    <code>&dash;c</code> specifies the structure file of the system to solvate.<br>
+                    <code>&dash;f</code> specifies the input run parameter file.<br>
+                    <code>&dash;c</code> specifies the coordinate file of the system to solvate.<br>
                     <code>&dash;p</code> specifies the topology file.<br>
-                    <code>&dash;o</code> specifies the output file name.<br>
-                    <code>&dash;pp</code> specifies the output topology file name.<br>
-                    <p><em>Note:</em> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>&dash;pp</code>
+                    <code>&dash;o</code> specifies the compiled output <code>.tpr</code> file.<br>
+                    <code>&dash;pp</code> specifies the output topology file.<br>
+                    <p class="note"> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>&dash;pp</code>
                         option
                         to generate a new topology file with ions is used here rather than with the <code>genion</code>
                         command.</p>
-
                 </blockquote>
                 <p>
                     <code>grompp</code> will generate a note similar to this one:
@@ -495,12 +515,12 @@ information for each atom.
                 <p>Usage of <code>genion</code>: </p>
                 <blockquote>
                     <pre>gmx genion &dash;s MMT_dec_solv.tpr &dash;o MMT_dec_solv_ion.gro &dash;p MMT_dec_solv.top &dash;pname Na &dash;nname Cl &dash;neutral</pre>
-                    <code>&dash;s</code> specifies the structure file of the system to solvate.<br>
-                    <code>&dash;o</code> specifies the output file name.<br>
-                    <code>&dash;p</code> specifies the topology file.<br>
-                    <code>&dash;pname</code> specifies the name of the positive ion.<br>
-                    <code>&dash;nname</code> specifies the name of the negative ion.<br>
-                    <code>&dash;neutral</code> specifies that the system should be neutralised.<br>
+                    <code>&dash;s</code> specifies the input coordinate file of the system to solvate.<br>
+                    <code>&dash;o</code> specifies the output coordinate file<br>
+                    <code>&dash;p</code> specifies the input topology file<br>
+                    <code>&dash;pname</code> specifies the name of the positive ion<br>
+                    <code>&dash;nname</code> specifies the name of the negative ion<br>
+                    <code>&dash;neutral</code> &ndash; neutralise the system<br>
                     <p>GROMACS will try to fill the available space with solvent and update the number of water
                         (<code>SOL</code>)
                         molecules in the output topology file.</p>
@@ -512,6 +532,7 @@ information for each atom.
             </li>
         </ol>
     </div>
+    <h2 class="enum" id="toc_7">Preparing the <abbr>MD</abbr> simulation parameter files</h2>
     <p>
         Now your system is ready for simulation.
     </p>
@@ -519,11 +540,11 @@ information for each atom.
         You can follow the same procedure as in the previous session to run the simulation.
     </p>
     <div class="bbox">
-        <h3 id="toc_12">Task</h3>
+        <h3 id="Prepare_mdp_files"></h3>
         <ol>
-            <li>Use the following <code>MDP</code> template files inside the <code>MDP</code> directory and fill in
+            <li>Use the <code>MDP</code> template files inside the <code>MDP</code> directory and complete
                 the
-                missing sections:
+                missing keyword sections:
             </li>
             <li>Energy minimisation: <code>em.mdp</code>
                 <br>Set the maximum number of steps to 5000 and the force tolerance to 1000 kJ mol<sup>&dash;1</sup>
@@ -536,14 +557,84 @@ information for each atom.
                 Set the run time to 10 ns and the time step to 2 fs.
             </li>
         </ol>
+        <p class="note"> Make sure you provide the parameters for the <code>.mdp</code> file in the correct
+            units.
+            The units used by <abbr>GROMACS</abbr> can be found in the Reference Manual: <a
+                    href="https://manual.gromacs.org/documentation/2019/reference-manual/definitions.html"
+                    rel="noopener" target="_blank">manual.gromacs.org/documentation/2019/reference&dash;manual/definitions.html</a>.
+        </p>
     </div>
+    <h2 class="enum" id="toc_8">Minimising the energy</h2>
+    <p>
+        Let's start with the energy minimisation. This step should not take too long and can be carried out on the
+        virtual machine. </p>
+    <div class="bbox">
+        <h3 id="Run_energy_minimisation"></h3>
+        <ol>
+            <li>Run the energy minimisation:</li>
+            <li>Compile the run topology file for the energy minimisation
+                (<code>MMT_dec_solv_ion_em.tpr</code>):
+                <blockquote>
+                    <pre>gmx grompp &dash;f MDP/em.mdp &dash;c MMT_dec_solv_ion.gro &dash;p MMT_dec_solv_ion.top &dash;o MMT_dec_solv_ion_em.tpr</pre>
+                    <code>&dash;f</code> specifies the input run parameter <code>.mdp</code> file.<br>
+                    <code>&dash;c</code> specifies the input coordinate file.<br>
+                    <code>&dash;p</code> specifies the topology file.<br>
+                    <code>&dash;o</code> specifies the compiled output <code>.tpr</code> file.<br>
+                </blockquote>
+            </li>
+            <li>
+                Run the energy minimisation
+                <blockquote>
+                    <pre>gmx mdrun &dash;s MMT_dec_solv_ion_em.tpr &dash;deffnm MMT_dec_solv_ion_em &dash;v</pre>
+                    <code>&dash;s</code> specifies the compiled input <code>.tpr</code> file.<br>
+                    <code>&dash;deffnm</code> specifies the output file naming pattern.<br>
+                    <code>&dash;v</code> specifies that the output should be verbose.
+                </blockquote>
+                <p>
+                <p>Before moving on to the equilibration, you should check the energy minimisation log file
+                    (<code>MMT_dec_solv_ion_em.log</code>) to make sure that the energy minimisation was successful.
+                    If the energy minimisation was successful, the log file should end with a message similar to this
+                    one:</p>
+                <pre>
+Steepest Descents converged to Fmax < 500 in 1209 steps
+Potential Energy  = -4.5789000e+06
+Maximum force     =  4.9707333e+02 on atom 2904
+Norm of force     =  2.2770223e+01
+</pre>
+                <p class="note">
+                    If instead you find something along these lines:
+                </p>
+                <pre>
+Steepest Descents converged to machine precision in 192 steps,
+but did not reach the requested Fmax < 500.
+Potential Energy  = -6.8659256e+05
+Maximum force     =  6.5820524e+07 on atom 715
+Norm of force     =  1.6491472e+06
+</pre>
+                <p>This means that the energy minimisation did not converge. This means that GROMACS was not able to
+                    reach a minimum
+                    where the maximum force was below the specified threshold. In this case, you will probably need to
+                    repeat parts of the assembly procedure or remove water molecules that are too close to the clay,
+                    organics or other waters. Before repeating, move on to the <a
+                            href="../Session2/Session2.html#visualise_1">visualisation
+                        task</a> but follow the instructions
+                    marked with <em>EM Troubleshoot</em>.</p>
+                </p>
+            </li>
+        </ol>
+    </div>
+    <h2 class="enum" id="toc_9">Equilibrating the system</h2>
+    <h2 class="enum" id="toc_10">Running the production simulation</h2>
+    <h2 class="enum" id="toc_11">Visualising the trajectory</h2>
+    <p>open the final coordinate
+        file <code>MMT_dec_solv_ion.gro</code> in VMD and
     <p><em style="font-weight: bolder; font-size-adjust: 1; padding: 0; margin: 0">DONE!</em><br></p>
-    <h2 id="toc_13">Visualising the results</h2>
+    <h2 class="enum" id="toc_13">Visualising the results</h2>
     <p>
         You can use the same procedure as in the setup procedure to visualise the trajectory.
     </p>
     <div class="bbox">
-        <h3 id="toc_14">Task</h3>
+        <h3 id="Visualise_trajectory_in_VMD"></h3>
         <ol>
             <li>Open <abbr>VMD</abbr> and load the <code>MMT_dec_solv_ion.gro</code> file.</li>
             <li>Load the trajectory file into the molecule.
@@ -552,8 +643,8 @@ information for each atom.
                         Right&dash;click on the molecule and select <code>Load Data into Molecule</code>.
                         Then, select the <code>MMT_dec_solv_ion.trr</code> trajectory file.
                     </p>
-                    <p><em>Note: </em>The loading of all the frames might take some time. You can speed up the
-                        procedd if
+                    <p class="note">The loading of all the frames might take some time. You can speed up the
+                        proceed if
                         you hide the molecule during this process. To do this, click on the <code>D</code> next to
                         the molecule
                         entry in the main menu. It will turn red and the molecule will be hidden. Once the
@@ -561,9 +652,12 @@ information for each atom.
                         loaded, you can click on the <code>D</code> again to show the molecule.
                         Use the <code>Play</code> button to play the trajectory. You can adjust the playback with
                         the
-                        controls at the bottom of the main window.</p>
+                        controls at the bottom of the main window.
+                    </p>
                 </blockquote>
             </li>
         </ol>
     </div>
+    <script src="../generate_overview.js"></script>
 </body>
+</html>
