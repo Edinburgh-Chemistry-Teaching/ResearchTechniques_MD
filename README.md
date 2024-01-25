@@ -9,16 +9,16 @@
 ### Files:
 - [ ] Eddie: module load script (Sarah's latest from `Group-Scripts/Clays/Simulations/` ?)
 - [ ] Run scripts
-- [ ] Marking scheme
+- [x] Marking scheme
 - [x] Session HTML stylesheet
 
 ### Sessions:
 - [x] **Session1:** Valentina
-- [x] **Session2** 
+- [x] **Session2** Hannah
  	- Need to add running on Eddie for the final sim
 - [ ] **Session3:** Hannah
-  - Overleaf template (skip?)
-  - Example report & marking scheme
+  - [ ] Overleaf template 
+  - [x] Example report & marking scheme
 - [ ] **Session4**
 
 #### Projects
