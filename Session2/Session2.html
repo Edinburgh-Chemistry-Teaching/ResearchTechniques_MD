@@ -27,6 +27,7 @@
         <li>Hannah Pollak</li>
         <li>Audrey Noumbissi Ngambia</li>
         <li>Sarah Stewart</li>
+        <li>Finlay Clark</li>
     </ul>
 </div>
 
@@ -421,7 +422,7 @@ mdrun -> energy [
             </li>
         </ul>
     </div>
-        <p>
+    <p>
         Let's get started! Choose your favourite protein structure from the list above and go through the tasks below.
     </p>
     <div class="bbox">
@@ -766,17 +767,17 @@ Protein_chain_A     1</pre>
     </p>
     <p>For this step you will need an <code>.mdp</code> file which specifies the <abbr>MD</abbr> run parameters.</p>
     <p>All <code>.mdp</code> files that you are going to need for this tutorial are stored in the
-        <code>Session2/MDP/</code> directory.</p>
-    <div class="bbox">
-        <h3 id="Copying_the_run_parameter_files"></h3>
-        <ul>
-            <li>Copy all the <code>.mdp</code> files into your current working directory.</li>
-            <li><pre>
-cp ~/Desktop/Session2/MDP/* .</pre>
-            </li>
+        <code>MDP/</code> directory.</p>
+    <!--    <div class="bbox">-->
+    <!--        <h3 id="Copying_the_run_parameter_files"></h3>-->
+    <!--        <ul>-->
+    <!--            <li>Copy all the <code>.mdp</code> files into your current working directory.</li>-->
+    <!--            <li><pre>-->
+    <!--cp ~/practical/Session2/MDP/* .</pre>-->
+    <!--            </li>-->
 
-        </ul>
-    </div>
+    <!--        </ul>-->
+    <!--    </div>-->
     <p>
         For the energy minimisation simulation, we will use <code>minim.mdp</code>.</p>
     <p>In GROMACS, you need to <strong>first compile</strong> the structure, topology and run parameter files, and
@@ -801,7 +802,7 @@ cp ~/Desktop/Session2/MDP/* .</pre>
                 Compile the structure, topology and parameter files with <a
                     href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>:
                 <blockquote>
-                    <pre>gmx grompp &dash;v &dash;f minim.mdp &dash;c protein&dash;pbc.gro &dash;p protein.top</pre>
+                    <pre>gmx grompp &dash;v &dash;f MDP/minim.mdp &dash;c protein&dash;pbc.gro &dash;p protein.top</pre>
                     <code>&dash;v</code> specifies that the output should be verbose.<br>
                     <code>&dash;f</code> specifies the input run parameter <code>.mdp</code> file.<br>
                     <code>&dash;c</code> specifies the input coordinate file.<br>
@@ -877,11 +878,33 @@ cp ~/Desktop/Session2/MDP/* .</pre>
                 add 0.15&nbsp;mol&nbsp;L<sup>-1</sup> of NaCl to the system and neutralise
                 the total charge
             </li>
+            <li>Generate a run <abbr>TPR</abbr> file for the system (<code>MMT_dec_solv.tpr</code>):
+                <p>
+                    Since <code>genion</code> is a type of <abbr>MD</abbr> run, you need to first use
+                    <code>grompp</code> to
+                    generate a <code>TPR</code> file. The contents of the <code>.mdp</code> input file is not important
+                    for
+                    this step, but it has to be given. Use <code>genion.mdp</code> inside the <code>MDP</code>
+                    directory.</p>
+                <p>Usage of <code>grompp</code>:</p>
+                <blockquote>
+                    <pre>gmx grompp &dash;f MDP/genion.mdp &dash;c protein-solvated.gro &dash;protein.top &dash;o genion.tpr</pre>
+                    <code>&dash;f</code> specifies the input run parameter file.<br>
+                    <code>&dash;c</code> specifies the coordinate file of the system to solvate.<br>
+                    <code>&dash;p</code> specifies the topology file.<br>
+                    <code>&dash;o</code> specifies the compiled output <code>.tpr</code> file.<br>
+                    <p class="note"> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>&dash;pp</code>
+                        option
+                        to generate a new topology file with ions is used here rather than with the <code>genion</code>
+                        command.</p>
+                </blockquote>
+            </li>
             <li>
                 Usage of <code>genion</code>:
                 <blockquote>
-                    <pre>gmx genion &dash;s protein&dash;solvated.gro &dash;o protein&dash;solvated&dash;ions.gro &dash;p protein.top &dash;pname NA &dash;nname CL &dash;conc 0.15 &dash;neutral</pre>
-                    <code>&dash;s</code> specifies the input coordinate file of the system to solvate.<br>
+                    <pre>gmx genion &dash;s genion.tpr &dash;o protein&dash;solvated&dash;ions.gro &dash;p protein.top &dash;pname NA &dash;nname CL &dash;conc 0.15 &dash;neutral</pre>
+                    <code>&dash;s</code> specifies the compiled input <code>.tpr</code> file of the system to
+                    solvate.<br>
                     <code>&dash;o</code> specifies the output coordinate file<br>
                     <code>&dash;p</code> specifies the input topology file<br>
                     <code>&dash;pname</code> specifies the name of the positive ion<br>
@@ -920,11 +943,11 @@ cp ~/Desktop/Session2/MDP/* .</pre>
         <li>Energy minimisation</li>
         <li>Restrained equilibration run</li>
         <li>
-            <abb>NVT</abb>
+            <abbr>NVT</abbr>
             equilibration run
         </li>
         <li>
-            <abb>NPT</abb>
+            <abbr>NPT</abbr>
             equilibration run
         </li>
     </ol>
@@ -948,8 +971,7 @@ cp ~/Desktop/Session2/MDP/* .</pre>
                 prepare the <code>.tpr</code> input file for the energy minimisation.<p>
                 <blockquote>
                 <pre>
-gmx grompp -v -f em.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -po em.mdp
-                </pre>
+gmx grompp -v -f em.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -po em.mdp</pre>
                     <p>
                         Use the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
                         <code>.tpr</code> and <code>.mdp</code> files to <code>em.tpr</code> and <code>em.mdp</code>
@@ -960,8 +982,7 @@ gmx grompp -v -f em.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -p
                 Run the energy minimisation with <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
                 <code>mdrun</code></a>.
                 <blockquote>
-                <pre>
-gmx mdrun -v -s em.tpr -deffnm em</pre>
+                    <pre>gmx mdrun -v -s em.tpr -deffnm em</pre>
                     <p>
                         Use the <code>&dash;deffnm</code> option to set the name of the output files to <code>em</code>
                         and
@@ -986,49 +1007,75 @@ gmx mdrun -v -s em.tpr -deffnm em</pre>
         <code>define = -DPOSRES</code> will have the effect of globally defining the keyword <code>POSRES</code> which
         is then used to turn on position restraints in the topology file.
     </p>
-    <p>The following three <abbr>MD</abbr> runs will require a bit more time and resources so you will use Eddie HPC to run them.
+    <p>The following three <abbr>MD</abbr> runs will require a bit more time and resources so you will use Eddie HPC to
+        run them.
     </p>
     <div class="bbox">
         <h3 id="Equilibrating_the_system_with_restraints"></h3>
         <ol>
+            <li>Equilibrate the system with position restraints on the protein</li>
             <li>
                 Open the topology file <code>protein.top</code> in a text editor and find the line that specifies the
                 position
                 restraints for the protein.
             </li>
-            <Copy the input files to your Eddie HPC home directory.
-            <li>
-                Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a> to
-                prepare the <code>.tpr</code> input file for the restrained equilibration.<br>
-                <blockquote>
+            <li>Copy the input files to your Eddie HPC home directory.<br>
+                <pre>scp -r ~/session2 &gt;UUN&lt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&gt;UUN&lt;/</pre>
+            </li>
+            <li>Use <code>ssh</code> to in to Eddie HPC and navigate to the <code>session2</code> directory.
+            </li>
+            <li>Prepare the submission script for the equilibration run on eddie:<br>
+                <p>Make a copy of the template <code>eddie_run.sh</code> script and name it <code>run_pr.sh</code>, then
+                    open the <code>run_pr.sh</code> script and insert the GROMACS commands to run the restrained
+                    equilibration:
+                <ol>
+                    <li>
+                        Add <a href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
+                        to
+                        prepare the <code>.tpr</code> input file for the restrained equilibration.<br>
+                        <blockquote>
                 <pre>
-gmx grompp -v -f pr.mdp -c em.gro -p protein.top -r em.gro -o pr.tpr -po pr.mdp
-                </pre>
-                    <p>Use the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
-                        <code>.tpr</code> and <code>.mdp</code> files to <code>pr.tpr</code> and <code>pr.mdp</code>
-                        respectively.</p>
-                    <p>
-                        Here, you will also need to provide a <code>&dash;r</code> option to specify a coordinate file
-                        for
-                        the restraints which can be identical to the input coordinate file, <code>em.gro</code>.</p>
-                </blockquote>
+gmx grompp -v -f pr.mdp -c em.gro -p protein.top -r em.gro -o pr.tpr -po pr.mdp</pre>
+                            <p>Use the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the
+                                output
+                                <code>.tpr</code> and <code>.mdp</code> files to <code>pr.tpr</code> and
+                                <code>pr.mdp</code>
+                                respectively.</p>
+                            <p>
+                                Here, you will also need to provide a <code>&dash;r</code> option to specify a
+                                coordinate file
+                                for
+                                the restraints which can be identical to the input coordinate file, <code>em.gro</code>.
+                            </p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        Add the restrained equilibration with <a
+                            href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
+                        <code>mdrun</code></a>.<br>
+                        <blockquote>
+                <pre>
+gmx mdrun -v -s pr.tpr -deffnm pr </pre>
+                            <p>Use the <code>&dash;deffnm</code> option to set the name of the output files to
+                                <code>pr</code>
+                                and
+                                select <code>&dash;v</code> to get a verbose output.</p>
+                            <!--                            <p class="note">Add <code>&amp;</code> to the end of the command to run the simulation in-->
+                            <!--                                the-->
+                            <!--                                background.</p>-->
+                        </blockquote>
+                    </li>
+                </ol>
+            </li>
+            <li>Save the file and submit the run with <code>qsub</code><br>
+                <pre>qsub run_pr.sh</pre>
             </li>
             <li>
-                Run the restrained equilibration with <a
-                    href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
-                <code>mdrun</code></a>.<br>
-                <blockquote>
-                <pre>
-gmx mdrun -v -s pr.tpr -deffnm pr &</pre>
-                    <p>Use the <code>&dash;deffnm</code> option to set the name of the output files to <code>pr</code>
-                        and
-                        select <code>&dash;v</code> to get a verbose output.</p>
-                    <p class="note">Add <code>&amp;</code> to the end of the command to run the simulation in the
-                        background.</p>
-                </blockquote>
+                Use <code>qstat</code> to check the status of the job.<br>
+                <pre>qstat -u &gt;UUN&lt;</pre>
             </li>
             <li>
-                In the meantime, check the evolution of the energy through the run with <a
+                Once the run starts, check the evolution of the energy through the run with <a
                     href="https://manual.gromacs.org/current/onlinehelp/gmx-energy.html"><code>gmx energy</code></a>.
                 <blockquote>
                 <pre>
@@ -1071,125 +1118,193 @@ xmgrace -nxy energy*.xvg -legend load</pre>
             </li>
         </ol>
     </div>
-
-    <p><a name="minim"></a></p>
-
-
-    <p>You may find you need to use the option<code>–nt 2</code> (defines how many threads should be used to run the
-        simulation). Since this is a small simulation, 2 threads is enough.</p>
-
-
-    <p>Now we have a system which we can work with in terms of a full protein molecular dynamics simulation, i.e. a
-        protein
-        with corrected structure, which has been solvated, has counter ions added and has been put in an appropriate
-        electrolyte concentration.</p>
-
-    <p>We must now build gradually to a full production simulation run by first energy minimisation to remove any strain
-        in
-        the system, that could lead to high forces, then we gradually turn on temperature and pressure coupling, before
-        the
-        final production. </p>
-
-    <h3 id="toc_10">8) Energy minimisation</h3>
-
-    <p>Like in the <a href="#minim">section before</a>, prepare the system and launch the simulation with
-        <code>grompp</code> and <code>mdrun</code>. Note, that here you will be using the
-        <code>protein-solvated.gro</code>
-        file, with the newly updated topology and the same MDP file, as for the earlier minimisation. </p>
-
-    <p>If you use flag <code>-v</code> the MD simulation will display on the screen and show how the energy and force
-        evolve. A successful energy minimisation will result in a negative potential energy <code>Epot</code> (for a
-        pure
-        protein it will be in the order of e+04 kJ/mol, for a bigger solvated system e+05 kJ/mol) and also ensure that
-        maximum force <code>Fmax</code> is below your tolerance value (see MDP file <code>emtol</code>) and generally
-        will
-        be less than e+03 kJ/(mol nm). If the <code>Fmax</code> is higher, it indicates some clash on the atoms listed
-        by
-        the simulation - you should examine this area with VMD.</p>
-
-    <h3 id="toc_11">9) Relaxation of the solvent and hydrogens</h3>
-
-    <p>For this step we want to keep protein restrained, while allowing water and hydrogens to relax around it. In
-        simulations it is possible to restrain certain parts only, by applying an energy penalty for the movement that
-        is
-        not desired. In this case we will restrain heavy atoms. For this you will need the <code>pr.mdp</code> script
-        that
-        you can find in the <code>Session2/MDP/</code>.</p>
-
-    <p>Have a look at this file and note the integrator used and the define statement. The latter is used to allow flow
-        control in the topology file. <code>define = -DPOSRES</code> will cause the keyword &ldquo;POSRES&rdquo; to be
-        globally defined. Have a look at the end of the topology file to see how this is used to turn on position
-        restraints.</p>
-
-    <p>Again, <code>grompp</code>  output from previous energy minimisation (as a default named <code>confout.gro</code>)
-        with the <code>pr.mdp</code>. You will also need to provide a <code>-r restraint.gro</code> file. This can be
-        your
-        <code>protein-solvated.gro</code>. Your command line is then:</p>
-
-    <div>
-    <pre><code
-    >gmx grompp -v -f pr.mdp -c confout.gro -p protein.top -r protein-solvated.gro  </code></pre>
-    </div>
-
-    <p>Followed by <code>mdrun –v</code>(add <code>&amp;</code> to end of the line for the simulation to run on a
-        background).</p>
-
-    <p>Meanwhile, you can check the evolution of the energy through the run with <code>gmx energy</code>. Choose (enter
-        the
-        number and press enter) the <code>Total-Energy</code> or <code>Potential</code> or <code>Kinetic-En</code>, or
-        all
-        three, you will obtain <code>energy.xvg</code> that you can plot with <code>xmgrace</code>.</p>
-
-    <div>
-        <pre><code>xmgrace energy.xvg</code></pre>
-    </div>
-
-    <p>If you have chosen all three energies, you can plot them together as:</p>
-
-    <div>
-        <pre><code>xmgrace -nxy energy.xvg</code></pre>
-    </div>
-
-    <p>If you have saved each output into an individual file using the <code>-o</code> option, resulting in, for
-        example,
-        <code>energy1.xvg</code>, <code>energy2.xvg</code> and <code>energy3.xvg</code> you can plot them as:</p>
-
-    <div>
-        <pre><code>xmgrace energy*.xvg -legend load</code></pre>
-    </div>
-
-    <p>where the symbol <code>*</code> is wildcard, i.e. any file that starts with <code>energy</code> and finishes with
-        <code>.xvg</code> will be plotted. </p>
-
-    <h3 id="toc_12">10) Temperature and pressure coupled MD simulations</h3>
-
-    <p>We now will introduce temperature and pressure into the simulation, creating a system representing more realistic
-        conditions. This will be done by first coupling the system to a heat bath, then to a pressure bath.</p>
-
-    <h4 id="toc_13">NVT – constant number of particles, volume and temperature</h4>
-
-    <p>Use the <code>nvt.mdp</code> file, read through the input file, compile and run the MD simulation as done
-        previously.
+    <h3 class="enum" id="toc_3_3">Temperature and pressure coupled equilibration runs</h3>
+    <p>
+        In the next two equilibration runs, you will introduce temperature and pressure coupling to the system. Keeping
+        constant
+        temperature and pressure means that the simulation conditions will be closer to those in a real
+        experiment or a living organism.
     </p>
+    <p>
+        At first, you will perform an equilibration run at constant temperature and volume (<abbr>NVT</abbr> ensemble).
+        This will allow the system to reach the desired temperature.
+    </p>
+    <div class="bbox">
+        <h3 id="Equilibrating_the_system_at_constant_temperature"></h3>
+        <ol>
+            <li>Equilibrate the system at constant temperature and volume (<abbr>NVT</abbr> ensemble)</li>
+            <li>Write a <code>run_nvt.sh</code> run submission script for the <abbr>NVT</abbr> equilibration run on
+                Eddie HPC:<br>
+                Follow the same procedure as in the <a href="#Equilibrating_the_system_with_restraints">previous
+                    task</a>.<br>
+                Use <code>MDP/nvt.mdp</code> as the input run parameter file and <code>pr.gro</code> as the input
+                coordinate
+                file. Add the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
+                <code>.tpr</code> and <code>.mdp</code> files to <code>nvt.tpr</code> and <code>nvt.mdp</code>. Set the
+                output file name for <code>mdrun</code> to <code>nvt</code>.<br>
 
-    <p>after the run is finished, you can check the energies with energy</p>
+            </li>
+            <li>Submit the run with <code>qsub</code><br>
+                <blockquote>
+                    <pre>qsub run_nvt.sh</pre>
+                    <p class="note">
+                        Make sure that the <code>run_pr.sh</code> script has finished before submitting the <code>run_nvt.sh</code>
+                        script.
+                    </p></blockquote>
+            </li>
+            <li>After the run has finished, use <code>energy</code> to check temperature, pressure, potential and
+                kinetic
+                energy evolution during the simulation.<br>
+                <p>Use the <code>&dash;o</code> option to specify a name under which you can find them again later.</p>
+                <p>E.g.</p>
+                <blockquote>
+                    <pre>gmx energy -f nvt.edr -o nvt_temperature.xvg</pre>
+                </blockquote>
+            </li>
+            <li>
+                Examine the <code>energy</code> output files with xmgrace.<br>
+            </li>
+        </ol>
+    </div>
+    <p>
+        Next, you will perform an equilibration run at constant temperature and pressure (<abbr>NPT</abbr> ensemble).
+        This will allow the system to also reach the desired pressure.
+    </p>
+    <div class="bbox">
+        <h3 id="Equilibrating_the_system_at_constant_temperature_and_pressure"></h3>
+        <ol>
+            <li>Equilibrate the system at constant temperature and pressure (<abbr>NPT</abbr> ensemble)</li>
+            <li>Write a <code>run_npt.sh</code> run submission script for the <abbr>NPT</abbr> equilibration run on
+                Eddie HPC:<br>
+                Follow the same procedure as in the <a href="#Equilibrating_the_system_with_restraints">previous
+                    task</a>.<br>
+                Use <code>MDP/npt.mdp</code> as the input run parameter file and <code>nvt.gro</code> as the input
+                coordinate
+                file. Add the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
+                <code>.tpr</code> and <code>.mdp</code> files to <code>npt.tpr</code> and <code>npt.mdp</code>. Set the
+                output file name for <code>mdrun</code> to <code>npt</code>.<br>
+            </li>
+            <li>Submit the run with <code>qsub</code><br>
+                <blockquote>
+                    <pre>qsub run_npt.sh</pre>
+                    <p class="note">
+                        Make sure that the <code>run_nvt.sh</code> script has finished before submitting the <code>run_npt.sh</code>
+                        script.
+                    </p></blockquote>
+            </li>
+            <li>After the run has finished, use <code>energy</code> to check temperature, pressure, potential and
+                kinetic
+                energy evolution during the simulation.<br>
+            <li>
+                Examine the <code>energy</code> output files with xmgrace and compare it to the <abbr>NVT</abbr>
+                run.<br>
+            </li>
+        </ol>
+    </div>
+    <h3 class="enum" id="toc_3_4">Production run</h3>
+    <p>
+        Now that the system is equilibrated, you can run the production <abbr>MD</abbr> simulation.
+        This will generate the data that can be analysed to obtain information about the system.
+    </p>
+    <div class="bbox">
+        <h3 id="Running_the_production_MD_simulation"></h3>
+        <ol>
+            <li>Run the production <abbr>MD</abbr> simulation</li>
+            <li>Write a <code>run_md.sh</code> run submission script for the production <abbr>MD</abbr> run on Eddie
+                HPC:<br>
+                Follow the same procedure as in the <a href="#Equilibrating_the_system_with_restraints">previous
+                    task</a>.<br>
+                Use <code>MDP/md.mdp</code> as the input run parameter file and <code>npt.gro</code> as the input
+                coordinate
+                file. Add the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
+                <code>.tpr</code> and <code>.mdp</code> files to <code>md.tpr</code> and <code>md.mdp</code>. Set the
+                output file name for <code>mdrun</code> to <code>md</code>.<br>
+            </li>
+            <li>Open the <code>MDP/md.mdp</code> run parameter file and adjust the <code>nsteps</code> so that the run
+                duration is 5&nbsp;ns and that the output trajectory contains 1000 coordinate data points.<br>
+                <p class="note"> Make sure you provide the parameters for the <code>.mdp</code> file in the correct
+                    units.
+                    The units used by <abbr>GROMACS</abbr> can be found in the Reference Manual: <a
+                            href="https://manual.gromacs.org/documentation/2019/reference-manual/definitions.html"
+                            rel="noopener" target="_blank">manual.gromacs.org/documentation/2019/reference&dash;manual/definitions.html</a>.
+                </p>
+            </li>
+            <li>Submit the run with <code>qsub</code><br>
+                <blockquote>
+                    <pre>qsub run_md.sh</pre>
+                    <p class="note">
+                        Make sure that the <code>run_npt.sh</code> script has finished before submitting the <code>run_md.sh</code>
+                        script.
+                    </p></blockquote>
+            </li>
+        </ol>
+    </div>
+    <p>
+        Looking at the output file of a previous simulation of a similar system, you can estimate that this simulation
+        will take about <span style="color: red">XX</span>&nbsp;hours to complete.
+    </p>
+    <pre style="background: lightpink;color: red"> NEEDS UPDATING
+              Core t (s)   Wall t (s)        (%)
+      Time:    24776.900     3097.115      800.0
+                     51:37
+                 (ns/day)    (hour/ns)
+Performance:        1.395       17.206
+    </pre>
+    <p>
+        Since the production run will take a bit longer to finish, you can continue with the analysis of an example
+        trajectory
+        while it is still running.
+    </p>
+    <p>For some of the analyses it can be useful to have a trajectory file that contains only the protein atoms. You
+        can
+        use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-trjconv.html"><code>trjconv</code></a> to
+        extract
+        the protein atoms from the trajectory file.</p>
+<div class="box">
+    <h2 id="toc_4">Analysis of the simulation data</h2>
+    <p>
+        In this section you will learn some ways to analyse the data generated by the <abbr>MD</abbr> simulation.
+        You will:
+    <ol>
+        <li>
+            Calculate the root mean square deviation (<abbr>RMSD</abbr>)
+        </li>
+        <li>
+            Calculate the radius of gyration of the protein
+        </li>
+        <li>
+            Perform a hydrogen bond analysis for different parts of the protein
+        </li>
+    </ol>
+    <h3 class="enum" id="toc_4_1">Calculating the root mean square deviation (<abbr>RMSD</abbr>)</h3>
+    <p>
+        The <abbr>RMSD</abbr> is a measure of the deviation of the protein structure from a reference structure.
+        It is calculated as the square root of the average of the squared distances between the atoms of the protein in
+        the reference structure and the atoms of the protein in the structure of interest.
+    </p>
+    <div class="bbox">
+        <h3 id="Calculating_the_RMSD"></h3>
+        <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-rms.html"><code>rms</code></a> to
+            calculate the <abbr>RMSD</abbr> of the entire system, only the protein and only the backbone atoms of the
+            protein.
+            <blockquote>
+                <pre>gmx rms -f em.gro -f md.xtc -o rmsd.xvg</pre>
+                <p>Use the <code>&dash;o</code> option to specify a name under which you can find the output file
+                    again later.</p>
+                <p>E.g.</p>
+                <blockquote>
+                    <pre>gmx rms -s em.gro -f md.xtc -o rmsd.xvg</pre>
+                </blockquote>
+            </blockquote>
+        </li>
+    </div>
+    <p>
+        It tells us about the structural stability of the protein during the simulation and can be used to evaluate when
+        the system has reached equilibrium.
 
-    <p>Check: temperature, pressure, potential and kinetic energy. Save those files to later compare with NPT run.
-        Use<code>energy
-            -o</code> option to save file under given name.</p>
+        <!--    <p>You may find you need to use the option<code>–nt 2</code> (defines how many threads should be used to run the-->
+        <!--        simulation). Since this is a small simulation, 2 threads is enough.</p>-->
 
-    <p><em>Examine the output with <code>xmgrace</code>, what do you see?</em> The large fluctuation initially are due
-        to
-        thermodynamic averaging over small number of particles, aiming to represent a realistic (many body)
-        thermodynamic
-        ensemble.</p>
-
-    <h4 id="toc_14">NPT - constant number of particles, pressure and temperature</h4>
-
-    <p>For this part use the <code>npt.mdp</code> file. And follow the earlier procedure. Analyse with <code>gmx
-        energy</code> to obtain the pressure per each step of the simulation.</p>
-
-    <p><em>How does the pressure change in NPT ensemble vs NVT?</em></p>
 
     <h3 id="toc_15">11) Production</h3>
 
@@ -1426,181 +1541,6 @@ GROMACS reminds you: &quot;The use of COBOL cripples the mind; its teaching shou
 
     <p>Furthermore, all the MD parameters are stored in the <code>mdout.mdp</code> file. </p>
 
-
-    <script type="text/javascript">
-        var _self = "undefined" != typeof window ? window : "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? self : {},
-            Prism = function () {
-                var e = /\blang(?:uage)?-(\w+)\b/i, t = 0, n = _self.Prism = {
-                    util: {
-                        encode: function (e) {
-                            return e instanceof a ? new a(e.type, n.util.encode(e.content), e.alias) : "Array" === n.util.type(e) ? e.map(n.util.encode) : e.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/\u00a0/g, " ")
-                        }, type: function (e) {
-                            return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]
-                        }, objId: function (e) {
-                            return e.__id || Object.defineProperty(e, "__id", {value: ++t}), e.__id
-                        }, clone: function (e) {
-                            var t = n.util.type(e);
-                            switch (t) {
-                                case"Object":
-                                    var a = {};
-                                    for (var r in e) e.hasOwnProperty(r) && (a[r] = n.util.clone(e[r]));
-                                    return a;
-                                case"Array":
-                                    return e.map && e.map(function (e) {
-                                        return n.util.clone(e)
-                                    })
-                            }
-                            return e
-                        }
-                    }, languages: {
-                        extend: function (e, t) {
-                            var a = n.util.clone(n.languages[e]);
-                            for (var r in t) a[r] = t[r];
-                            return a
-                        }, insertBefore: function (e, t, a, r) {
-                            r = r || n.languages;
-                            var l = r[e];
-                            if (2 == arguments.length) {
-                                a = arguments[1];
-                                for (var i in a) a.hasOwnProperty(i) && (l[i] = a[i]);
-                                return l
-                            }
-                            var o = {};
-                            for (var s in l) if (l.hasOwnProperty(s)) {
-                                if (s == t) for (var i in a) a.hasOwnProperty(i) && (o[i] = a[i]);
-                                o[s] = l[s]
-                            }
-                            return n.languages.DFS(n.languages, function (t, n) {
-                                n === r[e] && t != e && (this[t] = o)
-                            }), r[e] = o
-                        }, DFS: function (e, t, a, r) {
-                            r = r || {};
-                            for (var l in e) e.hasOwnProperty(l) && (t.call(e, l, e[l], a || l), "Object" !== n.util.type(e[l]) || r[n.util.objId(e[l])] ? "Array" !== n.util.type(e[l]) || r[n.util.objId(e[l])] || (r[n.util.objId(e[l])] = !0, n.languages.DFS(e[l], t, l, r)) : (r[n.util.objId(e[l])] = !0, n.languages.DFS(e[l], t, null, r)))
-                        }
-                    }, plugins: {}, highlightAll: function (e, t) {
-                        var a = {
-                            callback: t,
-                            selector: 'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
-                        };
-                        n.hooks.run("before-highlightall", a);
-                        for (var r, l = a.elements || document.querySelectorAll(a.selector), i = 0; r = l[i++];) n.highlightElement(r, e === !0, a.callback)
-                    }, highlightElement: function (t, a, r) {
-                        for (var l, i, o = t; o && !e.test(o.className);) o = o.parentNode;
-                        o && (l = (o.className.match(e) || [, ""])[1], i = n.languages[l]), t.className = t.className.replace(e, "").replace(/\s+/g, " ") + " language-" + l, o = t.parentNode, /pre/i.test(o.nodeName) && (o.className = o.className.replace(e, "").replace(/\s+/g, " ") + " language-" + l);
-                        var s = t.textContent, u = {element: t, language: l, grammar: i, code: s};
-                        if (!s || !i) return n.hooks.run("complete", u), void 0;
-                        if (n.hooks.run("before-highlight", u), a && _self.Worker) {
-                            var c = new Worker(n.filename);
-                            c.onmessage = function (e) {
-                                u.highlightedCode = e.data, n.hooks.run("before-insert", u), u.element.innerHTML = u.highlightedCode, r && r.call(u.element), n.hooks.run("after-highlight", u), n.hooks.run("complete", u)
-                            }, c.postMessage(JSON.stringify({language: u.language, code: u.code, immediateClose: !0}))
-                        } else u.highlightedCode = n.highlight(u.code, u.grammar, u.language), n.hooks.run("before-insert", u), u.element.innerHTML = u.highlightedCode, r && r.call(t), n.hooks.run("after-highlight", u), n.hooks.run("complete", u)
-                    }, highlight: function (e, t, r) {
-                        var l = n.tokenize(e, t);
-                        return a.stringify(n.util.encode(l), r)
-                    }, tokenize: function (e, t) {
-                        var a = n.Token, r = [e], l = t.rest;
-                        if (l) {
-                            for (var i in l) t[i] = l[i];
-                            delete t.rest
-                        }
-                        e:for (var i in t) if (t.hasOwnProperty(i) && t[i]) {
-                            var o = t[i];
-                            o = "Array" === n.util.type(o) ? o : [o];
-                            for (var s = 0; s < o.length; ++s) {
-                                var u = o[s], c = u.inside, g = !!u.lookbehind, h = !!u.greedy, f = 0, d = u.alias;
-                                u = u.pattern || u;
-                                for (var p = 0; p < r.length; p++) {
-                                    var m = r[p];
-                                    if (r.length > e.length) break e;
-                                    if (!(m instanceof a)) {
-                                        u.lastIndex = 0;
-                                        var y = u.exec(m), v = 1;
-                                        if (!y && h && p != r.length - 1) {
-                                            var b = r[p + 1].matchedStr || r[p + 1], k = m + b;
-                                            if (p < r.length - 2 && (k += r[p + 2].matchedStr || r[p + 2]), u.lastIndex = 0, y = u.exec(k), !y) continue;
-                                            var w = y.index + (g ? y[1].length : 0);
-                                            if (w >= m.length) continue;
-                                            var _ = y.index + y[0].length, P = m.length + b.length;
-                                            if (v = 3, P >= _) {
-                                                if (r[p + 1].greedy) continue;
-                                                v = 2, k = k.slice(0, P)
-                                            }
-                                            m = k
-                                        }
-                                        if (y) {
-                                            g && (f = y[1].length);
-                                            var w = y.index + f, y = y[0].slice(f), _ = w + y.length, S = m.slice(0, w),
-                                                O = m.slice(_), j = [p, v];
-                                            S && j.push(S);
-                                            var A = new a(i, c ? n.tokenize(y, c) : y, d, y, h);
-                                            j.push(A), O && j.push(O), Array.prototype.splice.apply(r, j)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        return r
-                    }, hooks: {
-                        all: {}, add: function (e, t) {
-                            var a = n.hooks.all;
-                            a[e] = a[e] || [], a[e].push(t)
-                        }, run: function (e, t) {
-                            var a = n.hooks.all[e];
-                            if (a && a.length) for (var r, l = 0; r = a[l++];) r(t)
-                        }
-                    }
-                }, a = n.Token = function (e, t, n, a, r) {
-                    this.type = e, this.content = t, this.alias = n, this.matchedStr = a || null, this.greedy = !!r
-                };
-                if (a.stringify = function (e, t, r) {
-                    if ("string" == typeof e) return e;
-                    if ("Array" === n.util.type(e)) return e.map(function (n) {
-                        return a.stringify(n, t, e)
-                    }).join("");
-                    var l = {
-                        type: e.type,
-                        content: a.stringify(e.content, t, r),
-                        tag: "span",
-                        classes: ["token", e.type],
-                        attributes: {},
-                        language: t,
-                        parent: r
-                    };
-                    if ("comment" == l.type && (l.attributes.spellcheck = "true"), e.alias) {
-                        var i = "Array" === n.util.type(e.alias) ? e.alias : [e.alias];
-                        Array.prototype.push.apply(l.classes, i)
-                    }
-                    n.hooks.run("wrap", l);
-                    var o = "";
-                    for (var s in l.attributes) o += (o ? " " : "") + s + '="' + (l.attributes[s] || "") + '"';
-                    return "<" + l.tag + ' class="' + l.classes.join(" ") + '" ' + o + ">" + l.content + "</" + l.tag + ">"
-                }, !_self.document) return _self.addEventListener ? (_self.addEventListener("message", function (e) {
-                    var t = JSON.parse(e.data), a = t.language, r = t.code, l = t.immediateClose;
-                    _self.postMessage(n.highlight(r, n.languages[a], a)), l && _self.close()
-                }, !1), _self.Prism) : _self.Prism;
-                var r = document.currentScript || [].slice.call(document.getElementsByTagName("script")).pop();
-                return r && (n.filename = r.src, document.addEventListener && !r.hasAttribute("data-manual") && document.addEventListener("DOMContentLoaded", n.highlightAll)), _self.Prism
-            }();
-        "undefined" != typeof module && module.exports && (module.exports = Prism), "undefined" != typeof global && (global.Prism = Prism);
-    </script>
-
-    <script type="text/x-mathjax-config">
-        (function () {
-
-        MathJax.Hub.Config({
-            'showProcessingMessages': false,
-            'messageStyle': 'none'
-        });
-
-        if (typeof MathJaxListener !== 'undefined') {
-            MathJax.Hub.Register.StartupHook('End', function () {
-                MathJaxListener.invokeCallbackForKey_('End');
-            });
-        }
-
-        })();
-    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
             type="text/javascript"></script>
