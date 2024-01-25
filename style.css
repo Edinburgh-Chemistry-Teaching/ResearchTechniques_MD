@@ -7,6 +7,7 @@ body {
     background-color: #FFFFFF;
     padding: 30px;
     text-align: justify;
+
 }
 
 p {
@@ -20,10 +21,13 @@ p {
 /*  margin-bottom: 0 !important; }*/
 
 a {
-  color: #004f71; }
+    color: #004f71;
+}
 
 a.absent {
-  color: #a50034; }
+    color: #a50034;
+}
+
 /*a.anchor {*/
 /*  display: block;*/
 /*  padding-left: 30px;*/
@@ -150,24 +154,32 @@ h1 p, h2 p, h3 p, h4 p, h5 p, h6 p, h1 ol {
     margin-top: 0;
 }
 
-p + ol, p + ul , p > ol, p > ul {
+/*p + ol, p + ul, p > ol, p > ul {*/
+/*    margin-top: -10px;*/
+/*}*/
+p + ol, p + ul {
+    margin-top: 10px;
+}
+
+p > ol, p > ul {*/
     margin-top: -10px;
 }
 
-p > ul:first-child, p > ol:last-child {
-    margin-bottom: -10px;
-}
+/*p > ul:first-child, p > ol:last-child {*/
+/*    margin-bottom: -10px;*/
+/*}*/
+
 p > ul:last-child, p > ol:first-child {
-    margin-top: -10px;
+    margin-top: 10px;
 }
+
 p i > li:first-child {
-    margin-top: -10px;
-    padding-top: -10px;
+    margin-top: 10px;
 
 }
+
 p i > li:last-child {
-    margin-bottom: -20px;
-    padding-bottom: -10px;
+    margin-bottom: 20px;
 }
 
 li p.first {
@@ -773,7 +785,7 @@ pre[class*="language-"] {
 .bbox ul > li blockquote, .bbox ol > li blockquote {
     border-left: 4px solid #669900;
     padding: 0 17px;
-    color: #333f48;
+    /*color: #333f48;*/
     margin-right: 0;
     margin-left: 10px;
     color: #393939;
@@ -795,12 +807,14 @@ pre[class*="language-"] {
     line-height: initial;
     font-weight: initial;
     line-style: none;
+    color: inherit;
 }
 
 .bbox ol ol {
     counter-reset: nested 0;
     list-style: none;
     font-weight: initial;
+    color: #393939;
 }
 
 .bbox ul > li ul, .bbox ol > li ul {
@@ -814,7 +828,7 @@ pre[class*="language-"] {
     font-weight: initial;
     font-size-adjust: initial;
     line-height: initial;
-    color: initial;
+    color: #393939;
 }
 
 .bbox ol ol li:first-child::before, .bbox ol ol li:not(:first-child)::before {
@@ -838,3 +852,55 @@ pre[class*="language-"] {
 .box:last-of-type {
     border: none;
 }
+
+p.note::before {
+    content: "Note: ";
+    font-style: italic;
+}
+
+p.remember::before {
+    content: "Remember: ";
+    font-style: italic;
+}
+
+body {
+    counter-reset: task section subsection;
+}
+
+h3.enum::before {
+    counter-increment: subsection 1;
+    content: counter(section) "." counter(subsection) " ";
+}
+
+.bbox h3::before {
+    counter-increment: task 1;
+    content: "Task " counter(task);
+}
+
+h2.enum::before {
+    counter-increment: section 1;
+    content: counter(section) ". ";
+}
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
