@@ -50,7 +50,6 @@
 </div>
 <div class="box">
     <h2 class="enum" id="toc_1">Introduction</h2>
-
     <p>
         In this practical session, we will learn the basics of Molecular Dynamics (MD) simulations with GROMACS, and use
         of assisting software (e.g., VMD, xmgrace, gedit) to visualise and manipulate the data.
@@ -519,6 +518,14 @@ mdrun -> energy [
                 </blockquote>
             </li>
         </ol>
+        <div class="flex-figure">
+            <div class="flex-figure-img">
+                <figure>
+                    <img src="img/1xyw.png" vmd width="50%"">
+                    <figcaption>New Cartoon representation of the 1xyw.pdb structure in <abbr>VMD</abbr>.</figcaption>
+                </figure>
+            </div>
+        </div>
         <p class="note"><abbr>VMD</abbr> has a lot of other useful features, which you can explore in your own time.
             <br>Besides
             visualising
@@ -758,6 +765,15 @@ Protein_chain_A     1</pre>
                         display the <code>vmd &gt;</code> line.</p></blockquote>
             </li>
         </ol>
+        <div class="flex-figure">
+            <div class="flex-figure-img">
+                <figure>
+                    <img src="img/protein-pbc.png" width="50%">
+                    <figcaption>1xyw protein structure inside the simulation box visualised in <abbr>VMD</abbr>.
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
     </div>
     <h3 class="enum" id="toc_2_5">Running an energy minimisation on the protein structure</h3>
     <p>
@@ -1343,6 +1359,30 @@ Performance:        1.395       17.206
                         file, <code>md.gro</code>
                         to your VM and render another figure.</p>
                 </li>
+                <li>Use <code>pbc wrap</code> to enter the protein in the box and wrap all atoms into the box:<br>
+                    <blockquote>
+                        <pre>pbc wrap -center com -centersel &quot;protein&quot; -compound residue -all</pre>
+                        <p>
+                            <code>-center</code> specifies the centering method. Here, the center of mass the protein
+                            will be used as the center of the box.
+                        </p>
+                        <p>
+                            <code>-centersel</code> specifies the selection of atoms that should be in the centre.
+                        </p>
+                        <p>
+                            <code>-compound</code> specifies the grouping method. Here, the protein will be grouped by
+                            residue.
+                        </p>
+                        <p>
+                            <code>-all</code> specifies that all atoms should be wrapped into the box.
+                        </p>
+                    </blockquote>
+                </li>
+                <li>Use <code>pbc box_draw</code> to draw the simulation box:<br>
+                    <blockquote>
+                        <pre>pbc box_draw -width 2 -color black -resolution 30</pre>
+                    </blockquote>
+                </li>
                 <li>Change the background colour to white<br>
                     Select <code>Graphics</code> &rightarrow; <code>Colors...</code> then in the <code>Color
                         Controls</code>
@@ -1627,9 +1667,11 @@ GROMACS reminds you: &quot;The use of COBOL cripples the mind; its teaching shou
 
         <script src="../scripts/generate_header.js"></script>
         <script src="../scripts/generate_overview.js"></script>
+        <script src="../scripts/scroll_up.js"></script>
         <script>window.onload = function () {
             generateOverview();
             generateHeader();
+            scrollUp();
         }</script>
 </body>
 </html>

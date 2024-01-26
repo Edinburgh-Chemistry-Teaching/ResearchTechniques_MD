@@ -1,5 +1,5 @@
 body {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Source Sans 3', Helvetica, arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     padding-top: 10px;
@@ -904,3 +904,20 @@ h2.enum::before {
   background-color: #f1f1f1;
 }
 
+.scrollUpButton {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px;
+    background-color: white;
+    color: #004f71;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.scrollUpButton:hover {
+    background-color: #f1f1f1;
+    color: #041E42;
+}
