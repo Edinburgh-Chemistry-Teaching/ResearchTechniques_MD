@@ -971,7 +971,7 @@ Protein_chain_A     1</pre>
                 prepare the <code>.tpr</code> input file for the energy minimisation.<p>
                 <blockquote>
                 <pre>
-gmx grompp -v -f em.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -po em.mdp</pre>
+gmx grompp -v -f EM/em.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -po em.mdp</pre>
                     <p>
                         Use the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
                         <code>.tpr</code> and <code>.mdp</code> files to <code>em.tpr</code> and <code>em.mdp</code>
@@ -1035,7 +1035,7 @@ gmx grompp -v -f em.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -p
                         prepare the <code>.tpr</code> input file for the restrained equilibration.<br>
                         <blockquote>
                 <pre>
-gmx grompp -v -f pr.mdp -c em.gro -p protein.top -r em.gro -o pr.tpr -po pr.mdp</pre>
+gmx grompp -v -f MDP/pr.mdp -c em.gro -p protein.top -r em.gro -o pr.tpr -po pr.mdp</pre>
                             <p>Use the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the
                                 output
                                 <code>.tpr</code> and <code>.mdp</code> files to <code>pr.tpr</code> and
