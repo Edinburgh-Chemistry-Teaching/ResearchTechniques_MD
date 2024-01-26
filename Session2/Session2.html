@@ -18,17 +18,17 @@
 
 <div class="box">
     <h1 id="title">Protein Simulations</h1>
-    <p><strong>Contact:</strong><br/>
-        Dr Valentina Erastova (<a href="mailto:valentina.erastova@ed.ac.uk">valentina.erastova@ed.ac.uk</a>)<br/>
-        Office B21 (Office hours Wedn 10.00&dash;12.00 in weeks 3, 4 and 5)
-    </p>
-    <p><strong>Demonstrators:</strong></p>
-    <ul>
-        <li>Hannah Pollak</li>
-        <li>Audrey Noumbissi Ngambia</li>
-        <li>Sarah Stewart</li>
-        <li>Finlay Clark</li>
-    </ul>
+    <!--    <p><strong>Contact:</strong><br/>-->
+    <!--        Dr Valentina Erastova (<a href="mailto:valentina.erastova@ed.ac.uk">valentina.erastova@ed.ac.uk</a>)<br/>-->
+    <!--        Office B21 (Office hours Wedn 10.00&dash;12.00 in weeks 3, 4 and 5)-->
+    <!--    </p>-->
+    <!--    <p><strong>Demonstrators:</strong></p>-->
+    <!--    <ul>-->
+    <!--        <li>Hannah Pollak</li>-->
+    <!--        <li>Audrey Noumbissi Ngambia</li>-->
+    <!--        <li>Sarah Stewart</li>-->
+    <!--        <li>Finlay Clark</li>-->
+    <!--    </ul>-->
 </div>
 
 <div class="box">
@@ -829,7 +829,8 @@ Protein_chain_A     1</pre>
                 </blockquote>
             </li>
             <li>View the output file in <abbr>VMD</abbr>:<br>
-                After the minimisation is finished, the final coordinates will be written to <code>confout.gro</code>.<br>
+                After the minimisation is finished, the final coordinates will be written to
+                <code>confout.gro</code>.<br>
                 Open the energy minimised structure in <abbr>VMD</abbr>:
                 <blockquote>
                     <pre>vmd confout.gro</pre>
@@ -971,7 +972,7 @@ Protein_chain_A     1</pre>
                 prepare the <code>.tpr</code> input file for the energy minimisation.<p>
                 <blockquote>
                 <pre>
-gmx grompp -v -f em.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -po em.mdp</pre>
+gmx grompp -v -f EM/em.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -po em.mdp</pre>
                     <p>
                         Use the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
                         <code>.tpr</code> and <code>.mdp</code> files to <code>em.tpr</code> and <code>em.mdp</code>
@@ -1035,7 +1036,7 @@ gmx grompp -v -f em.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -p
                         prepare the <code>.tpr</code> input file for the restrained equilibration.<br>
                         <blockquote>
                 <pre>
-gmx grompp -v -f pr.mdp -c em.gro -p protein.top -r em.gro -o pr.tpr -po pr.mdp</pre>
+gmx grompp -v -f MDP/pr.mdp -c em.gro -p protein.top -r em.gro -o pr.tpr -po pr.mdp</pre>
                             <p>Use the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the
                                 output
                                 <code>.tpr</code> and <code>.mdp</code> files to <code>pr.tpr</code> and
@@ -1337,18 +1338,20 @@ Performance:        1.395       17.206
                 </li>
                 <li>On the VM, load your system into the VMD.<br>
                     <pre>vmd em.gro</pre>
-                <p class="note">You can use the <code>em.gro</code> file as the input coordinate
-                    file for this exercise. Once the production run has finished, you can copy the final coordinate file, <code>md.gro</code>
-                    to your VM and render another figure.</p>
+                    <p class="note">You can use the <code>em.gro</code> file as the input coordinate
+                        file for this exercise. Once the production run has finished, you can copy the final coordinate
+                        file, <code>md.gro</code>
+                        to your VM and render another figure.</p>
                 </li>
                 <li>Change the background colour to white<br>
-                    Select <code>Graphics</code> &rightarrow; <code>Colors...</code> then in the <code>Color Controls</code>
+                    Select <code>Graphics</code> &rightarrow; <code>Colors...</code> then in the <code>Color
+                        Controls</code>
                     window select </code><code>Display</code> in <code>Categories</code>
-                    then <code>Background</code> in <code>Names</code> and  <code>8 white</code> in <code>Colors</code>.
+                    then <code>Background</code> in <code>Names</code> and <code>8 white</code> in <code>Colors</code>.
 
                 </li>
                 <li>Change the display method to orthographic<br>
-                Select <code>Display</code> &rightarrow; <code>Orthographic</code>
+                    Select <code>Display</code> &rightarrow; <code>Orthographic</code>
                 </li>
                 <li>Turn off the axis display<br>
                     Select <code>Display</code> &rightarrow; <code>Axes</code> &rightarrow; <code>Off</code>
@@ -1357,16 +1360,19 @@ Performance:        1.395       17.206
                     <p>Like <a href="#change_rep">before</a> go to the <code>Graphics</code> menu and select <code>Representations...</code>
                     </p>
                     <ul>
-                    <li>Create a new representation for the solvent molecules with the selection command <code>water</code>.
-                        Set the coloring method to ColorID, the
-                        drawing method to <code>QuickSurf</code> and the Material to <code>Transparent</code>.
-                    </li>
-                    <li>
-                        Add new representations ions and the protein and change the Coloring Method, Drawing Method and Material.
-                    </li>
+                        <li>Create a new representation for the solvent molecules with the selection command
+                            <code>water</code>.
+                            Set the coloring method to ColorID, the
+                            drawing method to <code>QuickSurf</code> and the Material to <code>Transparent</code>.
+                        </li>
+                        <li>
+                            Add new representations ions and the protein and change the Coloring Method, Drawing Method
+                            and Material.
+                        </li>
                         <li>
                             Turn off the default representation.<br>
-                            Double-click on the first line with selection <code>all</code> in the <code>Graphical Representations</code> window.
+                            Double-click on the first line with selection <code>all</code> in the <code>Graphical
+                            Representations</code> window.
                         </li>
                     </ul>
                 </li>
@@ -1619,7 +1625,11 @@ GROMACS reminds you: &quot;The use of COBOL cripples the mind; its teaching shou
 
         <p>Furthermore, all the MD parameters are stored in the <code>mdout.mdp</code> file. </p>
 
-
-        <script src="../generate_overview.js"></script>
+        <script src="../scripts/generate_header.js"></script>
+        <script src="../scripts/generate_overview.js"></script>
+        <script>window.onload = function () {
+            generateOverview();
+            generateHeader();
+        }</script>
 </body>
 </html>

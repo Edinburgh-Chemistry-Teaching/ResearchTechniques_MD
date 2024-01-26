@@ -19,16 +19,16 @@
 
 <div class="box">
     <h1 id="title">Layered Material Setup</h1>
-    <p><strong>Contact:</strong><br/>
-        Dr Valentina Erastova (<a href="mailto:valentina.erastova@ed.ac.uk">valentina.erastova@ed.ac.uk</a>)<br/>
-        Office B21 (Office hours Wedn 10.00&dash;12.00 in weeks 3, 4 and 5)
-    </p>
-    <p><strong>Demonstrators:</strong></p>
-    <ul>
-        <li>Hannah Pollak</li>
-        <li>Audrey Noumbissi Ngambia</li>
-        <li>Sarah Stewart</li>
-    </ul>
+<!--    <p><strong>Contact:</strong><br/>-->
+<!--        Dr Valentina Erastova (<a href="mailto:valentina.erastova@ed.ac.uk">valentina.erastova@ed.ac.uk</a>)<br/>-->
+<!--        Office B21 (Office hours Wedn 10.00&dash;12.00 in weeks 3, 4 and 5)-->
+<!--    </p>-->
+<!--    <p><strong>Demonstrators:</strong></p>-->
+<!--    <ul>-->
+<!--        <li>Hannah Pollak</li>-->
+<!--        <li>Audrey Noumbissi Ngambia</li>-->
+<!--        <li>Sarah Stewart</li>-->
+<!--    </ul>-->
 </div>
 <div class="box">
     <h2 id="outcomes">Learning Outcomes</h2>
@@ -658,6 +658,11 @@ Norm of force     =  1.6491472e+06
             </li>
         </ol>
     </div>
-    <script src="../generate_overview.js"></script>
+        <script src="../scripts/generate_header.js"></script>
+        <script src="../scripts/generate_overview.js"></script>
+        <script>window.onload = function () {
+            generateOverview();
+            generateHeader();
+        }</script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-window.onload = function () {
+function generateOverview  () {
     var toc = document.createElement('p');
     toc.id = 'toc';
     toc.style.fontSize = '20px';
