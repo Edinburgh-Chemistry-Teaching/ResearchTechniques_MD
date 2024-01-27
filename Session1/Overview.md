@@ -4,7 +4,7 @@
 
 Dr Valentina Erastova, valentina.erastova@ed.ac.uk
 
-Office B21 (Office hours Wedn 10.00-12.00 in weeks 3, 4 and 5)
+Office B21 (Office hours Wedn 16.00-17.30 in weeks 3, 4 and 5)
 
 
 **Demonstrators:**
@@ -18,7 +18,7 @@ Office B21 (Office hours Wedn 10.00-12.00 in weeks 3, 4 and 5)
 ## Learning Outcomes:
 
 -	Understanding of the practical aspects of molecular simulations.
--	Basics of the command-line interface and usage high-performance computing resources.
+-	Basics of the command-line interface and usage of high-performance computing resources.
 -	Operating common computational chemistry packages to tackle real chemical problems.
 -	Preparation of systems for molecular dynamics simulations and troubleshooting the set up, simulations and analysis steps.
 -	Understanding of the limitations of the computational chemistry techniques used.
@@ -33,39 +33,39 @@ Computational techniques have become an integral part of the research, with thei
 
 ## Content:
 
-[Session 1](./Intro2BASH.md): **Introduction to Linux and command-line**.
+[Session 1](../session1/Session1.html): **Introduction to Linux and command-line**.
 
-[Session 2](../Session2/Day2_Protein_Sims.md): **Introduction to molecular dynamics simulations on a practical simulation of a protein**.
+[Session 2](../session2/Session2.html): **Introduction to molecular dynamics simulations on a practical simulation of a protein**.
 
-[Session 3](../Session3/MMT_acid.md): **Molecular simulation set up of system with an interface**.
+[Session 3](../session3/Session3.html): **Molecular simulation set up of system with an interface**.
 
-[Session 4](../Session4/Projects.md): **Beginning of the individual projects**.
+[Session 4](../session4/Session4.html): **Beginning of the individual projects**.
 
 
 ## Course organisation:
 
-Sessionns 1 - 3 are 3 hours long. Session 4 is 1.5 hours, to introduce the independent projects.
+Sessions 1 - 3 are 3 hours long. Session 4 is 1.5 hours, to introduce the independent projects.
 
 Students are expected to carry out work independently after each session. 
 
-**Drop-in sessions** with demonstrators are scheduled weekly through weeks 3, 4 and 5. You are welcome to join any session, you do not need to have any specific questions, you can just come ovber and work, knowing that a demonstrator will be there to help if needed. 
+**Drop-in sessions** with demonstrators are scheduled weekly through weeks 3, 4 and 5. You do not need to have any specific questions; you are welcome to just come over and work, knowing that a demonstrator will be there to help if needed. 
 
 
 ## Assessment:
 
-An individual project (started during Session 4) is submitted in the form of a short, written report. The Templates for the report are provided in the sessions 3 and 4.
+An individual project (started during Session 4) is submitted in the form of a short, written report. The templates for the report are provided in the sessions 3 and 4.
 
 
 ## Use of AI tools:
 
-AI tools can be of great help in many aspects of life, including learning. Please be aware that there are limmitations of their applicability. This course is made to teach you how to use tools in computational chemistry, it is not developped around use of AI technologies. Therefore, the use of Generative AI during learning excercises may limmit the uptake of relevant knowledge and hinder the development of necessary skills.
+AI tools can be of great help in many aspects of life, including learning. Please be aware that there are limitations to their applicability. This course is made to teach you how to use tools in computational chemistry; it is not developed around the use of AI technologies. Therefore, the use of Generative AI during learning exercises may limit the uptake of relevant knowledge and hinder the development of necessary skills.
  
-We would also want to bring to your attention the use of Generative AI in the assessments. The assessments are expected to contain your original work. All summative submissions will be checked for the presence of AI-generated text and code. Therefore, to prevent misconduct, when AI tools are used to assist you during the assessment preparation, you MUST DECLARE it by stating:
+We would also want to bring to your attention the use of Generative AI in the assessments. The assessments are expected to contain your original work. All summative submissions will be checked for the presence of AI-generated text and code. Therefore, to prevent any flags of misconduct, when AI tools are used to assist you during the assessment preparation, you MUST DECLARE it by stating:
 
 *  What tool has been used (e.g., ChatGPT-3.5 by OpenAI);
 *  What was the exact prompt;
 *  Link to the output ('link to chat' for ChatGpT or a compilation of outputs as an appendix);
 *  What modifications have been done to the generated output before it was incorporated into the submitted work.
 
-The University Guidance available [here](https://www.ed.ac.uk/sites/default/files/atoms/files/universityguidanceforstudentsonworkingwithgenerativeai.pdf).
+The University Guidance is available [here](https://www.ed.ac.uk/sites/default/files/atoms/files/universityguidanceforstudentsonworkingwithgenerativeai.pdf).
 

@@ -1,7 +1,7 @@
 # PART 1 -- Navigating Files and Directories
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👉[Go to the next part -- Working With Files and Directories](Intro2BASH_S2.md)<br>
+👆[Go to the main menu](Session1.html) <br>
+👉[Go to the next part -- Working With Files and Directories](Intro2BASH_S2.html)<br>
 
 
 
@@ -32,19 +32,7 @@ Often, before the prompt symbol, there will be some information on the user, the
 [test@instance-test-2:~]$ 
 ```
 Do not worry about all this; just make sure to type in only what is given after `$` into your terminal.
-
-### 2. Copy the session folder
-
-Type this into the terminal to copy the Practicals
-
-```bash
-$ cp -r practicals/session1 .
-```
-
-# FIX!!!
-# Desktop/Practical1 to session1
-
-
+session1
 
 ### 3. Navigate to the working directory
 
@@ -95,7 +83,7 @@ shell will inform you that it does not exist:
 kls: command not found
 ```
 
-Now, continue into the directory `Practical1` you downloaded earlier.
+Now, continue into the directory `session1` you downloaded earlier.
 
 First, go to the directory `Desktop`:
 
@@ -108,10 +96,10 @@ Check the directories on the desktop:
 $ ls
 ```
 
-You should see the list, with one of them called `Practical1`. Now, go to that directory:
+You should see the list, with one of them called `session1`. Now, go to that directory:
 
 ```bash
-$ cd Practical1
+$ cd session1
 ```
 
 We have now navigated from the *home directory* to the *current working directory*. 
@@ -145,7 +133,7 @@ We have now navigated from the *home directory* to the *current working director
 
 Not only can we use `ls` on the current working directory, but we can use it to list the contents of a different directory. 
 
-Let’s take a look at the contents of the `Practical1` (our current directory) and the directory within it:
+Let’s take a look at the contents of the `session1` (our current directory) and the directory within it:
 
 ```bash
 $ ls
@@ -159,7 +147,7 @@ eddie-hpc-data/    shell-lesson-data/
 and then list the contents of `shell-lesson-data`, without descending into the directory:
 
 ```bash
-$ ls Practical1/shell-lesson-data
+$ ls session1/shell-lesson-data
 ```
 
 that returns:
@@ -180,7 +168,7 @@ $ pwd
 ```
 
 ```bash
-/Users/nelle/Desktop/Practical1/shell-lesson-data/exercise-data
+/Users/nelle/Desktop/session1/shell-lesson-data/exercise-data
 ```
 
 list the contents of the directory:
@@ -225,8 +213,8 @@ This allows us to move to our `shell-lesson-data directory` from anywhere on the
 
 ```bash
 $ pwd
-/Users/nelle/Desktop/Practical1/shell-lesson-data/north-pacific-gyre
-$ cd /Users/nelle/Desktop/Practical1/shell-lesson-data
+/Users/nelle/Desktop/session1/shell-lesson-data/north-pacific-gyre
+$ cd /Users/nelle/Desktop/session1/shell-lesson-data
 ```
 Remember, that the commands are after prompt `$` while the output of the terminal starts on a new line and has no prompt symbol in front.
 
@@ -234,8 +222,8 @@ The other way to indicate an absolute path, with respect to the current user’s
  
 ```bash
 $ pwd
-/Users/nelle/Desktop/Practical1/shell-lesson-data
-$ cd ~/Desktop/Practical1/shell-lesson-data/exercise-data
+/Users/nelle/Desktop/session1/shell-lesson-data
+$ cd ~/Desktop/session1/shell-lesson-data/exercise-data
 ```
 
 
@@ -366,6 +354,6 @@ This is called tab completion, and we will see it in many other tools as we go o
 
 --- 
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👉[Go to the next part -- Working With Files and Directories](Intro2BASH_S2.md)<br>
+👆[Go to the main menu](Session1.html) <br>
+👉[Go to the next part -- Working With Files and Directories](Intro2BASH_S2.html)<br>
 

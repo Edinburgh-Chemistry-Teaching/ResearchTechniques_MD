@@ -1,7 +1,8 @@
 # PART 7 -- Using high performance computers
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Pipes and Filters](Intro2BASH_S6.md)<br>
+👆[Go to the main menu](Session1.html) <br>
+👈[Go to the previous part -- Pipes and Filters](Intro2BASH_S6.html)<br>
+
 
 
 We have seen above how using a command-line interface instead of a GUI and creating scripts can save us valuable time running the analysis. Still, depending on the job we need to do, the time-limiting step can be the performance of our laptop/desktop. In this case, we need access to a more powerful machine. There are numerous large computers with shared computing resources available: from smaller machines in research groups, to the University ones, to national facilities.  
@@ -91,7 +92,7 @@ which will show:
 ```
 /home/nelle
 ```
-This home directory space is small, default only 10 Gb, and can be used to store cluster configuration files/ job scripts and small amounts of persistent data. It is not suitable for the large files produced by the simulations. 
+This home directory space is small, default only 10 Gb, and can be used to store cluster conimguration files/ job scripts and small amounts of persistent data. It is not suitable for the large files produced by the simulations. 
 
 Instead, there is a **scratch directory**, a large 2 Tb space, shared by all users of Eddie, where we will be running our simulations from. 
 
@@ -113,13 +114,13 @@ Replace `<UUN>` with your username, for Nelle her user name is `nelle`, and ther
 *Have you noticed that the prompt has changed?*
 Instead of `~`, standing for 'home directory', it is now showing the directory you are currently in, i.e. `[nelle@login03(eddie) nelle]$`
 
-In this directory, let's create a folder `Practical1` and descend into it:
+In this directory, let's create a folder `session1` and descend into it:
 
 ```bash
-[nelle@login03(eddie) nelle]$ mkdir Practical1
-[nelle@login03(eddie) nelle]$ cd Practical1
-[nelle@login03(eddie) Practical1]$ pwd
-/exports/eddie/scratch/nelle/Practical1
+[nelle@login03(eddie) nelle]$ mkdir session1
+[nelle@login03(eddie) nelle]$ cd session1
+[nelle@login03(eddie) session1]$ pwd
+/exports/eddie/scratch/nelle/session1
 ```
 
 Let's remember this location, as it will be the destination for the file transfers.
@@ -139,14 +140,14 @@ $ scp /location/directory/file <YOUR UUN>@eddie.ecdf.ed.ac.uk:/destination/direc
 2 - When run on your remote machine: 
 
 ```
-[<UUN>@login03(eddie) Practical1]$ scp <localname>@<localIP>:/location/directory/file /destination/directory/.
+[<UUN>@login03(eddie) session1]$ scp <localname>@<localIP>:/location/directory/file /destination/directory/.
 ```
 
-Let's transfer files `hello.sh` and `myjob.sh` stored within the `Practical1/eddie-hpc-data` directory to the `Practical1` folder we have just created on Eddie. Since both files are `.sh`, instead of typing each in we can use a `*` wildcard.
+Let's transfer files `hello.sh` and `myjob.sh` stored within the `session1/eddie-hpc-data` directory to the `session1` folder we have just created on Eddie. Since both files are `.sh`, instead of typing each in we can use a `*` wildcard.
 
 ```bash
 $ cd eddie-hpc-data
-$ scp *sh nelle@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/nelle/Practical1
+$ scp *sh nelle@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/nelle/session1
 ```
 You will be prompted for the password, then you will see the report on the file transfer:
 ```
@@ -157,9 +158,9 @@ myjob.sh                                                                    100%
 If we now check the files from Eddie.
 
 ```bash
-[nelle@login03(eddie) Practical1]$ pwd
-/exports/eddie/scratch/nelle/Practical1
-[nelle@login03(eddie) Practical1]$ ls -lrth
+[nelle@login03(eddie) session1]$ pwd
+/exports/eddie/scratch/nelle/session1
+[nelle@login03(eddie) session1]$ ls -lrth
 total 1.0K
 -rw-r--r-- 1 nelle eddie_users 271 Jan 17 11:42 hello.sh
 -rw-r--r-- 1 nelle eddie_users 316 Jan 17 11:42 myjob.sh
@@ -178,7 +179,7 @@ If you wanted to transfer the whole directory `eddie-hpc-data`, what would you t
 To copy a whole directory, we add the `-r` flag, for “recursive”
   
 ```
-$ scp -r eddie-hpc-data nelle@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/nelle/Practical1
+$ scp -r eddie-hpc-data nelle@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/nelle/session1
 ```
 </details>
 
@@ -220,7 +221,7 @@ The job itself is a bash script named `hello.sh`.
 We can now submit `myjob.sh` using the scheduler command `qsub`. 
 
 ```bash
-[nelle@login03(eddie) Practical1]$ qsub myjob.sh 
+[nelle@login03(eddie) session1]$ qsub myjob.sh 
 Your job 38945036 ("hello") has been submitted
 ```
 The scheduler assigns this job an ID and reports that the job has been submitted. The scheduler will queue the job, while waiting for the resources to become available.
@@ -228,7 +229,7 @@ The scheduler assigns this job an ID and reports that the job has been submitted
 We can monitor the progress of our job with the command `qstat`:
 
 ```bash
-[nelle@login03(eddie) Practical1]$ qstat -u nelle
+[nelle@login03(eddie) session1]$ qstat -u nelle
 job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID 
 ------------------------------------------------------------------------------------------------------------------------------------------------
   38945036 0.00000 hello      nelle     qw    01/17/2024 12:13:09                                                                   1        
@@ -246,7 +247,7 @@ Unlike on a personal machine, running jobs do not print onto your screen (imagin
 Let's examine the files you got:
 
 ```bash
-[nelle@login03(eddie) Practical1]$ ls -lrth
+[nelle@login03(eddie) session1]$ ls -lrth
 total 1.5K
 -rw-r--r-- 1 nelle eddie_users 271 Jan 17 11:42 hello.sh
 -rw-r--r-- 1 nelle eddie_users 316 Jan 17 11:42 myjob.sh
@@ -256,7 +257,7 @@ total 1.5K
 And now read the `hello.o38945036`:
 
 ```bash
-[nelle@login03(eddie) Practical1]$ more hello.o38945036 
+[nelle@login03(eddie) session1]$ more hello.o38945036 
 Hello World!
 I am: nelle
 It is now: Wed 17 Jan 12:13:25 GMT 2024
@@ -271,7 +272,7 @@ Not every job will run over a few minutes, but using an HPC with a job scheduler
 To log out from Eddie just type `exit`
 
 ```bash
-[nelle@login03(eddie) Practical1]$ exit
+[nelle@login03(eddie) session1]$ exit
 ```
 
 
@@ -295,15 +296,15 @@ We would like to aks you for a favour to give us regular feedback on this course
 
 Please fill in this [feedback form by clicking the link](https://forms.office.com/e/AQH06hukpu?origin=lprLink) or use your phone to scan the code:
 
-<img src="./fig/FB1.png" alt="fb" width="200"/>
+<img src="./img/FB1.png" alt="fb" width="200"/>
 
 
 
 ## Thank You!
 
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Pipes and Filters](Intro2BASH_S6.md)<br>
+👆[Go to the main menu](Session1.html) <br>
+👈[Go to the previous part -- Pipes and Filters](Intro2BASH_S6.html)<br>
 
 
 <!-- to be moved to the next session

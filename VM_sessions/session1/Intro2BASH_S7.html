@@ -555,7 +555,7 @@ _____________________________________________________________________</code></pr
 
 <div><pre><code class="language-none">/home/nelle</code></pre></div>
 
-<p>This home directory space is small, default only 10 Gb, and can be used to store cluster configuration files/ job scripts and small amounts of persistent data. It is not suitable for the large files produced by the simulations. </p>
+<p>This home directory space is small, default only 10 Gb, and can be used to store cluster conimguration files/ job scripts and small amounts of persistent data. It is not suitable for the large files produced by the simulations. </p>
 
 <p>Instead, there is a <strong>scratch directory</strong>, a large 2 Tb space, shared by all users of Eddie, where we will be running our simulations from. </p>
 
@@ -575,12 +575,12 @@ This is enough time for the duration of our course, but if you would like to kee
 <p><em>Have you noticed that the prompt has changed?</em>
 Instead of <code>~</code>, standing for &lsquo;home directory&rsquo;, it is now showing the directory you are currently in, i.e. <code>[nelle@login03(eddie) nelle]$</code></p>
 
-<p>In this directory, let&rsquo;s create a folder <code>Practical1</code> and descend into it:</p>
+<p>In this directory, let&rsquo;s create a folder <code>session1</code> and descend into it:</p>
 
-<div><pre><code class="language-bash">[nelle@login03(eddie) nelle]$ mkdir Practical1
-[nelle@login03(eddie) nelle]$ cd Practical1
-[nelle@login03(eddie) Practical1]$ pwd
-/exports/eddie/scratch/nelle/Practical1</code></pre></div>
+<div><pre><code class="language-bash">[nelle@login03(eddie) nelle]$ mkdir session1
+[nelle@login03(eddie) nelle]$ cd session1
+[nelle@login03(eddie) session1]$ pwd
+/exports/eddie/scratch/nelle/session1</code></pre></div>
 
 <p>Let&rsquo;s remember this location, as it will be the destination for the file transfers.</p>
 
@@ -597,12 +597,12 @@ $ scp /location/directory/file &lt;YOUR UUN&gt;@eddie.ecdf.ed.ac.uk:/destination
 
 <p>2 - When run on your remote machine: </p>
 
-<div><pre><code class="language-none">[&lt;UUN&gt;@login03(eddie) Practical1]$ scp &lt;localname&gt;@&lt;localIP&gt;:/location/directory/file /destination/directory/.</code></pre></div>
+<div><pre><code class="language-none">[&lt;UUN&gt;@login03(eddie) session1]$ scp &lt;localname&gt;@&lt;localIP&gt;:/location/directory/file /destination/directory/.</code></pre></div>
 
-<p>Let&rsquo;s transfer files <code>hello.sh</code> and <code>myjob.sh</code> stored within the <code>Practical1/eddie-hpc-data</code> directory to the <code>Practical1</code> folder we have just created on Eddie. Since both files are <code>.sh</code>, instead of typing each in we can use a <code>*</code> wildcard.</p>
+<p>Let&rsquo;s transfer files <code>hello.sh</code> and <code>myjob.sh</code> stored within the <code>session1/eddie-hpc-data</code> directory to the <code>session1</code> folder we have just created on Eddie. Since both files are <code>.sh</code>, instead of typing each in we can use a <code>*</code> wildcard.</p>
 
 <div><pre><code class="language-bash">$ cd eddie-hpc-data
-$ scp *sh nelle@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/nelle/Practical1</code></pre></div>
+$ scp *sh nelle@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/nelle/session1</code></pre></div>
 
 <p>You will be prompted for the password, then you will see the report on the file transfer:
 <code>
@@ -612,9 +612,9 @@ myjob.sh                                                                    100%
 
 <p>If we now check the files from Eddie.</p>
 
-<div><pre><code class="language-bash">[nelle@login03(eddie) Practical1]$ pwd
-/exports/eddie/scratch/nelle/Practical1
-[nelle@login03(eddie) Practical1]$ ls -lrth
+<div><pre><code class="language-bash">[nelle@login03(eddie) session1]$ pwd
+/exports/eddie/scratch/nelle/session1
+[nelle@login03(eddie) session1]$ ls -lrth
 total 1.0K
 -rw-r--r-- 1 nelle eddie_users 271 Jan 17 11:42 hello.sh
 -rw-r--r-- 1 nelle eddie_users 316 Jan 17 11:42 myjob.sh
@@ -631,7 +631,7 @@ total 1.0K
 
 <p>To copy a whole directory, we add the <code>-r</code> flag, for “recursive”</p>
 
-<div><pre><code class="language-none">$ scp -r eddie-hpc-data nelle@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/nelle/Practical1</code></pre></div>
+<div><pre><code class="language-none">$ scp -r eddie-hpc-data nelle@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/nelle/session1</code></pre></div>
 
 <p></details></p>
 
@@ -667,14 +667,14 @@ The job itself is a bash script named <code>hello.sh</code>.</p>
 
 <p>We can now submit <code>myjob.sh</code> using the scheduler command <code>qsub</code>. </p>
 
-<div><pre><code class="language-bash">[nelle@login03(eddie) Practical1]$ qsub myjob.sh 
+<div><pre><code class="language-bash">[nelle@login03(eddie) session1]$ qsub myjob.sh 
 Your job 38945036 (&quot;hello&quot;) has been submitted</code></pre></div>
 
 <p>The scheduler assigns this job an ID and reports that the job has been submitted. The scheduler will queue the job, while waiting for the resources to become available.</p>
 
 <p>We can monitor the progress of our job with the command <code>qstat</code>:</p>
 
-<div><pre><code class="language-bash">[nelle@login03(eddie) Practical1]$ qstat -u nelle
+<div><pre><code class="language-bash">[nelle@login03(eddie) session1]$ qstat -u nelle
 job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID 
 ------------------------------------------------------------------------------------------------------------------------------------------------
   38945036 0.00000 hello      nelle     qw    01/17/2024 12:13:09                                                                   1        </code></pre></div>
@@ -692,7 +692,7 @@ job-ID     prior   name       user         state submit/start at     queue      
 
 <p>Let&rsquo;s examine the files you got:</p>
 
-<div><pre><code class="language-bash">[nelle@login03(eddie) Practical1]$ ls -lrth
+<div><pre><code class="language-bash">[nelle@login03(eddie) session1]$ ls -lrth
 total 1.5K
 -rw-r--r-- 1 nelle eddie_users 271 Jan 17 11:42 hello.sh
 -rw-r--r-- 1 nelle eddie_users 316 Jan 17 11:42 myjob.sh
@@ -701,7 +701,7 @@ total 1.5K
 
 <p>And now read the <code>hello.o38945036</code>:</p>
 
-<div><pre><code class="language-bash">[nelle@login03(eddie) Practical1]$ more hello.o38945036 
+<div><pre><code class="language-bash">[nelle@login03(eddie) session1]$ more hello.o38945036 
 Hello World!
 I am: nelle
 It is now: Wed 17 Jan 12:13:25 GMT 2024
@@ -716,7 +716,7 @@ I am using: node2c01.ecdf.ed.ac.uk
 
 <p>To log out from Eddie just type <code>exit</code></p>
 
-<div><pre><code class="language-bash">[nelle@login03(eddie) Practical1]$ exit</code></pre></div>
+<div><pre><code class="language-bash">[nelle@login03(eddie) session1]$ exit</code></pre></div>
 
 <blockquote>
 <h3 id="toc_8">KEY POINTS PART 7</h3>
