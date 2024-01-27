@@ -476,15 +476,7 @@ pre[class*="language-"] {
 <p>👆<a href="Session1.html">Go to the main menu</a> <br>
 👉<a href="Intro2BASH_S2.html">Go to the next part &ndash; Working With Files and Directories</a><br></p>
 
-<h3 id="toc_1">1. Get Ready</h3>
-
-<ol>
-<li>Download the file <strong>Session1</strong> from the DataStore  &lt;<strong>LINK</strong>&gt;<br></li>
-<li>Move it to your Desktop</li>
-<li>Do not rename the folder.</li>
-</ol>
-
-<h3 id="toc_2">2. Open a terminal on your computer</h3>
+<h3 id="toc_1">1. Open a terminal on your computer</h3>
 
 <p>Click on the terminal app at the bottom of the desktop:
 <img src="./img/terminal.png" alt="terminal"></p>
@@ -502,11 +494,17 @@ After you type a command, you have to press the <code>ENTER</code> key to execut
 
 <p>The prompt is followed by a <em>text cursor</em>, a flashing [or solid black] cursor that indicates the position where your typing will appear.</p>
 
-<p>Often, before the prompt symbol, there will be some information on the user, the machine, and even the directory currently in, for example on the figure above:</p>
+<p>Often, before the prompt symbol, there will be some information on the user, the machine, and even the directory currently in, for example on the imgure above:</p>
 
 <div><pre><code class="language-bash">[test@instance-test-2:~]$ </code></pre></div>
 
 <p>Do not worry about all this; just make sure to type in only what is given after <code>$</code> into your terminal.</p>
+
+<h3 id="toc_2">2. Copy the session folder</h3>
+
+<p>Type this into the terminal to copy the Practicals</p>
+
+<div><pre><code class="language-bash">$ cp -r practicals/session1 Desktop/.</code></pre></div>
 
 <h3 id="toc_3">3. Navigate to the working directory</h3>
 
@@ -545,7 +543,7 @@ Documents   Library     Music       Public</code></pre></div>
 
 <div><pre><code class="language-none">kls: command not found</code></pre></div>
 
-<p>Now, continue into the directory <code>Practical1</code> you downloaded earlier.</p>
+<p>Now, continue into the directory <code>session1</code> you downloaded earlier.</p>
 
 <p>First, go to the directory <code>Desktop</code>:</p>
 
@@ -555,9 +553,9 @@ Documents   Library     Music       Public</code></pre></div>
 
 <div><pre><code class="language-bash">$ ls</code></pre></div>
 
-<p>You should see the list, with one of them called <code>Practical1</code>. Now, go to that directory:</p>
+<p>You should see the list, with one of them called <code>session1</code>. Now, go to that directory:</p>
 
-<div><pre><code class="language-bash">$ cd Practical1</code></pre></div>
+<div><pre><code class="language-bash">$ cd session1</code></pre></div>
 
 <p>We have now navigated from the <em>home directory</em> to the <em>current working directory</em>. </p>
 
@@ -592,7 +590,7 @@ While Nelle’s are in <code>/Users/nelle</code>.</p>
 
 <p>Not only can we use <code>ls</code> on the current working directory, but we can use it to list the contents of a different directory. </p>
 
-<p>Let’s take a look at the contents of the <code>Practical1</code> (our current directory) and the directory within it:</p>
+<p>Let’s take a look at the contents of the <code>session1</code> (our current directory) and the directory within it:</p>
 
 <div><pre><code class="language-bash">$ ls</code></pre></div>
 
@@ -602,7 +600,7 @@ While Nelle’s are in <code>/Users/nelle</code>.</p>
 
 <p>and then list the contents of <code>shell-lesson-data</code>, without descending into the directory:</p>
 
-<div><pre><code class="language-bash">$ ls Practical1/shell-lesson-data</code></pre></div>
+<div><pre><code class="language-bash">$ ls session1/shell-lesson-data</code></pre></div>
 
 <p>that returns:
 <code>bash
@@ -617,7 +615,7 @@ exercise-data/      north-pacific-gyre/
 
 <div><pre><code class="language-bash">$ pwd</code></pre></div>
 
-<div><pre><code class="language-bash">/Users/nelle/Desktop/Practical1/shell-lesson-data/exercise-data</code></pre></div>
+<div><pre><code class="language-bash">/Users/nelle/Desktop/session1/shell-lesson-data/exercise-data</code></pre></div>
 
 <p>list the contents of the directory:</p>
 
@@ -648,16 +646,16 @@ exercise-data/      north-pacific-gyre/
 <p>This allows us to move to our <code>shell-lesson-data directory</code> from anywhere on the filesystem (including from inside <code>exercise-data</code>). To find the absolute path we’re looking for, we can use <code>pwd</code> and then extract the piece we need to move to <code>shell-lesson-data</code>.</p>
 
 <div><pre><code class="language-bash">$ pwd
-/Users/nelle/Desktop/Practical1/shell-lesson-data/north-pacific-gyre
-$ cd /Users/nelle/Desktop/Practical1/shell-lesson-data</code></pre></div>
+/Users/nelle/Desktop/session1/shell-lesson-data/north-pacific-gyre
+$ cd /Users/nelle/Desktop/session1/shell-lesson-data</code></pre></div>
 
 <p>Remember, that the commands are after prompt <code>$</code> while the output of the terminal starts on a new line and has no prompt symbol in front.</p>
 
 <p>The other way to indicate an absolute path, with respect to the current user’s home directory, is by using the tilde <code>~</code> character at the start of a path. For example, if Nelle’s home directory is <code>/Users/nelle</code>, then <code>~/data</code> is equivalent to <code>/Users/nelle/data</code>.</p>
 
 <div><pre><code class="language-bash">$ pwd
-/Users/nelle/Desktop/Practical1/shell-lesson-data
-$ cd ~/Desktop/Practical1/shell-lesson-data/exercise-data</code></pre></div>
+/Users/nelle/Desktop/session1/shell-lesson-data
+$ cd ~/Desktop/session1/shell-lesson-data/exercise-data</code></pre></div>
 
 <hr>
 
@@ -793,8 +791,7 @@ goodiff.sh   goostats.sh</code></pre></div>
 
 <hr>
 
-<p>.html
-👆<a href="Session1.html">Go to the main menu</a> <br>
+<p>👆<a href="Session1.html">Go to the main menu</a> <br>
 👉<a href="Intro2BASH_S2.html">Go to the next part &ndash; Working With Files and Directories</a><br></p>
 
 

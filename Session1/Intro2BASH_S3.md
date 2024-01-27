@@ -1,7 +1,9 @@
 # PART 3 -- Pipes and Filters
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Working With Files and Directories](Intro2BASH_S2.md)<br>
-👉[Go to the next part -- Loops](Intro2BASH_S4.md)
+👆[Go to the main menu](Session1.html) <br>
+👈[Go to the previous part -- Working With Files and Directories](Intro2BASH_S2.html)<br>
+👉[Go to the next part -- Loops](Intro2BASH_S4.html)
+
+
 
 <span style="color:blue"> **This is an advanced topic and extra material** </span>.
 
@@ -213,9 +215,9 @@ $ wc -l *.pdb | sort -n | head -n 1
 ```
 
 > **In summary:**
+> session1
 > 
-> 
-> ![redirects-and-pipes](./fig/redirects-and-pipes.svg)
+> ![redirects-and-pipes](./img/redirects-and-pipes.svg)
 
 
 ---
@@ -419,7 +421,6 @@ Sure enough, when she checks the log on her laptop, there’s no depth recorded 
 
 ---
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Working With Files and Directories](Intro2BASH_S2.md)<br>
-👉[Go to the next part -- Loops](Intro2BASH_S4.md)
-
+👆[Go to the main menu](Session1.html) <br>
+👈[Go to the previous part -- Working With Files and Directories](Intro2BASH_S2.html)<br>
+👉[Go to the next part -- Loops](Intro2BASH_S4.html)

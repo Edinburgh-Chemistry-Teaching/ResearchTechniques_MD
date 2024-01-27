@@ -1,8 +1,10 @@
 # PART 4 -- Loops 
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Pipes and Filters](Intro2BASH_S3.md)<br>
-👉[Go to the next part -- Shell Script](Intro2BASH_S5.md)
+👆[Go to the main menu](Session1.html) <br>
+👈[Go to the previous part -- Pipes and Filters](Intro2BASH_S3.html)<br>
+👉[Go to the next part -- Shell Script](Intro2BASH_S5.html)
+
+
 
 <span style="color:blue"> **This is an advanced topic and extra material** </span>
 
@@ -354,7 +356,7 @@ Since the `cp` command does not normally produce any output, it’s hard to chec
 
 The following diagram shows what happens when the modified loop is executed and demonstrates how the judicious use of echo is a good debugging technique.
 
-![loop](./fig/shell_script_for_loop_flow_chart.svg)
+![loop](./img/shell_script_for_loop_flow_chart.svg)
 
 
 ----
@@ -456,6 +458,7 @@ Another way to repeat previous work is to use the `history` command to get a lis
 
 -----
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Pipes and Filters](Intro2BASH_S3.md)<br>
-👉[Go to the next part -- Shell Script](Intro2BASH_S5.md)
+👆[Go to the main menu](Session1.html) <br>
+👈[Go to the previous part -- Pipes and Filters](Intro2BASH_S3.html)<br>
+👉[Go to the next part -- Shell Script](Intro2BASH_S5.html)
+

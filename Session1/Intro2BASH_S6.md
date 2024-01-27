@@ -1,7 +1,9 @@
 # PART 6 -- Finding things
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Shell Script ](Intro2BASH_S5.md)<br>
-👉[Go to the next part -- Using high-performance computers](Intro2BASH_S7.md)
+
+👆[Go to the main menu](Session1.html) <br>
+👈[Go to the previous part -- Shell Script ](Intro2BASH_S5.html)<br>
+👉[Go to the next part -- Using high-performance computers](Intro2BASH_S7.html)
+
 
 <span style="color:blue"> **This is an advanced topic and extra material** </span>
 
@@ -404,6 +406,8 @@ The Unix shell is older than most of the people who use it. It has survived so l
 ---
 
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Shell Script ](Intro2BASH_S5.md)<br>
-👉[Go to the next part -- Using high-performance computers](Intro2BASH_S7.md)
+
+👆[Go to the main menu](Session1.html) <br>
+👈[Go to the previous part -- Shell Script ](Intro2BASH_S5.html)<br>
+👉[Go to the next part -- Using high-performance computers](Intro2BASH_S7.html)
+
