@@ -118,9 +118,11 @@
 </div>
 <div class="box">
     <p>
-        <em>This tutorial is based upon the adaptation of <a href="http://www.mdtutorials.com/gmx/lysozyme/index.html">Justin
-            Lemkuhl tutorial</a> (Living J. Comp. Mol. Sci. 2018, 1, 5068) by <a
-                href="https://tutorials.gromacs.org/docs/md-intro-tutorial.html">Alessandra Villa</a>.</em>
+        <em>This tutorial was created by Hannah Pollak and Valentina Erastova and is based upon the <a
+                href="https://tutorials.gromacs.org/docs/md-intro-tutorial.html">Molecular dynamics simulation of a
+            small protein using GROMACS tutorial</a> by Dr Alessandra Villa which was adapted from the
+            <a href="http://www.mdtutorials.com/gmx/lysozyme/index.html">Lysozyme in Water Tutorial</a> by Dr Justin
+            A. Lemkuhl and</em>
     </p>
     <p>Every simulation needs to start with a structure. Even though a lot of computational efforts have been done, it
         is
@@ -473,7 +475,9 @@ mdrun -> energy [
                     </ul>
                 </blockquote>
             </li>
-
+            <li>Rename the file to <code>protein.pdb</code>
+                <pre>cp 1xyw.pdb protein.pdb</pre>
+            </li>
         </ol>
     </div>
     <p>
@@ -905,23 +909,32 @@ Protein_chain_A     1</pre>
                     directory.</p>
                 <p>Usage of <code>grompp</code>:</p>
                 <blockquote>
-                    <pre>gmx grompp &dash;f MDP/genion.mdp &dash;c protein-solvated.gro &dash;protein.top &dash;o genion.tpr</pre>
+                    <pre>gmx grompp &dash;f MDP/genion.mdp &dash;c protein-solvated.gro &dash;p protein.top</pre>
                     <code>&dash;f</code> specifies the input run parameter file.<br>
                     <code>&dash;c</code> specifies the coordinate file of the system to solvate.<br>
                     <code>&dash;p</code> specifies the topology file.<br>
                     <code>&dash;o</code> specifies the compiled output <code>.tpr</code> file.<br>
-                    <p class="note"> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>&dash;pp</code>
-                        option
-                        to generate a new topology file with ions is used here rather than with the <code>genion</code>
-                        command.</p>
+<!--                    <p class="note"> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>&dash;pp</code>-->
+<!--                        option-->
+<!--                        to generate a new topology file with ions is used here rather than with the <code>genion</code>-->
+<!--                        command.</p>-->
+                    <p class="note">This step will generate a compiled topology with the default name
+                            <code>topol.tpr</code>
+                            and an <code>.mdp</code> file with all the run parameters and the default name
+                            <code>mdout.mdp</code>.<br>
+                                                Any old files with the-->
+                            same
+                            name will be first backed up to <code>#topol.tpr.1#</code> or <code>#mdout.mdp.1#</code> and then overwritten.
+
+                                            </p>
                 </blockquote>
             </li>
             <li>
                 Usage of <code>genion</code>:
                 <blockquote>
-                    <pre>gmx genion &dash;s genion.tpr &dash;o protein&dash;solvated&dash;ions.gro &dash;p protein.top &dash;pname NA &dash;nname CL &dash;conc 0.15 &dash;neutral</pre>
-                    <code>&dash;s</code> specifies the compiled input <code>.tpr</code> file of the system to
-                    solvate.<br>
+                    <pre>gmx genion &dash;o protein&dash;solvated&dash;ions.gro &dash;p protein.top &dash;pname NA &dash;nname CL &dash;conc 0.15 &dash;neutral</pre>
+<!--                    <code>&dash;s</code> specifies the compiled input <code>.tpr</code> file of the system to-->
+<!--                    solvate.<br>-->
                     <code>&dash;o</code> specifies the output coordinate file<br>
                     <code>&dash;p</code> specifies the input topology file<br>
                     <code>&dash;pname</code> specifies the name of the positive ion<br>
@@ -930,6 +943,9 @@ Protein_chain_A     1</pre>
                     <code>&dash;neutral</code> specifies that the system should be neutralised<br>
                     <p>When asked which group of molecules should be replaced select the number for the <code>SOL</code>
                         group.</p>
+                                        <p class="note">If no input file names are specified, <abbr>GROMACS</abbr> will look for files with
+                            the default names, in this case <code>topol.tpr</code>.
+                        </p>
                 </blockquote>
             </li>
             <li>Use <code>grep</code> to check how many <em>NA</em> and <em>CL</em> ions were added to the system.<br>
@@ -938,8 +954,8 @@ Protein_chain_A     1</pre>
                     For the topology file you can use:
                     <pre>grep NA protein.top</pre>
                     For the coordinate file it can also be useful to pipe the output of <code>grep</code> into the
-                    <code>wc</code> command to count the number of lines that contain a specific word:
-                    <pre>grep NA protein-solvated-ions.gro | wc</pre>
+                    <code>wc -l </code> command to count the number of lines that contain a specific word:
+                    <pre>grep NA protein-solvated-ions.gro | wc -l</pre>
                 </blockquote>
             </li>
         </ol>
@@ -988,7 +1004,7 @@ Protein_chain_A     1</pre>
                 prepare the <code>.tpr</code> input file for the energy minimisation.<p>
                 <blockquote>
                 <pre>
-gmx grompp -v -f EM/em.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -po em.mdp</pre>
+gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -po em.mdp</pre>
                     <p>
                         Use the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
                         <code>.tpr</code> and <code>.mdp</code> files to <code>em.tpr</code> and <code>em.mdp</code>
@@ -1360,7 +1376,7 @@ Performance:        1.395       17.206
                         to your VM and render another figure.</p>
                 </li>
                 <li>Use <code>pbc wrap</code> to enter the protein in the box and wrap all atoms into the box:<br>
-                    <blockquote>
+                    <blockquote id="wrap_protein">
                         <pre>pbc wrap -center com -centersel &quot;protein&quot; -compound residue -all</pre>
                         <p>
                             <code>-center</code> specifies the centering method. Here, the center of mass the protein
@@ -1386,7 +1402,7 @@ Performance:        1.395       17.206
                 <li>Change the background colour to white<br>
                     Select <code>Graphics</code> &rightarrow; <code>Colors...</code> then in the <code>Color
                         Controls</code>
-                    window select </code><code>Display</code> in <code>Categories</code>
+                    window select <code>Display</code> in <code>Categories</code>
                     then <code>Background</code> in <code>Names</code> and <code>8 white</code> in <code>Colors</code>.
 
                 </li>
