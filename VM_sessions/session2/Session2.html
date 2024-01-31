@@ -416,7 +416,7 @@ mdrun -> energy [
             <li>Create the working directory for this session</li>
             <li>Copy the <code>session2</code> folder from practicals to your home directory:
                 <p>Open a terminal and type:</p>
-                <pre>$ cp -r /home/practicals/session2 .</pre>
+                <pre>$ cp &dash;r /home/practicals/session2 .</pre>
             </li>
             <li>Change into the <code>session2</code> directory:
                 <pre>$ cd session2</pre>
@@ -689,7 +689,7 @@ mdrun -> energy [
                             <p class="note">A useful command to view the end of a file is <code>tail</code>. For
                                 example,
                                 to view the last 10 lines of the <code>protein.top</code> file, you can use the command
-                                <code>tail -n 10 protein.top</code>.
+                                <code>tail &dash;n 10 protein.top</code>.
                             </p>
                             <p>At the moment, the system section only contains one protein chain:</p>
                             <pre>
@@ -992,8 +992,8 @@ Protein_chain_A     1</pre>
                     For the topology file you can use:
                     <pre>$ grep NA protein-solvated-ions.top</pre>
                     For the coordinate file it can also be useful to pipe the output of <code>grep</code> into the
-                    <code>wc -l </code> command to count the number of lines that contain a specific word:
-                    <pre>$ grep NA protein-solvated-ions.gro | wc -l</pre>
+                    <code>wc &dash;l </code> command to count the number of lines that contain a specific word:
+                    <pre>$ grep NA protein-solvated-ions.gro | wc &dash;l</pre>
                 </blockquote>
             </li>
         </ol>
@@ -1046,7 +1046,7 @@ Protein_chain_A     1</pre>
                 Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a> to
                 prepare the <code>.tpr</code> input file for the energy minimisation.<p>
                 <blockquote>
-                <pre>$ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein-solvated-ions.top -o em.tpr -po em.mdp &dash;pp em.top</pre>
+                    <pre>$ gmx grompp &dash;v &dash;f MDP/minim.mdp &dash;c protein-solvated-ions.gro &dash;p protein-solvated-ions.top &dash;o em.tpr &dash;po em.mdp &dash;pp em.top</pre>
                     <p>
                         Use the <code>&dash;o</code>, <code>&dash;po</code> and <code>&dash;pp</code> options to set the
                         names of the output
@@ -1059,7 +1059,7 @@ Protein_chain_A     1</pre>
                 Run the energy minimisation with <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
                 <code>mdrun</code></a>.
                 <blockquote>
-                    <pre>$ gmx mdrun -v -s em.tpr -deffnm em</pre>
+                    <pre>$ gmx mdrun &dash;v &dash;s em.tpr &dash;deffnm em</pre>
                     <p>
                         Use the <code>&dash;deffnm</code> option to set the name of the output files to <code>em</code>
                         and
@@ -1124,7 +1124,8 @@ Protein_chain_A     1</pre>
     </p>
     <p>
         In the run parameter files for the restrained equilibration, <code>pr.mdp</code>, the line reading
-        <code>define = -DPOSRES</code> will have the effect of globally defining the keyword <code>POSRES</code> which
+        <code>define = &dash;DPOSRES</code> will have the effect of globally defining the keyword <code>POSRES</code>
+        which
         is then used to turn on position restraints in the topology file.
     </p>
     <p>
@@ -1152,19 +1153,20 @@ Protein_chain_A     1</pre>
                 position
                 restraints for the protein.
             </li>
-            <li>Copy the input files to your Eddie HPC home directory.<br>
-                <pre>$ scp -r ~/session2 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/</pre>
+            <li>Copy the input files to your Eddie HPC scratch directory.<br>
+                <pre>$ scp &dash;r ~/session2 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/</pre>
                 <p class="note">
                     Replace <code>&lt;UUN&gt;</code> with your own university username.
                 </p>
             </li>
-            <li>Use <code>ssh -X</code> to in to Eddie HPC and navigate to the <code>session2</code> directory.
-            <pre>$ ssh &dashX &lt;UUN&gt;@eddie.ecdf.ed.ac.uk</pre>
+            <li>Use <code>ssh &dash;X</code> to in to Eddie HPC and navigate to the <code>session2</code> directory.
+                <pre>$ ssh &dash;X &lt;UUN&gt;@eddie.ecdf.ed.ac.uk</pre>
                 <p class="note">
                     Replace <code>&lt;UUN&gt;</code> with your own university username.
                 </p>
                 <p class="note">
-                    The <code>&dashX</code> option is used to enable X11 forwarding, which allows you to use the graphical
+                    The <code>&dash;X</code> option is used to enable X11 forwarding, which allows you to use the
+                    graphical
                     interface needed to display plots on Eddie HPC.
             </li>
             <li>Prepare the submission script for the equilibration run on eddie:<br>
@@ -1180,7 +1182,7 @@ Protein_chain_A     1</pre>
                         to
                         prepare the <code>.tpr</code> input file for the restrained equilibration.<br>
                         <blockquote>
-                <pre>$ gmx grompp -v -f MDP/nvt.mdp -c em.gro -p em.top -r em.gro -o nvt.tpr -po nvt.mdp -pp nvt.top</pre>
+                            <pre>$ gmx grompp &dash;v &dash;f MDP/nvt.mdp &dash;c em.gro &dash;p em.top &dash;r em.gro &dash;o nvt.tpr &dash;po nvt.mdp &dash;pp nvt.top</pre>
                             <p>Use the <code>&dash;o</code>, <code>&dash;po</code>, <code>&dash;pp</code> options to set
                                 the names of the
                                 output
@@ -1199,7 +1201,7 @@ Protein_chain_A     1</pre>
                             href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
                         <code>mdrun</code></a>.<br>
                         <blockquote>
-                <pre>$ gmx mdrun -v -s nvt.tpr -deffnm nvt &dash;nt 1 &dash;ntmpi 1</pre>
+                            <pre>$ gmx mdrun &dash;v &dash;s nvt.tpr &dash;deffnm nvt &dash;nt 1 &dash;ntmpi 1</pre>
                             <p>Use the <code>&dash;deffnm</code> option to set the name of the output files to
                                 <code>nvt</code>
                                 and
@@ -1217,7 +1219,7 @@ Protein_chain_A     1</pre>
             </li>
             <li>
                 Use <code>qstat</code> to check the status of the job.<br>
-                <pre>$ qstat -u &lt;UUN&gt;</pre>
+                <pre>$ qstat &dash;u &lt;UUN&gt;</pre>
             </li>
             <li>
                 Once the run starts, check the evolution of the energy through the run with <a
@@ -1227,28 +1229,32 @@ Protein_chain_A     1</pre>
                         For using the <code>gmx energy</code> command, you will need to start an interactive session on
                         a compute node on Eddie HPC.
                         <p>
-                            Use the <code>qlogin</code> command to request an interactive session with 1&nbsp;G of memory:
-                            <pre>$ -l h_vmem=1G</pre>
+                            Use the <code>qlogin</code> command to request an interactive session with 1&nbsp;G of
+                            memory:
+                        <pre>$ &dash;l h_vmem=1G</pre>
                         <p>
-                            Once the interactive session has started, navigate back to your scratch directory and run the <code>load_gmx.sh</code>
+                            Once the interactive session has started, navigate back to your scratch directory and run
+                            the <code>load_gmx.sh</code>
                             script to load the GROMACS module:
-                            <pre>$ bash load_gmx.sh</pre>
+                        <pre>$ bash load_gmx.sh</pre>
                         </p>
 
                     </li>
                     <li>
                         Check temperature, pressure, potential and kinetic energy with <code>gmx energy</code>.<br>
                         <blockquote>
-                <pre>$ gmx energy -f nvt.edr -o energy.xvg</pre>
-                    <p>Choose <code>Total-Energy</code>, <code>Potential</code>
-                        or <code>Kinetic-En</code>, or all three, by entering the number next to the desired
-                        energy term and pressing <code>Enter</code>.</p>
-                    You will obtain an <code>energy.xvg</code> file that you can plot with <code>xmgrace</code>.
-                    <p class="note">If you want to generate separate output files for each energy term, you can use the
-                        <code>&dash;o</code> option to specify a file name for each term
-                        (e.g.&nbsp;<code>energy1.xvg</code>,
-                        <code>energy2.xvg</code> and <code>energy3.xvg</code>).</p>
-                </blockquote></li>
+                            <pre>$ gmx energy &dash;f nvt.edr &dash;o energy.xvg</pre>
+                            <p>Choose <code>Total-Energy</code>, <code>Potential</code>
+                                or <code>Kinetic-En</code> by entering the number next to the desired
+                                energy term and pressing <code>Enter</code>.</p>
+                            You will obtain an <code>energy.xvg</code> file that you can plot with <code>xmgrace</code>.
+                            <p class="note">If you want to generate separate output files for each energy term, you can
+                                use the
+                                <code>&dash;o</code> option to specify a file name for each term
+                                (e.g.&nbsp;<code>energy_kin.xvg</code>,
+                                <code>energy_pot.xvg</code> and <code>energy_tot.xvg</code>).</p>
+                        </blockquote>
+                    </li>
 
                 </ul>
 
@@ -1257,19 +1263,20 @@ Protein_chain_A     1</pre>
                 Plot the energy evolution with <code>xmgrace</code>.<br>
                 Use the following command if you selected only one energy term:
                 <blockquote>
-                <pre>$ xmgrace nvt.xvg</pre>
+                    <pre>$ xmgrace nvt.xvg</pre>
                 </blockquote>
                 Use the following command if you selected all three energy terms:
                 <blockquote>
-                <pre>$ xmgrace -nxy energy.xvg</pre>
+                    <pre>$ xmgrace &dash;nxy energy.xvg</pre>
                 </blockquote>
                 If you have saved each output into an individual file using the <code>&dash;o</code> option, resulting
                 in,
-                for example, <code>energy1.xvg</code>, <code>energy2.xvg</code> and <code>energy3.xvg</code> you can
+                for example, <code>energy_kin.xvg</code>, <code>energy_pot.xvg</code> and <code>energy_tot.xvg</code>
+                you can
                 plot
                 them together with:
                 <blockquote>
-                <pre>$ xmgrace -nxy energy*.xvg -legend load</pre>
+                    <pre>$ xmgrace &dash;nxy energy_*.xvg &dash;legend load</pre>
                     <p class="note">
                         The <code>*</code> symbol is a <em>wildcard</em>, i.e. any file that starts with
                         <code>energy</code> and finishes with <code>.xvg</code> will be plotted.
@@ -1478,7 +1485,7 @@ Performance:        6.183        3.882</pre>
             </li>
             <li>E.g.
                 <blockquote>
-                    <pre>$ gmx rms -s em.gro -f md.trr -o rmsd_system.xvg &dash;tu ns</pre>
+                    <pre>$ gmx rms &dash;s md.gro &dash;f md.xtc &dash;o rmsd_system.xvg &dash;tu ns</pre>
                     <p class="note">Use the <code>&dash;o</code> option to specify a name under which you can find
                         the output file
                         again later.</p>
@@ -1507,8 +1514,11 @@ Performance:        6.183        3.882</pre>
             <h2 id="toc_5">Rendering a figure with VMD</h2>
             <p>
                 It is useful to be able to produce an image of your simulation, for a report or a publication.
-                For example, the image below is rendered with VMD.
-                In this section we will learn how to do it.
+                For example, the image below is rendered with VMD.</p>
+            <p>
+                In this section we will learn how to do it. For this step you will use the <code>em.gro</code> file on
+                your
+                VM.
             </p>
 
             <div class="bbox">
@@ -1525,7 +1535,7 @@ Performance:        6.183        3.882</pre>
                     </li>
                     <li>Use <code>pbc wrap</code> to enter the protein in the box and wrap all atoms into the box:<br>
                         <blockquote id="wrap_protein">
-                            <pre>vmd &gt; pbc wrap -center com -centersel &quot;protein&quot; -compound residue -all</pre>
+                            <pre>vmd &gt; pbc wrap &dash;center com &dash;centersel &quot;protein&quot; &dash;compound residue &dash;all</pre>
                             <p>
                                 <code>-center</code> specifies the centering method. Here, the center of mass the
                                 protein
@@ -1546,7 +1556,7 @@ Performance:        6.183        3.882</pre>
                     </li>
                     <li>Use <code>pbc box_draw</code> to draw the simulation box:<br>
                         <blockquote>
-                            <pre>vmd &gt; pbc box_draw -width 2 -color black -resolution 30</pre>
+                            <pre>vmd &gt; pbc box_draw &dash;width 2 &dash;color black &dash;resolution 30</pre>
                         </blockquote>
                     </li>
                     <li>Change the background colour to white<br>
@@ -1589,7 +1599,7 @@ Performance:        6.183        3.882</pre>
                             <li>Save the image as <code>protein.png</code>
                             </li>
                         </ul>
-                        <div style="color: darkslategray; border: darkslategray; border-width: 1px; border-style: solid; background: lightgray; padding: 10px">
+                        <div style="color: darkslategray; border: darkslategray; border-width: 1px; border-style: solid; background: aliceblue; padding: 10px">
                             <p class="note">The virtual machine does not have access to a GPU to produce really nice
                                 renderings.
                                 If you have access to a computer with a GPU, you can install VMD on it and use the
@@ -1597,9 +1607,7 @@ Performance:        6.183        3.882</pre>
                                     (internal, in-memory)</code> option to render
                                 high-quality images:</p>
                             <ul style="text-align: left">
-                                <li>
-                                    Select <code>File</code> &rightarrow; <code>Render...</code>
-                                </li>
+                                <li>Select <code>File</code> &rightarrow; <code>Render...</code></li>
                                 <li>
                                     In the <code>File Render Controls</code> window, select <code>Tachyon
                                     (internal, in-memory)</code> as the rendering engine and
@@ -1856,7 +1864,7 @@ Performance:        6.183        3.882</pre>
                     </li>
                     <li>Usage of <code>report-methods</code>:
                         <blockquote>
-                            <pre>$ gmx report-methods -s md.tpr</pre>
+                            <pre>$ gmx report-methods &dash;s md.tpr</pre>
                             <p class="note">Use the <code>&dash;o</code> option to write the report as a plain
                                 <code>.out</code>
                                 text file and the <code>&dash;m</code> option to write the report as a LaTeX formatted
@@ -1869,7 +1877,7 @@ Executable:   /exports/applications/apps/SL7/gromacs/2023.3/gromacs_final/bin/gm
 Data prefix:  /exports/applications/apps/SL7/gromacs/2023.3/gromacs_final
 Working dir:  /exports/eddie/scratch/s2123329
 Command line:
-    gmx report-methods -s md.tpr
+    gmx report-methods &dash;s md.tpr
 
 Reading file md.tpr, VERSION 2023.3 (single precision)
 section: Methods
