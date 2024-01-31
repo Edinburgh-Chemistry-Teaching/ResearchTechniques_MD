@@ -5,8 +5,8 @@ title		= Energy Minimization	; Title of run
 
 ; Parameters describing what to do, when to stop and what to save
 integrator	= steep					; Algorithm (steep = steepest descent minimization)
-emtol		= 50.0					; Stop minimization when the maximum force < 50.0 kJ/mol
-nsteps		= 1000					; Maximum number of (minimization) steps to perform
+emtol		= 200.0					; Stop minimization when the maximum force < 50.0 kJ/mol
+nsteps		= 2000					; Maximum number of (minimization) steps to perform
 nstenergy	= 10					; Write energies to disk every nstenergy steps
 energygrps	= System				; Which energy group(s) to write to disk
 

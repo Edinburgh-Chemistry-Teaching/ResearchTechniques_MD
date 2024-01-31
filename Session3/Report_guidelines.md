@@ -1,4 +1,4 @@
-# Example Report (max. 1000 words):
+# Report guidelines (max. 1000 words):
 
 # MD simulation of interaction of oil and smectite clay
 ## Overview (max. 100 words):

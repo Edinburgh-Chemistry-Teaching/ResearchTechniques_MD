@@ -1,9 +1,6 @@
-; VARIOUS PREPROCESSING OPTIONS
-title                    = NPT simulation 
-
 ; RUN CONTROL PARAMETERS
 integrator               = md
-dt                       = 0.001
+dt                       = 0.002
 nsteps                   = 5000
 
 ; OUTPUT CONTROL OPTIONS
@@ -12,9 +9,9 @@ nstvout                  = 0
 nstfout                  = 0
 nstlog                   = 1
 nstenergy                = 1
-nstxtcout                = 0
-xtc_precision            = 1000
-xtc-grps                 = System
+nstxout-compressed     = 0
+compressed-x-precision   = 1000
+compressed-x-grps        = System
 energygrps               = Protein Non-Protein
 
 ; NEIGHBORSEARCHING PARAMETERS
@@ -35,10 +32,11 @@ tau_t                    = 0.1      0.1
 ref_t                    = 300      300
 
 ; Pressure coupling     
-Pcoupl                   = C-rescale           ; for GMX before 2023 use Berendsen
+pcoupl                   = Berendsen
 Pcoupltype               = Isotropic
-tau_p                    = 1.0
+tau_p                    = 2.0
 compressibility          = 4.5e-5
 ref_p                    = 1.0
 
-
+constraint_algorithm    = lincs
+constraints             = h-bonds
