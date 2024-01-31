@@ -1158,7 +1158,14 @@ Protein_chain_A     1</pre>
                     Replace <code>&lt;UUN&gt;</code> with your own university username.
                 </p>
             </li>
-            <li>Use <code>ssh</code> to in to Eddie HPC and navigate to the <code>session2</code> directory.
+            <li>Use <code>ssh -X</code> to in to Eddie HPC and navigate to the <code>session2</code> directory.
+            <pre>$ ssh &dashX &lt;UUN&gt;@eddie.ecdf.ed.ac.uk</pre>
+                <p class="note">
+                    Replace <code>&lt;UUN&gt;</code> with your own university username.
+                </p>
+                <p class="note">
+                    The <code>&dashX</code> option is used to enable X11 forwarding, which allows you to use the graphical
+                    interface needed to display plots on Eddie HPC.
             </li>
             <li>Prepare the submission script for the equilibration run on eddie:<br>
                 <p>Use the <code>cp</code> command to copy the template <code>eddie_run.sh</code> to
@@ -1192,11 +1199,15 @@ Protein_chain_A     1</pre>
                             href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
                         <code>mdrun</code></a>.<br>
                         <blockquote>
-                <pre>$ gmx mdrun -v -s nvt.tpr -deffnm nvt </pre>
+                <pre>$ gmx mdrun -v -s nvt.tpr -deffnm nvt &dash;nt 1 &dash;ntmpi 1</pre>
                             <p>Use the <code>&dash;deffnm</code> option to set the name of the output files to
                                 <code>nvt</code>
                                 and
                                 select <code>&dash;v</code> to get a verbose output.</p>
+                            <p>
+                                Use the <code>&dash;nt</code> and <code>&dash;ntmpi</code> options to specify the number
+                                of threads and MPI processes to use for the run.
+                            </p>
                         </blockquote>
                     </li>
                 </ol>
@@ -1211,7 +1222,23 @@ Protein_chain_A     1</pre>
             <li>
                 Once the run starts, check the evolution of the energy through the run with <a
                     href="https://manual.gromacs.org/current/onlinehelp/gmx-energy.html"><code>gmx energy</code></a>.
-                <blockquote>
+                <ul>
+                    <li>
+                        For using the <code>gmx energy</code> command, you will need to start an interactive session on
+                        a compute node on Eddie HPC.
+                        <p>
+                            Use the <code>qlogin</code> command to request an interactive session with 1&nbsp;G of memory:
+                            <pre>$ -l h_vmem=1G</pre>
+                        <p>
+                            Once the interactive session has started, navigate back to your scratch directory and run the <code>load_gmx.sh</code>
+                            script to load the GROMACS module:
+                            <pre>$ bash load_gmx.sh</pre>
+                        </p>
+
+                    </li>
+                    <li>
+                        Check temperature, pressure, potential and kinetic energy with <code>gmx energy</code>.<br>
+                        <blockquote>
                 <pre>$ gmx energy -f nvt.edr -o energy.xvg</pre>
                     <p>Choose <code>Total-Energy</code>, <code>Potential</code>
                         or <code>Kinetic-En</code>, or all three, by entering the number next to the desired
@@ -1221,7 +1248,10 @@ Protein_chain_A     1</pre>
                         <code>&dash;o</code> option to specify a file name for each term
                         (e.g.&nbsp;<code>energy1.xvg</code>,
                         <code>energy2.xvg</code> and <code>energy3.xvg</code>).</p>
-                </blockquote>
+                </blockquote></li>
+
+                </ul>
+
             </li>
             <li>
                 Plot the energy evolution with <code>xmgrace</code>.<br>
@@ -1485,7 +1515,6 @@ Performance:        6.183        3.882</pre>
                 <h3 id="Rendering_a_figure_with_VMD"></h3>
                 <ol>
                     <li>Render a figure of the protein in the simulation box with VMD</li>
-                    </li>
                     <li>On the VM, load your system into the VMD.<br>
                         <pre>$ vmd em.gro</pre>
                         <p class="note">You can use the <code>em.gro</code> file as the input coordinate
