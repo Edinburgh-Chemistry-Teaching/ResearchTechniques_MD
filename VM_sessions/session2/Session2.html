@@ -416,10 +416,10 @@ mdrun -> energy [
             <li>Create the working directory for this session</li>
             <li>Copy the <code>session2</code> folder from practicals to your home directory:
                 <p>Open a terminal and type:</p>
-                <pre>cp -r /home/practicals/session2 .</pre>
+                <pre>$ cp -r /home/practicals/session2 .</pre>
             </li>
             <li>Change into the <code>session2</code> directory:
-                <pre>cd session2</pre>
+                <pre>$ cd session2</pre>
             </li>
         </ul>
     </div>
@@ -436,9 +436,9 @@ mdrun -> energy [
                         Download the file in the terminal using <code>wget</code> command:<br>
                         Usage of <code>wget</code>:
                         <blockquote>
-                            <pre>wget URL</pre>
+                            <pre>$ wget URL</pre>
                             E.g. for the protein 1xyw.pdb, the command would be:
-                            <pre><code>wget http://www.rcsb.org/pdb/files/1xyw.pdb .</code></pre>
+                            <pre>$ wget http://www.rcsb.org/pdb/files/1xyw.pdb .</pre>
                             <p class="note">The <code>.</code> at the end of the command means that the file will be
                                 downloaded into the current directory so make sure you are in the newly created
                                 <code>session2</code> directory before running the command.</p>
@@ -454,8 +454,8 @@ mdrun -> energy [
             <li>Use the <code>more</code> or <code>less</code> command to read through the file.
 
                 <blockquote>
-                    <pre>more 1xyw.pdb</pre>
-                    <pre>less 1xyw.pdb</pre>
+                    <pre>$ more 1xyw.pdb</pre>
+                    <pre>$ less 1xyw.pdb</pre>
                     To scroll down use <code>Space</code>, to exit the viewer press <code>Ctrl+C</code>.
                     Familiarise yourself with the file format. The file contains information about the protein amino
                     acid residue (e.g. LEU and GLY etc.) and also the atom name inside the residue.
@@ -476,7 +476,7 @@ mdrun -> energy [
                 </blockquote>
             </li>
             <li>Rename the file to <code>protein.pdb</code>
-                <pre>cp 1xyw.pdb protein.pdb</pre>
+                <pre>$ cp 1xyw.pdb protein.pdb</pre>
             </li>
         </ol>
     </div>
@@ -620,7 +620,7 @@ mdrun -> energy [
                 </p>
                 <p>Usage of <code>pdb2gmx</code>:</p>
                 <blockquote>
-                    <pre>gmx pdb2gmx &dash;f protein.pdb &dash;o protein.gro &dash;p protein.top &dash;ignh</pre>
+                    <pre>$ gmx pdb2gmx &dash;f protein.pdb &dash;o protein.gro &dash;p protein.top &dash;ignh</pre>
                     <p>What do each of the options stand for?</p>
                     <code>&dash;f</code> specifies the input <code>.pdb</code> file<br>
                     <code>&dash;o</code> specifies the output coordinate <code>.gro</code> file<br>
@@ -645,8 +645,8 @@ mdrun -> energy [
             <li>Inspect the output files using <code>more</code> or <code>less</code>.
                 Example for <code>protein.gro</code>:
                 <blockquote>
-                    <pre>more protein.gro</pre>
-                    <pre>less protein.gro</pre>
+                    <pre>$ more protein.gro</pre>
+                    <pre>$ less protein.gro</pre>
                     To scroll down use <code>Space</code>, to exit the viewer press <code>Ctrl+C</code>.
 
                     <p>What information do each of these files contain?
@@ -726,7 +726,7 @@ Protein_chain_A     1</pre>
                 no two neighbour proteins in adjacent boxes will be closer than 2.0&nbsp;nm to each other.
                 Usage of <code>editconf</code>:
                 <blockquote>
-                    <pre>gmx editconf &dash;f protein.gro &dash;o protein&dash;pbc.gro &dash;bt dodecahedron &dash;d 1.0 &dash;c</pre>
+                    <pre>$ gmx editconf &dash;f protein.gro &dash;o protein&dash;pbc.gro &dash;bt dodecahedron &dash;d 1.0 &dash;c</pre>
                     <p>What do each of the options stand for?</p>
                     <code>&dash;f</code> specifies the input coordinate file<br>
                     <code>&dash;o</code> specifies the output coordinate file<br>
@@ -875,7 +875,7 @@ Protein_chain_A     1</pre>
             <li>Solvate the protein with <abbr>SPC</abbr> water</li>
             <li>Make a copy of the topology <code>protein.top</code> file:
                 <blockquote>
-                    <pre>cp protein.top protein-solvated.top</pre>
+                    <pre>$ cp protein.top protein-solvated.top</pre>
                     <p class="note"><code>solvate</code> will overwrite the <code>.top</code> file so it is good to make
                         a copy of the unsolvated topology.</p>
             </li>
@@ -883,7 +883,7 @@ Protein_chain_A     1</pre>
             <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-solvate.html"><code>solvate</code></a> to
                 solvate the protein with <abbr>SPC</abbr> water:
                 <blockquote>
-                    <pre>gmx solvate &dash;cp protein-pbc.gro &dash;cs spc216.gro &dash;o protein&dash;solvated.gro &dash;p protein&dash;solvated.top</pre>
+                    <pre>$ gmx solvate &dash;cp protein-pbc.gro &dash;cs spc216.gro &dash;o protein&dash;solvated.gro &dash;p protein&dash;solvated.top</pre>
                     <code>&dash;cp</code> specifies the coordinate file of the system to solvate.<br>
                     <code>&dash;cs</code> specifies the water model coordinate file.<br>
                     <code>&dash;o</code> specifies the output coordinate file.<br>
@@ -927,7 +927,7 @@ Protein_chain_A     1</pre>
             <li>
                 Make a copy of the topology <code>protein-solvated.top</code> file:
                 <blockquote>
-                    <pre>cp protein-solvated.top protein-solvated-ions.top</pre>
+                    <pre>$ cp protein-solvated.top protein-solvated-ions.top</pre>
                 </blockquote>
             </li>
             <li>Generate a run <abbr>TPR</abbr> file for the system (<code>MMT_dec_solv.tpr</code>):
@@ -943,7 +943,7 @@ Protein_chain_A     1</pre>
                 </p>
                 <p>Usage of <code>grompp</code>:</p>
                 <blockquote>
-                    <pre>gmx grompp &dash;f MDP/genion.mdp &dash;c protein&dash;solvated.gro &dash;p protein&dash;solvated&dash;ions.top
+                    <pre>$ gmx grompp &dash;f MDP/genion.mdp &dash;c protein&dash;solvated.gro &dash;p protein&dash;solvated&dash;ions.top
                     </pre>
                     <!--                    &dash;o genion.tpr-->
                     <code>&dash;f</code> specifies the input run parameter file.<br>
@@ -969,7 +969,7 @@ Protein_chain_A     1</pre>
             <li>
                 Usage of <code>genion</code>:
                 <blockquote>
-                    <pre>gmx genion &dash;o protein&dash;solvated&dash;ions.gro &dash;p protein&dash;solvated&dash;ions.top &dash;pname NA &dash;nname CL &dash;conc 0.15 &dash;neutral</pre>
+                    <pre>$ gmx genion &dash;o protein&dash;solvated&dash;ions.gro &dash;p protein&dash;solvated&dash;ions.top &dash;pname NA &dash;nname CL &dash;conc 0.15 &dash;neutral</pre>
                     <!--                    <code>&dash;s</code> specifies the compiled input <code>.tpr</code> file of the system to-->
                     <!--                    solvate.<br>-->
                     <!--                    <code>&dash;s</code> specifies the compiled input <code>.tpr</code> file.<br>-->
@@ -990,10 +990,10 @@ Protein_chain_A     1</pre>
                 <code>grep</code> can be used to search for specific words in a file:<br>
                 <blockquote>
                     For the topology file you can use:
-                    <pre>grep NA protein-solvated-ions.top</pre>
+                    <pre>$ grep NA protein-solvated-ions.top</pre>
                     For the coordinate file it can also be useful to pipe the output of <code>grep</code> into the
                     <code>wc -l </code> command to count the number of lines that contain a specific word:
-                    <pre>grep NA protein-solvated-ions.gro | wc -l</pre>
+                    <pre>$ grep NA protein-solvated-ions.gro | wc -l</pre>
                 </blockquote>
             </li>
         </ol>
@@ -1046,8 +1046,7 @@ Protein_chain_A     1</pre>
                 Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a> to
                 prepare the <code>.tpr</code> input file for the energy minimisation.<p>
                 <blockquote>
-                <pre>
-gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein-solvated-ions.top -o em.tpr -po em.mdp &dash;pp em.top</pre>
+                <pre>$ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein-solvated-ions.top -o em.tpr -po em.mdp &dash;pp em.top</pre>
                     <p>
                         Use the <code>&dash;o</code>, <code>&dash;po</code> and <code>&dash;pp</code> options to set the
                         names of the output
@@ -1060,7 +1059,7 @@ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein-solvated-
                 Run the energy minimisation with <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
                 <code>mdrun</code></a>.
                 <blockquote>
-                    <pre>gmx mdrun -v -s em.tpr -deffnm em</pre>
+                    <pre>$ gmx mdrun -v -s em.tpr -deffnm em</pre>
                     <p>
                         Use the <code>&dash;deffnm</code> option to set the name of the output files to <code>em</code>
                         and
@@ -1120,7 +1119,7 @@ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein-solvated-
     <p>
         For this step, the positions of protein atoms will remain restrained, while water and ions are allowed to relax
         around it. Using a position restraints file, it is possible to restrain certain parts of the system only, by
-        applying a penalty in the form of a harmonic potential that restricts the movement if selected atoms.
+        applying a penalty in the form of a harmonic potential that restricts the movement of selected atoms.
         In this case, we will restrain heavy atoms of the protein.
     </p>
     <p>
@@ -1154,7 +1153,7 @@ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein-solvated-
                 restraints for the protein.
             </li>
             <li>Copy the input files to your Eddie HPC home directory.<br>
-                <pre>scp -r ~/session2 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/</pre>
+                <pre>$ scp -r ~/session2 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/</pre>
                 <p class="note">
                     Replace <code>&lt;UUN&gt;</code> with your own university username.
                 </p>
@@ -1174,8 +1173,7 @@ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein-solvated-
                         to
                         prepare the <code>.tpr</code> input file for the restrained equilibration.<br>
                         <blockquote>
-                <pre>
-gmx grompp -v -f MDP/nvt.mdp -c em.gro -p em.top -r em.gro -o nvt.tpr -po nvt.mdp -pp nvt.top</pre>
+                <pre>$ gmx grompp -v -f MDP/nvt.mdp -c em.gro -p em.top -r em.gro -o nvt.tpr -po nvt.mdp -pp nvt.top</pre>
                             <p>Use the <code>&dash;o</code>, <code>&dash;po</code>, <code>&dash;pp</code> options to set
                                 the names of the
                                 output
@@ -1194,8 +1192,7 @@ gmx grompp -v -f MDP/nvt.mdp -c em.gro -p em.top -r em.gro -o nvt.tpr -po nvt.md
                             href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
                         <code>mdrun</code></a>.<br>
                         <blockquote>
-                <pre>
-gmx mdrun -v -s nvt.tpr -deffnm nvt </pre>
+                <pre>$ gmx mdrun -v -s nvt.tpr -deffnm nvt </pre>
                             <p>Use the <code>&dash;deffnm</code> option to set the name of the output files to
                                 <code>nvt</code>
                                 and
@@ -1205,18 +1202,17 @@ gmx mdrun -v -s nvt.tpr -deffnm nvt </pre>
                 </ol>
             </li>
             <li>Save the file and submit the run with <code>qsub</code><br>
-                <pre>qsub run_nvt.sh</pre>
+                <pre>$ qsub run_nvt.sh</pre>
             </li>
             <li>
                 Use <code>qstat</code> to check the status of the job.<br>
-                <pre>qstat -u &lt;UUN&gt;</pre>
+                <pre>$ qstat -u &lt;UUN&gt;</pre>
             </li>
             <li>
                 Once the run starts, check the evolution of the energy through the run with <a
                     href="https://manual.gromacs.org/current/onlinehelp/gmx-energy.html"><code>gmx energy</code></a>.
                 <blockquote>
-                <pre>
-gmx energy -f nvt.edr -o energy.xvg</pre>
+                <pre>$ gmx energy -f nvt.edr -o energy.xvg</pre>
                     <p>Choose <code>Total-Energy</code>, <code>Potential</code>
                         or <code>Kinetic-En</code>, or all three, by entering the number next to the desired
                         energy term and pressing <code>Enter</code>.</p>
@@ -1231,13 +1227,11 @@ gmx energy -f nvt.edr -o energy.xvg</pre>
                 Plot the energy evolution with <code>xmgrace</code>.<br>
                 Use the following command if you selected only one energy term:
                 <blockquote>
-                <pre>
-xmgrace nvt.xvg</pre>
+                <pre>$ xmgrace nvt.xvg</pre>
                 </blockquote>
                 Use the following command if you selected all three energy terms:
                 <blockquote>
-                <pre>
-xmgrace -nxy energy.xvg</pre>
+                <pre>$ xmgrace -nxy energy.xvg</pre>
                 </blockquote>
                 If you have saved each output into an individual file using the <code>&dash;o</code> option, resulting
                 in,
@@ -1245,8 +1239,7 @@ xmgrace -nxy energy.xvg</pre>
                 plot
                 them together with:
                 <blockquote>
-                <pre>
-xmgrace -nxy energy*.xvg -legend load</pre>
+                <pre>$ xmgrace -nxy energy*.xvg -legend load</pre>
                     <p class="note">
                         The <code>*</code> symbol is a <em>wildcard</em>, i.e. any file that starts with
                         <code>energy</code> and finishes with <code>.xvg</code> will be plotted.
@@ -1328,7 +1321,7 @@ xmgrace -nxy energy*.xvg -legend load</pre>
             </li>
             <li>Submit the run with <code>qsub</code><br>
                 <blockquote>
-                    <pre>qsub run_npt.sh</pre>
+                    <pre>$ qsub run_npt.sh</pre>
                     <p class="note">
                         Make sure that the <code>run_nvt.sh</code> script has finished before submitting the <code>run_npt.sh</code>
                         script.
@@ -1381,7 +1374,7 @@ xmgrace -nxy energy*.xvg -legend load</pre>
             </li>
             <li>Submit the run with <code>qsub</code><br>
                 <blockquote>
-                    <pre>qsub run_md.sh</pre>
+                    <pre>$ qsub run_md.sh</pre>
                     <p class="note">
                         Make sure that the <code>run_npt.sh</code> script has finished before submitting the <code>run_md.sh</code>
                         script.
@@ -1455,7 +1448,7 @@ Performance:        6.183        3.882</pre>
             </li>
             <li>E.g.
                 <blockquote>
-                    <pre>gmx rms -s em.gro -f md.trr -o rmsd_system.xvg &dash;tu ns</pre>
+                    <pre>$ gmx rms -s em.gro -f md.trr -o rmsd_system.xvg &dash;tu ns</pre>
                     <p class="note">Use the <code>&dash;o</code> option to specify a name under which you can find
                         the output file
                         again later.</p>
@@ -1494,7 +1487,7 @@ Performance:        6.183        3.882</pre>
                     <li>Render a figure of the protein in the simulation box with VMD</li>
                     </li>
                     <li>On the VM, load your system into the VMD.<br>
-                        <pre>vmd em.gro</pre>
+                        <pre>$ vmd em.gro</pre>
                         <p class="note">You can use the <code>em.gro</code> file as the input coordinate
                             file for this exercise. Once the production run has finished, you can copy the final
                             coordinate
@@ -1503,7 +1496,7 @@ Performance:        6.183        3.882</pre>
                     </li>
                     <li>Use <code>pbc wrap</code> to enter the protein in the box and wrap all atoms into the box:<br>
                         <blockquote id="wrap_protein">
-                            <pre>pbc wrap -center com -centersel &quot;protein&quot; -compound residue -all</pre>
+                            <pre>vmd &gt; pbc wrap -center com -centersel &quot;protein&quot; -compound residue -all</pre>
                             <p>
                                 <code>-center</code> specifies the centering method. Here, the center of mass the
                                 protein
@@ -1524,7 +1517,7 @@ Performance:        6.183        3.882</pre>
                     </li>
                     <li>Use <code>pbc box_draw</code> to draw the simulation box:<br>
                         <blockquote>
-                            <pre>pbc box_draw -width 2 -color black -resolution 30</pre>
+                            <pre>vmd &gt; pbc box_draw -width 2 -color black -resolution 30</pre>
                         </blockquote>
                     </li>
                     <li>Change the background colour to white<br>
@@ -1834,7 +1827,7 @@ Performance:        6.183        3.882</pre>
                     </li>
                     <li>Usage of <code>report-methods</code>:
                         <blockquote>
-                            <pre>gmx report-methods -s md.tpr</pre>
+                            <pre>$ gmx report-methods -s md.tpr</pre>
                             <p class="note">Use the <code>&dash;o</code> option to write the report as a plain
                                 <code>.out</code>
                                 text file and the <code>&dash;m</code> option to write the report as a LaTeX formatted
