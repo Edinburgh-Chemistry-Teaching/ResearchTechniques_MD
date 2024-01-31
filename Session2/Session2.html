@@ -185,7 +185,7 @@
     <!--        </div>-->
     <!--    </div>-->
     <div class="flex-figure">
-        <div class="flex-figure-img">
+        <div class="flex-figure-img" style="width: 70%">
             <figure>
                 <div class="graphviz"><img
                         alt="digraph flowchart {
@@ -523,17 +523,16 @@ mdrun -> energy [
             </li>
         </ol>
         <div class="flex-figure">
-            <div class="flex-figure-img">
+            <div class="flex-figure-img" style="width: 50%">
                 <figure>
-                    <img src="img/1xyw.png" vmd width="50%" alt="1xyw.pdb in VMD">
+                    <img alt="1xyw.pdb in VMD" src="img/1xyw.png" vmd width="100%">
                     <figcaption>New Cartoon representation of the 1xyw.pdb structure in <abbr>VMD</abbr>.</figcaption>
                 </figure>
             </div>
         </div>
         <p class="note"><abbr>VMD</abbr> has a lot of other useful features, which you can explore in your own time.
-            <br>Besides
-            visualising
-            molecules, it can also be used to render images and movies of structures and trajectories. Among others,
+            <br>Besides visualising molecules, it can also be used to render images and movies of structures and
+            trajectories. Among others,
             it even has functionalities to build and manipulate molecules and analyse trajectories.
         </p>
     </div>
@@ -770,9 +769,9 @@ Protein_chain_A     1</pre>
             </li>
         </ol>
         <div class="flex-figure">
-            <div class="flex-figure-img">
+            <div class="flex-figure-img" style="width: 50%">
                 <figure>
-                    <img src="img/protein-pbc.png" width="50%">
+                    <img src="img/protein-pbc.png" width="100%">
                     <figcaption>1xyw protein structure inside the simulation box visualised in <abbr>VMD</abbr>.
                     </figcaption>
                 </figure>
@@ -866,7 +865,6 @@ Protein_chain_A     1</pre>
     <!--                    </figcaption>-->
     <!--                </figure>-->
     <!--            </div>-->
-    </div>
     <h3 class="enum" id="toc_2_6">Solvating the protein in the periodic box</h3>
     <p>In the next step you can solvate the protein with <abbr>SPC</abbr> water. We chose this water model because it is
         simple and versatile.</p>
@@ -874,18 +872,25 @@ Protein_chain_A     1</pre>
         <h3 id="Solvating_the_protein"></h3>
         <ol>
             <li>Solvate the protein with <abbr>SPC</abbr> water</li>
+            <li>Make a copy of the topology <code>protein.top</code> file:
+                <blockquote>
+                    <pre>cp protein.top protein-solvated.top</pre>
+                    <p class="note"><code>solvate</code> will overwrite the <code>.top</code> file so it is good to make
+                        a copy of the unsolvated topology.</p>
+            </li>
+            </blockquote>
             <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-solvate.html"><code>solvate</code></a> to
                 solvate the protein with <abbr>SPC</abbr> water:
                 <blockquote>
-                    <pre>gmx solvate &dash;cp protein-pbc.gro &dash;cs spc216.gro &dash;o protein&dash;solvated.gro &dash;p protein.top</pre>
+                    <pre>gmx solvate &dash;cp protein-pbc.gro &dash;cs spc216.gro &dash;o protein&dash;solvated.gro &dash;p protein&dash;solvated.top</pre>
                     <code>&dash;cp</code> specifies the coordinate file of the system to solvate.<br>
-                    <code>&dash;cs</code> specifies the water model coordinate file name.<br>
-                    <code>&dash;o</code> specifies the output coordinate file name.<br>
-                    <code>&dash;p</code> specifies the input topology file name<br>
+                    <code>&dash;cs</code> specifies the water model coordinate file.<br>
+                    <code>&dash;o</code> specifies the output coordinate file.<br>
+                    <code>&dash;p</code> specifies the input and output topology file<br>
                     <p>GROMACS will try to fill the available space with solvent and update the number of water
                         (<code>SOL</code>) molecules in the output topology file.</p>
-                    <p class="note">If no name for an output topology file is specified with
-                        <code>&dash;pp</code>, the solvent molecules will be added to the input topology file.
+                    <p class="note">If a name for an output topology file is specified with
+                        <code>&dash;p</code>, the solvent molecules will be added to the input topology file.
                     </p>
                 </blockquote>
             </li>
@@ -918,25 +923,32 @@ Protein_chain_A     1</pre>
                 add 0.15&nbsp;mol&nbsp;L<sup>-1</sup> of NaCl to the system and neutralise
                 the total charge
             </li>
+            <li>
+                Make a copy of the topology <code>protein-solvated.top</code> file:
+                <blockquote>
+                    <pre>cp protein-solvated.top protein-solvated-ions.top</pre>
+                </blockquote>
+            </li>
             <li>Generate a run <abbr>TPR</abbr> file for the system (<code>MMT_dec_solv.tpr</code>):
                 <p>
-<!--                    Since <code>genion</code> is a type of <abbr>MD</abbr> run, you need to first use-->
-<!--                    <code>grompp</code> to-->
-<!--                    generate a <code>TPR</code> file. -->
+                    <!--                    Since <code>genion</code> is a type of <abbr>MD</abbr> run, you need to first use-->
+                    <!--                    <code>grompp</code> to-->
+                    <!--                    generate a <code>TPR</code> file. -->
                     The contents of the <code>.mdp</code> input file are not important
                     for <code>genion</code>
                     this step, but it has to be given.
-<!--                    Use <code>genion.mdp</code> inside the <code>MDP</code>-->
-<!--                    directory.-->
+                    <!--                    Use <code>genion.mdp</code> inside the <code>MDP</code>-->
+                    <!--                    directory.-->
                 </p>
                 <p>Usage of <code>grompp</code>:</p>
                 <blockquote>
-                    <pre>gmx grompp &dash;f MDP/genion.mdp &dash;c protein-solvated.gro &dash;p protein.top</pre>
-<!--                    &dash;o genion.tpr-->
+                    <pre>gmx grompp &dash;f MDP/genion.mdp &dash;c protein&dash;solvated.gro &dash;p protein&dash;solvated&dash;ions.top
+                    </pre>
+                    <!--                    &dash;o genion.tpr-->
                     <code>&dash;f</code> specifies the input run parameter file.<br>
                     <code>&dash;c</code> specifies the coordinate file of the system to solvate.<br>
                     <code>&dash;p</code> specifies the topology file.<br>
-<!--                    <code>&dash;o</code> specifies the compiled output <code>.tpr</code> file.<br>-->
+                    <!--                    <code>&dash;o</code> specifies the compiled run <code>.tpr</code> file.<br>-->
                     <!--                    <p class="note"> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>&dash;pp</code>-->
                     <!--                        option-->
                     <!--                        to generate a new topology file with ions is used here rather than with the <code>genion</code>-->
@@ -956,18 +968,19 @@ Protein_chain_A     1</pre>
             <li>
                 Usage of <code>genion</code>:
                 <blockquote>
-                    <pre>gmx genion &dash;o protein&dash;solvated&dash;ions.gro &dash;p protein.top &dash;pname NA &dash;nname CL &dash;conc 0.15 &dash;neutral</pre>
+                    <pre>gmx genion &dash;o protein&dash;solvated&dash;ions.gro &dash;p protein&dash;solvated&dash;ions.top &dash;pname NA &dash;nname CL &dash;conc 0.15 &dash;neutral</pre>
                     <!--                    <code>&dash;s</code> specifies the compiled input <code>.tpr</code> file of the system to-->
                     <!--                    solvate.<br>-->
+                    <!--                    <code>&dash;s</code> specifies the compiled input <code>.tpr</code> file.<br>-->
                     <code>&dash;o</code> specifies the output coordinate file<br>
-                    <code>&dash;p</code> specifies the input topology file<br>
+                    <code>&dash;p</code> specifies the input and output topology file<br>
                     <code>&dash;pname</code> specifies the name of the positive ion<br>
                     <code>&dash;nname</code> specifies the name of the negative ion<br>
                     <code>&dash;conc</code> specifies the concentration of ions in mol&nbsp;L<sup>-1</sup><br>
                     <code>&dash;neutral</code> specifies that the system should be neutralised<br>
                     <p>When asked which group of molecules should be replaced select the number for the <code>SOL</code>
                         group.</p>
-                    <p class="note">If no input file names are specified, <abbr>GROMACS</abbr> will look for files with
+                    <p class="note">If no input files are specified, <abbr>GROMACS</abbr> will look for files with
                         the default names, in this case <code>topol.tpr</code>.
                     </p>
                 </blockquote>
@@ -1010,7 +1023,7 @@ Protein_chain_A     1</pre>
             Unrestrained <abbr>NPT</abbr>
             equilibration run
     </ol>
-        <p>The three equilibration runs will require a bit more time and resources, so you will use Eddie HPC to
+    <p>The three equilibration runs will require a bit more time and resources, so you will use Eddie HPC to
         run them.
     </p>
     <h3 class="enum" id="toc_3_1">Energy minimisation</h3>
@@ -1033,10 +1046,12 @@ Protein_chain_A     1</pre>
                 prepare the <code>.tpr</code> input file for the energy minimisation.<p>
                 <blockquote>
                 <pre>
-gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -po em.mdp</pre>
+gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein.top -o em.tpr -po em.mdp &dash;pp em.top</pre>
                     <p>
-                        Use the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
-                        <code>.tpr</code> and <code>.mdp</code> files to <code>em.tpr</code> and <code>em.mdp</code>
+                        Use the <code>&dash;o</code>, <code>&dash;po</code> and <code>&dash;pp</code> options to set the
+                        names of the output
+                        <code>.tpr</code>, <code>.mdp</code> and <code>.top</code> files to <code>em.tpr</code>, <code>em.mdp</code>
+                        and <code>em.top</code>
                         respectively.</p>
                 </blockquote>
             </li>
@@ -1088,11 +1103,13 @@ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein.top -o em
             </li>
         </ul>
         <div class="flex-figure">
-            <div class="flex-figure-img">
+            <div class="flex-figure-img" style="width: 50%">
                 <figure>
-                    <img src="img/em_box.png" width="50%">
-                    <figcaption>1xyw protein structure with solvent and ions after energy minimisation visualised in
-                        <abbr>VMD</abbr>.
+                    <img src="img/em_box.png" width="100%">
+                    <figcaption>
+                        <abbr>VMD</abbr> visualisation of protein system after energy minimisation with Newcartoon
+                        representation for 1xyw protein structure, QuickSurf representation for water and VDW
+                        representation for NA and CL ions.
                     </figcaption>
                 </figure>
             </div>
@@ -1110,12 +1127,14 @@ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein.top -o em
         <code>define = -DPOSRES</code> will have the effect of globally defining the keyword <code>POSRES</code> which
         is then used to turn on position restraints in the topology file.
     </p>
-        <p>
-        In the first of the following two equilibration run, you will use temperature coupling to heat up your system from 0&nbsp;K to 300&nbsp;.
-            The temperature is regulated by rescaling the velocities of the atoms in the system.
-        </p>
-        <p>
-        In the second equilibration run, you will also add pressure coupling to equilibrate the system at 1&nbsp;bar. The
+    <p>
+        In the first of the following two equilibration run, you will use temperature coupling to heat up your system
+        from 0&nbsp;K to 300&nbsp;.
+        The temperature is regulated by rescaling the velocities of the atoms in the system.
+    </p>
+    <p>
+        In the second equilibration run, you will also add pressure coupling to equilibrate the system at 1&nbsp;bar.
+        The
         pressure is regulated by scaling the box size.</p>
     <p>Regulating the
         temperature and pressure means that the simulation conditions will be closer to those in a real
@@ -1125,7 +1144,9 @@ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein.top -o em
     <div class="bbox">
         <h3 id="Equilibrating_the_system_at_constant_temperature"></h3>
         <ol>
-            <li>Equilibrate the system at constant temperature (<abbr>NVT</abbr> ensemble) and with position restraints on the protein</li>
+            <li>Equilibrate the system at constant temperature (<abbr>NVT</abbr> ensemble) and with position restraints
+                on the protein
+            </li>
             <li>
                 Open the topology file <code>protein.top</code> in a text editor and find the line that specifies the
                 position
@@ -1133,31 +1154,37 @@ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein.top -o em
             </li>
             <li>Copy the input files to your Eddie HPC home directory.<br>
                 <pre>scp -r ~/session2 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/</pre>
+                <p class="note">
+                    Replace <code>&lt;UUN&gt;</code> with your own university username.
+                </p>
             </li>
             <li>Use <code>ssh</code> to in to Eddie HPC and navigate to the <code>session2</code> directory.
             </li>
             <li>Prepare the submission script for the equilibration run on eddie:<br>
-                <p>Make a copy of the template <code>eddie_run.sh</code> script and name it <code>run_nvt.sh</code>, then
-                    open the <code>run_nvt.sh</code> script and insert the GROMACS commands to run the restrained
+                <p>Use the <code>cp</code> command to copy the template <code>eddie_run.sh</code> to
+                    <code>run_nvt.sh</code>, then
+                    use the nano editor to open the <code>run_nvt.sh</code> script and insert the GROMACS commands to
+                    compile and run the restrained
                     equilibration:
                 <ol>
+                    <li>nano run_nvt.sh</li>
                     <li>
                         Add <a href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
                         to
                         prepare the <code>.tpr</code> input file for the restrained equilibration.<br>
                         <blockquote>
                 <pre>
-gmx grompp -v -f MDP/nvt.mdp -c em.gro -p protein.top -r em.gro -o nvt.tpr -po nvt.mdp</pre>
-                            <p>Use the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the
+gmx grompp -v -f MDP/nvt.mdp -c em.gro -p em.top -r em.gro -o nvt.tpr -po nvt.mdp -pp nvt.top</pre>
+                            <p>Use the <code>&dash;o</code>, <code>&dash;po</code>, <code>&dash;pp</code> options to set
+                                the names of the
                                 output
-                                <code>.tpr</code> and <code>.mdp</code> files to <code>nvt.tpr</code> and
-                                <code>nvt.mdp</code>
+                                <code>.tpr</code>, <code>.mdp</code> and <code>.top</code> files to <code>nvt.tpr</code>,
+                                <code>nvt.mdp</code> and <code>nvt.top</code>
                                 respectively.</p>
                             <p>
                                 Here, you will also need to provide a <code>&dash;r</code> option to specify a
-                                coordinate file
-                                for
-                                the restraints which can be identical to the input coordinate file, <code>em.gro</code>.
+                                coordinate file for the restraints which can be identical to the input coordinate file,
+                                <code>em.gro</code>.
                             </p>
                         </blockquote>
                     </li>
@@ -1172,9 +1199,6 @@ gmx mdrun -v -s nvt.tpr -deffnm nvt </pre>
                                 <code>nvt</code>
                                 and
                                 select <code>&dash;v</code> to get a verbose output.</p>
-                            <!--                            <p class="note">Add <code>&amp;</code> to the end of the command to run the simulation in-->
-                            <!--                                the-->
-                            <!--                                background.</p>-->
                         </blockquote>
                     </li>
                 </ol>
@@ -1230,7 +1254,7 @@ xmgrace -nxy energy*.xvg -legend load</pre>
             </li>
         </ol>
     </div>
-    <h3 class="enum" id="toc_3_3">Temperature and pressure coupled equilibration runs</h3>
+    <h3 class="enum" id="toc_3_3">Temperature&dash; and pressure&dash;coupled equilibration runs</h3>
     <p>
         In the next two equilibration runs, you will introduce temperature and pressure coupling to the system. Keeping
         constant
@@ -1241,43 +1265,42 @@ xmgrace -nxy energy*.xvg -legend load</pre>
         At first, you will perform an equilibration run at constant temperature and volume (<abbr>NVT</abbr> ensemble).
         This will allow the system to reach the desired temperature.
     </p>
-<!--    <div class="bbox">-->
-<!--        <h3 id="Equilibrating_the_system_at_constant_temperature"></h3>-->
-<!--        <ol>-->
-<!--            <li>Equilibrate the system at constant temperature and volume (<abbr>NVT</abbr> ensemble)</li>-->
-<!--            <li>Write a <code>run_nvt.sh</code> run submission script for the <abbr>NVT</abbr> equilibration run on-->
-<!--                Eddie HPC:<br>-->
-<!--                Follow the same procedure as in the <a href="#Equilibrating_the_system_with_restraints">restrained-->
-<!--                    equilibration task</a>.<br>-->
-<!--                Use <code>MDP/nvt.mdp</code> as the input run parameter file and <code>pr.gro</code> as the input-->
-<!--                coordinate-->
-<!--                file. Add the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output-->
-<!--                <code>.tpr</code> and <code>.mdp</code> files to <code>nvt.tpr</code> and <code>nvt.mdp</code>. Set the-->
-<!--                output file name for <code>mdrun</code> to <code>nvt</code>.<br>-->
-
-<!--            </li>-->
-<!--            <li>Submit the run with <code>qsub</code><br>-->
-<!--                <blockquote>-->
-<!--                    <pre>qsub run_nvt.sh</pre>-->
-<!--                    <p class="note">-->
-<!--                        Make sure that the <code>run_pr.sh</code> script has finished before submitting the <code>run_nvt.sh</code>-->
-<!--                        script.-->
-<!--                    </p></blockquote>-->
-<!--            </li>-->
-<!--            <li>After the run has finished, use <code>energy</code> to check temperature, pressure, potential and-->
-<!--                kinetic-->
-<!--                energy evolution during the simulation.<br>-->
-<!--                <p>Use the <code>&dash;o</code> option to specify a name under which you can find them again later.</p>-->
-<!--                <p>E.g.</p>-->
-<!--                <blockquote>-->
-<!--                    <pre>gmx energy -f nvt.edr -o nvt_temperature.xvg</pre>-->
-<!--                </blockquote>-->
-<!--            </li>-->
-<!--            <li>-->
-<!--                Examine the <code>energy</code> output files with xmgrace.<br>-->
-<!--            </li>-->
-<!--        </ol>-->
-<!--    </div>-->
+    <!--    <div class="bbox">-->
+    <!--        <h3 id="Equilibrating_the_system_at_constant_temperature"></h3>-->
+    <!--        <ol>-->
+    <!--            <li>Equilibrate the system at constant temperature and volume (<abbr>NVT</abbr> ensemble)</li>-->
+    <!--            <li>Write a <code>run_nvt.sh</code> run submission script for the <abbr>NVT</abbr> equilibration run on-->
+    <!--                Eddie HPC:<br>-->
+    <!--                Follow the same procedure as in the <a href="#Equilibrating_the_system_with_restraints">restrained-->
+    <!--                    equilibration task</a>.<br>-->
+    <!--                Use <code>MDP/nvt.mdp</code> as the input run parameter file and <code>pr.gro</code> as the input-->
+    <!--                coordinate-->
+    <!--                file. Add the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output-->
+    <!--                <code>.tpr</code> and <code>.mdp</code> files to <code>nvt.tpr</code> and <code>nvt.mdp</code>. Set the-->
+    <!--                output file name for <code>mdrun</code> to <code>nvt</code>.<br>-->
+    <!--            </li>-->
+    <!--            <li>Submit the run with <code>qsub</code><br>-->
+    <!--                <blockquote>-->
+    <!--                    <pre>qsub run_nvt.sh</pre>-->
+    <!--                    <p class="note">-->
+    <!--                        Make sure that the <code>run_pr.sh</code> script has finished before submitting the <code>run_nvt.sh</code>-->
+    <!--                        script.-->
+    <!--                    </p></blockquote>-->
+    <!--            </li>-->
+    <!--            <li>After the run has finished, use <code>energy</code> to check temperature, pressure, potential and-->
+    <!--                kinetic-->
+    <!--                energy evolution during the simulation.<br>-->
+    <!--                <p>Use the <code>&dash;o</code> option to specify a name under which you can find them again later.</p>-->
+    <!--                <p>E.g.</p>-->
+    <!--                <blockquote>-->
+    <!--                    <pre>gmx energy -f nvt.edr -o nvt_temperature.xvg</pre>-->
+    <!--                </blockquote>-->
+    <!--            </li>-->
+    <!--            <li>-->
+    <!--                Examine the <code>energy</code> output files with xmgrace.<br>-->
+    <!--            </li>-->
+    <!--        </ol>-->
+    <!--    </div>-->
     <p>
         Next, you will perform an equilibration run at constant temperature and pressure (<abbr>NPT</abbr> ensemble).
         This will allow the system to also reach the desired pressure.
@@ -1285,7 +1308,9 @@ xmgrace -nxy energy*.xvg -legend load</pre>
     <div class="bbox">
         <h3 id="Equilibrating_the_system_at_constant_temperature_and_pressure"></h3>
         <ol>
-            <li>Equilibrate the system at constant temperature and pressure (<abbr>NPT</abbr> ensemble) with position restrains on the protein</li>
+            <li>Equilibrate the system at constant temperature and pressure (<abbr>NPT</abbr> ensemble) with position
+                restrains on the protein
+            </li>
             <li>Write a <code>run_npt.sh</code> run submission script for the <abbr>NPT</abbr> equilibration run on
                 Eddie HPC:<br>
                 Follow the same procedure as in the <a href="#Equilibrating_the_system_at_constant_temperature">restrained
@@ -1293,8 +1318,11 @@ xmgrace -nxy energy*.xvg -legend load</pre>
                     task</a>.<br>
                 Use <code>MDP/npt.mdp</code> as the input run parameter file and <code>nvt.gro</code> as the input
                 coordinate
-                file. Add the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
-                <code>.tpr</code> and <code>.mdp</code> files to <code>npt.tpr</code> and <code>npt.mdp</code>. Set the
+                file. Add the <code>&dash;o</code>, <code>&dash;po</code> and <code>pp</code> options to set the names
+                of the output
+                <code>.tpr</code>, <code>.mdp</code> and <code>.top</code> files to <code>npt.tpr</code>,
+                <code>npt.mdp</code> and <code>npt.top</code>.
+                Set the
                 output file name for <code>mdrun</code> to <code>npt</code>.<br>
             </li>
             <li>Submit the run with <code>qsub</code><br>
@@ -1316,28 +1344,33 @@ xmgrace -nxy energy*.xvg -legend load</pre>
     </div>
     <h3 class="enum" id="toc_3_4">Unrestrained equilibration run</h3>
     <p>
-        Now that the system is equilibrated enough, you can take away the position restraints and continue to equilibrate
+        Now that the system is equilibrated enough, you can take away the position restraints and continue to
+        equilibrate
         the system at constant temperature and pressure (<abbr>NPT</abbr> ensemble).
     </p>
     <div class="bbox">
-        <h3 id="Running_the_unrestrained_NPT_equilibration"></h3>
+        <h3 id="Running_an_unrestrained_NPT_equilibration"></h3>
         <ol>
-            <li>Run the unrestrained equilibration at constant temperature and pressure</li>
-            <li>Write a <code>run_md.sh</code> run submission script for the unrestrained equilibration <abbr>MD</abbr> run on Eddie
+            <li>Run an unrestrained equilibration at constant temperature and pressure</li>
+            <li>Write a <code>run_md.sh</code> run submission script for the unrestrained equilibration <abbr>MD</abbr>
+                run on Eddie
                 HPC:<br>
-                Follow the same procedure as in the <a href="#Equilibrating_the_system_at_constant_temperature_and_pressure">previous
+                Follow the same procedure as in the <a
+                        href="#Equilibrating_the_system_at_constant_temperature_and_pressure">previous
                     task</a>.<br>
                 Use <code>MDP/md.mdp</code> as the input run parameter file and <code>npt.gro</code> as the input
                 coordinate
-                file. Add the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
-                <code>.tpr</code> and <code>.mdp</code> files to <code>md.tpr</code> and <code>md.mdp</code>. Set the
+                file. Add the <code>&dash;o</code>, <code>&dash;po</code> and <code>&dash;pp</code> options to set the
+                names of the output
+                <code>.tpr</code>, <code>.mdp</code> and <code>.top</code> files to <code>md.tpr</code>,
+                <code>md.mdp</code> and <code>md.top</code>. Set the
                 output file name for <code>mdrun</code> to <code>md</code>.<br>
-                <p class="note">Since this is an unrestrained equilibration run, you do not need to specify the
-                    <code>-r</code> option for the restraints file.</p>
+                <p class="note">Since this is an unrestrained equilibration run, you do NOT need to specify the
+                    <code>&dash;r</code> option for the restraints file.</p>
                 </p>
             </li>
             <li>Open the <code>MDP/md.mdp</code> run parameter file and adjust the <code>nsteps</code> so that the run
-                duration is 5&nbsp;ns and that the output trajectory contains 1000 coordinate data points.<br>
+                duration is 1&nbsp;ns and that the output trajectory contains 200 coordinate data points.<br>
                 <p class="note"> Make sure you provide the parameters for the <code>.mdp</code> file in the correct
                     units.
                     The units used by <abbr>GROMACS</abbr> can be found in the Reference Manual: <a
@@ -1365,75 +1398,190 @@ xmgrace -nxy energy*.xvg -legend load</pre>
                  (ns/day)    (hour/ns)
 Performance:        6.183        3.882</pre>
     <p>
-        Since the production run will take a bit longer to finish, you can continue with the analysis of an example
-        trajectory
-        while it is still running.
+        Since the production run will take a bit longer to finish, you can continue this tutorial using the example
+        files
+        from a previous simulation. You can find them in the <code>practical/session2/example_data</code> directory.
     </p>
-    <p>For some of the analyses it can be useful to have a trajectory file that contains only the protein atoms. You
-        can
-        use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-trjconv.html"><code>trjconv</code></a> to
-        extract
-        the protein atoms from the trajectory file.</p>
-    <div class="box">
-        <h2 id="toc_4">Analysis of the simulation data</h2>
-        <p>
-            In this section you will learn some ways to analyse the data generated by the <abbr>MD</abbr> simulation.
-            You will:
-        <ol>
-            <li>
-                Calculate the root mean square deviation (<abbr>RMSD</abbr>)
+</div>
+<!--    <p>For some of the analyses it can be useful to have a trajectory file that contains only the protein atoms. You-->
+<!--        can-->
+<!--        use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-trjconv.html"><code>trjconv</code></a> to-->
+<!--        extract-->
+<!--        the protein atoms from the trajectory file.</p>-->
+<div class="box">
+    <h2 id="toc_4">Analysis of the simulation data</h2>
+    <p>
+        In this section you will learn some ways to inspect the data generated in an <abbr>MD</abbr> simulation.
+        You will:
+    <ol>
+        <li>
+            Calculate the root&dash;mean&dash;square deviation (<abbr>RMSD</abbr>)
+        </li>
+        <li>
+            Extract the evolution of <em>x</em>, <em>y</em> and <em>z</em> coordinates and velocities of the protein
+            over the duration of the simulation
+        </li>
+        <!--        <li>-->
+        <!--            Calculate the radius of gyration of the protein-->
+        <!--        </li>-->
+        <!--            <li>-->
+        <!--                Perform a hydrogen bond analysis for different parts of the protein-->
+        <!--            </li>-->
+    </ol>
+    <h3 class="enum" id="toc_4_1">Calculating the root mean square deviation (<abbr>RMSD</abbr>)</h3>
+    <p>
+        The <abbr>RMSD</abbr> is a measure of the deviation of the protein structure from a reference structure.
+        It is calculated as the square root of the average of the squared distances between the atoms of the protein
+        in
+        the reference structure and the atoms of the protein in the structure of interest.
+    </p>
+    <p>
+        The <abbr>RMSD</abbr> is also an important measure to determine when a simulation has reached equilibrium.
+        When the <abbr>RMSD</abbr> has reached a plateau, the system has reached equilibrium.
+    </p>
+    <p>
+        It is only after the system has reached equilibrium that you are producing meaningful data that can be
+        representative of the simulated system.
+    </p>
+    <div class="bbox">
+        <h3 id="Calculating_the_RMSD"></h3>
+        <ul>
+            <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-rms.html"><code>rms</code></a> to
+                calculate the <abbr>RMSD</abbr> of the entire system, only the protein and only the backbone atoms
+                of the
+                protein.
             </li>
-            <!--        <li>-->
-            <!--            Calculate the radius of gyration of the protein-->
-            <!--        </li>-->
+            <li>E.g.
+                <blockquote>
+                    <pre>gmx rms -s em.gro -f md.trr -o rmsd_system.xvg &dash;tu ns</pre>
+                    <p class="note">Use the <code>&dash;o</code> option to specify a name under which you can find
+                        the output file
+                        again later.</p>
+                    <p class="note">Use the <code>&dash; tu</code> option to specify the time unit for the output.
+                    </p>
+                </blockquote>
+            </li>
             <li>
-                Perform a hydrogen bond analysis for different parts of the protein
+                Use xmgrace to plot and compare the <abbr>RMSD</abbr> of the entire system, the protein and the
+                protein backbone.
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="box">
+    <h2 id="toc_5">Rendering a figure with VMD</h2>
+    <p>
+        It is useful to be able to produce an image of your simulation, for a report or a publication.
+        For example, the image below is rendered with VMD.
+        In this section we will learn how to do it.
+    </p>
+
+    <div class="bbox">
+        <h3 id="Rendering_a_figure_with_VMD"></h3>
+        <ol>
+            <li>Render a figure of the protein in the simulation box with VMD</li>
+            </li>
+            <li>On the VM, load your system into the VMD.<br>
+                <pre>vmd em.gro</pre>
+                <p class="note">You can use the <code>em.gro</code> file as the input coordinate
+                    file for this exercise. Once the production run has finished, you can copy the final coordinate
+                    file, <code>md.gro</code>
+                    to your VM and render another figure.</p>
+            </li>
+            <li>Use <code>pbc wrap</code> to enter the protein in the box and wrap all atoms into the box:<br>
+                <blockquote id="wrap_protein">
+                    <pre>pbc wrap -center com -centersel &quot;protein&quot; -compound residue -all</pre>
+                    <p>
+                        <code>-center</code> specifies the centering method. Here, the center of mass the protein
+                        will be used as the center of the box.
+                    </p>
+                    <p>
+                        <code>-centersel</code> specifies the selection of atoms that should be in the centre.
+                    </p>
+                    <p>
+                        <code>-compound</code> specifies the grouping method. Here, the protein will be grouped by
+                        residue.
+                    </p>
+                    <p>
+                        <code>-all</code> specifies that all atoms should be wrapped into the box.
+                    </p>
+                </blockquote>
+            </li>
+            <li>Use <code>pbc box_draw</code> to draw the simulation box:<br>
+                <blockquote>
+                    <pre>pbc box_draw -width 2 -color black -resolution 30</pre>
+                </blockquote>
+            </li>
+            <li>Change the background colour to white<br>
+                Select <code>Graphics</code> &rightarrow; <code>Colors...</code> then in the <code>Color
+                    Controls</code>
+                window select <code>Display</code> in <code>Categories</code>
+                then <code>Background</code> in <code>Names</code> and <code>8 white</code> in <code>Colors</code>.
+
+            </li>
+            <li>Change the display method to orthographic<br>
+                Select <code>Display</code> &rightarrow; <code>Orthographic</code>
+            </li>
+            <li>Turn off the axis display<br>
+                Select <code>Display</code> &rightarrow; <code>Axes</code> &rightarrow; <code>Off</code>
+            </li>
+            <li>Change the default representation style.<br>
+                <p>Like <a href="#change_rep">before</a> go to the <code>Graphics</code> menu and select <code>Representations...</code>
+                </p>
+                <ul>
+
+                    <li>
+                        Add new representations ions and the protein and change the Coloring Method, Drawing Method
+                        and Material.
+                    </li>
+                    <li>
+                        Turn off the default representation.<br>
+                        Double-click on the first line with selection <code>all</code> in the <code>Graphical
+                        Representations</code> window.
+                    </li>
+
+                </ul>
+            <li>
+                Take a snapshot of the representation:<br>
+                <ul>
+                    <li>Exit the full screen mode of the virtual machine<br></li>
+                    <li>Open the Snipping Tool application<br></li>
+                    <li>Click on <code>New</code> and select the area of the screen you want to capture<br></li>
+                    <li>Save the image as <code>protein.png</code>
+                    </li>
+                </ul>
+                <div style="color: darkslategray; border: darkslategray; border-width: 1px; border-style: solid; background: lightgray; padding: 10px">
+                    <p class="note">The virtual machine does not have access to a GPU to produce really nice renderings.
+                        If you have access to a computer with a GPU, you can install VMD on it and use the <code>Tachyon
+                            (internal, in-memory)</code> option to render
+                        high-quality images:</p>
+                    <ul style="text-align: left">
+                        <li>
+                            Select <code>File</code> &rightarrow; <code>Render...</code>
+                        </li>
+                        <li>
+                            In the <code>File Render Controls</code> window, select <code>Tachyon
+                            (internal, in-memory)</code> as the rendering engine and
+                            select an output file name.
+                        </li>
+                        <li>
+                            You can then add the <code>&dash;res</code> and <code>&dash;aasamples</code> options to
+                            specify
+                            the
+                            resolution and
+                            anti&dash;aliasing samples, respectively.
+                        </li>
+                        <li>A rendering example with more advanced instructions can be found at <a
+                                href="https://skblnw.github.io/mkvmd_render/" rel="noopener" target="_blank">skblnw.github.io/mkvmd_render/</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
         </ol>
-        <h3 class="enum" id="toc_4_1">Calculating the root mean square deviation (<abbr>RMSD</abbr>)</h3>
-        <p>
-            The <abbr>RMSD</abbr> is a measure of the deviation of the protein structure from a reference structure.
-            It is calculated as the square root of the average of the squared distances between the atoms of the protein
-            in
-            the reference structure and the atoms of the protein in the structure of interest.
-        </p>
-        <div class="bbox">
-            <h3 id="Calculating_the_RMSD"></h3>
-            <ol>
-                <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-rms.html"><code>rms</code></a> to
-                    calculate the <abbr>RMSD</abbr> of the entire system, only the protein and only the backbone atoms
-                    of the
-                    protein.
-                </li>
-                <li>E.g.
-                    <blockquote>
-                        <pre>gmx rms -s em.gro -f md.trr -o rmsd_system.xvg &dash;tu ns</pre>
-                        <p class="note">Use the <code>&dash;o</code> option to specify a name under which you can find
-                            the output file
-                            again later.</p>
-                        <p class="note">Use the <code>&dash; tu</code> option to specify the time unit for the output.
-                        </p>
-                    </blockquote>
-
-                </li>
-                <li>
-                    Use xmgrace to plot and compare the <abbr>RMSD</abbr> of the entire system, the protein and the
-                    protein backbone.
-                </li>
-            </ol>
-        </div>
-    </div>
-    <div class="box">
-        <h2 id="toc_5">Rendering a figure with VMD</h2>
-        <p>
-            It is useful to be able to produce an image of your simulation, for a report or a publication.
-            For example, the image below is rendered with VMD.
-            In this section we will learn how to do it.
-        </p>
         <div class="flex-figure">
-            <div class="flex-figure-item">
+            <div class="flex-figure-item" style="width: 50%">
                 <figure>
-                    <img alt="render.png" src="Session2/render.png">
+                    <img alt="render.png" src="img/render_2.png" width="100%">
                     <figcaption>
                         Elk prion protein in a simulation box created with VMD: Backbone is shown in red, Na ions
                         as
@@ -1444,299 +1592,235 @@ Performance:        6.183        3.882</pre>
                 </figure>
             </div>
         </div>
-        <div class="bbox">
-            <h3 id="Rendering_a_figure_with_VMD"></h3>
-            <ol>
-                <li>Render a figure of the protein in the simulation box with VMD</li>
-                </li>
-                <li>On the VM, load your system into the VMD.<br>
-                    <pre>vmd em.gro</pre>
-                    <p class="note">You can use the <code>em.gro</code> file as the input coordinate
-                        file for this exercise. Once the production run has finished, you can copy the final coordinate
-                        file, <code>md.gro</code>
-                        to your VM and render another figure.</p>
-                </li>
-                <li>Use <code>pbc wrap</code> to enter the protein in the box and wrap all atoms into the box:<br>
-                    <blockquote id="wrap_protein">
-                        <pre>pbc wrap -center com -centersel &quot;protein&quot; -compound residue -all</pre>
-                        <p>
-                            <code>-center</code> specifies the centering method. Here, the center of mass the protein
-                            will be used as the center of the box.
-                        </p>
-                        <p>
-                            <code>-centersel</code> specifies the selection of atoms that should be in the centre.
-                        </p>
-                        <p>
-                            <code>-compound</code> specifies the grouping method. Here, the protein will be grouped by
-                            residue.
-                        </p>
-                        <p>
-                            <code>-all</code> specifies that all atoms should be wrapped into the box.
-                        </p>
-                    </blockquote>
-                </li>
-                <li>Use <code>pbc box_draw</code> to draw the simulation box:<br>
-                    <blockquote>
-                        <pre>pbc box_draw -width 2 -color black -resolution 30</pre>
-                    </blockquote>
-                </li>
-                <li>Change the background colour to white<br>
-                    Select <code>Graphics</code> &rightarrow; <code>Colors...</code> then in the <code>Color
-                        Controls</code>
-                    window select <code>Display</code> in <code>Categories</code>
-                    then <code>Background</code> in <code>Names</code> and <code>8 white</code> in <code>Colors</code>.
+    </div>
 
-                </li>
-                <li>Change the display method to orthographic<br>
-                    Select <code>Display</code> &rightarrow; <code>Orthographic</code>
-                </li>
-                <li>Turn off the axis display<br>
-                    Select <code>Display</code> &rightarrow; <code>Axes</code> &rightarrow; <code>Off</code>
-                </li>
-                <li>Change the default representation style.<br>
-                    <p>Like <a href="#change_rep">before</a> go to the <code>Graphics</code> menu and select <code>Representations...</code>
-                    </p>
-                    <ul>
-
-                        <li>
-                            Add new representations ions and the protein and change the Coloring Method, Drawing Method
-                            and Material.
-                        </li>
-                        <li>
-                            Turn off the default representation.<br>
-                            Double-click on the first line with selection <code>all</code> in the <code>Graphical
-                            Representations</code> window.
-                        </li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
-
-        <!--    <h3 class="enum" id="toc_4_2">Calculating the radius of gyration of the protein</h3>-->
+    <!--    <h3 class="enum" id="toc_4_2">Calculating the radius of gyration of the protein</h3>-->
 
 
-        <!--    <p>You may find you need to use the option<code>–nt 2</code> (defines how many threads should be used to run the-->
-        <!--        simulation). Since this is a small simulation, 2 threads is enough.</p>-->
+    <!--    <p>You may find you need to use the option<code>–nt 2</code> (defines how many threads should be used to run the-->
+    <!--        simulation). Since this is a small simulation, 2 threads is enough.</p>-->
 
 
-        <!--    <p><span style="color: red;">-->
-        <!--We now will run a very short (for typical MD) simulation of <strong>5 nanoseconds.</strong>-->
-        <!--<strong>check and edit MDP file!</strong>-->
-        <!--</span></p>-->
+    <!--    <p><span style="color: red;">-->
+    <!--We now will run a very short (for typical MD) simulation of <strong>5 nanoseconds.</strong>-->
+    <!--<strong>check and edit MDP file!</strong>-->
+    <!--</span></p>-->
 
-        <!--    <p>Use the  <code>md.mdp</code> file and look at contents of it, you will need to edit it to make it run for <span-->
-        <!--            style="color: red;"> 5000 ps or 5 ns </span> and to produce 1000 sets of coordinate data to the output.</p>-->
+    <!--    <p>Use the  <code>md.mdp</code> file and look at contents of it, you will need to edit it to make it run for <span-->
+    <!--            style="color: red;"> 5000 ps or 5 ns </span> and to produce 1000 sets of coordinate data to the output.</p>-->
 
-        <!--    <p>When your MDP file is ready, compile it with <code>grompp</code> and run with <code>mdrun</code>.</p>-->
+    <!--    <p>When your MDP file is ready, compile it with <code>grompp</code> and run with <code>mdrun</code>.</p>-->
 
-        <!--    <p>From the output of your earlier simulations, you can know approximate performance on your computer. For-->
-        <!--        example: </p>-->
+    <!--    <p>From the output of your earlier simulations, you can know approximate performance on your computer. For-->
+    <!--        example: </p>-->
 
-        <!--    <div><pre><code>              Core t (s)   Wall t (s)        (%)-->
-        <!--      Time:    24776.900     3097.115      800.0-->
-        <!--                     51:37-->
-        <!--                 (ns/day)    (hour/ns)-->
-        <!--Performance:        1.395       17.206</code></pre>-->
-        <!--    </div>-->
+    <!--    <div><pre><code>              Core t (s)   Wall t (s)        (%)-->
+    <!--      Time:    24776.900     3097.115      800.0-->
+    <!--                     51:37-->
+    <!--                 (ns/day)    (hour/ns)-->
+    <!--Performance:        1.395       17.206</code></pre>-->
+    <!--    </div>-->
 
-        <!--    <p>So you know approximately that this simulation will take-->
-        <!--        <span style="color: red;"> ~100 hours. </span>-->
-        <!--        This is also what you will find from the <code>gmx mdrun -v</code>. </p>-->
+    <!--    <p>So you know approximately that this simulation will take-->
+    <!--        <span style="color: red;"> ~100 hours. </span>-->
+    <!--        This is also what you will find from the <code>gmx mdrun -v</code>. </p>-->
 
-        <!--    <p>You can convert the trajectory with <code>gmx trjconv</code> to extract a smaller trajectory, or to remove water-->
-        <!--        molecules, or to centre your protein in the box. Importantly you can unite together the bonds that will appear-->
-        <!--        broken across the periodic boundary. </p>-->
+    <!--    <p>You can convert the trajectory with <code>gmx trjconv</code> to extract a smaller trajectory, or to remove water-->
+    <!--        molecules, or to centre your protein in the box. Importantly you can unite together the bonds that will appear-->
+    <!--        broken across the periodic boundary. </p>-->
 
-        <!--    <div>-->
-        <!--        <pre><code>gmx trjconv -o traj_center.xtc -center -pbc mol </code></pre>-->
-        <!--    </div>-->
+    <!--    <div>-->
+    <!--        <pre><code>gmx trjconv -o traj_center.xtc -center -pbc mol </code></pre>-->
+    <!--    </div>-->
 
-        <!--    <p>It will prompt you to select group for centering, which is <code>Protein</code> and the group for output. Choose-->
-        <!--        <code>System</code>.</p>-->
+    <!--    <p>It will prompt you to select group for centering, which is <code>Protein</code> and the group for output. Choose-->
+    <!--        <code>System</code>.</p>-->
 
-        <p>Note, we have written out the .xtc format for the output. It is a compressed format, that will lighter for us
-            to
-            handle. Nevertheless, to load into VMD we need to have both the .gro file and the .xtc. </p>
+<!--    <p>Note, we have written out the .xtc format for the output. It is a compressed format, that will lighter for us-->
+<!--        to-->
+<!--        handle. Nevertheless, to load into VMD we need to have both the .gro file and the .xtc. </p>-->
 
-        <h3 id="toc_16">12) Rendering the publication-ready figures with VMD</h3>
+<!--    <h3 id="toc_16">12) Rendering the publication-ready figures with VMD</h3>-->
 
-        <p>It is useful to be able to produce an image of your simulation, for a report or a publication. For example
-            image
-            below is rendered with VMD. In this section we will learn how to do it. </p>
+<!--    <p>It is useful to be able to produce an image of your simulation, for a report or a publication. For example-->
+<!--        image-->
+<!--        below is rendered with VMD. In this section we will learn how to do it. </p>-->
 
-        <p><img alt="render.png" src="Session2/render.png"></p>
+<!--    <p><img alt="render.png" src="Session2/render.png"></p>-->
 
-        <p>Figure 2: Elk prion protein in a simulation box created with VMD: Backbone is shown in red, Na ions as blue
-            spheres,
-            Cl ions as green spheres, water is shown as a surface representation, also highlighting the size of the
-            simulation
-            box.</p>
+<!--    <p>Figure 2: Elk prion protein in a simulation box created with VMD: Backbone is shown in red, Na ions as blue-->
+<!--        spheres,-->
+<!--        Cl ions as green spheres, water is shown as a surface representation, also highlighting the size of the-->
+<!--        simulation-->
+<!--        box.</p>-->
 
-        <p>Load your system into the VMD.</p>
+<!--    <p>Load your system into the VMD.</p>-->
 
-        <div>
-            <pre><code>vmd confout.gro </code></pre>
-        </div>
+<!--    <div>-->
+<!--        <pre><code>vmd confout.gro </code></pre>-->
+<!--    </div>-->
 
-        <p>Then in the <code>VMD Main</code> window, click on the line of confout.gro, selecting it. From here right
-            click
-            <code>Load Data Into Molecule...</code>, <code>Browse</code> to select the <code>traj_center.xtc</code>, VMD
-            will
-            automatically identify the format, press <code>Load</code>.</p>
+<!--    <p>Then in the <code>VMD Main</code> window, click on the line of confout.gro, selecting it. From here right-->
+<!--        click-->
+<!--        <code>Load Data Into Molecule...</code>, <code>Browse</code> to select the <code>traj_center.xtc</code>, VMD-->
+<!--        will-->
+<!--        automatically identify the format, press <code>Load</code>.</p>-->
 
-        <p>Now, lets change the visualisation. </p>
+<!--    <p>Now, lets change the visualisation. </p>-->
 
+<!--    <ul>-->
+<!--        <li>Change the background to white: <code>Graphics &gt; Color &gt; Categories:Display &gt; Names:Background-->
+<!--            &gt;-->
+<!--            8-->
+<!--            white</code></li>-->
+<!--        <li>Change the display from perspective: <code>Display &gt; Orthographic</code></li>-->
+<!--        <li>Turn off the axis: <code>Display &gt; Axes &gt; Off</code></li>-->
+<!--    </ul>-->
+
+<!--    <p>It is up to you how you would like to represent this system, here are some suggestions.</p>-->
+
+<!--    <p>Go to <code>Graphics &gt; Representations</code> there you can <code>Create Rep</code> for each individual-->
+<!--        selection,-->
+<!--        choosing the way it is displayed, colours, materials. Tab <code>Selections</code> will assist you in-->
+<!--        <code>Keywords</code>, some tips:-->
+<!--        - <code>not water</code> will display everything but water;-->
+<!--        - a protein can be rendered showing only backbone-->
+<!--        - Drawing method <code>QuickSurf</code> is great to show the surface of an object, but should be done in-->
+<!--        transparent-->
+<!--        materials, such as <code>BlownGlass</code>;-->
+<!--        - Ions are best as <code>VDW</code>;-->
+<!--        - If you plan to render the image, good materials are the <code>AO</code> range ;-->
+<!--        - You may want to change the <code>Display &gt; Rendermode &gt; GLSL</code> to be able to see the visuals;-->
+<!--        - Note tha not every computer will display image in the same quality as it will be rendered.</p>-->
+
+<!--    <p>To render an image <code>File &gt; Render &gt; using Tachyon (internal, in-memory rendering) &gt; ...</code>-->
+<!--        <code>&gt; Browse /directory/NAME.png &gt; Start Rendering</code>, choosing the location and naming the-->
+<!--        file.-->
+<!--    </p>-->
+
+<!--    <p>More advanced instructions on achieving high quality images, as well as comparisons of renderings, can be-->
+<!--        found-->
+<!--        <a-->
+<!--                href="https://skblnw.github.io/mkvmd_render/">here</a>.</p>-->
+
+<!--    <h3 id="toc_17">13) Analysis of the simulation</h3>-->
+
+<!--    <h4 id="toc_18">RMSD</h4>-->
+
+<!--    <p>The first assessment is the root-mean-square deviation (RMSD) between the first frame and all the sequential-->
+<!--        ones. </p>-->
+<!--    <p>It can inform us on the convergence of the simulation and on the structural stability of our protein. The-->
+<!--        analysis is done with <code>gmx rms</code> command. We advise you to carry out yhe analysis for the whole-->
+<!--        system, as well as for the protein only and for the back-bone of the protein only.</p>-->
+
+<!--    <div><pre><code>gmx rms -f traj_center.xtc -o rmsd_system -tu ns-->
+<!--gmx rms -f traj_center.xtc -o rmsd_protein -tu ns-->
+<!--gmx rms -f traj_center.xtc -o rmsd_protein_bb -tu ns</code></pre>-->
+<!--    </div>-->
+
+<!--    <p>Compare these by plotting together with <code>xmgrace</code>.</p>-->
+
+    <!--        <h4 id="toc_19">Radius of gyration</h4>-->
+
+    <!--        <p>Radius of gyration allows us to access how compact is our protein and how it changes through time. If the-->
+    <!--            radius-->
+    <!--            of-->
+    <!--            gyration does not change, the protein is stable and does not undergo unfolding events (which one would not-->
+    <!--            realistically be able to observe on such a short simulation). </p>-->
+
+    <!--        <p>Again, for protein-only calculate radius of gyration using <code>gmx gyrate</code> and plot it with-->
+    <!--            <code>xmgrace</code></p>-->
+
+    <!--        <div>-->
+    <!--            <pre><code>gmx gyrate -f traj_center.xtc -o gyrate_protein.xvg</code></pre>-->
+    <!--        </div>-->
+
+    <!--        <h4 id="toc_20">Generating index file</h4>-->
+
+    <!--        <p>Many Gromacs tools rely on using index files. These can be generated by <code>gmx make_ndx</code> tool:</p>-->
+
+    <!--        <div>-->
+    <!--            <pre><code>gmx make_ndx -f topol.tpr </code></pre>-->
+    <!--        </div>-->
+
+    <!--        <p>This tool allows to create groups of atoms for analysis. Lets make 3 groups, containing all hydrophilic, all-->
+    <!--            hydrophobic and all amphiphatic amino acids, using their residue <code>r</code> names.</p>-->
+
+    <!--        <p>When prompted by <code>&gt;</code> enter:</p>-->
+
+    <!--        <ul>-->
+    <!--            <li><code>r GLY PRO PHE ALA ILE LEU VAL</code></li>-->
+    <!--            <li><code>r SER TYR ASP GLU CYS ASN GLN ARG HIS</code></li>-->
+    <!--            <li><code>r LYS TRP TYR MET</code></li>-->
+    <!--        </ul>-->
+
+    <!--        <p>If you now hit enter, it will show you the lists made. The entries we generated look a bit untidy, so we can-->
+    <!--            rename-->
+    <!--            them by typing <code>name</code> followed by group number, followed by the name you want to give it, i.e.:-->
+    <!--        </p>-->
+
+    <!--        <ul>-->
+    <!--            <li><code>name 17 Phobe</code></li>-->
+    <!--            <li><code>name 18 Phil</code></li>-->
+    <!--            <li><code>name 19 Amphi</code></li>-->
+    <!--        </ul>-->
+
+    <!--        <p>to write out the <code>index.ndx</code>, type</p>-->
+
+    <!--        <ul>-->
+    <!--            <li><code>q</code></li>-->
+    <!--        </ul>-->
+
+    <!--        <h4 id="toc_21">Hydrogen bonds</h4>-->
+
+    <!--        <p>Run the H-bond 3 times, to analyse each of your groups against water, for example:</p>-->
+
+    <!--        <div>-->
+    <!--            <pre><code>gmx hbond -f traj_center.xtc -n index.ndx -num hbnum_phil.xvg</code></pre>-->
+    <!--        </div>-->
+
+    <!--        <p>Selecting group <code>18</code> for hydrophilic groups and <code>12</code> for water (or the numbers-->
+    <!--            corresponding to-->
+    <!--            these in your index).</p>-->
+
+    <!--        <p>Plot all three sets together </p>-->
+
+    <!--        <div>-->
+    <!--            <pre><code>xmgrace hbnum_* -legend load </code></pre>-->
+    <!--        </div>-->
+
+    <!--        <p>While the data will not be normalised by the number of residues of each type, hopefully you should still be-->
+    <!--            able-->
+    <!--            to-->
+    <!--            see how the number of H-bonds changes with simulation, with large numbers early on, when system is still-->
+    <!--            actively-->
+    <!--            equilibrating (see RMSD and energy), and slowly reducing over time, with significantly less H-bonds formed-->
+    <!--            by-->
+    <!--            hydrophobic groups and a large number by hydrophilic. T</p>-->
+
+
+    <h2 id="toc_6">Reporting on the procedure</h2>
+    <p>
+        A handy tool to produce a summary of your system info is <a
+            href="https://manual.gromacs.org/current/onlinehelp/gmx-report-methods.html"><code>report-methods</code></a>.
+    </p>
+    <div class="bbox">
+        <h3 id="Generating_a_report_of_the_procedure"></h3>
         <ul>
-            <li>Change the background to white: <code>Graphics &gt; Color &gt; Categories:Display &gt; Names:Background
-                &gt;
-                8
-                white</code></li>
-            <li>Change the display from perspective: <code>Display &gt; Orthographic</code></li>
-            <li>Turn off the axis: <code>Display &gt; Axes &gt; Off</code></li>
-        </ul>
-
-        <p>It is up to you how you would like to represent this system, here are some suggestions.</p>
-
-        <p>Go to <code>Graphics &gt; Representations</code> there you can <code>Create Rep</code> for each individual
-            selection,
-            choosing the way it is displayed, colours, materials. Tab <code>Selections</code> will assist you in
-            <code>Keywords</code>, some tips:
-            - <code>not water</code> will display everything but water;
-            - a protein can be rendered showing only backbone
-            - Drawing method <code>QuickSurf</code> is great to show the surface of an object, but should be done in
-            transparent
-            materials, such as <code>BlownGlass</code>;
-            - Ions are best as <code>VDW</code>;
-            - If you plan to render the image, good materials are the <code>AO</code> range ;
-            - You may want to change the <code>Display &gt; Rendermode &gt; GLSL</code> to be able to see the visuals;
-            - Note tha not every computer will display image in the same quality as it will be rendered.</p>
-
-        <p>To render an image <code>File &gt; Render &gt; using Tachyon (internal, in-memory rendering) &gt; ...</code>
-            <code>&gt; Browse /directory/NAME.png &gt; Start Rendering</code>, choosing the location and naming the
-            file.
-        </p>
-
-        <p>More advanced instructions on achieving high quality images, as well as comparisons of renderings, can be
-            found
-            <a
-                    href="https://skblnw.github.io/mkvmd_render/">here</a>.</p>
-
-        <h3 id="toc_17">13) Analysis of the simulation</h3>
-
-        <h4 id="toc_18">RMSD</h4>
-
-        <p>The first assessment is the root-mean-square deviation (RMSD) between the first frame and all the sequential
-            ones. </p>
-        <p>It can inform us on the convergence of the simulation and on the structural stability of our protein. The
-            analysis is done with <code>gmx rms</code> command. We advise you to carry out yhe analysis for the whole
-            system, as well as for the protein only and for the back-bone of the protein only.</p>
-
-        <div><pre><code>gmx rms -f traj_center.xtc -o rmsd_system -tu ns
-gmx rms -f traj_center.xtc -o rmsd_protein -tu ns
-gmx rms -f traj_center.xtc -o rmsd_protein_bb -tu ns</code></pre>
-        </div>
-
-        <p>Compare these by plotting together with <code>xmgrace</code>.</p>
-
-<!--        <h4 id="toc_19">Radius of gyration</h4>-->
-
-<!--        <p>Radius of gyration allows us to access how compact is our protein and how it changes through time. If the-->
-<!--            radius-->
-<!--            of-->
-<!--            gyration does not change, the protein is stable and does not undergo unfolding events (which one would not-->
-<!--            realistically be able to observe on such a short simulation). </p>-->
-
-<!--        <p>Again, for protein-only calculate radius of gyration using <code>gmx gyrate</code> and plot it with-->
-<!--            <code>xmgrace</code></p>-->
-
-<!--        <div>-->
-<!--            <pre><code>gmx gyrate -f traj_center.xtc -o gyrate_protein.xvg</code></pre>-->
-<!--        </div>-->
-
-<!--        <h4 id="toc_20">Generating index file</h4>-->
-
-<!--        <p>Many Gromacs tools rely on using index files. These can be generated by <code>gmx make_ndx</code> tool:</p>-->
-
-<!--        <div>-->
-<!--            <pre><code>gmx make_ndx -f topol.tpr </code></pre>-->
-<!--        </div>-->
-
-<!--        <p>This tool allows to create groups of atoms for analysis. Lets make 3 groups, containing all hydrophilic, all-->
-<!--            hydrophobic and all amphiphatic amino acids, using their residue <code>r</code> names.</p>-->
-
-<!--        <p>When prompted by <code>&gt;</code> enter:</p>-->
-
-<!--        <ul>-->
-<!--            <li><code>r GLY PRO PHE ALA ILE LEU VAL</code></li>-->
-<!--            <li><code>r SER TYR ASP GLU CYS ASN GLN ARG HIS</code></li>-->
-<!--            <li><code>r LYS TRP TYR MET</code></li>-->
-<!--        </ul>-->
-
-<!--        <p>If you now hit enter, it will show you the lists made. The entries we generated look a bit untidy, so we can-->
-<!--            rename-->
-<!--            them by typing <code>name</code> followed by group number, followed by the name you want to give it, i.e.:-->
-<!--        </p>-->
-
-<!--        <ul>-->
-<!--            <li><code>name 17 Phobe</code></li>-->
-<!--            <li><code>name 18 Phil</code></li>-->
-<!--            <li><code>name 19 Amphi</code></li>-->
-<!--        </ul>-->
-
-<!--        <p>to write out the <code>index.ndx</code>, type</p>-->
-
-<!--        <ul>-->
-<!--            <li><code>q</code></li>-->
-<!--        </ul>-->
-
-<!--        <h4 id="toc_21">Hydrogen bonds</h4>-->
-
-<!--        <p>Run the H-bond 3 times, to analyse each of your groups against water, for example:</p>-->
-
-<!--        <div>-->
-<!--            <pre><code>gmx hbond -f traj_center.xtc -n index.ndx -num hbnum_phil.xvg</code></pre>-->
-<!--        </div>-->
-
-<!--        <p>Selecting group <code>18</code> for hydrophilic groups and <code>12</code> for water (or the numbers-->
-<!--            corresponding to-->
-<!--            these in your index).</p>-->
-
-<!--        <p>Plot all three sets together </p>-->
-
-<!--        <div>-->
-<!--            <pre><code>xmgrace hbnum_* -legend load </code></pre>-->
-<!--        </div>-->
-
-<!--        <p>While the data will not be normalised by the number of residues of each type, hopefully you should still be-->
-<!--            able-->
-<!--            to-->
-<!--            see how the number of H-bonds changes with simulation, with large numbers early on, when system is still-->
-<!--            actively-->
-<!--            equilibrating (see RMSD and energy), and slowly reducing over time, with significantly less H-bonds formed-->
-<!--            by-->
-<!--            hydrophobic groups and a large number by hydrophilic. T</p>-->
-
-
-        <h2 id="toc_6">Reporting on the procedure</h2>
-        <p>
-            A handy tool to produce a summary of your system info is <a
-                href="https://manual.gromacs.org/current/onlinehelp/gmx-report-methods.html"><code>report-methods</code></a>.
-        </p>
-        <div class="bbox">
-            <h3 id="Generating_a_report_of_the_procedure"></h3>
-            <ul>
-                <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-report-methods.html"><code>report-methods</code></a>
-                    to print a report of the procedure:</li>
-                <li>Usage of <code>report-methods</code>:
-                    <blockquote>
-                        <pre>gmx report-methods -s md.tpr</pre>
-                        <p class="note">Use the <code>&dash;o</code> option to write the report as a plain
-                            <code>.out</code>
-                            text file and the <code>&dash;m</code> option to write the report as a LaTeX formatted
-                            <code>.tex</code>.
-                            You will hear more about writing documents in LaTeX in the upcoming sessions.</p>
-                        <p>Your output will look similar to this:</p>
-                        <pre>           :-) GROMACS - gmx report-methods, 2023.3 (-:
+            <li>Use <a
+                    href="https://manual.gromacs.org/current/onlinehelp/gmx-report-methods.html"><code>report-methods</code></a>
+                to print a report of the procedure:
+            </li>
+            <li>Usage of <code>report-methods</code>:
+                <blockquote>
+                    <pre>gmx report-methods -s md.tpr</pre>
+                    <p class="note">Use the <code>&dash;o</code> option to write the report as a plain
+                        <code>.out</code>
+                        text file and the <code>&dash;m</code> option to write the report as a LaTeX formatted
+                        <code>.tex</code>.
+                        You will hear more about writing documents in LaTeX in the upcoming sessions.</p>
+                    <p>Your output will look similar to this:</p>
+                    <pre>           :-) GROMACS - gmx report-methods, 2023.3 (-:
 
 Executable:   /exports/applications/apps/SL7/gromacs/2023.3/gromacs_final/bin/gmx
 Data prefix:  /exports/applications/apps/SL7/gromacs/2023.3/gromacs_final
@@ -1760,21 +1844,21 @@ Temperature coupling was done with the V-rescale algorithm.
 Pressure coupling was done with the Berendsen algorithm.
 
 GROMACS reminds you: &quot;Furious activity is no substitute for understanding.&quot; (H.H. Williams)</pre>
-                    </blockquote>
-                </li>
-            </ul>
-        </div>
+                </blockquote>
+            </li>
+        </ul>
     </div>
+</div>
 
-        <script src="../VM_sessions/scripts/generate_header.js"></script>
-        <script src="../VM_sessions/scripts/generate_overview.js"></script>
-        <script src="../VM_sessions/scripts/scroll_up.js"></script>
-        <script src="../VM_sessions/scripts/feedback.js"></script>
-        <script>window.onload = function () {
-            addFeedback('https://forms.office.com/e/NtN4Fmzhj3?origin=lprLink', '');
-            generateOverview();
-            generateHeader();
-            scrollUp();
-        }</script>
+<script src="../VM_sessions/scripts/generate_header.js"></script>
+<script src="../VM_sessions/scripts/generate_overview.js"></script>
+<script src="../VM_sessions/scripts/scroll_up.js"></script>
+<script src="../VM_sessions/scripts/feedback.js"></script>
+<script>window.onload = function () {
+    addFeedback('https://forms.office.com/e/NtN4Fmzhj3?origin=lprLink', 'img/FB2.png');
+    generateOverview();
+    generateHeader();
+    scrollUp();
+}</script>
 </body>
 </html>
