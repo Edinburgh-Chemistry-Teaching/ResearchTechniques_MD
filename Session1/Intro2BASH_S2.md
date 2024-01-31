@@ -1,8 +1,8 @@
 # PART 2 -- Working With Files and Directories
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Navigating Files and Directories](Intro2BASH_S1.md)<br>
-👉[Go to the next part -- Pipes and Filters](Intro2BASH_S3.md)
+👆[Go to the main menu](Session1.html) <br>
+👈[Go to the previous part -- Navigating Files and Directories](Intro2BASH_S1.html)<br>
+👉[Go to the next part -- Pipes and Filters](Intro2BASH_S3.html)
 
 
 ### 1. Creating directories
@@ -14,7 +14,7 @@ First, let's check which directory we are in and move into `exercise-data/writin
 
 ```bash
 $ pwd
-/Users/nelle/Desktop/Practical1/shell-lesson-data
+/Users/nelle/Desktop/session1/shell-lesson-data
 $ ls
 exercise-data/      north-pacific-gyre/
 $ cd exercise-data/writing/
@@ -71,7 +71,7 @@ Note that there are other text editors available. Nano and [Vi](https://www.vim.
 
 Let's type in a couple of words using nano and save into the `draft.txt`
 
-![nano-screenshot](./fig/nano-screenshot.png)
+![nano-screenshot](./img/nano-screenshot.png)
 
 Once we’re happy with our text, we can press `Ctrl+O` (press the `Ctrl` or `Control` key and, while holding it down, press the `O` key) to write our data to disk. We will be asked to provide a name for the file that will contain our text. Press Return to accept the suggested default of `draft.txt`.
 
@@ -92,7 +92,7 @@ There are other ways to create files; often, these will be generated as an outpu
 Make sure you are in the `shell-lesson-data/exercise-data/writing` directory, which you can do by using the absolute path or locate yourself in the directories and navigate up:
 
 ```bash 
-$ cd ~/Desktop/Practical1/shell-lesson-data/exercise-data/writing
+$ cd ~/Desktop/session1/shell-lesson-data/exercise-data/writing
 ```
 
 In our `thesis` directory we have a file `draft.txt` which isn’t a particularly informative name, so let’s change the file’s name using `mv`, which is short for **m**o**v**e:
@@ -426,7 +426,7 @@ $ cp *-23-dataset* send_to_bob/all_datasets_created_on_a_23rd/
 #### TASK 3:
 
 Jamie is working on a project, and she sees that her files aren’t very well organized:
-
+session1
 ```bash
 $ ls -F
 analyzed/  fructose.dat    raw/   sucrose.dat
@@ -469,9 +469,6 @@ Jamie needs to move her files `fructose.dat` and `sucrose.dat` to the `analyzed`
 
 ---
  
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Navigating Files and Directories](Intro2BASH_S1.md)<br>
-👉[Go to the next part -- Pipes and Filters](Intro2BASH_S3.md)
-
-		
-
+👆[Go to the main menu](Session1.html) <br>
+👈[Go to the previous part -- Navigating Files and Directories](Intro2BASH_S1.html)<br>
+👉[Go to the next part -- Pipes and Filters](Intro2BASH_S3.html)

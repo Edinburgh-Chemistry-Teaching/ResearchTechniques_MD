@@ -1,24 +1,17 @@
 # PART 1 -- Navigating Files and Directories
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👉[Go to the next part -- Working With Files and Directories](Intro2BASH_S2.md)<br>
+👆[Go to the main menu](Session1.html) <br>
+👉[Go to the next part -- Working With Files and Directories](Intro2BASH_S2.html)<br>
 
 
 
-### 1. Get Ready
-
-1. Download the file **Session1** from the DataStore  <**LINK**>  
-2. Move it to your Desktop
-3. Do not rename the folder.
-
-
-### 2. Open a terminal on your computer
+### 1. Open a terminal on your computer
 
 Click on the terminal app at the bottom of the desktop:
-![terminal](./fig/terminal.png)
+![terminal](./img/terminal.png)
 
 Which will open a window:
-![commandline](./fig/commandline.png)
+![commandline](./img/commandline.png)
 
 Here, each line starts with the prompt `$` (can be another user-defined symbol). This is where you will be typing in the commands we give you, for example:
 
@@ -33,14 +26,13 @@ After you type a command, you have to press the `ENTER` key to execute it.
 
 The prompt is followed by a *text cursor*, a flashing [or solid black] cursor that indicates the position where your typing will appear.
 
-Often, before the prompt symbol, there will be some information on the user, the machine, and even the directory currently in, for example on the figure above:
+Often, before the prompt symbol, there will be some information on the user, the machine, and even the directory currently in, for example on the imgure above:
 
 ```bash
 [test@instance-test-2:~]$ 
 ```
 Do not worry about all this; just make sure to type in only what is given after `$` into your terminal.
-
-
+session1
 
 ### 3. Navigate to the working directory
 
@@ -91,7 +83,7 @@ shell will inform you that it does not exist:
 kls: command not found
 ```
 
-Now, continue into the directory `Practical1` you downloaded earlier.
+Now, continue into the directory `session1` you downloaded earlier.
 
 First, go to the directory `Desktop`:
 
@@ -104,10 +96,10 @@ Check the directories on the desktop:
 $ ls
 ```
 
-You should see the list, with one of them called `Practical1`. Now, go to that directory:
+You should see the list, with one of them called `session1`. Now, go to that directory:
 
 ```bash
-$ cd Practical1
+$ cd session1
 ```
 
 We have now navigated from the *home directory* to the *current working directory*. 
@@ -115,7 +107,7 @@ We have now navigated from the *home directory* to the *current working director
  
 > ### Let's have a look at how the file system is organised.
 >  
-> ![filesystem](./fig/filesystem.svg)
+> ![filesystem](./img/filesystem.svg)
 >  
 > The filesystem looks like an upside-down tree. The topmost directory is the *root directory* that holds everything else. We refer to it using a slash character, `/`, on its own; this character is the leading slash in `/Users/nelle`.
 >  
@@ -128,7 +120,7 @@ We have now navigated from the *home directory* to the *current working director
 >  
 > We know that our current working directory `/Users/nelle` is stored inside `/Users` because `/Users` is the first part of its name. Similarly, we know that `/Users` is stored inside the root directory `/` because its name begins with `/`.
 > 
-> ![home-dirs](./fig/home-directories.svg)
+> ![home-dirs](./img/home-directories.svg)
 >  
 > Underneath `/Users`, we find one directory for each user with an account on Nelle’s machine, her colleagues `imhotep` and `larry`.  
 > Their files are stored in `/Users/Imhotep` and in `/Users/larry`, respectively.
@@ -141,7 +133,7 @@ We have now navigated from the *home directory* to the *current working director
 
 Not only can we use `ls` on the current working directory, but we can use it to list the contents of a different directory. 
 
-Let’s take a look at the contents of the `Practical1` (our current directory) and the directory within it:
+Let’s take a look at the contents of the `session1` (our current directory) and the directory within it:
 
 ```bash
 $ ls
@@ -155,7 +147,7 @@ eddie-hpc-data/    shell-lesson-data/
 and then list the contents of `shell-lesson-data`, without descending into the directory:
 
 ```bash
-$ ls Practical1/shell-lesson-data
+$ ls session1/shell-lesson-data
 ```
 
 that returns:
@@ -176,7 +168,7 @@ $ pwd
 ```
 
 ```bash
-/Users/nelle/Desktop/Practical1/shell-lesson-data/exercise-data
+/Users/nelle/Desktop/session1/shell-lesson-data/exercise-data
 ```
 
 list the contents of the directory:
@@ -221,8 +213,8 @@ This allows us to move to our `shell-lesson-data directory` from anywhere on the
 
 ```bash
 $ pwd
-/Users/nelle/Desktop/Practical1/shell-lesson-data/north-pacific-gyre
-$ cd /Users/nelle/Desktop/Practical1/shell-lesson-data
+/Users/nelle/Desktop/session1/shell-lesson-data/north-pacific-gyre
+$ cd /Users/nelle/Desktop/session1/shell-lesson-data
 ```
 Remember, that the commands are after prompt `$` while the output of the terminal starts on a new line and has no prompt symbol in front.
 
@@ -230,8 +222,8 @@ The other way to indicate an absolute path, with respect to the current user’s
  
 ```bash
 $ pwd
-/Users/nelle/Desktop/Practical1/shell-lesson-data
-$ cd ~/Desktop/Practical1/shell-lesson-data/exercise-data
+/Users/nelle/Desktop/session1/shell-lesson-data
+$ cd ~/Desktop/session1/shell-lesson-data/exercise-data
 ```
 
 
@@ -276,7 +268,7 @@ Using the filesystem diagram below, if `pwd` displays `/Users/thing`, what will 
 3. `2012-12-01/ 2013-01-08/ 2013-01-27/`
 4. `original/ pnas_final/ pnas_sub/`
 
-![filesystem-challenge](./fig/filesystem-challenge.svg)
+![filesystem-challenge](./img/filesystem-challenge.svg)
 
 <details>
   <summary>**ANSWER 2**</summary>
@@ -362,6 +354,6 @@ This is called tab completion, and we will see it in many other tools as we go o
 
 --- 
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👉[Go to the next part -- Working With Files and Directories](Intro2BASH_S2.md)<br>
+👆[Go to the main menu](Session1.html) <br>
+👉[Go to the next part -- Working With Files and Directories](Intro2BASH_S2.html)<br>
 
