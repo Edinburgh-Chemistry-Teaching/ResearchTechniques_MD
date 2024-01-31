@@ -1411,22 +1411,23 @@ Performance:        6.183        3.882</pre>
     <h2 id="toc_4">Analysis of the simulation data</h2>
     <p>
         In this section you will learn some ways to inspect the data generated in an <abbr>MD</abbr> simulation.
-        You will:
-    <ol>
-        <li>
-            Calculate the root&dash;mean&dash;square deviation (<abbr>RMSD</abbr>)
+        You will
+<!--        :-->
+<!--    <ol>-->
+<!--        <li>-->
+calculate the root&dash;mean&dash;square deviation (<abbr>RMSD</abbr>).
         </li>
-        <li>
-            Extract the evolution of <em>x</em>, <em>y</em> and <em>z</em> coordinates and velocities of the protein
-            over the duration of the simulation
-        </li>
+<!--        <li>-->
+<!--            Extract the evolution of <em>x</em>, <em>y</em> and <em>z</em> coordinates and velocities of the protein-->
+<!--            over the duration of the simulation-->
+<!--        </li>-->
         <!--        <li>-->
         <!--            Calculate the radius of gyration of the protein-->
         <!--        </li>-->
         <!--            <li>-->
         <!--                Perform a hydrogen bond analysis for different parts of the protein-->
         <!--            </li>-->
-    </ol>
+<!--    </ol>-->
     <h3 class="enum" id="toc_4_1">Calculating the root mean square deviation (<abbr>RMSD</abbr>)</h3>
     <p>
         The <abbr>RMSD</abbr> is a measure of the deviation of the protein structure from a reference structure.
@@ -1465,6 +1466,15 @@ Performance:        6.183        3.882</pre>
                 protein backbone.
             </li>
         </ul>
+        <div class="flex-figure">
+            <div class="flex-figure-img" style="width: 100%">
+                <figure>
+                    <img src="img/rmsd.png" width="100%">
+                    <figcaption>
+                        Example Xmgrace plot of the RMSD evolution for the entire system during an unrestrained equilibration run.
+                    </figcaption>
+                </figure>
+
     </div>
 </div>
 <div class="box">

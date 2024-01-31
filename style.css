@@ -193,6 +193,7 @@ li {
 
 ul, ol {
     padding-left: 30px;
+    text-align: left;
 }
 
 ul > li p, ol > li p {
@@ -272,9 +273,18 @@ blockquote > :last-child {
     align-self: center;
     margin: 0 auto;
     padding: 0;
+    width: fit-content(100%);
 }
 
-.flex-figure-item img {
+.flex-figure-item figure {
+    /*max-width: 100%;*/
+    /*object-fit: contain;*/
+    /*height: auto;*/
+    /*object-position: 50% 50%;*/
+    align-self: baseline;
+    cursor: pointer;
+}
+flex-figure-item img {
     /*max-width: 100%;*/
     /*object-fit: contain;*/
     /*height: auto;*/
@@ -283,6 +293,26 @@ blockquote > :last-child {
     cursor: pointer;
 }
 
+flex-figure-item figure img {
+    /*max-width: 100%;*/
+    /*object-fit: contain;*/
+    /*height: auto;*/
+    /*object-position: 50% 50%;*/
+    align-self: baseline;
+    cursor: pointer;
+}
+flex-figure-item figure figcaption {
+    font-size: 14px;
+    font-style: italic;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    color: #333f48;
+    width: auto;
+    align-self: baseline;
+    cursor: pointer;
+    object-fit: contain;
+}
 /*figure {*/
 /*  margin: 0 auto;*/
 /*  padding: 0;*/
