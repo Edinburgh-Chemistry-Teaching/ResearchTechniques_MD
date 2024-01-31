@@ -4,7 +4,7 @@ title                    = NPT simulation
 ; RUN CONTROL PARAMETERS
 integrator               = md
 dt                       = 0.001
-nsteps                   = 5000
+nsteps                   = COMPLETE HERE
 
 ; OUTPUT CONTROL OPTIONS
 nstxout                  = 0
