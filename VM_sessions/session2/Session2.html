@@ -1,5 +1,6 @@
+<!DOCTYPE html>
 <html lang="en-UK">
-
+<!--xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">-->
 
 <head>
     <meta charset="utf-8"/>
@@ -9,7 +10,7 @@
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
           rel="stylesheet">
-    <link href="../scripts/style.css" rel="stylesheet"/>
+    <link href="../style.css" rel="stylesheet"/>
     <title>Session 2</title>
 </head>
 
@@ -492,7 +493,7 @@ mdrun -> energy [
             <li>Load the protein structure into VMD:
                 <blockquote>
                     In the main window, click <code>File</code> &#8594;
-                    <code>New Molecule ...</code> and select the your <code>.pdb</code> file.
+                    <code>New Molecule ...</code> and select your <code>.pdb</code> file.
                 </blockquote>
             </li>
             <li>Play around with the visualisation options
@@ -545,7 +546,7 @@ mdrun -> energy [
     <p>
         To be able to retrieve your data
         later and to not get confused, make sure to keep your work organised and name files coherently.
-        Itr would be advisable to run each simulation step in a different subdirectory or to (re)name input and output
+        It would be advisable to run each simulation step in a different subdirectory or to (re)name input and output
         files
         in a descriptive matter.</p>
     <p><em>Remember:</em><br>
@@ -564,10 +565,10 @@ mdrun -> energy [
     <p>
         The structures of the proteins used in this tutorial are fully resolved, so you
         do not need to worry about this step.
-        However, it is worth mentioning that one of the biggest tasks for a biological simulation in practice is prepare
+        However, it is worth mentioning that one of the biggest tasks for a biological simulation in practice is to prepare
         and check structures prior to simulation. </p>
-    <p>Another challenge is posed by non&ldquo;standard groups in molecules.
-        These could consist of non&ldquo;standard residues, modified residues or ligands, for which force field
+    <p>Another challenge is posed by non&dash;standard groups in molecules.
+        These could consist of non&dash;standard residues, modified residues or ligands, for which force field
         parameters
         are not yet available. Considerable work is often required to either eliminate these groups, modify them, or
         determine the missing force field parameters by reference to the literature and/or use of quantum chemical
@@ -592,7 +593,7 @@ mdrun -> energy [
         structure alone is not enough. We need to add a topology (i.e. a description of the system's
         covalent network).
         Connectivity information is necessary in order to calculate inter&dash;atomic interactions as defined in the
-        force field used in the simulation. GROMACS comes a range of internal force fields and a the
+        force field used in the simulation. GROMACS comes with a range of internal force fields and the
         <code>pdb2gmx</code> command to assign them to protein structures.
     </p>
     <p class="note"> This only works on perfect proteins.</p>
@@ -1469,7 +1470,7 @@ calculate the root&dash;mean&dash;square deviation (<abbr>RMSD</abbr>).
         <div class="flex-figure">
             <div class="flex-figure-img" style="width: 100%">
                 <figure>
-                    <img src="img/rmsd.png" width="100%">
+                    <img src="img/rmsd_system.png" width="100%">
                     <figcaption>
                         Example Xmgrace plot of the RMSD evolution for the entire system during an unrestrained equilibration run.
                     </figcaption>
@@ -1859,10 +1860,10 @@ GROMACS reminds you: &quot;Furious activity is no substitute for understanding.&
     </div>
 </div>
 
-<script src="../scripts/generate_header.js"></script>
-<script src="../scripts/generate_overview.js"></script>
-<script src="../scripts/scroll_up.js"></script>
-<script src="../scripts/feedback.js"></script>
+<script src="../VM_sessions/scripts/generate_header.js"></script>
+<script src="../VM_sessions/scripts/generate_overview.js"></script>
+<script src="../VM_sessions/scripts/scroll_up.js"></script>
+<script src="../VM_sessions/scripts/feedback.js"></script>
 <script>window.onload = function () {
     addFeedback('https://forms.office.com/e/NtN4Fmzhj3?origin=lprLink', 'img/FB2.png');
     generateOverview();
