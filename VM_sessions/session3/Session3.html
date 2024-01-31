@@ -1,505 +1,751 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-UK">
 
 <head>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>temp</title>
-
-
-<style type="text/css">
-body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  padding: 30px; }
-
-body > *:first-child {
-  margin-top: 0 !important; }
-body > *:last-child {
-  margin-bottom: 0 !important; }
-
-a {
-  color: #4183C4; }
-a.absent {
-  color: #cc0000; }
-a.anchor {
-  display: block;
-  padding-left: 30px;
-  margin-left: -30px;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-  cursor: text;
-  position: relative; }
-
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
-  text-decoration: none; }
-
-h1 tt, h1 code {
-  font-size: inherit; }
-
-h2 tt, h2 code {
-  font-size: inherit; }
-
-h3 tt, h3 code {
-  font-size: inherit; }
-
-h4 tt, h4 code {
-  font-size: inherit; }
-
-h5 tt, h5 code {
-  font-size: inherit; }
-
-h6 tt, h6 code {
-  font-size: inherit; }
-
-h1 {
-  font-size: 28px;
-  color: black; }
-
-h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #cccccc;
-  color: black; }
-
-h3 {
-  font-size: 18px; }
-
-h4 {
-  font-size: 16px; }
-
-h5 {
-  font-size: 14px; }
-
-h6 {
-  color: #777777;
-  font-size: 14px; }
-
-p, blockquote, ul, ol, dl, li, table, pre {
-  margin: 15px 0; }
-
-hr {
-  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
-  border: 0 none;
-  color: #cccccc;
-  height: 4px;
-  padding: 0;
-}
-
-body > h2:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-body > h1:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-  body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0; }
-body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0; }
-
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
-  margin-top: 0; }
-
-li p.first {
-  display: inline-block; }
-li {
-  margin: 0; }
-ul, ol {
-  padding-left: 30px; }
-
-ul :first-child, ol :first-child {
-  margin-top: 0; }
-
-dl {
-  padding: 0; }
-  dl dt {
-    font-size: 14px;
-    font-weight: bold;
-    font-style: italic;
-    padding: 0;
-    margin: 15px 0 5px; }
-    dl dt:first-child {
-      padding: 0; }
-    dl dt > :first-child {
-      margin-top: 0; }
-    dl dt > :last-child {
-      margin-bottom: 0; }
-  dl dd {
-    margin: 0 0 15px;
-    padding: 0 15px; }
-    dl dd > :first-child {
-      margin-top: 0; }
-    dl dd > :last-child {
-      margin-bottom: 0; }
-
-blockquote {
-  border-left: 4px solid #dddddd;
-  padding: 0 15px;
-  color: #777777; }
-  blockquote > :first-child {
-    margin-top: 0; }
-  blockquote > :last-child {
-    margin-bottom: 0; }
-
-table {
-  padding: 0;border-collapse: collapse; }
-  table tr {
-    border-top: 1px solid #cccccc;
-    background-color: white;
-    margin: 0;
-    padding: 0; }
-    table tr:nth-child(2n) {
-      background-color: #f8f8f8; }
-    table tr th {
-      font-weight: bold;
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr td {
-      border: 1px solid #cccccc;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr th :first-child, table tr td :first-child {
-      margin-top: 0; }
-    table tr th :last-child, table tr td :last-child {
-      margin-bottom: 0; }
-
-img {
-  max-width: 100%; }
-
-span.frame {
-  display: block;
-  overflow: hidden; }
-  span.frame > span {
-    border: 1px solid #dddddd;
-    display: block;
-    float: left;
-    overflow: hidden;
-    margin: 13px 0 0;
-    padding: 7px;
-    width: auto; }
-  span.frame span img {
-    display: block;
-    float: left; }
-  span.frame span span {
-    clear: both;
-    color: #333333;
-    display: block;
-    padding: 5px 0 0; }
-span.align-center {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-center > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: center; }
-  span.align-center span img {
-    margin: 0 auto;
-    text-align: center; }
-span.align-right {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px 0 0;
-    text-align: right; }
-  span.align-right span img {
-    margin: 0;
-    text-align: right; }
-span.float-left {
-  display: block;
-  margin-right: 13px;
-  overflow: hidden;
-  float: left; }
-  span.float-left span {
-    margin: 13px 0 0; }
-span.float-right {
-  display: block;
-  margin-left: 13px;
-  overflow: hidden;
-  float: right; }
-  span.float-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: right; }
-
-code, tt {
-  margin: 0 2px;
-  padding: 0 5px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px; }
-
-pre code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent; }
-
-.highlight pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-  pre code, pre tt {
-    background-color: transparent;
-    border: none; }
-
-sup {
-    font-size: 0.83em;
-    vertical-align: super;
-    line-height: 0;
-}
-
-kbd {
-  display: inline-block;
-  padding: 3px 5px;
-  font-size: 11px;
-  line-height: 10px;
-  color: #555;
-  vertical-align: middle;
-  background-color: #fcfcfc;
-  border: solid 1px #ccc;
-  border-bottom-color: #bbb;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #bbb
-}
-
-* {
-	-webkit-print-color-adjust: exact;
-}
-@media screen and (min-width: 914px) {
-    body {
-        width: 854px;
-        margin:0 auto;
-    }
-}
-@media print {
-	table, pre {
-		page-break-inside: avoid;
-	}
-	pre {
-		word-wrap: break-word;
-	}
-  body {
-    padding: 2cm; 
-  }
-}
-</style>
-
-<style type="text/css">
-/**
- * prism.js default theme for JavaScript, CSS and HTML
- * Based on dabblet (http://dabblet.com)
- * @author Lea Verou
- */
-
-code[class*="language-"],
-pre[class*="language-"] {
-	color: black;
-	background: none;
-	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-	line-height: 1.5;
-
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
-
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-}
-
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-	text-shadow: none;
-	background: #b3d4fc;
-}
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-	text-shadow: none;
-	background: #b3d4fc;
-}
-
-@media print {
-	code[class*="language-"],
-	pre[class*="language-"] {
-		text-shadow: none;
-	}
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
-	overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	background: #f5f2f0;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
-	white-space: normal;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-	color: slategray;
-}
-
-.token.punctuation {
-	color: #999;
-}
-
-.namespace {
-	opacity: .7;
-}
-
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-	color: #905;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-	color: #690;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-	color: #a67f59;
-	background: hsla(0, 0%, 100%, .5);
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-	color: #07a;
-}
-
-.token.function {
-	color: #DD4A68;
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-	color: #e90;
-}
-
-.token.important,
-.token.bold {
-	font-weight: bold;
-}
-.token.italic {
-	font-style: italic;
-}
-
-.token.entity {
-	cursor: help;
-}
-</style>
-
-
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+    <meta content="Session 3: Layered material simulations" name="description"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
+          rel="stylesheet">
+    <link href="../scripts/style.css" rel="stylesheet"/>
+    <title>Session 3</title>
 </head>
+
 
 <body>
 
-<p>Thank you for checking this session. 
-The material will be added closer to the date&hellip; please visit again soon.</p>
+<div class="box">
+    <h1 id="title">Layered Material Setup</h1>
+</div>
+<div class="box">
+    <h2 id="outcomes">Learning Outcomes</h2>
+    <p>By the end of this session you should be able to:</p>
+    <ul>
+        <li>Prepare a simple input file for a simulation</li>
+        <li>Run a simple simulation of a layered material</li>
+        <li>Visualise the results of the simulation</li>
+    </ul>
+</div>
+<div class="box">
+    <h2 id="overview">Contents</h2>
+</div>
+<div class="box">
+    <h2 class="enum" id="toc_1">Introduction</h2>
+    <p>
+        <em>This tutorial was created by Hannah Pollak and Valentina Erastova and is based upon the <a
+                href="https://www.erastova.xyz/teaching/practical-simulations-for-molecules-and-materials/material-simulations/material-simulations-set-up/">Layered
+            material simulations set up</a> tutorial by Valentina Erastova.</em>
+    </p>
+    <p>
+        Clays are a diverse group of minerals that are found in soils and sediments throughout the world.
+        Their basic structural unit is a layer composed of one or two sheets of silica tetrahedra,
+        [Si<sup>4+</sup>O<sub>5</sub>]
+        and one sheet of divalent or trivalent metal octahedra, [M<sup>2+</sup><sub>3</sub>(OH)<sub>2</sub>O<sub>4</sub>]
+        (M<sup>2+</sup>
+        = Mg<sup>2+</sup>, Fe<sup>2+</sup>, ...),
+        or [M<sup>3+</sup><sub>2</sub>(OH)<sub>2</sub>O<sub>4</sub>] (M<sup>3+</sup> = Al<sup>3+</sup>, Fe<sup>3+</sup>).
+        These layers are stacked on top of each other to form a 3D structure.
+        So&dash;called <em>isomorphous substitution</em> of tetrahedral Si<sup>4+</sup> by a M<sup>3+</sup> ion or
+        octahedral
+        M<sup>3+</sup>/M<sup>2+</sup> by M<sup>2+</sup>/M<sup>1+</sup> ions
+        result in a net negative charge on the clay mineral. This negative <em>layer charge</em> is balanced by the
+        presence
+        of cations (Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, Mg<sup>2+</sup>, ...) in the interlayer space.
+    </p>
+    <div class="flex-figure">
+        <div class="flex-figure-item">
+            <figure>
+                <img alt="" class="fit-picture" decoding="auto"
+                     src="img/clay_sheet_structure.png" width="40%"/>
+                <img alt="" class="fit-picture" decoding="auto" src="img/clay_with_IL.png"
+                     width="50%"/>
+                <figcaption>
+                    Side view illustrations of clay sheet structure and composition (left) and two stacked clay with
+                    interlayer space (right).
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+</div>
+<!--<div class="box" style="width: 50%; border: solid 1px dimgray; background-color: #b3d4fc; color: dimgray">-->
+<!--    <p>-->
+<!--        Their unique structure dictates their physical and chemical behaviour, as well as their interactions with other-->
+<!--        molecules and ions.-->
+<!--        Clays for all the 3 different parts.</p>-->
+<!--    <ul>-->
+<!--        <li>Medicinal and Biological chemistry<br>-->
+<!--            Clay minerals have a wide range of applications in the pharmaceutical industry. They are employed as-->
+<!--            excipients and drug delivery agents, as well as, thickeners and absorbents.-->
+<!--        </li>-->
+<!--        <li>Materials chemistry<br>-->
+<!--            Clay minerals are used in the production of ceramics, glass, paper, paints, rubber, polymers,-->
+<!--            insecticides and many other industrial and domestic products.-->
+<!--        </li>-->
+<!--        <li>Analytical chemistry<br>-->
+<!--            Clay minerals are used in the analysis of a wide range of materials, including soils, sediments, rocks,-->
+<!--            water and air.-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
+<div class="box">
+    <p>
+        Today's system will be a montmorillonite <abbr>MMT</abbr> in contact with water, ions and organic molecules.
+        We will start by building the clay sheets from unit cell (<abbr>UC</abbr>) building blocks.
+        The composition of this unit cell is the following:
+        [Si<sup>4+</sup><sub>8</sub>O<sub>5</sub>][Al<sup>3+</sup><sub>3</sub>Mg<sup>2+</sup>(OH)<sub>2</sub>O<sub>4</sub>]<sup>
+        &dash;1</sup>. The &dash;1 charge originates from one of the octahedral Al<sup>3+</sup> atoms being substituted
+        by a
+        Mg<sup>2+</sup> atom.
+        In theis session tutorial, the atoms are colour&dash;coded according to the following scheme:</p>
+
+    <table>
+        <caption>Atom type colours</caption>
+        <colgroup>
+            <col span="5">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>Element</th>
+            <th>Colour</th>
+            <th style="color: transparent">empty</th>
+            <th>Element</th>
+            <th>Colour</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Si</td>
+            <td style="background-color: yellow; font-weight: bolder">yellow</td>
+            <td style="color: transparent">empty</td>
+            <td>Al</td>
+            <td style="background-color: darkcyan; color: white; font-weight: bolder">cyan</td>
+        </tr>
+        <tr>
+            <td>O</td>
+            <td style="background-color: red; color: white; font-weight: bolder">red</td>
+            <td style="color: transparent">empty</td>
+            <td>Mg</td>
+            <td style="background-color: darkviolet; color: white; font-weight: bolder">purple</tD>
+        </tr>
+        <tr>
+            <td>H</td>
+            <td style="background-color: white; color: black; font-weight: bolder">white</td>
+            <td style="color: transparent">empty</td>
+            <td>C</td>
+            <td style="background-color: #333333; color: white; font-weight: bolder">gray</tD>
+        </tr>
+        </tbody>
+    </table>
+    <!--        <span style="align-content: center; text-align: justify; align-items: center">-->
+    <div class="flex-container">
+        <div class="flex-item">
+            <figure>
+                <img alt="" class="fit-picture" decoding="auto" src="img/uc_top.png"
+                     width="35%"/>
+                <img alt="" class="fit-picture" decoding="auto" src="img/uc_side.png"
+                     width="55%"/>
+                <figcaption>
+                    Montmorillonite unit cell top view (left) and side view (right).
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <!--        <figure>-->
+    <!--            <img width="250px" decoding="auto" src="img/uc_top.png" class="fit-picture" alt="" />-->
+    <!--            <img width="350px" decoding="auto" src="img/uc_side.png" class="fit-picture" alt="" />-->
+    <!--        <figcaption>-->
+    <!--            Montmorillonite unit cell top view (left) and side view (right).-->
+    <!--        </figcaption>-->
+    <!--        </figure>-->
 
 
+    <!--        </span>-->
+</div>
+<div class="box">
+    <h2 class="enum" id="toc_2">Building the clay sheets</h2>
+    <p>
+        Before you start on this practical, let's create a working directory for this session.
+    </p>
+    <div class="bbox">
+        <h3 id="Creating_the_working_directory"></h3>
+        <ul>
+            <li>Create the working directory for this session</li>
+            <li>Copy the <code>session3</code> folder from practicals to your home directory:
+                <p>Open a terminal and type:</p>
+                <pre>cp &dash;r /home/practicals/session3 .</pre>
+            </li>
+            <li>Change into the <code>session3</code> directory:
+                <pre>cd session3</pre>
+            </li>
+        </ul>
+    </div>
+    <!--    <p>-->
+    <!--        There are two steps in building a system for an <abbr title="Molecular Dynamics">MD</abbr> simulation:</p>-->
+    <!--    <ol>-->
+    <!--        <li> Creating the structure</li>-->
+    <!--        <li> Assigning the topology</li>-->
+    <!--    </ol>-->
+    <p>
+        The clay model will consist of a single montmorillonite clay sheet. The first step is to create a sheet by
+        multiplying a single <abbr>MMT</abbr> <abbr>UC</abbr>.
+        This can be done using GROMACS <code>genconf</code>.
+    </p>
 
-<script type="text/javascript">
-var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
-</script>
+    <div class="bbox">
+        <h3 id="Create_a_clay_sheet"></h3>
+        <ul>
+            <li>Use <code>genconf</code> to create a single clay sheet from 24 <abbr>MMT</abbr> <abbr>UCs</abbr>
+                (<code>MMT.gro</code>):
+            </li>
+            <li>Usage of <code>genconf</code>: <br>
+                <blockquote>
+                    <pre>gmx genconf &dash;f MMT.gro &dash;nbox &lt;x_ucs&gt; &lt;y_ucs&gt; &lt;z_ucs&gt; &dash;o MMT_slab.gro</pre>
+                    <code>&dash;f</code> specifies the structure file of the system to insert into.<br>
+                    <code>&dash;nbox</code> defines the number of unit cells to put in each of <em>x y z</em>
+                    directions.<br>
+                    <code>&dash;o</code> specifies the output file name.<br>
+                    If you only want one layer of clay, use 1 in the z&dash;direction.
+                </blockquote>
+            </li>
+            <li>How many (<abbr>UCs</abbr>) do you need to multiply in x&dash; and y&dash;direction?
+                <blockquote>
+                    Check the size of unit cell and remember the size of the box has to be at least 2.5 x the size
+                    of your cutoff.<br>
+                    So, for a cutoff at 1.2 nm you have to aim at ~3 nm on each side.
+                </blockquote>
+                <div class="flex-container">
+                    <div class="flex-item">
+                        <figure>
+                            <img alt="" class="fit-picture" decoding="auto"
+                                 src="img/sheet_top.png"
+                                 width="45%"/>
+                            <img alt="" class="fit-picture" decoding="auto"
+                                 src="img/sheet_side.png"
+                                 width="50%"/>
+                            <figcaption>
+                                Montmorillonite sheet model top view (left) and side&dash;view (right).
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <p>
+        The box of this sheet model currently has no space for inserting organic molecules, solvent or ions.
+        Therefore, before moving on, you need to change the box height.
+    </p>
+    <div class="bbox">
+        <h3 id="Increase_the_box_height"></h3>
+        <ul>
+            <li>Edit the gro file to increase the box height</li>
+            <li>Increase the box <em>z</em> length by editing the <code>MMT_slab.gro</code> file.
+                <blockquote>
+                    Where in the <code>.gro</code> file is the box size specified? Adjust the sheet spacing to 25
+                    &#8491;
+                </blockquote>
+                <div class="flex-figure">
+                    <div class="flex-figure-item">
+                        <figure>
+                            <img alt="" class="fit-picture" decoding="auto"
+                                 src="img/sheet_side_ext.png"
+                                 width="55%"/>
+                        </figure>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <h2 class="enum" id="toc_3">Adding decanoic acid molecules</h2>
+    Now that you have a clay sheet, you can use <code>insert&dash;molecules</code> insert decanoic acid molecules into
+    the vacuum space.
+    <div class="bbox">
+        <h3 id="Insert_decanoic_acid_molecules"></h3>
+        <ul>
+            <li>Use <code>insert&dash;molecules</code> to insert 10 decanoic acid molecules into the vacuum space above
+                the clay sheet (<code>MMT_slab.gro</code>):
+            </li>
+            <li>Usage of <code>insert&dash;molecules</code>: <br>
+                <blockquote>
+                    <pre>gmx insert&dash;molecules &dash;f MMT_slab.gro &dash;ci dec_acid.gro &dash;nmol &lt;number&gt; &dash;o MMT_dec.gro</pre>
+                    <code>&dash;f</code> specifies the coordinate file of the system to insert into.<br>
+                    <code>&dash;ci</code> specifies the coordinate file of the molecule to insert.<br>
+                    <code>&dash;nmol</code> defines the number of molecules to insert.<br>
+                    <code>&dash;o</code> specifies the output coordinate file name.<br>
+                    <p>GROMACS will try to fit the requested number of molecules in the available space. It will
+                        notify you about whether it was successful or not.
+                    </p>
+                </blockquote>
+                <div class="flex-figure">
+                    <div class="flex-figure-item">
+                        <figure>
+                            <img alt="" class="fit-picture" decoding="auto"
+                                 src="img/sheet_side_ext_dec.png"
+                                 width="55%"/>
+                        </figure>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <h2 class="enum" id="toc_4">Preparing the topology file</h2>
+    <p>
+        Before proceeding to the next step in which you will solvate the box, you need to generate a topology
+        (<code>.top</code>) file
+        that include all molecules present in the system. The following sections explain the structure of GROMACS
+        topology files in some more detail than in <a href="../Session2/Session2.html">Session2</a>.
+    </p>
+    <p>
+        In the first section, the force field parameters are defined. These always include combination rules and
+        non&dash;bonded interaction parameters (atom types, atomic masses, atomic charges, Lennard&dash;Jones
+        parameters).
+        They can optionally include
+        bonded interaction definitions (bond, angle and dihedral types with bond, angle and dihedral interaction
+        force constants and equilibrium values in this order). A detailed explanation can be found in the GROMACS
+        documentation pages: <a
+            href="https://manual.gromacs.org/current/reference-manual/topologies/topology-file-formats.html#topfile"
+            rel="noopener"
+            target="_blank">topology files</a>,
+        <a href="https://manual.gromacs.org/current/reference-manual/topologies/topologies.html" rel="noopener"
+           target="_blank">topologies</a> and
+        <a
+                href="https://manual.gromacs.org/current/reference-manual/functions/functions.html#ff"
+                rel="noopener"
+                target="_blank">force fields</a>.<br>
+    </p>
+    <p>
+        Even if they only consist of one atom, all atoms of the system are part of molecules. These <code>[
+        moleculetype ]</code> are defined
+        In the second section, all molecule type definitions, such as the <abbr>MMT</abbr> <abbr>UC</abbr>,
+        decanoic acid molecule, water molecule and ions need to be included in the topology file.
+    </p>
+    <p> Elements from the first two sections are usually defined in separate files that are included in the topology
+        file.
+        The syntax for including files is <code>#include &quot;&lt;filename&gt;&quot;</code>.</p>
+    <p>
+        The third section contains the system name and the number of molecules of each type in the system. The
+        system section starts with the keyword <code>[ system ]</code> and is followed by a name chosen for the
+        system (The choice of the name does not really matter).<br>
+        The number of molecules of each type is specified in the <code>[ molecules ]</code> section.</p>
+    <p>
+        <em>Important:</em> The order of the molecules in the <code>[ molecules ]</code> section must match the
+        order of the molecules in the <code>.gro</code> file.
 
-<script type="text/x-mathjax-config">
-(function () {
+    </p>
+    <div class="bbox">
+        <h3 id="Generate_the_topology_file"></h3>
+        <ol>
+            <li>Generate a topology file for the system (<code>MMT_slab.top</code>):</li>
+            <li>Open the topology file stub <code>MMT_slab.top</code> in a text editor to fill in missing
+                sections.<br>
+            </li>
+            <!--                <li>Include the definition files for combination rules (<code>'forcefield.itp</code>) from ClayFF.-->
+            <!--                    <blockquote>-->
+            <!--                        <pre>#include "FF/charmm36.ff/forcefield.itp"</pre>-->
+            <!--                        All force field folders (<code>&lt;ForceFieldName.ff&gt;</code>) are located within the-->
+            <!--                        <code>FF</code> directory. The force field for clay and water is ClayFF, for organics and ions-->
+            <!--                        it is CHARMM36 and for ions it is Ions.-->
+            <!--                        Inside each of the folders, you can find the <code>.itp</code> files that contain the various-->
+            <!--                        force field parameters.-->
+            <!--                        The combination rules are only be specified once and will be the same for all atoms even if-->
+            <!--                        their parameters belong to different force fields.-->
+            <!--                    </blockquote>-->
+            <li>Add nonbonded parameter files (<code>ffnonbonded.itp</code>) for clay, organics and ions.
+                <blockquote>
+                    All force field folders (<code>&lt;ForceFieldName.ff&gt;</code>) are located within the
+                    <code>FF</code> directory. The force field for clay and water is ClayFF, for organics and ions
+                    it is CHARMM36 and for ions it is Ions.
+                    Inside each of the folders, you can find the <code>.itp</code> files that contain the various
+                    force field parameters. <br>
+                    Clay and water share the same atom types. Therefore, no separate
+                    <code>ffnonbonded.itp</code> file needs to be added for water.<br>
+                    <p class="remember"> Everything that comes after a <code>;</code> will be trated as a comment and
+                        is
+                        not read by GROMACS.</p>
+                </blockquote>
+            </li>
+            <li>Add bonded parameters for organics (<code>ffbonded.itp</code>).</li>
+            <li>Include molecule definitions for ions (<code>ions.itp</code>), water (<code>spc.itp</code>),
+                <abbr>MMT</abbr>
+                (<code>MMT.itp</code>) and decanoic acid (<code>dec_acid.itp</code>).
+            </li>
+            <li>Complete the molecules section.
+                <blockquote>Add entries for all molecules in your <code>.gro</code> file.<br>
+                    E.g. for two <abbr>MMT</abbr> <abbr>UCs</abbr> and one decanoic acid, the entry would be:
+                    <pre>
+[ molecules ]
+; Compound  # mols
+MMT           2
+DEC           1
+                </pre>
+                </blockquote>
 
-MathJax.Hub.Config({
-	'showProcessingMessages': false,
-	'messageStyle': 'none'
-});
-
-if (typeof MathJaxListener !== 'undefined') {
-	MathJax.Hub.Register.StartupHook('End', function () {
-		MathJaxListener.invokeCallbackForKey_('End');
-	});
-}
-
-})();
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-
+            </li>
+        </ol>
+    </div>
+    <h2 class="enum" id="toc_5">Solvating the system</h2>
+    <p>
+        Now that you have a topology file, you can use GROMACS <code>solvate</code> the box.
+    </p>
+    <div class="bbox">
+        <h3 id="Solvate_the_box"></h3>
+        <ul>
+            <li value="">Use <code>solvate</code> to solvate the box with water (<code>MMT_dec.gro</code>):</li>
+            <li>Usage of <code>solvate</code>: <br>
+                <blockquote>
+                    <pre>gmx solvate &dash;cp MMT_dec.gro &dash;cs spc216.gro &dash;o MMT_dec_solv.gro &dash;p MMT_slab.top &dash;po MMT_dec_solv.top</pre>
+                    <code>&dash;cp</code> specifies the input coordinate file of the system to solvate.<br>
+                    <code>&dash;cs</code> specifies the water model coordinate file.<br>
+                    <code>&dash;o</code> specifies the output coordinate file.<br>
+                    <code>&dash;p</code> specifies the input topology file.<br>
+                    <code>&dash;po</code> specifies the output topology file.<br>
+                    <p>GROMACS will try to fill the available space with solvent and update the number of water
+                        (<code>SOL</code>)
+                        molecules in the output topology file.
+                    </p>
+                </blockquote>
+                <p>After this step, make sure to visualise the system in VMD to check that no water molecules
+                    were inserted into or very close to the clay sheets. If this was the case, you can either
+                    repeat the solvation step (make sure to delete the <code>SOL</code> line from the topology
+                    first) or remove the water molecules manually. In order to manually remove water molecules,
+                    look at the system in VMD and press &quot;1&quot; on your keyboard to select the water molecules
+                    that
+                    are too close to the clay. The label od the selected water molecule will then show you
+                    which residue you will need to remove from the <code>.gro</code> file. E.g. if the label
+                    shows <code>SOL60:HW1</code> (see figure below), you will need to remove the three
+                    <code>SOL60</code> line
+                    from the <code>MMT_dec_solv.gro</code> file and change the number of atoms in the header
+                    to match the new number of atoms in the file. Make sure to also update the number of water
+                    molecules in the <code>MMT_slab.top</code> file.</p>
+                <div class="flex-figure">
+                    <div class="flex-figure-item">
+                        <figure>
+                            <img alt="" class="fit-picture"
+                                 decoding="auto"
+                                 src="img/sheet_side_water_mol.png"
+                                 width="55%"/>
+                            <figcaption>
+                                Water molecule <code>SOL60</code> inside the clay sheet.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div id="EM_toubleshoot"
+                     style="padding: 20px;background: aliceblue; border: darkslategray;border-width: 1px;border-style: solid;color: darkslategray">
+                    <p><em style="font-weight: bold">EM Troubleshoot:</em> Note which atom has the highest forces in the
+                        energy minimisation
+                        output of GROMACS.<br>E.g.:
+                    <pre>Step= 1836, Dmax= 6.0e-05 nm, Epot= -5.42894e+05 Fmax= 1.94476e+02, atom= 19894</pre>
+                    In VMD, go to the <code>Graphical Representations</code> window.
+                    Create a new representation and select the <code>serial &lt;problem_atom_number&gt;</code>, set the
+                    Drawing Method to <code>VDW</code> and the Coloring Method to <code>ColorID</code>.
+                    You will now be able to see which atom is causing the problem.</p>
+                    <p>If you cannot clearly see the environment of the problem atom, you can replace the Selected Atoms
+                        in the default representation with
+                        <code>within 5 of serial &lt;problem_atom_number&gt;</code>
+                    </p>
+                    <p>
+                        If a water molecule is causing the problem, you can follow the instructions above and remove it
+                        from the system.
+                    </p>
+                    <p>
+                        If the problem is an ion, restart the procedure beginning from the <a
+                            href="#Neutralise_the_excess_charge">
+                        <code>genion</code></a> step.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <h2 class="enum" id="toc_6">Adding ions to neutralise the system</h2>
+    <p>
+        Now that you have a solvated system, but because of the substitutions in the clay sheet and the deprotonated
+        decanoic acid molecules, the system has a net negative charge.
+        It is not possible to run a simulation with a charged system. Therefore, you need to neutralise the system
+        with cations.
+        You can use <code>genion</code> to add ions and neutralise the system.
+    </p>
+    <div class="bbox">
+        <h3 id="Neutralise_the_excess_charge"></h3>
+        <ol>
+            <li>Neutralise the system with Na<sup>+</sup> ions:</li>
+            <li>Generate a run <abbr>TPR</abbr> file for the system (<code>MMT_dec_solv.tpr</code>):
+                <p>
+                    Since <code>genion</code> is a type of <abbr>MD</abbr> run, you need to first use
+                    <code>grompp</code> to
+                    generate a <code>TPR</code> file. The contents of the <code>MDP</code> input file is not important
+                    for
+                    this step, but it has to be given.</p>
+                <p>Usage of <code>grompp</code>:</p>
+                <blockquote>
+                    <pre>gmx grompp &dash;f genion.mdp &dash;c MMT_dec_solv.gro &dash;p MMT_dec_solv.top &dash;o MMT_dec_solv.tpr &dash;pp MMT_dec_solv_ions.top</pre>
+                    <code>&dash;f</code> specifies the input run parameter file.<br>
+                    <code>&dash;c</code> specifies the coordinate file of the system to solvate.<br>
+                    <code>&dash;p</code> specifies the topology file.<br>
+                    <code>&dash;o</code> specifies the compiled output <code>.tpr</code> file.<br>
+                    <code>&dash;pp</code> specifies the output topology file.<br>
+                    <p class="note"> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>&dash;pp</code>
+                        option
+                        to generate a new topology file with ions is used here rather than with the <code>genion</code>
+                        command.</p>
+                </blockquote>
+                <p>
+                    <code>grompp</code> will generate a note similar to this one:
+                </p>
+                <pre>
+NOTE 3 [file MMT_slab_dec_solv.top, line 40]:
+In moleculetype 'MMT' 32 atoms are not bound by a potential or constraint
+to any other atom in the same moleculetype. Although technically this
+might not cause issues in a simulation, this often means that the user
+forgot to add a bond/potential/constraint or put multiple molecules in
+the same moleculetype definition by mistake. Run with <code>&dash;v</code> to get
+information for each atom.
+</pre>
+                <p>
+                    This note is not an error, but a warning that the atoms in the clay sheet are not bonded to each
+                    other. Because ClayFF is a non&dash;bonded force field, this is not an error, and you can ignore
+                    this
+                    message.
+                </p>
+            </li>
+            <li>Use <code>genion</code> to neutralise the system with Na<sup>+</sup> ions:
+                <p>Usage of <code>genion</code>: </p>
+                <blockquote>
+                    <pre>gmx genion &dash;s MMT_dec_solv.tpr &dash;o MMT_dec_solv_ion.gro &dash;p MMT_dec_solv.top &dash;pname Na &dash;nname Cl &dash;neutral</pre>
+                    <code>&dash;s</code> specifies the input coordinate file of the system to solvate.<br>
+                    <code>&dash;o</code> specifies the output coordinate file<br>
+                    <code>&dash;p</code> specifies the input topology file<br>
+                    <code>&dash;pname</code> specifies the name of the positive ion<br>
+                    <code>&dash;nname</code> specifies the name of the negative ion<br>
+                    <code>&dash;neutral</code> &ndash; neutralise the system<br>
+                    <p>GROMACS will try to fill the available space with solvent and update the number of water
+                        (<code>SOL</code>)
+                        molecules in the output topology file.</p>
+                    <p>
+                        You will be asked which molecules should be replaced with ions. Select the code for the
+                        water <code>SOL</code> molecules.
+                    </p>
+                </blockquote>
+            </li>
+        </ol>
+    </div>
+    <h2 class="enum" id="toc_7">Preparing the <abbr>MD</abbr> simulation parameter files</h2>
+    <p>
+        Now your system is ready for simulation.
+    </p>
+    <p>
+        You can follow the same procedure as in the previous session to run the simulation.
+    </p>
+    <div class="bbox">
+        <h3 id="Prepare_mdp_files"></h3>
+        <ol>
+            <li>Use the <code>MDP</code> template files inside the <code>MDP</code> directory and complete
+                the
+                missing keyword sections:
+            </li>
+            <li>Energy minimisation: <code>em.mdp</code>
+                <br>Set the maximum number of steps to 5000 and the force tolerance to 1000&nbsp;
+                kJ&nbsp;mol<sup>&dash;1</sup>&nbsp;nm<sup>&dash;1</sup>.
+            </li>
+            <li>Equilibration: <code>eq.mdp</code><br>
+                Set the run time to 100&nbsp;ps and the time step to 1&nbsp;fs.
+            </li>
+            <li>Production: <code>prod.mdp</code><br>
+                Set the run time to 5&nbsp;ns and the time step to 2&nbsp;fs.
+            </li>
+        </ol>
+        <p class="note"> Make sure you provide the parameters for the <code>.mdp</code> file in the correct
+            units.
+            The units used by <abbr>GROMACS</abbr> can be found in the Reference Manual: <a
+                    href="https://manual.gromacs.org/documentation/2019/reference-manual/definitions.html"
+                    rel="noopener" target="_blank">manual.gromacs.org/documentation/2019/reference&dash;manual/definitions.html</a>.
+        </p>
+    </div>
+</div>
+<div class="box">
+    <h2 class="enum" id="toc_8">Minimising the energy</h2>
+    <p>
+        Let's start with the energy minimisation. This step should not take too long and can be carried out on the
+        virtual machine. </p>
+    <div class="bbox">
+        <h3 id="Run_energy_minimisation"></h3>
+        <ol>
+            <li>Run the energy minimisation:</li>
+            <li>Compile the run topology file for the energy minimisation
+                (<code>em.tpr</code>):
+                <blockquote>
+                    <pre>gmx grompp &dash;f MDP/em.mdp &dash;c MMT_dec_solv_ion.gro &dash;p MMT_dec_solv_ion.top &dash;o em.tpr &dash;pp em.top</pre>
+                    <code>&dash;f</code> specifies the input run parameter <code>.mdp</code> file.<br>
+                    <code>&dash;c</code> specifies the input coordinate file.<br>
+                    <code>&dash;p</code> specifies the topology file.<br>
+                    <code>&dash;o</code> specifies the compiled output <code>.tpr</code> file.<br>
+                    <code>&dash;pp</code> specifies the output topology file.<br>
+                </blockquote>
+            </li>
+            <li>
+                Run the energy minimisation
+                <blockquote>
+                    <pre>gmx mdrun &dash;s em.tpr &dash;deffnm em &dash;v</pre>
+                    <code>&dash;s</code> specifies the compiled input <code>.tpr</code> file.<br>
+                    <code>&dash;deffnm</code> specifies the output file naming pattern.<br>
+                    <code>&dash;v</code> specifies that the output should be verbose.
+                </blockquote>
+                <p>
+                <p>Before moving on to the equilibration, you should check the energy minimisation log file
+                    (<code>MMT_dec_solv_ion_em.log</code>) to make sure that the energy minimisation was successful.
+                    If the energy minimisation was successful, the log file should end with a message similar to this
+                    one:</p>
+                <pre>
+Steepest Descents converged to Fmax &lt; 500 in 1209 steps
+Potential Energy  = -4.5789000e+06
+Maximum force     =  4.9707333e+02 on atom 2904
+Norm of force     =  2.2770223e+01
+</pre>
+                <p class="note">
+                    If instead you find something along these lines:
+                </p>
+                <pre>
+Steepest Descents converged to machine precision in 192 steps,
+but did not reach the requested Fmax &lt; 500.
+Potential Energy  = -6.8659256e+05
+Maximum force     =  6.5820524e+07 on atom 715
+Norm of force     =  1.6491472e+06
+</pre>
+                <p>This means that the energy minimisation did not converge. This means that GROMACS was not able to
+                    reach a minimum
+                    where the maximum force was below the specified threshold. In this case, you will probably need to
+                    repeat parts of the assembly procedure or remove water molecules that are too close to the clay,
+                    organics or other waters. Before repeating, move on to the visualisation
+                    task</a> but follow the <a
+                            href="../session3/Session3.html#EM_toubleshoot"><em>EM Troubleshoot</em></a> instructions.
+                </p>
+            </li>
+        </ol>
+    </div>
+    <p>
+        If the energy minimisation was successful, you can move on to the equilibration and production runs.
+        These steps require more resources and will be carried out on Eddie.
+    </p>
+    <h2 class="enum" id="toc_9">Equilibrating the system</h2>
+    <p>
+        As in <a href="../session2/Session2.html#toc_3_2">Session 2</a>, in order to let your system reach
+        a stable state, you need an equilibration run. For this system, you will only perform one equilibration run with
+        temperature and pressure coupling (NPT ensemble).
+    </p>
+    <div class="bbox">
+        <h3 id="Equilibrating_the_system_at_constant_temperature_and_pressure"></h3>
+        <ol>
+            <li>Equilibrate the system at constant temperature and pressure:</li>
+            <li>Use the <code>eddie_run.sh</code> template to prepare the run script for the equilibration run (<code>run_eq.sh</code>)
+                <p>
+                    Refer to the <a href="../session2/Session2.html#Equilibrating_the_system_at_constant_temperature">Session
+                    2</a> for instructions on how to prepare
+                    the run script and adjust the parameters so that the output files all have the name <code>eq</code>.
+                </p></li>
+            <li> Copy the input files to your Eddie scratch directory:
+                <pre>$ scp &dash;r ~/session3 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/home/&lt;UUN&gt;/scratch/</pre>
+                <p class="note">Replace <code>&lt;UUN&gt;</code> with your university username.</p>
+            </li>
+            <li>
+                Log into Eddie:
+                <pre>$ ssh &dash;X &lt;UUN&gt;@eddie.ecdf.ed.ac.uk</pre>
+            </li>
+            <li>
+                Navigate to the <code>session3</code> folder inside your directory
+            </li>
+            <li>Submit the job to the queue:
+                <pre>$ sbatch run_eq.sh</pre>
+            </li>
+        </ol>
+    </div>
+    <h2 class="enum" id="toc_10">Running the production simulation</h2>
+    <p>
+        Now that you have a stable system, you can run the production simulation.
+    </p>
+    <div class="bbox">
+        <h3 id="Running_the_production_simulation"></h3>
+        <ol>
+            <li>
+                Run the production simulation:
+            </li>
+            <li>
+                As before, use the <code>eddie_run.sh</code> template to prepare the run script for the production run (<code>run_prod.sh</code>)
+                <p>
+                    Adjust the parameters so that the output files all have the name <code>prod</code> and the input
+                    files
+                    are the output files from the equilibration run.
+                </p>
+            </li>
+            <li>
+                After the equilibration run has finished, submit the job to the queue:
+                <pre>$ sbatch run_prod.sh</pre>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="box">
+    <h2 class="enum" id="toc_11">Analysing the results</h2>
+    <p>
+        As in the previous session, while your simulation is running, you can use the files in the
+        <code>example_data</code> folder
+        for the following steps.
+    </p>
+    <p>
+        For this simulation you will again check the RMSD to determine from which point on the simulation is
+        equilibrated.
+    </p>
+    <p>
+        Then, you will calculate the radial distribution function of the ions to determine their hydration shell.
+    </p>
+    <p>
+        Finally, you will calculate the linear density of ions perpendicular to the clay surface to analyse the
+        interactions of the ions with the clay surface.
+    </p>
+</div>
+<div class="box">
+    <h2 class="enum" id="toc_12">Visualising the results</h2>
+    <p>
+        You can use the same procedure as in the setup procedure to visualise the trajectory.
+    </p>
+    <div class="bbox">
+        <h3 id="Visualise_trajectory_in_VMD"></h3>
+        <ol>
+            <li>Visualise the trajectory in <abbr>VMD</abbr></li>
+            <li>Open <abbr>VMD</abbr> and load the <code>MMT_dec_solv_ion.gro</code> file.</li>
+            <li>Load the trajectory file into the molecule.
+                <blockquote>
+                    <p>
+                        Right&dash;click on the molecule and select <code>Load Data into Molecule</code>.
+                        Then, select the <code>MMT_dec_solv_ion.trr</code> trajectory file.
+                    </p>
+                    <p class="note">The loading of all the frames might take some time. You can speed up the
+                        proceed if
+                        you hide the molecule during this process. To do this, click on the <code>D</code> next to
+                        the molecule
+                        entry in the main menu. It will turn red and the molecule will be hidden. Once the
+                        trajectory is
+                        loaded, you can click on the <code>D</code> again to show the molecule.
+                        Use the <code>Play</code> button to play the trajectory. You can adjust the playback with
+                        the
+                        controls at the bottom of the main window.
+                    </p>
+                </blockquote>
+            </li>
+        </ol>
+    </div>
+</div>
+<script src="../scripts/generate_header.js"></script>
+<script src="../scripts/generate_overview.js"></script>
+<script src="../scripts/scroll_up.js"></script>
+<script src="../scripts/feedback.js"></script>
+<script>window.onload = function () {
+    addFeedback('https://forms.office.com/e/VukKtnCbxq?origin=lprLink', 'img/FB3.png')
+    generateOverview();
+    generateHeader();
+    scrollUp();
+}</script>
 </body>
-
 </html>

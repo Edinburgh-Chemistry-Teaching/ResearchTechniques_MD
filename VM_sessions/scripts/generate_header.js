@@ -1,5 +1,5 @@
 function  generateHeader () {
-        fetch('../VM_sessions/scripts/demonstrators.txt')
+        fetch('../scripts/demonstrators.txt')
         .then(response => response.text())
         .then(data => {
             let demonstrators = data.split('\n').filter(line => line.trim() !== '');
