@@ -998,16 +998,21 @@ Protein_chain_A     1</pre>
         Therefore, you will first run the following sequence of energy minimisation and equilibration steps:</p>
     <ol>
         <li>Energy minimisation</li>
-        <li>Restrained equilibration run</li>
         <li>
-            <abbr>NVT</abbr>
+            Restrained <abbr>NVT</abbr>
             equilibration run
         </li>
         <li>
-            <abbr>NPT</abbr>
+            Restrained <abbr>NPT</abbr>
             equilibration run
         </li>
+        <li>
+            Unrestrained <abbr>NPT</abbr>
+            equilibration run
     </ol>
+        <p>The three equilibration runs will require a bit more time and resources, so you will use Eddie HPC to
+        run them.
+    </p>
     <h3 class="enum" id="toc_3_1">Energy minimisation</h3>
     <p>
         A successful energy minimisation will result in a negative potential energy <code>Epot</code>.
@@ -1093,7 +1098,7 @@ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein.top -o em
             </div>
         </div>
     </div>
-    <h3 class="enum" id="toc_3_2">Restrained equilibration run</h3>
+    <h3 class="enum" id="toc_3_2">Restrained equilibration runs</h3>
     <p>
         For this step, the positions of protein atoms will remain restrained, while water and ions are allowed to relax
         around it. Using a position restraints file, it is possible to restrain certain parts of the system only, by
@@ -1101,17 +1106,26 @@ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein.top -o em
         In this case, we will restrain heavy atoms of the protein.
     </p>
     <p>
-        In the run parameter file for the restrained equilibration, <code>pr.mdp</code>, the line reading
+        In the run parameter files for the restrained equilibration, <code>pr.mdp</code>, the line reading
         <code>define = -DPOSRES</code> will have the effect of globally defining the keyword <code>POSRES</code> which
         is then used to turn on position restraints in the topology file.
     </p>
-    <p>The following three <abbr>MD</abbr> runs will require a bit more time and resources so you will use Eddie HPC to
-        run them.
+        <p>
+        In the first of the following two equilibration run, you will use temperature coupling to heat up your system from 0&nbsp;K to 300&nbsp;.
+            The temperature is regulated by rescaling the velocities of the atoms in the system.
+        </p>
+        <p>
+        In the second equilibration run, you will also add pressure coupling to equilibrate the system at 1&nbsp;bar. The
+        pressure is regulated by scaling the box size.</p>
+    <p>Regulating the
+        temperature and pressure means that the simulation conditions will be closer to those in a real
+        experiment or a living organism.
     </p>
+
     <div class="bbox">
-        <h3 id="Equilibrating_the_system_with_restraints"></h3>
+        <h3 id="Equilibrating_the_system_at_constant_temperature"></h3>
         <ol>
-            <li>Equilibrate the system with position restraints on the protein</li>
+            <li>Equilibrate the system at constant temperature (<abbr>NVT</abbr> ensemble) and with position restraints on the protein</li>
             <li>
                 Open the topology file <code>protein.top</code> in a text editor and find the line that specifies the
                 position
@@ -1123,8 +1137,8 @@ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein.top -o em
             <li>Use <code>ssh</code> to in to Eddie HPC and navigate to the <code>session2</code> directory.
             </li>
             <li>Prepare the submission script for the equilibration run on eddie:<br>
-                <p>Make a copy of the template <code>eddie_run.sh</code> script and name it <code>run_pr.sh</code>, then
-                    open the <code>run_pr.sh</code> script and insert the GROMACS commands to run the restrained
+                <p>Make a copy of the template <code>eddie_run.sh</code> script and name it <code>run_nvt.sh</code>, then
+                    open the <code>run_nvt.sh</code> script and insert the GROMACS commands to run the restrained
                     equilibration:
                 <ol>
                     <li>
@@ -1133,11 +1147,11 @@ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein.top -o em
                         prepare the <code>.tpr</code> input file for the restrained equilibration.<br>
                         <blockquote>
                 <pre>
-gmx grompp -v -f MDP/pr.mdp -c em.gro -p protein.top -r em.gro -o pr.tpr -po pr.mdp</pre>
+gmx grompp -v -f MDP/nvt.mdp -c em.gro -p protein.top -r em.gro -o nvt.tpr -po nvt.mdp</pre>
                             <p>Use the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the
                                 output
-                                <code>.tpr</code> and <code>.mdp</code> files to <code>pr.tpr</code> and
-                                <code>pr.mdp</code>
+                                <code>.tpr</code> and <code>.mdp</code> files to <code>nvt.tpr</code> and
+                                <code>nvt.mdp</code>
                                 respectively.</p>
                             <p>
                                 Here, you will also need to provide a <code>&dash;r</code> option to specify a
@@ -1153,9 +1167,9 @@ gmx grompp -v -f MDP/pr.mdp -c em.gro -p protein.top -r em.gro -o pr.tpr -po pr.
                         <code>mdrun</code></a>.<br>
                         <blockquote>
                 <pre>
-gmx mdrun -v -s pr.tpr -deffnm pr </pre>
+gmx mdrun -v -s nvt.tpr -deffnm nvt </pre>
                             <p>Use the <code>&dash;deffnm</code> option to set the name of the output files to
-                                <code>pr</code>
+                                <code>nvt</code>
                                 and
                                 select <code>&dash;v</code> to get a verbose output.</p>
                             <!--                            <p class="note">Add <code>&amp;</code> to the end of the command to run the simulation in-->
@@ -1166,7 +1180,7 @@ gmx mdrun -v -s pr.tpr -deffnm pr </pre>
                 </ol>
             </li>
             <li>Save the file and submit the run with <code>qsub</code><br>
-                <pre>qsub run_pr.sh</pre>
+                <pre>qsub run_nvt.sh</pre>
             </li>
             <li>
                 Use <code>qstat</code> to check the status of the job.<br>
@@ -1177,7 +1191,7 @@ gmx mdrun -v -s pr.tpr -deffnm pr </pre>
                     href="https://manual.gromacs.org/current/onlinehelp/gmx-energy.html"><code>gmx energy</code></a>.
                 <blockquote>
                 <pre>
-gmx energy -f pr.edr -o energy.xvg</pre>
+gmx energy -f nvt.edr -o energy.xvg</pre>
                     <p>Choose <code>Total-Energy</code>, <code>Potential</code>
                         or <code>Kinetic-En</code>, or all three, by entering the number next to the desired
                         energy term and pressing <code>Enter</code>.</p>
@@ -1193,7 +1207,7 @@ gmx energy -f pr.edr -o energy.xvg</pre>
                 Use the following command if you selected only one energy term:
                 <blockquote>
                 <pre>
-xmgrace pr.xvg</pre>
+xmgrace nvt.xvg</pre>
                 </blockquote>
                 Use the following command if you selected all three energy terms:
                 <blockquote>
@@ -1227,43 +1241,43 @@ xmgrace -nxy energy*.xvg -legend load</pre>
         At first, you will perform an equilibration run at constant temperature and volume (<abbr>NVT</abbr> ensemble).
         This will allow the system to reach the desired temperature.
     </p>
-    <div class="bbox">
-        <h3 id="Equilibrating_the_system_at_constant_temperature"></h3>
-        <ol>
-            <li>Equilibrate the system at constant temperature and volume (<abbr>NVT</abbr> ensemble)</li>
-            <li>Write a <code>run_nvt.sh</code> run submission script for the <abbr>NVT</abbr> equilibration run on
-                Eddie HPC:<br>
-                Follow the same procedure as in the <a href="#Equilibrating_the_system_with_restraints">restrained
-                    equilibration task</a>.<br>
-                Use <code>MDP/nvt.mdp</code> as the input run parameter file and <code>pr.gro</code> as the input
-                coordinate
-                file. Add the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
-                <code>.tpr</code> and <code>.mdp</code> files to <code>nvt.tpr</code> and <code>nvt.mdp</code>. Set the
-                output file name for <code>mdrun</code> to <code>nvt</code>.<br>
+<!--    <div class="bbox">-->
+<!--        <h3 id="Equilibrating_the_system_at_constant_temperature"></h3>-->
+<!--        <ol>-->
+<!--            <li>Equilibrate the system at constant temperature and volume (<abbr>NVT</abbr> ensemble)</li>-->
+<!--            <li>Write a <code>run_nvt.sh</code> run submission script for the <abbr>NVT</abbr> equilibration run on-->
+<!--                Eddie HPC:<br>-->
+<!--                Follow the same procedure as in the <a href="#Equilibrating_the_system_with_restraints">restrained-->
+<!--                    equilibration task</a>.<br>-->
+<!--                Use <code>MDP/nvt.mdp</code> as the input run parameter file and <code>pr.gro</code> as the input-->
+<!--                coordinate-->
+<!--                file. Add the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output-->
+<!--                <code>.tpr</code> and <code>.mdp</code> files to <code>nvt.tpr</code> and <code>nvt.mdp</code>. Set the-->
+<!--                output file name for <code>mdrun</code> to <code>nvt</code>.<br>-->
 
-            </li>
-            <li>Submit the run with <code>qsub</code><br>
-                <blockquote>
-                    <pre>qsub run_nvt.sh</pre>
-                    <p class="note">
-                        Make sure that the <code>run_pr.sh</code> script has finished before submitting the <code>run_nvt.sh</code>
-                        script.
-                    </p></blockquote>
-            </li>
-            <li>After the run has finished, use <code>energy</code> to check temperature, pressure, potential and
-                kinetic
-                energy evolution during the simulation.<br>
-                <p>Use the <code>&dash;o</code> option to specify a name under which you can find them again later.</p>
-                <p>E.g.</p>
-                <blockquote>
-                    <pre>gmx energy -f nvt.edr -o nvt_temperature.xvg</pre>
-                </blockquote>
-            </li>
-            <li>
-                Examine the <code>energy</code> output files with xmgrace.<br>
-            </li>
-        </ol>
-    </div>
+<!--            </li>-->
+<!--            <li>Submit the run with <code>qsub</code><br>-->
+<!--                <blockquote>-->
+<!--                    <pre>qsub run_nvt.sh</pre>-->
+<!--                    <p class="note">-->
+<!--                        Make sure that the <code>run_pr.sh</code> script has finished before submitting the <code>run_nvt.sh</code>-->
+<!--                        script.-->
+<!--                    </p></blockquote>-->
+<!--            </li>-->
+<!--            <li>After the run has finished, use <code>energy</code> to check temperature, pressure, potential and-->
+<!--                kinetic-->
+<!--                energy evolution during the simulation.<br>-->
+<!--                <p>Use the <code>&dash;o</code> option to specify a name under which you can find them again later.</p>-->
+<!--                <p>E.g.</p>-->
+<!--                <blockquote>-->
+<!--                    <pre>gmx energy -f nvt.edr -o nvt_temperature.xvg</pre>-->
+<!--                </blockquote>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                Examine the <code>energy</code> output files with xmgrace.<br>-->
+<!--            </li>-->
+<!--        </ol>-->
+<!--    </div>-->
     <p>
         Next, you will perform an equilibration run at constant temperature and pressure (<abbr>NPT</abbr> ensemble).
         This will allow the system to also reach the desired pressure.
@@ -1271,10 +1285,10 @@ xmgrace -nxy energy*.xvg -legend load</pre>
     <div class="bbox">
         <h3 id="Equilibrating_the_system_at_constant_temperature_and_pressure"></h3>
         <ol>
-            <li>Equilibrate the system at constant temperature and pressure (<abbr>NPT</abbr> ensemble)</li>
+            <li>Equilibrate the system at constant temperature and pressure (<abbr>NPT</abbr> ensemble) with position restrains on the protein</li>
             <li>Write a <code>run_npt.sh</code> run submission script for the <abbr>NPT</abbr> equilibration run on
                 Eddie HPC:<br>
-                Follow the same procedure as in the <a href="#Equilibrating_the_system_with_restraints">restrained
+                Follow the same procedure as in the <a href="#Equilibrating_the_system_at_constant_temperature">restrained
                     equilibration
                     task</a>.<br>
                 Use <code>MDP/npt.mdp</code> as the input run parameter file and <code>nvt.gro</code> as the input
@@ -1300,24 +1314,27 @@ xmgrace -nxy energy*.xvg -legend load</pre>
             </li>
         </ol>
     </div>
-    <h3 class="enum" id="toc_3_4">Production run</h3>
+    <h3 class="enum" id="toc_3_4">Unrestrained equilibration run</h3>
     <p>
-        Now that the system is equilibrated, you can run the production <abbr>MD</abbr> simulation.
-        This will generate the data that can be analysed to obtain information about the system.
+        Now that the system is equilibrated enough, you can take away the position restraints and continue to equilibrate
+        the system at constant temperature and pressure (<abbr>NPT</abbr> ensemble).
     </p>
     <div class="bbox">
-        <h3 id="Running_the_production_MD_simulation"></h3>
+        <h3 id="Running_the_unrestrained_NPT_equilibration"></h3>
         <ol>
-            <li>Run the production <abbr>MD</abbr> simulation</li>
-            <li>Write a <code>run_md.sh</code> run submission script for the production <abbr>MD</abbr> run on Eddie
+            <li>Run the unrestrained equilibration at constant temperature and pressure</li>
+            <li>Write a <code>run_md.sh</code> run submission script for the unrestrained equilibration <abbr>MD</abbr> run on Eddie
                 HPC:<br>
-                Follow the same procedure as in the <a href="#Equilibrating_the_system_with_restraints">previous
+                Follow the same procedure as in the <a href="#Equilibrating_the_system_at_constant_temperature_and_pressure">previous
                     task</a>.<br>
                 Use <code>MDP/md.mdp</code> as the input run parameter file and <code>npt.gro</code> as the input
                 coordinate
                 file. Add the <code>&dash;o</code> and <code>&dash;po</code> options to set the names of the output
                 <code>.tpr</code> and <code>.mdp</code> files to <code>md.tpr</code> and <code>md.mdp</code>. Set the
                 output file name for <code>mdrun</code> to <code>md</code>.<br>
+                <p class="note">Since this is an unrestrained equilibration run, you do not need to specify the
+                    <code>-r</code> option for the restraints file.</p>
+                </p>
             </li>
             <li>Open the <code>MDP/md.mdp</code> run parameter file and adjust the <code>nsteps</code> so that the run
                 duration is 5&nbsp;ns and that the output trajectory contains 1000 coordinate data points.<br>
