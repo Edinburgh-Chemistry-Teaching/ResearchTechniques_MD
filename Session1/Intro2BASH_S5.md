@@ -1,8 +1,11 @@
 # PART 5 -- Shell Script
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Loops](Intro2BASH_S4.md)<br>
-👉[Go to the next part -- Finding things](Intro2BASH_S6.md)
+👆[Go to the main menu](Session1.html) <br>
+👈[Go to the previous part -- Loops](Intro2BASH_S4.html)<br>
+👉[Go to the next part -- Finding things](Intro2BASH_S6.html)
+
+
+
 
 <span style="color:blue"> **This is an advanced topic and extra material** </span>
 
@@ -77,7 +80,7 @@ ATOM     13  H           1      -1.183   0.500  -1.412  1.00  0.00
 
 For the same reason that we put the loop variable inside double-quotes, in case the filename happens to contain any spaces, we surround `$1` with double-quotes.
 
-Currently, we need to edit `middle.sh` each time we want to adjust the range of lines that is returned. Let’s fix that by configuring our script to instead use three command-line arguments. After the first command-line argument (`$1`), each additional argument that we provide will be accessible via the special variables `$1`, `$2`, `$3`, which refer to the first, second, third command-line arguments, respectively.
+Currently, we need to edit `middle.sh` each time we want to adjust the range of lines that is returned. Let’s fix that by conimguring our script to instead use three command-line arguments. After the first command-line argument (`$1`), each additional argument that we provide will be accessible via the special variables `$1`, `$2`, `$3`, which refer to the first, second, third command-line arguments, respectively.
 
 Knowing this, we can use additional arguments to define the range of lines to be passed to head and tail, respectively:
 
@@ -113,7 +116,7 @@ ATOM     17  H           1      -3.393   0.254  -0.321  1.00  0.00
 TER      18              1
 ```
 
-This works, but it may take the next person who reads `middle.sh` a moment to figure out what it does. We can improve our script by adding some comments at the top:
+This works, but it may take the next person who reads `middle.sh` a moment to imgure out what it does. We can improve our script by adding some comments at the top:
 
 ```bash
 $ nano middle.sh
@@ -246,7 +249,7 @@ $ bash do-stats.sh NENE*A.txt NENE*B.txt
 She can also do this:
 
 ```bash
-$ bash do-stats.sh NENE*A.txt NENE*B.txt | wc -l
+$ bash do-stats.sh NENE*A.txt NENE*B.txt | wc -l 
 ```
 so that the output is just the number of files processed rather than the names of the files that were processed.
 
@@ -275,6 +278,7 @@ The advantage is that this always selects the right files: she doesn’t have to
 
 ---
 
-👆[Go to the main menu](Intro2BASH.md) <br>
-👈[Go to the previous part -- Loops](Intro2BASH_S4.md)<br>
-👉[Go to the next part -- Finding things](Intro2BASH_S6.md)
+👆[Go to the main menu](Session1.html) <br>
+👈[Go to the previous part -- Loops](Intro2BASH_S4.html)<br>
+👉[Go to the next part -- Finding things](Intro2BASH_S6.html)
+
