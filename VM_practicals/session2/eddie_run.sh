@@ -13,7 +13,7 @@
 
 # Request 16 GB system RAM
 # the total system RAM available to the job is the value specified here multiplied by  the number of requested GPUs (above)
-#$ -l h_vmem=16G
+#$ -l h_vmem=8G
 
 # Combine standard output and error files into a single job file with job ID
 #$ -j y

@@ -410,13 +410,17 @@ mdrun -> energy [
     <p>
         Before you start on this practical, let's create a working directory for this session.
     </p>
+    <p style="font-weight: bold">In this session, all of the commands will need to be typed. If you copy them from this
+    document, they won't work! Use <code>Tab</code> to autocomplete and save time.</p>
     <div class="bbox">
         <h3 id="Creating_the_working_directory"></h3>
         <ul>
             <li>Create the working directory for this session</li>
+            <li>Move to your home directory:
+            <pre>$ cd </pre></li>
             <li>Copy the <code>session2</code> folder from practicals to your home directory:
                 <p>Open a terminal and type:</p>
-                <pre>$ cp &dash;r /home/practicals/session2 .</pre>
+                <pre>$ cp &dash;r /home/student/practicals/session2 .</pre>
             </li>
             <li>Change into the <code>session2</code> directory:
                 <pre>$ cd session2</pre>
@@ -442,6 +446,7 @@ mdrun -> energy [
                             <p class="note">The <code>.</code> at the end of the command means that the file will be
                                 downloaded into the current directory so make sure you are in the newly created
                                 <code>session2</code> directory before running the command.</p>
+                            <p style="font-weight: bolder">Replace <code>1xyw</code> with the code of the protein of your choice.</p>
                         </blockquote>
                     </li>
                     <li>
@@ -456,7 +461,7 @@ mdrun -> energy [
                 <blockquote>
                     <pre>$ more 1xyw.pdb</pre>
                     <pre>$ less 1xyw.pdb</pre>
-                    To scroll down use <code>Space</code>, to exit the viewer press <code>Ctrl+C</code>.
+                    To scroll down use <code>Space</code>, to exit the viewer press <code>Ctrl+C</code> or <code>q</code>.
                     Familiarise yourself with the file format. The file contains information about the protein amino
                     acid residue (e.g. LEU and GLY etc.) and also the atom name inside the residue.
                     <ul>
@@ -494,6 +499,9 @@ mdrun -> energy [
                 <blockquote>
                     In the main window, click <code>File</code> &#8594;
                     <code>New Molecule ...</code> and select your <code>.pdb</code> file.
+                    <p class="note">The startup of VMD opens two separate windows.</p>
+                    <p class="note">If you don't see your file name there, you need to write the path to your
+                        <code>session2</code> folder in the <code>Molecule File Browser</code> window</p>.
                 </blockquote>
             </li>
             <li>Play around with the visualisation options
@@ -627,7 +635,7 @@ mdrun -> energy [
                     <code>&dash;p</code> specifies the output topology <code>.top</code> file<br>
                     <code>&dash;ignh</code> specifies that hydrogen atoms should be ignored<br>
                 </blockquote>
-                <p>GROMACS will ask you to choose a force field. Select <abbr>CHARMM</abbr> by selecting the
+                <p>GROMACS will ask you to choose a force field. Select <code>CHARMM27</code> by selecting the
                     corresponding number, then hit <code>Enter</code>.</p>
                 </p>
                 <p>when prompted for the water model, select <code>SPC</code>.</p>
@@ -647,7 +655,7 @@ mdrun -> energy [
                 <blockquote>
                     <pre>$ more protein.gro</pre>
                     <pre>$ less protein.gro</pre>
-                    To scroll down use <code>Space</code>, to exit the viewer press <code>Ctrl+C</code>.
+                    To scroll down use <code>Space</code>, to exit the viewer press <code>Ctrl+C</code> or <code>q</code>.
 
                     <p>What information do each of these files contain?
                     <ol>
@@ -679,7 +687,7 @@ mdrun -> energy [
                                 for
                                 atom types, charges, bonds, angles, dihedral types, etc. To exit the <code>more</code>
                                 or
-                                <code>less</code> view, press <code>Ctrl+C</code>.
+                                <code>less</code> view, press <code>Ctrl+C</code> or <code>q</code>.
                             </p>
                             <p>
                                 At the bottom of the file, within the <code>[ molecules ]</code> section, you will find
@@ -727,7 +735,7 @@ Protein_chain_A     1</pre>
                 Usage of <code>editconf</code>:
                 <blockquote>
                     <pre>$ gmx editconf &dash;f protein.gro &dash;o protein&dash;pbc.gro &dash;bt dodecahedron &dash;d 1.0 &dash;c</pre>
-                    <p>What do each of the options stand for?</p>
+                    <p>What does each of the options stand for?</p>
                     <code>&dash;f</code> specifies the input coordinate file<br>
                     <code>&dash;o</code> specifies the output coordinate file<br>
                     <code>&dash;bt</code> specifies the box type<br>
@@ -744,7 +752,7 @@ Protein_chain_A     1</pre>
                 </blockquote>
             </li>
             <li>
-                Use the <code>tail</code> command to inspect the end of the new <code>.gro</code> file and check how the
+                Use the <code>tail</code> command to inspect the end of the new <code>protein-pbc.gro</code> file and check how the
                 box is defined.<br>
                 <blockquote>
                     <p class="note">
@@ -943,12 +951,13 @@ Protein_chain_A     1</pre>
                 </p>
                 <p>Usage of <code>grompp</code>:</p>
                 <blockquote>
-                    <pre>$ gmx grompp &dash;f MDP/genion.mdp &dash;c protein&dash;solvated.gro &dash;p protein&dash;solvated&dash;ions.top
-                    </pre>
+                    <pre>$ gmx grompp &dash;f MDP/genion.mdp &dash;c protein&dash;solvated.gro &dash;p protein&dash;solvated&dash;ions.top &dash;maxwarn 1</pre>
                     <!--                    &dash;o genion.tpr-->
                     <code>&dash;f</code> specifies the input run parameter file.<br>
                     <code>&dash;c</code> specifies the coordinate file of the system to solvate.<br>
                     <code>&dash;p</code> specifies the topology file.<br>
+                    <code>&dash;maxwarn</code> specifies the maximum number of warnings that can be ignored.
+                    If the protein has a charge, <code>grompp</code> will generate a warning that needs to be ignored.<br>
                     <!--                    <code>&dash;o</code> specifies the compiled run <code>.tpr</code> file.<br>-->
                     <!--                    <p class="note"> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>&dash;pp</code>-->
                     <!--                        option-->
@@ -1231,12 +1240,12 @@ Protein_chain_A     1</pre>
                         <p>
                             Use the <code>qlogin</code> command to request an interactive session with 1&nbsp;G of
                             memory:
-                        <pre>$ &dash;l h_vmem=1G</pre>
+                        <pre>$ qlogin -q gpu -pe gpu-a100 1 -l h_vmem=1G</pre>
                         <p>
                             Once the interactive session has started, navigate back to your scratch directory and run
                             the <code>load_gmx.sh</code>
                             script to load the GROMACS module:
-                        <pre>$ bash load_gmx.sh</pre>
+                        <pre>$ source load_gmx.sh</pre>
                         </p>
 
                     </li>
@@ -1900,7 +1909,6 @@ GROMACS reminds you: &quot;Furious activity is no substitute for understanding.&
                 </ul>
             </div>
         </div>
-
         <script src="../scripts/generate_header.js"></script>
         <script src="../scripts/generate_overview.js"></script>
         <script src="../scripts/scroll_up.js"></script>

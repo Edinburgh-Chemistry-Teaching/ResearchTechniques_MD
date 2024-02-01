@@ -32,9 +32,6 @@ ref_t                    = 300      300
 ; Pressure coupling     
 pcoupl                   = no
 
-; Pressure coupling is off
-pcoupl                  = no
-
 ; Velocity generation
 gen_vel                 = yes                 ; assign velocities from Maxwell distribution
 gen_temp                = 300                 ; temperature for Maxwell distribution
