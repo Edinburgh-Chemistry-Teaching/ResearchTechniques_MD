@@ -173,12 +173,12 @@
         <h3 id="Creating_the_working_directory"></h3>
         <ul>
             <li>Create the working directory for this session</li>
-            <li>Copy the <code>session3</code> folder from practicals to your home directory:
+            <li>Copy the <code>session3</code> folder from practicals to your Desktop:
                 <p>Open a terminal and type:</p>
-                <pre>cp &dash;r /home/practicals/session3 .</pre>
+                <pre>cp &dash;r /home/practicals/session3 Desktop/</pre>
             </li>
             <li>Change into the <code>session3</code> directory:
-                <pre>cd session3</pre>
+                <pre>cd Desktop/session3</pre>
             </li>
         </ul>
     </div>
@@ -202,7 +202,7 @@
             </li>
             <li>Usage of <code>genconf</code>: <br>
                 <blockquote>
-                    <pre>gmx genconf &dash;f MMT.gro &dash;nbox &lt;x_ucs&gt; &lt;y_ucs&gt; &lt;z_ucs&gt; &dash;o MMT_slab.gro</pre>
+                    <pre>gmx genconf &dash;f STRUCTURES/MMT.gro &dash;nbox &lt;x_ucs&gt; &lt;y_ucs&gt; &lt;z_ucs&gt; &dash;o MMT_slab.gro</pre>
                     <code>&dash;f</code> specifies the structure file of the system to insert into.<br>
                     <code>&dash;nbox</code> defines the number of unit cells to put in each of <em>x y z</em>
                     directions.<br>
@@ -214,7 +214,7 @@
                 <blockquote>
                     Check the size of unit cell and remember the size of the box has to be at least 2.5 x the size
                     of your cutoff.<br>
-                    So, for a cutoff at 1.2 nm you have to aim at ~3 nm on each side.
+                    So, for a cutoff at 1.2&nbsp;nm you have to aim at ~3&nbsp;nm on each side.
                 </blockquote>
                 <div class="flex-container">
                     <div class="flex-item">
@@ -244,8 +244,7 @@
             <li>Edit the gro file to increase the box height</li>
             <li>Increase the box <em>z</em> length by editing the <code>MMT_slab.gro</code> file.
                 <blockquote>
-                    Where in the <code>.gro</code> file is the box size specified? Adjust the sheet spacing to 25
-                    &#8491;
+                    Where in the <code>.gro</code> file is the box size specified? Adjust the sheet spacing to 50&nbsp;&#8491;
                 </blockquote>
                 <div class="flex-figure">
                     <div class="flex-figure-item">
@@ -270,7 +269,7 @@
             </li>
             <li>Usage of <code>insert&dash;molecules</code>: <br>
                 <blockquote>
-                    <pre>gmx insert&dash;molecules &dash;f MMT_slab.gro &dash;ci dec_acid.gro &dash;nmol &lt;number&gt; &dash;o MMT_dec.gro</pre>
+                    <pre>gmx insert&dash;molecules &dash;f MMT_slab.gro &dash;ci STRUCTURES/decanoic_acid.gro &dash;nmol &lt;number&gt; &dash;o MMT_dec.gro</pre>
                     <code>&dash;f</code> specifies the coordinate file of the system to insert into.<br>
                     <code>&dash;ci</code> specifies the coordinate file of the molecule to insert.<br>
                     <code>&dash;nmol</code> defines the number of molecules to insert.<br>
@@ -295,8 +294,9 @@
     <p>
         Before proceeding to the next step in which you will solvate the box, you need to generate a topology
         (<code>.top</code>) file
-        that include all molecules present in the system. The following sections explain the structure of GROMACS
-        topology files in some more detail than in <a href="../Session2/Session2.html">Session2</a>.
+        that includes all molecules present in the system. The following sections explain the structure of GROMACS
+        topology files in some more detail.
+<!--        than in <a href="../Session2/Session2.html">Session2</a>.-->
     </p>
     <p>
         In the first section, the force field parameters are defined. These always include combination rules and
@@ -357,12 +357,14 @@
                 <blockquote>
                     All force field folders (<code>&lt;ForceFieldName.ff&gt;</code>) are located within the
                     <code>FF</code> directory. The force field for clay and water is ClayFF, for organics and ions
-                    it is CHARMM36 and for ions it is Ions.
+                    it is CHARMM36, and for ions it is Ions.
                     Inside each of the folders, you can find the <code>.itp</code> files that contain the various
                     force field parameters. <br>
                     Clay and water share the same atom types. Therefore, no separate
                     <code>ffnonbonded.itp</code> file needs to be added for water.<br>
-                    <p class="remember"> Everything that comes after a <code>;</code> will be trated as a comment and
+                    The files containing the decanoic acid and clay structures are located in the <code>STRUCTURES</code>
+                    directory.
+                    <p class="remember"> Everything that comes after a <code>;</code> will be treated as a comment and
                         is
                         not read by GROMACS.</p>
                 </blockquote>
@@ -689,21 +691,68 @@ Norm of force     =  1.6491472e+06
 <div class="box">
     <h2 class="enum" id="toc_11">Analysing the results</h2>
     <p>
-        As in the previous session, while your simulation is running, you can use the files in the
-        <code>example_data</code> folder
-        for the following steps.
+        As in the previous session, while your simulation is running, you can use the files provided in the
+        <code>example_data</code> folder to carry out the analysis steps.
     </p>
+    <p>In this tutorial you will:</p>
+    <ul>
+        <li>Calculate the root&dash;mean&dash;square deviation (<abbr>RMSD</abbr>) of the system to determine from which point on the system is equilibrated.</li>
+        <li>Determine the radial distribution function of the ions to analyse their hydration shell.</li>
+        <li>Perform a linear density analysis of the ions on the axis perpendicular to the clay surface to characterise
+            the interactions between ions and the clay surface.
+        </li>
+    </ul>
+    <div class="bbox">
+        <h3 id="Calculating_the_RMSD"></h3>
+        <ol>
+            <li>
+            Calculate the <abbr>RMSD</abbr> of the system:
+            </li>
+            <li>
+                Start an interactive session on Eddie:
+                <p>
+                    Use the instructions from <a href="../session2/Session2.html#interactive_login">Session 2</a> to start an interactive session on Eddie and load the GROMACS module.
+                </p>
+            </li>
+            <li>Refer to the <a href="../session2/Session2.html#Calculating_the_RMSD">Session 2</a> for instructions on how to calculate the <abbr>RMSD</abbr> of the system.</li>
+            <li>Visualise the result in xmgrace and determine the time point at which the system is equilibrated.
+            <p class="note">
+                You will begin the subsequent analyses starting from this time point.
+            </p></li>
+        </ol>
+    </div>
+    <h3 id="toc_11_1">Calculating the radial distribution function</h3>
     <p>
-        For this simulation you will again check the RMSD to determine from which point on the simulation is
-        equilibrated.
+        The radial distribution function (<abbr>RDF</abbr>) is a measure of the probability of finding a particle at a
+        certain distance from another particle. We are going to use it to analyse the hydration shell of Na<sup>+</sup>
+        ions.
     </p>
-    <p>
-        Then, you will calculate the radial distribution function of the ions to determine their hydration shell.
-    </p>
-    <p>
-        Finally, you will calculate the linear density of ions perpendicular to the clay surface to analyse the
-        interactions of the ions with the clay surface.
-    </p>
+    <div class="bbox">
+        <h3 id="Calculating_the_RDF"></h3>
+        <ol>
+            <li>
+                Calculate the radial distribution function of the ions:
+            </li>
+            <li>
+                Use the the <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-make_ndx.html" rel="noopener" target="_blank"><code>make_ndx</code></a> tool to create an index file for Na<sup>+</sup> ions and water OW atoms:
+                <blockquote>
+                    <pre>$ gmx make_ndx &dash;f prod.gro &dash;o Na_OW.ndx</pre>
+                    <p>Select NA and OW atoms by adding two new groups to the index file:<br>
+                        Type each line and press <code>Enter</code>.<br>
+                        <pre>&gt; a NA</pre>
+                        <pre>&gt; a OW</pre>
+                    Exit and save the index file by typing <code>q</code> and pressing <code>Enter</code>.
+                    </p>
+                    </blockquote>
+            </li>
+            <li>
+                Use the <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-rdf.html" rel="noopener" target="_blank"><code>gmx rdf</code></a> tool to calculate the <abbr>RDF</abbr>:
+                <pre>
+$ gmx rdf &dash;f prod.xtc &dash;s prod.tpr &dash;n Na_OW.ndx &dash;o rdf_Na_OW.xvg &dash;seltype atom &dash;selrpos atom &dash;sel NA &dash;ref OW &dash o rdf_Na_OW.xvg &dash;b &lt;analysis_start_time&gt; &dash;tu &lt;time_unit&gt; &dash;norm number_density &dash;rmax 1</pre>
+                </pre>
+                </pre>
+            </li>
+        </ol>
 </div>
 <div class="box">
     <h2 class="enum" id="toc_12">Visualising the results</h2>
