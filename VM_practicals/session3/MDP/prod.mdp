@@ -1,7 +1,3 @@
-; VARIOUS PREPROCESSING OPTIONS
-title                    = Position Restrained MD
-define                   = -DPOSRES 			; Positional restraint
-
 ; RUN CONTROL PARAMETERS
 integrator               = md
 dt                       = 0.001 				; time step (ps)

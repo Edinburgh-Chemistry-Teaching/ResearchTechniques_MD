@@ -52,7 +52,7 @@
     <h2 class="enum" id="toc_1">Introduction</h2>
     <p>
         In this practical session, we will learn the basics of Molecular Dynamics (MD) simulations with GROMACS, and use
-        of assisting software (e.g., VMD, xmgrace, gedit) to visualise and manipulate the data.
+        of assisting software (e.g. VMD, xmgrace, gedit) to visualise and manipulate the data.
     </p>
     <p>
         <span style="font-weight: bolder"><abbr>GROMACS</abbr></span> (GROningen MAchine for Chemical Simulations) is a
@@ -126,7 +126,8 @@
     </p>
     <p>Every simulation needs to start with a structure. Even though a lot of computational efforts have been done, it
         is
-        still not possible to computationally predict tertiary structure of the protein from its primary one, i.e. its
+        still not possible to computationally predict the tertiary structure of the protein from its primary one, i.e.
+        its
         amino
         acid sequence. This would require inaccessible computational powers and times. </p>
 
@@ -410,14 +411,15 @@ mdrun -> energy [
     <p>
         Before you start on this practical, let's create a working directory for this session.
     </p>
-    <p style="font-weight: bold">In this session, all of the commands will need to be typed. If you copy them from this
-    document, they won't work! Use <code>Tab</code> to autocomplete and save time.</p>
+    <p style="font-weight: bold">In this session, all the commands will need to be typed. If you copy them from this
+        document, they won't work! Use <code>Tab</code> to autocomplete and save time.</p>
     <div class="bbox">
         <h3 id="Creating_the_working_directory"></h3>
         <ul>
             <li>Create the working directory for this session</li>
             <li>Move to your home directory:
-            <pre>$ cd </pre></li>
+                <pre>$ cd </pre>
+            </li>
             <li>Copy the <code>session2</code> folder from practicals to your home directory:
                 <p>Open a terminal and type:</p>
                 <pre>$ cp &dash;r /home/student/practicals/session2 .</pre>
@@ -446,7 +448,8 @@ mdrun -> energy [
                             <p class="note">The <code>.</code> at the end of the command means that the file will be
                                 downloaded into the current directory so make sure you are in the newly created
                                 <code>session2</code> directory before running the command.</p>
-                            <p style="font-weight: bolder">Replace <code>1xyw</code> with the code of the protein of your choice.</p>
+                            <p style="font-weight: bolder">Replace <code>1xyw</code> with the code of the protein of
+                                your choice.</p>
                         </blockquote>
                     </li>
                     <li>
@@ -461,7 +464,8 @@ mdrun -> energy [
                 <blockquote>
                     <pre>$ more 1xyw.pdb</pre>
                     <pre>$ less 1xyw.pdb</pre>
-                    To scroll down use <code>Space</code>, to exit the viewer press <code>Ctrl+C</code> or <code>q</code>.
+                    To scroll down use <code>Space</code>, to exit the viewer press <code>Ctrl+C</code> or
+                    <code>q</code>.
                     Familiarise yourself with the file format. The file contains information about the protein amino
                     acid residue (e.g. LEU and GLY etc.) and also the atom name inside the residue.
                     <ul>
@@ -635,7 +639,7 @@ mdrun -> energy [
                     <code>&dash;p</code> specifies the output topology <code>.top</code> file<br>
                     <code>&dash;ignh</code> specifies that hydrogen atoms should be ignored<br>
                 </blockquote>
-                <p>GROMACS will ask you to choose a force field. Select <code>CHARMM27</code> by selecting the
+                <p>GROMACS will ask you to choose a force field. Select <code>CHARMM27</code> by typing the
                     corresponding number, then hit <code>Enter</code>.</p>
                 </p>
                 <p>when prompted for the water model, select <code>SPC</code>.</p>
@@ -655,7 +659,8 @@ mdrun -> energy [
                 <blockquote>
                     <pre>$ more protein.gro</pre>
                     <pre>$ less protein.gro</pre>
-                    To scroll down use <code>Space</code>, to exit the viewer press <code>Ctrl+C</code> or <code>q</code>.
+                    To scroll down use <code>Space</code>, to exit the viewer press <code>Ctrl+C</code> or
+                    <code>q</code>.
 
                     <p>What information do each of these files contain?
                     <ol>
@@ -752,7 +757,8 @@ Protein_chain_A     1</pre>
                 </blockquote>
             </li>
             <li>
-                Use the <code>tail</code> command to inspect the end of the new <code>protein-pbc.gro</code> file and check how the
+                Use the <code>tail</code> command to inspect the end of the new <code>protein-pbc.gro</code> file and
+                check how the
                 box is defined.<br>
                 <blockquote>
                     <p class="note">
@@ -957,7 +963,8 @@ Protein_chain_A     1</pre>
                     <code>&dash;c</code> specifies the coordinate file of the system to solvate.<br>
                     <code>&dash;p</code> specifies the topology file.<br>
                     <code>&dash;maxwarn</code> specifies the maximum number of warnings that can be ignored.
-                    If the protein has a charge, <code>grompp</code> will generate a warning that needs to be ignored.<br>
+                    If the protein has a charge, <code>grompp</code> will generate a warning that needs to be
+                    ignored.<br>
                     <!--                    <code>&dash;o</code> specifies the compiled run <code>.tpr</code> file.<br>-->
                     <!--                    <p class="note"> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>&dash;pp</code>-->
                     <!--                        option-->
@@ -1233,6 +1240,8 @@ Protein_chain_A     1</pre>
             <li>
                 Once the run starts, check the evolution of the energy through the run with <a
                     href="https://manual.gromacs.org/current/onlinehelp/gmx-energy.html"><code>gmx energy</code></a>.
+                <p class="note">If the run has started, <code>qstat</code> will show and <code>r</code> (running)
+                    instead of the <code>qw</code> (in queue) as the job status.</p>
                 <ul>
                     <li id="interactive_login">
                         For using the <code>gmx energy</code> command, you will need to start an interactive session on
@@ -1244,13 +1253,14 @@ Protein_chain_A     1</pre>
                         <p>
                             Once the interactive session has started, navigate back to your scratch directory and run
                             the <code>load_gmx.sh</code>
-                            script to load the GROMACS module:
+                            script to load the GROMACS module:</p>
                         <pre>$ source load_gmx.sh</pre>
-                        </p>
-
                     </li>
                     <li>
                         Check temperature, pressure, potential and kinetic energy with <code>gmx energy</code>.<br>
+                        <p>If the <code>nvt</code> run has not started yet, the input files for <code>gmx energy will
+                            not
+                            be available so make sure the simulation is running before proceeding.</code></p>
                         <blockquote>
                             <pre>$ gmx energy &dash;f nvt.edr &dash;o energy.xvg</pre>
                             <p>Choose <code>Total-Energy</code>, <code>Potential</code>
