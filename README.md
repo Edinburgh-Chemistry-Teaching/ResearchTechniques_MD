@@ -3,12 +3,12 @@
 - [x] Create new course datastore (Talk to David)
 - [x] symlink to datastore to get data from VM
 - [x] Link to space on datastore for updating course materials
-- [ ] Figure out username/password for students
+- [x] Figure out username/password for students
 
 
 ### Files:
-- [ ] Eddie: module load script (Sarah's latest from `Group-Scripts/Clays/Simulations/` ?)
-- [ ] Run scripts
+- [x] Eddie: module load script (Sarah's latest from `Group-Scripts/Clays/Simulations/` ?)
+- [x] Run scripts
 - [x] Marking scheme
 - [x] Session HTML stylesheet
 
