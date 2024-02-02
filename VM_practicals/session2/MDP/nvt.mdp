@@ -1,4 +1,5 @@
 ; RUN CONTROL PARAMETERS
+define                   = -DPOSRES  ; position restrain the protein
 integrator               = md
 dt                       = 0.001
 nsteps                   = 5000
@@ -31,9 +32,6 @@ ref_t                    = 300      300
 
 ; Pressure coupling     
 pcoupl                   = no
-
-; Pressure coupling is off
-pcoupl                  = no
 
 ; Velocity generation
 gen_vel                 = yes                 ; assign velocities from Maxwell distribution
