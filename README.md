@@ -4,6 +4,7 @@
 - [x] symlink to datastore to get data from VM
 - [x] Link to space on datastore for updating course materials
 - [x] Figure out username/password for students
+- [ ] Get priority time for next year
 
 
 ### Files:
