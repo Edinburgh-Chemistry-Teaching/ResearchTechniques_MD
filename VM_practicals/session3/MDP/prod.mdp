@@ -4,8 +4,10 @@ dt                       = COMPLETE HERE 				; Make the time step 2fs
 nsteps                   = COMPLETE HERE 				; Make the total run time 5 ns
 
 ; OUTPUT CONTROL OPTIONS
-nstenergy                = 10
-energygrps               = Protein Non-Protein
+nstenergy                = 1000
+; Output frequency and precision for .xtc file
+nstxout-compressed     = 1000
+energygrps               = System
 
 ; OPTIONS FOR ELECTROSTATICS AND VDW
 coulombtype              = PME
@@ -15,13 +17,13 @@ rvdw                     = 1.2
 
 ; Temperature coupling  
 tcoupl                   = V-rescale            ; Couple temperature to external heat bath according to V-rescale method
-tc-grps                  = Protein  Non-Protein ; Use separate heat baths for Protein and Non-Protein groups
-tau_t                    = 0.1      0.1         ; Coupling time constant, controlling strength of coupling
-ref_t                    = 200      200         ; Temperature of heat bath
+tc-grps                  = System               ; Use separate heat baths for Protein and Non-Protein groups
+tau_t                    = 0.1                  ; Coupling time constant, controlling strength of coupling
+ref_t                    = 300                  ; Temperature of heat bath
 
 ; GENERATE VELOCITIES FOR STARTUP RUN
 gen_vel                  = yes    				; Assign velocities to particles by taking them randomly from a Maxwell distribution
-gen_temp                 = 200				; Temperature to generate corresponding Maxwell distribution
+gen_temp                 = 300				; Temperature to generate corresponding Maxwell distribution
 
 ; OPTIONS FOR BONDS    
 constraints              = all-bonds 			; All bonds will be treated as constraints (fixed length)
