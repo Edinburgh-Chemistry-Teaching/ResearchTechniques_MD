@@ -16,8 +16,8 @@ rvdw                     = 1.2
 ; Temperature coupling  
 tcoupl                   = V-rescale            ; Couple temperature to external heat bath according to V-rescale method
 tc-grps                  = System               ; Use separate heat baths for Protein and Non-Protein groups
-tau_t                    = 0.1      0.1         ; Coupling time constant, controlling strength of coupling
-ref_t                    = 200      200         ; Temperature of heat bath
+tau_t                    = 0.1                  ; Coupling time constant, controlling strength of coupling
+ref_t                    = 200                  ; Temperature of heat bath
 
 ; GENERATE VELOCITIES FOR STARTUP RUN
 gen_vel                  = yes    				; Assign velocities to particles by taking them randomly from a Maxwell distribution
