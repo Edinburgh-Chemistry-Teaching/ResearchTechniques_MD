@@ -5,7 +5,7 @@ nsteps                   = COMPLETE HERE 				; Make the total run time 5 ns
 
 ; OUTPUT CONTROL OPTIONS
 nstenergy                = 10
-energygrps               = Protein Non-Protein
+energygrps               = System
 
 ; OPTIONS FOR ELECTROSTATICS AND VDW
 coulombtype              = PME
@@ -15,7 +15,7 @@ rvdw                     = 1.2
 
 ; Temperature coupling  
 tcoupl                   = V-rescale            ; Couple temperature to external heat bath according to V-rescale method
-tc-grps                  = Protein  Non-Protein ; Use separate heat baths for Protein and Non-Protein groups
+tc-grps                  = System               ; Use separate heat baths for Protein and Non-Protein groups
 tau_t                    = 0.1      0.1         ; Coupling time constant, controlling strength of coupling
 ref_t                    = 200      200         ; Temperature of heat bath
 
