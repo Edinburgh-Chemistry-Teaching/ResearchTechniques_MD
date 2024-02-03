@@ -1,8 +1,8 @@
 ;
 ;	File 'prod.mdp' was generated
-;	By user: unknown (1918174)
-;	On host: node3c02.ecdf.ed.ac.uk
-;	At date: Sat Feb  3 19:39:18 2024
+;	By user: ecdfops1 (1918174)
+;	On host: node3b07.ecdf.ed.ac.uk
+;	At date: Sat Feb  3 20:33:11 2024
 ;
 ;	Created by:
 ;	                     :-) GROMACS - gmx grompp, 2023.3 (-:
@@ -67,9 +67,9 @@ nstfout                  = 0
 ; Output frequency for energies to log file and energy file
 nstlog                   = 1000
 nstcalcenergy            = 100
-nstenergy                = 10
+nstenergy                = 1000
 ; Output frequency and precision for .xtc file
-nstxout-compressed       = 0
+nstxout-compressed       = 1000
 compressed-x-precision   = 1000
 ; This selects the subset of atoms for the compressed
 ; trajectory file. You can select multiple groups. By
@@ -171,7 +171,7 @@ annealing-temp           =
 ; GENERATE VELOCITIES FOR STARTUP RUN
 gen_vel                  = yes
 gen_temp                 = 300
-gen-seed                 = -1073774597
+gen-seed                 = 1877605375
 
 ; OPTIONS FOR BONDS    
 constraints              = all-bonds
