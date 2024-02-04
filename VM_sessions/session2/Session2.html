@@ -537,7 +537,7 @@ mdrun -> energy [
         <div class="flex-figure">
             <div class="flex-figure-img" style="width: 50%">
                 <figure>
-                    <img alt="1xyw.pdb in VMD" src="img/1xyw.png" vmd width="100%">
+                    <img alt="1xyw.pdb in VMD" src="img/1xyw.png" width="100%">
                     <figcaption>New Cartoon representation of the 1xyw.pdb structure in <abbr>VMD</abbr>.</figcaption>
                 </figure>
             </div>
@@ -641,7 +641,6 @@ mdrun -> energy [
                 </blockquote>
                 <p>GROMACS will ask you to choose a force field. Select <code>CHARMM27</code> by <b>typing the
                     corresponding number</b>, then hit <code>Enter</code>.</p>
-                </p>
                 <p>When prompted for the water model, select <code>SPC</code>.</p>
             </li>
         </ul>
@@ -892,8 +891,8 @@ Protein_chain_A     1</pre>
                     <pre>$ cp protein.top protein-solvated.top</pre>
                     <p class="note"><code>solvate</code> will overwrite the <code>.top</code> file so it is good to make
                         a copy of the unsolvated topology.</p>
+                </blockquote>
             </li>
-            </blockquote>
             <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-solvate.html"><code>solvate</code></a> to
                 solvate the protein with <abbr>SPC</abbr> water:
                 <blockquote>
@@ -1139,18 +1138,21 @@ Protein_chain_A     1</pre>
         In this case, we will restrain heavy atoms of the protein.
     </p>
     <p>
-        In the run parameter files for the restrained equilibration, <code>nvt.mdp</code> and <code>npt.mdp</code>, the line reading
+        In the run parameter files for the restrained equilibrations, <code>nvt.mdp</code> and <code>npt.mdp</code>, the
+        line reading
         <code>define = &dash;DPOSRES</code> will have the effect of globally defining the keyword <code>POSRES</code>
         which
         is then used to turn on position restraints in the topology file.
     </p>
     <p>
-        In the first of the following runs, you will perform an equilibration run at constant volume and use temperature coupling to heat up your
+        In the first of the following runs, you will perform an equilibration run at constant volume and use temperature
+        coupling to heat up your
         system from 0&nbsp;K to 300&nbsp; (<abbr>NVT</abbr> ensemble).
         The temperature is regulated by rescaling the velocities of the atoms in the system.
     </p>
     <p>
-        In the second equilibration run, you will also add pressure coupling to equilibrate the system at 1&nbsp;bar (<abbr>NPT</abbr> ensemble).
+        In the second equilibration run, you will also add pressure coupling to equilibrate the system at 1&nbsp;bar
+        (<abbr>NPT</abbr> ensemble).
         The pressure is regulated by scaling the box size.</p>
     <p>Regulating the
         temperature and pressure means that the simulation conditions will be closer to those in a real
@@ -1176,7 +1178,7 @@ Protein_chain_A     1</pre>
             </li>
             <li>Use <code>ssh &dash;X</code> to in to Eddie HPC and navigate to the <code>session2</code> directory.
                 <pre>$ ssh &dash;X &lt;UUN&gt;@eddie.ecdf.ed.ac.uk</pre>
-                <pre>$ cd /exports/eddie/scratch/&lt;UUN>/session2/</pre>
+                <pre>$ cd /exports/eddie/scratch/&lt;UUN&gt;/session2/</pre>
                 <p class="note">
                     Replace <code>&lt;UUN&gt;</code> with your own university username.
                 </p>
@@ -1199,11 +1201,13 @@ Protein_chain_A     1</pre>
                         <pre>nano run_nvt.sh</pre>
                     </li>
                     <li>
-                        Add the required options to <a href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
+                        Add the required options to <a
+                            href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
                         to
                         prepare the <code>.tpr</code> input file for the restrained equilibration.<br>
                         <blockquote>
-                            <pre>$ gmx grompp &dash;v &dash;f MDP/nvt.mdp &dash;c em.gro &dash;p protein-solvated-ions.top &dash;r em.gro &dash;o nvt.tpr &dash;po nvt.mdp &dash;pp nvt.top</pre>
+                            <pre>$ gmx grompp &dash;v &dash;f MDP/nvt.mdp &dash;c em.gro &dash;p protein-solvated-ions.top &dash;r em.gro &dash;o
+                                nvt.tpr &dash;po nvt.mdp &dash;pp nvt.top</pre>
                             <p>Use the <code>&dash;o</code>, <code>&dash;po</code>, <code>&dash;pp</code> options to set
                                 the names of the
                                 output
@@ -1235,7 +1239,8 @@ Protein_chain_A     1</pre>
                     </li>
                 </ol>
             </li>
-            <li>Save the file with <code>Ctrl+O</code>, <code>Enter</code> and <code>Ctrl+X</code> and submit the run with <code>qsub</code><br>
+            <li>Save the file with <code>Ctrl+O</code>, <code>Enter</code> and <code>Ctrl+X</code> and submit the run
+                with <code>qsub</code><br>
                 <pre>$ qsub run_nvt.sh</pre>
             </li>
             <li>
@@ -1258,13 +1263,15 @@ Protein_chain_A     1</pre>
                         <p>
                             Once the interactive session has started, navigate back to your scratch directory and run
                             the <code>load_gmx.sh</code>
-                            script to load the GROMACS module:</p>
-                        <pre>$ cd /exports/eddie/scratch/UUN/session2/</pre>
+                            script to load the GROMACS module:
+                        </p>
+                        <pre>$ cd /exports/eddie/scratch/<UUN>/session2/</pre>
                         <pre>$ source load_gmx.sh</pre>
                     </li>
                     <li>
                         Check temperature, pressure, potential and kinetic energy with <code>gmx energy</code>.<br>
-                        <p>If the <code>nvt</code> run has not started yet, the input files for <code>gmx energy</code> will
+                        <p>If the <code>nvt</code> run has not started yet, the input files for <code>gmx energy</code>
+                            will
                             not be available so make sure the simulation is running before proceeding.</p>
                         <blockquote>
                             <pre>$ gmx energy &dash;f nvt.edr &dash;o nvt.xvg</pre>
@@ -1279,9 +1286,7 @@ Protein_chain_A     1</pre>
                                 <code>energy_pot.xvg</code> and <code>energy_tot.xvg</code>).</p>
                         </blockquote>
                     </li>
-
                 </ul>
-
             </li>
             <li>
                 Plot the energy evolution with <code>xmgrace</code>.<br>
@@ -1321,7 +1326,8 @@ Protein_chain_A     1</pre>
             </li>
             <li>Write a <code>run_npt.sh</code> run submission script for the <abbr>NPT</abbr> equilibration run on
                 Eddie HPC:<br>
-                Follow the same procedure as in the <a href="#Equilibrating_the_system_at_constant_temperature">restrained equilibration task</a>.<br>
+                Follow the same procedure as in the <a href="#Equilibrating_the_system_at_constant_temperature">restrained
+                    equilibration task</a>.<br>
                 Use <code>MDP/npt.mdp</code> as the input run parameter file and <code>nvt.gro</code> as the input
                 coordinate
                 file. Add the <code>&dash;o</code>, <code>&dash;po</code> and <code>pp</code> options to set the names
@@ -1337,10 +1343,13 @@ Protein_chain_A     1</pre>
                     <li>Open run_npt.sh and navigate to the end of the file.
                         <pre>$ nano run_npt.sh</pre>
                     </li>
-                    <li>Add the required options for <a href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
-                        and <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html"><code>mdrun</code></a>.
+                    <li>Add the required options for <a
+                            href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
+                        and
+                        <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html"><code>mdrun</code></a>.
                         <blockquote>
-                            <pre>$ gmx grompp -v -f MDP/npt.mdp -c nvt.gro &dash;p protein-solvated-ions.top &dash;r nvt.gro -o npt.tpr -po npt.mdp -pp npt.top</pre>
+                            <pre>$ gmx grompp -v -f MDP/npt.mdp -c nvt.gro &dash;p protein-solvated-ions.top &dash;r nvt.gro -o npt.tpr -po npt
+                                .mdp -pp npt.top</pre>
                             <pre>$ gmx mdrun -v -s npt.trp -deffnm npt -nt 1 -ntmpi 1</pre>
                         </blockquote>
                     </li>
@@ -1388,7 +1397,7 @@ Protein_chain_A     1</pre>
                 <code>md.mdp</code> and <code>md.top</code>. Set the
                 output file name for <code>mdrun</code> to <code>md</code>.<br>
                 <p class="note">Since this is an unrestrained equilibration run, you do NOT need to specify the
-                    <code>&dash;r</code> option for the restraints file.</p>
+                    <code>&dash;r</code> option for the restraints file.
                 </p>
                 <ol>
                     <li>Copy the template script.
@@ -1397,8 +1406,10 @@ Protein_chain_A     1</pre>
                     <li>Open run_md.sh and navigate to the end of the file.
                         <pre>$ nao run_md.sh</pre>
                     </li>
-                    <li>Add the required options for <a href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
-                        and <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html"><code>mdrun</code></a>.
+                    <li>Add the required options for <a
+                            href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
+                        and
+                        <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html"><code>mdrun</code></a>.
                         <blockquote>
                             <pre>$ gmx grompp -v -f MDP/md.mdp -c npt.gro &dash;p protein-solvated-ions.top -o md.tpr -po md.mdp -pp md.top</pre>
                             <pre>$ gmx mdrun -v -s md.trp -deffnm md -nt 1 -ntmpi 1</pre>
@@ -1411,10 +1422,10 @@ Protein_chain_A     1</pre>
                 <blockquote>
                     <pre>$ nano MDP/md.mdp</pre>
                     <p class="note"> Make sure you provide the parameters for the <code>.mdp</code> file in the correct
-                    units.
-                    The units used by <abbr>GROMACS</abbr> can be found in the Reference Manual: <a
-                            href="https://manual.gromacs.org/documentation/2019/reference-manual/definitions.html"
-                            rel="noopener" target="_blank">manual.gromacs.org/documentation/2019/reference&dash;manual/definitions.html</a>.
+                        units.
+                        The units used by <abbr>GROMACS</abbr> can be found in the Reference Manual: <a
+                                href="https://manual.gromacs.org/documentation/2019/reference-manual/definitions.html"
+                                rel="noopener" target="_blank">manual.gromacs.org/documentation/2019/reference&dash;manual/definitions.html</a>.
                     </p>
                 </blockquote>
             </li>
@@ -1440,7 +1451,8 @@ Performance:        6.183        3.882</pre>
     <p>
         Since the production run will take a bit longer to finish, you can continue this tutorial using the example
         files
-        from a previous simulation. You can find them in the <code>/home/practical/session2/example_data</code> directory on your virtual machine.
+        from a previous simulation. You can find them in the <code>/home/practical/session2/example_data</code>
+        directory on your virtual machine.
     </p>
 </div>
 <!--    <p>For some of the analyses it can be useful to have a trajectory file that contains only the protein atoms. You-->
@@ -1457,7 +1469,7 @@ Performance:        6.183        3.882</pre>
         <!--    <ol>-->
         <!--        <li>-->
         calculate the root&dash;mean&dash;square deviation (<abbr>RMSD</abbr>).
-        </li>
+        </p>
         <!--        <li>-->
         <!--            Extract the evolution of <em>x</em>, <em>y</em> and <em>z</em> coordinates and velocities of the protein-->
         <!--            over the duration of the simulation-->
