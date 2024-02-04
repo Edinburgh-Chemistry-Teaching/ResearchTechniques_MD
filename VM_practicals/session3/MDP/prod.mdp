@@ -4,7 +4,9 @@ dt                       = COMPLETE HERE 				; Make the time step 2fs
 nsteps                   = COMPLETE HERE 				; Make the total run time 5 ns
 
 ; OUTPUT CONTROL OPTIONS
-nstenergy                = 10
+nstenergy                = 1000
+; Output frequency and precision for .xtc file
+nstxout-compressed     = 1000
 energygrps               = System
 
 ; OPTIONS FOR ELECTROSTATICS AND VDW

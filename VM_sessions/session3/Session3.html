@@ -650,13 +650,33 @@ Potential Energy  = -6.8659256e+05
 Maximum force     =  6.5820524e+07 on atom 715
 Norm of force     =  1.6491472e+06
 </pre>
-                <p>This means that the energy minimisation did not converge. This means that GROMACS was not able to
-                    reach a minimum
-                    where the maximum force was below the specified threshold. In this case, you will probably need to
+                <p>This means that the energy minimisation did not converge, meaning that GROMACS was not able to
+                    reach a minimum where the maximum force was below the specified threshold. In this case, you will probably need to
                     repeat parts of the assembly procedure or remove water molecules that are too close to the clay,
                     organics or other waters. Before repeating, move on to the visualisation
                     task</a> but follow the <a href="../session3/Session3.html#EM_toubleshoot"><em>EM Troubleshoot</em></a> instructions.
                 </p>
+                <div id="EM_toubleshoot"
+                     style="padding: 20px;background: aliceblue; border: darkslategray;border-width: 1px;border-style: solid;color: darkslategray">
+                    <p><em style="font-weight: bold">EM Troubleshooting:</em> Note which atom has the highest forces in the energy minimisation
+                        output of GROMACS.<br>
+                        E.g.: <pre>Step= 1836, Dmax= 6.0e-05 nm, Epot= -5.42894e+05 Fmax= 1.94476e+02, atom= 19894</pre>
+                    In VMD, go to the <code>Graphical Representations</code> window.
+                    Create a new representation and for <code>Selected Atoms</code> choose <code>serial &lt;problem_atom_number&gt;</code>, set
+                    the <code>Drawing Method</code> to <code>VDW</code> and the <code>Coloring Method</code> to <code>ColorID</code>.
+                    You will now be able to see which atom is causing the problem.</p>
+                    <p>If you cannot clearly see the environment of the problem atom, you can replace the <code>Selected Atoms</code>
+                        in the default representation with <code>within 5 of serial &lt;problem_atom_number&gt;</code>
+                    </p>
+                    <p>
+                        If a water molecule is causing the problem, you can follow the instructions from the <a
+                            href="#Solvate_the_box"><code>solvate</code></a> step and remove it from the system.
+                    </p>
+                    <p>
+                        If the problem is an ion, restart the procedure beginning from the <a
+                            href="#Neutralise_the_excess_charge"> <code>genion</code></a> step.
+                    </p>
+                </div>
             </li>
         </ol>
     </div>
@@ -747,11 +767,8 @@ Norm of force     =  1.6491472e+06
                 Calculate the <abbr>RMSD</abbr> of the system:
             </li>
             <li>
-                Start an interactive session on Eddie:
-                <p>
-                    Use the instructions from <a href="../session2/Session2.html#interactive_login">Session 2</a> to
-                    start an interactive session on Eddie and load the GROMACS module.
-                </p>
+                Transfer the results from the production run to your local machine:
+                    <pre>$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/session3/prod* ~/session3/</pre>
             </li>
             <li>Refer to the <a href="../session2/Session2.html#Calculating_the_RMSD">Session 2</a> for instructions on
                 how to calculate the <abbr>RMSD</abbr> of the system.
