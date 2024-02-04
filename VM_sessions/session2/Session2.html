@@ -1203,7 +1203,8 @@ Protein_chain_A     1</pre>
                         to
                         prepare the <code>.tpr</code> input file for the restrained equilibration.<br>
                         <blockquote>
-                            <pre>$ gmx grompp &dash;v &dash;f MDP/nvt.mdp &dash;c em.gro &dash;p protein-solvated-ions.top &dash;r em.gro &dash;o nvt.tpr &dash;po nvt.mdp &dash;pp nvt.top</pre>
+                            <pre>$ gmx grompp &dash;v &dash;f MDP/nvt.mdp &dash;c em.gro &dash;p protein-solvated-ions.top &dash;r em.gro &dash;o
+                                nvt.tpr &dash;po nvt.mdp &dash;pp nvt.top</pre>
                             <p>Use the <code>&dash;o</code>, <code>&dash;po</code>, <code>&dash;pp</code> options to set
                                 the names of the
                                 output
@@ -1259,7 +1260,7 @@ Protein_chain_A     1</pre>
                             Once the interactive session has started, navigate back to your scratch directory and run
                             the <code>load_gmx.sh</code>
                             script to load the GROMACS module:</p>
-                        <pre>$ cd /exports/eddie/scratch/UUN/session2/</pre>
+                        <pre>$ cd /exports/eddie/scratch/<UUN>/session2/</pre>
                         <pre>$ source load_gmx.sh</pre>
                     </li>
                     <li>
@@ -1335,12 +1336,13 @@ Protein_chain_A     1</pre>
                         <pre>$ cp eddie_run.sh run_npt.sh</pre>
                     </li>
                     <li>Open run_npt.sh and navigate to the end of the file.
-                        <pre>$ nano run_npt.sh</pre>
+                        <pre>$ nao run_npt.sh</pre>
                     </li>
                     <li>Add the required options for <a href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
                         and <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html"><code>mdrun</code></a>.
                         <blockquote>
-                            <pre>$ gmx grompp -v -f MDP/npt.mdp -c nvt.gro &dash;p protein-solvated-ions.top &dash;r nvt.gro -o npt.tpr -po npt.mdp -pp npt.top</pre>
+                            <pre>$ gmx grompp -v -f MDP/npt.mdp -c nvt.gro &dash;p protein-solvated-ions.top &dash;r nvt.gro -o npt.tpr -po npt
+                                .mdp -pp npt.top</pre>
                             <pre>$ gmx mdrun -v -s npt.trp -deffnm npt -nt 1 -ntmpi 1</pre>
                         </blockquote>
                     </li>

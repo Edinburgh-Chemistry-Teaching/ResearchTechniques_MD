@@ -98,7 +98,7 @@
         &dash;1</sup>. The &dash;1 charge originates from one of the octahedral Al<sup>3+</sup> atoms being substituted
         by a
         Mg<sup>2+</sup> atom.
-        In theis session tutorial, the atoms are colour&dash;coded according to the following scheme:</p>
+        In the session tutorial, the atoms are colour&dash;coded according to the following scheme:</p>
 
     <table>
         <caption>Atom type colours</caption>
@@ -178,7 +178,7 @@
             </li>
             <li>Copy the <code>session3</code> folder from practicals to your home directory:
                 <p>Open a terminal and type:</p>
-                <pre>$ cp &dash;r /home/student/practicals/session2 .</pre>
+                <pre>$ cp &dash;r /home/student/practicals/session3 .</pre>
             </li>
             <li>Change into the <code>session3</code> directory:
                 <pre>$ cd session3</pre>
@@ -200,14 +200,14 @@
     <div class="bbox">
         <h3 id="Create_a_clay_sheet"></h3>
         <ul>
-            <li>Use <code>genconf</code> to create a single clay sheet from 24 <abbr>MMT</abbr> <abbr>UCs</abbr>
-                (<code>MMT.gro</code>):
+            <li>Use <code>genconf</code> to create a single clay sheet from <abbr>MMT</abbr> <abbr>UCs</abbr>
+                (<code>MMT.gro</code>) with a cutoff of 1.2 nm:
             </li>
             <li>Usage of <code>genconf</code>: <br>
                 <blockquote>
                     <pre>gmx genconf &dash;f STRUCTURES/MMT.gro &dash;nbox &lt;x_ucs&gt; &lt;y_ucs&gt; &lt;z_ucs&gt; &dash;o MMT_slab.gro</pre>
                     <code>&dash;f</code> specifies the structure file of the system to insert into.<br>
-                    <code>&dash;nbox</code> defines the number of unit cells to put in each of <em>x y z</em>
+                    <code>&dash;nbox</code> defines the number of unit cells to put in each of the <em>x y z</em>
                     directions.<br>
                     <code>&dash;o</code> specifies the output file name.<br>
                     If you only want one layer of clay, use 1 in the z&dash;direction.
@@ -216,8 +216,9 @@
             <li>How many (<abbr>UCs</abbr>) do you need to multiply in x&dash; and y&dash;direction?
                 <blockquote>
                     Check the size of unit cell and remember the size of the box has to be at least 2.5 x the size
-                    of your cutoff.<br>
-                    So, for a cutoff at 1.2&nbsp;nm you have to aim at ~3&nbsp;nm on each side.
+                    of your cutoff.
+                    So, for a cutoff at 1.2&nbsp;nm you have to aim at ~3&nbsp;nm on each side.<br>
+                    <i>Remember:</i> The final line in the <code>.gro</code> file shows the x, y and z cell lengths in nanometers.
                 </blockquote>
                 <div class="flex-container">
                     <div class="flex-item">
@@ -247,7 +248,7 @@
             <li>Edit the gro file to increase the box height</li>
             <li>Increase the box <em>z</em> length by editing the <code>MMT_slab.gro</code> file.
                 <blockquote>
-                    Where in the <code>.gro</code> file is the box size specified? Adjust the sheet spacing to 50&nbsp;&#8491;
+                    Where in the <code>.gro</code> file is the box size specified? Adjust the sheet spacing to 50&nbsp;&#8491; using <code>nano</code>
                 </blockquote>
                 <div class="flex-figure">
                     <div class="flex-figure-item">
@@ -262,7 +263,7 @@
         </ul>
     </div>
     <h2 class="enum" id="toc_3">Adding decanoic acid molecules</h2>
-    Now that you have a clay sheet, you can use <code>insert&dash;molecules</code> insert decanoic acid molecules into
+    Now that you have a clay sheet, you can use <code>insert&dash;molecules</code> to insert decanoic acid molecules into
     the vacuum space.
     <div class="bbox">
         <h3 id="Insert_decanoic_acid_molecules"></h3>
@@ -278,7 +279,8 @@
                     <code>&dash;nmol</code> defines the number of molecules to insert.<br>
                     <code>&dash;o</code> specifies the output coordinate file name.<br>
                     <p>GROMACS will try to fit the requested number of molecules in the available space. It will
-                        notify you about whether it was successful or not.
+                        notify you about whether it was successful or not. <i>If unsuccessful, repeat this step until the requested total number have
+                            been added (you may need to lower <code>-nmol <number></code> if it successfully added some but not all).</i>
                     </p>
                 </blockquote>
                 <div class="flex-figure">
@@ -299,7 +301,7 @@
     <p>
         Before proceeding to the next step in which you will solvate the box, you need to generate a topology
         (<code>.top</code>) file
-        that includes all molecules present in the system. The following sections explain the structure of GROMACS
+        that includes all molecules present in the system. The following explains the structure of GROMACS
         topology files in some more detail.
         <!--        than in <a href="../Session2/Session2.html">Session2</a>.-->
     </p>
@@ -322,10 +324,9 @@
                 target="_blank">force fields</a>.<br>
     </p>
     <p>
-        Even if they only consist of one atom, all atoms of the system are part of molecules. These <code>[
-        moleculetype ]</code> are defined
-        In the second section, all molecule type definitions, such as the <abbr>MMT</abbr> <abbr>UC</abbr>,
-        decanoic acid molecule, water molecule and ions need to be included in the topology file.
+        Even if they consist of only one atom, all atoms of the system are part of molecules. These are defined
+        in the second section, <code>[ moleculetype ]</code>. All molecule type definitions, such as the <abbr>MMT</abbr> <abbr>UC</abbr>,
+        decanoic acid, water and ions need to be included in the topology file.
     </p>
     <p> Elements from the first two sections are usually defined in separate files that are included in the topology
         file.
@@ -333,7 +334,7 @@
     <p>
         The third section contains the system name and the number of molecules of each type in the system. The
         system section starts with the keyword <code>[ system ]</code> and is followed by a name chosen for the
-        system (The choice of the name does not really matter).<br>
+        system (the choice of the name does not really matter).<br>
         The number of molecules of each type is specified in the <code>[ molecules ]</code> section.</p>
     <p>
         <em>Important:</em> The order of the molecules in the <code>[ molecules ]</code> section must match the
@@ -344,8 +345,16 @@
         <h3 id="Generate_the_topology_file"></h3>
         <ol>
             <li>Generate a topology file for the system (<code>MMT_slab.top</code>):</li>
-            <li>Open the topology file stub <code>MMT_slab.top</code> in a text editor to fill in missing
+            <li>Open the topology file <code>MMT_slab.top</code> in a text editor to fill in missing
                 sections.<br>
+                <blockquote>
+                    All force field folders (<code>&lt;ForceFieldName.ff&gt;</code>) are located within the
+                    <code>FF</code> directory. The force field for clay and water is ClayFF, for organics and ions
+                    it is CHARMM36, and for ions it is Ions.
+                    Inside each of the folders, you can find the <code>.itp</code> files that contain the various
+                    force field parameters. <br>
+                    <p class="remember"> Everything that comes after a <code>;</code> will be treated as a comment and is not read by GROMACS.</p>
+                </blockquote>
             </li>
             <!--                <li>Include the definition files for combination rules (<code>'forcefield.itp</code>) from ClayFF.-->
             <!--                    <blockquote>-->
@@ -360,25 +369,18 @@
             <!--                    </blockquote>-->
             <li>Add nonbonded parameter files (<code>ffnonbonded.itp</code>) for clay, organics and ions.
                 <blockquote>
-                    All force field folders (<code>&lt;ForceFieldName.ff&gt;</code>) are located within the
-                    <code>FF</code> directory. The force field for clay and water is ClayFF, for organics and ions
-                    it is CHARMM36, and for ions it is Ions.
-                    Inside each of the folders, you can find the <code>.itp</code> files that contain the various
-                    force field parameters. <br>
                     Clay and water share the same atom types. Therefore, no separate
                     <code>ffnonbonded.itp</code> file needs to be added for water.<br>
-                    The files containing the decanoic acid and clay structures are located in the
-                    <code>STRUCTURES</code>
-                    directory.
-                    <p class="remember"> Everything that comes after a <code>;</code> will be treated as a comment and
-                        is
-                        not read by GROMACS.</p>
                 </blockquote>
             </li>
             <li>Add bonded parameters for organics (<code>ffbonded.itp</code>).</li>
             <li>Include molecule definitions for ions (<code>ions.itp</code>), water (<code>spc.itp</code>),
                 <abbr>MMT</abbr>
-                (<code>MMT.itp</code>) and decanoic acid (<code>dec_acid.itp</code>).
+                (<code>MMT.itp</code>) and decanoic acid (<code>decanoic_acid.itp</code>).
+                <blockquote>
+                    <p class="note">The files containing the decanoic acid and MMT structure parameters are located in the
+                    <code>STRUCTURES</code> directory.</p>
+                </blockquote>
             </li>
             <li>Complete the molecules section.
                 <blockquote>Add entries for all molecules in your <code>.gro</code> file.<br>
@@ -387,7 +389,7 @@
 [ molecules ]
 ; Compound  # mols
 MMT           2
-DEC           1
+DECA           1
                 </pre>
                 </blockquote>
 
@@ -396,20 +398,23 @@ DEC           1
     </div>
     <h2 class="enum" id="toc_5">Solvating the system</h2>
     <p>
-        Now that you have a topology file, you can use GROMACS <code>solvate</code> the box.
+        Now that you have a topology file, you can use GROMACS to <code>solvate</code> the box.
     </p>
     <div class="bbox">
         <h3 id="Solvate_the_box"></h3>
-        <ul>
-            <li value="">Use <code>solvate</code> to solvate the box with water (<code>MMT_dec.gro</code>):</li>
-            <li>Usage of <code>solvate</code>: <br>
+        <ol>
+            <li>Use <code>solvate</code> to solvate the box with water (<code>MMT_dec.gro</code>):</li>
+            <li>Make a copy of the topology <code>MMT_slab.top</code> file:
                 <blockquote>
-                    <pre>gmx solvate &dash;cp MMT_dec.gro &dash;cs spc216.gro &dash;o MMT_dec_solv.gro &dash;p MMT_slab.top &dash;po MMT_dec_solv.top</pre>
+                    <pre>$ cp MMT_slab.top MMT_dec_solv.top</pre>
+            </li>
+            <li>Use of <code>solvate</code>: <br>
+                <blockquote>
+                    <pre>gmx solvate &dash;cp MMT_dec.gro &dash;cs spc216.gro &dash;o MMT_dec_solv.gro &dash;p MMT_dec_solv.top</pre>
                     <code>&dash;cp</code> specifies the input coordinate file of the system to solvate.<br>
                     <code>&dash;cs</code> specifies the water model coordinate file.<br>
                     <code>&dash;o</code> specifies the output coordinate file.<br>
-                    <code>&dash;p</code> specifies the input topology file.<br>
-                    <code>&dash;po</code> specifies the output topology file.<br>
+                    <code>&dash;p</code> specifies the input/output topology file.<br>
                     <p>GROMACS will try to fill the available space with solvent and update the number of water
                         (<code>SOL</code>)
                         molecules in the output topology file.
@@ -430,16 +435,14 @@ DEC           1
                 <p>After this step, make sure to visualise the system in VMD to check that no water molecules
                     were inserted into or very close to the clay sheets. If this was the case, you can either
                     repeat the solvation step (make sure to delete the <code>SOL</code> line from the topology
-                    first) or remove the water molecules manually. In order to manually remove water molecules,
-                    look at the system in VMD and press &quot;1&quot; on your keyboard to select the water molecules
-                    that
-                    are too close to the clay. The label od the selected water molecule will then show you
+                    first) or remove the water molecules manually.<br>
+                    In order to manually remove water molecules, look at the system in VMD and press &quot;1&quot; on your keyboard to select the water molecules
+                    that are too close to the clay. The label of the selected water molecule will then show you
                     which residue you will need to remove from the <code>.gro</code> file. E.g. if the label
-                    shows <code>SOL60:HW1</code> (see figure below), you will need to remove the three
-                    <code>SOL60</code> line
+                    shows <code>SOL60:HW1</code> (see figure below), you will need to remove the three <code>SOL60</code> lines
                     from the <code>MMT_dec_solv.gro</code> file and change the number of atoms in the header
                     to match the new number of atoms in the file. Make sure to also update the number of water
-                    molecules in the <code>MMT_slab.top</code> file.</p>
+                    molecules in the <code>MMT_dec_solv.top</code> file.</p>
                 <div class="flex-figure">
                     <div class="flex-figure-item">
                         <figure>
@@ -453,37 +456,13 @@ DEC           1
                         </figure>
                     </div>
                 </div>
-                <div id="EM_toubleshoot"
-                     style="padding: 20px;background: aliceblue; border: darkslategray;border-width: 1px;border-style: solid;color: darkslategray">
-                    <p><em style="font-weight: bold">EM Troubleshoot:</em> Note which atom has the highest forces in the
-                        energy minimisation
-                        output of GROMACS.<br>E.g.:
-                    <pre>Step= 1836, Dmax= 6.0e-05 nm, Epot= -5.42894e+05 Fmax= 1.94476e+02, atom= 19894</pre>
-                    In VMD, go to the <code>Graphical Representations</code> window.
-                    Create a new representation and select the <code>serial &lt;problem_atom_number&gt;</code>, set the
-                    Drawing Method to <code>VDW</code> and the Coloring Method to <code>ColorID</code>.
-                    You will now be able to see which atom is causing the problem.</p>
-                    <p>If you cannot clearly see the environment of the problem atom, you can replace the Selected Atoms
-                        in the default representation with
-                        <code>within 5 of serial &lt;problem_atom_number&gt;</code>
-                    </p>
-                    <p>
-                        If a water molecule is causing the problem, you can follow the instructions above and remove it
-                        from the system.
-                    </p>
-                    <p>
-                        If the problem is an ion, restart the procedure beginning from the <a
-                            href="#Neutralise_the_excess_charge">
-                        <code>genion</code></a> step.
-                    </p>
-                </div>
             </li>
-        </ul>
+        </ol>
     </div>
     <h2 class="enum" id="toc_6">Adding ions to neutralise the system</h2>
     <p>
-        Now that you have a solvated system, but because of the substitutions in the clay sheet and the deprotonated
-        decanoic acid molecules, the system has a net negative charge.
+        Now you have a solvated system, but the system has a net negative charge because of the substitutions in the clay sheet and the
+        deprotonated decanoic acid molecules.
         It is not possible to run a simulation with a charged system. Therefore, you need to neutralise the system
         with cations.
         You can use <code>genion</code> to add ions and neutralise the system.
@@ -501,7 +480,7 @@ DEC           1
                     this step, but it has to be given.</p>
                 <p>Usage of <code>grompp</code>:</p>
                 <blockquote>
-                    <pre>gmx grompp &dash;f genion.mdp &dash;c MMT_dec_solv.gro &dash;p MMT_dec_solv.top &dash;o MMT_dec_solv.tpr &dash;pp MMT_dec_solv_ions.top &dash;maxwarn 1</pre>
+                    <pre>gmx grompp &dash;f MDP/genion.mdp &dash;c MMT_dec_solv.gro &dash;p MMT_dec_solv.top &dash;o MMT_dec_solv.tpr &dash;pp MMT_dec_solv_ions.top &dash;maxwarn 1</pre>
                     <code>&dash;f</code> specifies the input run parameter file.<br>
                     <code>&dash;c</code> specifies the coordinate file of the system to solvate.<br>
                     <code>&dash;p</code> specifies the topology file.<br>
@@ -537,20 +516,20 @@ information for each atom.
             <li>Use <code>genion</code> to neutralise the system with Na<sup>+</sup> ions:
                 <p>Usage of <code>genion</code>: </p>
                 <blockquote>
-                    <pre>gmx genion &dash;s MMT_dec_solv.tpr &dash;o MMT_dec_solv_ion.gro &dash;p MMT_dec_solv.top &dash;pname Na &dash;nname Cl &dash;neutral</pre>
+                    <pre>gmx genion &dash;s MMT_dec_solv.tpr &dash;o MMT_dec_solv_ions.gro &dash;p MMT_dec_solv_ions.top &dash;pname Na &dash;nname Cl &dash;neutral</pre>
                     <code>&dash;s</code> specifies the input coordinate file of the system to solvate.<br>
                     <code>&dash;o</code> specifies the output coordinate file<br>
                     <code>&dash;p</code> specifies the input topology file<br>
                     <code>&dash;pname</code> specifies the name of the positive ion<br>
                     <code>&dash;nname</code> specifies the name of the negative ion<br>
                     <code>&dash;neutral</code> &ndash; neutralise the system<br>
-                    <p>GROMACS will try to fill the available space with solvent and update the number of water
-                        (<code>SOL</code>)
-                        molecules in the output topology file.</p>
                     <p>
                         You will be asked which molecules should be replaced with ions. Select the code for the
                         water <code>SOL</code> molecules.
                     </p>
+                    <p>GROMACS will try to fill the available space with solvent and update the number of water
+                        (<code>SOL</code>)
+                        molecules in the output topology file.</p>
                 </blockquote>
             </li>
         </ol>
@@ -583,7 +562,7 @@ information for each atom.
                 missing keyword sections:
             </li>
             <li>Energy minimisation: <code>em.mdp</code>
-                <br>Set the maximum number of steps to 5000 and the force tolerance to 1000&nbsp;
+                <br>Set the maximum number of steps to 5000 and the force tolerance to 500&nbsp;
                 kJ&nbsp;mol<sup>&dash;1</sup>&nbsp;nm<sup>&dash;1</sup>.
             </li>
             <li>Equilibration: <code>eq.mdp</code><br>
@@ -613,7 +592,7 @@ information for each atom.
             <li>Compile the run topology file for the energy minimisation
                 (<code>em.tpr</code>):
                 <blockquote>
-                    <pre>gmx grompp &dash;f MDP/em.mdp &dash;c MMT_dec_solv_ion.gro &dash;p MMT_dec_solv_ion.top &dash;o em.tpr &dash;pp em.top</pre>
+                    <pre>gmx grompp &dash;f MDP/em.mdp &dash;c MMT_dec_solv_ions.gro &dash;p MMT_dec_solv_ions.top &dash;o em.tpr &dash;pp em.top</pre>
                     <code>&dash;f</code> specifies the input run parameter <code>.mdp</code> file.<br>
                     <code>&dash;c</code> specifies the input coordinate file.<br>
                     <code>&dash;p</code> specifies the topology file.<br>
@@ -650,14 +629,32 @@ Potential Energy  = -6.8659256e+05
 Maximum force     =  6.5820524e+07 on atom 715
 Norm of force     =  1.6491472e+06
 </pre>
-                <p>This means that the energy minimisation did not converge. This means that GROMACS was not able to
-                    reach a minimum
-                    where the maximum force was below the specified threshold. In this case, you will probably need to
+                <p>This means that the energy minimisation did not converge, meaning that GROMACS was not able to
+                    reach a minimum where the maximum force was below the specified threshold. In this case, you will probably need to
                     repeat parts of the assembly procedure or remove water molecules that are too close to the clay,
-                    organics or other waters. Before repeating, move on to the visualisation
-                    task</a> but follow the <a
-                            href="../session3/Session3.html#EM_toubleshoot"><em>EM Troubleshoot</em></a> instructions.
+                    organics or other waters. Before repeating, follow the <em>EM Troubleshoot</em> instructions.
                 </p>
+                <div id="EM_toubleshoot"
+                     style="padding: 20px;background: aliceblue; border: darkslategray;border-width: 1px;border-style: solid;color: darkslategray">
+                    <p><em style="font-weight: bold">EM Troubleshooting:</em> Note which atom has the highest forces in the energy minimisation
+                        output of GROMACS.<br>
+                        E.g.: <pre>Step= 1836, Dmax= 6.0e-05 nm, Epot= -5.42894e+05 Fmax= 1.94476e+02, atom= 19894</pre>
+                    In VMD, go to the <code>Graphical Representations</code> window.
+                    Create a new representation and for <code>Selected Atoms</code> choose <code>serial &lt;problem_atom_number&gt;</code>, set
+                    the <code>Drawing Method</code> to <code>VDW</code> and the <code>Coloring Method</code> to <code>ColorID</code>.
+                    You will now be able to see which atom is causing the problem.</p>
+                    <p>If you cannot clearly see the environment of the problem atom, you can replace the <code>Selected Atoms</code>
+                        in the default representation with <code>within 5 of serial &lt;problem_atom_number&gt;</code>
+                    </p>
+                    <p>
+                        If a water molecule is causing the problem, you can follow the instructions from the <a
+                            href="#Solvate_the_box"><code>solvate</code></a> step and remove it from the system.
+                    </p>
+                    <p>
+                        If the problem is an ion, restart the procedure beginning from the <a
+                            href="#Neutralise_the_excess_charge"> <code>genion</code></a> step.
+                    </p>
+                </div>
             </li>
         </ol>
     </div>
@@ -682,7 +679,7 @@ Norm of force     =  1.6491472e+06
                     the run script and adjust the parameters so that the output files all have the name <code>eq</code>.
                 </p></li>
             <li> Copy the input files to your Eddie scratch directory:
-                <pre>$ scp &dash;r ~/session3 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/home/&lt;UUN&gt;/scratch/</pre>
+                <pre>$ scp &dash;r ~/session3 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/</pre>
                 <p class="note">Replace <code>&lt;UUN&gt;</code> with your university username.</p>
             </li>
             <li>
@@ -693,7 +690,7 @@ Norm of force     =  1.6491472e+06
                 Navigate to the <code>session3</code> folder inside your directory
             </li>
             <li>Submit the job to the queue:
-                <pre>$ sbatch run_eq.sh</pre>
+                <pre>$ qsub run_eq.sh</pre>
             </li>
             <li>Use <code>qstat</code> to check the status of your job.
                 <pre>qstat -u &lt;UUN&gt;</pre>
@@ -720,7 +717,7 @@ Norm of force     =  1.6491472e+06
             </li>
             <li>
                 After the equilibration run has finished, submit the job to the queue:
-                <pre>$ sbatch run_prod.sh</pre>
+                <pre>$ qsub run_prod.sh</pre>
             </li>
         </ol>
     </div>
@@ -748,10 +745,9 @@ Norm of force     =  1.6491472e+06
                 Calculate the <abbr>RMSD</abbr> of the system:
             </li>
             <li>
-                Start an interactive session on Eddie:
+                Transfer the results from the production run to your local machine:
                 <p>
-                    Use the instructions from <a href="../session2/Session2.html#interactive_login">Session 2</a> to
-                    start an interactive session on Eddie and load the GROMACS module.
+                    <pre>$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/session3/prod* ~/session3/</pre>
                 </p>
             </li>
             <li>Refer to the <a href="../session2/Session2.html#Calculating_the_RMSD">Session 2</a> for instructions on
@@ -845,7 +841,7 @@ $ gmx rdf &dash;f prod.xtc &dash;s prod.tpr &dash;n Na_OW.ndx &dash;o rdf_Na_OW.
                     <blockquote>
                         <p>
                             Right&dash;click on the molecule and select <code>Load Data into Molecule</code>.
-                            Then, select the <code>prod.trr</code> trajectory file.
+                            Then, select the <code>prod.xtc</code> trajectory file.
                         </p>
                         <p class="note">The loading of all the frames might take some time. You can speed up the
                             proceed if
