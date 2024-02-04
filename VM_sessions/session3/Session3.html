@@ -200,8 +200,8 @@
     <div class="bbox">
         <h3 id="Create_a_clay_sheet"></h3>
         <ul>
-            <li>Use <code>genconf</code> to create a single clay sheet from <abbr>MMT</abbr> <abbr>UCs</abbr>
-                (<code>MMT.gro</code>) with a cutoff of 1.2 nm:
+            <li>Use <code>genconf</code> to create aa single clay sheet from 24 <abbr>MMT</abbr> <abbr>UCs</abbr>
+                (<code>MMT.gro</code>):
             </li>
             <li>Usage of <code>genconf</code>: <br>
                 <blockquote>
@@ -456,6 +456,27 @@ DECA           1
                         </figure>
                     </div>
                 </div>
+                <div id="EM_toubleshoot"
+                     style="padding: 20px;background: aliceblue; border: darkslategray;border-width: 1px;border-style: solid;color: darkslategray">
+                    <p><em style="font-weight: bold">EM Troubleshooting:</em> Note which atom has the highest forces in the
+                        energy minimisation output of GROMACS.<br>
+                        E.g.: <pre>Step= 1836, Dmax= 6.0e-05 nm, Epot= -5.42894e+05 Fmax= 1.94476e+02, atom= 19894</pre>
+                    In VMD, go to the <code>Graphical Representations</code> window.
+                    Create a new representation and for <code>Selected Atoms</code> choose <code>serial &lt;problem_atom_number&gt;</code>, set
+                    the <code>Drawing Method</code> to <code>VDW</code> and the <code>Coloring Method</code> to <code>ColorID</code>.
+                    You will now be able to see which atom is causing the problem.</p>
+                    <p>If you cannot clearly see the environment of the problem atom, you can replace the <code>Selected Atoms</code>
+                        in the default representation with <code>within 5 of serial &lt;problem_atom_number&gt;</code>
+                    </p>
+                    <p>
+                        If a water molecule is causing the problem, you can follow the instructions above and remove it
+                        from the system.
+                    </p>
+                    <p>
+                        If the problem is an ion, restart the procedure beginning from the <a
+                            href="#Neutralise_the_excess_charge"> <code>genion</code></a> step.
+                    </p>
+                </div>
             </li>
         </ol>
     </div>
@@ -632,7 +653,8 @@ Norm of force     =  1.6491472e+06
                 <p>This means that the energy minimisation did not converge, meaning that GROMACS was not able to
                     reach a minimum where the maximum force was below the specified threshold. In this case, you will probably need to
                     repeat parts of the assembly procedure or remove water molecules that are too close to the clay,
-                    organics or other waters. Before repeating, follow the <em>EM Troubleshoot</em> instructions.
+                    organics or other waters. Before repeating, move on to the visualisation
+                    task</a> but follow the <a href="../session3/Session3.html#EM_toubleshoot"><em>EM Troubleshoot</em></a> instructions.
                 </p>
                 <div id="EM_toubleshoot"
                      style="padding: 20px;background: aliceblue; border: darkslategray;border-width: 1px;border-style: solid;color: darkslategray">
