@@ -61,11 +61,12 @@ body {
     font-family: 'OpenDyslexicAltaRegular', 'OpenDyslexic', Arial, sans-serif;
     font-weight: normal;
     font-style: normal;
-    background-color: lightyellow;
+    background-color: #EDD1B0;
     line-height: 2ch;
     letter-spacing: 0.25ch;
     word-spacing: 1ch; /* 3.5x letter-spacing */
     font-variant-ligatures: none; /* explicitly disable ligatures */
+    font-size: 16px;
 }
 
 p {
@@ -311,7 +312,6 @@ blockquote > :last-child {
 }
 
 .flex-figure {
-    max-width: 960px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -319,6 +319,8 @@ blockquote > :last-child {
     justify-content: space-around;
     align-content: space-around;
     align-self: center;
+    background-color: white;
+    width: fit-content(70%);
 }
 
 .flex-figure-item {
@@ -331,13 +333,12 @@ blockquote > :last-child {
     align-self: center;
     margin: 0 auto;
     padding: 0;
-    width: fit-content(100%);
+    width: fit-content(70%);
     background-color: white;
 }
 
 .flex-figure-item figure {
-    /*max-width: 100%;*/
-    /*object-fit: contain;*/
+    object-fit: contain;
     /*height: auto;*/
     /*object-position: 50% 50%;*/
     align-self: baseline;
@@ -353,6 +354,7 @@ flex-figure-item img {
 }
 
 flex-figure-item figure img {
+
     /*max-width: 100%;*/
     /*object-fit: contain;*/
     /*height: auto;*/
@@ -371,7 +373,7 @@ flex-figure-item figure figcaption {
     align-self: baseline;
     cursor: pointer;
     object-fit: contain;
-    background: lightyellow;
+    /*background: lightyellow;*/
 }
 /*figure {*/
 /*  margin: 0 auto;*/
@@ -857,10 +859,10 @@ pre[class*="language-"] {
     line-height: 2.5;
     color: #041E42;
     font-weight: bolder;
-    font-size-adjust: 0.52;
+    font-size: 18px;
+    /*font-size-adjust: 0.52;*/
     list-style-type: "\2192 \0020  ";
     list-style-position: inside;
-    list
 }
 
 .bbox ul > li code, .bbox ol > li code {
@@ -892,7 +894,7 @@ pre[class*="language-"] {
 .bbox ul ul > li:first-child,
 .bbox ul ul > li:not(:first-child) {
     list-style-type: disc;
-    font-size-adjust: initial;
+    font-size: 16pt;
     line-height: 2.5;
     font-weight: initial;
     line-style: none;
@@ -915,7 +917,7 @@ pre[class*="language-"] {
     counter-increment: nested 1;
     list-style: none;
     font-weight: initial;
-    font-size-adjust: initial;
+    font-size: 16px;
     line-height: 2.5;
     color: #393939;
 }
@@ -999,7 +1001,7 @@ h2.enum::before {
     right: 20px;
     bottom: 20px;
     padding: 10px;
-    background-color: lightyellow;
+    background-color: #ED;
     color: #004f71;
     border: none;
     cursor: pointer;
@@ -1013,6 +1015,7 @@ h2.enum::before {
 
 
 .dyslexiaButton {
+    display: block;
     position: fixed;
     right: 20px;
     top: 20px;
@@ -1024,7 +1027,7 @@ h2.enum::before {
     border-radius: 5px;
     font-size: 18px;
     font-family: 'Source Sans 3', Helvetica, arial, sans-serif;
-    text: "Regular display";
+    /*text: "Regular display";*/
 }
 
 .dyslexiaButton:hover {
