@@ -17,15 +17,11 @@
 - [x] **Session1:** Valentina
 - [x] **Session2** Hannah
  	- Need to add running on Eddie for the final sim
-- [ ] **Session3:** Hannah
-  - [ ] Overleaf template 
+- [x] **Session3:** Hannah
   - [x] Example report & marking scheme
 - [ ] **Session4**
+  - [x] Overleaf template
+  - [x] word template
 
 #### Projects
-  - AC:
-    - ...
-  - MBC:
-    - ...
-  - MC
-    - ...
+
