@@ -1,0 +1,55 @@
+title		= clay + water + ions + TC
+
+; Run parameters
+integrator	= md		; leap-frog integrator
+nsteps		= 1000000	; 1 * 1000000 = 1000 ps = 1 ns
+dt		 	= 0.001		; 1 fs
+
+
+; Output control
+nstxout		= 2000		; save coordinates every 2.0 ps
+nstvout		= 2000		; save velocities every 2.0 ps
+nstenergy	= 2000		; save energies every 2.0 ps
+nstlog		= 2000		; update log file every 2.0 ps
+energygrps	= System	; energy groups are whole system
+
+
+; Bond parameters
+constraint_algorithm    = lincs	    ; holonomic constraints 
+constraints	            = h-bonds	; all bonds (even heavy atom-H bonds) constrained
+
+
+; Neighbor searching
+cutoff-scheme       = Verlet
+ns_type             = grid              ; search neighboring grid cells
+nstlist             = 10                ; 10 fs, largely irrelevant with Verlet
+pbc                 = xyz               ; 3-D PBC
+
+
+; Electrostatics and VdW
+coulombtype         = PME               ; Particle Mesh Ewald for long-range electrostatics
+vdw-type            = PME
+rcoulomb            = 1.4               ; short-range electrostatic cutoff (in nm)
+rvdw                = 1.4               ; short-range van der Waals cutoff (in nm)
+DispCorr			= EnerPres			; long range dispersion correction 
+
+
+
+; Temperature coupling is on
+tcoupl          = nose-hoover  			; or V-rescale  modified Berendsen thermostat
+tc-grps         = System                ; independ coupling groups - more accurate
+tau_t           = 0.5                   ; time constant, in ps
+ref_t           = 300                   ; reference temperature, one for each group, in K
+
+
+; Pressure coupling 
+Pcoupl                   = Parrinello-Rahman	; better than just berendsen
+Pcoupltype               = isotropic 			; x y z coupled together
+tau_P                    = 5.0          		; coupling time constant (ps)
+compressibility          = 4.5e-5  				; compressibility (1/bar)
+ref_P                    = 1.0  				; reference P (bar)
+
+
+; Velocity generation
+gen_vel		= no		; assign velocities from Maxwell distribution
+
