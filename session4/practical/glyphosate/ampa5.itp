@@ -1,0 +1,97 @@
+; Created by cgenff_charmm2gmx.py
+
+[ moleculetype ]
+; Name			   nrexcl
+aminomethylphosphonic acid				 3
+
+[ atoms ]
+;	 nr		  type	resnr residue  atom   cgnr	   charge		mass  typeB    chargeB		massB
+; residue	 1 aminomethylphosphonic acid rtp aminomethylphosphonic acid q	qsum
+     1      NG3P3      1 aminomethylphosphonic acid     N1      1     -0.441     14.007   ;
+     2      CG324      1 aminomethylphosphonic acid     C1      2     -0.680     12.011   ;
+     3        PG2      1 aminomethylphosphonic acid     P1      3      2.226     30.974   ;
+     4      OG2P1      1 aminomethylphosphonic acid     O1      4     -1.119     15.999   ;
+     5      OG2P1      1 aminomethylphosphonic acid     O2      5     -1.119     15.999   ;
+     6      OG2P1      1 aminomethylphosphonic acid     O3      6     -1.119     15.999   ;
+     7       HGP2      1 aminomethylphosphonic acid     H1      7      0.334      1.008   ;
+     8       HGP2      1 aminomethylphosphonic acid     H2      8      0.334      1.008   ;
+     9       HGP2      1 aminomethylphosphonic acid     H3      9      0.334      1.008   ;
+    10       HGA2      1 aminomethylphosphonic acid     H4     10      0.125      1.008   ;
+    11       HGA2      1 aminomethylphosphonic acid     H5     11      0.125      1.008   ;
+
+[ bonds ]
+;	ai	  aj funct			  c0			c1			  c2			c3
+    1     2	 1 ;       NG3P3      CG324
+    1     7	 1 ;       NG3P3       HGP2
+    1     8	 1 ;       NG3P3       HGP2
+    1     9	 1 ;       NG3P3       HGP2
+    2     3	 1 ;       CG324        PG2
+    2    10	 1 ;       CG324       HGA2
+    2    11	 1 ;       CG324       HGA2
+    3     4	 1 ;         PG2      OG2P1
+    3     5	 1 ;         PG2      OG2P1
+    3     6	 1 ;         PG2      OG2P1
+
+[ pairs ]
+;	ai	  aj funct			  c0			c1			  c2			c3
+    1     4	 1
+    1     5	 1
+    1     6	 1
+    3     7	 1
+    3     8	 1
+    3     9	 1
+    4    10	 1
+    4    11	 1
+    5    10	 1
+    5    11	 1
+    6    10	 1
+    6    11	 1
+    7    10	 1
+    7    11	 1
+    8    10	 1
+    8    11	 1
+    9    10	 1
+    9    11	 1
+
+[ angles ]
+;	ai	  aj	ak funct			c0			  c1			c2			  c3
+    2     1     7	5 ;      CG324      NG3P3       HGP2
+    2     1     8	5 ;      CG324      NG3P3       HGP2
+    2     1     9	5 ;      CG324      NG3P3       HGP2
+    7     1     8	5 ;       HGP2      NG3P3       HGP2
+    7     1     9	5 ;       HGP2      NG3P3       HGP2
+    8     1     9	5 ;       HGP2      NG3P3       HGP2
+    1     2     3	5 ;      NG3P3      CG324        PG2
+    1     2    10	5 ;      NG3P3      CG324       HGA2
+    1     2    11	5 ;      NG3P3      CG324       HGA2
+    3     2    10	5 ;        PG2      CG324       HGA2
+    3     2    11	5 ;        PG2      CG324       HGA2
+   10     2    11	5 ;       HGA2      CG324       HGA2
+    2     3     4	5 ;      CG324        PG2      OG2P1
+    2     3     5	5 ;      CG324        PG2      OG2P1
+    2     3     6	5 ;      CG324        PG2      OG2P1
+    4     3     5	5 ;      OG2P1        PG2      OG2P1
+    4     3     6	5 ;      OG2P1        PG2      OG2P1
+    5     3     6	5 ;      OG2P1        PG2      OG2P1
+
+[ dihedrals ]
+;	ai	  aj	ak	  al funct			  c0			c1			  c2			c3			  c4			c5
+    7     1     2     3	 9 ;       HGP2      NG3P3      CG324        PG2
+    7     1     2    10	 9 ;       HGP2      NG3P3      CG324       HGA2
+    7     1     2    11	 9 ;       HGP2      NG3P3      CG324       HGA2
+    8     1     2     3	 9 ;       HGP2      NG3P3      CG324        PG2
+    8     1     2    10	 9 ;       HGP2      NG3P3      CG324       HGA2
+    8     1     2    11	 9 ;       HGP2      NG3P3      CG324       HGA2
+    9     1     2     3	 9 ;       HGP2      NG3P3      CG324        PG2
+    9     1     2    10	 9 ;       HGP2      NG3P3      CG324       HGA2
+    9     1     2    11	 9 ;       HGP2      NG3P3      CG324       HGA2
+    1     2     3     4	 9 ;      NG3P3      CG324        PG2      OG2P1
+    1     2     3     5	 9 ;      NG3P3      CG324        PG2      OG2P1
+    1     2     3     6	 9 ;      NG3P3      CG324        PG2      OG2P1
+   10     2     3     4	 9 ;       HGA2      CG324        PG2      OG2P1
+   10     2     3     5	 9 ;       HGA2      CG324        PG2      OG2P1
+   10     2     3     6	 9 ;       HGA2      CG324        PG2      OG2P1
+   11     2     3     4	 9 ;       HGA2      CG324        PG2      OG2P1
+   11     2     3     5	 9 ;       HGA2      CG324        PG2      OG2P1
+   11     2     3     6	 9 ;       HGA2      CG324        PG2      OG2P1
+
