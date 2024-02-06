@@ -1,8 +1,0 @@
-For task 2: we want them to make a box thats ~3x3 nm right (for a 1.2 nm cutoff)? I think it would be better to specify that in the title instead of "create a single clay sheet from 24 MMT UCs" cause they might make -nbox 24 24 1 which would be way too big
-Suggestion: title of task 2 -> Use genconf to create a single clay sheet from MMT UCs with a cutoff of 1.2 nm
-
-Task 6: the EM troubleshooting part might confuse some as we haven't got to that stage in this set-up yet
-Suggestion: move to the bottom of the EM section (task 9) and rephrase task 6 and 9 to make references make sense again
-
-Task 12-14: do it all on VM instead
-Suggestion: changes to the start of the analysis instructions (task 12)
