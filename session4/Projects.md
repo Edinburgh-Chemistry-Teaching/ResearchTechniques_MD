@@ -1,5 +1,6 @@
-Projects:
+# Projects:
 
+## drugs
 
 **Cipro**
 
@@ -10,8 +11,6 @@ Projects:
 
 
 **TTC**
-
-(change to charmm ff)
 
 4 prot states x 1 clay x 4 ions = 16 
 
@@ -25,6 +24,7 @@ Projects:
 
 
 
+## environmental
 
 **Apigenin** 
 
@@ -33,14 +33,22 @@ Projects:
 - our paper https://pubs.acs.org/doi/full/10.1021/acs.jpcc.3c00174
 
 
-**glyphosate + diss prod**
-
-??? 
-
-(V to make) 
 
 
+**glyphosate + ampa**
 
+2 clays x 5 gly x Na/ Ca/ Cu   =  30
+
+2 clays x 3 ampa x Na/ Ca/ Cu   =  18
+
+- Gly with MMT - very good with copper - experim work: https://pubs.acs.org/doi/full/10.1021/es970341l
+
+- Gly with KAO (new-ish modeling study)  https://bsssjournals.onlinelibrary.wiley.com/doi/full/10.1111/ejss.12971
+
+
+
+
+## IONS
 **Cs+ / Sr2+ / Ba2+ / Ra2+ - radio**
 
 1 clay x NaCl x 3 - 4 radio ions
@@ -54,6 +62,8 @@ nuclear poluttion material protection
 KAO x NaCl x 4 ions
 
 https://www.sciencedirect.com/science/article/pii/S0011916409012806#:~:text=The%20adsorption%20capacity%20of%20Pb,metal%20ions%20onto%20kaolinite%20clay.
+
+
 
 
 
