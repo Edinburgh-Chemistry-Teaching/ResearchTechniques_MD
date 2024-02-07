@@ -7582,7 +7582,7 @@
 
 ; specific (non-wildcard) dihedral parameters from 
 ;      i        j        k        l  func         phi0         kphi  mult
-
+   OG311    CG2O2    CG321    CG321     9   180.000000     0.000000     6
 ; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/metals/CHARMM_METAL/par_all22_prot_metals.inp
 ;      i        j        k        l  func         phi0         kphi  mult
      CE1      CE1      CT3       HA     9     0.000000     0.125520     3 ; 
