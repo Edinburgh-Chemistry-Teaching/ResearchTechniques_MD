@@ -1774,6 +1774,10 @@
     HPER     OPER     1   0.09630000    435972.80 ; H2O2
     OPER     OPER     1   0.14420000    238906.40 ; H2O2
 
+; bond parameters added manually
+;      i        j  func           b0           kb
+  CG2R67   OG3R60     1   0.13500000    234304.00
+  CG2D1O   CG2DC2     1   0.14500000    251040.00
 
 [ angletypes ]
 
@@ -7576,6 +7580,23 @@
 ;      i        j        k  func       theta0       ktheta          ub0          kub
       HT       OT       HT     5   104.520000   460.240000   0.00000000         0.00 ; FROM TIPS3P GEOMETRY
     HPER     OPER     OPER     5    99.920000   505.427200   0.00000000         0.00 ; H2O2
+
+; angle parameters added manually
+;      i        j        k  func       theta0       ktheta          ub0          kub
+  CG2R62   CG2R67   OG3R60     5   120.000000   334.720000   0.00000000         0.00
+  CG2R67   CG2R67   OG3R60     5   113.200000   368.192000   0.00000000         0.00
+  CG2R62   OG3R60   CG2R67     5   115.000000   334.720000   0.00000000         0.00
+  CG2R62   CG2R61    OG311     5   120.000000   378.233600   0.00000000         0.00
+  CG2DC1    CG2O5   CG2R61     5   108.420000   335.389440   0.00000000         0.00
+  CG2DC1   CG2D1O   CG2DC2     5   108.060000   502.080000   0.00000000         0.00
+  CG2DC2   CG2D1O    OG311     5   111.880000   574.128480   0.00000000         0.00
+  CG2D1O   CG2DC2   CG2R61     5   122.960000   390.450880   0.00000000         0.00
+  CG2D1O   CG2DC2     HGA4     5   118.000000   351.456000   0.00000000         0.00
+  CG2DC2   CG2R61   OG3R60     5   113.900000   167.360000   0.00000000         0.00
+  CG2R61   CG2R67   OG3R60     5   120.000000   334.720000   0.00000000         0.00
+  CG2R61   OG3R60   CG2R67     5   115.000000   334.720000   0.00000000         0.00
+  CG2R61   CG2R67   OG3R60     5   120.000000   334.720000   0.00000000         0.00
+  CG2R62   CG2R61    OG312     5   120.000000   334.720000   0.00000000         0.00
 
 
 [ dihedraltypes ]
@@ -24069,6 +24090,59 @@
 ; Include dihedral type definitions missing from upstream CHARMM FF.
 #include "ffmissingdihedrals.itp"
 
+; dihedral parameters added manually
+;      i        j        k        l  func         phi0         kphi  mult
+  CG2R62   CG2R61   CG2R61    OG312     9   180.000000    12.970400     2
+   OG311   CG2R61   CG2R62   CG2R62     9   180.000000    12.970400     2
+   OG311   CG2R61   CG2R62   CG2R63     9   180.000000    12.970400     2
+  CG2R62   CG2R61    OG311     HGP1     9   180.000000     4.142160     2
+  CG2R63   CG2R62   CG2R62   OG3R60     9   180.000000     1.673600     2
+  CG2R61   CG2R62   CG2R63   CG2R62     9   180.000000     6.694400     2
+  CG2R67   CG2R62   CG2R63   CG2R62     9   180.000000     6.694400     2
+  CG2R63   CG2R62   CG2R67   OG3R60     9   180.000000    12.970400     2
+   HGR62   CG2R62   CG2R67   OG3R60     9   180.000000    10.041600     2
+  CG2R61   CG2R62   OG3R60   CG2R67     9     0.000000     3.179840     2
+  CG2R62   CG2R62   OG3R60   CG2R67     9     0.000000     3.932960     2
+  CG2R61   CG2R67   CG2R67   OG3R60     9     0.000000     1.569000     1
+  CG2R61   CG2R67   CG2R67   OG3R60     9   180.000000     3.932960     2
+  CG2R61   CG2R67   CG2R67   OG3R60     9   180.000000     0.794960     3
+  CG2R61   CG2R67   CG2R67   OG3R60     9     0.000000     0.669440     4
+  CG2R62   CG2R67   OG3R60   CG2R62     9     0.000000     3.179840     2
+  CG2R67   CG2R67   OG3R60   CG2R62     9     0.000000     3.179840     2
+  CG2DC2   CG2D1O   CG2DC1    CG2O5     9   180.000000     2.345132     1
+  CG2DC2   CG2D1O   CG2DC1    CG2O5     9   180.000000     8.368000     2
+  CG2DC2   CG2D1O   CG2DC1     HGA4     9   180.000000    13.439845     2
+  CG2DC1   CG2D1O   CG2DC2   CG2R61     9   180.000000     2.092000     1
+  CG2DC1   CG2D1O   CG2DC2   CG2R61     9     0.000000     8.368000     2
+  CG2DC1   CG2D1O   CG2DC2   CG2R61     9     0.000000     4.184000     3
+  CG2DC1   CG2D1O   CG2DC2     HGA4     9   180.000000     4.184000     2
+   OG311   CG2D1O   CG2DC2   CG2R61     9   180.000000     4.784822     2
+   OG311   CG2D1O   CG2DC2     HGA4     9   180.000000     1.083238     2
+  CG2DC2   CG2D1O    OG311     HGP1     9   180.000000     8.606488     1
+  CG2DC2   CG2D1O    OG311     HGP1     9   180.000000     6.468464     2
+  CG2DC2   CG2D1O    OG311     HGP1     9   180.000000     1.732594     3
+  CG2DC2   CG2D1O    OG311     HGP1     9   180.000000     0.042258     6
+  CG2D1O   CG2DC1    CG2O5   CG2R61     9   180.000000    13.744440     2
+    HGA4   CG2DC1    CG2O5   CG2R61     9   180.000000    12.962450     2
+  CG2D1O   CG2DC2   CG2R61   CG2R61     9   180.000000     3.138000     2
+  CG2D1O   CG2DC2   CG2R61   CG2R61     9     0.000000     0.794960     4
+  CG2D1O   CG2DC2   CG2R61   OG3R60     9   180.000000     3.138000     2
+  CG2D1O   CG2DC2   CG2R61   OG3R60     9     0.000000     0.794960     4
+    HGA4   CG2DC2   CG2R61   OG3R60     9   180.000000     2.510400     2
+  CG2DC1    CG2O5   CG2R61   CG2R61     9   180.000000     3.792796     2
+  CG2DC2   CG2R61   CG2R61    CG2O5     9   180.000000    12.970400     2
+   CG2O5   CG2R61   CG2R61    OG311     9   180.000000    10.310213     2
+   CG2O5   CG2R61   CG2R61   OG3R60     9   180.000000    10.310213     2
+  CG2R67   CG2R61   CG2R61    OG311     9   180.000000    12.970400     2
+  CG2R61   CG2R61   CG2R67   OG3R60     9   180.000000    12.970400     2
+   HGR61   CG2R61   CG2R67   OG3R60     9   180.000000    10.041600     2
+  CG2DC2   CG2R61   OG3R60   CG2R67     9     0.000000     3.179840     2
+  CG2R61   CG2R61   OG3R60   CG2R67     9     0.000000     3.179840     2
+  CG2R61   CG2R67   OG3R60   CG2R61     9     0.000000     3.179840     2
+  CG2R67   CG2R67   OG3R60   CG2R61     9     0.000000     3.179840     2
+  CG2R62   CG2R61   CG2R61    OG311     9   180.000000    12.970400     2
+   OG312   CG2R61   CG2R62   CG2R62     9   180.000000    12.970400     2
+   OG312   CG2R61   CG2R62   CG2R63     9   180.000000    12.970400     2
 
 [ dihedraltypes ]
 
@@ -24654,3 +24728,7 @@
 
 ; wildcard improper dihedral parameters from toppar_c36_jul21/toppar_water_ions.str
 ;      i        j        k        l  func         phi0         kphi
+
+; improper dihedral parameters added manually
+;      i        j        k        l  func         phi0         kphi
+   CG2O5   CG2DC1   CG2R61    OG2D3     2     0.000000   574.623029
