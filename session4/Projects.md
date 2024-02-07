@@ -52,7 +52,6 @@ Project6 Heavy metal
 
 
 
-
 **glyphosate + ampa**
 
 2 clays x 5 gly x Na/ Ca/ Cu   =  30
