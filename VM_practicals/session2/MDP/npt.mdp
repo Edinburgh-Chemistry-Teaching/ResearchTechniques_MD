@@ -50,4 +50,3 @@ constraints              = h-bonds
 constraint-algorithm     = LINCS
 lincs_iter               = 1
 lincs_order              = 4
-

@@ -1,0 +1,50 @@
+# This file was created Tue Apr 18 17:08:04 2023
+# Created by:
+#                  :-) GROMACS - gmx sasa, 2022.4-Homebrew (-:
+# 
+# Executable:   /usr/local/bin/../Cellar/gromacs/2022.4/bin/gmx
+# Data prefix:  /usr/local/bin/../Cellar/gromacs/2022.4
+# Working dir:  /Users/valentina/Desktop/Omar_El/Apigenin/Api2
+# Command line:
+#   gmx sasa -s confout.gro -f traj.trr -probe 0.14 -o area -ndots 50 -pbc
+# gmx sasa is part of G R O M A C S:
+#
+# GROwing Monsters And Cloning Shrimps
+#
+@    title "Solvent Accessible Surface"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Area (nm\S2\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Total"
+      0.000    4.818
+      2.000    4.658
+      4.000    4.784
+      6.000    4.742
+      8.000    4.715
+     10.000    4.839
+     12.000    4.570
+     14.000    4.839
+     16.000    4.686
+     18.000    4.487
+     20.000    4.751
+     22.000    4.656
+     24.000    4.750
+     26.000    4.661
+     28.000    4.714
+     30.000    4.571
+     32.000    4.711
+     34.000    4.642
+     36.000    4.594
+     38.000    4.579
+     40.000    4.693
+     42.000    4.620
+     44.000    4.587
+     46.000    4.473
+     48.000    4.672
+     50.000    4.720

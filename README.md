@@ -4,6 +4,7 @@
 - [x] symlink to datastore to get data from VM
 - [x] Link to space on datastore for updating course materials
 - [x] Figure out username/password for students
+- [ ] Get priority time for next year
 
 
 ### Files:
@@ -16,15 +17,11 @@
 - [x] **Session1:** Valentina
 - [x] **Session2** Hannah
  	- Need to add running on Eddie for the final sim
-- [ ] **Session3:** Hannah
-  - [ ] Overleaf template 
+- [x] **Session3:** Hannah
   - [x] Example report & marking scheme
 - [ ] **Session4**
+  - [x] Overleaf template
+  - [x] word template
 
 #### Projects
-  - AC:
-    - ...
-  - MBC:
-    - ...
-  - MC
-    - ...
+

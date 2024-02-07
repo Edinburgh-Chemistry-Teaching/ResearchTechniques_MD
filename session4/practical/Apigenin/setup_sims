@@ -1,0 +1,24 @@
+ mkdir Api4
+ cd  Api4
+ gmx editconf -f ../api4_ini.pdb -box 5 5 5 
+ cp ../api4.* .
+ cp ../Api0/em.mdp .
+ cp ../Api0/prod_isotropic.mdp .
+ gmx solvate -cp out.gro -cs spc216 -p api4.top
+ mv out.gro api4_sol.gro
+ subl api4.top
+ 
+ gmx grompp -f em.mdp -c api4_sol.gro -p api4.top -maxwarn 1
+ gmx genion -s topol.tpr -p api4.top -neutral
+ mv out.gro api4_sol_Na.gro
+ subl api4_sol_Na.gro
+ 
+ gmx grompp -f em.mdp -c api4_sol_Na.gro -p api4.top 
+ gmx mdrun
+
+ gmx grompp -f prod_isotropic.mdp -c confout.gro -p api4.top
+ gmx mdrun -v 
+
+ gmx sasa -s confout.gro -f traj.trr -probe 0.14 -o area -ndots 50 -pbc
+
+ gmx hbond -g -r 0.30 -a 20 -num api_water.xvg
