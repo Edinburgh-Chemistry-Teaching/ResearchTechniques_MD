@@ -18,8 +18,8 @@ xtc-grps                 = System
 energygrps               = System
 
 ; Bond parameters
-constraints             = all-bonds
-
+constraints             = h-bonds
+constraint-algorithm    = lincs
 ; NEIGHBORSEARCHING PARAMETERS
 cutoff-scheme			 = Verlet
 pbc                      = xyz
