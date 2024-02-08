@@ -5,10 +5,10 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
     <meta content="Session 3: Layered material simulations" name="description"/>
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
-          rel="stylesheet">
+<!--    <link href="https://fonts.googleapis.com" rel="preconnect">-->
+<!--    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"-->
+<!--          rel="stylesheet">-->
     <link href="../scripts/style.css" rel="stylesheet" data-toggle="true"/>
     <title>Session 3</title>
 </head>
@@ -285,7 +285,7 @@
                         notify you about whether it was successful or not. <i>If unsuccessful, repeat this step until
                             the requested total number have
                             been added (you may need to lower <code>-nmol
-                                <number>
+                                &lt;number&gt;
                             </code> if it successfully added some but not all).</i>
                     </p>
                 </blockquote>
@@ -297,6 +297,7 @@
                                  width="55%"/>
                             <figcaption>
                                 Grey decanoic acid molecules inserted into the vacuum space above the clay sheet.
+                            </figcaption>
                         </figure>
                     </div>
                 </div>
@@ -416,6 +417,7 @@ DECA           1
             <li>Make a copy of the topology <code>MMT_slab.top</code> file:
                 <blockquote>
                     <pre>$ cp MMT_slab.top MMT_dec_solv.top</pre>
+                </blockquote>
             </li>
             <li>Use of <code>solvate</code>: <br>
                 <blockquote>
@@ -763,9 +765,7 @@ Norm of force     =  1.6491472e+06
             </li>
             <li>
                 Transfer the results from the production run to your local machine:
-                <p>
                 <pre>$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/session3/prod* ~/session3/</pre>
-                </p>
             </li>
             <li>Refer to the <a href="../session2/Session2.html#Calculating_the_RMSD">Session 2</a> for instructions on
                 how to calculate the <abbr>RMSD</abbr> of the system.
@@ -876,11 +876,12 @@ $ gmx rdf &dash;f prod.xtc &dash;s prod.tpr &dash;n Na_OW.ndx &dash;o rdf_Na_OW.
             </ol>
         </div>
     </div>
-    <script src="../scripts/generate_header.js"></script>
-    <script src="../scripts/generate_overview.js"></script>
-    <script src="../scripts/scroll_up.js"></script>
-    <script src="../scripts/feedback.js"></script>
-    <script src="../scripts/adjust_for_dyslexic.js"></script>
+</div>
+    <script src="../scripts/generate_header.js" defer></script>
+    <script src="../scripts/generate_overview.js" defer></script>
+    <script src="../scripts/scroll_up.js" defer></script>
+    <script src="../scripts/feedback.js" defer></script>
+    <script src="../scripts/adjust_for_dyslexia.js" defer></script>
     <script>window.onload = function () {
         addFeedback('https://forms.office.com/e/VukKtnCbxq?origin=lprLink', 'img/FB3.png')
         generateOverview();
