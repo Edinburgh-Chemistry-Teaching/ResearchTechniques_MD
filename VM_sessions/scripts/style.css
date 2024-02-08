@@ -998,7 +998,7 @@ h2.enum::before {
     top: 20px;
     padding: 10px;
     background-color: #EDD1B0;
-    color: #004f71;
+    color: #041E42;
     border: 1px solid #004f71;
     cursor: pointer;
     border-radius: 5px;
@@ -1006,6 +1006,13 @@ h2.enum::before {
     font-family: OpenDyslexicAltaRegular;
     text: "Dyslexia-friendly display";
 }
+
+.dyslexiaButton:hover {
+    background-color: #041E42;
+    color: #EDD1B0;
+    font-weight: bold;
+}
+
 
 .scrollUpButton:hover {
     background-color: lightgoldenrodyellow;
