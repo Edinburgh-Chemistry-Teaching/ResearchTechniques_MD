@@ -947,6 +947,7 @@ h3.enum::before {
 }
 
 h2.enum::before {
+    counter-set: subsection 0;
     counter-increment: section 1;
     content: counter(section) ". ";
 }
@@ -998,18 +999,22 @@ h2.enum::before {
     top: 20px;
     padding: 10px;
     background-color: #EDD1B0;
-    color: #041E42;
+    color: #004f71;
     border: 1px solid #004f71;
     cursor: pointer;
     border-radius: 5px;
-    font-size-adjust: 1.5;
-    font-family: OpenDyslexicAltaRegular;
-    text: "Dyslexia-friendly display";
+    width: 250px;
+    height: 50px;
+    text-align: center;
+    justify-content: center;
+    font-size: 16px;
+    font-family: OpenDyslexicAltaRegular, sans-serif;
+    font-weight: bold;
 }
 
 .dyslexiaButton:hover {
-    background-color: #041E42;
-    color: #EDD1B0;
+    background-color: #EDDD6B;
+    color: #004f71;
     font-weight: bold;
 }
 

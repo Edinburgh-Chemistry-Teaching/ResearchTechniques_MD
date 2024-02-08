@@ -1,9 +1,14 @@
-function  generateHeader () {
-        fetch('../scripts/demonstrators.txt')
-        .then(response => response.text())
+function generateHeader() {
+    fetch('../scripts/demonstrators.txt')
+        .then(response => {
+            if (!response.ok) {
+                return fetch('scripts/demonstrators.txt')
+                    } else {
+                return response;
+            }
+        }).then(response => response.text())
         .then(data => {
             let demonstrators = data.split('\n').filter(line => line.trim() !== '');
-
             let oldDiv = document.getElementById('title');
             let title = oldDiv.textContent;
 
