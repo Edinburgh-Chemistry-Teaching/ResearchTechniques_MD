@@ -5,11 +5,11 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
     <meta content="Session 3: Layered material simulations" name="description"/>
-<!--    <link href="https://fonts.googleapis.com" rel="preconnect">-->
-<!--    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">-->
-<!--    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"-->
-<!--          rel="stylesheet">-->
-    <link href="../scripts/style.css" rel="stylesheet" data-toggle="true"/>
+    <!--    <link href="https://fonts.googleapis.com" rel="preconnect">-->
+    <!--    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">-->
+    <!--    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"-->
+    <!--          rel="stylesheet">-->
+    <link data-toggle="true" href="../scripts/style.css" rel="stylesheet"/>
     <title>Session 3</title>
 </head>
 
@@ -55,18 +55,16 @@
         of cations (Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, Mg<sup>2+</sup>, ...) in the interlayer space.
     </p>
     <div class="flex-figure">
-        <div class="flex-figure-item">
-            <figure>
-                <img alt="" class="fit-picture" decoding="auto"
-                     src="img/clay_sheet_structure.png" width="40%"/>
-                <img alt="" class="fit-picture" decoding="auto" src="img/clay_with_IL.png"
-                     width="50%"/>
-                <figcaption>
-                    Side view illustrations of clay sheet structure and composition (left) and two stacked clay with
-                    interlayer space (right).
-                </figcaption>
-            </figure>
-        </div>
+        <figure>
+            <img alt="" class="fit-picture" decoding="auto"
+                 src="img/clay_sheet_structure.png" width="40%"/>
+            <img alt="" class="fit-picture" decoding="auto" src="img/clay_with_IL.png"
+                 width="50%"/>
+            <figcaption>
+                Side view illustrations of clay sheet structure and composition (left) and two stacked clay with
+                interlayer space (right).
+            </figcaption>
+        </figure>
     </div>
 </div>
 <!--<div class="box" style="width: 50%; border: solid 1px dimgray; background-color: #b3d4fc; color: dimgray">-->
@@ -139,8 +137,7 @@
         </tbody>
     </table>
     <!--        <span style="align-content: center; text-align: justify; align-items: center">-->
-    <div class="flex-container">
-        <div class="flex-item">
+    <div class="flex-figure">
             <figure>
                 <img alt="" class="fit-picture" decoding="auto" src="img/uc_top.png"
                      width="35%"/>
@@ -150,7 +147,6 @@
                     Montmorillonite unit cell top view (left) and side view (right).
                 </figcaption>
             </figure>
-        </div>
     </div>
 
     <!--        <figure>-->
@@ -221,8 +217,7 @@
                     <i>Remember:</i> The final line in the <code>.gro</code> file shows the x, y and z cell lengths in
                     nanometers.
                 </blockquote>
-                <div class="flex-container">
-                    <div class="flex-item">
+                <div class="flex-figure">
                         <figure>
                             <img alt="" class="fit-picture" decoding="auto"
                                  src="img/sheet_top.png"
@@ -235,7 +230,6 @@
                             </figcaption>
                         </figure>
                     </div>
-                </div>
             </li>
         </ul>
     </div>
@@ -253,13 +247,14 @@
                     using <code>nano</code>
                 </blockquote>
                 <div class="flex-figure">
-                    <div class="flex-figure-item">
-                        <figure>
-                            <img alt="" class="fit-picture" decoding="auto"
-                                 src="img/sheet_side_ext_50A.png"
-                                 width="55%"/>
-                        </figure>
-                    </div>
+                    <figure>
+                        <img alt="" class="fit-picture" decoding="auto"
+                             src="img/sheet_side_ext_50A.png"
+                             width="55%"/>
+                        <figcaption>
+                            Montmorillonite sheet model side view with extended box height.
+                        </figcaption>
+                    </figure>
                 </div>
             </li>
         </ul>
@@ -290,16 +285,14 @@
                     </p>
                 </blockquote>
                 <div class="flex-figure">
-                    <div class="flex-figure-item">
-                        <figure>
-                            <img alt="" class="fit-picture" decoding="auto"
-                                 src="img/sheet_side_dec_50A.png"
-                                 width="55%"/>
-                            <figcaption>
-                                Grey decanoic acid molecules inserted into the vacuum space above the clay sheet.
-                            </figcaption>
-                        </figure>
-                    </div>
+                    <figure>
+                        <img alt="" class="fit-picture" decoding="auto"
+                             src="img/sheet_side_dec_50A.png"
+                             width="55%"/>
+                        <figcaption>
+                            Grey decanoic acid molecules inserted into the vacuum space above the clay sheet.
+                        </figcaption>
+                    </figure>
                 </div>
             </li>
         </ul>
@@ -310,7 +303,6 @@
         (<code>.top</code>) file
         that includes all molecules present in the system. The following explains the structure of GROMACS
         topology files in some more detail.
-        <!--        than in <a href="../Session2/Session2.html">Session2</a>.-->
     </p>
     <p>
         In the first section, the force field parameters are defined. These always include combination rules and
@@ -432,15 +424,13 @@ DECA           1
                     </p>
                 </blockquote>
                 <div class="flex-figure">
-                    <div class="flex-figure-item">
-                        <div>
-                            <figure>
-                                <img alt="" src="img/sheet_side_dec_solv_50A.png" width="55%"/>
-                                <figcaption>Solvated MMT sheet model with grey decanoic acid molecules in simulation
-                                    box.
-                                </figcaption>
-                            </figure>
-                        </div>
+                    <div>
+                        <figure>
+                            <img alt="" class='fit-picture' decoding="auto" src="img/sheet_side_dec_solv_50A.png" width="55%"/>
+                            <figcaption>Solvated MMT sheet model with grey decanoic acid molecules in simulation
+                                box.
+                            </figcaption>
+                        </figure>
                     </div>
                 </div>
                 <p>After this step, make sure to visualise the system in VMD to check that no water molecules
@@ -457,17 +447,15 @@ DECA           1
                     to match the new number of atoms in the file. Make sure to also update the number of water
                     molecules in the <code>MMT_dec_solv.top</code> file.</p>
                 <div class="flex-figure">
-                    <div class="flex-figure-item">
-                        <figure>
-                            <img alt="" class="fit-picture"
-                                 decoding="auto"
-                                 src="img/sheet_side_water_mol.png"
-                                 width="55%"/>
-                            <figcaption>
-                                Water molecule <code>SOL60</code> inside the clay sheet.
-                            </figcaption>
-                        </figure>
-                    </div>
+                    <figure>
+                        <img alt="" class="fit-picture"
+                             decoding="auto"
+                             src="img/sheet_side_water_mol.png"
+                             width="55%"/>
+                        <figcaption>
+                            Water molecule <code>SOL60</code> inside the clay sheet.
+                        </figcaption>
+                    </figure>
                 </div>
             </li>
         </ol>
@@ -548,17 +536,15 @@ information for each atom.
             </li>
         </ol>
         <div class="flex-figure">
-            <div class="flex-figure-item">
-                <figure>
-                    <img alt=""
-                         decoding="auto" src="img/sheet_side_dec_solv_ions_50A.png"
-                         width="55%"/>
-                    <figcaption>
-                        Solvated and MMT sheet model in simulation box with grey decanoic acid molecules and pink
-                        Na<sup>+</sup> ions.
-                    </figcaption>
-                </figure>
-            </div>
+            <figure>
+                <img alt=""
+                     decoding="auto" src="img/sheet_side_dec_solv_ions_50A.png"
+                     width="55%"/>
+                <figcaption>
+                    Solvated and MMT sheet model in simulation box with grey decanoic acid molecules and pink
+                    Na<sup>+</sup> ions.
+                </figcaption>
+            </figure>
         </div>
     </div>
     <h2 class="enum" id="toc_7">Preparing the <abbr>MD</abbr> simulation parameter files</h2>
@@ -650,7 +636,7 @@ Norm of force     =  1.6491472e+06
                     organics or other waters. Before repeating, follow the <em>EM Troubleshoot</em> instructions.
                 </p>
                 <div id="EM_toubleshoot"
-                     style="padding: 20px;background: aliceblue; border: darkslategray;border-width: 1px;border-style: solid;color: darkslategray">
+                     style="padding: 20px;background: #DBE1F1; border: darkslategray; border-width: 1px;border-style: solid">
                     <p><em style="font-weight: bold">EM Troubleshooting:</em> Note which atom has the highest forces in
                         the energy minimisation
                         output of GROMACS.<br>
@@ -877,17 +863,17 @@ $ gmx rdf &dash;f prod.xtc &dash;s prod.tpr &dash;n Na_OW.ndx &dash;o rdf_Na_OW.
         </div>
     </div>
 </div>
-    <script src="../scripts/generate_header.js" defer></script>
-    <script src="../scripts/generate_overview.js" defer></script>
-    <script src="../scripts/scroll_up.js" defer></script>
-    <script src="../scripts/feedback.js" defer></script>
-    <script src="../scripts/adjust_for_dyslexia.js" defer></script>
-    <script>window.onload = function () {
-        addFeedback('https://forms.office.com/e/VukKtnCbxq?origin=lprLink', 'img/FB3.png')
-        generateOverview();
-        generateHeader();
-        scrollUp();
-        adjustForDyslexia();
-    }</script>
+<script defer src="../scripts/generate_header.js"></script>
+<script defer src="../scripts/generate_overview.js"></script>
+<script defer src="../scripts/scroll_up.js"></script>
+<script defer src="../scripts/feedback.js"></script>
+<script defer src="../scripts/adjust_for_dyslexia.js"></script>
+<script>window.onload = function () {
+    addFeedback('https://forms.office.com/e/VukKtnCbxq?origin=lprLink', 'img/FB3.png')
+    generateOverview();
+    generateHeader();
+    scrollUp();
+    adjustForDyslexia();
+}</script>
 </body>
 </html>

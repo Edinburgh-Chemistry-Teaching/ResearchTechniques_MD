@@ -8,11 +8,14 @@ function adjustStyle() {
         if (linkElements[i].getAttribute('href') !== null && linkElements[i].getAttribute('href').endsWith('scripts/style.css'))
         {
             console.log('change to dyslexia style');
-            linkElements[i].setAttribute('href', '../scripts/style_dyslexia.css');
+            let linkStart = linkElements[i].getAttribute('href').match(/.*(?=style.css)/);
+            linkElements[i].setAttribute('href', linkStart + 'style_dyslexia.css');
             button.innerHTML = 'Regular display';
         } else if (linkElements[i].getAttribute('href') !== null && linkElements[i].getAttribute('href').endsWith('scripts/style_dyslexia.css')) {
             console.log('change to regular style');
-            linkElements[i].setAttribute('href', '../scripts/style.css');
+                        let linkStart = linkElements[i].getAttribute('href').match(/.*(?=style_dyslexia.css)/);
+
+            linkElements[i].setAttribute('href', linkStart + 'style.css');
         button.innerHTML = 'Dyslexia-friendly display';
         }
     }
