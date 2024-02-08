@@ -1,0 +1,12 @@
+; additional params for the molecule
+#include "ttc3.prm"
+#include "ttc3.itp"
+
+[ system ]
+; Name
+tetracycline
+
+[ molecules ]
+; Compound		  #mols
+TTC3			1
+

@@ -1,0 +1,12 @@
+; additional params for the molecule
+#include "gly3.prm"
+#include "gly3.itp"
+
+[ system ]
+; Name
+glyphosate
+
+[ molecules ]
+; Compound		  #mols
+GLY3			1
+
