@@ -17,6 +17,9 @@ xtc_precision            = 1000
 xtc-grps                 = System
 energygrps               = System
 
+; Bond parameters
+constraints             = all-bonds
+
 ; NEIGHBORSEARCHING PARAMETERS
 cutoff-scheme			 = Verlet
 pbc                      = xyz
