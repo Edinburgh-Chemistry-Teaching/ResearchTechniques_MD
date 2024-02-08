@@ -15,8 +15,7 @@ Include the following:
  simulation length, etc.) for your energy minimisation, equilibration and production runs.
 - Analysis: How did you make sure your system was equilibrated within the time frame that you analysed? 
 - What analysis did you perform on your trajectories? 
- Include all relevant information about the analysis you performed on your trajectories, including the softwares you 
-- used, (e.g. which tools did you use, which parameters did you use, how did you prepare the plot of your analysis data, how did you produce the rendering of 
+ Include all relevant information about the analysis you performed on your trajectories, including the software you used, (e.g. which tools did you use, which parameters did you use, how did you prepare the plot of your analysis data, how did you produce the rendering of 
  your system, etc.)
 
 ## Results (max. 400 words including figure captions):
