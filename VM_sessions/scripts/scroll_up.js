@@ -35,4 +35,10 @@ function scrollUp() {
         // Scroll to the "overview" section
         overviewSection.scrollIntoView({behavior: "smooth"});
     });
+    window.addEventListener('beforeprint', function() {
+            button.style.display = 'none';
+    });
+    window.addEventListener('afterprint', function() {
+            button.style.display = 'block';
+    });
 }

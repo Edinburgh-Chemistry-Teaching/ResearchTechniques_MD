@@ -1,3 +1,6 @@
+
+
+
 @font-face {
     font-family: 'Source Sans 3';
     src: url('../fonts/SourceSans3-Regular.ttf') format('truetype');
@@ -823,8 +826,12 @@ pre[class*="language-"] {
 .bbox, .tbox {
     max-width: 960px;
     padding: 0.5ex 20px;
-    border: 1px solid #041E42;
+    border-top: 1px #041E42 dashed;
     margin: 20px auto;
+}
+
+.bbox:last-of-type, .tbox:last-of-type {
+    border-bottom: 1px #041E42 dashed;
 }
 
 
@@ -1011,20 +1018,8 @@ h2.enum::before {
 .scrollUpButton {
     display: none;
     position: fixed;
-    right: 20px;
-    bottom: 20px;
-    padding: 10px;
-    background-color: white;
-    color: #004f71;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 18px;
-}
-
-.scrollUpButton:hover {
-    background-color: #f1f1f1;
-    color: #041E42;
+    width: 0;
+    height: 0;
 }
 
 .collapsible {
@@ -1033,12 +1028,12 @@ h2.enum::before {
   cursor: pointer;
   padding: 18px;
   width: 100%;
-  border: none;
+  border: 1px solid #004f71;
   text-align: left;
   outline: none;
   font-size: 16px;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
     margin-top: 10px;
 }
 
@@ -1056,45 +1051,14 @@ h4 + collapsible:first-of-type {
 }
 .pcontent {
     padding: 0 0 10px 10px;
-    display: none;
+    display: block;
     overflow: hidden;
 }
 
-.pcollapsible::after {
-    content: "\A(click to expand)";
-    white-space: pre;
-    text-align-last: right;
-}
-
-.pcollapsible.active::after {
-    content: "\A(click to contract)";
-    white-space: pre;
-}
-
-.pcollapsible:hover {
-  background-color: #f1f1f1;
-    color: #041E42;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.collapsible:hover {
-  background-color: #f1f1f1;
-    color: #041E42;
-    border-radius: 5px;
-    border: none;
-}
-
-.collapsible.active {
-  background-color: #041E42;
-    color: white;
-    border-radius: 5px 5px 0px 0px;
-    border: none;
-}
 
 .content {
     padding: 10px 10px 20px 20px;
-    display: none;
+    display: block;
     overflow: hidden;
     background-color: white;
     border: none;
@@ -1122,33 +1086,9 @@ h4 + collapsible:first-of-type {
 }
 
 .dyslexiaButton {
-    display: block;
+    display: none;
     position: fixed;
-    right: 20px;
-    top: 20px;
-    padding: 10px;
-    background-color: #EDD1B0;
-    color: #004f71;
-    border: 1px solid #004f71;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 250px;
-    height: 50px;
-    text-align: center;
-    justify-content: center;
-    font-size: 16px;
-    font-family: OpenDyslexicAltaRegular, sans-serif;
-    font-weight: bold;
+    height: 0;
+    width: 0;
 }
 
-.dyslexiaButton:hover {
-    background-color: #EDDD6B;
-    color: #004f71;
-    font-weight: bold;
-}
-
-
-.scrollUpButton:hover {
-    background-color: lightgoldenrodyellow;
-    color: #041E42;
-}
