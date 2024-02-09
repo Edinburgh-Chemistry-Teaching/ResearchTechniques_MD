@@ -1,0 +1,38 @@
+
+[ bondtypes ]
+;      i        j  func           b0           kb
+  CG2R67   OG3R60     1   0.13500000    234304.00
+
+
+[ angletypes ]
+;      i        j        k  func       theta0       ktheta          ub0          kub
+  CG2R62   CG2R61    OG311     5   120.000000   378.233600   0.00000000         0.00
+  CG2R62   CG2R67   OG3R60     5   120.000000   334.720000   0.00000000         0.00
+  CG2R67   CG2R67   OG3R60     5   113.200000   368.192000   0.00000000         0.00
+  CG2R62   OG3R60   CG2R67     5   115.000000   334.720000   0.00000000         0.00
+
+
+[ dihedraltypes ]
+;      i        j        k        l  func         phi0         kphi  mult
+  CG2R62   CG2R61   CG2R61    OG312     9   180.000000    12.970400     2
+   OG311   CG2R61   CG2R62   CG2R62     9   180.000000    12.970400     2
+   OG311   CG2R61   CG2R62   CG2R63     9   180.000000    12.970400     2
+  CG2R62   CG2R61    OG311     HGP1     9   180.000000     4.142160     2
+  CG2R63   CG2R62   CG2R62   OG3R60     9   180.000000     1.673600     2
+  CG2R61   CG2R62   CG2R63   CG2R62     9   180.000000     6.694400     2
+  CG2R67   CG2R62   CG2R63   CG2R62     9   180.000000     6.694400     2
+  CG2R63   CG2R62   CG2R67   OG3R60     9   180.000000    12.970400     2
+   HGR62   CG2R62   CG2R67   OG3R60     9   180.000000    10.041600     2
+  CG2R61   CG2R62   OG3R60   CG2R67     9     0.000000     3.179840     2
+  CG2R62   CG2R62   OG3R60   CG2R67     9     0.000000     3.932960     2
+  CG2R61   CG2R67   CG2R67   OG3R60     9     0.000000     1.569000     1
+  CG2R61   CG2R67   CG2R67   OG3R60     9   180.000000     3.932960     2
+  CG2R61   CG2R67   CG2R67   OG3R60     9   180.000000     0.794960     3
+  CG2R61   CG2R67   CG2R67   OG3R60     9     0.000000     0.669440     4
+  CG2R62   CG2R67   OG3R60   CG2R62     9     0.000000     3.179840     2
+  CG2R67   CG2R67   OG3R60   CG2R62     9     0.000000     3.179840     2
+
+
+[ dihedraltypes ]
+; 'improper' dihedrals 
+;      i        j        k        l  func         phi0         kphi
