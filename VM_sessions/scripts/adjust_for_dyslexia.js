@@ -28,7 +28,7 @@ function adjustForDyslexia() {
     document.body.appendChild(button);
     button.addEventListener('click', function() {
         adjustStyle();
-        });
+    });
         let observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             if (mutation.type === 'childList') {

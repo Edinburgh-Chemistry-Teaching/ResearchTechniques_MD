@@ -764,7 +764,7 @@ pre[class*="language-"] {
     border-bottom-width: 1px;
 }
 
-.bbox {
+.bbox, .tbox {
     max-width: auto;
     padding: 0.5ex 20px;
     border: 1px solid #041E42;
@@ -908,26 +908,51 @@ p.remember::before {
 }
 
 body {
-    counter-reset: task section subsection;
+    counter-reset: task project section subsection;
+}
+
+.tbox {
+    counter-reset: options;
 }
 
 h3.enum::before {
     counter-increment: subsection 1;
     content: counter(section) "." counter(subsection) " ";
 }
+.tbox h4.options::before {
+    content: "Options";
+}
 
+h4.options {
+    margin-bottom: 0;
+}
+
+.tbox .collapsible::before {
+    counter-increment: options 1;
+    content: counter(project, upper-alpha)'.'counter(options, lower-alpha) " - ";
+    font-weight: bold;
+    font-size: 16px;
+}
 .bbox h3::before {
     counter-increment: task 1;
     content: "Task " counter(task);
 }
 
+.tbox h3::before {
+    counter-increment: project 1;
+     content: "Project " counter(project, upper-alpha) ": ";
+}
+
+
 h2.enum::before {
+    counter-set: subsection 0;
     counter-increment: section 1;
     content: counter(section) ". ";
 }
+
 .collapsible {
-  background-color: #777;
-  color: white;
+  background-color: #D8D3D6;
+  color: #041E42;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -935,17 +960,18 @@ h2.enum::before {
   text-align: left;
   outline: none;
   font-size: 15px;
+    border: 1px solid #EDD1B0;
 }
 
-.active, .collapsible:hover {
-  background-color: #555;
-}
+/*.active, .collapsible:hover {*/
+/*  background-color: #555;*/
+/*}*/
 
 .content {
   padding: 0 18px;
-  max-height: 0;
+  /*max-height: 0;*/
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: #D8D3D6;
 }
 
 .scrollUpButton {
@@ -976,7 +1002,7 @@ h2.enum::before {
     right: 20px;
     top: 20px;
     padding: 10px;
-    background-color: white;
+    background-color: #EDD1B0;
     color: #004f71;
     border: 1px solid #004f71;
     cursor: pointer;
@@ -993,7 +1019,7 @@ h2.enum::before {
 }
 
 .dyslexiaButton:hover {
-    background-color: #f1f1f1;
+    background-color: #EDDD6B;
     color: #041E42;
 }
 
@@ -1005,4 +1031,101 @@ code, pre, p, ol, ul {
 
 pre {
     line-height: 2.5;
+}
+.collapsible:hover {
+  background-color: #EDDD6B;
+    color: #041E42;
+    border-radius: 5px;
+    border: 1px solid #004f71;
+}
+
+.collapsible.active {
+  background-color: #EDDD6B;
+    color: #041E42;
+    border-radius: 5px 5px 0px 0px;
+    border: #041E42 1px solid;
+}
+
+.content {
+    padding: 10px 10px 20px 20px;
+    display: none;
+    overflow: hidden;
+    background-color: #EDD1B0;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    border-bottom: 1px solid #041E42;
+    border-right: 1px solid #041E42;
+    border-left: 1px solid #041E42;
+}
+
+.content ol {
+    margin-bottom: 0;
+    list-style-position: outside;
+}
+
+.tbox ol {
+    list-style-position: outside;
+    margin-left: 20px;
+
+}
+.tbox ol > li {
+    margin-bottom: 10px;
+}
+.tbox ol > li:last-child {
+    margin-bottom: 0;
+}
+
+.collapsible {
+  background-color: #EDD1B0;
+  color: #004f71;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-family: 'OpenDyslexicAltaRegular', 'OpenDyslexic', Arial, sans-serif;
+
+}
+
+h4 + collapsible:first-of-type {
+    margin-bottom: -10px;
+    margin-top: -10px;
+}
+
+.pcollapsible {
+  color: #004f71;
+    background-color: #EDD1B0;
+    cursor: pointer;
+    padding: 10px;
+    text-align: left;
+border: 1px solid #EDD1B0;
+}
+.pcontent {
+    padding: 0 0 10px 10px;
+    display: none;
+    overflow: hidden;
+}
+
+.pcollapsible::after {
+    content: "\A(click to expand)";
+    white-space: pre;
+    text-align-last: right;
+}
+
+.pcollapsible.active::after {
+    content: "\A(click to contract)";
+    white-space: pre;
+}
+
+.pcollapsible:hover {
+  background-color: #EDDD6B;
+    color: #041E42;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #041E42;
 }

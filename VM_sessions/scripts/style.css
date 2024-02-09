@@ -1094,9 +1094,6 @@ h4 + collapsible:first-of-type {
     border: none;
 }
 
-/*.content.active {*/
-/*}*/
-
 .content {
     padding: 10px 10px 20px 20px;
     display: none;
@@ -1124,6 +1121,7 @@ h4 + collapsible:first-of-type {
 }
 .tbox ol > li:last-child {
     margin-bottom: 0;
+}
 
 .dyslexiaButton {
     display: block;
@@ -1155,5 +1153,4 @@ h4 + collapsible:first-of-type {
 .scrollUpButton:hover {
     background-color: lightgoldenrodyellow;
     color: #041E42;
-
 }
