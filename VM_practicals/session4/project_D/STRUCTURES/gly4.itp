@@ -1,0 +1,142 @@
+; Created by cgenff_charmm2gmx.py
+
+[ moleculetype ]
+; Name			   nrexcl
+GLY4		 3
+
+[ atoms ]
+;	 nr		  type	resnr residue  atom   cgnr	   charge		mass  typeB    chargeB		massB
+; residue	 1  rtp  q	qsum
+     1      OG2D2      1  GLY4      O1      1     -0.760     15.999   ;
+     2      CG2O3      1  GLY4      C1      2      0.564     12.011   ;
+     3      OG2D2      1  GLY4      O2      3     -0.760     15.999   ;
+     4      CG321      1  GLY4      C2      4     -0.073     12.011   ;
+     5      NG311      1  GLY4      N1      5     -0.717     14.007   ;
+     6      CG321      1  GLY4      C3      6     -0.372     12.011   ;
+     7        PG1      1  GLY4      P1      7      1.474     30.974   ;
+     8      OG2P1      1  GLY4      O3      8     -0.843     15.999   ;
+     9      OG311      1  GLY4      O4      9     -0.759     15.999   ;
+    10      OG2P1      1  GLY4      O5     10     -0.843     15.999   ;
+    11       HGA2      1  GLY4      H1     11      0.090      1.008   ;
+    12       HGA2      1  GLY4      H2     12      0.090      1.008   ;
+    13     HGPAM1      1  GLY4      H3     13      0.368      1.008   ;
+    14       HGA2      1  GLY4      H4     14      0.090      1.008   ;
+    15       HGA2      1  GLY4      H5     15      0.090      1.008   ;
+    16       HGP1      1  GLY4      H6     16      0.361      1.008   ;
+
+[ bonds ]
+;	ai	  aj funct			  c0			c1			  c2			c3
+    1     2	 1 ;       OG2D2      CG2O3
+    2     3	 1 ;       CG2O3      OG2D2
+    2     4	 1 ;       CG2O3      CG321
+    4     5	 1 ;       CG321      NG311
+    4    11	 1 ;       CG321       HGA2
+    4    12	 1 ;       CG321       HGA2
+    5     6	 1 ;       NG311      CG321
+    5    13	 1 ;       NG311     HGPAM1
+    6     7	 1 ;       CG321        PG1
+    6    14	 1 ;       CG321       HGA2
+    6    15	 1 ;       CG321       HGA2
+    7     8	 1 ;         PG1      OG2P1
+    7     9	 1 ;         PG1      OG311
+    7    10	 1 ;         PG1      OG2P1
+    9    16	 1 ;       OG311       HGP1
+
+[ pairs ]
+;	ai	  aj funct			  c0			c1			  c2			c3
+    1     5	 1
+    1    11	 1
+    1    12	 1
+    2     6	 1
+    2    13	 1
+    3     5	 1
+    3    11	 1
+    3    12	 1
+    4     7	 1
+    4    14	 1
+    4    15	 1
+    5     8	 1
+    5     9	 1
+    5    10	 1
+    6    11	 1
+    6    12	 1
+    6    16	 1
+    7    13	 1
+    8    14	 1
+    8    15	 1
+    8    16	 1
+    9    14	 1
+    9    15	 1
+   10    14	 1
+   10    15	 1
+   10    16	 1
+   11    13	 1
+   12    13	 1
+   13    14	 1
+   13    15	 1
+
+[ angles ]
+;	ai	  aj	ak funct			c0			  c1			c2			  c3
+    1     2     3	5 ;      OG2D2      CG2O3      OG2D2
+    1     2     4	5 ;      OG2D2      CG2O3      CG321
+    3     2     4	5 ;      OG2D2      CG2O3      CG321
+    2     4     5	5 ;      CG2O3      CG321      NG311
+    2     4    11	5 ;      CG2O3      CG321       HGA2
+    2     4    12	5 ;      CG2O3      CG321       HGA2
+    5     4    11	5 ;      NG311      CG321       HGA2
+    5     4    12	5 ;      NG311      CG321       HGA2
+   11     4    12	5 ;       HGA2      CG321       HGA2
+    4     5     6	5 ;      CG321      NG311      CG321
+    4     5    13	5 ;      CG321      NG311     HGPAM1
+    6     5    13	5 ;      CG321      NG311     HGPAM1
+    5     6     7	5 ;      NG311      CG321        PG1
+    5     6    14	5 ;      NG311      CG321       HGA2
+    5     6    15	5 ;      NG311      CG321       HGA2
+    7     6    14	5 ;        PG1      CG321       HGA2
+    7     6    15	5 ;        PG1      CG321       HGA2
+   14     6    15	5 ;       HGA2      CG321       HGA2
+    6     7     8	5 ;      CG321        PG1      OG2P1
+    6     7     9	5 ;      CG321        PG1      OG311
+    6     7    10	5 ;      CG321        PG1      OG2P1
+    8     7     9	5 ;      OG2P1        PG1      OG311
+    8     7    10	5 ;      OG2P1        PG1      OG2P1
+    9     7    10	5 ;      OG311        PG1      OG2P1
+    7     9    16	5 ;        PG1      OG311       HGP1
+
+[ dihedrals ]
+;	ai	  aj	ak	  al funct			  c0			c1			  c2			c3			  c4			c5
+    1     2     4     5	 9 ;      OG2D2      CG2O3      CG321      NG311
+    1     2     4    11	 9 ;      OG2D2      CG2O3      CG321       HGA2
+    1     2     4    12	 9 ;      OG2D2      CG2O3      CG321       HGA2
+    3     2     4     5	 9 ;      OG2D2      CG2O3      CG321      NG311
+    3     2     4    11	 9 ;      OG2D2      CG2O3      CG321       HGA2
+    3     2     4    12	 9 ;      OG2D2      CG2O3      CG321       HGA2
+    2     4     5     6	 9 ;      CG2O3      CG321      NG311      CG321
+    2     4     5    13	 9 ;      CG2O3      CG321      NG311     HGPAM1
+   11     4     5     6	 9 ;       HGA2      CG321      NG311      CG321
+   11     4     5    13	 9 ;       HGA2      CG321      NG311     HGPAM1
+   12     4     5     6	 9 ;       HGA2      CG321      NG311      CG321
+   12     4     5    13	 9 ;       HGA2      CG321      NG311     HGPAM1
+    4     5     6     7	 9 ;      CG321      NG311      CG321        PG1
+    4     5     6    14	 9 ;      CG321      NG311      CG321       HGA2
+    4     5     6    15	 9 ;      CG321      NG311      CG321       HGA2
+   13     5     6     7	 9 ;     HGPAM1      NG311      CG321        PG1
+   13     5     6    14	 9 ;     HGPAM1      NG311      CG321       HGA2
+   13     5     6    15	 9 ;     HGPAM1      NG311      CG321       HGA2
+    5     6     7     8	 9 ;      NG311      CG321        PG1      OG2P1
+    5     6     7     9	 9 ;      NG311      CG321        PG1      OG311
+    5     6     7    10	 9 ;      NG311      CG321        PG1      OG2P1
+   14     6     7     8	 9 ;       HGA2      CG321        PG1      OG2P1
+   14     6     7     9	 9 ;       HGA2      CG321        PG1      OG311
+   14     6     7    10	 9 ;       HGA2      CG321        PG1      OG2P1
+   15     6     7     8	 9 ;       HGA2      CG321        PG1      OG2P1
+   15     6     7     9	 9 ;       HGA2      CG321        PG1      OG311
+   15     6     7    10	 9 ;       HGA2      CG321        PG1      OG2P1
+    6     7     9    16	 9 ;      CG321        PG1      OG311       HGP1
+    8     7     9    16	 9 ;      OG2P1        PG1      OG311       HGP1
+   10     7     9    16	 9 ;      OG2P1        PG1      OG311       HGP1
+
+[ dihedrals ]
+;	ai	  aj	ak	  al funct			  c0			c1			  c2			c3
+    2     1     3     4	 2
+
