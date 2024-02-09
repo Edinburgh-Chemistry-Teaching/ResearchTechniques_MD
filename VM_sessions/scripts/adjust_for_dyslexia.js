@@ -32,6 +32,11 @@ function switchPrintStyle() {
             let linkStart = linkElements[i].getAttribute('href').match(/.*(?=style.css)/);
             linkElements[i].setAttribute('href', linkStart + 'style_dyslexia.css');
             localStorage.setItem('dyslexiaMode', 'true');
+        } else if (localStorage.getItem('dyslexiaMode') === 'false' && linkElements[i].getAttribute('href') !== null && linkElements[i].media === 'print' && linkElements[i].getAttribute('href').endsWith('style_dyslexia.css')) {
+            console.log('change to regular style');
+            let linkStart = linkElements[i].getAttribute('href').match(/.*(?=style_dyslexia.css)/);
+            linkElements[i].setAttribute('href', linkStart + 'style.css');
+            localStorage.setItem('dyslexiaMode', 'false');
         }
     }
 }
