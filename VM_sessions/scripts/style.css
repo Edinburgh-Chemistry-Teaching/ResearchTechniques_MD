@@ -1,3 +1,33 @@
+
+
+
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('../fonts/SourceSans3-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('../fonts/SourceSans3-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('../fonts/SourceSans3-Italic.ttf') format('truetype');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('../fonts/SourceSans3-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+
 @font-face {
     font-family: OpenDyslexic3;
     font-weight: normal;
@@ -37,6 +67,7 @@
     src: url("../fonts/OpenDyslexicMono-Regular.otf") format("opentype");
     font-style: normal;
 }
+
 body {
     font-family: 'Source Sans 3', Helvetica, arial, sans-serif;
     font-size: 16px;
@@ -52,11 +83,6 @@ p {
     text-align: justify;
     text-align-all: justify;
 }
-
-/*body > *:first-child {*/
-/*  margin-top: 0 !important; }*/
-/*body > *:last-child {*/
-/*  margin-bottom: 0 !important; }*/
 
 a {
     color: #004f71;
@@ -299,6 +325,9 @@ blockquote > :last-child {
     justify-content: space-around;
     align-content: space-around;
     align-self: center;
+    margin: 0 auto;
+    width: fit-content(100%);
+    padding: 0;
 }
 
 .flex-figure-item {
@@ -312,11 +341,13 @@ blockquote > :last-child {
     margin: 0 auto;
     padding: 0;
     width: fit-content(100%);
+    justify-self: center;
 }
 
-.flex-figure-item figure {
-    /*max-width: 100%;*/
-    /*object-fit: contain;*/
+.flex-figure figure {
+    flex: auto auto 1;
+    max-width: 100%;
+    object-fit: contain;
     /*height: auto;*/
     /*object-position: 50% 50%;*/
     align-self: baseline;
@@ -331,7 +362,7 @@ flex-figure-item img {
     cursor: pointer;
 }
 
-flex-figure-item figure img {
+flex-figure figure img {
     /*max-width: 100%;*/
     /*object-fit: contain;*/
     /*height: auto;*/
@@ -792,14 +823,15 @@ pre[class*="language-"] {
     border-bottom-width: 1px;
 }
 
-.bbox {
+.bbox, .tbox {
     max-width: 960px;
     padding: 0.5ex 20px;
     border: 1px solid #041E42;
     margin: 20px auto;
 }
 
-.bbox ul, .bbox ol {
+
+.bbox ul, .bbox ol, .tbox ul, .tbox ol {
     padding-left: 20px;
     list-style-position: outside;
     line-height: inherit;
@@ -933,7 +965,11 @@ p.remember::before {
 }
 
 body {
-    counter-reset: task section subsection;
+    counter-reset: task project section subsection;
+}
+
+.tbox {
+    counter-reset: options;
 }
 
 h3.enum::before {
@@ -941,9 +977,31 @@ h3.enum::before {
     content: counter(section) "." counter(subsection) " ";
 }
 
+.tbox h4.options::before {
+    content: "Options";
+}
+
+h4.options {
+    margin-bottom: 0;
+}
+
+.tbox .collapsible::before {
+    counter-increment: options 1;
+    content: counter(project, upper-alpha)'.'counter(options, lower-alpha) " - ";
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+
 .bbox h3::before {
     counter-increment: task 1;
     content: "Task " counter(task);
+}
+
+.tbox h3::before {
+    counter-increment: project 1;
+     content: "Project " counter(project, upper-alpha) ": ";
 }
 
 h2.enum::before {
@@ -951,28 +1009,7 @@ h2.enum::before {
     counter-increment: section 1;
     content: counter(section) ". ";
 }
-.collapsible {
-  background-color: #777;
-  color: white;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 15px;
-}
 
-.active, .collapsible:hover {
-  background-color: #555;
-}
-
-.content {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
 
 .scrollUpButton {
     display: none;
@@ -991,6 +1028,102 @@ h2.enum::before {
     background-color: #f1f1f1;
     color: #041E42;
 }
+
+.collapsible {
+  background-color: white;
+  color: #004f71;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+h4 + collapsible:first-of-type {
+    margin-bottom: -10px;
+    margin-top: -10px;
+}
+
+.pcollapsible {
+  color: #004f71;
+    cursor: pointer;
+    padding: 10px;
+    text-align: left;
+
+}
+.pcontent {
+    padding: 0 0 10px 10px;
+    display: none;
+    overflow: hidden;
+}
+
+.pcollapsible::after {
+    content: "\A(click to expand)";
+    white-space: pre;
+    text-align-last: right;
+}
+
+.pcollapsible.active::after {
+    content: "\A(click to contract)";
+    white-space: pre;
+}
+
+.pcollapsible:hover {
+  background-color: #f1f1f1;
+    color: #041E42;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.collapsible:hover {
+  background-color: #f1f1f1;
+    color: #041E42;
+    border-radius: 5px;
+    border: none;
+}
+
+.collapsible.active {
+  background-color: #041E42;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+    border: none;
+}
+
+/*.content.active {*/
+/*}*/
+
+.content {
+    padding: 10px 10px 20px 20px;
+    display: none;
+    overflow: hidden;
+    background-color: white;
+    border: none;
+    border-radius: 0 0 5px 5px;
+    border-bottom: 1px solid #041E42;
+    border-right: 1px solid #041E42;
+    border-left: 1px solid #041E42;
+}
+
+.content ol {
+    margin-bottom: 0;
+    list-style-position: outside;
+}
+
+.tbox ol {
+    list-style-position: outside;
+    margin-left: 20px;
+
+}
+.tbox ol > li {
+    margin-bottom: 10px;
+}
+.tbox ol > li:last-child {
+    margin-bottom: 0;
 
 .dyslexiaButton {
     display: block;
@@ -1022,4 +1155,5 @@ h2.enum::before {
 .scrollUpButton:hover {
     background-color: lightgoldenrodyellow;
     color: #041E42;
+
 }
