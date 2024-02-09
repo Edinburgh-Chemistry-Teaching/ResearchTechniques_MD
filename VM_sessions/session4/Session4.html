@@ -9,7 +9,8 @@
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
           rel="stylesheet">
-    <link href="../scripts/style.css" rel="stylesheet"/>
+    <link href="../scripts/style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="../scripts/print_style.css" media="print" rel='stylesheet' type="text/css">
     <title>Session 4</title>
 </head>
 <div class="box">
@@ -54,6 +55,173 @@
         particularly concerning nuclear waste. They are employed to prevent the dispersal of radioactive materials into
         the environment and act as a natural barrier to contain and isolate contaminants.
     </p>
+    <div class="tbox">
+        <h3 class="pcollapsible" id="pH-dependent_adsorption_of_apigenin_onto_montmorillonite">pH-dependent adsorption
+            of apigenin onto
+            montmorillonite</h3>
+        <div class="pcontent">
+            <h4>Introduction</h4>
+            <p>
+                This project investigates the pH-dependent adsorption of apigenin (APG) onto montmorillonite (MMT)
+                clays.
+                APG is a naturally occurring flavonoid of bright yellow colour has been used in natural dyes. It is only
+                poorly degraded in soil and plays an important role in microbe-plant communication. Depending on the pH
+                of
+                the environment, it can be present in four different protonation states (<a href="#apg_protonation">Figure
+                3</a>), which can affect its adsorption behaviour.
+                The project aims to investigate the adsorption of APG onto MMT clays at different pH values and to
+                determine
+                the effect of pH on the adsorption capacity and mechanisms.
+            </p>
+            <div class="flex-figure">
+                <figure id="apg_protonation">
+                    <img alt="APG protonation states" src="img/apigenin_protonation.jpeg">
+                    <figcaption>Figure 3: Chemical structures of apigenin species at different protonation states and
+                        corresponding pH ranges where more than 15% occurrence of the species is observed. The atom
+                        numbering for hydroxyl groups is given over the neutral apigenin only, and the hydroxyl group
+                        naming
+                        is shown for all species. (from
+                        <a href="https://doi.org/10.1016/j.jcis.2013.07.062">https://doi.org/10.1016/j.jcis.2013.07.062</a>)
+                    </figcaption>
+                </figure>
+            </div>
+            <h4>Suggested reading</h4>
+            <ul>
+                <li>
+                    <a href="https://doi.org/10.1021/acs.jpcc.3c00174">https://doi.org/10.1021/acs.jpcc.3c00174</a>
+                </li>
+            </ul>
+            <h4>Tasks</h4>
+            <p>
+                All required files for this project are located inside the <code>practicals/projects/project_3</code>
+                folder.
+            </p>
+            <p>
+                The following list provides a general description for the tasks of this project. You can find the
+                details on
+                the different project options in the <a href="#options_3">Options</a> section below.
+            </p>
+            <ol>
+                <li>
+
+                    Copy the <code>project_3</code> folder to your home directory.
+                </li>
+                <li>
+                    Use the <code>MMT</code> unit cells to assemble a clay sheet.<br>
+                    All clay unit cells can be found inside the <code>UC</code> folder.<br>
+                    The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm.
+                </li>
+                <li>
+                    Extend the simulation box to 100&nbsp;&Aring; in the z-direction.
+                </li>
+                <li>
+                    Add the number of APG molecules to the simulation box that corresponds to a concentration of
+                    0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
+                    Use the prevalent protonation state at the pH-value of your option.
+                </li>
+                <li>
+                    Solvate the box with SPC water.
+                </li>
+                <li>
+                    Add 0.1 mol&nbsp;L<sup>-1</sup> of the ion combination specified in your option and neutralise any
+                    excess charge.
+                </li>
+                <li>
+                    Perform an energy minimisation with a force tolerance of
+                    500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
+                </li>
+                <li>
+                    Equilibrate the system for 100&nbsp;ps in the NVT ensemble at 300&nbsp;K.
+                </li>
+                <li>
+                    Equilibrate the system for 100&nbsp;ps in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
+                </li>
+                <li>
+                    Run a 20&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
+                </li>
+                <li>
+                    Determine the point where the system reached equilibrium.
+                </li>
+                <li>
+                    Calculate the linear density of the APG molecules.
+                </li>
+                <li>
+                    Calculate the linear density of the clay sheet.
+                </li>
+                <li>
+                    Calculate the linear density of the added cation species.
+                </li>
+                <li>
+                    Calculate the linear density of the Cl<sup>-</sup> ions.
+                </li>
+                <li>
+                    Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
+                </li>
+                <li>
+                    Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions
+                    between APG and the clay sheet.
+                </li>
+            </ol>
+            <h4 class="options" id="options_3"></h4>
+            <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 5</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 5</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 7</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 7</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 8</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 8</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 10</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 10</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in CaCl<sub>2</sub> solution at pH 5</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 5</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in CaCl<sub>2</sub> solution at pH 7</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 7</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in CaCl<sub>2</sub> solution at pH 8</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 8</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in CaCl<sub>2</sub> solution at pH 10</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 10</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="tbox">
         <h3 class="pcollapsible" id=pH-dependent_adsorption_ciprofloxacine_onto_montmorillonite_and_kaolinite">
             pH-dependent adsorption of
@@ -107,11 +275,12 @@
                 <li>
                     Use the unit cell type of your project option to assemble a clay sheet.<br>
                     All clay unit cells can be found inside the <code>UC</code> folder.<br>
-                    The dimensions should be at least 3&nbsp;&times;&nbsp;3&nbsp;&nbsp;nm.
+                    The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm.
                 </li>
-                <li>Extend the simulation box to 50&nbsp;&Aring; in the z-direction.</li>
-                <li>Add 10 CIP molecules the simulation box.<br>
-                    Use the protonation state corresponding to the pH-value of your option.
+                <li>Extend the simulation box to 100&nbsp;&Aring; in the z-direction.</li>
+                <li>Add the number of CIP molecules to the simulation box that corresponds to a concentration of
+                    0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>Use the prevalent protonation state at the pH-value of your
+                    option.
                 </li>
                 <li>Solvate the box with SPC water.</li>
                 <li>Add 0.1 mol&nbsp;L<sup>-1</sup> of the ion combination specified in your option to neutralise any
@@ -126,8 +295,14 @@
                 <li>Run a 10&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;atm.</li>
                 <li>Determine the point where the system reached equilibrium.</li>
                 <li>Calculate the linear density of the CIP molecules</li>
-                <li>Open and save the linear density plot with xmgrace.</li>
-                <li>Inspect the final coordinates and trajectory in VMD.</li>
+                <li>Calculate the linear density of the clay sheet.</li>
+                <li>Calculate the linear density of the added cation species.</li>
+                <li>Calculate the linear density of the Cl<sup>-</sup> ions.</li>
+                <li>Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.</li>
+                <li>Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions
+                    between CIP and the clay sheet.
+                </li>
             </ol>
 
             <h4 class="options" id="options_1"></h4>
@@ -155,7 +330,7 @@
                     <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of CIP onto MMT in CaCl solution at pH 3</button>
+            <button class="collapsible">Adsorption of CIP onto MMT in CaCl<sub>2</sub> solution at pH 3</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -163,7 +338,7 @@
                     <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of CIP onto MMT in CaCl solution at pH 7</button>
+            <button class="collapsible">Adsorption of CIP onto MMT in CaCl<sub>2</sub> solution at pH 7</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -171,7 +346,7 @@
                     <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of CIP onto MMT in CaCl solution at pH 11</button>
+            <button class="collapsible">Adsorption of CIP onto MMT in CaCl<sub>2</sub> solution at pH 11</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -203,7 +378,7 @@
                     <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of CIP onto KAO in CaCl solution at pH 3</button>
+            <button class="collapsible">Adsorption of CIP onto KAO in CaCl<sub>2</sub> solution at pH 3</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>KAO</code></li>
@@ -211,7 +386,7 @@
                     <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of CIP onto KAO in CaCl solution at pH 7</button>
+            <button class="collapsible">Adsorption of CIP onto KAO in CaCl<sub>2</sub> solution at pH 7</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>KAO</code></li>
@@ -219,7 +394,7 @@
                     <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of CIP onto KAO in CaCl solution at pH 11</button>
+            <button class="collapsible">Adsorption of CIP onto KAO in CaCl<sub>2</sub> solution at pH 11</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>KAO</code></li>
@@ -286,7 +461,7 @@
                     Extend the simulation box to 100&nbsp;&Aring; in the z-direction.
                 </li>
                 <li>
-                    Add the number of TC molecules the simulation box that corresponds to a concentration of
+                    Add the number of TC molecules to the simulation box that corresponds to a concentration of
                     0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
                     Use the prevalent protonation state at the pH-value of your option.
                 </li>
@@ -401,7 +576,7 @@
                     <li>Salt atom types: <code>K</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of TC onto MMT in CaCl solution at pH 2</button>
+            <button class="collapsible">Adsorption of TC onto MMT in CaCl<sub>2</sub> solution at pH 2</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -409,7 +584,7 @@
                     <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of TC onto MMT in CaCl solution at pH 5</button>
+            <button class="collapsible">Adsorption of TC onto MMT in CaCl<sub>2</sub> solution at pH 5</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -417,7 +592,7 @@
                     <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of TC onto MMT in CaCl solution at pH 9</button>
+            <button class="collapsible">Adsorption of TC onto MMT in CaCl<sub>2</sub> solution at pH 9</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -425,7 +600,7 @@
                     <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of TC onto MMT in CaCl solution at pH 11</button>
+            <button class="collapsible">Adsorption of TC onto MMT in CaCl<sub>2</sub> solution at pH 11</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -433,7 +608,7 @@
                     <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of TC onto MMT in MgCl solution at pH 2</button>
+            <button class="collapsible">Adsorption of TC onto MMT in MgCl<sub>2</sub> solution at pH 2</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -441,7 +616,7 @@
                     <li>Salt atom types: <code>Mg</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of TC onto MMT in MgCl solution at pH 5</button>
+            <button class="collapsible">Adsorption of TC onto MMT in MgCl<sub>2</sub> solution at pH 5</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -449,7 +624,7 @@
                     <li>Salt atom types: <code>Mg</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of TC onto MMT in MgCl solution at pH 9</button>
+            <button class="collapsible">Adsorption of TC onto MMT in MgCl<sub>2</sub> solution at pH 9</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -457,7 +632,7 @@
                     <li>Salt atom types: <code>Mg</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of TC onto MMT in MgCl solution at pH 11</button>
+            <button class="collapsible">Adsorption of TC onto MMT in MgCl<sub>2</sub> solution at pH 11</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -467,173 +642,7 @@
             </div>
         </div>
     </div>
-    <div class="tbox">
-        <h3 class="pcollapsible" id="pH-dependent_adsorption_of_apigenin_onto_montmorillonite">pH-dependent adsorption
-            of apigenin onto
-            montmorillonite</h3>
-        <div class="pcontent">
-            <h4>Introduction</h4>
-            <p>
-                This project investigates the pH-dependent adsorption of apigenin (APG) onto montmorillonite (MMT)
-                clays.
-                APG is a naturally occurring flavonoid of bright yellow colour has been used in natural dyes. It is only
-                poorly degraded in soil and plays an important role in microbe-plant communication. Depending on the pH
-                of
-                the environment, it can be present in four different protonation states (<a href="#apg_protonation">Figure
-                3</a>), which can affect its adsorption behaviour.
-                The project aims to investigate the adsorption of APG onto MMT clays at different pH values and to
-                determine
-                the effect of pH on the adsorption capacity and mechanisms.
-            </p>
-            <div class="flex-figure">
-                <figure id="apg_protonation">
-                    <img alt="APG protonation states" src="img/apigenin_protonation.jpeg">
-                    <figcaption>Figure 3: Chemical structures of apigenin species at different protonation states and
-                        corresponding pH ranges where more than 15% occurrence of the species is observed. The atom
-                        numbering for hydroxyl groups is given over the neutral apigenin only, and the hydroxyl group
-                        naming
-                        is shown for all species. (from
-                        <a href="https://doi.org/10.1016/j.jcis.2013.07.062">https://doi.org/10.1016/j.jcis.2013.07.062</a>)
-                    </figcaption>
-                </figure>
-            </div>
-            <h4>Suggested reading</h4>
-            <ul>
-                <li>
-                    <a href="https://doi.org/10.1021/acs.jpcc.3c00174">https://doi.org/10.1021/acs.jpcc.3c00174</a>
-                </li>
-            </ul>
-            <h4>Tasks</h4>
-            <p>
-                All required files for this project are located inside the <code>practicals/projects/project_3</code>
-                folder.
-            </p>
-            <p>
-                The following list provides a general description for the tasks of this project. You can find the
-                details on
-                the different project options in the <a href="#options_3">Options</a> section below.
-            </p>
-            <ol>
-                <li>
 
-                    Copy the <code>project_3</code> folder to your home directory.
-                </li>
-                <li>
-                    Use the <code>MMT</code> unit cells to assemble a clay sheet.<br>
-                    All clay unit cells can be found inside the <code>UC</code> folder.<br>
-                    The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm.
-                </li>
-                <li>
-                    Extend the simulation box to 100&nbsp;&Aring; in the z-direction.
-                </li>
-                <li>
-                    Add the number of APG molecules the simulation box that corresponds to a concentration of
-                    0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
-                    Use the prevalent protonation state at the pH-value of your option.
-                </li>
-                <li>
-                    Solvate the box with SPC water.
-                </li>
-                <li>
-                    Add 0.1 mol&nbsp;L<sup>-1</sup> of the ion combination specified in your option and neutralise any
-                    excess charge.
-                </li>
-                <li>
-                    Perform an energy minimisation with a force tolerance of
-                    500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
-                </li>
-                <li>
-                    Equilibrate the system for 100&nbsp;ps in the NVT ensemble at 300&nbsp;K.
-                </li>
-                <li>
-                    Equilibrate the system for 100&nbsp;ps in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
-                </li>
-                <li>
-                    Run a 20&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
-                </li>
-                <li>
-                    Determine the point where the system reached equilibrium.
-                </li>
-                <li>
-                    Calculate the linear density of the APG molecules.
-                </li>
-                <li>
-                    Calculate the linear density of the clay sheet.
-                </li>
-                <li>
-                    Calculate the linear density of the added cation species.
-                </li>
-                <li>
-                    Calculate the linear density of the Cl<sup>-</sup> ions.
-                </li>
-                <li>
-                    Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
-                </li>
-                <li>
-                    Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
-                    interactions
-                    between APG and the clay sheet.
-                </li>
-            </ol>
-            <h4 class="options" id="options_3"></h4>
-            <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 5</button>
-            <div class="content">
-                <ul>
-                    <li>pH: 5</li>
-                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
-                </ul>
-            </div>
-            <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 7</button>
-            <div class="content">
-                <ul>
-                    <li>pH: 7</li>
-                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
-                </ul>
-            </div>
-            <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 8</button>
-            <div class="content">
-                <ul>
-                    <li>pH: 8</li>
-                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
-                </ul>
-            </div>
-            <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 10</button>
-            <div class="content">
-                <ul>
-                    <li>pH: 10</li>
-                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
-                </ul>
-            </div>
-            <button class="collapsible">Adsorption of APG onto MMT in CaCl solution at pH 5</button>
-            <div class="content">
-                <ul>
-                    <li>pH: 5</li>
-                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
-                </ul>
-            </div>
-            <button class="collapsible">Adsorption of APG onto MMT in CaCl solution at pH 7</button>
-            <div class="content">
-                <ul>
-                    <li>pH: 7</li>
-                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
-                </ul>
-            </div>
-            <button class="collapsible">Adsorption of APG onto MMT in CaCl solution at pH 8</button>
-            <div class="content">
-                <ul>
-                    <li>pH: 8</li>
-                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
-                </ul>
-            </div>
-            <button class="collapsible">Adsorption of APG onto MMT in CaCl solution at pH 10</button>
-            <div class="content">
-                <ul>
-                    <li>pH: 10</li>
-                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
-                </ul>
-            </div>
-        </div>
-    </div>
     <div class="tbox">
         <h3 class='pcollapsible'
             id="pH-dependent_adsorption_of_glyphosate_and_aminomethyl_phosphonic_acid_onto_montmorillonite_and kaolinite">
@@ -685,7 +694,7 @@
                     The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm.
                 </li>
                 <li>Extend the simulation box to 100&nbsp;&Aring; in the z-direction.</li>
-                <li>Add the number of G or AMPA molecules the simulation box that corresponds to a concentration of
+                <li>Add the number of G or AMPA molecules to the simulation box that corresponds to a concentration of
                     0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
                     Use the prevalent protonation state at the pH-value of your option.
                 </li>
@@ -746,7 +755,7 @@
                     <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of G onto MMT in CuCl solution at pH 3</button>
+            <button class="collapsible">Adsorption of G onto MMT in CuCl<sub>2</sub> solution at pH 3</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -754,7 +763,7 @@
                     <li>Salt atom types: <code>Cu</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of G onto MMT in CuCl solution at pH 6</button>
+            <button class="collapsible">Adsorption of G onto MMT in CuCl<sub>2</sub> solution at pH 6</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -762,7 +771,7 @@
                     <li>Salt atom types: <code>Cu</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of G onto KAO in CuCl solution at pH 3</button>
+            <button class="collapsible">Adsorption of G onto KAO in CuCl<sub>2</sub> solution at pH 3</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>KAO</code></li>
@@ -770,7 +779,7 @@
                     <li>Salt atom types: <code>Cu</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of G onto KAO in CuCl solution at pH 6</button>
+            <button class="collapsible">Adsorption of G onto KAO in CuCl<sub>2</sub> solution at pH 6</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>KAO</code></li>
@@ -810,7 +819,7 @@
                     <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of AMPA onto MMT in CuCl solution at pH 3</button>
+            <button class="collapsible">Adsorption of AMPA onto MMT in CuCl<sub>2</sub> solution at pH 3</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -818,7 +827,7 @@
                     <li>Salt atom types: <code>Cu</code>, <code>Cl</code></li>
                 </ul>
             </div>
-            <button class="collapsible">Adsorption of AMPA onto MMT in CuCl solution at pH 6</button>
+            <button class="collapsible">Adsorption of AMPA onto MMT in CuCl<sub>2</sub> solution at pH 6</button>
             <div class="content">
                 <ul>
                     <li>Unit cell: <code>MMT</code></li>
@@ -845,15 +854,14 @@
                 Suggested reading
             </h4>
             <ul>
-                <li><a href="https://www.nature.com/articles/s41598-022-18202-y"></a>https://www.nature.com/articles/s41598-022-18202-y</a></li>
+                <li><a href="https://www.nature.com/articles/s41598-022-18202-y"></a>https://www.nature.com/articles/s41598-022-18202-y</a>
+                </li>
                 <li><a href="https://doi.org/10.1016/j.apgeochem.2021.105117">https://doi.org/10.1016/j.apgeochem.2021.105117</a>
                 </li>
                 <li><a href="https://doi.org/10.1021/acsearthspacechem.2c00222">https://doi.org/10.1021/acsearthspacechem.2c00222</a>
                 </li>
             </ul>
-            <h4>
-                Tasks
-            </h4>
+            <h4>Tasks</h4>
             <p>
                 All required files for this project are located inside the <code>practicals/projects/project_5</code>
                 folder.
@@ -908,7 +916,7 @@
                 </li>
                 <li>
                     Calculate the linear density of the Cl<sup>-</sup> ions.
-                <li>
+                </li>
                 <li>
                     Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
                 </li>
@@ -969,7 +977,8 @@
                 Suggested reading
             </h4>
             <ul>
-                <li><a href="https://doi.org/10.1016/j.desal.2009.11.005">https://doi.org/10.1016/j.desal.2009.11.005</a>
+                <li>
+                    <a href="https://doi.org/10.1016/j.desal.2009.11.005">https://doi.org/10.1016/j.desal.2009.11.005</a>
                 </li>
             </ul>
             <h4>
@@ -1029,7 +1038,7 @@
                 </li>
                 <li>
                     Calculate the linear density of the Cl<sup>-</sup> ions.
-                <li>
+                </li>
                 <li>
                     Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
                 </li>
@@ -1094,7 +1103,8 @@
         <p><code>&dash;n</code> specifies the input index file (<code>.ndx</code>)</p>
         <p><code>&dash;o</code> specifies the output file (<code>.xvg</code>)</p>
         <p><code>&dash;d</code> specifies the direction of the density calculation</p>
-        <p><code>&dash;sl</code> specifies the number of slices along the density profile</p>
+        <p><code>&dash;sl</code> specifies the number of slices along the density profile. Setting it to the box height
+            in nm usually gives a good resolution.</p>
         <p><code>&dash;ng</code> specifies the number of groups to calculate the density for</p>
         <p><code>&dash;dens</code> specifies the type of density to calculate (number, mass, charge, etc.)</p>
         <p><code>&dash;b</code> specifies the beginning time of the trajectory to consider</p>
@@ -1130,7 +1140,8 @@
     </h2>
     <p>
         Your final project work will be evaluated based on the report that you hand in. We are providing you with
-        templates for <a href="">Microsoft Word</a> and <a href="">Overleaf</a>. We strongly
+        templates for <a href="templates/PgT_ResearchTechniques_CompChem.docx">Microsoft Word</a> and <a href="">Overleaf</a>.
+        We strongly
         encourage you to choose the Overleaf template and become familiar with writing in LaTeX.<br>
         Explanations on expected content, structure and word counts are provided in the documents.
     </p>
@@ -1179,6 +1190,19 @@
     generateHeader();
     scrollUp();
     adjustForDyslexia();
+    // window.addEventListener('beforeprint', function () {
+    //     let styleSheets = document.getElementsByTagName('link');
+    //     for (let i = 0; i < styleSheets.length; i++) {
+    //         if styleSheets[i].getAttribute('media') === 'screen') and styleSheets[i].getAttribute('href').endsWith('style_dyslexia.css') {
+    //             let styleSheetPath = styleSheets[i].getAttribute('href').match(/.*(?=style_dyslexia.css)/);
+    //             styleSheets[i].setAttribute('href', styleSheetPath + 'style.css');
+    //         }
+    //         if styleSheets[i].getAttribute('media') === 'print') {
+    //             styleSheets[i].setAttribute('media', 'all');
+    //         }
+    //     }
+    //     adjustForDyslexia();
+    // });
 }</script>
 </body>
 </html>

@@ -103,7 +103,6 @@ function generateOverview() {
     }
     var overviewElement = document.getElementById('overview');
     overviewElement.parentNode.insertBefore(toc, overviewElement.nextSibling);
-
 }
 
 
