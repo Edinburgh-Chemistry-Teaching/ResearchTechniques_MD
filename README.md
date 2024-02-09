@@ -1,30 +1,26 @@
-## To-Dos:
-- [x] Get students permission to run on Eddie (Access to Eddie form)
-- [x] Create new course datastore (Talk to David)
-- [x] symlink to datastore to get data from VM
-- [x] Link to space on datastore for updating course materials
-- [x] Figure out username/password for students
+# PGT Research Techniques - ComChem 
 
 
-### Files:
-- [x] Eddie: module load script (Sarah's latest from `Group-Scripts/Clays/Simulations/` ?)
-- [x] Run scripts
-- [x] Marking scheme
-- [x] Session HTML stylesheet
+Developers - Hannah, Sarah, Valentina
 
-### Sessions:
-- [x] **Session1:** Valentina
-- [x] **Session2** Hannah
- 	- Need to add running on Eddie for the final sim
-- [ ] **Session3:** Hannah
-  - [ ] Overleaf template 
-  - [x] Example report & marking scheme
-- [ ] **Session4**
+UoE, Jan/Feb 2024
 
-#### Projects
-  - AC:
-    - ...
-  - MBC:
-    - ...
-  - MC
-    - ...
+
+----
+Purpose of the course... 
+
+----
+
+## Sessions
+- Session1 
+- Session2
+- Session3
+- Session4
+
+
+## Styles
+- standard
+- dyslexia
+
+## Using virtual machine 
+

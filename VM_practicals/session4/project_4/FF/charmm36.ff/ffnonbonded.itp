@@ -1,46 +1,46 @@
 ; CHARMM-port for GROMACS
-; created with charmm2gmx version 0.6.dev1+g077b6a1 on 2021-10-05 08:46:23.995401
+; created with charmm2gmx version 0.7.dev45+g7b82040.d20221208 on 2022-12-08 10:52:45.500886
 ; Code: https://gitlab.com/awacha/charmm2gmx
 ; Documentation: https://awacha.gitlab.com/charmm2gmx
 ; Charmm2GMX written by András Wacha, based on the original port by 
 ; E. Prabhu Raman, Justin A. Lemkul, Robert Best and Alexander D. MacKerell, Jr.
 ; The following files were used: 
 ; 
-; toppar_c36_jul21/metals/CHARMM_METAL/par_all22_prot_metals.inp
-; toppar_c36_jul21/metals/CHARMM_METAL/top_all22_prot_metals.inp
-; toppar_c36_jul21/par_all35_ethers.prm
-; toppar_c36_jul21/par_all36_carb.prm
-; toppar_c36_jul21/par_all36_cgenff.prm
-; toppar_c36_jul21/par_all36_lipid.prm
-; toppar_c36_jul21/par_all36_na.prm
-; toppar_c36_jul21/par_all36m_prot.prm
-; toppar_c36_jul21/silicates/toppar/par_silicates.inp
-; toppar_c36_jul21/silicates/toppar/top_silicates.inp
-; toppar_c36_jul21/stream/carb/toppar_all36_carb_glycolipid.str
-; toppar_c36_jul21/stream/carb/toppar_all36_carb_glycopeptide.str
-; toppar_c36_jul21/stream/carb/toppar_all36_carb_imlab.str
-; toppar_c36_jul21/stream/carb/toppar_all36_carb_lignin.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_bacterial.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_cholesterol.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_detergent.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_ether.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_lps.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_miscellaneous.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_prot.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_sphingo.str
-; toppar_c36_jul21/stream/misc/toppar_ions_won.str
-; toppar_c36_jul21/stream/na/toppar_all36_na_modifications.str
-; toppar_c36_jul21/stream/na/toppar_all36_na_nad_ppi.str
-; toppar_c36_jul21/stream/na/toppar_all36_na_rna_modified.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_arg0.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_heme.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_model.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_modify_res.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_na_combined.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_retinol.str
-; toppar_c36_jul21/top_all36_prot.rtf
-; toppar_c36_jul21/toppar_water_ions.str
+; toppar_c36_jul22/metals/CHARMM_METAL/par_all22_prot_metals.inp
+; toppar_c36_jul22/metals/CHARMM_METAL/top_all22_prot_metals.inp
+; toppar_c36_jul22/par_all35_ethers.prm
+; toppar_c36_jul22/par_all36_carb.prm
+; toppar_c36_jul22/par_all36_cgenff.prm
+; toppar_c36_jul22/par_all36_lipid.prm
+; toppar_c36_jul22/par_all36_na.prm
+; toppar_c36_jul22/par_all36m_prot.prm
+; toppar_c36_jul22/silicates/toppar/par_silicates.inp
+; toppar_c36_jul22/silicates/toppar/top_silicates.inp
+; toppar_c36_jul22/stream/carb/toppar_all36_carb_glycolipid.str
+; toppar_c36_jul22/stream/carb/toppar_all36_carb_glycopeptide.str
+; toppar_c36_jul22/stream/carb/toppar_all36_carb_imlab.str
+; toppar_c36_jul22/stream/carb/toppar_all36_carb_lignin.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_bacterial.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_cholesterol.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_detergent.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_ether.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_lps.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_miscellaneous.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_prot.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_sphingo.str
+; toppar_c36_jul22/stream/misc/toppar_ions_won.str
+; toppar_c36_jul22/stream/na/toppar_all36_na_modifications.str
+; toppar_c36_jul22/stream/na/toppar_all36_na_nad_ppi.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_arg0.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_fluoro_alkanes.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_heme.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_model.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_modify_res.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_na_combined.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_retinol.str
+; toppar_c36_jul22/top_all36_prot.rtf
+; toppar_c36_jul22/toppar_water_ions.str
 ;
 
 [ atomtypes ]
@@ -48,19 +48,14 @@
 ; from file 
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/metals/CHARMM_METAL/par_all22_prot_metals.inp
+; from file toppar_c36_jul22/metals/CHARMM_METAL/par_all22_prot_metals.inp
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/metals/CHARMM_METAL/top_all22_prot_metals.inp
+; from file toppar_c36_jul22/metals/CHARMM_METAL/top_all22_prot_metals.inp
 ; type atnum         mass   charge ptype           sigma  epsilon
     HB     1     1.008000    0.000     A  0.235197261589  0.0920480  ; backbone H
-   HF1     1     1.008000    0.000     A  0.235197261589  0.1171520  ; Aliphatic H on fluorinated C (see toppar_all22_prot_fluoro_alkanes.str)
-   HF2     1     1.008000    0.000     A  0.231633666716  0.1255200  ; Aliphatic H on fluorinated C (see toppar_all22_prot_fluoro_alkanes.str)
     HE     2     4.002600    0.000     A  0.263706020570  0.0889937  ; helium
    CAP     6    12.011000    0.000     A  0.355005321205  0.2928800  ; aromatic C for pyrimidines (see toppar_all22_prot_pyridines.str)
-   CF1     6    12.011000    0.000     A  0.338541512893  0.2510400  ; monofluoromethyl (see toppar_all22_prot_fluoro_alkanes.str)
-   CF2     6    12.011000    0.000     A  0.365268474438  0.1757280  ; difluoromethyl (see toppar_all22_prot_fluoro_alkanes.str)
-   CF3     6    12.011000    0.000     A  0.409813410345  0.0836800  ; trifluoromethyl (see toppar_all22_prot_fluoro_alkanes.str)
     CN     6    12.011000    0.000     A  0.311814551349  0.8368000  ; C for cyano group (see toppar_all22_prot_pyridines.str)
    COA     6    12.011000    0.000     A  0.356359487256  0.4602400  ; carbonyl C for pyrimidines (see toppar_all22_prot_pyridines.str)
   CT1X     6    12.011000    0.000     A  0.405358916754  0.0836800  ; aliphatic sp3 C for CH, new LJ params (see toppar_all22_prot_aliphatic_c27.str)
@@ -68,9 +63,6 @@
   CT3X     6    12.011000    0.000     A  0.363486677001  0.3263520  ; aliphatic sp3 C for CH3, new LJ params (see toppar_all22_prot_aliphatic_c27.str)
     NC     7    14.007000    0.000     A  0.329632525712  2.5104000  ; N for cyano group (see toppar_all22_prot_pyridines.str)
    OCA     8    15.999000    0.000     A  0.302905564168  0.5020800  ; carbonyl O for pyrimidines (see toppar_all22_prot_pyridines.str)
-    F1     9    18.998000    0.000     A  0.290432982114  0.5648400  ; Fluorine, monofluoro (see toppar_all22_prot_fluoro_alkanes.str)
-    F2     9    18.998000    0.000     A  0.290432982114  0.4393200  ; Fluorine, difluoro (see toppar_all22_prot_fluoro_alkanes.str)
-    F3     9    18.998000    0.000     A  0.285087589805  0.4058480  ; Fluorine, trifluoro (see toppar_all22_prot_fluoro_alkanes.str)
     FA     9    18.998000    0.000     A  0.302905564168  0.5020800  ; aromatic flourine (see toppar_all22_prot_pyridines.str)
     NE    10    20.179700    0.000     A  0.272615007751  0.3598240  ; neon
     AL    13    26.981540    0.000     A  0.260587875056 16.8196800  ; Aluminium metal (HH et al. 2008)
@@ -83,7 +75,7 @@
     AU    79   196.966500    0.000     A  0.262904211723 22.1333600  ; Gold metal (HH et al. 2008)
     PB    82   207.200000    0.000     A  0.317605393017 12.2591200  ; Lead metal (HH et al. 2008)
 
-; from file toppar_c36_jul21/par_all35_ethers.prm
+; from file toppar_c36_jul22/par_all35_ethers.prm
 ; type atnum         mass   charge ptype           sigma  epsilon
  HCA1A     1     1.008000    0.000     A  0.238760856462  0.1882800  ; Alkane H attached to C(sp3)H  (eq. HA1)
 HCA25A     1     1.008000    0.000     A  0.231633666716  0.1464400  ; Alkane H attached to C(sp3)H2 in 5-membered ring
@@ -99,7 +91,7 @@ CC326A     6    12.011000    0.000     A  0.358141284692  0.2343040  ; -C(sp3)H2
 OC305A     8    15.999400    0.000     A  0.293996576986  0.4184000  ; Ether Oxygen in THF
  OC30A     8    15.999400    0.000     A  0.293996576986  0.4184000  ; Ether Oxygen
 
-; from file toppar_c36_jul21/par_all36_carb.prm
+; from file toppar_c36_jul22/par_all36_carb.prm
 ; type atnum         mass   charge ptype           sigma  epsilon
   HCA1     1     1.008000    0.000     A  0.238760856462  0.1882800  ; aliphatic proton, CH
 HCA1C2     1     1.008000    0.000     A  0.238760856462  0.1882800  ; tf2m aliphatic proton, CH1
@@ -159,7 +151,7 @@ OC3C61     8    15.999400    0.000     A  0.293996576986  0.4184000  ; ether in 
     PC    15    30.974000    0.000     A  0.383086448800  2.4476400  ; phosphorus || PL in top_all27_lipid.rtf
     SC    16    32.060000    0.000     A  0.374177461619  1.9664800  ; Sulfate sulfur
 
-; from file toppar_c36_jul21/par_all36_cgenff.prm
+; from file toppar_c36_jul22/par_all36_cgenff.prm
 ; type atnum         mass   charge ptype           sigma  epsilon
   HGA1     1     1.008000    0.000     A  0.238760856462  0.1882800  ; alphatic proton, CH
   HGA2     1     1.008000    0.000     A  0.238760856462  0.1464400  ; alphatic proton, CH2
@@ -323,7 +315,7 @@ SG2R50    16    32.060000    0.000     A  0.356359487256  1.8828000  ; THIP, thi
  BRGR1    35    79.904000    0.000     A  0.352795892384  1.3388800  ; BROB, bromobenzene
   IGR1    53   126.904470    0.000     A  0.399122625727  2.1756800  ; IODB, iodobenzene
 
-; from file toppar_c36_jul21/par_all36_lipid.prm
+; from file toppar_c36_jul22/par_all36_lipid.prm
 ; type atnum         mass   charge ptype           sigma  epsilon
   HAL1     1     1.008000    0.000     A  0.235197261589  0.0920480  ; alphatic proton
   HAL2     1     1.008000    0.000     A  0.238760856462  0.1171520  ; alphatic proton
@@ -355,7 +347,7 @@ SG2R50    16    32.060000    0.000     A  0.356359487256  1.8828000  ; THIP, thi
     PL    15    30.974000    0.000     A  0.383086448800  2.4476400  ; phosphorus
     SL    16    32.060000    0.000     A  0.374177461619  1.9664800  ; Sulfate sulfur
 
-; from file toppar_c36_jul21/par_all36_na.prm
+; from file toppar_c36_jul22/par_all36_na.prm
 ; type atnum         mass   charge ptype           sigma  epsilon
    HN1     1     1.008000    0.000     A  0.040001352445  0.1924640  ; Nucleic acid amine proton
    HN2     1     1.008000    0.000     A  0.040001352445  0.1924640  ; Nucleic acid ring nitrogen proton
@@ -402,7 +394,7 @@ SG2R50    16    32.060000    0.000     A  0.356359487256  1.8828000  ; THIP, thi
     P3    15    30.974000    0.000     A  0.383086448800  2.4476400  ; pyrophosphate phosphorus
     P4    15    30.974000    0.000     A  0.383086448800  2.4476400  ; protonated pyrophosphate phosphorus
 
-; from file toppar_c36_jul21/par_all36m_prot.prm
+; from file toppar_c36_jul22/par_all36m_prot.prm
 ; type atnum         mass   charge ptype           sigma  epsilon
      H     1     1.008000    0.000     A  0.040001352445  0.1924640  ; polar H
     HA     1     1.008000    0.000     A  0.235197261589  0.0920480  ; nonpolar H
@@ -455,10 +447,10 @@ SG2R50    16    32.060000    0.000     A  0.356359487256  1.8828000  ; THIP, thi
     SM    16    32.060000    0.000     A  0.351904993665  1.5899200  ; sulfur C-S-S-C type
     SS    16    32.060000    0.000     A  0.391995435982  1.9664800  ; thiolate sulfur
 
-; from file toppar_c36_jul21/silicates/toppar/par_silicates.inp
+; from file toppar_c36_jul22/silicates/toppar/par_silicates.inp
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/silicates/toppar/top_silicates.inp
+; from file toppar_c36_jul22/silicates/toppar/top_silicates.inp
 ; type atnum         mass   charge ptype           sigma  epsilon
    DUM     1     1.008000    0.000     A  0.000000000000  0.0000000  ; dummy atom
    HAL     1     1.008000    0.000     A  0.235197261589  0.0920480  ; Si aliphatic hydrogen;
@@ -472,16 +464,16 @@ SG2R50    16    32.060000    0.000     A  0.356359487256  1.8828000  ; THIP, thi
     SI    14    28.085500    0.000     A  0.391995435982  2.5104000  ; Si Atom;
   SIH3    14    28.085500    0.000     A  0.391995435982  2.5104000  ; Si Atom;
 
-; from file toppar_c36_jul21/stream/carb/toppar_all36_carb_glycolipid.str
+; from file toppar_c36_jul22/stream/carb/toppar_all36_carb_glycolipid.str
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/stream/carb/toppar_all36_carb_glycopeptide.str
+; from file toppar_c36_jul22/stream/carb/toppar_all36_carb_glycopeptide.str
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/stream/carb/toppar_all36_carb_imlab.str
+; from file toppar_c36_jul22/stream/carb/toppar_all36_carb_imlab.str
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/stream/carb/toppar_all36_carb_lignin.str
+; from file toppar_c36_jul22/stream/carb/toppar_all36_carb_lignin.str
 ; type atnum         mass   charge ptype           sigma  epsilon
  HLGA1     1     1.008000    0.000     A  0.238760856462  0.1882800  ; 
  HLGA2     1     1.008000    0.000     A  0.238760856462  0.1464400  ; 
@@ -518,35 +510,35 @@ CLG06B     6    12.011000    0.000     A  0.355005321205  0.2928800  ; CLG2R6B
   OLG7     8    15.999400    0.000     A  0.293996576986  0.4184000  ; OLG3C51
   OLG8     8    15.999400    0.000     A  0.293996576986  0.4184000  ; OLG3R60
 
-; from file toppar_c36_jul21/stream/lipid/toppar_all36_lipid_bacterial.str
+; from file toppar_c36_jul22/stream/lipid/toppar_all36_lipid_bacterial.str
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/stream/lipid/toppar_all36_lipid_cholesterol.str
+; from file toppar_c36_jul22/stream/lipid/toppar_all36_lipid_cholesterol.str
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/stream/lipid/toppar_all36_lipid_detergent.str
+; from file toppar_c36_jul22/stream/lipid/toppar_all36_lipid_detergent.str
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/stream/lipid/toppar_all36_lipid_ether.str
+; from file toppar_c36_jul22/stream/lipid/toppar_all36_lipid_ether.str
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/stream/lipid/toppar_all36_lipid_lps.str
+; from file toppar_c36_jul22/stream/lipid/toppar_all36_lipid_lps.str
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/stream/lipid/toppar_all36_lipid_miscellaneous.str
+; from file toppar_c36_jul22/stream/lipid/toppar_all36_lipid_miscellaneous.str
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/stream/lipid/toppar_all36_lipid_prot.str
+; from file toppar_c36_jul22/stream/lipid/toppar_all36_lipid_prot.str
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/stream/lipid/toppar_all36_lipid_sphingo.str
+; from file toppar_c36_jul22/stream/lipid/toppar_all36_lipid_sphingo.str
 ; type atnum         mass   charge ptype           sigma  epsilon
   CEL3     6    12.011000    0.000     A  0.372395664183  0.2845120  ; 
   CTO1     6    12.011000    0.000     A  0.405358916754  0.0836800  ; 
   CTO2     6    12.011000    0.000     A  0.358141284692  0.2343040  ; 
    NHL     7    14.007000    0.000     A  0.329632525712  0.8368000  ; 
 
-; from file toppar_c36_jul21/stream/misc/toppar_ions_won.str
+; from file toppar_c36_jul22/stream/misc/toppar_ions_won.str
 ; type atnum         mass   charge ptype           sigma  epsilon
   BE2P     4     9.012200    0.000     A  0.007127189745  0.4250944  ; Beryllium
   AL3P    13    26.982000    0.000     A  0.039377723342  0.4460144  ; Aluminum
@@ -604,7 +596,7 @@ CLG06B     6    12.011000    0.000     A  0.355005321205  0.2928800  ; CLG2R6B
    U3P    92   238.030000    0.000     A  0.303119379860  0.7932864  ; Uranium
   PU3P    94   244.060000    0.000     A  0.297506717936  0.7702744  ; Plutonium
 
-; from file toppar_c36_jul21/stream/na/toppar_all36_na_modifications.str
+; from file toppar_c36_jul22/stream/na/toppar_all36_na_modifications.str
 ; type atnum         mass   charge ptype           sigma  epsilon
   HNE1     1     1.008000    0.000     A  0.222724679535  0.1297040  ; for alkene; RHC=CR (modified thy patch Sasha)
   HNE2     1     1.008000    0.000     A  0.224506476971  0.1087840  ; for alkene; H2C=CR (modified thy patch Sasha)
@@ -625,7 +617,7 @@ CLG06B     6    12.011000    0.000     A  0.355005321205  0.2928800  ; CLG2R6B
   ON2M     8    15.999400    0.000     A  0.293996576986  0.4184000  ; ether oxygen for methylated C2' of ribose
    FNA     9    18.998400    0.000     A  0.302905564168  0.5020800  ; Aromatic fluorine
 
-; from file toppar_c36_jul21/stream/na/toppar_all36_na_nad_ppi.str
+; from file toppar_c36_jul22/stream/na/toppar_all36_na_nad_ppi.str
 ; type atnum         mass   charge ptype           sigma  epsilon
   HN3B     1     1.008000    0.000     A  0.160361769265  0.1924640  ; NAD+ aromatic hydrogen
   CN1A     6    12.011000    0.000     A  0.356359487256  0.2928800  ; NAD+/NADH amide carbonyl carbon
@@ -633,10 +625,7 @@ CLG06B     6    12.011000    0.000     A  0.355005321205  0.2928800  ; CLG2R6B
   CN3B     6    12.011000    0.000     A  0.320723538531  0.7531200  ; NAD+ aromatic carbon
   CN3C     6    12.011000    0.000     A  0.320723538531  0.7531200  ; NADH aromatic carbon
 
-; from file toppar_c36_jul21/stream/na/toppar_all36_na_rna_modified.str
-; type atnum         mass   charge ptype           sigma  epsilon
-
-; from file toppar_c36_jul21/stream/prot/toppar_all36_prot_arg0.str
+; from file toppar_c36_jul22/stream/prot/toppar_all36_prot_arg0.str
 ; type atnum         mass   charge ptype           sigma  epsilon
   HRA3     1     1.008000    0.000     A  0.238760856462  0.1004160  ; alphatic proton, CH3
   HRM1     1     1.008000    0.000     A  0.155907275675  0.0376560  ; polar H, dimethylamine
@@ -648,12 +637,23 @@ CLG06B     6    12.011000    0.000     A  0.355005321205  0.2928800  ; CLG2R6B
   NRN1     7    14.007000    0.000     A  0.356359487256  1.8828000  ; dimethylamine nitrogen
   NRN2     7    14.007000    0.000     A  0.354577689820  0.2510400  ; methylamine nitrogen
 
-; from file toppar_c36_jul21/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
+; from file toppar_c36_jul22/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
 ; type atnum         mass   charge ptype           sigma  epsilon
   CPD1     6    12.011000    0.000     A  0.405358916754  0.0836800  ; added for D-proline
   CTD1     6    12.011000    0.000     A  0.356359487256  0.1338880  ; added for D-amino acids
 
-; from file toppar_c36_jul21/stream/prot/toppar_all36_prot_heme.str
+; from file toppar_c36_jul22/stream/prot/toppar_all36_prot_fluoro_alkanes.str
+; type atnum         mass   charge ptype           sigma  epsilon
+   HF1     1     1.008000    0.000     A  0.235197261589  0.1171520  ; Aliphatic H on fluorinated C
+   HF2     1     1.008000    0.000     A  0.231633666716  0.1255200  ; Aliphatic H on fluorinated C
+   CF1     6    12.011000    0.000     A  0.338541512893  0.2510400  ; monofluoromethyl
+   CF2     6    12.011000    0.000     A  0.365268474438  0.1757280  ; difluoromethyl
+   CF3     6    12.011000    0.000     A  0.409813410345  0.0836800  ; trifluoromethyl
+    F1     9    18.998000    0.000     A  0.290432982114  0.5648400  ; Fluorine, monofluoro
+    F2     9    18.998000    0.000     A  0.290432982114  0.4393200  ; Fluorine, difluoro
+    F3     9    18.998000    0.000     A  0.285087589805  0.4058480  ; Fluorine, trifluoro
+
+; from file toppar_c36_jul22/stream/prot/toppar_all36_prot_heme.str
 ; type atnum         mass   charge ptype           sigma  epsilon
     CM     6    12.011000    0.000     A  0.374177461619  0.4602400  ; heme CO carbon
    CPA     6    12.011000    0.000     A  0.320723538531  0.3765600  ; heme alpha-C
@@ -665,18 +665,18 @@ CLG06B     6    12.011000    0.000     A  0.355005321205  0.2928800  ; CLG2R6B
    OST     8    15.999000    0.000     A  0.301480126219  0.6903600  ; CO2 oxygen
     FE    26    55.847000    0.000     A  0.115816833358  0.0000000  ; heme iron 56
 
-; from file toppar_c36_jul21/stream/prot/toppar_all36_prot_model.str
+; from file toppar_c36_jul22/stream/prot/toppar_all36_prot_model.str
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/stream/prot/toppar_all36_prot_modify_res.str
+; from file toppar_c36_jul22/stream/prot/toppar_all36_prot_modify_res.str
 ; type atnum         mass   charge ptype           sigma  epsilon
 
-; from file toppar_c36_jul21/stream/prot/toppar_all36_prot_na_combined.str
+; from file toppar_c36_jul22/stream/prot/toppar_all36_prot_na_combined.str
 ; type atnum         mass   charge ptype           sigma  epsilon
   ON2B     8    15.999400    0.000     A  0.315378146222  0.6363864  ; Nucleic acid phosphate ester oxygen (pres tp1/tp2, toppar_tyr_ser_thr_phosphate.str)
     SP    16    32.060000    0.000     A  0.391995435982  1.8828000  ; positive Sulphur, S-adenosylmethionine (SAM)
 
-; from file toppar_c36_jul21/stream/prot/toppar_all36_prot_retinol.str
+; from file toppar_c36_jul22/stream/prot/toppar_all36_prot_retinol.str
 ; type atnum         mass   charge ptype           sigma  epsilon
   CC1A     6    12.011000    0.000     A  0.372395664183  0.2845120  ; alkene conjugation
   CC1B     6    12.011000    0.000     A  0.372395664183  0.2845120  ; alkene conjugation
@@ -684,36 +684,28 @@ CLG06B     6    12.011000    0.000     A  0.355005321205  0.2928800  ; CLG2R6B
    NS1     7    14.007000    0.000     A  0.329632525712  0.8368000  ; N for deprotonated Schiff's base
    NS2     7    14.007000    0.000     A  0.329632525712  0.8368000  ; N for protonated Schiff's base
 
-; from file toppar_c36_jul21/top_all36_prot.rtf
+; from file toppar_c36_jul22/top_all36_prot.rtf
 ; type atnum         mass   charge ptype           sigma  epsilon
      O     8    15.999400    0.000     A  0.302905564168  0.5020800  ; carbonyl oxygen
     OB     8    15.999400    0.000     A  0.302905564168  0.5020800  ; carbonyl oxygen in acetic acid
     OC     8    15.999400    0.000     A  0.302905564168  0.5020800  ; carboxylate oxygen
    OH1     8    15.999400    0.000     A  0.315378146222  0.6363864  ; hydroxyl oxygen
 
-; from file toppar_c36_jul21/toppar_water_ions.str
+; from file toppar_c36_jul22/toppar_water_ions.str
 ; type atnum         mass   charge ptype           sigma  epsilon
   HPER     1     1.008000    0.000     A  0.040001352445  0.1924640  ; H of H2O2
 #ifdef HEAVY_H
-#ifdef USE_MODIFIED_TIP3P_EPS
-    HT     1     4.032000    0.000     A  0.040001352445  0.4184000  ; Modified TIPS3P eps=0.1
+    HT     1     4.032000    0.417     A  0.040001352445  0.1924640  ; TIPS3P WATER HYDROGEN
 #else
-    HT     1     4.032000    0.000     A  0.040001352445  0.1924640  ; TIPS3P WATER HYDROGEN
-#endif
-#else
-#ifdef USE_MODIFIED_TIP3P_EPS
-    HT     1     1.008000    0.000     A  0.040001352445  0.4184000  ; Modified TIPS3P eps=0.1
-#else
-    HT     1     1.008000    0.000     A  0.040001352445  0.1924640  ; TIPS3P WATER HYDROGEN
-#endif
+    HT     1     1.008000    0.417     A  0.040001352445  0.1924640  ; TIPS3P WATER HYDROGEN
 #endif
     HX     1     1.008000    0.000     A  0.040001352445  0.1924640  ; hydroxide hydrogen
    LIT     3     6.941000    0.000     A  0.231188217357  0.0097487  ; Lithium ion
   OPER     8    15.999000    0.000     A  0.298313872174  0.8528666  ; O of H2O2
 #ifdef HEAVY_H
-    OT     8     7.935400    0.000     A  0.315057422683  0.6363864  ; TIPS3P WATER OXYGEN
+    OT     8     7.935400   -0.834     A  0.315057422683  0.6363864  ; TIPS3P WATER OXYGEN
 #else
-    OT     8    15.999400    0.000     A  0.315057422683  0.6363864  ; TIPS3P WATER OXYGEN
+    OT     8    15.999400   -0.834     A  0.315057422683  0.6363864  ; TIPS3P WATER OXYGEN
 #endif
     OX     8    15.999400    0.000     A  0.302905564168  0.5020800  ; hydroxide oxygen
    SOD    11    22.989770    0.000     A  0.251367073323  0.1962296  ; Sodium Ion
@@ -731,61 +723,61 @@ CLG06B     6    12.011000    0.000     A  0.355005321205  0.2928800  ; CLG2R6B
 ; Atomtypes for additional water models
 ; Original TIP3P water model
 #ifdef HEAVY_H
-  HWT3     1     4.032000    0.000     A  0.000000000000  0.0000000  ; Hydrogen for TIP3P water model
-  OWT3     8     7.936000    0.000     A  0.315057422683  0.6363900  ; Oxygen for TIP3P water model
+  HWT3     1     4.032000    0.417     A  0.000000000000  0.0000000  ; Hydrogen for TIP3P water model
+  OWT3     8     7.936000   -0.834     A  0.315057422683  0.6363900  ; Oxygen for TIP3P water model
 #else
-  HWT3     1     1.008000    0.000     A  0.000000000000  0.0000000  ; Hydrogen for TIP3P water model
-  OWT3     8    16.000000    0.000     A  0.315057422683  0.6363900  ; Oxygen for TIP3P water model
+  HWT3     1     1.008000    0.417     A  0.000000000000  0.0000000  ; Hydrogen for TIP3P water model
+  OWT3     8    16.000000   -0.834     A  0.315057422683  0.6363900  ; Oxygen for TIP3P water model
 #endif
 ; SPC water model
 #ifdef HEAVY_H
- HWSPC     1     4.032000    0.000     A  0.000000000000  0.0000000  ; Hydrogen for SPC water model
- OWSPC     8     7.935400    0.000     A  0.316557000000  0.6506290  ; Oxygen for SPC water model
+ HWSPC     1     4.032000    0.410     A  0.000000000000  0.0000000  ; Hydrogen for SPC water model
+ OWSPC     8     7.935400   -0.820     A  0.316557000000  0.6506290  ; Oxygen for SPC water model
 #else
- HWSPC     1     1.008000    0.000     A  0.000000000000  0.0000000  ; Hydrogen for SPC water model
- OWSPC     8    15.999400    0.000     A  0.316557000000  0.6506290  ; Oxygen for SPC water model
+ HWSPC     1     1.008000    0.410     A  0.000000000000  0.0000000  ; Hydrogen for SPC water model
+ OWSPC     8    15.999400   -0.820     A  0.316557000000  0.6506290  ; Oxygen for SPC water model
 #endif
 ; SPC/E water model
 #ifdef HEAVY_H
-HWSPCE     1     4.032000    0.000     A  0.000000000000  0.0000000  ; Hydrogen for SPC water model
-OWSPCE     8     7.935400    0.000     A  0.316557000000  0.6506290  ; Oxygen for SPC water model
+HWSPCE     1     4.032000    0.424     A  0.000000000000  0.0000000  ; Hydrogen for SPC/E water model
+OWSPCE     8     7.935400   -0.848     A  0.316557000000  0.6506290  ; Oxygen for SPC/E water model
 #else
-HWSPCE     1     1.008000    0.000     A  0.000000000000  0.0000000  ; Hydrogen for SPC water model
-OWSPCE     8    15.999400    0.000     A  0.316557000000  0.6506290  ; Oxygen for SPC water model
+HWSPCE     1     1.008000    0.424     A  0.000000000000  0.0000000  ; Hydrogen for SPC/E water model
+OWSPCE     8    15.999400   -0.848     A  0.316557000000  0.6506290  ; Oxygen for SPC/E water model
 #endif
 ; TIP5P water model
 #ifdef HEAVY_H
-  HWT5     1     4.032000    0.000     A  0.000000000000  0.0000000  ; Hydrogen for TIP5P water model
+  HWT5     1     4.032000    0.241     A  0.000000000000  0.0000000  ; Hydrogen for TIP5P water model
   OWT5     8     7.936000    0.000     A  0.312000000000  0.6694400  ; Oxygen for TIP5P water model
 #else
-  HWT5     1     1.008000    0.000     A  0.000000000000  0.0000000  ; Hydrogen for TIP5P water model
+  HWT5     1     1.008000    0.241     A  0.000000000000  0.0000000  ; Hydrogen for TIP5P water model
   OWT5     8    16.000000    0.000     A  0.312000000000  0.6694400  ; Oxygen for TIP5P water model
 #endif
-  MWT5     0     0.000000    0.000     A  0.000000000000  0.0000000  ; Virtual site for TIP5P water model
+  MWT5     0     0.000000   -0.241     D  0.000000000000  0.0000000  ; Virtual site for TIP5P water model
 ; TIP4P water model
 #ifdef HEAVY_H
-  HWT4     1     4.032000    0.000     A  0.000000000000  0.0000000  ; Hydrogen for TIP4P water model
-  OWT4     8     7.936000    0.000     A  0.648520000000  0.6485200  ; Oxygen for TIP4P water model
+  HWT4     1     4.032000    0.520     A  0.000000000000  0.0000000  ; Hydrogen for TIP4P water model
+  OWT4     8     7.936000    0.000     A  0.315365000000  0.6485200  ; Oxygen for TIP4P water model
 #else
-  HWT4     1     1.008000    0.000     A  0.000000000000  0.0000000  ; Hydrogen for TIP4P water model
-  OWT4     8    16.000000    0.000     A  0.648520000000  0.6485200  ; Oxygen for TIP4P water model
+  HWT4     1     1.008000    0.520     A  0.000000000000  0.0000000  ; Hydrogen for TIP4P water model
+  OWT4     8    16.000000    0.000     A  0.315365000000  0.6485200  ; Oxygen for TIP4P water model
 #endif
-  MWT4     0     0.000000    0.000     A  0.000000000000  0.0000000  ; Virtual site of TIP4P water model
+  MWT4     0     0.000000   -1.040     D  0.000000000000  0.0000000  ; Virtual site of TIP4P water model
 ; TIP4P/Ew water model
 #ifdef HEAVY_H
-HWT4EW     1     4.032000    0.000     A  0.000000000000  0.0000000  ; Hydrogen for TIP4P/Ew water model
-OWT4EW     8     7.936000    0.000     A  0.315365000000  0.6485200  ; Oxygen for TIP4P/Ew water model
+HWT4EW     1     4.032000    0.524     A  0.000000000000  0.0000000  ; Hydrogen for TIP4P/Ew water model
+OWT4EW     8     7.936000    0.000     A  0.316435000000  0.6809460  ; Oxygen for TIP4P/Ew water model
 #else
-HWT4EW     1     1.008000    0.000     A  0.000000000000  0.0000000  ; Hydrogen for TIP4P/Ew water model
-OWT4EW     8    16.000000    0.000     A  0.315365000000  0.6485200  ; Oxygen for TIP4P/Ew water model
+HWT4EW     1     1.008000    0.524     A  0.000000000000  0.0000000  ; Hydrogen for TIP4P/Ew water model
+OWT4EW     8    16.000000    0.000     A  0.316435000000  0.6809460  ; Oxygen for TIP4P/Ew water model
 #endif
-MWT4EW     0     0.000000    0.000     A  0.000000000000  0.0000000  ; Virtual site of TIP4P/Ew water model
+MWT4EW     0     0.000000   -1.048     D  0.000000000000  0.0000000  ; Virtual site of TIP4P/Ew water model
 ; special dummy-type particles
-  MNH3     0     0.000000     0.000     A  0.000000000000  0.00000
-  MNH2     0     0.000000     0.000     A  0.000000000000  0.00000
-  MCH3     0     0.000000     0.000     A  0.000000000000  0.00000
- MCH3S     0     0.000000     0.000     A  0.000000000000  0.00000
-    MW     0     0.000000     0.000     A  0.000000000000  0.00000
+  MNH3     0     0.000000     0.000     D  0.000000000000  0.00000
+  MNH2     0     0.000000     0.000     D  0.000000000000  0.00000
+  MCH3     0     0.000000     0.000     D  0.000000000000  0.00000
+ MCH3S     0     0.000000     0.000     D  0.000000000000  0.00000
+    MW     0     0.000000     0.000     D  0.000000000000  0.00000
 
 ; Updated Mg2+ parameters by Allner et. al. (DOI: 10.1021/ct3000734)
    MGA    12    24.305000     0.000     A  0.277000000000  0.0123428
@@ -2556,23 +2548,51 @@ MWT4EW     0     0.000000    0.000     A  0.000000000000  0.0000000  ; Virtual s
  BRGR1   CTL5     1  0.345668702638  0.236682781799
  BRGR1   CTO1     1  0.345668702638  0.236682781799
  BRGR1   CTO2     1  0.345668702638  0.236682781799
+ BRGR1   HGP3     1  0.264596919288  1.004160000000
  BRGR1     HP     1  0.297399810090  0.409946603352
  BRGR1      N     1  0.341214209048  0.023668278180
+ BRGR1    NC2     1  0.326068930839  4.602400000000
  BRGR1  NC2D1     1  0.314487247504  1.058477578412
+ BRGR1  NG2P1     1  0.326068930839  4.602400000000
+ BRGR1 NG2R50     1  0.321614437249  0.920480000000
+ BRGR1 NG2R51     1  0.338541512893  3.012480000000
  BRGR1  NG2S0     1  0.341214209048  0.023668278180
- BRGR1  NG2S1     1  0.314487247504  1.058477578412
- BRGR1    NH1     1  0.314487247504  1.058477578412
+ BRGR1  NG2S1     1  0.358141284692  1.255200000000
+ BRGR1  NG2S2     1  0.360813980847  1.255200000000
+ BRGR1  NG3P3     1  0.296669273141 15.271600000000
+ BRGR1    NH1     1  0.358141284692  1.255200000000
+ BRGR1    NH2     1  0.360813980847  1.255200000000
+ BRGR1    NH3     1  0.296669273141 15.271600000000
+ BRGR1   NH3L     1  0.296669273141 15.271600000000
  BRGR1    NHL     1  0.314487247504  1.058477578412
- BRGR1      O     1  0.301123766731  0.819893206704
+ BRGR1    NN1     1  0.360813980847  1.255200000000
+ BRGR1    NN2     1  0.338541512893  3.012480000000
+ BRGR1   NN2G     1  0.338541512893  3.012480000000
+ BRGR1   NN2U     1  0.338541512893  3.012480000000
+ BRGR1    NN3     1  0.321614437249  0.920480000000
+ BRGR1   NN3A     1  0.321614437249  0.920480000000
+ BRGR1   NN3G     1  0.321614437249  0.920480000000
+ BRGR1    NN4     1  0.321614437249  0.920480000000
+ BRGR1    NR1     1  0.338541512893  3.012480000000
+ BRGR1    NR2     1  0.321614437249  0.920480000000
+ BRGR1     NY     1  0.338541512893  3.012480000000
+ BRGR1      O     1  0.313596348785  1.129680000000
  BRGR1     OB     1  0.301123766731  0.819893206704
- BRGR1    OBL     1  0.301123766731  0.819893206704
+ BRGR1    OBL     1  0.313596348785  1.129680000000
+ BRGR1     OC     1  0.265487818006  5.230000000000
  BRGR1  OC2D1     1  0.301123766731  0.819893206704
- BRGR1  OC2D3     1  0.301123766731  0.819893206704
- BRGR1  OC2D4     1  0.301123766731  0.819893206704
+ BRGR1  OC2D2     1  0.265487818006  5.230000000000
+ BRGR1  OC2D3     1  0.313596348785  1.129680000000
+ BRGR1  OC2D4     1  0.313596348785  1.129680000000
  BRGR1    OCA     1  0.301123766731  0.819893206704
- BRGR1  OG2D1     1  0.301123766731  0.819893206704
+ BRGR1    OCL     1  0.265487818006  5.230000000000
+ BRGR1  OG2D1     1  0.313596348785  1.129680000000
+ BRGR1  OG2D2     1  0.265487818006  5.230000000000
  BRGR1  OG2D3     1  0.301123766731  0.819893206704
  BRGR1   OLG1     1  0.301123766731  0.819893206704
+ BRGR1    ON1     1  0.313596348785  1.129680000000
+ BRGR1   ON1C     1  0.313596348785  1.129680000000
+ BRGR1  SG311     1  0.329632525712  2.050160000000
      C  CC301     1  0.347450500075  0.138767581228
      C CC3051     1  0.347450500075  0.138767581228
      C CC3062     1  0.347450500075  0.138767581228
@@ -3114,6 +3134,7 @@ MWT4EW     0     0.000000    0.000     A  0.000000000000  0.0000000  ; Virtual s
    CAL CG3C53     1  0.291056611216  0.144938011577
    CAL CG3C54     1  0.291056611216  0.144938011577
    CAL CG3RC1     1  0.291056611216  0.144938011577
+   CAL    CLA     1  0.332037952251  0.561342176000
    CAL  CLG11     1  0.291056611216  0.144938011577
    CAL  CLG12     1  0.291056611216  0.144938011577
    CAL  CLG13     1  0.291056611216  0.144938011577
@@ -3158,14 +3179,21 @@ MWT4EW     0     0.000000    0.000     A  0.000000000000  0.0000000  ; Virtual s
    CAL    NH1     1  0.259875156082  0.648182492821
    CAL    NHL     1  0.259875156082  0.648182492821
    CAL      O     1  0.246511675309  0.502080000000
+   CAL    O2L     1  0.290076622626  0.502080000000
    CAL     OB     1  0.246511675309  0.502080000000
    CAL    OBL     1  0.246511675309  0.502080000000
+   CAL     OC     1  0.287938465703  0.502080000000
    CAL  OC2D1     1  0.246511675309  0.502080000000
+   CAL  OC2D2     1  0.287938465703  0.502080000000
    CAL  OC2D3     1  0.246511675309  0.502080000000
    CAL  OC2D4     1  0.246511675309  0.502080000000
+   CAL  OC2DP     1  0.290076622626  0.502080000000
    CAL    OCA     1  0.246511675309  0.502080000000
+   CAL    OCL     1  0.287938465703  0.502080000000
    CAL  OG2D1     1  0.246511675309  0.502080000000
+   CAL  OG2D2     1  0.287938465703  0.502080000000
    CAL  OG2D3     1  0.246511675309  0.502080000000
+   CAL  OG2P1     1  0.290076622626  0.502080000000
    CAL   OLG1     1  0.246511675309  0.502080000000
    CAP  CC301     1  0.346773417049  0.110698234855
    CAP CC3051     1  0.346773417049  0.110698234855
@@ -30231,6 +30259,7 @@ CG3RC1     ZN     1  0.266378716724  0.209200000000
    CLA   CTO1     1  0.371504765465  0.162045623205
    CLA   CTO2     1  0.371504765465  0.162045623205
    CLA     HP     1  0.323235872916  0.280671252536
+   CLA    LIT     1  0.328518902314  0.078240800000
    CLA      N     1  0.367050271874  0.016204562321
    CLA  NC2D1     1  0.340323310330  0.724690057887
    CLA  NG2S0     1  0.367050271874  0.016204562321
@@ -30247,6 +30276,8 @@ CG3RC1     ZN     1  0.266378716724  0.209200000000
    CLA  OG2D1     1  0.326959829558  0.561342505072
    CLA  OG2D3     1  0.326959829558  0.561342505072
    CLA   OLG1     1  0.326959829558  0.561342505072
+   CLA    POT     1  0.363575766873  0.477812800000
+   CLA    SOD     1  0.332394311738  0.351037600000
   CLAL  CLG11     1  0.339272049842  0.072469005789
   CLAL  CLG12     1  0.339272049842  0.072469005789
   CLAL  CLG13     1  0.339272049842  0.072469005789
@@ -33493,23 +33524,53 @@ CLG06B   OLG1     1  0.302228481142  0.383469934154
  CLGR1   CTL5     1  0.334977918021  0.200657590935
  CLGR1   CTO1     1  0.334977918021  0.200657590935
  CLGR1   CTO2     1  0.334977918021  0.200657590935
+ CLGR1   HGP3     1  0.251233438516  0.836800000000
  CLGR1     HP     1  0.286709025472  0.347549142424
+ CLGR1     HS     1  0.251233438516  0.836800000000
  CLGR1      N     1  0.330523424430  0.020065759094
+ CLGR1    NC2     1  0.311814551349  4.393200000000
  CLGR1  NC2D1     1  0.303796462886  0.897368027066
+ CLGR1  NG2P1     1  0.311814551349  4.393200000000
+ CLGR1 NG2R50     1  0.304687361604  1.924640000000
+ CLGR1 NG2R51     1  0.334087019303  2.008320000000
  CLGR1  NG2S0     1  0.330523424430  0.020065759094
- CLGR1  NG2S1     1  0.303796462886  0.897368027066
- CLGR1    NH1     1  0.303796462886  0.897368027066
+ CLGR1  NG2S1     1  0.345668702638  1.673600000000
+ CLGR1  NG2S2     1  0.345668702638  1.673600000000
+ CLGR1  NG3P3     1  0.283305792369 15.062400000000
+ CLGR1    NH1     1  0.345668702638  1.673600000000
+ CLGR1    NH2     1  0.345668702638  1.673600000000
+ CLGR1    NH3     1  0.283305792369 15.062400000000
+ CLGR1   NH3L     1  0.283305792369 15.062400000000
  CLGR1    NHL     1  0.303796462886  0.897368027066
- CLGR1      O     1  0.290432982114  0.695098284849
+ CLGR1    NN1     1  0.345668702638  1.673600000000
+ CLGR1    NN2     1  0.334087019303  2.008320000000
+ CLGR1   NN2G     1  0.334087019303  2.008320000000
+ CLGR1   NN2U     1  0.334087019303  2.008320000000
+ CLGR1    NN3     1  0.304687361604  1.924640000000
+ CLGR1   NN3A     1  0.304687361604  1.924640000000
+ CLGR1   NN3G     1  0.304687361604  1.924640000000
+ CLGR1    NN4     1  0.304687361604  1.924640000000
+ CLGR1    NR1     1  0.334087019303  2.008320000000
+ CLGR1    NR2     1  0.304687361604  1.924640000000
+ CLGR1     NY     1  0.334087019303  2.008320000000
+ CLGR1      O     1  0.302905564168  0.836800000000
  CLGR1     OB     1  0.290432982114  0.695098284849
- CLGR1    OBL     1  0.290432982114  0.695098284849
- CLGR1  OC2D1     1  0.290432982114  0.695098284849
- CLGR1  OC2D3     1  0.290432982114  0.695098284849
- CLGR1  OC2D4     1  0.290432982114  0.695098284849
+ CLGR1    OBL     1  0.302905564168  0.836800000000
+ CLGR1     OC     1  0.249451641079 10.460000000000
+ CLGR1  OC2D1     1  0.302905564168  0.836800000000
+ CLGR1  OC2D2     1  0.249451641079 10.460000000000
+ CLGR1  OC2D3     1  0.302905564168  0.836800000000
+ CLGR1  OC2D4     1  0.302905564168  0.836800000000
  CLGR1    OCA     1  0.290432982114  0.695098284849
- CLGR1  OG2D1     1  0.290432982114  0.695098284849
+ CLGR1    OCL     1  0.249451641079 10.460000000000
+ CLGR1  OG2D1     1  0.302905564168  0.836800000000
+ CLGR1  OG2D2     1  0.249451641079 10.460000000000
  CLGR1  OG2D3     1  0.290432982114  0.695098284849
  CLGR1   OLG1     1  0.290432982114  0.695098284849
+ CLGR1    ON1     1  0.302905564168  0.836800000000
+ CLGR1   ON1C     1  0.302905564168  0.836800000000
+ CLGR1      S     1  0.341214209048  1.589920000000
+ CLGR1  SG311     1  0.341214209048  1.589920000000
     CM    CN6     1  0.356359487256  0.138767581228
     CM    CN7     1  0.356359487256  0.138767581228
     CM   CN7B     1  0.356359487256  0.138767581228
@@ -39332,7 +39393,7 @@ CLG06B   OLG1     1  0.302228481142  0.383469934154
   CRL1    CT3     1  0.338541512893  0.041840000000
   CRL1   CT3X     1  0.338541512893  0.041840000000
   CRL1   CTD1     1  0.338541512893  0.041840000000
-  CRL1   CTL1     1  0.338541512893  0.041840000000
+  CRL1   CTL1     1  0.357250385974  0.115060000000
   CRL1   CTL2     1  0.338541512893  0.041840000000
   CRL1   CTL3     1  0.338541512893  0.041840000000
   CRL1   CTL5     1  0.338541512893  0.041840000000
@@ -39368,8 +39429,8 @@ CLG06B   OLG1     1  0.302228481142  0.383469934154
   CRL1    HA2     1  0.288651184677  0.077149148019
   CRL1    HA3     1  0.288651184677  0.064818249282
   CRL1    HAL     1  0.286869387241  0.062058748940
-  CRL1   HAL1     1  0.286869387241  0.062058748940
-  CRL1   HAL2     1  0.288651184677  0.070011711020
+  CRL1   HAL1     1  0.298451070577  0.122591200000
+  CRL1   HAL2     1  0.298451070577  0.134306400000
   CRL1   HAL3     1  0.288651184677  0.064818249282
   CRL1     HB     1  0.286869387241  0.062058748940
   CRL1    HB1     1  0.286869387241  0.062058748940
@@ -39687,7 +39748,7 @@ CLG06B   OLG1     1  0.302228481142  0.383469934154
   CRL2    CT3     1  0.338541512893  0.041840000000
   CRL2   CT3X     1  0.338541512893  0.041840000000
   CRL2   CTD1     1  0.338541512893  0.041840000000
-  CRL2   CTL1     1  0.338541512893  0.041840000000
+  CRL2   CTL1     1  0.358141284692  0.148532000000
   CRL2   CTL2     1  0.338541512893  0.041840000000
   CRL2   CTL3     1  0.338541512893  0.041840000000
   CRL2   CTL5     1  0.338541512893  0.041840000000
@@ -39723,8 +39784,8 @@ CLG06B   OLG1     1  0.302228481142  0.383469934154
   CRL2    HA2     1  0.288651184677  0.077149148019
   CRL2    HA3     1  0.288651184677  0.064818249282
   CRL2    HAL     1  0.286869387241  0.062058748940
-  CRL2   HAL1     1  0.286869387241  0.062058748940
-  CRL2   HAL2     1  0.288651184677  0.070011711020
+  CRL2   HAL1     1  0.299341969295  0.158573600000
+  CRL2   HAL2     1  0.299341969295  0.173636000000
   CRL2   HAL3     1  0.288651184677  0.064818249282
   CRL2     HB     1  0.286869387241  0.062058748940
   CRL2    HB1     1  0.286869387241  0.062058748940
@@ -43658,8 +43719,8 @@ CLG06B   OLG1     1  0.302228481142  0.383469934154
   CTL1    HF1     1  0.286869387241  0.070011711020
   CTL1    HF2     1  0.285087589805  0.072469005789
   CTL1   HG2P     1  0.274557166956  0.189623385225
-  CTL1   HGA1     1  0.288651184677  0.088756043175
-  CTL1   HGA2     1  0.288651184677  0.078275472531
+  CTL1   HGA1     1  0.297560171859  0.128867200000
+  CTL1   HGA2     1  0.297560171859  0.113386400000
   CTL1   HGA3     1  0.288651184677  0.064818249282
   CTL1   HGA4     1  0.280633096214  0.073666921749
   CTL1   HGA5     1  0.281523994932  0.067464972838
@@ -46133,6 +46194,8 @@ CLG06B   OLG1     1  0.302228481142  0.383469934154
    HAL  OG2D1     1  0.242324451334  0.214977812437
    HAL  OG2D3     1  0.242324451334  0.214977812437
    HAL   OLG1     1  0.242324451334  0.214977812437
+  HAL1   HGA1     1  0.238760856462  0.137653600000
+  HAL1   HGA2     1  0.238760856462  0.120917600000
   HAL1     HP     1  0.238600494692  0.107488906218
   HAL1      N     1  0.282414893650  0.006205874894
   HAL1  NC2D1     1  0.255687932106  0.277535162457
@@ -46150,6 +46213,8 @@ CLG06B   OLG1     1  0.302228481142  0.383469934154
   HAL1  OG2D1     1  0.242324451334  0.214977812437
   HAL1  OG2D3     1  0.242324451334  0.214977812437
   HAL1   OLG1     1  0.242324451334  0.214977812437
+  HAL2   HGA1     1  0.238760856462  0.150205600000
+  HAL2   HGA2     1  0.238760856462  0.132632800000
   HAL2     HP     1  0.240382292129  0.121263840612
   HAL2      N     1  0.284196691087  0.007001171102
   HAL2  NC2D1     1  0.257469729543  0.313101890125
@@ -47974,6 +48039,7 @@ HLGR62   OLG1     1  0.222724679535  0.310857403193
    LIT  OG2D1     1  0.240319929218  0.069961684782
    LIT  OG2D3     1  0.240319929218  0.069961684782
    LIT   OLG1     1  0.240319929218  0.069961684782
+   LIT    ON3     1  0.283083067689  0.069872800000
    LPH      N     1  0.164816262856  0.000000000000
    LPH  NC2D1     1  0.138089301312  0.000000000000
    LPH  NG2S0     1  0.164816262856  0.000000000000
@@ -48280,6 +48346,7 @@ HLGR62   OLG1     1  0.222724679535  0.310857403193
    NC2      O     1  0.289542083396  0.648182492821
    NC2     OB     1  0.289542083396  0.648182492821
    NC2    OBL     1  0.289542083396  0.648182492821
+   NC2     OC     1  0.324019863788  0.648181096000
    NC2  OC2D1     1  0.289542083396  0.648182492821
    NC2  OC2D3     1  0.289542083396  0.648182492821
    NC2  OC2D4     1  0.289542083396  0.648182492821
@@ -50030,6 +50097,7 @@ NG3C51   OLG1     1  0.289542083396  0.648182492821
    O2L  OG2D1     1  0.276178602624  0.502080000000
    O2L  OG2D3     1  0.276178602624  0.502080000000
    O2L   OLG1     1  0.276178602624  0.502080000000
+   O2L    SOD     1  0.281523994932  0.313883680000
    OAL     OB     1  0.282414893650  0.565258245152
    OAL    OBL     1  0.282414893650  0.565258245152
    OAL  OC2D1     1  0.282414893650  0.565258245152
@@ -50284,7 +50352,7 @@ NG3C51   OLG1     1  0.289542083396  0.648182492821
    OBL   SM2P     1  0.290121167562  0.717113677081
    OBL   SM3P     1  0.264302922711  0.607530631248
    OBL   SN2P     1  0.272436828007  0.628269083346
-   OBL    SOD     1  0.250409357201  0.313883668846
+   OBL    SOD     1  0.278851298778  0.313883680000
    OBL     SP     1  0.320723538531  0.972273739232
    OBL   SR2P     1  0.290067713639  0.693282613612
    OBL     SS     1  0.320723538531  0.993644945843
@@ -50307,6 +50375,8 @@ NG3C51   OLG1     1  0.289542083396  0.648182492821
     OC  OG2D1     1  0.276178602624  0.502080000000
     OC  OG2D3     1  0.276178602624  0.502080000000
     OC   OLG1     1  0.276178602624  0.502080000000
+    OC    POT     1  0.313952708273  0.427604800000
+    OC    SOD     1  0.287760285959  0.313883680000
  OC2D1  OC2D1     1  0.249451641079  0.502080000000
  OC2D1  OC2D2     1  0.276178602624  0.502080000000
  OC2D1  OC2D3     1  0.249451641079  0.502080000000
@@ -50441,6 +50511,8 @@ NG3C51   OLG1     1  0.289542083396  0.648182492821
  OC2D2  OG2D1     1  0.276178602624  0.502080000000
  OC2D2  OG2D3     1  0.276178602624  0.502080000000
  OC2D2   OLG1     1  0.276178602624  0.502080000000
+ OC2D2    POT     1  0.313952708273  0.427604800000
+ OC2D2    SOD     1  0.287760285959  0.313883680000
  OC2D3  OC2D3     1  0.249451641079  0.502080000000
  OC2D3  OC2D4     1  0.249451641079  0.502080000000
  OC2D3  OC2DP     1  0.276178602624  0.502080000000
@@ -50696,6 +50768,7 @@ NG3C51   OLG1     1  0.289542083396  0.648182492821
  OC2DP  OG2D1     1  0.276178602624  0.502080000000
  OC2DP  OG2D3     1  0.276178602624  0.502080000000
  OC2DP   OLG1     1  0.276178602624  0.502080000000
+ OC2DP    SOD     1  0.281523994932  0.313883680000
  OC301    OCA     1  0.271724109033  0.458334236120
  OC301  OG2D1     1  0.271724109033  0.458334236120
  OC301  OG2D3     1  0.271724109033  0.458334236120
@@ -50858,6 +50931,8 @@ OC3C61   OLG1     1  0.271724109033  0.458334236120
    OCL  OG2D1     1  0.276178602624  0.502080000000
    OCL  OG2D3     1  0.276178602624  0.502080000000
    OCL   OLG1     1  0.276178602624  0.502080000000
+   OCL    POT     1  0.313952708273  0.427604800000
+   OCL    SOD     1  0.287760285959  0.313883680000
  OG2D1  OG2D1     1  0.249451641079  0.502080000000
  OG2D1  OG2D2     1  0.276178602624  0.502080000000
  OG2D1  OG2D3     1  0.249451641079  0.502080000000
@@ -50969,6 +51044,8 @@ OC3C61   OLG1     1  0.271724109033  0.458334236120
  OG2D1     ZN     1  0.221833780817  0.724690057887
  OG2D2  OG2D3     1  0.276178602624  0.502080000000
  OG2D2   OLG1     1  0.276178602624  0.502080000000
+ OG2D2    POT     1  0.313952708273  0.427604800000
+ OG2D2    SOD     1  0.287760285959  0.313883680000
  OG2D3  OG2D3     1  0.249451641079  0.502080000000
  OG2D3  OG2D4     1  0.276178602624  0.502080000000
  OG2D3  OG2D5     1  0.275465883649  0.588740986173
@@ -51080,6 +51157,7 @@ OC3C61   OLG1     1  0.271724109033  0.458334236120
  OG2D5   OLG1     1  0.275465883649  0.588740986173
  OG2N1   OLG1     1  0.276178602624  0.502080000000
  OG2P1   OLG1     1  0.276178602624  0.502080000000
+ OG2P1    SOD     1  0.281523994932  0.313883680000
 OG2R50   OLG1     1  0.276178602624  0.502080000000
  OG2S1   OLG1     1  0.274361169238  0.546744910407
  OG301   OLG1     1  0.271724109033  0.458334236120
@@ -51182,3 +51260,4 @@ OG3R60   OLG1     1  0.271724109033  0.458334236120
   OLG1   YB2P     1  0.268071424288  0.656874675024
   OLG1   YB3P     1  0.240115022513  0.580476284001
   OLG1     ZN     1  0.221833780817  0.724690057887
+    OS    SOD     1  0.278851298778  0.313883680000

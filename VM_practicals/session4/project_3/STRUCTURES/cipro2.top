@@ -1,0 +1,12 @@
+; additional params for the molecule
+#include "cipro2.prm"
+#include "cipro2.itp"
+
+[ system ]
+; Name
+ciprofloxacin2
+
+[ molecules ]
+; Compound		  #mols
+Cip2			1
+

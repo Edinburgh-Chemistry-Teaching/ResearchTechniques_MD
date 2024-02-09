@@ -1,46 +1,46 @@
 ; CHARMM-port for GROMACS
-; created with charmm2gmx version 0.6.dev1+g077b6a1 on 2021-10-05 08:46:24.296845
+; created with charmm2gmx version 0.7.dev45+g7b82040.d20221208 on 2022-12-08 10:52:45.732483
 ; Code: https://gitlab.com/awacha/charmm2gmx
 ; Documentation: https://awacha.gitlab.com/charmm2gmx
 ; Charmm2GMX written by András Wacha, based on the original port by 
 ; E. Prabhu Raman, Justin A. Lemkul, Robert Best and Alexander D. MacKerell, Jr.
 ; The following files were used: 
 ; 
-; toppar_c36_jul21/metals/CHARMM_METAL/par_all22_prot_metals.inp
-; toppar_c36_jul21/metals/CHARMM_METAL/top_all22_prot_metals.inp
-; toppar_c36_jul21/par_all35_ethers.prm
-; toppar_c36_jul21/par_all36_carb.prm
-; toppar_c36_jul21/par_all36_cgenff.prm
-; toppar_c36_jul21/par_all36_lipid.prm
-; toppar_c36_jul21/par_all36_na.prm
-; toppar_c36_jul21/par_all36m_prot.prm
-; toppar_c36_jul21/silicates/toppar/par_silicates.inp
-; toppar_c36_jul21/silicates/toppar/top_silicates.inp
-; toppar_c36_jul21/stream/carb/toppar_all36_carb_glycolipid.str
-; toppar_c36_jul21/stream/carb/toppar_all36_carb_glycopeptide.str
-; toppar_c36_jul21/stream/carb/toppar_all36_carb_imlab.str
-; toppar_c36_jul21/stream/carb/toppar_all36_carb_lignin.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_bacterial.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_cholesterol.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_detergent.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_ether.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_lps.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_miscellaneous.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_prot.str
-; toppar_c36_jul21/stream/lipid/toppar_all36_lipid_sphingo.str
-; toppar_c36_jul21/stream/misc/toppar_ions_won.str
-; toppar_c36_jul21/stream/na/toppar_all36_na_modifications.str
-; toppar_c36_jul21/stream/na/toppar_all36_na_nad_ppi.str
-; toppar_c36_jul21/stream/na/toppar_all36_na_rna_modified.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_arg0.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_heme.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_model.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_modify_res.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_na_combined.str
-; toppar_c36_jul21/stream/prot/toppar_all36_prot_retinol.str
-; toppar_c36_jul21/top_all36_prot.rtf
-; toppar_c36_jul21/toppar_water_ions.str
+; toppar_c36_jul22/metals/CHARMM_METAL/par_all22_prot_metals.inp
+; toppar_c36_jul22/metals/CHARMM_METAL/top_all22_prot_metals.inp
+; toppar_c36_jul22/par_all35_ethers.prm
+; toppar_c36_jul22/par_all36_carb.prm
+; toppar_c36_jul22/par_all36_cgenff.prm
+; toppar_c36_jul22/par_all36_lipid.prm
+; toppar_c36_jul22/par_all36_na.prm
+; toppar_c36_jul22/par_all36m_prot.prm
+; toppar_c36_jul22/silicates/toppar/par_silicates.inp
+; toppar_c36_jul22/silicates/toppar/top_silicates.inp
+; toppar_c36_jul22/stream/carb/toppar_all36_carb_glycolipid.str
+; toppar_c36_jul22/stream/carb/toppar_all36_carb_glycopeptide.str
+; toppar_c36_jul22/stream/carb/toppar_all36_carb_imlab.str
+; toppar_c36_jul22/stream/carb/toppar_all36_carb_lignin.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_bacterial.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_cholesterol.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_detergent.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_ether.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_lps.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_miscellaneous.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_prot.str
+; toppar_c36_jul22/stream/lipid/toppar_all36_lipid_sphingo.str
+; toppar_c36_jul22/stream/misc/toppar_ions_won.str
+; toppar_c36_jul22/stream/na/toppar_all36_na_modifications.str
+; toppar_c36_jul22/stream/na/toppar_all36_na_nad_ppi.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_arg0.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_fluoro_alkanes.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_heme.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_model.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_modify_res.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_na_combined.str
+; toppar_c36_jul22/stream/prot/toppar_all36_prot_retinol.str
+; toppar_c36_jul22/top_all36_prot.rtf
+; toppar_c36_jul22/toppar_water_ions.str
 ;
 
 [ bondtypes ]
@@ -48,7 +48,7 @@
 ; bond parameters from 
 ;      i        j  func           b0           kb
 
-; bond parameters from toppar_c36_jul21/metals/CHARMM_METAL/par_all22_prot_metals.inp
+; bond parameters from toppar_c36_jul22/metals/CHARMM_METAL/par_all22_prot_metals.inp
 ;      i        j  func           b0           kb
       HA       CA     1   0.10830000    284512.00 ; ALLOW ARO
       HA       CC     1   0.11000000    265374.38 ; ALLOW POL
@@ -64,10 +64,10 @@
       HB      CT2     1   0.10800000    276144.00 ; ALLOW   PEP
       HB      CT3     1   0.10800000    276144.00 ; ALLOW   PEP
 
-; bond parameters from toppar_c36_jul21/metals/CHARMM_METAL/top_all22_prot_metals.inp
+; bond parameters from toppar_c36_jul22/metals/CHARMM_METAL/top_all22_prot_metals.inp
 ;      i        j  func           b0           kb
 
-; bond parameters from toppar_c36_jul21/par_all35_ethers.prm
+; bond parameters from toppar_c36_jul22/par_all35_ethers.prm
 ;      i        j  func           b0           kb
    CC31A    HCA1A     1   0.11110000    258571.20 ; alkanes, 4/98
    CC32A    HCA2A     1   0.11110000    258571.20 ; alkanes, 4/98
@@ -92,7 +92,7 @@
   CC326A   CC326A     1   0.15300000    186188.00 ; THP, viv
   CC326A    OC30A     1   0.14150000    301248.00 ; DEET, diethylether, viv
 
-; bond parameters from toppar_c36_jul21/par_all36_carb.prm
+; bond parameters from toppar_c36_jul22/par_all36_carb.prm
 ;      i        j  func           b0           kb
    OC2D3    CC2O3     1   0.12150000    585760.00 ; ketone MP2/6-31g*, CSD geometry
    CC2O3    CC331     1   0.15000000    276144.00 ; ketone MP2/6-31g*, CSD geometry
@@ -248,7 +248,7 @@
   CC3161    NC311     1   0.14550000    225936.00 ; SUFMA/B, xxwy
    NC311     HCP1     1   0.10300000    361497.60 ; SUFMA/B, xxwy
 
-; bond parameters from toppar_c36_jul21/par_all36_cgenff.prm
+; bond parameters from toppar_c36_jul22/par_all36_cgenff.prm
 ;      i        j  func           b0           kb
    CG1N1   CG2R51     1   0.14220000    313800.00 ; DCG, yxu, RNA
    CG1N1   CG2R61     1   0.14350000    288696.00 ; 3CYP, 3-Cyanopyridine (PYRIDINE pyr-CN) (MP2 by kevo)
@@ -933,7 +933,7 @@
    SG311     HGP3     1   0.13250000    230120.00 ; PROT methanethiol pure solvent, adm jr., 6/22/92
     FGP1     ALG1     1   0.17260000    171544.00 ; aluminum tetrafluoride, ALF4, w/UB
 
-; bond parameters from toppar_c36_jul21/par_all36_lipid.prm
+; bond parameters from toppar_c36_jul22/par_all36_lipid.prm
 ;      i        j  func           b0           kb
     CTL3       CL     1   0.15220000    167360.00 ; methyl acetate
     CTL2       CL     1   0.15220000    167360.00 ; methyl acetate
@@ -984,7 +984,7 @@
     CEL1     CTL2     1   0.15020000    305432.00 ; butene; from propene, yin,adm jr., 12/95
     CEL1     CEL1     1   0.13400000    368192.00 ; butene, yin,adm jr., 12/95
 
-; bond parameters from toppar_c36_jul21/par_all36_na.prm
+; bond parameters from toppar_c36_jul22/par_all36_na.prm
 ;      i        j  func           b0           kb
      CN8      NN6     1   0.14800000    167360.00 ; methylammonium
      NN6      HN1     1   0.10400000    337230.40 ; methylammonium
@@ -1081,7 +1081,7 @@
      ON3       P4     1   0.15300000    401664.00 ; PPI2, from nad/ppi, adm jr. 7/01
      ON4       P4     1   0.15800000    198321.60 ; PPI2, from MP_1, ADM Jr.
 
-; bond parameters from toppar_c36_jul21/par_all36m_prot.prm
+; bond parameters from toppar_c36_jul22/par_all36m_prot.prm
 ;      i        j  func           b0           kb
      NH2      CT1     1   0.14550000    200832.00 ; From LSN NH2-CT2
       CA      CAI     1   0.13750000    255224.00 ; from CA CA
@@ -1216,7 +1216,7 @@
     CT2A       CC     1   0.15220000    167360.00 ; from CT2  CC, jshim
      CT1       CS     1   0.15380000    158992.00 ; from CT3 CS but lengthened; compare CT3 CT2 with CT2 CT1; kevo
 
-; bond parameters from toppar_c36_jul21/silicates/toppar/par_silicates.inp
+; bond parameters from toppar_c36_jul22/silicates/toppar/par_silicates.inp
 ;      i        j  func           b0           kb
       SI     OSIE     1   0.16980000    252713.60 ; 
     ALSI     OSIE     1   0.16980000    252713.60 ; 
@@ -1231,10 +1231,10 @@
     HSIA     SIH3     1   0.14890000    170707.20 ; 
       SI      OAL     1   0.16820000    254387.20 ; 
 
-; bond parameters from toppar_c36_jul21/silicates/toppar/top_silicates.inp
+; bond parameters from toppar_c36_jul22/silicates/toppar/top_silicates.inp
 ;      i        j  func           b0           kb
 
-; bond parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_glycolipid.str
+; bond parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_glycolipid.str
 ;      i        j  func           b0           kb
    OC30P       PL     1   0.16750000    225936.00 ; 
    OC2DP       PL     1   0.15250000    485344.00 ; 
@@ -1252,7 +1252,7 @@
    CG301   CG2R61     1   0.15380000    186188.00 ; CG301  CG321
    CC301   CC311C     1   0.15380000    186188.00 ; alkanes, 3/92
 
-; bond parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_glycopeptide.str
+; bond parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_glycopeptide.str
 ;      i        j  func           b0           kb
   CC311D    NC2D1     1   0.14300000    267776.00 ; 320.00  1.430   ! par22 NH1 CT1
   CC3162    NC2D1     1   0.14300000    267776.00 ; 320.00  1.430   ! par22 NH1 CT1
@@ -1261,7 +1261,7 @@
    OC301      CT2     1   0.14250000    301248.00 ; CC311   OC301    360.00  1.415   ! par35 CC32A OC30A
    OC301      CT1     1   0.14250000    301248.00 ; CC311   OC301    360.00  1.415   ! par35 CC32A OC30A
 
-; bond parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_imlab.str
+; bond parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_imlab.str
 ;      i        j  func           b0           kb
    CG321    OC30P     1   0.14300000    284512.00 ; CTL2  OSLP   340.0       1.4300 ! from, toppar_all36_gpi.str
    CC331      CT3     1   0.15380000    186188.00 ; from,  CT1  CT3, ALLOW   ALI
@@ -1337,7 +1337,7 @@
   CC3261    CC321     1   0.14900000    186188.00 ; CC321   CC3163
    CC321    NG2S3     1   0.14400000    269449.60 ; CG321  NG2S3
 
-; bond parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_lignin.str
+; bond parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_lignin.str
 ;      i        j  func           b0           kb
   CC3151     OLG4     1   0.14480000    278619.25 ; 
   CC3152     OLG4     1   0.14392000    278235.16 ; 
@@ -1420,7 +1420,7 @@
   CLG06B     OLG8     1   0.13742000    237976.72 ; 
    HLGP1     OLG6     1   0.09804000    457172.29 ; 
 
-; bond parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_bacterial.str
+; bond parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_bacterial.str
 ;      i        j  func           b0           kb
     CTL2   CG3RC1     1   0.15300000    186188.00 ; alkanes, 3/92
     CTL3   CG3RC1     1   0.15380000    186188.00 ; BAM1, bile acid steroidal C-D ring, cacha, 02/08, from genFF
@@ -1428,7 +1428,7 @@
     CTL2   CG3C31     1   0.15010000    200832.00 ; PROTMOD cyclopropane, from genFF
      OSL        C     1   0.13340000    125520.00 ; methyl acetate
 
-; bond parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_cholesterol.str
+; bond parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_cholesterol.str
 ;      i        j  func           b0           kb
     CEL1     CTL1     1   0.15020000    200832.00 ; from CEL1  CTL2: sR12cc (c8-c39)
     CTL1     CRL1     1   0.15000000    186188.00 ; alkanes, 3/92
@@ -1446,7 +1446,7 @@
     CEL1     CRL1     1   0.15020000    200832.00 ; from CEL1  CTL2: sR12cc (c8-c39)
     CRL1      OSL     1   0.14300000    284512.00 ; From CG311  OG302
 
-; bond parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_detergent.str
+; bond parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_detergent.str
 ;      i        j  func           b0           kb
       SL     CTL2     1   0.18070000    154808.00 ; ESNA, ethyl sulfonate, xhe
      NTL      O2L     1   0.14000000    259408.00 ; NG3P0  OG312  ! TMAO, trimethylamine N-oxide, xxwy & ejd
@@ -1457,12 +1457,12 @@
     CTL2       CC     1   0.15220000    167360.00 ; CT2  CC
    CC301   CG2R61     1   0.14900000    192464.00 ; 
 
-; bond parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_ether.str
+; bond parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_ether.str
 ;      i        j  func           b0           kb
     CTL2    OG301     1   0.14300000    284512.00 ; phosphate
     CTL1    OG301     1   0.14300000    284512.00 ; phosphate
 
-; bond parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_lps.str
+; bond parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_lps.str
 ;      i        j  func           b0           kb
      OH1     CTL1     1   0.14200000    358150.40 ; OH1 CT1 ; all22 prot
    OC301       CL     1   0.13340000    125520.00 ; SL   CL ; all36 lipid
@@ -1471,17 +1471,17 @@
      CT2       CL     1   0.15220000    167360.00 ; from par_all36_lipid.prm CTL2  CL ! methyl acetate
      NH1       CL     1   0.13450000    309616.00 ; from par_all36_prot.prm  NH1  C  ! ALLOW   PEP POL ARO
 
-; bond parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_miscellaneous.str
+; bond parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_miscellaneous.str
 ;      i        j  func           b0           kb
     CTL2      ON2     1   0.14300000    284512.00 ; ! from CN9  ON2,      DMP, ADM Jr.
 
-; bond parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_prot.str
+; bond parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_prot.str
 ;      i        j  func           b0           kb
        S       CL     1   0.18160000    200832.00 ; from, CG331  SG311   240.00     1.8160 ! PROT fitted to C-S s   9/26/92 (FL)
        S    CG321     1   0.18180000    165686.40 ; from, CG321  SG311, PROT fitted to C-S s   9/26/92 (FL)
    CG321     CTL1     1   0.15380000    186188.00 ; from, CTL1  CTL2, alkanes, 3/92
 
-; bond parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_sphingo.str
+; bond parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_sphingo.str
 ;      i        j  func           b0           kb
     CTL1     CEL3     1   0.14900000    209200.00 ; prot22; Ala Dipeptide ab initio calc's (LK) fixed from 10/90 (5/91); CT1-C
     CTO1     CEL3     1   0.14900000    209200.00 ; prot22; Ala Dipeptide ab initio calc's (LK) fixed from 10/90 (5/91) ; CT1-C
@@ -1505,10 +1505,10 @@
     CEL3     CTL3     1   0.15040000    320494.40 ; from CG2D1  CG331   383.00     1.5040
        C     CTL1     1   0.14900000    209200.00 ; from CG2O1  CG311   250.00     1.4900
 
-; bond parameters from toppar_c36_jul21/stream/misc/toppar_ions_won.str
+; bond parameters from toppar_c36_jul22/stream/misc/toppar_ions_won.str
 ;      i        j  func           b0           kb
 
-; bond parameters from toppar_c36_jul21/stream/na/toppar_all36_na_modifications.str
+; bond parameters from toppar_c36_jul22/stream/na/toppar_all36_na_modifications.str
 ;      i        j  func           b0           kb
      CN4     NN2G     1   0.13650000    292880.00 ; Inosine, adm jr. 2/94
      CN4     NN3I     1   0.12950000    376560.00 ; Inosine, adm jr. 2/94
@@ -1577,7 +1577,7 @@
     NN2G      CN9     1   0.14600000    334720.00 ; 9-E-GUA, ADM JR.
     CN1T     NN2G     1   0.13830000    284512.00 ; U,T adm jr. 11/97
 
-; bond parameters from toppar_c36_jul21/stream/na/toppar_all36_na_nad_ppi.str
+; bond parameters from toppar_c36_jul22/stream/na/toppar_all36_na_nad_ppi.str
 ;      i        j  func           b0           kb
     CN3C      HN6     1   0.10900000    312963.20 ; nadh/ppi, jjp1/adm jr. 7/95
      CN3      HN6     1   0.10900000    292880.00 ; nadh, adm jr., 8/98
@@ -1595,21 +1595,7 @@
     CN3B      NN2     1   0.13150000    351456.00 ; nad/ppi, jjp1/adm jr. 7/95
     CN3C      NN2     1   0.13550000    351456.00 ; nadh/ppi, jjp1/adm jr. 7/95
 
-; bond parameters from toppar_c36_jul21/stream/na/toppar_all36_na_rna_modified.str
-;      i        j  func           b0           kb
-  CC3162    OG301     1   0.14150000    301248.00 ; MQG, from CG36
-   CG331     NN2B     1   0.14560000    334720.00 ; U & G, from CG36
-   CG331      NN2     1   0.14560000    334720.00 ; A & C, from CG36
-    CN7B    OG301     1   0.14110000    279742.24 ; 2OM, from CG3C51 OG301, yxu
-    CN7B    OC301     1   0.14110000    279742.24 ; 2OR, from CG3C51 OG301, yxu
-    CN7B   NG2R61     1   0.14570000    184096.00 ; U, from NA36
-    CN7B   NG2R51     1   0.14570000    184096.00 ; G, from NA36
-  CG2R62     CN7B     1   0.14860000    292880.00 ; PSU, yxu
-    CN7B    NG2S0     1   0.14340000    267776.00 ; H2U, from CG36
-  NG2R52     CN7B     1   0.14600000    267776.00 ; 7MG, from NG2R52 CG334, yxu
-    CN7B    NG2P1     1   0.14530000    203342.40 ; K2C, yxu
-
-; bond parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_arg0.str
+; bond parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_arg0.str
 ;      i        j  func           b0           kb
     CRN1     NRC4     1   0.13100000    418400.00 ; MGU1, methylguanidine
     CRN1     NRN2     1   0.14400000    376560.00 ; MGU1, methylguanidine
@@ -1623,7 +1609,7 @@
     NRN1      CT2     1   0.14630000    213384.00 ; MGU2, methylguanidine2
     NRC4      CT2     1   0.14400000    259408.00 ; RETINOL SCH1, Schiff's base, deprotonated
 
-; bond parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
+; bond parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
 ;      i        j  func           b0           kb
     CTD1        C     1   0.14900000    209200.00 ; ALLOW   ALI PEP POL ARO
     CTD1       CC     1   0.15220000    167360.00 ; ALLOW   POL
@@ -1642,7 +1628,19 @@
      HB1     CPD1     1   0.10800000    276144.00 ; ALLOW PRO
        N     CPD1     1   0.14340000    267776.00 ; ALLOW PRO
 
-; bond parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_heme.str
+; bond parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_fluoro_alkanes.str
+;      i        j  func           b0           kb
+     CF3      CT2     1   0.15200000    209200.00 ; from CF3  CT3  for TFE
+      F1      CF1     1   0.13740000    351456.00 ; 
+      F2      CF2     1   0.13530000    292043.20 ; 
+      F3      CF3     1   0.13400000    221752.00 ; 
+     CF1      CT3     1   0.15200000    142256.00 ; 
+     CF2      CT3     1   0.15200000    165686.40 ; 
+     CF3      CT3     1   0.15200000    209200.00 ; 
+     CF1      HF1     1   0.10828000    286185.60 ; from: HA   CT3x!From CF1  HA
+     CF2      HF2     1   0.10828000    289532.80 ; from: HA   CT3x!From CF2  HA
+
+; bond parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_heme.str
 ;      i        j  func           b0           kb
        C        C     1   0.13350000    502080.00 ; ALLOW ARO HEM???
      CST      OST     1   0.11600000    784884.93 ; JES
@@ -1664,13 +1662,13 @@
       OM       OM     1   0.12300000    502080.00 ; ALLOW HEM
      OH1       FE     1   0.20000000    209200.00 ; patch PLOH
 
-; bond parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_model.str
+; bond parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_model.str
 ;      i        j  func           b0           kb
       OC       CD     1   0.12940000    263173.60 ; carbonate
       C3       C3     1   0.15010000    200832.00 ; cyclopropane
       C3      HB2     1   0.10830000    284512.00 ; cyclopropane
 
-; bond parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_modify_res.str
+; bond parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_modify_res.str
 ;      i        j  func           b0           kb
       SS       ZN     1   0.23200000     16736.00 ; Anionic Cys-Zn bond to maintain coordination
      NR2       ZN     1   0.20700000     16736.00 ; Neutral His-Zn bond to maintain coordination
@@ -1719,7 +1717,7 @@
     CTD1    CG324     1   0.15300000    186188.00 ; FLAVOP PIP1,2,3 DPP DNP GDPR
    CG2O1        N     1   0.13000000    217568.00 ; from N C, ALLOW PEP POL ARO PRO
 
-; bond parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_na_combined.str
+; bond parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_na_combined.str
 ;      i        j  func           b0           kb
       CA     ON2B     1   0.13800000    284512.00 ; phenol phosphate, 6/94, adm jr.
     ON2B        P     1   0.16100000    225936.00 ; phenol phosphate, 6/94, adm jr.
@@ -1735,7 +1733,7 @@
     CN7B      NR1     1   0.14620000    184096.00 ; From crystal nucleosides A/G (NF)
        S      CN8     1   0.18180000    165686.40 ; fitted to C-S
 
-; bond parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_retinol.str
+; bond parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_retinol.str
 ;      i        j  func           b0           kb
      HE1     CC1A     1   0.11000000    301666.40 ; 
      HE1     CC1B     1   0.11000000    301666.40 ; 
@@ -1763,10 +1761,10 @@
      CT2      NS1     1   0.14400000    259408.00 ; 
      CT2      NS2     1   0.14530000    251040.00 ; 
 
-; bond parameters from toppar_c36_jul21/top_all36_prot.rtf
+; bond parameters from toppar_c36_jul22/top_all36_prot.rtf
 ;      i        j  func           b0           kb
 
-; bond parameters from toppar_c36_jul21/toppar_water_ions.str
+; bond parameters from toppar_c36_jul22/toppar_water_ions.str
 ;      i        j  func           b0           kb
       HT       HT     1   0.15139000         0.00 ; from TIPS3P geometry (for SHAKE w/PARAM)
       HT       OT     1   0.09572000    376560.00 ; from TIPS3P geometry
@@ -1774,13 +1772,19 @@
     HPER     OPER     1   0.09630000    435972.80 ; H2O2
     OPER     OPER     1   0.14420000    238906.40 ; H2O2
 
+; bond parameters manually added
+;      i        j  func           b0           kb
+   CG2O2   CG2R62     1   0.14800000    212547.20
+  CG3C31   NG2R61     1   0.14560000    184096.00
+   CG2O3   CG2R62     1   0.15000000    167360.00
+
 
 [ angletypes ]
 
 ; angle parameters from 
 ;      i        j        k  func       theta0       ktheta          ub0          kub
 
-; angle parameters from toppar_c36_jul21/metals/CHARMM_METAL/par_all22_prot_metals.inp
+; angle parameters from toppar_c36_jul22/metals/CHARMM_METAL/par_all22_prot_metals.inp
 ;      i        j        k  func       theta0       ktheta          ub0          kub
       HA       CA       CA     5   120.000000   242.672000   0.21525000     20920.00 ; ALLOW ARO
       HA       CA      CPT     5   122.000000   343.088000   0.00000000         0.00 ; ALLOW   ARO
@@ -1873,10 +1877,10 @@
       SM      CT3       HA     5   111.000000   317.984000   0.00000000         0.00 ; ALLOW   ALI SUL ION
       SS       CS       HA     5   112.300000   334.720000   0.00000000         0.00 ; ALLOW SUL
 
-; angle parameters from toppar_c36_jul21/metals/CHARMM_METAL/top_all22_prot_metals.inp
+; angle parameters from toppar_c36_jul22/metals/CHARMM_METAL/top_all22_prot_metals.inp
 ;      i        j        k  func       theta0       ktheta          ub0          kub
 
-; angle parameters from toppar_c36_jul21/par_all35_ethers.prm
+; angle parameters from toppar_c36_jul22/par_all35_ethers.prm
 ;      i        j        k  func       theta0       ktheta          ub0          kub
    HCA1A    CC31A    CC31A     5   110.100000   288.696000   0.21790000     18853.10 ; alkane, 3/92
    HCA1A    CC31A    CC32A     5   110.100000   288.696000   0.21790000     18853.10 ; alkane, 3/92
@@ -1934,7 +1938,7 @@
   CC326A    OC30A   CC326A     5   109.700000   794.960000   0.00000000         0.00 ; THP, viv
    HCA2A   CC326A    OC30A     5   109.500000   376.560000   0.00000000         0.00 ; THP, sng 02/06
 
-; angle parameters from toppar_c36_jul21/par_all36_carb.prm
+; angle parameters from toppar_c36_jul22/par_all36_carb.prm
 ;      i        j        k  func       theta0       ktheta          ub0          kub
    CC311    CC311    CC321     5   111.000000   446.432800   0.25610000      6694.40 ; par22 CT2 CT1 CT1
    CC322    CC312    CC322     5   111.000000   376.560000   0.00000000         0.00 ; adm 11/08, glycerol
@@ -2375,7 +2379,7 @@
   CC3162   CC3161    NC311     5   109.000000   435.136000   0.00000000         0.00 ; SUFMA/B, xxwy
    NC311   CC3161     HCA1     5   109.500000   301.248000   0.00000000         0.00 ; SUFMA/B, xxwy
 
-; angle parameters from toppar_c36_jul21/par_all36_cgenff.prm
+; angle parameters from toppar_c36_jul22/par_all36_cgenff.prm
 ;      i        j        k  func       theta0       ktheta          ub0          kub
   CG2R51    CG1N1    NG1T1     5   180.000000   334.720000   0.00000000         0.00 ; DCG, yxu, RNA
   CG2R61    CG1N1    NG1T1     5   180.000000   334.720000   0.00000000         0.00 ; 3CYP, 3-Cyanopyridine (PYRIDINE pyr-CN), yin
@@ -4879,7 +4883,7 @@
    OG311    BG201   OG3C51     5   122.500000   920.480000   0.00000000         0.00 ; BICB, Boronic acid, sr
     FGP1     ALG1     FGP1     5   109.470000   192.464000   0.28185500     12552.00 ; aluminum tetrafluoride, ALF4, tetrahedral
 
-; angle parameters from toppar_c36_jul21/par_all36_lipid.prm
+; angle parameters from toppar_c36_jul22/par_all36_lipid.prm
 ;      i        j        k  func       theta0       ktheta          ub0          kub
      OBL       CL     CTL3     5   125.000000   585.760000   0.24420000     16736.00 ; methyl acetate
      OBL       CL     CTL2     5   125.000000   585.760000   0.24420000     16736.00 ; methyl acetate
@@ -5013,7 +5017,7 @@
     HAL3     CTL3     CEL1     5   111.500000   351.456000   0.00000000         0.00 ; 2-butene, yin,adm jr., 12/95
     CEL1     CTL2     CEL1     5   114.000000   251.040000   0.00000000         0.00 ; 1,4-dipentene, adm jr., 2/00
 
-; angle parameters from toppar_c36_jul21/par_all36_na.prm
+; angle parameters from toppar_c36_jul22/par_all36_na.prm
 ;      i        j        k  func       theta0       ktheta          ub0          kub
      CN7      CN8      CN8     5   113.600000   488.272800   0.25610000      9338.69 ; alkane
      CN8      CN7      CN8     5   113.600000   488.272800   0.25610000      9338.69 ; alkane
@@ -5255,7 +5259,7 @@
      ON3       P3      ON3     5   120.000000   870.272000   0.00000000         0.00 ; nad/ppi, jjp1/adm jr. 7/95
      ON3       P4      ON3     5   120.000000   870.272000   0.00000000         0.00 ; PPI2, from nad/ppi, adm jr., 7/01
 
-; angle parameters from toppar_c36_jul21/par_all36m_prot.prm
+; angle parameters from toppar_c36_jul22/par_all36m_prot.prm
 ;      i        j        k  func       theta0       ktheta          ub0          kub
        H      NH2      CT1     5   111.000000   418.400000   0.00000000         0.00 ; From LSN HC-NH2-CT2
        H      NH2      CT2     5   111.000000   418.400000   0.00000000         0.00 ; From LSN HC-NH2-CT2, Neutral Gly Nterminus
@@ -5267,6 +5271,7 @@
      CT3      CT1       CD     5   108.000000   435.136000   0.00000000         0.00 ; Ala cter
      NH2      CT1      HB1     5   109.500000   317.984000   0.21400000     41840.00 ; From LSN NH2-CT2-HA
      NH2      CT1        C     5   107.000000   418.400000   0.00000000         0.00 ; From ALA Dipep. NH1-CT2-C
+     NH2      CT1       CC     5   107.000000   418.400000   0.00000000         0.00 ; From ALA Dipep. NH1-CT2-C, for nsam
      NH2      CT1       CD     5   107.000000   418.400000   0.00000000         0.00 ; From ALA Dipep. NH1-CT2-C
      NH2      CT2        C     5   107.000000   418.400000   0.00000000         0.00 ; From ALA Dipep. NH1-CT2-C, Neutral Gly Nterminus
      HB2      CT1      HB2     5   115.000000   301.248000   0.00000000         0.00 ; from HB2  CT2  HB2
@@ -5627,7 +5632,7 @@
      HA2       CS      CT1     5   110.100000   289.532800   0.21790000     18853.10 ; from HA2 CS CT3 to be consistent with SS CS CT1, kevo
       OC      CT2      CT1     5   122.000000   543.920000   0.00000000         0.00 ; from OC   CT2  CT3 , kevo
 
-; angle parameters from toppar_c36_jul21/silicates/toppar/par_silicates.inp
+; angle parameters from toppar_c36_jul22/silicates/toppar/par_silicates.inp
 ;      i        j        k  func       theta0       ktheta          ub0          kub
     OSIE       SI     OSIE     5   117.000000   251.040000   0.00000000         0.00 ; quartz, from sim1
     OSIE     SIH3     OSIE     5   121.500000   251.040000   0.00000000         0.00 ; quartz, from sim1
@@ -5656,10 +5661,10 @@
     ALSI     OSIE     ALSI     5   117.000000   251.040000   0.00000000         0.00 ; 
     OSIE       SI     HSIA     5   118.000000   368.192000   0.00000000         0.00 ; 
 
-; angle parameters from toppar_c36_jul21/silicates/toppar/top_silicates.inp
+; angle parameters from toppar_c36_jul22/silicates/toppar/top_silicates.inp
 ;      i        j        k  func       theta0       ktheta          ub0          kub
 
-; angle parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_glycolipid.str
+; angle parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_glycolipid.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
    OC30P       PL    OC2DP     5   111.600000   827.595200   0.00000000         0.00 ; 
    OC2DP       PL    OC2DP     5   120.000000  1004.160000   0.00000000         0.00 ; 
@@ -5713,7 +5718,7 @@
    CC301   CC311C     HCA1     5   110.100000   288.696000   0.21790000     18853.10 ; alkane, 3/92
    CC301   CC311C   CC321C     5   113.500000   488.272800   0.25610000      9338.69 ; glycerol
 
-; angle parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_glycopeptide.str
+; angle parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_glycopeptide.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
    NC2D1   CC311D   OC3C61     5   110.000000   753.120000   0.00000000         0.00 ; 90.00   110.00  ! OC301   CC311D  OC3C61   90.00   110.00
     HCA1   CC311D    NC2D1     5   108.000000   401.664000   0.00000000         0.00 ; par22 NH1  CT1  HB
@@ -5748,7 +5753,7 @@
       HA      CT1    OC301     5   109.500000   502.080000   0.00000000         0.00 ; HCA1    CC311   OC301    60.00   109.50  ! par34 HCA2 CC32A OC30A
      HA1      CT1    OC301     5   109.500000   502.080000   0.00000000         0.00 ; HCA1    CC311   OC301    60.00   109.50  ! par34 HCA2 CC32A OC30A
 
-; angle parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_imlab.str
+; angle parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_imlab.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
   CC3163    CC312    CC322     5   111.000000   446.432800   0.25610000      6694.40 ; CT2 CT1 CT1  ; all22 prot
   CC3161    OC311   CC3062     5   109.200000   418.400000   0.00000000         0.00 ; CC3161 OC301 CC3162 ; all36 carb
@@ -6137,7 +6142,7 @@
    CG321    CG321    OC30P     5   110.100000   633.457600   0.00000000         0.00 ; OSLP CTL2 CTL2   75.700    110.10   ! acetic acid
   CC3152    OC301    CC322     5   111.000000   794.960000   0.00000000         0.00 ; from CC3152  OC301   CC321
 
-; angle parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_lignin.str
+; angle parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_lignin.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
   CC3151   CC3151     OLG4     5   117.038700   428.433232   0.23525000      1606.66 ; 
   CC3151   CC3152     OLG4     5   108.422200   428.399760   0.21727000      2535.50 ; 
@@ -6347,7 +6352,7 @@
     OLG1    CLG03     OLG6     5   124.053700   362.803008   0.23002000    172807.57 ; 
     OLG2    CLG04     OLG2     5   129.817300   831.728992   0.22902000     56793.62 ; 
 
-; angle parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_bacterial.str
+; angle parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_bacterial.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
     CTL2   CG3RC1     HGA1     5   110.100000   288.696000   0.21790000     18853.10 ; propane ring, MacKerell
     CTL2     CTL2   CG3RC1     5   111.000000   446.432800   0.25610000      6694.40 ; propane ring, MacKerell
@@ -6364,7 +6369,7 @@
      OSL        C      CT1     5   109.000000   460.240000   0.23260000     16736.00 ; methyl acetate
        C      OSL     CTL2     5   109.600000   334.720000   0.22651000     25104.00 ; methyl acetate
 
-; angle parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_cholesterol.str
+; angle parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_cholesterol.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
     CTL1     CTL2     CEL1     5   112.200000   267.776000   0.00000000         0.00 ; from CEL1 CTL2 CTL2 !all CEL1 containing terms will
     CTL1     CEL1     CTL2     5   113.000000   418.400000   0.00000000         0.00 ; guess FC, eq. angle to yield 360 deg sum
@@ -6437,7 +6442,7 @@
      OSL     CRL1     CRL2     5   109.700000   962.320000   0.00000000         0.00 ; From CG321  CG311  OG302
     CRL1      OSL       CL     5   109.600000   334.720000   0.22651000     25104.00 ; From CG2O2  OG302  CG311
 
-; angle parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_detergent.str
+; angle parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_detergent.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
      OSL       SL      OSL     5   109.470000  1087.840000   0.24500000     29288.00 ; LIPID methylsulfate
      OSL       SL     CTL2     5    99.000000   669.440000   0.00000000         0.00 ; ESNA, ethyl sulfonate, xhe
@@ -6472,7 +6477,7 @@
     CTL2    CC301   CG2R61     5   107.500000   433.462400   0.00000000         0.00 ; 
    CC301   CG2R61   CG2R61     5   120.000000   383.254400   0.00000000         0.00 ; 
 
-; angle parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_ether.str
+; angle parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_ether.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
    OG301     CTL1     CTL2     5   110.100000   633.457600   0.00000000         0.00 ; acetic acid
    OG301     CTL2     CTL1     5   110.100000   633.457600   0.00000000         0.00 ; acetic acid
@@ -6482,7 +6487,7 @@
     CTL1    OG301     CTL2     5   108.000000   543.920000   0.00000000         0.00 ; 
     CTL2    OG301     CTL2     5   109.700000   794.960000   0.00000000         0.00 ; 
 
-; angle parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_lps.str
+; angle parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_lps.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
   CC3161    OC301       CL     5   109.600000   334.720000   0.22651000     25104.00 ; CL   OSL  CTL3  ; all36 lipid
    OC301       CL      OBL     5   125.900000   753.120000   0.22576000    133888.00 ; OSL  CL   OBL   ; all36 lipid
@@ -6513,13 +6518,13 @@
      OBL       CL      NH1     5   122.500000   669.440000   0.00000000         0.00 ; from par_all36_prot.prm O    C    NH1 ! ALLOW   PEP POL ARO
      NH1       CL      CT2     5   116.500000   669.440000   0.00000000         0.00 ; from par_all36_prot.prm NH1  C    CT2 ! ALLOW   ALI PEP POL ARO
 
-; angle parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_miscellaneous.str
+; angle parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_miscellaneous.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
     CTL2      ON2        P     5   120.000000   167.360000   0.23300000     29288.00 ; ! from CN9  ON2  P,   DMP, ADM Jr.
      ON2     CTL2     HAL2     5   109.500000   502.080000   0.00000000         0.00 ; ! from HN9  CN9  ON2, DMP, ADM Jr.
      ON2     CTL2     CTL1     5   109.000000   376.560000   0.00000000         0.00 ; ! from OC301   CC301   CC331, og amol mp2/631g*
 
-; angle parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_prot.str
+; angle parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_prot.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
      CT2        S       CL     5    95.000000   284.512000   0.00000000         0.00 ; ALLOW   ALI SUL ION
     CTL2       CL        S     5   114.500000   485.344000   0.00000000         0.00 ; from, S    CT2  CT2, ALLOW   ALI SUL ION
@@ -6534,7 +6539,7 @@
    CG321     CTL1      OSL     5   110.100000   633.457600   0.00000000         0.00 ; from, OSL  CTL1 CTL2, acetic acid
    CG321     CTL1     CTL2     5   113.500000   488.272800   0.25610000      9338.69 ; from, CTL2 CTL1 CTL2, glycerol
 
-; angle parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_sphingo.str
+; angle parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_sphingo.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
     CTL3     CTL1     CEL3     5   108.000000   435.136000   0.00000000         0.00 ; prot22; Alanine Dipeptide ab initio calc's (LK); CT3-CT1-C
     CTL3     CTO1     CEL3     5   108.000000   435.136000   0.00000000         0.00 ; prot22; Alanine Dipeptide ab initio calc's (LK); CT3-CT1-C
@@ -6606,10 +6611,10 @@
        C     CTL1      OH1     5   110.100000   633.457600   0.00000000         0.00 ; from CL     CTL1   OH1      75.70    110.10, ABLIPA
      OH1     CTL1     CEL3     5   110.100000   633.457600   0.00000000         0.00 ; from CG2D1  CG321  OG311    75.70    110.10
 
-; angle parameters from toppar_c36_jul21/stream/misc/toppar_ions_won.str
+; angle parameters from toppar_c36_jul22/stream/misc/toppar_ions_won.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
 
-; angle parameters from toppar_c36_jul21/stream/na/toppar_all36_na_modifications.str
+; angle parameters from toppar_c36_jul22/stream/na/toppar_all36_na_modifications.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
      HN3      CN4     NN3I     5   116.750000   292.880000   0.00000000         0.00 ; c2
      HN3      CN4     NN2G     5   115.750000   292.880000   0.00000000         0.00 ; c2
@@ -6855,7 +6860,7 @@
     NN2G      CN8      CN9     5   113.500000   585.760000   0.00000000         0.00 ; 9-E-G, adm jr.
      ON1     CN1T     NN2G     5   121.600000  1087.840000   0.00000000         0.00 ; NA C, o2  ! o6
 
-; angle parameters from toppar_c36_jul21/stream/na/toppar_all36_na_nad_ppi.str
+; angle parameters from toppar_c36_jul22/stream/na/toppar_all36_na_nad_ppi.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
      CN3     CN1A      NN1     5   113.000000   711.280000   0.24600000     66944.00 ; nad/ppi, jjp1/adm jr. 7/95
      CN3     CN1A      ON1     5   118.500000   711.280000   0.24300000     16736.00 ; nad/ppi, jjp1/adm jr. 7/95
@@ -6895,73 +6900,7 @@
     CN3C      NN2      HN2     5   123.000000   326.352000   0.00000000         0.00 ; nad/ppi, jjp1/adm jr. 7/95
      CN7     CN7B      ON2     5   109.700000   962.320000   0.00000000         0.00 ; NF, 11/97, C4'C3'O3' for NADPH
 
-; angle parameters from toppar_c36_jul21/stream/na/toppar_all36_na_rna_modified.str
-;      i        j        k  func       theta0       ktheta          ub0          kub
-  CC3161   CC3162    OG301     5   109.700000   962.320000   0.00000000         0.00 ; MQG, from CG36
-   OG301   CC3162     HCA1     5   109.500000   502.080000   0.00000000         0.00 ; MQG, from CG36
-  CC3162    OG301   CG3C51     5   107.000000   543.920000   0.00000000         0.00 ; MQG, from CG36
-   OG301   CC3162   OC3C61     5   112.000000   753.120000   0.00000000         0.00 ; MQG, from Carb36
-     CN3     NN2B    CG331     5   120.500000   585.760000   0.00000000         0.00 ; U, from CG36
-    CN1T     NN2B    CG331     5   115.400000   585.760000   0.00000000         0.00 ; U, from CG36
-    NN2B    CG331     HGA3     5   110.100000   279.742240   0.21790000     18853.10 ; U & G, from CG36
-     CN3      NN2    CG331     5   120.500000   585.760000   0.00000000         0.00 ; C, from CG36
-     CN1      NN2    CG331     5   115.400000   585.760000   0.00000000         0.00 ; C, from CG36
-     NN2    CG331     HGA3     5   110.100000   279.742240   0.21790000     18853.10 ; A & C, from CG36
-     CN4      NN2    CG331     5   127.800000   585.760000   0.00000000         0.00 ; A, from CG36
-     CN5      NN2    CG331     5   125.900000   585.760000   0.00000000         0.00 ; A, from CG36
-     CN4     NN2B    CG331     5   127.800000   585.760000   0.00000000         0.00 ; G, from CG36
-     CN5     NN2B    CG331     5   125.900000   585.760000   0.00000000         0.00 ; G, from CG36
-    CN7B     CN7B    OG301     5   107.000000   635.968000   0.00000000         0.00 ; 2OM, yxu
-     CN7     CN7B    OG301     5   106.500000   502.080000   0.00000000         0.00 ; 2OM, yxu
-   OG301     CN7B      HN7     5   108.500000   384.091200   0.00000000         0.00 ; 2OM, from CG36
-   CG331    OG301     CN7B     5   107.000000   543.920000   0.00000000         0.00 ; 2OM, from CG36
-    CN7B     CN7B    OC301     5   107.000000   635.968000   0.00000000         0.00 ; 2OR, yxu
-     CN7     CN7B    OC301     5   106.500000   502.080000   0.00000000         0.00 ; 2OR, yxu
-   OC301     CN7B      HN7     5   108.500000   384.091200   0.00000000         0.00 ; 2OR, yxu
-    CN7B    OC301   CC3152     5   107.000000   460.240000   0.00000000         0.00 ; 2OR, from rbrb, yxu
-  CC3153    CC321    OC30P     5   110.100000   633.457600   0.00000000         0.00 ; 2OR, from CG3C51 CG321  OG303, yxu
-   CC321    OC30P       PC     5   120.000000   167.360000   0.23300000     29288.00 ; 2OR, from CG321  OG303  PG1, yxu
-  CG2R62   NG2R61     CN7B     5   119.600000   376.560000   0.00000000         0.00 ; U, from NA36
-  CG2R63   NG2R61     CN7B     5   118.400000   376.560000   0.00000000         0.00 ; U, from NA36
-  NG2R61     CN7B     ON6B     5   112.000000   920.480000   0.00000000         0.00 ; U, from NA36
-  NG2R61     CN7B      HN7     5   111.000000   359.824000   0.00000000         0.00 ; U, from NA36
-  NG2R61     CN7B     CN7B     5   111.000000   920.480000   0.00000000         0.00 ; U, from NA36
-  CG2RC0   NG2R51     CN7B     5   126.300000   376.560000   0.00000000         0.00 ; G, from NA36
-  CG2R53   NG2R51     CN7B     5   126.900000   376.560000   0.00000000         0.00 ; G, from NA36
-    ON6B     CN7B   NG2R51     5   112.000000   920.480000   0.00000000         0.00 ; G, from NA36
-    CN7B     CN7B   NG2R51     5   111.000000   920.480000   0.00000000         0.00 ; G, from NA36
-     HN7     CN7B   NG2R51     5   111.000000   359.824000   0.00000000         0.00 ; G, from NA36
-  CG2R62   CG2R62     CN7B     5   121.000000   301.248000   0.00000000         0.00 ; PSU, yxu
-  CG2R63   CG2R62     CN7B     5   122.300000   359.824000   0.00000000         0.00 ; PSU, yxu
-  CG2R62     CN7B     CN7B     5   109.300000   451.872000   0.00000000         0.00 ; PSU, yxu
-  CG2R62     CN7B     ON6B     5   107.500000   619.232000   0.00000000         0.00 ; PSU, yxu
-  CG2R62     CN7B      HN7     5   111.000000   401.664000   0.00000000         0.00 ; PSU, yxu
-   NG2S0     CN7B     CN7B     5   110.800000   376.560000   0.00000000         0.00 ; H2U, yxu
-   NG2S0     CN7B     ON6B     5   108.000000   711.280000   0.00000000         0.00 ; H2U, yxu
-   CG2O6    NG2S0     CN7B     5   116.000000   317.984000   0.00000000         0.00 ; H2U, yxu, 1/12/14
-   CG321    NG2S0     CN7B     5   120.000000   334.720000   0.00000000         0.00 ; H2U, yxu, 1/12/14
-   NG2S0     CN7B      HN7     5   112.000000   401.664000   0.00000000         0.00 ; H2U, from CG36
-  CG2R61   NG2R61     CN7B     5   119.600000   376.560000   0.00000000         0.00 ; 2SC, from C
-  CG2R53   NG2R52     CN7B     5   112.000000   836.800000   0.00000000         0.00 ; 7MG, yxu
-  CG2RC0   NG2R52     CN7B     5   112.900000   602.496000   0.00000000         0.00 ; 7MG, from CG2RC0 NG2R52 CG334, yxu
-  NG2R52     CN7B      HN7     5   106.000000   451.872000   0.00000000         0.00 ; 7MG, yxu
-  NG2R52     CN7B     CN7B     5   105.500000   753.120000   0.00000000         0.00 ; 7MG, yxu
-  NG2R52     CN7B     ON6B     5   102.000000   627.600000   0.00000000         0.00 ; 7MG, yxu
-   NG2P1     CN7B     ON6B     5   108.000000   711.280000   0.00000000         0.00 ; K2C, yxu
-   NG2P1     CN7B     CN7B     5   109.300000   460.240000   0.00000000         0.00 ; K2C, yxu
-   NG2P1     CN7B      HN7     5   107.700000   435.136000   0.00000000         0.00 ; K2C, yxu
-  CG2R64    NG2P1     CN7B     5   118.100000   502.080000   0.00000000         0.00 ; K2C, yxu
-  CG2R61    NG2P1     CN7B     5   120.000000   443.504000   0.00000000         0.00 ; K2C, yxu
-  CG2R64   NG2R61     CN7B     5   115.400000   418.400000   0.00000000         0.00 ; K2Cn, yxu
-  CG2R51   NG2R51     CN7B     5   126.900000   376.560000   0.00000000         0.00 ; DCG, from NA36
-  CG2R62     CN7B      CN8     5   109.300000   451.872000   0.00000000         0.00 ; PSU, from CG2R62 CN7B CN7B, yxu
-  CG2R62     CN7B      ON6     5   107.500000   619.232000   0.00000000         0.00 ; PSU, from CG2R62 CN7B ON6B, yxu
-  NG2R61     CN7B      ON6     5   108.000000   920.480000   0.00000000         0.00 ; C/U, from NA36
-  NG2R61     CN7B      CN8     5   113.700000   920.480000   0.00000000         0.00 ; C/U, from NA36
-  NG2R51     CN7B      ON6     5   108.000000   920.480000   0.00000000         0.00 ; A/G, from NA36
-  NG2R51     CN7B      CN8     5   113.700000   920.480000   0.00000000         0.00 ; A/G, from NA36
-
-; angle parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_arg0.str
+; angle parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_arg0.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
     NRN2     CRN1     NRN2     5   113.000000   627.600000   0.00000000         0.00 ; MGU1, methylguanidine
     NRN2     CRN1     NRC4     5   125.000000   836.800000   0.00000000         0.00 ; MGU1, methylguanidine
@@ -6985,7 +6924,7 @@
      CT2     NRN1     HRM1     5   104.000000   376.560000   0.00000000         0.00 ; MGU2, methylguanidine2
      CT2     NRN1     CRN1     5   106.000000   359.824000   0.00000000         0.00 ; MGU2, methylguanidine
 
-; angle parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
+; angle parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
      HA3      CT3     CTD1     5   110.100000   279.742240   0.21790000     18853.10 ; ALLOW   ALI
      CT1     CTD1        C     5   108.000000   435.136000   0.00000000         0.00 ; ALLOW   ALI PEP POL ARO
@@ -7093,7 +7032,27 @@
       OC       CC     CPD1     5   118.000000   334.720000   0.23880000     41840.00 ; 
       OS       CD     CPD1     5   109.000000   460.240000   0.23260000     16736.00 ; 
 
-; angle parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_heme.str
+; angle parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_fluoro_alkanes.str
+;      i        j        k  func       theta0       ktheta          ub0          kub
+     HA2      CT2      CF3     5   110.100000   289.532800   0.21790000     18853.10 ; from HA2  CT2  CT3  for TFE
+      F3      CF3      CT2     5   112.000000   351.456000   0.23570000     25104.00 ; from F3 CF3 CT3  for TFE
+      F2      CF2       F2     5   107.000000  1255.200000   0.21700000      8368.00 ; 
+      F3      CF3       F3     5   107.000000   987.424000   0.21550000     25104.00 ; 
+      F1      CF1      CT3     5   112.000000   368.192000   0.23690000     25104.00 ; 
+      F2      CF2      CT3     5   112.000000   418.400000   0.23570000     25104.00 ; 
+      F3      CF3      CT3     5   112.000000   351.456000   0.23570000     25104.00 ; 
+     HA3      CT3      CF1     5   110.500000   276.144000   0.21810000     31798.40 ; 
+     HA3      CT3      CF2     5   110.500000   276.144000   0.21680000     30961.60 ; 
+     HA3      CT3      CF3     5   110.500000   276.144000   0.21550000     32635.20 ; 
+     CT3      CF1      HF1     5   112.000000   259.408000   0.21680000      2510.40 ; from: CT3  CF1  HA
+     CT3      CF2      HF2     5   112.000000   267.776000   0.21680000      2510.40 ; from: CT3  CF2  HA
+      F1      CF1      HF1     5   108.890000   481.160000   0.19970000      4184.00 ; from: F1   CF1  HA
+      F2      CF2      HF2     5   108.890000   350.619200   0.19800000      4184.00 ; from: F1   CF2  HA
+     HF1      CF1      HF1     5   108.400000   297.064000   0.17460000      8702.72 ; from: HA   CF1  HA
+     OH1      CT2      CF3     5   110.100000   633.457600   0.00000000         0.00 ; for TFE
+      F1      CF3       HA     5   108.890000   384.091200   0.00000000         0.00 ; for TFE
+
+; angle parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_heme.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
      OST      CST      OST     5   180.000000 25104.000000   0.00000000         0.00 ; CO2, JES
       CS       SS       FE     5   100.600000   418.400000   0.00000000         0.00 ; force constant a guess
@@ -7131,7 +7090,7 @@
        H      OH1       FE     5   108.000000   543.920000   0.00000000         0.00 ; patch PLOH
      OH1       FE      NPH     5    90.000000    41.840000   0.00000000         0.00 ; patch PLOH
 
-; angle parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_model.str
+; angle parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_model.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
       OC       CD       OC     5   120.000000   334.720000   0.22412700     83261.60 ; carbonate
       C3       C3       C3     5   111.000000   647.264800   0.25610000      6694.40 ; cyclopropane
@@ -7143,7 +7102,7 @@
      HA1      CT1     CT2A     5   110.100000   288.696000   0.21790000     18853.10 ; from HA1  CT1  CT2, for CGU
       CC      CT1       CD     5   108.000000   435.136000   0.00000000         0.00 ; from CT3  CT1  CC, for CGUP
 
-; angle parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_modify_res.str
+; angle parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_modify_res.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
      CT1      CT2        C     5   108.000000   435.136000   0.00000000         0.00 ; DKAM, from CT1  CT2  CC , kevo
       SS       ZN       SS     5   111.770000   836.800000   0.00000000         0.00 ; Anionic Cys-Zn bond, equilibrium value based on PDB survey data
@@ -7440,7 +7399,7 @@
      NH3      CT1    CG321     5   110.000000   566.513600   0.00000000         0.00 ; from NH3  CT1  CT2, ALLOW   ALI POL
    CG321      CT1       CC     5   108.000000   435.136000   0.00000000         0.00 ; from CT2  CT1  CC,   ALLOW   ALI PEP POL ARO
 
-; angle parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_na_combined.str
+; angle parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_na_combined.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
       CA       CA     ON2B     5   120.000000   627.600000   0.00000000         0.00 ; phenol phosphate, 6/94, adm jr.
       CA     ON2B        P     5   120.000000   753.120000   0.23000000     16736.00 ; phenol phosphate, 6/94, adm jr.
@@ -7489,7 +7448,7 @@
        S      CN8      CN8     5   114.500000   485.344000   0.00000000         0.00 ; Methione
        S      CN8      HN8     5   111.300000   385.764800   0.00000000         0.00 ; Methione
 
-; angle parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_retinol.str
+; angle parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_retinol.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
     CC1A     CC1A      CT3     5   123.500000   401.664000   0.00000000         0.00 ; 
      HA2      CT2     CC1A     5   111.500000   376.560000   0.00000000         0.00 ; 
@@ -7569,21 +7528,38 @@
      CT2      CT2      NS2     5   110.000000   566.513600   0.00000000         0.00 ; from lysine
      HA2      CT2      NS2     5   110.100000   351.456000   0.00000000         0.00 ; 
 
-; angle parameters from toppar_c36_jul21/top_all36_prot.rtf
+; angle parameters from toppar_c36_jul22/top_all36_prot.rtf
 ;      i        j        k  func       theta0       ktheta          ub0          kub
 
-; angle parameters from toppar_c36_jul21/toppar_water_ions.str
+; angle parameters from toppar_c36_jul22/toppar_water_ions.str
 ;      i        j        k  func       theta0       ktheta          ub0          kub
       HT       OT       HT     5   104.520000   460.240000   0.00000000         0.00 ; FROM TIPS3P GEOMETRY
     HPER     OPER     OPER     5    99.920000   505.427200   0.00000000         0.00 ; H2O2
+
+; angle parameters manually added
+;      i        j        k  func       theta0       ktheta          ub0          kub
+  CG2R62    CG2O2    OG2D1     5   123.100000   585.760000   0.24420000     16736.00
+  CG2R62    CG2O2    OG311     5   113.900000   334.720000   0.23700000     25104.00
+  CG2R62   CG2R61   CG2R66     5   119.000000   334.720000   0.24162000     29288.00
+  CG2R62   CG2R61    HGR62     5   120.000000   251.040000   0.21525000     18409.60
+  CG2R66   CG2R61    NG301     5   120.000000   351.456000   0.00000000         0.00
+   CG2O2   CG2R62   CG2R62     5   120.000000   418.400000   0.00000000         0.00
+   CG2O2   CG2R62   CG2R63     5   122.200000   543.920000   0.00000000         0.00
+  CG3C31   CG3C31   NG2R61     5   113.700000   585.760000   0.00000000         0.00
+  NG2R61   CG3C31     HGA1     5   115.400000   251.040000   0.00000000         0.00
+  CG2R62   NG2R61   CG3C31     5   118.400000   376.560000   0.00000000         0.00
+  CG2R62    CG2O3    OG2D2     5   116.000000   334.720000   0.23530000     41840.00
+   CG2O3   CG2R62   CG2R62     5   119.000000   376.560000   0.00000000         0.00
+   CG2O3   CG2R62   CG2R63     5   122.200000   543.920000   0.00000000         0.00
+   CG324    CG321    NG301     5   107.000000   476.976000   0.00000000         0.00
 
 
 [ dihedraltypes ]
 
 ; specific (non-wildcard) dihedral parameters from 
 ;      i        j        k        l  func         phi0         kphi  mult
-   OG311    CG2O2    CG321    CG321     9   180.000000     0.000000     6
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/metals/CHARMM_METAL/par_all22_prot_metals.inp
+
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/metals/CHARMM_METAL/par_all22_prot_metals.inp
 ;      i        j        k        l  func         phi0         kphi  mult
      CE1      CE1      CT3       HA     9     0.000000     0.125520     3 ; 
      CE2      CE1      CT2       HA     9     0.000000     0.502080     3 ; 
@@ -7675,10 +7651,10 @@
       SM       SM      CT3       HA     9     0.000000     0.661072     3 ; ALLOW   ALI SUL ION
       SS       CS      CT3       HA     9     0.000000     0.627600     3 ; ALLOW SUL
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/metals/CHARMM_METAL/top_all22_prot_metals.inp
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/metals/CHARMM_METAL/top_all22_prot_metals.inp
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/par_all35_ethers.prm
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/par_all35_ethers.prm
 ;      i        j        k        l  func         phi0         kphi  mult
    CC31A    CC30A    CC32A    HCA2A     9     0.000000     0.836800     3 ; alkane, 3/92
    CC32A    CC30A    CC32A    HCA2A     9     0.000000     0.836800     3 ; alkane, 3/92
@@ -7787,7 +7763,7 @@
    OC30A    CC32A    CC32A    CC32A     9   180.000000     0.669440     1 ; methylpropylether, 2/12/05, ATM
    OC30A    CC32A    CC32A    CC32A     9     0.000000     1.631760     2 ; methylpropylether
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/par_all36_carb.prm
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/par_all36_carb.prm
 ;      i        j        k        l  func         phi0         kphi  mult
    CC312    CC312    CC312    CC2O3     9   180.000000     0.083680     1 ; erh ketone, n=6 polyol
    CC312    CC312    CC312    CC2O3     9     0.000000     0.251040     2 ; " RIMP2/cc-pVTZ//MP2/631gd
@@ -7946,14 +7922,8 @@
   CC3161   CC3163    CC321    OC301     9   180.000000     1.548080     2 ; LS fit
   CC3161   CC3163    CC321    OC301     9     0.000000     0.627600     3 ; 
    NC2D1   CC3161   CC3161   CC3161     9     0.000000     0.836800     3 ; par27 X CTL1 CTL1 X
-  CC3261   CC3161   CC3161    NC2D1     9   180.000000     8.266329     1 ; ahaile_2019
-  CC3261   CC3161   CC3161    NC2D1     9     0.000000     7.073889     2 ; ahaile_2019
-  CC3261   CC3161   CC3161    NC2D1     9     0.000000     4.167682     3 ; ahaile_2019
-  CC3261   CC3161   CC3161    NC2D1     9     0.000000     1.317123     6 ; ahaile_2019
-   NC2D1   CC3161   CC3163    CC312     9   180.000000     8.903970     1 ; ahaile_2019
-   NC2D1   CC3161   CC3163    CC312     9     0.000000     5.750490     2 ; ahaile_2019
-   NC2D1   CC3161   CC3163    CC312     9     0.000000     2.450987     3 ; ahaile_2019
-   NC2D1   CC3161   CC3163    CC312     9     0.000000     3.709116     6 ; ahaile_2019
+   NC2D1   CC3161   CC3161   CC3261     9     0.000000     0.836800     3 ; par27 X CTL1 CTL1 X, reinstated og, 2021
+   CC312   CC3163   CC3161    NC2D1     9     0.000000     0.836800     3 ; par27 X CTL1 CTL1 X, reinstated og, 2021
   CC3161   CC3162   OC3C61   CC3163     9     0.000000     0.836800     3 ; og/sng thp
   CC3161   CC3162   OC3C61   CC3263     9     0.000000     0.836800     3 ; og/sng thp
   CC3161   CC3163   OC3C61   CC3162     9     0.000000     0.836800     3 ; og/sng thp
@@ -8142,10 +8112,7 @@
    OC301   CC3161   CC3161    NC2D1     9     0.000000     0.836800     3 ; par27 X CTL1 CTL1 X
    OC311   CC3161   CC3161    NC2D1     9     0.000000     0.836800     3 ; par27 X CTL1 CTL1 X
   OC3C61   CC3162   CC3161    NC2D1     9     0.000000     0.836800     3 ; par27 X CTL1 CTL1 X
-   NC2D1   CC3161   CC3163   OC3C61     9     0.000000     7.568856     1 ; ahaile_2019
-   NC2D1   CC3161   CC3163   OC3C61     9   180.000000     2.875663     2 ; ahaile_2019
-   NC2D1   CC3161   CC3163   OC3C61     9   180.000000     5.568904     3 ; ahaile_2019
-   NC2D1   CC3161   CC3163   OC3C61     9   180.000000     2.367307     6 ; ahaile_2019
+  OC3C61   CC3163   CC3161    NC2D1     9     0.000000     0.836800     3 ; par27 X CTL1 CTL1 X, reinstated og, 2021
    OC2D1    CC2O1    NC2D1    CC311     9   180.000000    10.460000     2 ; par22 O C NH1 CT1
    OC2D1    CC2O1    NC2D1   CC3161     9   180.000000    10.460000     2 ; par22 O C NH1 CT1
    OC2D1    CC2O1    NC2D1    CC331     9   180.000000    10.460000     2 ; par22 O C NH1 CT3
@@ -9160,7 +9127,7 @@
   CC3161   CC3161    NC311       SC     9     0.000000     0.673624     3 ; SUFMA/B, lsfit RMSE = 1.095, xxwy
   CC3162   CC3161    NC311       SC     9     0.000000     0.673624     3 ; SUFMA/B, lsfit RMSE = 1.095, xxwy
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/par_all36_cgenff.prm
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/par_all36_cgenff.prm
 ;      i        j        k        l  func         phi0         kphi  mult
    NG1T1    CG1N1   CG2R61   CG2R61     9     0.000000     0.041840     2 ; CNP2, by ac_aa
    NG1T1    CG1N1    SG311    CG321     9     0.000000     0.025104     1 ; XCN, by ac_aa
@@ -16623,7 +16590,7 @@
    CG321    SG301    SG3O1    OG2P1     9     0.000000    17.023022     2 ; CSU, by ac_aa
    CG321    SG301    SG3O1    OG2P1     9     0.000000     1.371934     3 ; CSU, by ac_aa
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/par_all36_lipid.prm
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/par_all36_lipid.prm
 ;      i        j        k        l  func         phi0         kphi  mult
      OCL      CCL     CTL1     NH3L     9   180.000000    13.388800     2 ; for POPS
      OBL       CL     CTL2     HAL2     9   180.000000     0.000000     6 ; acetic acid
@@ -16778,7 +16745,7 @@
     CEL1     CEL1     CTL2     CEL1     9     0.000000     1.087840     3 ; 2,5-diheptane
     CEL1     CEL1     CTL2     CEL1     9     0.000000     0.401664     4 ; 2,5-diheptane
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/par_all36_na.prm
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/par_all36_na.prm
 ;      i        j        k        l  func         phi0         kphi  mult
      CN7      ON6     CN8B      HN8     9     0.000000     0.815880     1 ; 
      ON6     CN8B      CN8      HN8     9     0.000000     0.815880     1 ; 
@@ -17271,7 +17238,7 @@
        P      ON2       P4      ON4     9     0.000000     0.418400     2 ; from P ON2 P2 ON4, adm jr. 7/01
        P      ON2       P4      ON4     9     0.000000     0.125520     3 ; from P ON2 P2 ON4, adm jr. 7/01
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/par_all36m_prot.prm
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/par_all36m_prot.prm
 ;      i        j        k        l  func         phi0         kphi  mult
      NH2      CT1        C        O     9     0.000000     0.000000     1 ; 
      NH2      CT2        C        O     9     0.000000     0.000000     1 ; Neutral Gly Nterminus
@@ -17281,6 +17248,7 @@
      NH2      CT1     CT2A      HA2     9     0.000000     0.836800     3 ; From X    CT1  CT2  X
        H      NH2      CT1      CT1     9     0.000000     0.000000     1 ; 
        H      NH2      CT1        C     9     0.000000     0.000000     1 ; 
+       H      NH2      CT1       CC     9     0.000000     0.000000     1 ; From neutral N-termini
        H      NH2      CT1       CD     9     0.000000     0.000000     1 ; 
        H      NH2      CT2        C     9     0.000000     0.000000     1 ; Neutral Gly Nterminus
        H      NH2      CT2       CD     9     0.000000     0.000000     1 ; Neutral Gly Nterminus
@@ -17951,7 +17919,7 @@
       CD      CT1      CT2       OC     9     0.000000     0.836800     3 ; from X    CT1  CT2  X , kevo
      HB1      CT1      CT2       OC     9     0.000000     0.836800     3 ; from X    CT1  CT2  X , kevo
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/silicates/toppar/par_silicates.inp
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/silicates/toppar/par_silicates.inp
 ;      i        j        k        l  func         phi0         kphi  mult
     OSIE       SI     OSIE     SIH3     9     0.000000     0.753120     5 ; quartz, from sim1
     OSIE       SI     OSIE       SI     9     0.000000     0.753120     5 ; quartz, from sim1
@@ -17988,10 +17956,10 @@
       SI     OSIE     ALSI      HAL     9     0.000000     0.418400     3 ; 
     OSIE     ALSI      OAL      HAL     9     0.000000     0.418400     3 ; 
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/silicates/toppar/top_silicates.inp
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/silicates/toppar/top_silicates.inp
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_glycolipid.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_glycolipid.str
 ;      i        j        k        l  func         phi0         kphi  mult
   CC3161   CC3161    OC30P       PL     9   180.000000     0.083680     3 ; 
   CC3161    OC30P       PL    OC2DP     9     0.000000     1.380720     3 ; 
@@ -18158,7 +18126,7 @@
     CTL2    CC301   CC311C     HCA1     9     0.000000     0.836800     3 ; par27 X CTL1 CTL2 X
     CTL2     CTL2    CC301   CC311C     9     0.000000     0.836800     3 ; par27 X CTL1 CTL2 X
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_glycopeptide.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_glycopeptide.str
 ;      i        j        k        l  func         phi0         kphi  mult
   CC321C   OC3C61   CC311D    NC2D1     9     0.000000     2.594080     1 ; og OMeTHP compounds 2 and 3
   CC321C   OC3C61   CC311D    NC2D1     9     0.000000     6.443360     2 ; OC301    CC311D   OC3C61   CC321C
@@ -18297,7 +18265,7 @@
   CC3162    OC301      CT1      CT1     9   180.000000     0.041840     2 ; 
   CC3162    OC301      CT1      CT1     9     0.000000     0.125520     3 ; 
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_imlab.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_imlab.str
 ;      i        j        k        l  func         phi0         kphi  mult
     HCA2    CC322    CC312   CC3163     9     0.000000     0.836800     3 ; X CTL1 CTL2 X             ; all36 lipid
   CC3163    CC312    CC322    OC311     9     0.000000     0.836800     3 ; X CTL1 CTL2 X
@@ -19718,7 +19686,7 @@
   CC3162   CC3161    OC30P       PC     9   180.000000     0.083680     3 ; 
   CC3163    CC321    OC30P       PC     9   180.000000     0.083680     3 ; CC311D  CC311D  OC30P   PC       0.02  3  180.0
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_lignin.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_lignin.str
 ;      i        j        k        l  func         phi0         kphi  mult
   CC3151   CC3151   CC3152     OLG4     9   180.000000     0.621324     3 ; 
   CC3151   CC3151   CC3152     OLG4     9     0.000000     0.316729     6 ; 
@@ -20237,7 +20205,7 @@
     OLG8    CLG11    CLG12     OLG6     9     0.000000     9.237435     3 ; 
     OLG8   CLG06B   CLG06B     OLG8     9   180.000000    12.317278     2 ; 
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_bacterial.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_bacterial.str
 ;      i        j        k        l  func         phi0         kphi  mult
     CTL2     CTL2   CG3RC1     HGA1     9     0.000000     0.627600     3 ; propane ring, MacKerell
     CTL2     CTL2   CG3RC1   CG3C31     9   180.000000     0.000000     2 ; propane ring, MacKerell
@@ -20268,7 +20236,7 @@
     HAL2     CTL2      OSL        C     9     0.000000     0.000000     3 ; LIPID phosphate, new NA, 4/98, adm jr.
      CT1        C      OSL     CTL2     9   180.000000     8.577200     2 ; /scrat , from CG321 CG2O2 OG302 CG321, PENALTY= 17
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_cholesterol.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_cholesterol.str
 ;      i        j        k        l  func         phi0         kphi  mult
     CRL1     CRL1     CTL1     CTL2     9     0.000000     0.000000     3 ; 6/10, jbk
     CRL1     CTL1     CTL2     CTL3     9   180.000000     0.509611     3 ; 6/10, jbk
@@ -20412,7 +20380,7 @@
     HGA1     CRL1      OSL       CL     9     0.000000     0.000000     3 ; From HGA1   CG311  OG302  CG2O2
       CL      OSL     CRL1     CRL2     9   180.000000     2.928800     1 ; From CG321  CG311  OG302  CG2O2
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_detergent.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_detergent.str
 ;      i        j        k        l  func         phi0         kphi  mult
      OSL       SL     CTL2     HAL2     9     0.000000     0.794960     3 ; ESNA, ethyl sulfonate, xhe
      OSL       SL     CTL2     CTL2     9     0.000000     0.962320     3 ; PSNA, propyl sulfonate, xhe
@@ -20448,7 +20416,7 @@
     CTL5      NTL      OHL      HOL     9     0.000000     1.158968     3 ; TMAOP,
      HOL      OHL      NTL     CTL2     9     0.000000     1.158968     3 ; TMAOP,
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_ether.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_ether.str
 ;      i        j        k        l  func         phi0         kphi  mult
    OG301     CTL1     CTL2    OG301     9   180.000000     0.167360     1 ; A.L. 07/18  diethoxyethane
    OG301     CTL1     CTL2    OG301     9     0.000000     5.020800     2 ; A.L. 07/18  diethoxyethane
@@ -20483,7 +20451,7 @@
     HAL2     CTL2    OG301     CTL1     9     0.000000     1.188256     3 ; 
     HAL1     CTL1    OG301     CTL2     9     0.000000     1.188256     3 ; 
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_lps.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_lps.str
 ;      i        j        k        l  func         phi0         kphi  mult
   CC3163   CC3161    OC30P       PC     9   180.000000     0.121336     3 ; CC3161 CC3161 OC30P PC    ; all36 carb
    OC30P   CC3162   CC3161    NC2D1     9     0.000000     0.836800     3 ; OC301 CC3162 CC3161 NC2D1 ; all36 carb
@@ -20548,7 +20516,7 @@
      OBL       CL      NH1        H     9   180.000000    10.460000     2 ; from par_all36_prot.prm   O    C    NH1  H    !   ALLOW PEP
      CT2       CL      NH1      CT2     9     0.000000     6.694400     1 ; from par_all36_prot.prm   CT2  C    NH1  CT2  !   ALLOW PEP
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_miscellaneous.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_miscellaneous.str
 ;      i        j        k        l  func         phi0         kphi  mult
     CTL2      ON2        P    OG2P1     9     0.000000     1.380720     3 ; ! from CC3162   OC30P     PC        OC2DP    0.33   3      0.0 ! probably better with the old phosphate charges in the topology (and the L-J haven't changed) -- kevo
     CTL2      ON2        P    OG304     9     0.000000     6.066800     2 ; ! from CC3162   OC30P     PC        OC312    1.45   2      0.0 ! probably better with the old phosphate charges in the topology (and the L-J haven't changed) -- kevo
@@ -20565,7 +20533,7 @@
       P4      ON2        P      ON4     9     0.000000     0.418400     2 ; from P ON2 P2 ON4, adm jr. 7/01¬
       P4      ON2        P      ON4     9     0.000000     0.125520     3 ; from P ON2 P2 ON4, adm jr. 7/01¬
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_prot.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_prot.str
 ;      i        j        k        l  func         phi0         kphi  mult
       CL        S      CT2      CT1     9   180.000000     1.004160     1 ; from, CG321  CG321  SG311  CG331
       CL        S      CT2      CT1     9     0.000000     1.548080     3 ; "
@@ -20597,7 +20565,7 @@
     HGA2    CG321     CTL1      OSL     9     0.000000     0.836800     3 ; from, par27 X CTL1 CTL2 X
     HGA2    CG321     CTL1     CTL2     9     0.000000     0.836800     3 ; from, par27 X CTL1 CTL2 X
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_sphingo.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_sphingo.str
 ;      i        j        k        l  func         phi0         kphi  mult
     CTL3     CTL1     CEL3     CEL3     9   180.000000     3.765600     1 ; lip36; 2-pentene and 3-heptene; CEL1 CEL1 CTL2 CTL3
     CEL3     CEL3     CTL2     CTL3     9   180.000000     3.807440     1 ; lip36; 2-hexene, adm jr., 11/09
@@ -20777,10 +20745,10 @@
        H      OH1     CTL1     CEL3     9     0.000000     2.928800     2 ; CG2D1  CG321  OG311  HGP1       0.7000  2     0.00
        H      OH1     CTL1     CEL3     9     0.000000     0.585760     3 ; CG2D1  CG321  OG311  HGP1       0.1400  3     0.00
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/misc/toppar_ions_won.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/misc/toppar_ions_won.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/na/toppar_all36_na_modifications.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/na/toppar_all36_na_modifications.str
 ;      i        j        k        l  func         phi0         kphi  mult
      CN5      CN5     NN3I      CN4     9   180.000000    25.104000     2 ; 
     NN2G      CN4     NN3I      CN5     9   180.000000    25.104000     2 ; 
@@ -21382,7 +21350,7 @@
      CN1     NN2G      CN8      CN8     9     0.000000     7.531200     1 ; from CG321 CG321 NG2S1 CG2O1
      CN1     NN2G      CN8      CN9     9     0.000000     7.531200     1 ; from CG321 CG321 NG2S1 CG2O1
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/na/toppar_all36_na_nad_ppi.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/na/toppar_all36_na_nad_ppi.str
 ;      i        j        k        l  func         phi0         kphi  mult
      ON4        P      ON2     CN7B     9     0.000000     3.974800     2 ; for NADPH
      ON4        P      ON2     CN7B     9     0.000000     2.092000     3 ; for NADPH
@@ -21446,228 +21414,7 @@
      ON2      CN7     CN7B      NN2     9     0.000000     0.000000     3 ; 
      ON5      CN7     CN7B      NN2     9     0.000000     0.000000     3 ; 
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/na/toppar_all36_na_rna_modified.str
-;      i        j        k        l  func         phi0         kphi  mult
-   NG2P1   CG2R63   NG2R61     CN7B     9   180.000000    46.024000     2 ; CYTp, from NA36
-  CG2R61   CG2R61   NG2R61     CN7B     9   180.000000    46.024000     2 ; 2SC, from C
-   HGR62   CG2R61   NG2R61     CN7B     9   180.000000     1.255200     2 ; 2SC, from C
-   OG301   CC3162   CC3161   CC3161     9     0.000000     0.836800     3 ; MQG, from Carb36
-   OG301   CC3162   CC3161    OC311     9   180.000000    11.087600     1 ; MQG, from Carb36
-   OG301   CC3162   CC3161    OC311     9     0.000000     0.000000     2 ; MQG, from Carb36
-   OG301   CC3162   CC3161    OC311     9   180.000000     0.543920     3 ; MQG, from Carb36
-   OG301   CC3162   CC3161     HCA1     9     0.000000     0.836800     3 ; MQG, from Carb36
-   OG301   CC3162   OC3C61   CC3163     9     0.000000     0.836800     3 ; MQG, from Carb36
-  CC3161   CC3162    OG301   CG3C51     9     0.000000     1.882800     3 ; MQG, from pepr, yxu
-  OC3C61   CC3162    OG301   CG3C51     9     0.000000     3.430880     1 ; MQG, from pepr, yxu
-  OC3C61   CC3162    OG301   CG3C51     9     0.000000     3.389040     2 ; MQG, from pepr, yxu
-  OC3C61   CC3162    OG301   CG3C51     9     0.000000     1.464400     3 ; MQG, from pepr, yxu
-    HCA1   CC3162    OG301   CG3C51     9     0.000000     1.464400     3 ; MQG, from pepr, yxu
-  CG3C51   CG3C51    OG301   CC3162     9   180.000000     0.836800     1 ; MQG, from pepr, yxu
-  CG3C51   CG3C51    OG301   CC3162     9     0.000000     1.255200     3 ; MQG, from pepr, yxu
-  CG3C53   CG3C51    OG301   CC3162     9   180.000000     0.836800     1 ; MQG, from pepr, yxu
-  CG3C53   CG3C51    OG301   CC3162     9     0.000000     1.255200     3 ; MQG, from pepr, yxu
-    HGA1   CG3C51    OG301   CC3162     9     0.000000     2.092000     1 ; MQG, from pepr, yxu
-    HGA1   CG3C51    OG301   CC3162     9   180.000000     2.510400     3 ; MQG, from pepr, yxu
-     CN3     NN2B    CG331     HGA3     9     0.000000     0.000000     3 ; U, from CG36
-    CN1T     NN2B    CG331     HGA3     9     0.000000     0.794960     3 ; U, from CG36
-     CN3      NN2    CG331     HGA3     9     0.000000     0.000000     3 ; C, from CG36
-     CN1      NN2    CG331     HGA3     9     0.000000     0.794960     3 ; C, from CG36
-     CN4      NN2    CG331     HGA3     9     0.000000     0.000000     3 ; A, from CG36A
-     CN5      NN2    CG331     HGA3     9     0.000000     0.794960     3 ; A, from CG36
-     CN4     NN2B    CG331     HGA3     9     0.000000     0.000000     3 ; G, from CG36A
-     CN5     NN2B    CG331     HGA3     9     0.000000     0.794960     3 ; G, from CG36
-   OG301     CN7B      CN7      ON2     9     0.000000     0.000000     3 ; 2OM, yxu
-   OG301     CN7B      CN7      ON5     9     0.000000     0.000000     3 ; 2OM, yxu
-   OG301     CN7B     CN7B     ON6B     9     0.000000     0.000000     3 ; 2OM, yxu
-   OG301     CN7B      CN7      CN7     9     0.000000     0.000000     3 ; 2OM, yxu
-   CG331    OG301     CN7B     CN7B     9   180.000000     5.439200     2 ; 2OM, yxu lower to increase base-orientation
-   CG331    OG301     CN7B     CN7B     9     0.000000     1.673600     3 ; 2OM, yxu
-   CG331    OG301     CN7B      CN7     9   180.000000     6.694400     2 ; 2OM, yxu
-   CG331    OG301     CN7B      CN7     9     0.000000     1.255200     3 ; 2OM, yxu
-   CG331    OG301     CN7B      HN7     9     0.000000     4.184000     1 ; 2OM, yxu
-   CG331    OG301     CN7B      HN7     9   180.000000     6.694400     2 ; 2OM, yxu
-   CG331    OG301     CN7B      HN7     9     0.000000     1.673600     3 ; 2OM, yxu
-   OG301     CN7B     CN7B      HN7     9     0.000000     0.815880     3 ; 2OM, yxu
-   OG301     CN7B      CN7      HN7     9     0.000000     0.815880     3 ; 2OM, from NA36
-     CN9     CN7B     CN7B    OG301     9   180.000000     0.000000     3 ; 2OM, from NA36
-    HGA3    CG331    OG301     CN7B     9   180.000000     0.836800     1 ; 2OM, from CG36
-    HGA3    CG331    OG301     CN7B     9   180.000000     5.020800     2 ; 2OM, from CG36
-     NN2     CN7B     CN7B    OG301     9     0.000000     0.000000     3 ; 2OM(A/C), yxu 0.2 180 pyrimidine: doesn't change pucker but enlarge 2OM torsion effect
-    NN2B     CN7B     CN7B    OG301     9     0.000000     0.000000     3 ; 2OM(G/U), yxu         purine: increase C3'endo a little
-  NG2R61     CN7B     CN7B    OG301     9     0.000000     0.000000     3 ; 2OM(U), yxu
-  NG2R51     CN7B     CN7B    OG301     9     0.000000     0.000000     3 ; 2OM(G), yxu
-  CG2R62     CN7B     CN7B    OG301     9     0.000000     0.000000     3 ; 2OM(P), yxu
-  NG2R52     CN7B     CN7B    OG301     9     0.000000     0.000000     3 ; 2OM(G+), yxu
-   OC301     CN7B      CN7      ON2     9     0.000000     0.000000     3 ; 2OR, yxu
-   OC301     CN7B      CN7      ON5     9     0.000000     0.000000     3 ; 2OR, yxu
-   OC301     CN7B     CN7B     ON6B     9     0.000000     0.000000     3 ; 2OR, yxu
-   OC301     CN7B      CN7      CN7     9     0.000000     0.000000     3 ; 2OR, yxu
-   OC301     CN7B     CN7B      HN7     9     0.000000     0.815880     3 ; 2OR, yxu
-   OC301     CN7B      CN7      HN7     9     0.000000     0.815880     3 ; 2OR, from NA36
-     NN2     CN7B     CN7B    OC301     9     0.000000     0.000000     3 ; 2OR(A), yxu
-    NN2B     CN7B     CN7B    OC301     9     0.000000     0.000000     3 ; 2OR(G), yxu
-     CN7     CN7B    OC301   CC3152     9   180.000000     1.255200     1 ; 2OR, from rbrb, yxu
-     CN7     CN7B    OC301   CC3152     9   180.000000     3.347200     2 ; 2OR, from rbrb, yxu
-    CN7B     CN7B    OC301   CC3152     9   180.000000     1.255200     1 ; 2OR, from rbrb, yxu
-    CN7B     CN7B    OC301   CC3152     9   180.000000     3.347200     2 ; 2OR, from rbrb, yxu
-     HN7     CN7B    OC301   CC3152     9     0.000000     1.255200     1 ; 2OR, from rbrb, yxu
-     HN7     CN7B    OC301   CC3152     9   180.000000     3.347200     2 ; 2OR, from rbrb, yxu
-  CC3151   CC3152    OC301     CN7B     9   180.000000     1.255200     1 ; 2OR, from rbrb, yxu
-  CC3151   CC3152    OC301     CN7B     9   180.000000     3.347200     2 ; 2OR, from rbrb, yxu
-  OC3C51   CC3152    OC301     CN7B     9     0.000000     2.510400     2 ; 2OR, from rbrb, yxu
-  OC3C51   CC3152    OC301     CN7B     9     0.000000     0.836800     3 ; 2OR, from rbrb, yxu
-    HCA1   CC3152    OC301     CN7B     9     0.000000     1.255200     1 ; 2OR, from rbrb, yxu
-    HCA1   CC3152    OC301     CN7B     9   180.000000     3.347200     2 ; 2OR, from rbrb, yxu
-  CC3153    CC321    OC30P       PC     9   180.000000     2.510400     1 ; 2OR, from CG3C51 CG321  OG303  PG1, yxu
-  CC3153    CC321    OC30P       PC     9     0.000000     2.719600     2 ; 2OR, from CG3C51 CG321  OG303  PG1, yxu
-  CC3153    CC321    OC30P       PC     9     0.000000     0.209200     3 ; 2OR, from CG3C51 CG321  OG303  PG1, yxu
-   CC321    OC30P       PC    OC2DP     9     0.000000     0.418400     3 ; 2OR, from CG321  OG303  PG1    OG2P1, yxu
-  OC3C51   CC3153    CC321    OC30P     9   180.000000    14.225600     1 ; 2OR, from OG303  CG321  CG3C51 OG3C51 , yxu
-    HCA1   CC3153    CC321    OC30P     9     0.000000     0.815880     3 ; 2OR, from OG303  CG321  CG3C51 HGA1, yxu
-  CC3151   CC3153    CC321    OC30P     9   180.000000    10.460000     1 ; 2OR, from OG303  CG321  CG3C51 CG3C51, yxu
-  CC3151   CC3153    CC321    OC30P     9     0.000000     1.673600     2 ; 2OR, from OG303  CG321  CG3C51 CG3C51, yxu
-  CC3151   CC3153    CC321    OC30P     9   180.000000     3.347200     3 ; 2OR, from OG303  CG321  CG3C51 CG3C51, yxu
-  CC3151   CC3153    CC321    OC30P     9   180.000000     0.836800     4 ; 2OR, from OG303  CG321  CG3C51 CG3C51, yxu
-   CC321    OC30P       PC    OC312     9     0.000000     3.974800     2 ; 2OR, from CG321  OG303  PG1    OG311, yxu
-   CC321    OC30P       PC    OC312     9     0.000000     2.092000     3 ; 2OR, from CG321  OG303  PG1    OG311, yxu
-    HCA2    CC321    OC30P       PC     9     0.000000     0.000000     3 ; 2OR, from HGA2   CG321  OG303  PG1, yxu
-  NG2R61     CN7B     CN7B      ON5     9     0.000000     0.000000     3 ; U, from NA36
-  NG2R61     CN7B     CN7B      HN7     9     0.000000     0.000000     3 ; U, from NA36
-  NG2R61     CN7B     ON6B      CN7     9     0.000000     0.000000     3 ; U, from NA36
-  NG2R61     CN7B     CN7B      CN7     9     0.000000     0.000000     3 ; U, from NA36
-  NG2R51     CN7B     CN7B      ON5     9     0.000000     0.000000     3 ; G, from NA36
-  NG2R51     CN7B     CN7B      HN7     9     0.000000     0.000000     3 ; G, from NA36
-  NG2R51     CN7B     ON6B      CN7     9     0.000000     0.000000     3 ; G, from NA36
-  NG2R51     CN7B     CN7B      CN7     9     0.000000     0.000000     3 ; G, from NA36
-   HGR62   CG2R62   NG2R61     CN7B     9   180.000000     1.255200     2 ; U, from NA36
-   OG2D4   CG2R63   NG2R61     CN7B     9   180.000000    46.024000     2 ; U, from NA36
-  CG2R62   CG2R62   NG2R61     CN7B     9   180.000000    46.024000     2 ; U, from NA36
-  NG2R61   CG2R63   NG2R61     CN7B     9   180.000000    46.024000     2 ; U, from NA36
-  NG2R62   CG2R63   NG2R61     CN7B     9   180.000000    46.024000     2 ; C, from NA36
-   HGR52   CG2R53   NG2R51     CN7B     9   180.000000     1.255200     2 ; G, from NA36
-  NG2R50   CG2R53   NG2R51     CN7B     9   180.000000    46.024000     2 ; G, from NA36
-  CG2RC0   CG2RC0   NG2R51     CN7B     9   180.000000    46.024000     2 ; G, from NA36
-  NG2R62   CG2RC0   NG2R51     CN7B     9   180.000000    46.024000     2 ; G, from NA36
-  CG2R62   NG2R61     CN7B     CN7B     9   180.000000     0.000000     3 ; U & C, chi, from CG36
-  CG2R63   NG2R61     CN7B     CN7B     9     0.000000     4.184000     3 ; U & C, chi, from CG36
-  CG2R62   NG2R61     CN7B     ON6B     9     0.000000     4.184000     1 ; U & C, chi, from CG36
-  CG2R63   NG2R61     CN7B     ON6B     9     0.000000     0.000000     3 ; U & C, chi, from CG36
-  CG2R62   NG2R61     CN7B      HN7     9     0.000000     0.815880     3 ; U & C, chi, from CG36
-  CG2R63   NG2R61     CN7B      HN7     9     0.000000     0.815880     3 ; U & C, chi, from CG36
-  CG2R53   NG2R51     CN7B     CN7B     9   180.000000     0.000000     3 ; A & G, chi, from CG36
-  CG2RC0   NG2R51     CN7B     CN7B     9     0.000000     0.000000     3 ; A & G, chi, from CG36
-  CG2R53   NG2R51     CN7B     ON6B     9     0.000000     4.602400     1 ; A & G, chi, from CG36
-  CG2RC0   NG2R51     CN7B     ON6B     9   180.000000     4.602400     1 ; A & G, chi, from CG36
-  CG2RC0   NG2R51     CN7B     ON6B     9     0.000000     0.836800     3 ; A & G, chi, from CG36
-  CG2R53   NG2R51     CN7B      HN7     9   180.000000     1.046000     2 ; A & G, chi, from CG36
-  CG2R53   NG2R51     CN7B      HN7     9     0.000000     0.815880     3 ; A & G, chi, from CG36
-  CG2RC0   NG2R51     CN7B      HN7     9   180.000000     1.046000     2 ; A & G, chi, from CG36
-  CG2R62     CN7B     CN7B      CN7     9     0.000000     0.000000     3 ; PSU, yxu
-  CG2R62     CN7B     CN7B      ON5     9     0.000000     0.000000     3 ; PSU, yxu
-  CG2R62     CN7B     CN7B      HN7     9   180.000000     0.000000     3 ; PSU, yxu  enhance C3'endo
-  CG2R62     CN7B     ON6B      CN7     9     0.000000     0.000000     3 ; PSU, yxu
-  NG2R61   CG2R62   CG2R62     CN7B     9   180.000000    46.024000     2 ; PSU, from NA36
-   HGR62   CG2R62   CG2R62     CN7B     9   180.000000    16.736000     2 ; PSU, yxu
-  NG2R61   CG2R63   CG2R62     CN7B     9   180.000000    46.024000     2 ; PSU, from NA36
-   OG2D4   CG2R63   CG2R62     CN7B     9   180.000000    46.024000     2 ; PSU, from NA36
-  CG2R63   CG2R62     CN7B     ON6B     9   180.000000     1.255200     1 ; PSU, chi, yxu, higher, more syn
-  CG2R62   CG2R62     CN7B     ON6B     9   180.000000     2.928800     3 ; PSU, chi, yxu
-  CG2R63   CG2R62     CN7B     CN7B     9   180.000000     5.439200     1 ; PSU, chi, yxu
-  CG2R62   CG2R62     CN7B     CN7B     9   180.000000     3.347200     3 ; PSU, chi, yxu
-  CG2R63   CG2R62     CN7B      HN7     9     0.000000     0.000000     3 ; PSU, chi, yxu
-  CG2R62   CG2R62     CN7B      HN7     9   180.000000     0.000000     3 ; PSU, chi, yxu
-   NG2S0     CN7B     CN7B      CN7     9     0.000000     0.836800     3 ; H2U, enhance C2'endo, yxu
-   NG2S0     CN7B     CN7B      ON5     9     0.000000     0.836800     3 ; H2U, enhance C2'endo, yxu
-   NG2S0     CN7B     CN7B      HN7     9     0.000000     0.836800     3 ; H2U, enhance C2'endo, yxu
-   NG2S0     CN7B     ON6B      CN7     9     0.000000     0.000000     3 ; H2U, yxu
-   NG2S1    CG2O6    NG2S0     CN7B     9   180.000000    13.388800     2 ; H2U, yxu
-   OG2D1    CG2O6    NG2S0     CN7B     9   180.000000    19.664800     2 ; H2U, yxu
-   CG321    CG321    NG2S0     CN7B     9     0.000000     0.418400     1 ; H2U, yxu
-   CG311    CG321    NG2S0     CN7B     9     0.000000     0.418400     1 ; MDU, from H2U, yxu
-    HGA2    CG321    NG2S0     CN7B     9     0.000000     1.338880     3 ; H2U, yxu
-   CG2O6    NG2S0     CN7B     ON6B     9   180.000000     8.368000     1 ; H2U, chi, yxu
-   CG2O6    NG2S0     CN7B     ON6B     9     0.000000     3.765600     2 ; H2U, chi, yxu
-   CG321    NG2S0     CN7B     ON6B     9     0.000000     7.112800     1 ; H2U, chi, yxu
-   CG321    NG2S0     CN7B     ON6B     9     0.000000     1.673600     2 ; H2U, chi, yxu
-   CG2O6    NG2S0     CN7B     CN7B     9   180.000000     4.184000     1 ; H2U, chi, yxu
-   CG321    NG2S0     CN7B     CN7B     9     0.000000     0.000000     3 ; H2U, chi, yxu
-   CG2O6    NG2S0     CN7B      HN7     9     0.000000     0.000000     3 ; H2U, chi, yxu
-   CG321    NG2S0     CN7B      HN7     9     0.000000     0.000000     3 ; H2U, chi, yxu
-  CG2R61   NG2R61     CN7B     CN7B     9   180.000000     0.000000     3 ; 2SC, from C
-  CG2R61   NG2R61     CN7B     ON6B     9     0.000000     4.184000     1 ; 2SC, from C
-  CG2R61   NG2R61     CN7B      HN7     9     0.000000     0.815880     3 ; 2SC, from C
-   SG2D1   CG2R63   NG2R61     CN7B     9   180.000000    46.024000     2 ; 2SU, yxu
-  CG2R64   NG2R61     CN7B     ON6B     9   180.000000     3.347200     1 ; GAU, from U, yxu
-  CG2R64   NG2R61     CN7B     ON6B     9     0.000000     2.928800     3 ; GAU, from U, yxu
-  CG2R64   NG2R61     CN7B      HN7     9     0.000000     0.000000     3 ; GAU, from U, yxu
-  CG2R64   NG2R61     CN7B     CN7B     9   180.000000     0.836800     3 ; GAU, from U, yxu
-   SG311   CG2R64   NG2R61     CN7B     9   180.000000    25.104000     2 ; GAU, yxu
-  NG2R62   CG2R64   NG2R61     CN7B     9   180.000000    46.024000     2 ; GAU, from u, yxu
-  NG2R52     CN7B     CN7B      CN7     9     0.000000     0.000000     3 ; 7MG, yxu
-  NG2R52     CN7B     CN7B      ON5     9     0.000000     0.000000     3 ; 7MG, yxu
-  NG2R52     CN7B     CN7B      HN7     9     0.000000     0.000000     3 ; 7MG, yxu
-  NG2R52     CN7B     ON6B      CN7     9     0.000000     0.000000     3 ; 7MG, yxu
-  NG2R52   CG2R53   NG2R52     CN7B     9   180.000000    32.216800     2 ; 7MG, from NG2R52 CG2R53 NG2R52 CG334 , yxu
-   HGR53   CG2R53   NG2R52     CN7B     9   180.000000    26.359200     2 ; 7MG, from HGR53  CG2R53 NG2R52 CG334, yxu
-  CG2RC0   CG2RC0   NG2R52     CN7B     9   180.000000    23.012000     2 ; 7MG, yxu
-  NG2R62   CG2RC0   NG2R52     CN7B     9   180.000000    46.024000     2 ; 7MG, from NA36
-  CG2R53   NG2R52     CN7B     CN7B     9   180.000000     3.556400     3 ; 7MG, chi, yxu
-  CG2RC0   NG2R52     CN7B     CN7B     9   180.000000     4.602400     1 ; 7MG, chi, yxu
-  CG2R53   NG2R52     CN7B     ON6B     9     0.000000     2.928800     1 ; 7MG, chi, yxu
-  CG2RC0   NG2R52     CN7B     ON6B     9   180.000000     1.673600     1 ; 7MG, chi, yxu
-  CG2R53   NG2R52     CN7B      HN7     9   180.000000     0.000000     3 ; 7MG, chi, yxu
-  CG2RC0   NG2R52     CN7B      HN7     9     0.000000     0.418400     3 ; 7MG, chi, yxu
-  CG2R51   NG2R51     CN7B     CN7B     9   180.000000     0.000000     3 ; DCG, from G
-  CG2R51   NG2R51     CN7B     ON6B     9     0.000000     4.602400     1 ; DCG, from G
-  CG2R51   NG2R51     CN7B      HN7     9   180.000000     1.046000     2 ; DCG, from G
-  CG2R51   NG2R51     CN7B      HN7     9     0.000000     0.815880     3 ; DCG, from G
-  CG2R51   CG2R51   NG2R51     CN7B     9   180.000000    46.024000     2 ; DCG, from G
-   HGR52   CG2R51   NG2R51     CN7B     9   180.000000     1.255200     2 ; DCG, from G
-   NG2P1     CN7B     ON6B      CN7     9     0.000000     0.000000     3 ; K2C, from NA36
-   NG2P1     CN7B     CN7B      CN7     9     0.000000     0.000000     3 ; K2C, from NA36
-   NG2P1     CN7B     CN7B      ON5     9     0.000000     0.000000     3 ; K2C, from NA36
-   NG2P1     CN7B     CN7B      HN7     9     0.000000     0.000000     3 ; K2C, from NA36
-  CG2R61   CG2R61    NG2P1     CN7B     9   180.000000     3.138000     2 ; K2C, yxu
-   HGR62   CG2R61    NG2P1     CN7B     9   180.000000    11.296800     2 ; K2C, yxu
-   NG2P1   CG2R64    NG2P1     CN7B     9   180.000000     6.359680     2 ; K2C, yxu
-   NG311   CG2R64   NG2R61     CN7B     9   180.000000    14.644000     2 ; 34HC, yxu
-  CG2R61    NG2P1     CN7B     CN7B     9     0.000000     0.000000     1 ; K2C, chi, yxu
-  CG2R64    NG2P1     CN7B     CN7B     9   180.000000     0.000000     1 ; K2C, chi, yxu
-  CG2R61    NG2P1     CN7B     ON6B     9   180.000000     5.439200     1 ; K2C, chi, yxu
-  CG2R61    NG2P1     CN7B     ON6B     9     0.000000     0.000000     2 ; K2C, chi, yxu
-  CG2R64    NG2P1     CN7B     ON6B     9     0.000000     5.439200     1 ; K2C, chi, yxu
-  CG2R64    NG2P1     CN7B     ON6B     9     0.000000     0.000000     2 ; K2C, chi, yxu
-  CG2R61    NG2P1     CN7B      HN7     9   180.000000     0.000000     3 ; K2C, chi, yxu
-  CG2R64    NG2P1     CN7B      HN7     9     0.000000     0.000000     3 ; K2C, chi, yxu
-   SEGD1   CG2R63   NG2R61     CN7B     9   180.000000    46.024000     2 ; SEU, yxu
-  NG2R61   CG2RC0   NG2R51     CN7B     9   180.000000    31.380000     2 ; DWG, yxu
-   CG331   CG2R53   NG2R51     CN7B     9   180.000000    12.552000     2 ; 8MA, yxu
-  NG2R62   CG2R63   CG2R62     CN7B     9   180.000000    37.656000     2 ; 1PC, yxu, 21/2/14
-  NG2R62   CG2R62   CG2R62     CN7B     9   180.000000    37.656000     2 ; 3PC, yxu, 21/2/14
-  CG2R62     CN7B      CN8      CN7     9     0.000000     0.000000     3 ; PSU, yxu
-  CG2R62     CN7B      CN8      HN8     9     0.000000     0.000000     3 ; PSU, yxu
-  CG2R62     CN7B      ON6      CN7     9     0.000000     0.000000     3 ; PSU, yxu
-  CG2R63   CG2R62     CN7B      ON6     9   180.000000     1.255200     1 ; PSU, yxu
-  CG2R62   CG2R62     CN7B      ON6     9   180.000000     2.928800     3 ; PSU, yxu
-  CG2R63   CG2R62     CN7B      CN8     9   180.000000     4.184000     1 ; PSU, yxu
-  CG2R62   CG2R62     CN7B      CN8     9   180.000000     3.347200     3 ; PSU, yxu
-  NG2R61     CN7B      ON6      CN7     9     0.000000     0.000000     3 ; C/U, from NA36
-  NG2R61     CN7B      CN8      HN8     9     0.000000     0.000000     3 ; C/U, from NA36
-  NG2R61     CN7B      CN8      CN7     9     0.000000     0.000000     3 ; C/U, from NA36
-  NG2R51     CN7B      ON6      CN7     9     0.000000     0.000000     3 ; A/G, from NA36
-  NG2R51     CN7B      CN8      CN7     9     0.000000     0.000000     3 ; A/G, from NA36
-  NG2R51     CN7B      CN8      HN8     9     0.000000     0.000000     3 ; A/G, from NA36
-  CG2R62   NG2R61     CN7B      CN8     9   180.000000     0.000000     3 ; U & C, chi, from CG36
-  CG2R63   NG2R61     CN7B      CN8     9     0.000000     4.184000     3 ; U & C, chi, from CG36
-  CG2R62   NG2R61     CN7B      ON6     9     0.000000     4.184000     1 ; U & C, chi, from CG36
-  CG2R63   NG2R61     CN7B      ON6     9     0.000000     0.000000     3 ; U & C, chi, from CG36
-  CG2R53   NG2R51     CN7B      CN8     9   180.000000     0.000000     3 ; A & G, chi, from CG36
-  CG2RC0   NG2R51     CN7B      CN8     9     0.000000     0.000000     3 ; A & G, chi, from CG36
-  CG2R53   NG2R51     CN7B      ON6     9     0.000000     4.602400     1 ; A & G, chi, from CG36
-  CG2RC0   NG2R51     CN7B      ON6     9   180.000000     4.602400     1 ; A & G, chi, from CG36
-  CG2RC0   NG2R51     CN7B      ON6     9     0.000000     0.836800     3 ; A & G, chi, from CG36
-
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_arg0.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_arg0.str
 ;      i        j        k        l  func         phi0         kphi  mult
     CRN1     NRC4     CR33     HRA3     9   180.000000     0.460240     3 ; MGU1, methylguanidine
     NRN2     CRN1     NRC4     CR33     9   180.000000    27.196000     2 ; MGU1, methylguanidine
@@ -21692,7 +21439,7 @@
      HA2      CT2     NRN1     CRN1     9   180.000000     0.000000     3 ; MGU2, methylguanidine2
      CT2     NRN1     CRN1     NRN2     9   180.000000     2.092000     2 ; MGU2, methylguanidine2
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
 ;      i        j        k        l  func         phi0         kphi  mult
        C     CTD1      NH1        C     9   180.000000     0.836800     1 ; ALLOW PEP
       CC     CTD1      CT2       CA     9     0.000000     0.167360     3 ; ALLOW   ARO
@@ -22022,11 +21769,20 @@
       OC       CC     CPD1        N     9     0.000000     0.669440     3 ; 
       OC       CC     CPD1       NP     9     0.000000     0.669440     3 ; 
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_heme.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_fluoro_alkanes.str
+;      i        j        k        l  func         phi0         kphi  mult
+       H      OH1      CT2      CF3     9     0.000000     1.673600     1 ; triflouroethanol
+       H      OH1      CT2      CF3     9     0.000000     3.765600     2 ; 
+       H      OH1      CT2      CF3     9     0.000000     2.928800     3 ; 
+       H      OH1      CT2      CF3     9     0.000000     0.502080     4 ; 
+     HA2      CT2      CF3       F3     9     0.000000     0.661072     3 ; 
+     OH1      CT2      CF3       F3     9     0.000000     1.046000     3 ; 
+
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_heme.str
 ;      i        j        k        l  func         phi0         kphi  mult
      HE2      CE2      CE1      CPB     9   180.000000    21.756800     2 ; 
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_model.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_model.str
 ;      i        j        k        l  func         phi0         kphi  mult
       C3       C3       C3      HB2     9     0.000000     0.418400     6 ; hf/6-31g* cyclopropane
      HB2       C3       C3      HB2     9   180.000000     0.836800     5 ; hf/6-31g* cyclopropane
@@ -22045,7 +21801,7 @@
      CT1     CT2A      CT1      NH1     9   180.000000     0.000000     2 ; from fitted GLU   !temporary RJP
      CT1     CT2A      CT1      NH1     9     0.000000     7.949600     3 ; from fitted GLU   !temporary RJP
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_modify_res.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_modify_res.str
 ;      i        j        k        l  func         phi0         kphi  mult
      CT1      CT2        C      NH1     9   180.000000     0.209200     6 ; DKAM, from CT2 CT2 CC NH2 , kevo
      CT1      CT2        C        O     9   180.000000     0.209200     6 ; DKAM, from CT2 CT2 CC O   , kevo
@@ -23475,7 +23231,7 @@
     HGA2    CG321      CT1       CC     9     0.000000     0.836800     3 ; from X    CT1  CT2  X
    CG321    CG321      CT1       CC     9     0.000000     0.836800     3 ; from X    CT1  CT2  X
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_na_combined.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_na_combined.str
 ;      i        j        k        l  func         phi0         kphi  mult
       CA       CA       CA     ON2B     9   180.000000    12.970400     2 ; phenol phosphate, 6/94, adm jr.
       HP       CA       CA     ON2B     9   180.000000    17.572800     2 ; phenol phosphate, 6/94, adm jr.
@@ -23600,7 +23356,7 @@
      CT2        S      CN8      HN8     9     0.000000     1.171520     3 ; PROT DTN
      HA2      CT2        S      CN8     9     0.000000     1.171520     3 ; PROT DTN
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_retinol.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_retinol.str
 ;      i        j        k        l  func         phi0         kphi  mult
      HE1     CC1A     CC1A      HE1     9   180.000000    21.756800     2 ; 
      CT3     CC1A     CC1A      HE1     9   180.000000    21.756800     2 ; 
@@ -23792,33 +23548,33 @@
      CT2      CT2      NS2       HC     9     0.000000     0.418400     3 ; 
      HA2      CT2      NS2       HC     9     0.000000     0.418400     3 ; 
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/top_all36_prot.rtf
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/top_all36_prot.rtf
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; specific (non-wildcard) dihedral parameters from toppar_c36_jul21/toppar_water_ions.str
+; specific (non-wildcard) dihedral parameters from toppar_c36_jul22/toppar_water_ions.str
 ;      i        j        k        l  func         phi0         kphi  mult
     HPER     OPER     OPER     HPER     9     0.000000     8.451680     2 ; H2O2
 
 ; wildcard dihedral parameters from 
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/metals/CHARMM_METAL/par_all22_prot_metals.inp
+; wildcard dihedral parameters from toppar_c36_jul22/metals/CHARMM_METAL/par_all22_prot_metals.inp
 ;      i        j        k        l  func         phi0         kphi  mult
        X      CPT      CPT        X     9   180.000000     0.000000     2 ; ALLOW   ARO
 
-; wildcard dihedral parameters from toppar_c36_jul21/metals/CHARMM_METAL/top_all22_prot_metals.inp
+; wildcard dihedral parameters from toppar_c36_jul22/metals/CHARMM_METAL/top_all22_prot_metals.inp
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/par_all35_ethers.prm
+; wildcard dihedral parameters from toppar_c36_jul22/par_all35_ethers.prm
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/par_all36_carb.prm
+; wildcard dihedral parameters from toppar_c36_jul22/par_all36_carb.prm
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/par_all36_cgenff.prm
+; wildcard dihedral parameters from toppar_c36_jul22/par_all36_cgenff.prm
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/par_all36_lipid.prm
+; wildcard dihedral parameters from toppar_c36_jul22/par_all36_lipid.prm
 ;      i        j        k        l  func         phi0         kphi  mult
        X     CTL1      OHL        X     9     0.000000     0.585760     3 ; glycerol
        X     CTL2      OHL        X     9     0.000000     0.585760     3 ; glycerol
@@ -23849,7 +23605,7 @@
        X     CEL1     CEL1        X     9   180.000000    35.564000     2 ; 
        X     CEL2     CEL2        X     9   180.000000    20.501600     2 ; ethene, yin,adm jr., 12/95
 
-; wildcard dihedral parameters from toppar_c36_jul21/par_all36_na.prm
+; wildcard dihedral parameters from toppar_c36_jul22/par_all36_na.prm
 ;      i        j        k        l  func         phi0         kphi  mult
        X      CN8      ON2        X     9     0.000000    -0.418400     3 ; phosphate ester
        X      CN7      CN8        X     9     0.000000     0.836800     3 ; alkane
@@ -23891,7 +23647,7 @@
        X      CN8      CN9        X     9     0.000000     0.627600     3 ; Alkanes (0.2 to 0.15)
        X      ON4       P4        X     9     0.000000     1.255200     3 ; from MP_1, adm jr.
 
-; wildcard dihedral parameters from toppar_c36_jul21/par_all36m_prot.prm
+; wildcard dihedral parameters from toppar_c36_jul22/par_all36m_prot.prm
 ;      i        j        k        l  func         phi0         kphi  mult
        X       CS       SS        X     9     0.200000     0.000000     3 ; guess
        X        C      NC2        X     9   180.000000     9.414000     2 ; ALLOW   PEP POL ARO
@@ -23934,30 +23690,30 @@
        X      CT3       OS        X     9     0.000000    -0.418400     3 ; ALLOW   PEP POL
        X     CT2A       CC        X     9   180.000000     0.209200     6 ; 
 
-; wildcard dihedral parameters from toppar_c36_jul21/silicates/toppar/par_silicates.inp
+; wildcard dihedral parameters from toppar_c36_jul22/silicates/toppar/par_silicates.inp
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/silicates/toppar/top_silicates.inp
+; wildcard dihedral parameters from toppar_c36_jul22/silicates/toppar/top_silicates.inp
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_glycolipid.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_glycolipid.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_glycopeptide.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_glycopeptide.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_imlab.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_imlab.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_lignin.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_lignin.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_bacterial.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_bacterial.str
 ;      i        j        k        l  func         phi0         kphi  mult
        X   CG3RC1   CG3RC1        X     9   180.000000     1.882800     1 ; 2-butene, adm jr., 4/04 from C36 GenFF
        X   CG3RC1   CG3RC1        X     9   180.000000    35.564000     2 ; from C36 GenFF
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_cholesterol.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_cholesterol.str
 ;      i        j        k        l  func         phi0         kphi  mult
        X     CRL1      OHL        X     9     0.000000     0.585760     3 ; glycerol
        X     CRL2      OHL        X     9     0.000000     0.585760     3 ; glycerol
@@ -23974,37 +23730,37 @@
        X     CEL1     CTL1        X     9   180.000000     0.000000     3 ; from br12
        X     CEL1     CRL1        X     9   180.000000     0.000000     3 ; from br12
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_detergent.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_detergent.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_ether.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_ether.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_lps.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_lps.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_miscellaneous.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_miscellaneous.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_prot.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_prot.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_sphingo.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_sphingo.str
 ;      i        j        k        l  func         phi0         kphi  mult
        X     CTL1     CTO1        X     9     0.000000     0.836800     3 ; alkane, 3/92
        X     CTO1     CTL3        X     9     0.000000     0.836800     3 ; alkane, 3/92
        X     CTL1     CTO2        X     9     0.000000     0.836800     3 ; alkane, 3/92; X CTL1 CTL2 X
        X     CTO2      OHL        X     9     0.000000     0.585760     3 ; glycerol; X CTL2 OHL X
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/misc/toppar_ions_won.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/misc/toppar_ions_won.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/na/toppar_all36_na_modifications.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/na/toppar_all36_na_modifications.str
 ;      i        j        k        l  func         phi0         kphi  mult
        X      CN4     NN3I        X     9   180.000000    14.644000     2 ; 
        X      CN5     NN3I        X     9   180.000000     4.184000     2 ; 
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/na/toppar_all36_na_nad_ppi.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/na/toppar_all36_na_nad_ppi.str
 ;      i        j        k        l  func         phi0         kphi  mult
        X      CN3     CN3A        X     9   180.000000     4.184000     2 ; nad/ppi, jjp1/adm jr. 7/95
        X      CN3     CN3B        X     9   180.000000     4.184000     2 ; nad/ppi, jjp1/adm jr. 7/95
@@ -24014,13 +23770,10 @@
        X      CN3     CN3C        X     9   180.000000     0.418400     2 ; nad/ppi, jjp1/adm jr. 7/95
        X      NN2     CN3C        X     9   180.000000     0.418400     2 ; nad/ppi, jjp1/adm jr. 7/95
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/na/toppar_all36_na_rna_modified.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_arg0.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_arg0.str
-;      i        j        k        l  func         phi0         kphi  mult
-
-; wildcard dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
 ;      i        j        k        l  func         phi0         kphi  mult
        X     CTD1      CT2        X     9     0.000000     0.836800     3 ; ALLOW   ALI
        X     CTD1      CT3        X     9     0.000000     0.836800     3 ; ALLOW   ALI
@@ -24031,7 +23784,13 @@
        X     CPD1       CD        X     9   180.000000     0.000000     6 ; 
        X     CPD1      CP2        X     9     0.000000     0.585760     3 ; 
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_heme.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_fluoro_alkanes.str
+;      i        j        k        l  func         phi0         kphi  mult
+       X      CT3      CF1        X     9     0.000000     0.774040     3 ; 
+       X      CT3      CF2        X     9     0.000000     0.744752     3 ; 
+       X      CT3      CF3        X     9     0.000000     0.661072     3 ; 
+
+; wildcard dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_heme.str
 ;      i        j        k        l  func         phi0         kphi  mult
        X       FE       SS        X     9     0.000000     0.000000     4 ; guess
        X      CPA      CPB        X     9     0.000000     0.000000     2 ; ALLOW HEM
@@ -24046,28 +23805,87 @@
        X       FE       OM        X     9     0.000000     0.000000     4 ; ALLOW HEM
        X      NPH      CPA        X     9     0.000000     0.000000     2 ; ALLOW HEM
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_model.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_model.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_modify_res.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_modify_res.str
 ;      i        j        k        l  func         phi0         kphi  mult
        X      CT1       CS        X     9     0.000000     0.836800     3 ; From X    CT1  CT2  X
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_na_combined.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_na_combined.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_retinol.str
+; wildcard dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_retinol.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/top_all36_prot.rtf
+; wildcard dihedral parameters from toppar_c36_jul22/top_all36_prot.rtf
 ;      i        j        k        l  func         phi0         kphi  mult
 
-; wildcard dihedral parameters from toppar_c36_jul21/toppar_water_ions.str
+; wildcard dihedral parameters from toppar_c36_jul22/toppar_water_ions.str
 ;      i        j        k        l  func         phi0         kphi  mult
 
 
 ; Include dihedral type definitions missing from upstream CHARMM FF.
 #include "ffmissingdihedrals.itp"
+
+; dihedral parameters manually added
+;      i        j        k        l  func         phi0         kphi  mult
+   OG2D1    CG2O2   CG2R62   CG2R62     9   180.000000     4.288600     2
+   OG2D1    CG2O2   CG2R62   CG2R63     9   180.000000     4.288600     2
+   OG311    CG2O2   CG2R62   CG2R62     9   180.000000     4.288600     2
+   OG311    CG2O2   CG2R62   CG2R63     9   180.000000     4.288600     2
+  CG2R62    CG2O2    OG311     HGP1     9   180.000000     4.079400     1
+  CG2R62    CG2O2    OG311     HGP1     9   180.000000    11.296800     2
+  CG2R62    CG2O2    OG311     HGP1     9   180.000000     0.209200     3
+  CG2R62    CG2O2    OG311     HGP1     9   180.000000     1.046000     6
+  CG2R62   CG2R61   CG2R61   CG2R66     9   180.000000    12.970400     2
+  CG2R62   CG2R61   CG2R61    NG301     9   180.000000     5.857600     2
+  CG2R66   CG2R61   CG2R62   CG2R62     9   180.000000     2.092000     2
+  CG2R66   CG2R61   CG2R62   CG2R63     9   180.000000    12.970400     2
+   HGR62   CG2R61   CG2R62   CG2R62     9   180.000000    12.970400     2
+   HGR62   CG2R61   CG2R62   CG2R63     9   180.000000     4.184000     2
+  CG2R62   CG2R61   CG2R66   CG2R61     9   180.000000    12.970400     2
+  CG2R62   CG2R61   CG2R66     FGR1     9   180.000000    18.828000     2
+   NG301   CG2R61   CG2R66   CG2R61     9   180.000000     5.857600     2
+   NG301   CG2R61   CG2R66     FGR1     9   180.000000    10.794720     2
+  CG2R66   CG2R61    NG301    CG321     9   180.000000     6.276000     2
+  CG2R66   CG2R61    NG301    CG321     9     0.000000     0.627600     4
+   CG2O2   CG2R62   CG2R62   NG2R61     9   180.000000    10.460000     2
+   CG2O2   CG2R62   CG2R62    HGR62     9   180.000000    11.715200     2
+   CG2O2   CG2R62   CG2R63   CG2R62     9   180.000000    12.552000     2
+   CG2O2   CG2R62   CG2R63    OG2D4     9   180.000000     4.184000     2
+  CG2R61   CG2R62   CG2R63   CG2R62     9   180.000000     6.694400     2
+  CG2R61   CG2R62   NG2R61   CG2R62     9   180.000000    16.736000     2
+  CG2R61   CG2R62   NG2R61   CG3C31     9   180.000000    46.024000     2
+  CG2R62   CG2R62   NG2R61   CG3C31     9   180.000000    46.024000     2
+   HGR62   CG2R62   NG2R61   CG3C31     9   180.000000     1.255200     2
+   NG301    CG321    CG321    NG311     9   180.000000     0.669440     1
+   NG301    CG321    CG321    NG311     9     0.000000     1.631760     2
+   CG321    CG321    NG301   CG2R61     9   180.000000     1.840960     1
+   CG321    CG321    NG301   CG2R61     9     0.000000     0.125520     2
+   CG321    CG321    NG301   CG2R61     9     0.000000     0.041840     3
+   CG321    CG321    NG311    CG321     9   180.000000     5.941280     1
+   CG321    CG321    NG311    CG321     9     0.000000     3.430880     2
+   CG321    CG321    NG311    CG321     9     0.000000     4.267680     3
+  CG3C31   CG3C31   CG3C31   NG2R61     9     0.000000     2.928800     3
+  NG2R61   CG3C31   CG3C31     HGA2     9     0.000000     0.627600     3
+  CG3C31   CG3C31   NG2R61   CG2R62     9   180.000000     0.000000     3
+    HGA1   CG3C31   NG2R61   CG2R62     9     0.000000     0.815880     3
+   OG2D2    CG2O3   CG2R62   CG2R62     9   180.000000    12.970400     2
+   OG2D2    CG2O3   CG2R62   CG2R63     9   180.000000    12.970400     2
+   CG2O3   CG2R62   CG2R62   NG2R61     9   180.000000    10.460000     2
+   CG2O3   CG2R62   CG2R62    HGR62     9   180.000000    11.715200     2
+   CG2O3   CG2R62   CG2R63   CG2R62     9   180.000000    12.552000     2
+   CG2O3   CG2R62   CG2R63    OG2D4     9   180.000000     4.184000     2
+   CG324    CG321    NG301   CG2R61     9   180.000000     1.840960     1
+   CG324    CG321    NG301   CG2R61     9     0.000000     0.125520     2
+   CG324    CG321    NG301   CG2R61     9     0.000000     0.041840     3
+   CG324    CG321    NG301    CG321     9   180.000000     5.941280     1
+   CG324    CG321    NG301    CG321     9     0.000000     3.430880     2
+   CG324    CG321    NG301    CG321     9     0.000000     4.267680     3
+   NG301    CG321    CG324    NG3P2     9   180.000000    13.807200     1
+   NG301    CG321    CG324    NG3P2     9   180.000000    -1.673600     3
+   NG301    CG321    CG324     HGA2     9     0.000000     0.669440     3
 
 
 [ dihedraltypes ]
@@ -24075,19 +23893,19 @@
 ; specific (non-wildcard) improper dihedral parameters from 
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/metals/CHARMM_METAL/par_all22_prot_metals.inp
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/metals/CHARMM_METAL/par_all22_prot_metals.inp
 ;      i        j        k        l  func         phi0         kphi
       NY       CA       CY      CPT     2     0.000000   836.800000  ; ALLOW ARO
        O       HA      NH2       CC     2     0.000000   376.560000  ; ALLOW PEP POL PRO
        O      NH2       HA       CC     2     0.000000   376.560000  ; ALLOW PEP POL
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/metals/CHARMM_METAL/top_all22_prot_metals.inp
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/metals/CHARMM_METAL/top_all22_prot_metals.inp
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/par_all35_ethers.prm
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/par_all35_ethers.prm
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/par_all36_carb.prm
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/par_all36_carb.prm
 ;      i        j        k        l  func         phi0         kphi
    CC2O1    CC331    NC2D1    OC2D1     2     0.000000  1004.160000  ; par22 O    X    X    C
    NC2D1    CC2O1   CC3161     HCP1     2     0.000000   167.360000  ; par22 NH1  X    X    H
@@ -24104,7 +23922,7 @@
    OC2D3    CC331    CC331    CC2O3     2     0.000000   585.760000  ; ketone, acetone
    OC2D3    CC312    CC322    CC2O3     2     0.000000   585.760000  ; "
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/par_all36_cgenff.prm
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/par_all36_cgenff.prm
 ;      i        j        k        l  func         phi0         kphi
    CG2D1    CG331    NG2D1     HGA4     2     0.000000   209.200000  ; SCH1, xxwy
    CG2D1    CG331    NG2P1    HGR52     2     0.000000   150.624000  ; SCH2, xxwy
@@ -24310,11 +24128,11 @@
    NG2S3     HGP4     HGP4   CG2R61     2     0.000000   -20.920000  ; -2.0 PYRIDINE aminopyridine 11/10 kevo: sic! Compensates for in-plane force from CG2R61 CG2R61 NG2S3 HGP4
    NG2S3     HGP4     HGP4   CG2R64     2     0.000000    75.312000  ; NA GUA ADE CYT; from artificially planar 2APY, 2-aminopyridine parameter set (12/2010); xxwy & kevo
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/par_all36_lipid.prm
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/par_all36_lipid.prm
 ;      i        j        k        l  func         phi0         kphi
     HEL2     HEL2     CEL2     CEL2     2     0.000000    25.104000  ; ethene, yin,adm jr., 12/95
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/par_all36_na.prm
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/par_all36_na.prm
 ;      i        j        k        l  func         phi0         kphi
     NN2B      CN4      CN5      HN2     2     0.000000    58.576000  ; G, adm jr. 11/97
      NN1      CN2      HN1      HN1     2     0.000000    50.208000  ; A,C adm jr. 11/97
@@ -24325,7 +24143,7 @@
      CN2     NN3A      CN5      NN1     2     0.000000   334.720000  ; A
      CN2      NN3      CN3      NN1     2     0.000000   502.080000  ; C,
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/par_all36m_prot.prm
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/par_all36m_prot.prm
 ;      i        j        k        l  func         phi0         kphi
      HE2      HE2      CE2      CE2     2     0.000000    25.104000  ; 
      HR1      NR1      NR2     CPH2     2     0.000000     4.184000  ; ALLOW ARO
@@ -24353,23 +24171,23 @@
        O      NH2      CT3       CC     2     0.000000   376.560000  ; ALLOW PEP POL
        O      NH2      HA1       CC     2     0.000000   376.560000  ; ALLOW PEP POL
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/silicates/toppar/par_silicates.inp
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/silicates/toppar/par_silicates.inp
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/silicates/toppar/top_silicates.inp
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/silicates/toppar/top_silicates.inp
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_glycolipid.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_glycolipid.str
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_glycopeptide.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_glycopeptide.str
 ;      i        j        k        l  func         phi0         kphi
    NC2D1    CC2O1   CC311D     HCP1     2     0.000000   167.360000  ; par22 NH1  X    X    H
    NC2D1    CC2O1   CC3162     HCP1     2     0.000000   167.360000  ; par22 NH1  X    X    H
    CC2O1    NC2D1    CC321    OC2D1     2     0.000000   376.560000  ; O    CT2  NH2  CC     45.0000         0      0.0000 ! ALLOW PEP POL
    CC2O1    CC321    NC2D1    OC2D1     2     0.000000   376.560000  ; O    NH2  CT2  CC     45.0000         0      0.0000 ! ALLOW PEP POL
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_imlab.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_imlab.str
 ;      i        j        k        l  func         phi0         kphi
    NG2S1        C    CG321     HGP1     2     0.000000   167.360000  ; par22 NH1  X    X    H, !gpi-link
    CC2O1      CT1    NC2D1    OC2D1     2     0.000000  1004.160000  ; par22 O    X    X    C, !from toppar_all36_carb_lps.str
@@ -24388,41 +24206,41 @@
    CC2O1      CP1    NC2D1    OC2D1     2     0.000000   376.560000  ; CC2O1    CC321    NC2D1    OC2D1, !NOPR
       CC      NH1      CP2        O     2     0.000000   753.120000  ; C=O bend alone
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_lignin.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_lignin.str
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_bacterial.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_bacterial.str
 ;      i        j        k        l  func         phi0         kphi
        C      CT1        O      OSL     2     0.000000   518.816000  ; /scrat , from CG2O2 CG311 OG2D1 OG302, PENALTY= 0.1
        C     CTL2        O      OSL     2     0.000000   518.816000  ; PROT & LIPID WILDCARD; from MAS, methyl acetate; xxwy
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_cholesterol.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_cholesterol.str
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_detergent.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_detergent.str
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_ether.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_ether.str
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_lps.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_lps.str
 ;      i        j        k        l  func         phi0         kphi
    CC2O1     CTL2    NC2D1    OC2D1     2     0.000000  1004.160000  ; O X X C ; all22 prot
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_miscellaneous.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_miscellaneous.str
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_prot.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_prot.str
 ;      i        j        k        l  func         phi0         kphi
        C        O      NH1     CTL2     2     0.000000   803.328000  ; from, CC   X    X    CT2
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_sphingo.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_sphingo.str
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/misc/toppar_ions_won.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/misc/toppar_ions_won.str
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/na/toppar_all36_na_modifications.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/na/toppar_all36_na_modifications.str
 ;      i        j        k        l  func         phi0         kphi
     NN2G      CN4      CN1      HN2     2     0.000000     6.694400  ; Inosine, adm jr. 2/94
      CN4     NN2G     NN3I      HN3     2     0.000000   326.352000  ; Inosine, adm jr. 2/94
@@ -24434,17 +24252,14 @@
        N      CT2      CT2       CC     2     0.000000     0.000000  ; 
        N      CT2     CT2P       CC     2     0.000000     0.000000  ; as in N CT2 CT2 CC, mj
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/na/toppar_all36_na_nad_ppi.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/na/toppar_all36_na_nad_ppi.str
 ;      i        j        k        l  func         phi0         kphi
      CN3     CN3C      CN8      HN6     2     0.000000   125.520000  ; nich, jjp1/adm jr.
      HN2      CN3     CN3B      NN2     2     0.000000   418.400000  ; nad/ppi, jjp1/adm jr.
      HN1      HN1     CN1A      NN1     2     0.000000   -41.840000  ; nad/ppi, jjp1/adm jr.
      HN8      CN3      CN3      CN8     2     0.000000   150.624000  ; nad/ppi, jjp1/adm jr.
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/na/toppar_all36_na_rna_modified.str
-;      i        j        k        l  func         phi0         kphi
-
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_arg0.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_arg0.str
 ;      i        j        k        l  func         phi0         kphi
     CRN1     NRN2     NRN2     NRC4     2   180.000000  1422.560000  ; MGU1, methylguanidine
     NRN2     HRM2     HRM2     CRN1     2   180.000000   334.720000  ; MGU1, methylguanidine
@@ -24453,7 +24268,7 @@
     CRN1     NRC4     NRN2     NRN1     2   180.000000  1422.560000  ; MGU1, methylguanidine
     NRN1      CT2     CRN1     HRM1     2   180.000000   502.080000  ; MGU2, methylguanidine2
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
 ;      i        j        k        l  func         phi0         kphi
        O     CTD1      NH2       CC     2     0.000000   376.560000  ; 
        O      NH2     CTD1       CC     2     0.000000   376.560000  ; 
@@ -24461,7 +24276,10 @@
        O     CPD1      NH2       CC     2     0.000000   376.560000  ; 
        O      NH2     CPD1       CC     2     0.000000   376.560000  ; 
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_heme.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_fluoro_alkanes.str
+;      i        j        k        l  func         phi0         kphi
+
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_heme.str
 ;      i        j        k        l  func         phi0         kphi
      CPB      CPA      NPH      CPA     2     0.000000   174.054400  ; ALLOW HEM
       HA      CPA      CPA      CPM     2     0.000000   246.019200  ; ALLOW HEM
@@ -24470,11 +24288,11 @@
      NPH      CPA      CPM      CPA     2     0.000000   153.134400  ; ALLOW HEM
      NPH      CPM      CPB      CPA     2     0.000000   273.633600  ; ALLOW HEM
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_model.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_model.str
 ;      i        j        k        l  func         phi0         kphi
       CD       OC       OC       OC     2     0.000000   895.376000  ; carbonate
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_modify_res.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_modify_res.str
 ;      i        j        k        l  func         phi0         kphi
        C      CT3        N        O     2     0.000000   594.128000  ; DMA, Dimethylacetamide, xxwy
    CG2O1    CG321      NH1    OG2D1     2     0.000000  1004.160000  ; PROT NMA Vibrational Modes (LK) WILDCARD PRK PIA MEQ SWG KHB CR2 CRF CRQ SUI
@@ -24498,46 +24316,46 @@
    NG2S0        C    CG321    CG321     2     0.000000     0.000000  ; I4G
    NG2S0        C    CG311    CG331     2     0.000000     0.000000  ; MAA
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_na_combined.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_na_combined.str
 ;      i        j        k        l  func         phi0         kphi
      NR1     CPH1     CPH2     CN7B     2     0.000000     5.020800  ; From imidazole (NF), k increased
      NR1     CPH2     CPH1     CN7B     2     0.000000     5.020800  ; From imidazole (NF), k increased
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_retinol.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_retinol.str
 ;      i        j        k        l  func         phi0         kphi
       CD     CC1A        O      HR1     2     0.000000   117.152000  ; 
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/top_all36_prot.rtf
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/top_all36_prot.rtf
 ;      i        j        k        l  func         phi0         kphi
 
-; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul21/toppar_water_ions.str
+; specific (non-wildcard) improper dihedral parameters from toppar_c36_jul22/toppar_water_ions.str
 ;      i        j        k        l  func         phi0         kphi
 
 ; wildcard improper dihedral parameters from 
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/metals/CHARMM_METAL/par_all22_prot_metals.inp
+; wildcard improper dihedral parameters from toppar_c36_jul22/metals/CHARMM_METAL/par_all22_prot_metals.inp
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/metals/CHARMM_METAL/top_all22_prot_metals.inp
+; wildcard improper dihedral parameters from toppar_c36_jul22/metals/CHARMM_METAL/top_all22_prot_metals.inp
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/par_all35_ethers.prm
+; wildcard improper dihedral parameters from toppar_c36_jul22/par_all35_ethers.prm
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/par_all36_carb.prm
+; wildcard improper dihedral parameters from toppar_c36_jul22/par_all36_carb.prm
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/par_all36_cgenff.prm
+; wildcard improper dihedral parameters from toppar_c36_jul22/par_all36_cgenff.prm
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/par_all36_lipid.prm
+; wildcard improper dihedral parameters from toppar_c36_jul22/par_all36_lipid.prm
 ;      i        j        k        l  func         phi0         kphi
      OBL        X        X       CL     2     0.000000   836.800000  ; acetic acid
      OCL        X        X       CL     2     0.000000   803.328000  ; acetate
      OCL        X        X      CCL     2     0.000000   803.328000  ; for POPS
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/par_all36_na.prm
+; wildcard improper dihedral parameters from toppar_c36_jul22/par_all36_na.prm
 ;      i        j        k        l  func         phi0         kphi
      HN2        X        X      NN2     2     0.000000     8.368000  ; C, adm jr. 11/97
      HN1        X        X      NN1     2     0.000000    33.472000  ; G, adm jr. 11/97
@@ -24547,7 +24365,7 @@
      CN2        X        X      NN1     2     0.000000   753.120000  ; C,
      CN9        X        X     CN3T     2     0.000000   117.152000  ; T, adm jr. 11/97
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/par_all36m_prot.prm
+; wildcard improper dihedral parameters from toppar_c36_jul22/par_all36m_prot.prm
 ;      i        j        k        l  func         phi0         kphi
      NC2        X        X        C     2     0.000000   376.560000  ; ALLOW   PEP POL ARO
      NC2        X        X       HC     2     0.000000   -16.736000  ; 
@@ -24560,59 +24378,59 @@
       CC        X        X      CT2     2     0.000000   803.328000  ; ALLOW   PEP POL ARO ION
       CC        X        X      CT3     2     0.000000   803.328000  ; ALLOW   PEP POL ARO ION
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/silicates/toppar/par_silicates.inp
+; wildcard improper dihedral parameters from toppar_c36_jul22/silicates/toppar/par_silicates.inp
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/silicates/toppar/top_silicates.inp
+; wildcard improper dihedral parameters from toppar_c36_jul22/silicates/toppar/top_silicates.inp
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_glycolipid.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_glycolipid.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_glycopeptide.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_glycopeptide.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_imlab.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_imlab.str
 ;      i        j        k        l  func         phi0         kphi
      NH1        X        X     HCA1     2     0.000000   167.360000  ; protein NH1  X    X    H
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/carb/toppar_all36_carb_lignin.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/carb/toppar_all36_carb_lignin.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_bacterial.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_bacterial.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_cholesterol.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_cholesterol.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_detergent.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_detergent.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_ether.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_ether.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_lps.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_lps.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_miscellaneous.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_miscellaneous.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_prot.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_prot.str
 ;      i        j        k        l  func         phi0         kphi
       CL        X        X     CTL2     2     0.000000   803.328000  ; from, CC   X    X    CT2
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/lipid/toppar_all36_lipid_sphingo.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/lipid/toppar_all36_lipid_sphingo.str
 ;      i        j        k        l  func         phi0         kphi
      NHL        X        X        H     2     0.000000   167.360000  ; amide, from peptide; rmv nov 2009
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/misc/toppar_ions_won.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/misc/toppar_ions_won.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/na/toppar_all36_na_modifications.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/na/toppar_all36_na_modifications.str
 ;      i        j        k        l  func         phi0         kphi
      NNG        X        X      CNG     2     0.000000   334.720000  ; NC2  X    X    C   ALLOW   PEP POL ARO
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/na/toppar_all36_na_nad_ppi.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/na/toppar_all36_na_nad_ppi.str
 ;      i        j        k        l  func         phi0         kphi
     HN3B        X        X      CN3     2     0.000000   125.520000  ; nad/ppi, jjp1/adm jr.
     HN3B        X        X     CN3A     2     0.000000   108.784000  ; nad/ppi, jjp1/adm jr.
@@ -24621,36 +24439,41 @@
      HN3        X        X     CN3C     2     0.000000   443.504000  ; nad/ppi, jjp1/adm jr.
      HN6        X        X     CN3C     2     0.000000   443.504000  ; nich, adm jr.
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/na/toppar_all36_na_rna_modified.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_arg0.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_arg0.str
-;      i        j        k        l  func         phi0         kphi
-
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_c36m_d_aminoacids.str
 ;      i        j        k        l  func         phi0         kphi
       CC        X        X     CTD1     2     0.000000   803.328000  ; 
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_heme.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_fluoro_alkanes.str
+;      i        j        k        l  func         phi0         kphi
+
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_heme.str
 ;      i        j        k        l  func         phi0         kphi
      CPB        X        X      CE1     2     0.000000   753.120000  ; ALLOW HEM
      CT2        X        X      CPB     2     0.000000   753.120000  ; ALLOW HEM
      CT3        X        X      CPB     2     0.000000   753.120000  ; ALLOW HEM
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_model.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_model.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_modify_res.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_modify_res.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_na_combined.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_na_combined.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/stream/prot/toppar_all36_prot_retinol.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/stream/prot/toppar_all36_prot_retinol.str
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/top_all36_prot.rtf
+; wildcard improper dihedral parameters from toppar_c36_jul22/top_all36_prot.rtf
 ;      i        j        k        l  func         phi0         kphi
 
-; wildcard improper dihedral parameters from toppar_c36_jul21/toppar_water_ions.str
+; wildcard improper dihedral parameters from toppar_c36_jul22/toppar_water_ions.str
 ;      i        j        k        l  func         phi0         kphi
+
+; improper dihedral parameters manually added
+;      i        j        k        l  func         phi0         kphi
+   CG2O2   CG2R62    OG2D1    OG311     2     0.000000   443.504000
+   CG2O3    OG2D2    OG2D2   CG2R62     2     0.000000   803.328000

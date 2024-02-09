@@ -1,0 +1,13 @@
+; additional params for the molecule
+#include "ampa3.prm"
+#include "ampa3.itp"
+
+
+[ system ]
+; Name
+aminomethylphosphonic acid 3
+
+[ molecules ]
+; Compound		  #mols
+AMPA3			1
+
