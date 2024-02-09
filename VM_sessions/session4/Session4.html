@@ -273,6 +273,69 @@
                 details on
                 the different project options in the <a href="#options_2">Options</a> section below.
             </p>
+            <ol>
+                <li>
+                    Copy the <code>project_2</code> folder to your home directory.
+                </li>
+                <li>
+                    Use the <code>MMT</code> unit cells to assemble a clay sheet.<br>
+                    All clay unit cells can be found inside the <code>UC</code> folder.<br>
+                    The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm.
+                </li>
+                <li>
+                    Extend the simulation box to 100&nbsp;&Aring; in the z-direction.
+                </li>
+                <li>
+                    Add the number of TC molecules the simulation box that corresponds to a concentration of
+                    0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
+                    Use the prevalent protonation state at the pH-value of your option.
+                </li>
+                <li>
+                    Solvate the box with SPC water.
+                </li>
+                <li>
+                    Add 0.1 mol&nbsp;L<sup>-1</sup> of the ion combination specified in your option and neutralise any
+                    excess charge.
+                </li>
+                <li>
+                    Perform an energy minimisation with a force tolerance of
+                    500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
+
+                </li>
+                <li>
+                    Equilibrate the system for 100&nbsp;ps in the NVT ensemble at 300&nbsp;K.
+                </li>
+                <li>
+                    Equilibrate the system for 100&nbsp;ps in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
+                </li>
+                <li>
+                    Run a 20&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
+                </li>
+                <li>
+                    Determine the point where the system reached equilibrium.
+                </li>
+                <li>
+                    Calculate the linear density of the TC molecules.
+                </li>
+                <li>
+                    Calculate the linear density of the clay sheet.
+                </li>
+                <li>
+                    Calculate the linear density of the added cation species.
+                </li>
+                <li>
+                    Calculate the linear density of the Cl<sup>-</sup> ions.
+                </li>
+                <li>
+                    Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
+                </li>
+                <li>
+                    Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions
+                    between TC and the clay sheet.
+                </li>
+
+            </ol>
             <h4 class="options" id="options_2"></h4>
             <button class="collapsible">Adsorption of TC onto MMT in NaCl solution at pH 2</button>
             <div class="content">
@@ -458,7 +521,7 @@
                 <li>
                     Use the <code>MMT</code> unit cells to assemble a clay sheet.<br>
                     All clay unit cells can be found inside the <code>UC</code> folder.<br>
-                    The dimensions should be around 3.5&nbsp;&times;&nbsp;5&nbsp;&nbsp;nm.
+                    The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm.
                 </li>
                 <li>
                     Extend the simulation box to 100&nbsp;&Aring; in the z-direction.
@@ -476,7 +539,8 @@
                     excess charge.
                 </li>
                 <li>
-                    Perform an energy minimisation with a force tolerance of 500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
+                    Perform an energy minimisation with a force tolerance of
+                    500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
                 </li>
                 <li>
                     Equilibrate the system for 100&nbsp;ps in the NVT ensemble at 300&nbsp;K.
@@ -497,19 +561,20 @@
                     Calculate the linear density of the clay sheet.
                 </li>
                 <li>
-                    Calculate the linear density of the Na<sup>+</sup> ions.
+                    Calculate the linear density of the added cation species.
                 </li>
                 <li>
                     Calculate the linear density of the Cl<sup>-</sup> ions.
                 </li>
                 <li>
-                    Open the linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
+                    Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
                 </li>
                 <li>
-                    Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates interactions
+                    Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions
                     between APG and the clay sheet.
                 </li>
-                </ol>
+            </ol>
             <h4 class="options" id="options_3"></h4>
             <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 5</button>
             <div class="content">
@@ -617,16 +682,16 @@
                 <li>
                     Use the unit cell type of your project option to assemble a clay sheet.<br>
                     All clay unit cells can be found inside the <code>UC</code> folder.<br>
-                    The dimensions should be at least 3&nbsp;&times;&nbsp;3&nbsp;&nbsp;nm.
+                    The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm.
                 </li>
-                <li>Extend the simulation box to 30&nbsp;&Aring; in the z-direction.</li>
-                <li>Add 10 G or AMPA molecules the simulation box.<br>
-                    Use the protonation state corresponding to the pH-value of your option.
+                <li>Extend the simulation box to 100&nbsp;&Aring; in the z-direction.</li>
+                <li>Add the number of G or AMPA molecules the simulation box that corresponds to a concentration of
+                    0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
+                    Use the prevalent protonation state at the pH-value of your option.
                 </li>
                 <li>Solvate the box with SPC water.</li>
                 <li>Add 0.1 mol&nbsp;L<sup>-1</sup> of the ion combination specified in your option to neutralise any
-                    excess
-                    charge.
+                    excess charge.
                 </li>
                 <li>Perform an energy minimisation with a force tolerance of
                     500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
@@ -636,9 +701,16 @@
                 <li>Run a 10&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;atm.</li>
                 <li>Determine the point where the system reached equilibrium.</li>
                 <li>Calculate the linear density of the G or AMPA molecules</li>
-                <li>Open and save the linear density plot with xmgrace.</li>
-                <li>Inspect the final coordinates and trajectory in VMD.</li>
-            </ol>
+                <li>Calculate the linear density of the clay sheet.</li>
+                <li>Calculate the linear density of the added cation species.</li>
+                <li>Calculate the linear density of the Cl<sup>-</sup> ions.</li>
+
+                <li>Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.</li>
+
+                <li>Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions
+                    between G or AMPA and the clay sheet.
+                </li>
             </ol>
             <h4 class="options" id="options_4"></h4>
             <button class="collapsible">Adsorption of G onto MMT in NaCl solution at pH 3</button>
@@ -770,8 +842,29 @@
                 clays.
             </p>
             <h4>
+                Suggested reading
+            </h4>
+            <ul>
+                <li><a href="https://www.nature.com/articles/s41598-022-18202-y"></a>https://www.nature.com/articles/s41598-022-18202-y
+                </li>
+
+                <li><a href="https://doi.org/10.1016/j.apgeochem.2021.105117">https://doi.org/10.1016/j.apgeochem.2021.105117</a>
+                </li>
+                <li><a href="https://doi.org/10.1021/acsearthspacechem.2c00222">https://doi.org/10.1021/acsearthspacechem.2c00222</a>
+                </li>
+            </ul>
+            <h4>
                 Tasks
             </h4>
+            <p>
+                All required files for this project are located inside the <code>practicals/projects/project_5</code>
+                folder.
+            </p>
+            <p>
+                The following list provides a general description for the tasks of this project. You can find the
+                details on
+                the different project options in the <a href="#options_5">Options</a> section below.
+            </p>
             <ol>
                 <li>
                     Copy the <code>project_5</code> folder to your home directory.
@@ -783,7 +876,7 @@
                     The dimensions should be at least 3&nbsp;&times;&nbsp;3&nbsp;&nbsp;nm.
                 </li>
                 <li>
-                    Extend the simulation box to 30&nbsp;&Aring; in the z-direction.
+                    Extend the simulation box to 50&nbsp;&Aring; in the z-direction.
                 </li>
                 <li>
                     Solvate the box with SPC water.
@@ -812,24 +905,28 @@
                 <li>
                     Calculate the linear density of the ions.
                 </li>
-                Calculate the radial distribution function (RDF) of the radioactive cation species.
                 <li>
-                    Open and save the linear density and RDF plots with xmgrace.
+                    Calculate the linear density of the clay sheet.
                 </li>
                 <li>
-                    Inspect the final coordinates and trajectory in VMD.
+                    Calculate the linear density of the Cl<sup>-</sup> ions.
+                <li>
+                <li>
+                    Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
+                </li>
+                <li>
+                    Calculate the radial distribution function (RDF) of the radioactive cation species and
+                    water molecule oxygen atoms.
+                </li>
+                <li>
+                    Open and the RDF plots with xmgrace and save the plot in <code>.jpeg</code> format.
+                <li>
+                    Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions between the radioactive ions and the clay sheet.
                 </li>
 
             </ol>
-            <p>
-                All required files for this project are located inside the <code>practicals/projects/project_5</code>
-                folder.
-            </p>
-            <p>
-                The following list provides a general description for the tasks of this project. You can find the
-                details on
-                the different project options in the <a href="#options_5">Options</a> section below.
-            </p>
+
             <h4 class="options" id="options_5"></h4>
             <button class="collapsible">Adsorption of Cs<sup>+</sup> onto MMT</button>
             <div class="content">
@@ -893,7 +990,7 @@
                     The dimensions should be at least 3&nbsp;&times;&nbsp;3&nbsp;&nbsp;nm.
                 </li>
                 <li>
-                    Extend the simulation box to 30&nbsp;&Aring; in the z-direction.
+                    Extend the simulation box to 50&nbsp;&Aring; in the z-direction.
                 </li>
                 <li>
                     Solvate the box with SPC water.
@@ -922,13 +1019,24 @@
                 <li>
                     Calculate the linear density of the ions.
                 </li>
-                Calculate the radial distribution function (RDF) of the heavy metal cation species.
                 <li>
-                    Open and save the linear density
-                    and RDF plots with xmgrace.
+                    Calculate the linear density of the clay sheet.
                 </li>
                 <li>
-                    Inspect the final coordinates and trajectory in VMD.
+                    Calculate the linear density of the Cl<sup>-</sup> ions.
+                <li>
+                <li>
+                    Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
+                </li>
+                <li>
+                    Calculate the radial distribution function (RDF) of the heavy metal cation species and
+                    water molecule oxygen atoms.
+                </li>
+                <li>
+                    Open the RDF plots with xmgrace and save the plot in <code>.jpeg</code> format.
+                <li>
+                    Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions between the heavy metal ions and the clay sheet.
                 </li>
             </ol>
 
@@ -961,15 +1069,15 @@
     </div>
 </div>
 <div class="box">
-    <h2 id="toc_2">Useful information</h2>
-    <h3 id="toc_2_1">Calculating the number of organic molecules to reach a certain concentration</h3>
+    <h2 class='enum' id="toc_2">Useful information</h2>
+    <h3 class='enum' id="toc_2_1">Calculating the number of organic molecules to reach a certain concentration</h3>
     <p>
         To calculate the volume of the simulation box that is occupied by the solvent. The height of the solvent
         layer can be obtained by subtracting the height of the clay unit cell from the total height of the expanded
         simulation box.<br>
         Remember to keep the units of the volume and the concentration to be consistent in your calculations.
     </p>
-    <h3 id="toc_2_2">Calculating the linear density of organic molecules</h3>
+    <h3 class='enum' id="toc_2_2">Calculating the linear density of organic molecules</h3>
     <p style="line-height: 1.5">
         Use <code>gmx density</code> to calculate the linear densities of molecules or ions along the
         <em>z</em>-axis.<br>
@@ -993,7 +1101,7 @@
         with the
         atoms of interest.
     </p>
-    <h3 id="toc_2_3">Input files</h3>
+    <h3 class='enum' id="toc_2_3">Input files</h3>
     <p>
         Organic molecule structures and molecule definitions are located inside the <code>STRUCTURES</code> folders of
         each project.
@@ -1012,11 +1120,12 @@
     </p>
 </div>
 <div class="box">
-    <h2 id="toc_3">
+    <h2 class="enum" id="toc_3">
         Writing your report
     </h2>
     <p>
-        Your final project work will be evaluated based on the report that you hand in. We are providing you with templates for <a href="">Microsoft Word</a> and <a href="">Overleaf</a>. We strongly
+        Your final project work will be evaluated based on the report that you hand in. We are providing you with
+        templates for <a href="">Microsoft Word</a> and <a href="">Overleaf</a>. We strongly
         encourage you to choose the Overleaf template and become familiar with writing in LaTeX.<br>
         Explanations on expected content, structure and word counts are provided in the documents.
     </p>
@@ -1058,12 +1167,13 @@
 <script src="../scripts/generate_overview.js"></script>
 <script src="../scripts/scroll_up.js"></script>
 <script src="../scripts/feedback.js"></script>
-<!--<script src="../scripts/projects_list.js"></script>-->
+<script src="../scripts/adjust_for_dyslexia.js"></script>
 <script>window.onload = function () {
     addFeedback('https://forms.office.com/e/VukKtnCbxq?origin=lprLink', 'img/FB4.png')
     generateOverview();
     generateHeader();
     scrollUp();
+    adjustForDyslexia();
 }</script>
 </body>
 </html>
