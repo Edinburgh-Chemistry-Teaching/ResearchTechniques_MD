@@ -115,9 +115,36 @@
                     Extend the simulation box to 100&nbsp;&Aring; in the z-direction.
                 </li>
                 <li>
+                    <p>
                     Add the number of APG molecules to the simulation box that corresponds to a concentration of
                     0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
-                    Use the prevalent protonation state at the pH-value of your option.
+                    Use the prevalent protonation state at the pH-value of your option.</p>
+                    <table style="background: none; width: 70%; margin-bottom: 10px; margin-top: 10px">
+                        <caption>
+                            Table 1: Protonation states of APG (see <a href="#apg_protonation">figure 1</a>) and
+                            corresponding structure files.
+                        </caption>
+                        <tr>
+                            <th>protonation state</th>
+                            <th>structure file</th>
+                        </tr>
+                        <tr>
+                            <td>Api<sup>0</sup></td>
+                            <td><code>api2</code></td>
+                        </tr>
+                        <tr>
+                            <td>Api<sup>-</sup></td>
+                            <td><code>api0</code></td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <td>Api<sup>2-</sup></td>
+                            <td><code>api3</code></td>
+                        </tr>
+                        <tr>
+                            <td>Api<sup>3-</sup></td>
+                            <td><code>api4</code></td>
+                    </table>
                 </li>
                 <li>
                     Solvate the box with SPC water.
@@ -287,7 +314,7 @@
                             corresponding structure files.
                         </caption>
                         <tr>
-                            <th>charges</th>
+                            <th>protonation state</th>
                             <th>structure file</th>
                         </tr>
                         <tr>
@@ -492,7 +519,7 @@
                             corresponding structure files.
                         </caption>
                         <tr>
-                            <th>charges</th>
+                            <th>protonation state</th>
                             <th>structure file</th>
                         </tr>
                         <tr>
@@ -703,7 +730,6 @@
                 broad-spectrum herbicide that is widely used in agriculture. Depending on the pH of the environment, the
                 two
                 species can be present in different protonation states (<a href="#ampa_protonation">Figure 4</a>)
-                <!--            and <a href="#ampa_protonation">Figure 5</a>), -->
                 which can affect their adsorption behaviour. The project aims to
                 investigate the adsorption of G and AMPA onto MMT and KAO clays at different pH values and to determine
                 the
@@ -755,7 +781,7 @@
                             corresponding structure files.
                         </caption>
                         <tr>
-                            <th>charges</th>
+                            <th>protonation state</th>
                             <th>structure file</th>
                         </tr>
                         <tr>
@@ -767,10 +793,6 @@
                             <td><code>gly4</code></td>
                         </tr>
                         <tr>
-                            <td>AMPA<sup>-</sup></td>
-                            <td><code>ampa2</code></td>
-                        </tr>
-                        <tr>
                             <td>AMPAH</td>
                             <td><code>ampa4</code></td>
                         </tr>
@@ -778,6 +800,7 @@
                             <td>AMPA<sup>-</sup></td>
                             <td><code>ampa5</code></td>
                         </tr>
+                    </table>
                 </li>
                 <li>Solvate the box with SPC water.</li>
                 <li>Add 0.1 mol&nbsp;L<sup>-1</sup> of the ion combination specified in your option to neutralise any
