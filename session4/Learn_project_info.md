@@ -72,3 +72,16 @@ The project should be submitted as a PDF file. We encourage you to use one of th
 [Link to OverLeaf Template](https://www.overleaf.com/read/bypxzfbvhnxw#eaf10b)
 
 
+## Using OverLeaf Template:
+
+
+1. Register with your University email at [Overleaf.com](https://www.overleaf.com/)
+2. Click on the link to the [OverLeaf Template](https://www.overleaf.com/read/bypxzfbvhnxw#eaf10b); you will be prompted to 'Join the Project', click yes, and it will open in your browser.
+3. This is a template and is not editable. 
+4. To make an editable copy, click on the 'Menu' (top left) ![](../../Overleaf_howto_1.png)
+4. Select 'Copy Project' and give it a name, click 'Copy' ![](../../Overleaf_howto_2.png)
+5. The project will now appear in your project list ![](../../Overleaf_howto_3.png)
+6. Click on the project to open it. You can now edit the text. Make sure to click compile to see the changes appear on the PDF ![](../../Overleaf_howto_4.png)
+7. When you are ready to submit, you can download a PDF (make sure to do a final recompile!) ![](../../Overleaf_howto_5.png)
+
+
