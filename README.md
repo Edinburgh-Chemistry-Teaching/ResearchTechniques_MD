@@ -7,9 +7,6 @@ UoE, Jan/Feb 2024
 
 
 ----
-Purpose of the course... 
-
-----
 
 ## Sessions
 - Session1 
