@@ -5,11 +5,11 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
     <meta content="Session 3: Layered material simulations" name="description"/>
-<!--        <link href="https://fonts.googleapis.com" rel="preconnect">-->
-<!--        <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">-->
-<!--        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"-->
-<!--              rel="stylesheet">-->
-    <link data-toggle="true" href="../scripts/style.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
+          rel="stylesheet">
+    <link href="../scripts/style.css" rel="stylesheet"/>
     <title>Session 3</title>
 </head>
 
@@ -55,16 +55,18 @@
         of cations (Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, Mg<sup>2+</sup>, ...) in the interlayer space.
     </p>
     <div class="flex-figure">
-        <figure>
-            <img alt="" class="fit-picture" decoding="auto"
-                 src="img/clay_sheet_structure.png" width="40%"/>
-            <img alt="" class="fit-picture" decoding="auto" src="img/clay_with_IL.png"
-                 width="50%"/>
-            <figcaption>
-                Side view illustrations of clay sheet structure and composition (left) and two stacked clay with
-                interlayer space (right).
-            </figcaption>
-        </figure>
+        <div class="flex-figure-item">
+            <figure>
+                <img alt="" class="fit-picture" decoding="auto"
+                     src="img/clay_sheet_structure.png" width="40%"/>
+                <img alt="" class="fit-picture" decoding="auto" src="img/clay_with_IL.png"
+                     width="50%"/>
+                <figcaption>
+                    Side view illustrations of clay sheet structure and composition (left) and two stacked clay with
+                    interlayer space (right).
+                </figcaption>
+            </figure>
+        </div>
     </div>
 </div>
 <!--<div class="box" style="width: 50%; border: solid 1px dimgray; background-color: #b3d4fc; color: dimgray">-->
@@ -137,7 +139,8 @@
         </tbody>
     </table>
     <!--        <span style="align-content: center; text-align: justify; align-items: center">-->
-    <div class="flex-figure">
+    <div class="flex-container">
+        <div class="flex-item">
             <figure>
                 <img alt="" class="fit-picture" decoding="auto" src="img/uc_top.png"
                      width="35%"/>
@@ -147,6 +150,7 @@
                     Montmorillonite unit cell top view (left) and side view (right).
                 </figcaption>
             </figure>
+        </div>
     </div>
 
     <!--        <figure>-->
@@ -196,8 +200,8 @@
     <div class="bbox">
         <h3 id="Create_a_clay_sheet"></h3>
         <ul>
-            <li>Use <code>genconf</code> to create a single clay sheet from <abbr>MMT</abbr> <abbr>UCs</abbr>
-                (<code>MMT.gro</code>) with a cutoff of 1.2 nm:
+            <li>Use <code>genconf</code> to create aa single clay sheet from 24 <abbr>MMT</abbr> <abbr>UCs</abbr>
+                (<code>MMT.gro</code>):
             </li>
             <li>Usage of <code>genconf</code>: <br>
                 <blockquote>
@@ -214,10 +218,10 @@
                     Check the size of unit cell and remember the size of the box has to be at least 2.5 x the size
                     of your cutoff.
                     So, for a cutoff at 1.2&nbsp;nm you have to aim at ~3&nbsp;nm on each side.<br>
-                    <i>Remember:</i> The final line in the <code>.gro</code> file shows the x, y and z cell lengths in
-                    nanometers.
+                    <i>Remember:</i> The final line in the <code>.gro</code> file shows the x, y and z cell lengths in nanometers.
                 </blockquote>
-                <div class="flex-figure">
+                <div class="flex-container">
+                    <div class="flex-item">
                         <figure>
                             <img alt="" class="fit-picture" decoding="auto"
                                  src="img/sheet_top.png"
@@ -230,6 +234,7 @@
                             </figcaption>
                         </figure>
                     </div>
+                </div>
             </li>
         </ul>
     </div>
@@ -243,25 +248,22 @@
             <li>Edit the gro file to increase the box height</li>
             <li>Increase the box <em>z</em> length by editing the <code>MMT_slab.gro</code> file.
                 <blockquote>
-                    Where in the <code>.gro</code> file is the box size specified? Adjust the sheet spacing to 50&nbsp;&#8491;
-                    using <code>nano</code>
+                    Where in the <code>.gro</code> file is the box size specified? Adjust the sheet spacing to 50&nbsp;&#8491; using <code>nano</code>
                 </blockquote>
                 <div class="flex-figure">
-                    <figure>
-                        <img alt="" class="fit-picture" decoding="auto"
-                             src="img/sheet_side_ext_50A.png"
-                             width="55%"/>
-                        <figcaption>
-                            Montmorillonite sheet model side view with extended box height.
-                        </figcaption>
-                    </figure>
+                    <div class="flex-figure-item">
+                        <figure>
+                            <img alt="" class="fit-picture" decoding="auto"
+                                 src="img/sheet_side_ext_50A.png"
+                                 width="55%"/>
+                        </figure>
+                    </div>
                 </div>
             </li>
         </ul>
     </div>
     <h2 class="enum" id="toc_3">Adding decanoic acid molecules</h2>
-    Now that you have a clay sheet, you can use <code>insert&dash;molecules</code> to insert decanoic acid molecules
-    into
+    Now that you have a clay sheet, you can use <code>insert&dash;molecules</code> to insert decanoic acid molecules into
     the vacuum space.
     <div class="bbox">
         <h3 id="Insert_decanoic_acid_molecules"></h3>
@@ -277,22 +279,20 @@
                     <code>&dash;nmol</code> defines the number of molecules to insert.<br>
                     <code>&dash;o</code> specifies the output coordinate file name.<br>
                     <p>GROMACS will try to fit the requested number of molecules in the available space. It will
-                        notify you about whether it was successful or not. <i>If unsuccessful, repeat this step until
-                            the requested total number have
-                            been added (you may need to lower <code>-nmol
-                                &lt;number&gt;
-                            </code> if it successfully added some but not all).</i>
+                        notify you about whether it was successful or not. <i>If unsuccessful, repeat this step until the requested total number have
+                            been added (you may need to lower <code>-nmol <number></code> if it successfully added some but not all).</i>
                     </p>
                 </blockquote>
                 <div class="flex-figure">
-                    <figure>
-                        <img alt="" class="fit-picture" decoding="auto"
-                             src="img/sheet_side_dec_50A.png"
-                             width="55%"/>
-                        <figcaption>
-                            Grey decanoic acid molecules inserted into the vacuum space above the clay sheet.
-                        </figcaption>
-                    </figure>
+                    <div class="flex-figure-item">
+                        <figure>
+                            <img alt="" class="fit-picture" decoding="auto"
+                                 src="img/sheet_side_dec_50A.png"
+                                 width="55%"/>
+                            <figcaption>
+                                Grey decanoic acid molecules inserted into the vacuum space above the clay sheet.
+                        </figure>
+                    </div>
                 </div>
             </li>
         </ul>
@@ -303,6 +303,7 @@
         (<code>.top</code>) file
         that includes all molecules present in the system. The following explains the structure of GROMACS
         topology files in some more detail.
+        <!--        than in <a href="../Session2/Session2.html">Session2</a>.-->
     </p>
     <p>
         In the first section, the force field parameters are defined. These always include combination rules and
@@ -324,8 +325,7 @@
     </p>
     <p>
         Even if they consist of only one atom, all atoms of the system are part of molecules. These are defined
-        in the second section, <code>[ moleculetype ]</code>. All molecule type definitions, such as the
-        <abbr>MMT</abbr> <abbr>UC</abbr>,
+        in the second section, <code>[ moleculetype ]</code>. All molecule type definitions, such as the <abbr>MMT</abbr> <abbr>UC</abbr>,
         decanoic acid, water and ions need to be included in the topology file.
     </p>
     <p> Elements from the first two sections are usually defined in separate files that are included in the topology
@@ -353,8 +353,7 @@
                     it is CHARMM36, and for ions it is Ions.
                     Inside each of the folders, you can find the <code>.itp</code> files that contain the various
                     force field parameters. <br>
-                    <p class="remember"> Everything that comes after a <code>;</code> will be treated as a comment and
-                        is not read by GROMACS.</p>
+                    <p class="remember"> Everything that comes after a <code>;</code> will be treated as a comment and is not read by GROMACS.</p>
                 </blockquote>
             </li>
             <!--                <li>Include the definition files for combination rules (<code>'forcefield.itp</code>) from ClayFF.-->
@@ -379,9 +378,8 @@
                 <abbr>MMT</abbr>
                 (<code>MMT.itp</code>) and decanoic acid (<code>decanoic_acid.itp</code>).
                 <blockquote>
-                    <p class="note">The files containing the decanoic acid and MMT structure parameters are located in
-                        the
-                        <code>STRUCTURES</code> directory.</p>
+                    <p class="note">The files containing the decanoic acid and MMT structure parameters are located in the
+                    <code>STRUCTURES</code> directory.</p>
                 </blockquote>
             </li>
             <li>Complete the molecules section.
@@ -409,7 +407,6 @@ DECA           1
             <li>Make a copy of the topology <code>MMT_slab.top</code> file:
                 <blockquote>
                     <pre>$ cp MMT_slab.top MMT_dec_solv.top</pre>
-                </blockquote>
             </li>
             <li>Use of <code>solvate</code>: <br>
                 <blockquote>
@@ -424,46 +421,68 @@ DECA           1
                     </p>
                 </blockquote>
                 <div class="flex-figure">
-                    <div>
-                        <figure>
-                            <img alt="" class='fit-picture' decoding="auto" src="img/sheet_side_dec_solv_50A.png" width="55%"/>
-                            <figcaption>Solvated MMT sheet model with grey decanoic acid molecules in simulation
-                                box.
-                            </figcaption>
-                        </figure>
+                    <div class="flex-figure-item">
+                        <div>
+                            <figure>
+                                <img alt="" src="img/sheet_side_dec_solv_50A.png" width="55%"/>
+                                <figcaption>Solvated MMT sheet model with grey decanoic acid molecules in simulation
+                                    box.
+                                </figcaption>
+                            </figure>
+                        </div>
                     </div>
                 </div>
                 <p>After this step, make sure to visualise the system in VMD to check that no water molecules
                     were inserted into or very close to the clay sheets. If this was the case, you can either
                     repeat the solvation step (make sure to delete the <code>SOL</code> line from the topology
                     first) or remove the water molecules manually.<br>
-                    In order to manually remove water molecules, look at the system in VMD and press &quot;1&quot; on
-                    your keyboard to select the water molecules
+                    In order to manually remove water molecules, look at the system in VMD and press &quot;1&quot; on your keyboard to select the water molecules
                     that are too close to the clay. The label of the selected water molecule will then show you
                     which residue you will need to remove from the <code>.gro</code> file. E.g. if the label
-                    shows <code>SOL60:HW1</code> (see figure below), you will need to remove the three
-                    <code>SOL60</code> lines
+                    shows <code>SOL60:HW1</code> (see figure below), you will need to remove the three <code>SOL60</code> lines
                     from the <code>MMT_dec_solv.gro</code> file and change the number of atoms in the header
                     to match the new number of atoms in the file. Make sure to also update the number of water
                     molecules in the <code>MMT_dec_solv.top</code> file.</p>
                 <div class="flex-figure">
-                    <figure>
-                        <img alt="" class="fit-picture"
-                             decoding="auto"
-                             src="img/sheet_side_water_mol.png"
-                             width="55%"/>
-                        <figcaption>
-                            Water molecule <code>SOL60</code> inside the clay sheet.
-                        </figcaption>
-                    </figure>
+                    <div class="flex-figure-item">
+                        <figure>
+                            <img alt="" class="fit-picture"
+                                 decoding="auto"
+                                 src="img/sheet_side_water_mol.png"
+                                 width="55%"/>
+                            <figcaption>
+                                Water molecule <code>SOL60</code> inside the clay sheet.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div id="EM_toubleshoot"
+                     style="padding: 20px;background: aliceblue; border: darkslategray;border-width: 1px;border-style: solid;color: darkslategray">
+                    <p><em style="font-weight: bold">EM Troubleshooting:</em> Note which atom has the highest forces in the
+                        energy minimisation output of GROMACS.<br>
+                        E.g.: <pre>Step= 1836, Dmax= 6.0e-05 nm, Epot= -5.42894e+05 Fmax= 1.94476e+02, atom= 19894</pre>
+                    In VMD, go to the <code>Graphical Representations</code> window.
+                    Create a new representation and for <code>Selected Atoms</code> choose <code>serial &lt;problem_atom_number&gt;</code>, set
+                    the <code>Drawing Method</code> to <code>VDW</code> and the <code>Coloring Method</code> to <code>ColorID</code>.
+                    You will now be able to see which atom is causing the problem.</p>
+                    <p>If you cannot clearly see the environment of the problem atom, you can replace the <code>Selected Atoms</code>
+                        in the default representation with <code>within 5 of serial &lt;problem_atom_number&gt;</code>
+                    </p>
+                    <p>
+                        If a water molecule is causing the problem, you can follow the instructions above and remove it
+                        from the system.
+                    </p>
+                    <p>
+                        If the problem is an ion, restart the procedure beginning from the <a
+                            href="#Neutralise_the_excess_charge"> <code>genion</code></a> step.
+                    </p>
                 </div>
             </li>
         </ol>
     </div>
     <h2 class="enum" id="toc_6">Adding ions to neutralise the system</h2>
     <p>
-        Now you have a solvated system, but the system has a net negative charge because of the substitutions in the
-        clay sheet and the
+        Now you have a solvated system, but the system has a net negative charge because of the substitutions in the clay sheet and the
         deprotonated decanoic acid molecules.
         It is not possible to run a simulation with a charged system. Therefore, you need to neutralise the system
         with cations.
@@ -536,15 +555,17 @@ information for each atom.
             </li>
         </ol>
         <div class="flex-figure">
-            <figure>
-                <img alt=""
-                     decoding="auto" src="img/sheet_side_dec_solv_ions_50A.png"
-                     width="55%"/>
-                <figcaption>
-                    Solvated and MMT sheet model in simulation box with grey decanoic acid molecules and pink
-                    Na<sup>+</sup> ions.
-                </figcaption>
-            </figure>
+            <div class="flex-figure-item">
+                <figure>
+                    <img alt=""
+                         decoding="auto" src="img/sheet_side_dec_solv_ions_50A.png"
+                         width="55%"/>
+                    <figcaption>
+                        Solvated and MMT sheet model in simulation box with grey decanoic acid molecules and pink
+                        Na<sup>+</sup> ions.
+                    </figcaption>
+                </figure>
+            </div>
         </div>
     </div>
     <h2 class="enum" id="toc_7">Preparing the <abbr>MD</abbr> simulation parameter files</h2>
@@ -629,37 +650,13 @@ Potential Energy  = -6.8659256e+05
 Maximum force     =  6.5820524e+07 on atom 715
 Norm of force     =  1.6491472e+06
 </pre>
-                <p>This means that the energy minimisation did not converge, meaning that GROMACS was not able to
-                    reach a minimum where the maximum force was below the specified threshold. In this case, you will
-                    probably need to
+                <p>This means that the energy minimisation did not converge. This means that GROMACS was not able to
+                    reach a minimum
+                    where the maximum force was below the specified threshold. In this case, you will probably need to
                     repeat parts of the assembly procedure or remove water molecules that are too close to the clay,
-                    organics or other waters. Before repeating, follow the <em>EM Troubleshoot</em> instructions.
+                    organics or other waters. Before repeating, move on to the visualisation
+                    task</a> but follow the <a href="../session3/Session3.html#EM_toubleshoot"><em>EM Troubleshoot</em></a> instructions.
                 </p>
-                <div id="EM_toubleshoot"
-                     style="padding: 20px;background: #DBE1F1; border: darkslategray; border-width: 1px;border-style: solid">
-                    <p><em style="font-weight: bold">EM Troubleshooting:</em> Note which atom has the highest forces in
-                        the energy minimisation
-                        output of GROMACS.<br>
-                        E.g.:
-                    <pre>Step= 1836, Dmax= 6.0e-05 nm, Epot= -5.42894e+05 Fmax= 1.94476e+02, atom= 19894</pre>
-                    In VMD, go to the <code>Graphical Representations</code> window.
-                    Create a new representation and for <code>Selected Atoms</code> choose <code>serial &lt;problem_atom_number&gt;</code>,
-                    set
-                    the <code>Drawing Method</code> to <code>VDW</code> and the <code>Coloring Method</code> to <code>ColorID</code>.
-                    You will now be able to see which atom is causing the problem.</p>
-                    <p>If you cannot clearly see the environment of the problem atom, you can replace the <code>Selected
-                        Atoms</code>
-                        in the default representation with <code>within 5 of serial &lt;problem_atom_number&gt;</code>
-                    </p>
-                    <p>
-                        If a water molecule is causing the problem, you can follow the instructions from the <a
-                            href="#Solvate_the_box"><code>solvate</code></a> step and remove it from the system.
-                    </p>
-                    <p>
-                        If the problem is an ion, restart the procedure beginning from the <a
-                            href="#Neutralise_the_excess_charge"> <code>genion</code></a> step.
-                    </p>
-                </div>
             </li>
         </ol>
     </div>
@@ -750,8 +747,11 @@ Norm of force     =  1.6491472e+06
                 Calculate the <abbr>RMSD</abbr> of the system:
             </li>
             <li>
-                Transfer the results from the production run to your local machine:
-                <pre>$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/session3/prod* ~/session3/</pre>
+                Start an interactive session on Eddie:
+                <p>
+                    Use the instructions from <a href="../session2/Session2.html#interactive_login">Session 2</a> to
+                    start an interactive session on Eddie and load the GROMACS module.
+                </p>
             </li>
             <li>Refer to the <a href="../session2/Session2.html#Calculating_the_RMSD">Session 2</a> for instructions on
                 how to calculate the <abbr>RMSD</abbr> of the system.
@@ -846,7 +846,8 @@ $ gmx rdf &dash;f prod.xtc &dash;s prod.tpr &dash;n Na_OW.ndx &dash;o rdf_Na_OW.
                             Right&dash;click on the molecule and select <code>Load Data into Molecule</code>.
                             Then, select the <code>prod.xtc</code> trajectory file.
                         </p>
-                        <p class="note">The loading of all the frames might take some time. You can speed this up if                         this up if
+                        <p class="note">The loading of all the frames might take some time. You can speed up the
+                            proceed if
                             you hide the molecule during this process. To do this, click on the <code>D</code> next to
                             the molecule
                             entry in the main menu. It will turn red and the molecule will be hidden. Once the
@@ -861,18 +862,15 @@ $ gmx rdf &dash;f prod.xtc &dash;s prod.tpr &dash;n Na_OW.ndx &dash;o rdf_Na_OW.
             </ol>
         </div>
     </div>
-</div>
-<script defer src="../scripts/generate_header.js"></script>
-<script defer src="../scripts/generate_overview.js"></script>
-<script defer src="../scripts/scroll_up.js"></script>
-<script defer src="../scripts/feedback.js"></script>
-<script defer src="../scripts/adjust_for_dyslexia.js"></script>
-<script>window.onload = function () {
-    addFeedback('https://forms.office.com/e/VukKtnCbxq?origin=lprLink', 'img/FB3.png')
-    generateOverview();
-    generateHeader();
-    scrollUp();
-    adjustForDyslexia();
-}</script>
+    <script src="../scripts/generate_header.js"></script>
+    <script src="../scripts/generate_overview.js"></script>
+    <script src="../scripts/scroll_up.js"></script>
+    <script src="../scripts/feedback.js"></script>
+    <script>window.onload = function () {
+        addFeedback('https://forms.office.com/e/VukKtnCbxq?origin=lprLink', 'img/FB3.png')
+        generateOverview();
+        generateHeader();
+        scrollUp();
+    }</script>
 </body>
 </html>
