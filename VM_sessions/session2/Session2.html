@@ -34,7 +34,7 @@
 <div class="box">
     <h2 id="outcomes">Learning Outcomes</h2>
     <p>
-        By the end of this session you should be able to
+        By the end of this session you should be able to:
     </p>
     <ul>
         <li>Understand the basics of molecular dynamics simulations</li>
@@ -1156,7 +1156,7 @@ Protein_chain_A     1</pre>
                         <p>
                             Use the <code>qlogin</code> command to request an interactive session with 1&nbsp;G of
                             memory:
-                        <pre>$ qlogin</pre>
+                        <>$ qlogin -q gpu -pe gpu-a100 1 -l h_vmem=1G</pre>
                         <p>
                             Once the interactive session has started, navigate back to your scratch directory and run
                             the <code>load_gmx.sh</code>

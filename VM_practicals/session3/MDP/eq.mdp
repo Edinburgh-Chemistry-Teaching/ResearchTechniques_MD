@@ -5,11 +5,12 @@ nsteps                   = COMPLETE HERE    ; Make total run time of 100 ps
 
 ; OUTPUT CONTROL OPTIONS
 nstxout                  = 0
+nstxout-compressed	 = 1000
 nstvout                  = 0
 nstfout                  = 0
 nstlog                   = 1
 nstenergy                = 1
-nstxout-compressed	 =1000
+nstxtcout                = 0
 xtc_precision            = 1000
 xtc-grps                 = System
 energygrps               = System
