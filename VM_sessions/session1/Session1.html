@@ -16,114 +16,119 @@
 
 <body>
 
-<h1 id="toc_0">Session 1: Intro to Linux</h1>
+<div class="box">
+    <h1 id="title">Session 1: Intro to Linux</h1>
+    <!--    <p><strong>Contact:</strong><br/>-->
+    <!--        Dr Valentina Erastova (<a href="mailto:valentina.erastova@ed.ac.uk">valentina.erastova@ed.ac.uk</a>)<br/>-->
+    <!--        Office B21 (Office hours Wedn 10.00&dash;12.00 in weeks 3, 4 and 5)-->
+    <!--    </p>-->
+    <!--    <p><strong>Demonstrators:</strong></p>-->
+    <!--    <ul>-->
+    <!--        <li>Audrey Noumbissi Ngambia</li>-->
+    <!--        <li>Sarah Stewart</li>-->
+    <!--        <li>Tim Spankie</li>-->
+    <!--        <li>Chenfeng Zhang</li>-->
+    <!--    </ul>-->
+</div>
 
-<p>This session is developed by Valentina Erastova and Hannah Pollak and is based upon <a href="https://swcarpentry.github.io/shell-novice/"><strong>The Unix Shell</strong></a>, the <a href="http://www.hpc-carpentry.org/hpc-shell/"><strong>Introduction to Using the Shell in a High-Performance Computing Context</strong></a> and <a href="https://epcced.github.io/hpc-intro/"><strong>Introduction to High-Performance Computing</strong></a> courses.</p>
+<div class="box">
+    <h2 id="overview">Session Outline</h2>
+    <p>This session is based upon <a href="https://swcarpentry.github.io/shell-novice/"><strong>The Unix Shell</strong></a>,
+        the <a href="https://www.hpc-carpentry.org/hpc-shell/"><strong>Introduction to Using the Shell in a High-Performance Computing Context</strong></a>
+        and <a href="https://epcced.github.io/hpc-intro/"><strong>Introduction to High-Performance Computing</strong></a> courses.</p>
 
-<hr>
+    <p>
+        The material is divided into 7 parts, and for the purpose of this course you are only required to do <strong>Part 1, Part 2</strong> and
+        <strong>Part 7</strong>. The other parts are beneficial, especially if you are planning to use these skills beyond this course, but are not
+        essential for the following sessions.</p>
 
-<p>The lesson outline:</p>
+    <ol>
+        <li> <a href="Intro2BASH_S1.html"><strong>Navigating Files and Directories</strong></a> </li>
+        <li> <a href="Intro2BASH_S2.html"><strong>Working With Files and Directories</strong></a> </li>
+        <li> <a href="Intro2BASH_S3.html"><strong>Pipes and Filters</strong></a> (Advanced) </li>
+        <li> <a href="Intro2BASH_S4.html"><strong>Loops</strong></a> (Advanced) </li>
+        <li> <a href="Intro2BASH_S5.html"><strong>Shell Scripts</strong></a> (Advanced) </li>
+        <li> <a href="Intro2BASH_S6.html"><strong>Finding Things</strong></a> (Advanced) </li>
+        <li> <a href="Intro2BASH_S7.html"><strong>Using High-Performance Computers</strong></a> </li>
+    </ol>
 
-<ol>
-<li>Navigating Files and Directories </li>
-<li>Working With Files and Directories</li>
-<li>Pipes and Filters (Advanced)</li>
-<li>Loops (Advanced)</li>
-<li>Shell Script (Advanced)</li>
-<li>Finding things (Advanced)</li>
-<li>Using high-performance computers</li>
-</ol>
+    <p>
+        Each part contains instructions that you should follow during the session, and additional <strong>Questions</strong> and <strong>Tasks
+    </strong> at the end of each section that should be done after the session (or during <em>only</em> if you have finished all required parts).
+        All the questions and tasks have answers/solutions provided in a drop-down.</p>
+</div>
 
-<p>There are <strong>Questions</strong> and <strong>Tasks</strong> provided to give you practice. All of these have Answers/Solutions in a drop-down below. 
-These are practice exercises to be attended after the session (or only if you have time during the session). </p>
+<div class="box">
+    <h2 id="outcomes">Learning Outcomes</h2>
+    <p> By the end of this session you should be able to: </p>
 
-<p>We have also provided you with extra material if you find yourself keen to learn more. 
-Therefore, for the purpose of this course, you should do <strong>Part 1</strong>,img <strong>Part 2</strong>, and <strong>Part 7</strong>.
-<strong>Parts 3 - 6</strong> are beneficial, especially if you are planning to use these skills beyond this course, but are not essential for the following sessions. </p>
+    <ul>
+        <li>Understand what shell and command line interfaces are, and know when one would use it</li>
+        <li>Navigate around directories and look up their contents</li>
+        <li>Use options and arguments to change the behaviour of shell commands</li>
+        <li>Know what the path is, be able to translate a relative path into an absolute and vice-versa </li>
+        <li>Create, edit, move and delete files and directories </li>
+        <li>Edit text using <code>vim</code></li>
+        <li>Know what a script is and be able to run one</li>
+        <li>Connect to Eddie HPC</li>
+        <li>Transfer files between a local and remote machine</li>
+        <li>Run a simple job on Eddie HPC</li>
+    </ul>
+</div>
 
-<hr>
+<div class="box">
+    <h2 id="summary">Overview</h2>
+    <p>In computing, a <strong>shell</strong> is a computer programme that allows you to communicate with Unix operating systems (Linux and
+        MacOS). We do this using a <strong>command-line interface</strong> where we input lines of text that instruct the shell on what to do. The
+        most popular Unix shell is Bash (Bourne Again SHell), which is the default on most modern unix systems. This is what we will be using to
+        perform our tasks, via the <strong>Terminal</strong> application.</p>
 
-<h2 id="toc_1"><strong>SHELL</strong></h2>
+    <p>Typically, we use <strong>graphical</strong> interfaces to use a computer (clicking a mouse and using menus). However, some tasks can take
+        hours to do using this method, whereas using a command line could take only seconds. Additionally, we can create <strong>scripts</strong>
+        to automate tasks, meaning we can do other things while the shell is working.</p>
 
-<p><strong>WHAT?</strong></p>
+    <p>The Unix shell is a powerful tool, with a <strong>high action-to-keystroke ratio</strong>, making complex and powerful tasks easier. It is
+        <strong>essential for accessing</strong> (and managing) networked machines and <strong>high-performance computers</strong>.</p>
 
-<ul>
-<li>Command line interface between YOU and UNIX (&amp; its friends).</li>
-<li>Its purpose is to read commands and run other programs.</li>
-</ul>
+    <p>Using the shell can seem daunting at the beginning, but only a few "words" (commands) are needed to perform a wide variety of
+        tasks. Unlike when normally using a computer, there are no choices automatically presented and so it is necessary to learn some essential
+        commands. As with most computing problems, using the programme documentation or a simple Google search can usually tell you what command and
+        options are needed to do whatever you require.</p>
 
-<p><strong>WHY?</strong></p>
+    <p>A summary of some basic Bash commands used during this session can be found <a
+            href="bash_cheat_sheet.html">here</a>.</p>
 
-<ul>
-<li>Shell has a high action-to-keystroke ratio, which is great for automating repetitive tasks.</li>
-<li>Helps access (and manage) networked machines and high-performance computing resources.</li>
-</ul>
+</div>
 
-<p><strong>HOW?</strong></p>
+<div class="box">
+    <h3 id="problem">A Typical Problem</h3>
+    <p>Iris Spectra, a chemistry student, has been doing a research project involving IR spectroscopy. They have performed 100 synthesis experiments
+        and collected the spectra as individual text files. Each file needs processed to normalise the data, get the peak positions and assign the
+        peaks to functional groups. They also want to generate a summary of the 100 experiments to present to their supervisor. In addition to this
+        huge task, the results need written up in 2 weeks so that the paper can appear in a special additional of <em>The Journal of Immaterial
+            Science</em>.</p>
 
-<ul>
-<li>Programs can be run in Bash by entering commands at the command-line prompt (terminal).</li>
-<li>Must know commands and how to use them (<strong>the goal of this session</strong>)</li>
-</ul>
+    <p>To speed up the process, Iris has created a programme called <code>IR_spectra.sh</code> to perform the analysis, but if it was run by hand
+        using a graphical interface they will have to select and open all 100 files. If <code>IR_spectra.sh</code> takes 2 minutes to run, the whole
+        process will over 3 hours. Using the shell, Iris can instead assign the task to their computer while focussing on writing the paper.</p>
 
-<hr>
+    <p>In this session will explore the ways Iris can achieve this. More specifically, the practical explains how they can use a command shell to run the
+    <code>IR_spectra.sh</code> program, using loops to automate the repetitive steps of entering file names, so that Iris&rsquo; computer can work
+    while they write the paper.</p>
 
-<h3 id="toc_2">Nelle’s Pipeline: A Typical Problem</h3>
+    <p>As a bonus, once Iris has put a processing pipeline together, they will be able to use it again whenever they collect more data.</p>
 
-<p>Nelle Nemo, a marine biologist, has just returned from a six-month survey of the <a href="https://en.wikipedia.org/wiki/North_Pacific_Gyre">North Pacific Gyre</a>, where she has been sampling gelatinous marine life in the <a href="https://en.wikipedia.org/wiki/Great_Pacific_Garbage_Patch">Great Pacific Garbage Patch</a>. She has 1520 samples that she’s run through an assay machine to measure the relative abundance of 300 proteins. She needs to run these 1520 files through an imaginary program called <code>goostats.sh</code>. In addition to this huge task, she has to write up results by the end of the month, so her paper can appear in a special issue of Aquatic Goo Letters.</p>
+    <p>In order to achieve the task, Iris needs to know how to:</p>
 
-<p>If Nelle chooses to run <code>goostats.sh</code> by hand using a GUI, she’ll have to select and open a file 1520 times. If <code>goostats.sh</code> takes 30 seconds to run each file, the whole process will take more than 12 hours of Nelle’s attention. With the shell, Nelle can instead assign her computer this mundane task while she focuses her attention on writing her paper.</p>
-
-<p>In this session will explore the ways Nelle can achieve this. More specifically, the practical explains how she can use a command shell to run the <code>goostats.sh</code> program, using loops to automate the repetitive steps of entering file names, so that Nelle&rsquo;s computer can work while she writes her paper.</p>
-
-<p>As a bonus, once she has put a processing pipeline together, she will be able to use it again whenever she collects more data.</p>
-
-<p>In order to achieve her task, Nelle needs to know how to:</p>
-
-<ul>
-<li>navigate to a file/directory</li>
-<li>create a file/directory</li>
-<li>check the length of a file</li>
-<li>chain commands together</li>
-<li>retrieve a set of files</li>
-<li>iterate over files</li>
-<li>run a shell script containing her pipeline</li>
-</ul>
-
-<hr>
-
-<p><strong>Click on the links below to continue through the parts today&rsquo;s session:</strong> </p>
-
-<p>PART 1 &ndash; <a href="Intro2BASH_S1.html"><strong>Navigating Files and Directories</strong></a> (Help Nelle organise the files)</p>
-
-<p>PART 2 &ndash; <a href="Intro2BASH_S2.html"><strong>Working With Files and Directories</strong></a> </p>
-
-<p>PART 3 &ndash; <a href="Intro2BASH_S3.html"><strong>Pipes and Filters</strong></a>  (Nelle’s Pipeline: Checking Files)</p>
-
-<p>PART 4 &ndash; <a href="Intro2BASH_S4.html"><strong>Loops</strong></a>  (Nelle’s Pipeline: Processing Files)</p>
-
-<p>PART 5 &ndash; <a href="Intro2BASH_S5.html"><strong>Shell Script</strong></a> (Nelle’s Pipeline: Creating a Script)</p>
-
-<p>PART 6 &ndash; <a href="Intro2BASH_S6.html"><strong>Finding things</strong></a> </p>
-
-<p>PART 7 &ndash; <a href="Intro2BASH_S7.html"><strong>Using high-performance computers</strong></a> </p>
-
-<h2 id="toc_3">At the end of Session 1, you should be able to:</h2>
-
-<ul>
-<li>Understand what is shell and command line interface, know when one would use it</li>
-<li>Be able to navigate around directories and look up their contents </li>
-<li>Use options and arguments to change the behaviour of shell commands</li>
-<li>Know what is the path, be able to translate a relative path into an absolute and vice-versa </li>
-<li>Create, edit, move and delete files and directories </li>
-<li>Edit text using <code>nano</code></li>
-<li>Know what is a script and be able to run it</li>
-<li>Connect to Eddie HPC</li>
-<li>Transfer files between a local and a remote machine</li>
-<li>Run a simple job on Eddie HPC</li>
-</ul>
-
-<p>Summary of basic bash commands learned during this session: <a href="https://swcarpentry.github.io/shell-novice/reference">https://swcarpentry.github.io/shell-novice/reference</a></p>
+    <ul>
+        <li>Navigate to a file/directory</li>
+        <li>Create a file/directory</li>
+        <li>Chain commands together</li>
+        <li>Retrieve a set of files</li>
+        <li>Iterate over files</li>
+        <li>Run a shell script containing the pipeline</li>
+    </ul>
+</div>
 
 
 <script src="../scripts/generate_header.js"></script>
@@ -132,7 +137,7 @@ Therefore, for the purpose of this course, you should do <strong>Part 1</strong>
 <script src="../scripts/feedback.js"></script>
 <script src="../scripts/adjust_for_dyslexia.js"></script>
 <script>window.onload = function () {
-    addFeedback('https://forms.office.com/e/NtN4Fmzhj3?origin=lprLink', 'img/FB2.png');
+    addFeedback('https://forms.office.com/e/NtN4Fmzhj3?origin=lprLink', 'img/FB1.png');
     generateOverview();
     generateHeader();
     scrollUp();
