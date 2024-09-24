@@ -5,338 +5,359 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
-    <meta content="Session1: " name="description"/>
+    <meta content="Session1: part 1" name="description"/>
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
           rel="stylesheet">
     <link href="../scripts/style.css" rel="stylesheet"/>
-    <title>PART 7 &ndash; Using high performance computers</title>
+    <title>Part 1 &ndash; Navigating Files and Directories</title>
 </head>
 
 <body>
 
-<h1 id="toc_0">PART 1 &ndash; Navigating Files and Directories</h1>
+<div class="box">
+    <h1 id="overview">Part 1 &ndash; Navigating Files and Directories</h1>
+    <p> &uarr; <a href="Session1.html">Go to the main menu</a> <br>
+        &rarr; <a href="Intro2BASH_S2.html">Go to the next part &ndash; Working With Files and Directories</a> </p>
+</div>
+
+<div class="box">
+    <h3 id="terminal">1. The terminal</h3>
+    <p>The shell is commonly accessed using a <strong>terminal</strong>, which is a text-only display.</p>
+
+    <p>Click on the terminal app at the bottom of the desktop:<br>
+    <img src="./img/terminal.png" alt="terminal"></p>
+
+    <p>This will open a new window:<br>
+    <img src="./img/commandline.png" alt="commandline"></p>
+
+    <p> When the terminal is opened, the prompt <code>$</code> shows that the shell is waiting for an input. This is where you will type
+        commands e.g. </p>
+    <pre><code class="language-bash">$ date</code></pre>
+    <p> will print the date and time according to the operating system.</p>
+
+    <blockquote>
+    <p><u><strong>IMPORTANT</strong>: do not type the prompt<code>$</code>when typing commands!</u>
+    Only type the command that follows the prompt. This rule applies both in these lessons and in lessons from other sources.
+    After you type a command, you have to press the <code>ENTER</code> key to execute it.</p> </blockquote>
+
+    <p>The prompt is followed by a <em>text cursor</em>, a flashing (or solid black) cursor that indicates the position where whatever you type will
+        appear.</p>
+
+    <p>By default, most shells put some information on the user, the machine, and even the directory you are currently in. For example, in the
+        image above:
+    </p>
+    <pre><code class="language-bash">[test@instance-test-2:~]$ </code></pre>
+
+    <p>Don't worry about this, just make sure to <strong>type in only what is given after </strong><code>$</code> in your terminal.</p>
+
+</div>
+
+<div class="box">
+    <h3 id="navigate">2. The file system</h3>
+    <p>The file system section of the operating systems organises our data into <strong>files</strong>, which hold information, and
+        <strong>directories</strong> (or folders), which contain files or other directories. Let&rsquo;s have a look at how the file system is
+        organised.</p>
+    <p><img src="./img/filesystem.svg" alt="filesystem"></p>
+
+    <p>The filesystem looks like an upside-down tree. The topmost directory is the <strong>root directory</strong> that holds everything else. We
+        refer to it using a slash character, <code>/</code>, on its own. Inside that directory are several other directories: </p>
+
+    <ul>
+        <li><code>bin</code> (this is not the rubbish bin, but where some built-in programs are stored), </li>
+        <li><code>data</code> (for miscellaneous data files), </li>
+        <li><code>Users</code> (where users’ personal directories are located), </li>
+        <li><code>tmp</code> (for temporary files that don’t need to be stored long-term).</li>
+    </ul>
+
+    <p>We know that the directory <code>/Users/nelle</code> is stored inside <code>/Users</code> because <code>/Users</code> is the first part of its
+        name. Similarly, we know that <code>/Users</code> is stored inside the root directory <code>/</code> because its name begins with <code>/</code>.</p>
+    <p><img src="./img/home-directories.svg" alt="home-dirs"></p>
+
+    <p>Underneath <code>/Users</code>, we find one directory for each user with an account on the machine, Nelle and her colleagues <code>imhotep</code>
+        and <code>larry</code>.<br>
+    Their files are stored in <code>/Users/imhotep</code> and in <code>/Users/larry</code>, respectively, while Nelle’s are in <code>/Users
+            /nelle</code>.</p>
+
+    <p><br><strong>To navigate around the file system there are a few key commands:</strong></p>
+
+    <ul>
+        <li><p style="padding-bottom:5px">Use <code>pwd</code> to <strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory</p>
+        <p>When using the terminal, our current location within the file system is called the <strong>working directory</strong>. Most commands tell
+        the operating system to perform the action wherever the user is, and so knowing where you are is very important.</p>
+            <pre>
+<code class="language-bash">$ pwd</code>
+<code class="language-bash">/Users/nelle</code></pre>
+        <br></li>
+
+        <li><p style="padding-bottom:5px">Use <code>ls</code> to <strong>l</strong>i<strong>s</strong>t the contents of the working directory</p>
+            <p>In the current directory you should see something like:</p>
+            <pre>
+<code class="language-bash">$ ls</code>
+<code class="language-bash">Desktop       Downloads       Movies       Pictures
+Documents       Library       Music       Public </code></pre>
+        <br></li>
+
+        <li><p style="padding-bottom:5px">Use <code>cd</code> to <strong>c</strong>hange <strong>d</strong>irectory</p>
+            <p>When you open a new terminal, you will be in your <strong>home directory</strong>. To navigate through directories, we use the
+                command <code>cd</code> followed by the path that we want to follow. If we <strong>only use</strong> <code>cd</code>, you will
+                return to your home directory.</p>
+            <pre>
+<code class="language-bash">$ cd Desktop</code>
+<code class="language-bash">$ pwd</code>
+<code class="language-bash">/Users/nelle/Desktop</code></pre>
+            <pre>
+<code class="language-bash">$ cd</code>
+<code class="language-bash">$ pwd</code>
+<code class="language-bash">/Users/nelle</code></pre>
+        </li>
+    </ul>
+
+    <blockquote>
+        <p>Note, if you mistype a command shell will inform you that it doesn't exist. For example:</p>
+        <pre>
+<code class="language-bash">$ kls</code>
+<code class="language-none">kls: command not found</code></pre>
+    </blockquote>
 
-<p>👆<a href="Session1.html">Go to the main menu</a> <br>
-👉<a href="Intro2BASH_S2.html">Go to the next part &ndash; Working With Files and Directories</a><br></p>
+</div>
 
-<h3 id="toc_1">1. Open a terminal on your computer</h3>
+<div class="box">
+    <h3 id="material">3. Exploring a directory</h3>
+    <p>At the start of each session you will be required to make a copy of the material we provide. This can be done in the shell using the
+        <code>cp</code> command:</p>
+    <pre><code class="language-bash">$ cp -r practicals/session1 Desktop/.</code></pre>
+    <p>where <code>cp</code> stands for <strong>c</strong>o<strong>p</strong>y, <code>-r</code> tells the shell to copy all files and folders,
+        <code>practicals/session1</code> is the <strong>source</strong> location and <code>Desktop/.</code> is the <strong>destination</strong>.</p>
 
-<p>Click on the terminal app at the bottom of the desktop:
-<img src="./img/terminal.png" alt="terminal"></p>
+    <p>To navigate to this new directory, first go to <code>Desktop</code>:</p>
+    <pre><code class="language-bash">$ cd Desktop</code></pre>
+    <p>Check the directories on the desktop:</p>
+    <pre><code class="language-bash">$ ls</code></pre>
 
-<p>Which will open a window:
-<img src="./img/commandline.png" alt="commandline"></p>
+    <p>You should see a list, with one of them called <code>session1</code>. Now, go to that directory:</p>
+    <pre><code class="language-bash">$ cd session1</code></pre>
 
-<p>Here, each line starts with the prompt <code>$</code> (can be another user-defined symbol). This is where you will be typing in the commands we give you, for example:</p>
+    <p>We have now navigated from the <em>home directory</em> to a new <em>current working directory</em>.</p>
 
-<div><pre><code class="language-bash">$ date</code></pre></div>
+    <p>Let’s take a look at the contents of <code>session1</code> (our current directory) and the directory within it:</p>
+    <pre><code class="language-bash">$ ls</code></pre>
 
-<p><u><strong>IMPORTANT</strong>: do not type the prompt</u><code>$</code><u>when typing commands!</u>
-Only type the command that follows the prompt. This rule applies both in these lessons and in lessons from other sources. 
-After you type a command, you have to press the <code>ENTER</code> key to execute it.</p>
+    <p>that returns contents of current directory:</p>
+    <pre><code class="language-bash">eddie-hpc-data/    shell-lesson-data/</code></pre>
 
-<p>The prompt is followed by a <em>text cursor</em>, a flashing [or solid black] cursor that indicates the position where your typing will appear.</p>
+    <p>We can also use <code>ls</code> to list the contents a different directory. Let's list the contents of <code>shell-lesson-data</code>, without
+        descending into the directory:</p>
+    <pre><code class="language-bash">$ ls shell-lesson-data</code></pre>
 
-<p>Often, before the prompt symbol, there will be some information on the user, the machine, and even the directory currently in, for example on the imgure above:</p>
+    <p>that returns:
+    <pre><code class="language-bash">exercise-data/      north-pacific-gyre/</code></pre>
 
-<div><pre><code class="language-bash">[test@instance-test-2:~]$ </code></pre></div>
+    <p>Now, let&rsquo;s descend into the <code>exercise-data</code> directory in one step:</p>
 
-<p>Do not worry about all this; just make sure to type in only what is given after <code>$</code> into your terminal.</p>
+    <pre><code class="language-bash">$ cd shell-lesson-data/exercise-data</code></pre>
 
-<h3 id="toc_2">2. Copy the session folder</h3>
+    <p>Run <code>pwd</code> to check the directory you are currently in.</p>
+    <pre>
+<code class="language-bash">$ pwd</code>
+<code class="language-bash">/Users/nelle/Desktop/session1/shell-lesson-data/exercise-data</code></pre>
 
-<p>Type this into the terminal to copy the Practicals</p>
+    <p>List the contents of the directory:</p>
+    <pre>
+<code class="language-bash">$ ls</code>
+<code class="language-bash">alkanes/       animal-counts/       creatures/       numbers.txt       writing/</code></pre>
 
-<div><pre><code class="language-bash">$ cp -r practicals/session1 Desktop/.</code></pre></div>
+    <p>From our current directory, we can move into the <code>north-pacific-gyre</code> - a subdirectory of the parent directory <code>shell-lesson-data</code>, we first need to move a level up:</p>
+    <pre><code class="language-bash">$ cd ..</code></pre>
+    <p><code>..</code> is a special directory name meaning “the directory containing this one”, or more succinctly, the parent of the current directory. </p>
 
-<h3 id="toc_3">3. Navigate to the working directory</h3>
+    <p>The special directory <code>..</code> doesn’t usually show up when we run ls. If we want to display it, we can add the <code>-a</code> option to <code>ls</code>:</p>
 
-<p>Typing the following into the terminal, press <code>ENTER</code> after each new line command:</p>
+    <pre>
+<code class="language-bash">$ ls -a</code>
+<code class="language-bash">.       ..       exercise-data/       north-pacific-gyre/</code></pre>
 
-<div><pre><code class="language-bash">$ cd</code></pre></div>
+    <p>The <code>-a</code> option stands for ‘show all’ (including hidden files); it forces <code>ls</code> to show us file and directory names that
+        begin with <code>.</code></p>
 
-<p><code>cd</code> stands for <strong>c</strong>hange <strong>d</strong>irectory; this command by itself sends you to your home directory.</p>
+    <p>Now we can descend into the desired directory:</p>
+    <pre><code class="language-bash">$ cd north-pacific-gyre</code></pre>
 
-<p>Find out what is your home directory:</p>
+    <p>So far, when specifying directory names, or even a directory path (as above), we have been using <strong>relative paths</strong>. When you
+        use a relative path with a command like <code>ls</code> or <code>cd</code>, it tries to find that location from where we are right now,
+        rather than from the root of the file system.</p>
 
-<div><pre><code class="language-bash">$ pwd</code></pre></div>
+    <p>However, it is possible to specify the <strong>absolute path</strong> to a directory by including its entire path from the root directory,
+        which is indicated by a leading slash. The leading <code>/</code> tells the computer to follow the path from the root of the file system, so
+        it always refers to exactly one directory, no matter where we are when we run the command.</p>
 
-<p><code>pwd</code> stands for <strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory</p>
-
-<p>Which will return the line, like:</p>
-
-<div><pre><code class="language-bash">/Users/nelle</code></pre></div>
-
-<p>Every time you type in <code>cd</code> without anything after the command, you will land in this location.</p>
-
-<p>Use the command <code>ls</code> to <strong>l</strong>i<strong>s</strong>t the contents of this current directory:</p>
-
-<div><pre><code class="language-bash">$ ls</code></pre></div>
-
-<p>This will display the directories within the current one, and you will see something like:</p>
-
-<div><pre><code class="language-bash">Desktop     Downloads   Movies      Pictures
-Documents   Library     Music       Public</code></pre></div>
-
-<p>Note, if you mistype the command, for example, try:</p>
-
-<div><pre><code class="language-bash">$ kls</code></pre></div>
-
-<p>shell will inform you that it does not exist:</p>
-
-<div><pre><code class="language-none">kls: command not found</code></pre></div>
-
-<p>Now, continue into the directory <code>session1</code> you downloaded earlier.</p>
-
-<p>First, go to the directory <code>Desktop</code>:</p>
-
-<div><pre><code class="language-bash">$ cd Desktop</code></pre></div>
-
-<p>Check the directories on the desktop:</p>
-
-<div><pre><code class="language-bash">$ ls</code></pre></div>
-
-<p>You should see the list, with one of them called <code>session1</code>. Now, go to that directory:</p>
-
-<div><pre><code class="language-bash">$ cd session1</code></pre></div>
-
-<p>We have now navigated from the <em>home directory</em> to the <em>current working directory</em>. </p>
-
-<blockquote>
-<h3 id="toc_4">Let&rsquo;s have a look at how the file system is organised.</h3>
-
-<p><img src="./img/filesystem.svg" alt="filesystem"></p>
-
-<p>The filesystem looks like an upside-down tree. The topmost directory is the <em>root directory</em> that holds everything else. We refer to it using a slash character, <code>/</code>, on its own; this character is the leading slash in <code>/Users/nelle</code>.</p>
-
-<p>Inside that directory are several other directories: </p>
-
-<ul>
-<li><code>bin</code> (this is not the rubbish bin, but where  some built-in programs are stored), </li>
-<li><code>data</code> (for miscellaneous data files), </li>
-<li><code>Users</code> (where users’ personal directories are located), </li>
-<li><code>tmp</code> (for temporary files that don’t need to be stored long-term).</li>
-</ul>
-
-<p>We know that our current working directory <code>/Users/nelle</code> is stored inside <code>/Users</code> because <code>/Users</code> is the first part of its name. Similarly, we know that <code>/Users</code> is stored inside the root directory <code>/</code> because its name begins with <code>/</code>.</p>
-
-<p><img src="./img/home-directories.svg" alt="home-dirs"></p>
-
-<p>Underneath <code>/Users</code>, we find one directory for each user with an account on Nelle’s machine, her colleagues <code>imhotep</code> and <code>larry</code>.<br>
-Their files are stored in <code>/Users/Imhotep</code> and in <code>/Users/larry</code>, respectively.
-While Nelle’s are in <code>/Users/nelle</code>.</p>
-
-<p>Nelle is the user in our examples here; therefore, we get <code>/Users/nelle</code> as our home directory. Typically, when you open a new command prompt, you will be in your home directory to start.</p>
-</blockquote>
-
-<h3 id="toc_5">4. Exploring the contents of the directory</h3>
-
-<p>Not only can we use <code>ls</code> on the current working directory, but we can use it to list the contents of a different directory. </p>
-
-<p>Let’s take a look at the contents of the <code>session1</code> (our current directory) and the directory within it:</p>
-
-<div><pre><code class="language-bash">$ ls</code></pre></div>
-
-<p>that returns contents of current directory:</p>
-
-<div><pre><code class="language-bash">eddie-hpc-data/    shell-lesson-data/</code></pre></div>
-
-<p>and then list the contents of <code>shell-lesson-data</code>, without descending into the directory:</p>
-
-<div><pre><code class="language-bash">$ ls shell-lesson-data</code></pre></div>
-
-<p>that returns:
-<code>exercise-data/      north-pacific-gyre/</code></p>
-
-<p>Now, let&rsquo;s descent into the <code>exercise-data</code> in one step:</p>
-
-<div><pre><code class="language-bash">$ cd shell-lesson-data/exercise-data</code></pre></div>
-
-<p>Run <code>pwd</code> to check the directory you are currently in.</p>
-
-<div><pre><code class="language-bash">$ pwd</code></pre></div>
-
-<div><pre><code class="language-bash">/Users/nelle/Desktop/session1/shell-lesson-data/exercise-data</code></pre></div>
-
-<p>list the contents of the directory:</p>
-
-<div><pre><code class="language-bash">$ ls</code></pre></div>
-
-<div><pre><code class="language-bash">alkanes/       animal-counts/ creatures/     numbers.txt   writing/</code></pre></div>
-
-<p>From our current directory, we can move into the <code>north-pacific-gyre</code> - a subdirectory of the parent directory <code>shell-lesson-data</code>, we first need to move a level up:</p>
-
-<div><pre><code class="language-bash">$ cd ..</code></pre></div>
-
-<p><code>..</code> is a special directory name meaning “the directory containing this one”, or more succinctly, the parent of the current directory. </p>
-
-<p>The special directory <code>..</code> doesn’t usually show up when we run ls. If we want to display it, we can add the <code>-a</code> option to <code>ls</code>:</p>
-
-<div><pre><code class="language-bash">$ ls -a</code></pre></div>
-
-<div><pre><code class="language-bash">.                  ..                 exercise-data/      north-pacific-gyre/</code></pre></div>
-
-<p>now we can descend into the desired directory:</p>
-
-<div><pre><code class="language-bash">$ cd north-pacific-gyre</code></pre></div>
-
-<p>So far, when specifying directory names, or even a directory path (as above), we have been using <em>relative paths</em>. When you use a relative path with a command like <code>ls</code> or <code>cd</code>, it tries to find that location from where we are right now, rather than from the root of the file system.</p>
-
-<p>However, it is possible to specify the <em>absolute path</em> to a directory by including its entire path from the root directory, which is indicated by a leading slash. The leading <code>/</code> tells the computer to follow the path from the root of the file system, so it always refers to exactly one directory, no matter where we are when we run the command.</p>
-
-<p>This allows us to move to our <code>shell-lesson-data directory</code> from anywhere on the filesystem (including from inside <code>exercise-data</code>). To find the absolute path we’re looking for, we can use <code>pwd</code> and then extract the piece we need to move to <code>shell-lesson-data</code>.</p>
-
-<div><pre><code class="language-bash">$ pwd
+    <p>This allows us to move to our <code>shell-lesson-data</code> directory from anywhere on the filesystem (including from inside <code>exercise
+        -data</code>). To find the absolute path we’re looking for, we can use <code>pwd</code> and then extract the piece we need to move to
+        <code>shell-lesson-data</code>.</p>
+<pre><code class="language-bash">$ pwd
 /Users/nelle/Desktop/session1/shell-lesson-data/north-pacific-gyre
-$ cd /Users/nelle/Desktop/session1/shell-lesson-data</code></pre></div>
+$ cd /Users/nelle/Desktop/session1/shell-lesson-data</code></pre>
 
-<p>Remember, that the commands are after prompt <code>$</code> while the output of the terminal starts on a new line and has no prompt symbol in front.</p>
+    <p>Remember, that the commands are after the prompt <code>$</code> while the output of the terminal starts on a new line and has no prompt symbol
+        in front.</p>
 
-<p>The other way to indicate an absolute path, with respect to the current user’s home directory, is by using the tilde <code>~</code> character at the start of a path. For example, if Nelle’s home directory is <code>/Users/nelle</code>, then <code>~/data</code> is equivalent to <code>/Users/nelle/data</code>.</p>
+    <p>The other way to indicate an absolute path, with respect to the current user’s home directory, is by using the tilde <code>~</code> character
+        at the start of a path. For example, if Nelle’s home directory is <code>/Users/nelle</code>, then <code>~/data</code> is equivalent to
+        <code>/Users/nelle/data</code>.</p>
 
-<div><pre><code class="language-bash">$ pwd
+<pre><code class="language-bash">$ pwd
 /Users/nelle/Desktop/session1/shell-lesson-data
-$ cd ~/Desktop/session1/shell-lesson-data/exercise-data</code></pre></div>
+$ cd ~/Desktop/session1/shell-lesson-data/exercise-data</code></pre>
 
-<hr>
+    <p> </p>
+</div>
 
-<h4 id="toc_6">QUESTION 1:</h4>
+<div class="box">
+    <h3 id="help">4. Tab completion</h3>
 
-<p>Starting from <code>/Users/nelle/data</code>, which of the following commands could Nelle use to navigate to her home directory, which is <code>/Users/nelle</code>?</p>
+    <p>Knowing this much about files and directories, Nelle is ready to organize the files that the protein assay machine will create.</p>
 
-<ol>
-<li><code>cd .</code></li>
-<li><code>cd /</code></li>
-<li><code>cd /home/nelle</code></li>
-<li><code>cd ../..</code></li>
-<li><code>cd ~</code></li>
-<li><code>cd home</code></li>
-<li><code>cd ~/data/..</code></li>
-<li><code>cd</code></li>
-<li><code>cd ..</code></li>
-</ol>
+    <p>She created a directory called <code>north-pacific-gyre</code> (to remind herself where the data came from), which contains the data files
+        from the assay machine and her data processing scripts.</p>
 
-<p><details>
-  <summary><strong>ANSWER 1</strong></summary></p>
+    <p>Each of her physical samples is labelled according to her lab’s convention with a unique ten-character ID, such as ‘NENE01729A’. This ID is
+        what she used in her collection log to record the location, time, depth, and other characteristics of the sample, so she decides to use it
+        within the filename of each data file. Since the output of the assay machine is plain text, she will call her files
+        <code>NENE01729A.txt</code>, <code>NENE01812A.txt</code>, and so on. All 1520 files will go into the same directory.</p>
 
-<ol>
-<li>No: <code>.</code> stands for the current directory.</li>
-<li>No: <code>/</code> stands for the root directory.</li>
-<li>No: Nelle’s home directory is <code>/Users/nelle</code>.</li>
-<li>No: this command goes up two levels, i.e. ends in <code>/Users</code>.</li>
-<li>✅: <code>~</code> stands for the user’s home directory, in this case <code>/Users/nelle</code>.</li>
-<li>No: this command would navigate into a directory home in the current directory if it exists.</li>
-<li>✅: unnecessarily complicated, but correct.</li>
-<li>✅: shortcut to go back to the user’s home directory.</li>
-<li>✅: goes up one level.
-</details></li>
-</ol>
+    <p>Now, in the current directory <code>shell-lesson-data</code>, Nelle can see what files she has using the command:</p>
+    <pre><code class="language-bash">$ ls north-pacific-gyre/</code></pre>
 
-<h4 id="toc_7">QUESTION 2:</h4>
+    <p>This command is a lot to type, but she can let the shell do most of the work through what is called <em>tab completion</em>. If she types:</p>
+    <pre><code class="language-bash">$ ls nor</code></pre>
+    <p>and then presses <code>Tab</code> (the tab key on her keyboard), the shell automatically completes the directory name for her:</p>
+    <pre><code class="language-bash">$ ls north-pacific-gyre/</code></pre>
 
-<p>Using the filesystem diagram below, if <code>pwd</code> displays <code>/Users/thing</code>, what will <code>ls ../backup</code> display?</p>
+    <p>Pressing <code>Tab</code> again does nothing, since there are multiple possibilities; pressing <code>Tab</code> twice brings up a list of all
+        the files.</p>
 
-<ol>
-<li><code>../backup: No such file or directory</code></li>
-<li><code>012-12-01 2013-01-08 2013-01-27</code></li>
-<li><code>2012-12-01/ 2013-01-08/ 2013-01-27/</code></li>
-<li><code>original/ pnas_final/ pnas_sub/</code></li>
-</ol>
+    <p>If Nelle then types <code>g</code> and then presses <code>Tab</code> again, the shell will append ‘goo’ since all files that start with ‘g’
+        share the first three characters ‘goo’. Pressing <code>Tab</code> twice will then list all files that match the input:</p>
 
-<p><img src="./img/filesystem-challenge.svg" alt="filesystem-challenge"></p>
+    <pre>
+<code class="language-bash">$ ls north-pacific-gyre/g</code>
+<code class="language-bash">$ ls north-pacific-gyre/goo</code>
+<code class="language-bash">goodiff.sh   goostats.sh</code></pre>
 
-<p><details>
-  <summary><strong>ANSWER 2</strong></summary></p>
+    <p>This is called tab completion, and we will see it in many other tools as we go on.</p>
+    <p> </p>
+</div>
 
-<ol>
-<li>No: there is a directory backup in <code>/Users</code>.</li>
-<li>No: this is the content of Users/thing/backup, but with <code>..</code>, we asked for one level further up.</li>
-<li>No: see previous explanation.</li>
-<li>✅: <code>../backup/</code> refers to <code>/Users/backup/</code>.
-</details></li>
-</ol>
+<div class="box">
+    <h2 id="questions">Questions</h2>
 
-<h4 id="toc_8">QUESTION 3:</h4>
+    <h4 id="toc_6">Question 1:</h4>
 
-<p>Using the filesystem diagram above, if <code>pwd</code> displays /Users/backup, and <code>-r</code> tells <code>ls</code> to display things in reverse order, what command(s) will result in the following output:</p>
+    <p>Starting from <code>/Users/nelle/data</code>, which of the following commands could Nelle use to navigate to her home directory? </p>
 
-<p><code>pnas_sub/ pnas_final/ original/</code></p>
+    <ol>
+        <li><code>cd .</code></li>
+        <li><code>cd /</code></li>
+        <li><code>cd /home/nelle</code></li>
+        <li><code>cd ../..</code></li>
+        <li><code>cd ~</code></li>
+        <li><code>cd home</code></li>
+        <li><code>cd ~/data/..</code></li>
+        <li><code>cd</code></li>
+        <li><code>cd ..</code></li>
+    </ol>
 
-<ol>
-<li><code>ls pwd</code></li>
-<li><code>ls -r</code></li>
-<li><code>ls -r /Users/backup</code></li>
-</ol>
+    <p><details>
+        <summary><strong>Answer</strong></summary></p>
 
-<p><details>
-  <summary><strong>ANSWER 3</strong></summary></p>
+    <ol>
+        <li>No: <code>.</code> stands for the current directory.</li>
+        <li>No: <code>/</code> stands for the root directory.</li>
+        <li>No: Nelle’s home directory is <code>/Users/nelle</code>.</li>
+        <li>No: this command goes up two levels, i.e. ends in <code>/Users</code>.</li>
+        <li>✅: <code>~</code> stands for the user’s home directory, in this case <code>/Users/nelle</code>.</li>
+        <li>No: this command would navigate into a directory home in the current directory if it exists.</li>
+        <li>✅: unnecessarily complicated, but correct.</li>
+        <li>✅: shortcut to go back to the user’s home directory.</li>
+        <li>✅: goes up one level.
+        </li>
+    </ol></details>
 
-<ol>
-<li>No: <code>pwd</code> is not the name of a directory.</li>
-<li>✅: <code>ls</code> without directory argument lists files and directories in the current directory.</li>
-<li>✅: uses the absolute path explicitly.
-</details></li>
-</ol>
+    <h4 id="toc_7">Question 2:</h4>
 
-<hr>
+    <p>Using the filesystem diagram below, if <code>pwd</code> displays <code>/Users/thing</code>, what will <code>ls ../backup</code> display?</p>
 
-<h2 id="toc_9">Help Nelle organise the files</h2>
+    <ol>
+        <li><code>../backup: No such file or directory</code></li>
+        <li><code>012-12-01 2013-01-08 2013-01-27</code></li>
+        <li><code>2012-12-01/ 2013-01-08/ 2013-01-27/</code></li>
+        <li><code>original/ pnas_final/ pnas_sub/</code></li>
+    </ol>
 
-<p>Knowing this much about files and directories, Nelle is ready to organize the files that the protein assay machine will create.</p>
+    <p><img src="./img/filesystem-challenge.svg" alt="filesystem-challenge"></p>
 
-<p>She created a directory called <code>north-pacific-gyre</code> (to remind herself where the data came from), which contains the data files from the assay machine and her data processing scripts.</p>
+    <p><details>
+        <summary><strong>Answer</strong></summary></p>
 
-<p>Each of her physical samples is labelled according to her lab’s convention with a unique ten-character ID, such as ‘NENE01729A’. This ID is what she used in her collection log to record the location, time, depth, and other characteristics of the sample, so she decides to use it within the filename of each data file. Since the output of the assay machine is plain text, she will call her files <code>NENE01729A.txt</code>, <code>NENE01812A.txt</code>, and so on. All 1520 files will go into the same directory.</p>
+    <ol>
+        <li>No: there is a directory backup in <code>/Users</code>.</li>
+        <li>No: this is the content of Users/thing/backup, but with <code>..</code>, we asked for one level further up.</li>
+        <li>No: see previous explanation.</li>
+        <li>✅: <code>../backup/</code> refers to <code>/Users/backup/</code>.
+        </li>
+    </ol></details>
 
-<p>Now, in her current directory <code>shell-lesson-data</code>, Nelle can see what files she has using the command:</p>
+    <h4 id="toc_8">Question 3:</h4>
 
-<div><pre><code class="language-bash">$ ls north-pacific-gyre/</code></pre></div>
+    <p>Using the filesystem diagram above, if <code>pwd</code> displays /Users/backup, and <code>-r</code> tells <code>ls</code> to display things
+        in reverse order, what command(s) will result in the following output:</p>
 
-<p>This command is a lot to type, but she can let the shell do most of the work through what is called <em>tab completion</em>. If she types:</p>
+    <p><code>pnas_sub/ pnas_final/ original/</code></p>
 
-<div><pre><code class="language-bash">$ ls nor</code></pre></div>
+    <ol>
+        <li><code>ls pwd</code></li>
+        <li><code>ls -r</code></li>
+        <li><code>ls -r /Users/backup</code></li>
+    </ol>
 
-<p>and then presses <code>Tab</code> (the tab key on her keyboard), the shell automatically completes the directory name for her:</p>
+    <p><details>
+        <summary><strong>Answer</strong></summary></p>
 
-<div><pre><code class="language-bash">$ ls north-pacific-gyre/</code></pre></div>
+    <ol>
+        <li>No: <code>pwd</code> is not the name of a directory.</li>
+        <li>✅: <code>ls</code> without directory argument lists files and directories in the current directory.</li>
+        <li>✅: uses the absolute path explicitly.
+        </li>
+    </ol></details>
+    <p> </p>
+</div>
 
-<p>Pressing <code>Tab</code> again does nothing, since there are multiple possibilities; pressing <code>Tab</code> twice brings up a list of all the files.</p>
+<div class="box">
+    <blockquote>
+    <h3 id="toc_10">Key Points:</h3>
 
-<p>If Nelle then types <code>g</code> and then presses <code>Tab</code> again, the shell will append ‘goo’ since all files that start with ‘g’ share the first three characters ‘goo’.</p>
+    <ul>
+        <li>The file system is responsible for managing information on the disk.</li>
+        <li>Information is stored in files, which are stored in directories (folders).</li>
+        <li>Directories can also store other directories, which then form a directory tree.</li>
+        <li><code>pwd</code> prints the user’s current working directory.</li>
+        <li><code>ls [path]</code> prints a listing of a specific file or directory; <code>ls</code> on its own lists the current working directory.</li>
+        <li><code>cd [path]</code> changes the current working directory.</li>
+        <li>Most commands take options that begin with a single <code>-</code>.</li>
+        <li>Directory names in a path are separated with <code>/</code> on Unix (but <code>\</code> on Windows).</li>
+        <li><code>/</code> on its own is the root directory of the whole file system.</li>
+        <li>An absolute path specifies a location from the root of the file system.</li>
+        <li>A relative path specifies a location starting from the current location.</li>
+        <li><code>.</code> on its own means ‘the current directory’; <code>..</code> means ‘the directory above the current one’.</li>
+    </ul>
+    </blockquote>
+</div>
 
-<div><pre><code class="language-bash">$ ls north-pacific-gyre/goo
-goodiff.sh   goostats.sh</code></pre></div>
-
-<p>This is called tab completion, and we will see it in many other tools as we go on.</p>
-
-<hr>
-
-<blockquote>
-<h3 id="toc_10">KEY POINTS PART 1</h3>
-
-<ul>
-<li>The file system is responsible for managing information on the disk.</li>
-<li>Information is stored in files, which are stored in directories (folders).</li>
-<li>Directories can also store other directories, which then form a directory tree.</li>
-<li><code>pwd</code> prints the user’s current working directory.</li>
-<li><code>ls [path]</code> prints a listing of a specific file or directory; <code>ls</code> on its own lists the current working directory.</li>
-<li><code>cd [path]</code> changes the current working directory.</li>
-<li>Most commands take options that begin with a single <code>-</code>.</li>
-<li>Directory names in a path are separated with <code>/</code> on Unix (but <code>\</code> on Windows).</li>
-<li><code>/</code> on its own is the root directory of the whole file system.</li>
-<li>An absolute path specifies a location from the root of the file system.</li>
-<li>A relative path specifies a location starting from the current location.</li>
-<li><code>.</code> on its own means ‘the current directory’; <code>..</code> means ‘the directory above the current one’.</li>
-</ul>
-</blockquote>
-
-<hr>
-
-<p>👆<a href="Session1.html">Go to the main menu</a> <br>
-👉<a href="Intro2BASH_S2.html">Go to the next part &ndash; Working With Files and Directories</a><br></p>
-
+<div class="box">
+<p> &uarr; <a href="Session1.html">Go to the main menu</a> <br>
+    &rarr; <a href="Intro2BASH_S2.html">Go to the next part &ndash; Working With Files and Directories</a> </p>
+</div>
 
 <script src="../scripts/generate_header.js"></script>
 <script src="../scripts/generate_overview.js"></script>

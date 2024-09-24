@@ -5,25 +5,28 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
-    <meta content="Session1: " name="description"/>
+    <meta content="Session1: part 4" name="description"/>
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
           rel="stylesheet">
     <link href="../scripts/style.css" rel="stylesheet"/>
-    <title>PART 7 &ndash; Using high performance computers</title>
+    <title>Part 4 &ndash; Loops</title>
 </head>
 
 <body>
 
-<h1 id="toc_0">PART 4 &ndash; Loops</h1>
+<div class="box">
+<h1 id="overview">Part 4 &ndash; Loops</h1>
 
-<p>👆<a href="Session1.html">Go to the main menu</a> <br>
-👈<a href="Intro2BASH_S3.html">Go to the previous part &ndash; Pipes and Filters</a><br>
-👉<a href="Intro2BASH_S5.html">Go to the next part &ndash; Shell Script</a></p>
+<p> &uarr; <a href="Session1.html">Go to the main menu</a> <br>
+    &larr; <a href="Intro2BASH_S3.html">Go to the previous part &ndash; Pipes and Filters</a><br>
+    &rarr; <a href="Intro2BASH_S5.html">Go to the next part &ndash; Shell Script</a></p>
 
 <p><span style="color:blue"> <strong>This is an advanced topic and extra material</strong> </span></p>
+</div>
 
+<div class="box">
 <p><strong>Loops</strong> are a programming construct which allow us to repeat a command or set of commands for each item in a list. As such, they are key to productivity improvements through automation. Similar to wildcards and tab completion, using loops also reduces the amount of typing required (and hence reduces the number of typing mistakes).</p>
 
 <p>Suppose we have several hundred genome data files named <code>basilisk.dat</code>, <code>minotaur.dat</code>, and <code>unicorn.dat</code>. For this example, we’ll use the <code>exercise-data/creatures</code> directory, which only has three example files, but the principles can be applied to many, many more files at once.</p>
@@ -95,13 +98,16 @@ CLASSIFICATION: equus monoceros</code></pre></div>
 <p>In the above examples, the variables (<code>thing</code>, <code>filename</code>, <code>x</code> and <code>temperature</code>) could have been given any other name, as long as it is meaningful to both the person writing the code and the person reading it.</p>
 
 <p>Note also that loops can be used for other things than filenames, like a list of numbers or a subset of data.</p>
+</div>
 
-<h4 id="toc_1">TASK 1</h4>
+<div class="box">
+    <h2>Tasks</h2>
+<h4 id="toc_1">Task 1</h4>
 
 <p>How would you write a loop that echoes all 10 numbers from 0 to 9?</p>
 
 <p><details>
-  <summary><strong>SOLUTION 1</strong></summary></p>
+  <summary><strong>Solution</strong></summary></p>
 
 <div><pre><code class="language-bash">$ for loop_variable in 0 1 2 3 4 5 6 7 8 9
 &gt; do
@@ -111,7 +117,7 @@ CLASSIFICATION: equus monoceros</code></pre></div>
 
 <p></details></p>
 
-<h4 id="toc_2">TASK 2</h4>
+<h4 id="toc_2">Task 2</h4>
 
 <p>This exercise refers to the <code>shell-lesson-data/exercise-data/alkanes</code> directory. <code>ls *.pdb</code> gives the following output:</p>
 
@@ -135,7 +141,7 @@ CLASSIFICATION: equus monoceros</code></pre></div>
 <p>Why do these two loops give different outputs?</p>
 
 <p><details>
-  <summary><strong>SOLUTION 2</strong></summary></p>
+  <summary><strong>Solution</strong></summary></p>
 
 <p>The first code block gives the same output on each iteration through the loop. Bash expands the wildcard <code>*.pdb</code> within the loop body (as well as before the loop starts) to match all files ending in <code>.pdb</code> and then lists them using <code>ls</code>. The expanded loop would look like this:</p>
 
@@ -164,7 +170,12 @@ pentane.pdb
 propane.pdb</code></pre></div>
 
 <p></details></p>
+    <p> </p>
 
+</div>
+
+<div class="box">
+    <h2>Questions</h2>
 <h4 id="toc_3">Question 1</h4>
 
 <p>What would be the output of running the following loop in the shell-lesson-data/exercise-data/alkanes` directory?</p>
@@ -183,7 +194,7 @@ propane.pdb</code></pre></div>
 </ol>
 
 <p><details>
-  <summary><strong>ANSWER 1</strong></summary></p>
+  <summary><strong>Answer</strong></summary></p>
 
 <p>4 is the correct answer. <code>*</code> matches zero or more characters, so any file name starting with the letter <code>c</code>, followed by zero or more other characters will be matched.</p>
 
@@ -208,7 +219,7 @@ propane.pdb</code></pre></div>
 </ol>
 
 <p><details>
-  <summary><strong>ANSWER 2</strong></summary></p>
+  <summary><strong>Answer</strong></summary></p>
 
 <p>4 is the correct answer. <code>*</code> matches zero or more characters, so a file name with zero or more characters before letter <code>c</code> and zero or more characters after the letter <code>c</code> will be matched.</p>
 
@@ -232,7 +243,7 @@ done</code></pre></div>
 </ol>
 
 <p><details>
-  <summary><strong>ANSWER 3</strong></summary></p>
+  <summary><strong>Answer</strong></summary></p>
 
 <p>The text from each file in turn gets written to the <code>alkanes.pdb</code> file. However, the file gets overwritten on each loop iteration, so the final content of<code>alkanes.pdb</code> is the text from the <code>propane.pdb</code> file.
 </details></p>
@@ -254,12 +265,14 @@ done</code></pre></div>
 </ol>
 
 <p><details>
-  <summary><strong>ANSWER 4</strong></summary></p>
+  <summary><strong>Answer</strong></summary></p>
 
 <p>3 is the correct answer. <code>&gt;&gt;</code> appends to a file, rather than overwriting it with the redirected output from a command. Given the output from the <code>cat</code> command has been redirected, nothing is printed to the screen.</p>
 
 <p></details></p>
+    </div>
 
+<div class="box">
 <p>Let’s continue with our example in the <code>shell-lesson-data/exercise-data/creatures</code> directory. Here’s a slightly more complicated loop:</p>
 
 <div><pre><code class="language-bash">$ for filename in *.dat
@@ -329,8 +342,9 @@ done</code></pre></div>
 
 <p><img src="./img/shell_script_for_loop_flow_chart.svg" alt="loop"></p>
 
-<hr>
+</div>
 
+<div class="box">
 <h2 id="toc_7">Nelle’s Pipeline: Processing Files</h2>
 
 <p>Nelle is now ready to process her data files using <code>goostats.sh</code> — a shell script written by her supervisor. This calculates some statistics from a protein sample file and takes two arguments:</p>
@@ -400,10 +414,11 @@ NENE01736A.txt
 
 <p>Another way to repeat previous work is to use the <code>history</code> command to get a list of the last few hundred commands that have been executed and then to use <code>!123</code> (where <code>123</code> is replaced by the command number) to repeat one of those commands. </p>
 
-<hr>
+</div>
 
+<div class="box">
 <blockquote>
-<h3 id="toc_8">KEY POINTS PART 4</h3>
+<h3 id="toc_8">Key Points:</h3>
 
 <ul>
 <li>A for loop repeats commands once for every thing in a list.</li>
@@ -417,13 +432,12 @@ NENE01736A.txt
 </ul>
 </blockquote>
 
-<hr>
-
-<p>👆<a href="Session1.html">Go to the main menu</a> <br>
-👈<a href="Intro2BASH_S3.html">Go to the previous part &ndash; Pipes and Filters</a><br>
-👉<a href="Intro2BASH_S5.html">Go to the next part &ndash; Shell Script</a></p>
-
-
+</div>
+<div class="box">
+<p> &uarr; <a href="Session1.html">Go to the main menu</a> <br>
+    &larr; <a href="Intro2BASH_S3.html">Go to the previous part &ndash; Pipes and Filters</a><br>
+    &rarr; <a href="Intro2BASH_S5.html">Go to the next part &ndash; Shell Script</a></p>
+</div>
 
 <script src="../scripts/generate_header.js"></script>
 <script src="../scripts/generate_overview.js"></script>
