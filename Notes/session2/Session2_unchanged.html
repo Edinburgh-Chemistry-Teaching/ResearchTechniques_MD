@@ -39,126 +39,77 @@
 </div>
 
 <div class="box">
-    <h2 class="enum" id="toc_1">Introduction</h2>
-    <p>
-        In this practical session, we will learn the basics of Molecular Dynamics (MD) simulations with GROMACS, and use
-        of assisting software (e.g. VMD, xmgrace, gedit) to visualise and manipulate the data.
-    </p>
-    <p>
-        <span style="font-weight: bolder"><abbr>GROMACS</abbr></span> (GROningen MAchine for Chemical Simulations) is a
-        software package for <abbr>MD</abbr>
-        simulations.
+    <h2 id="software">Software needed</h2>
+
+    <p>In this practical session, we will learn the basics of Molecular Dynamics (MD) simulations with GROMACS, and use of assisting software
+        (e.g. VMD, xmgrace, gedit) to visualise and manipulate the data.</p>
+
+    <p><span style="font-weight: bolder"><abbr>GROMACS</abbr></span> (GROningen MAchine for Chemical Simulations) is a software package for <abbr>MD</abbr>
+        simulations.</p>
+
     <blockquote>
-        <p>GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion
-            for
-            systems with hundreds to millions of particles and is a community&dash;driven project.
-            [...] It is primarily designed for biochemical molecules like proteins, lipids and nucleic acids that have a
-            lot of
-            complicated bonded interactions, but since GROMACS is extremely fast at calculating the nonbonded
-            interactions
-            (that usually dominate simulations) many groups are also using it for research on non&dash;biological
-            systems,
-            e.g.
+        <p>GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds
+            to millions of particles and is a community&dash;driven project. [...] It is primarily designed for biochemical molecules like proteins,
+            lipids and nucleic acids that have a lot of complicated bonded interactions, but since GROMACS is extremely fast at calculating the
+            nonbonded interactions (that usually dominate simulations) many groups are also using it for research on non&dash;biological systems, e.g.
             polymers.</p>
-
-        <footer>from <cite>About GROMACS (<a href="https://www.gromacs.org/about.html">www.gromacs.org/about.html)</a>
-        </cite></footer>
+        <footer>from <cite>About GROMACS (<a href="https://www.gromacs.org/about.html">www.gromacs.org/about.html</a>)</cite></footer>
     </blockquote>
-    <p>For everyday general molecular simulations, GROMACS is one of the fastest MD programs. It is also quite flexible,
-        so
-        apart from proteins and biomolecules in general, it can be used to simulate a vast range of different types of
-        molecules. If you want to use it on your own machine, you can download GROMACS from <a
-                href="https://manual.gromacs.org/current/download.html">manual.gromacs.org/current/download.html</a> or
-        on Linux use <code>apt&dash;get install
-            gromacs</code> and on Mac via homebrew <code>brew install gromacs</code>.</p>
 
-    <p>GROMACS is commonly available on <abbr>HPCs</abbr> (high performance computers), including the University&rsquo;s
-        Eddie <abbr>HPC</abbr>, and also
-        Tier 2 and Tier 1 (national supercomputers) such as Cirrus or Archer.</p>
-    <p>
-        It was originally developed in the University of Groningen, but now is
-        maintained and extended at different places, including the University of Uppsala, University of Stockholm and
-        the Max Planck Institute for Polymer Research. It is an open source software, released under the
-        <abbr>GPL</abbr> (general public licence), which means that is free to use.
-        There are many more tutorials for GROMACS available. Some can be found on: <a
-            href="http://www.mdtutorials.com/gmx/">www.mdtutorials.com/gmx</a>.
-    </p>
+    <p>For everyday general molecular simulations, GROMACS is one of the fastest MD programs. It is also quite flexible, so apart from proteins and
+        biomolecules in general, it can be used to simulate a vast range of different types of molecules. If you want to use it on your own machine,
+        you can download GROMACS from <a href="https://manual.gromacs.org/current/download.html">manual.gromacs.org/current/download.html</a> or
+        on Linux use <code>apt&dash;get install gromacs</code> and on Mac via homebrew <code>brew install gromacs</code>.</p>
 
-    <p>
-        <span style="font-weight: bolder"><abbr>VMD</abbr></span> (Visual Molecular Dynamics) is a program for
-        visualising molecules, and can be used to view
-        the output of GROMACS simulations. It is also free and can run on Linux, Mac and Windows.
-        It can be downloaded from <a href="https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD">www.ks.uiuc.edu/Development/Download/</a>.
-        An
-        extensive user guide and tutorials are available at <a href="https://www.ks.uiuc.edu/Research/vmd/current/ug/">www.ks.uiuc.edu/Research/vmd/current/ug</a>
-        and <a href="https://www.ks.uiuc.edu/Training/Tutorials/">www.ks.uiuc.edu/Training/Tutorials</a>.
+    <p>GROMACS is commonly available on <abbr>HPCs</abbr> (high performance computers), including the University&rsquo;s Eddie <abbr>HPC</abbr>, and also
+        Tier 1 and Tier 2 (national) supercomputers such as Cirrus or Archer.</p>
 
-    </p>
-    <p>
-        <span style="font-weight: bolder"><abbr>XMGrace</abbr></span> is a free program for plotting data that runs on
+    <p>It was originally developed in the University of Groningen, but now is maintained and extended at different places, including the University
+        of Uppsala, University of Stockholm and the Max Planck Institute for Polymer Research. It is an open source software, released under the
+        <abbr>GPL</abbr> (general public licence), which means that it is free to use. There are many more tutorials for GROMACS available. Some can
+        be found on: <a href="http://www.mdtutorials.com/gmx/">www.mdtutorials.com/gmx</a>.</p>
+
+    <p><span style="font-weight: bolder"><abbr>VMD</abbr></span> (Visual Molecular Dynamics) is a program for visualising molecules, and can be used to view the
+        output of GROMACS simulations. It is also free and can run on Linux, Mac and Windows. It can be downloaded from
+        <a href="https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD">www.ks.uiuc.edu/Development/Download/</a>. An extensive
+        user guide and tutorials are available at
+        <a href="https://www.ks.uiuc.edu/Research/vmd/current/ug/">www.ks.uiuc.edu/Research/vmd/current/ug</a>and
+        <a href="https://www.ks.uiuc.edu/Training/Tutorials/">www.ks.uiuc.edu/Training/Tutorials</a>.</p>
+
+    <p><span style="font-weight: bolder"><abbr>XMGrace</abbr></span> is a free program for plotting data that runs on
         Linux, Mac and Windows. It
         can be downloaded from <a href="https://plasma-gate.weizmann.ac.il/pub/grace/">plasma&dash;gate.weizmann.ac.il/pub/grace</a>.
-        An user guide for can be found at <a href="https://plasma-gate.weizmann.ac.il/Grace/doc/UsersGuide.html">plasma&dash;gate.weizmann.ac.il/Grace/doc/UsersGuide.html</a>.
-    </p>
-    <p>
-        <span style="font-weight: bolder"><abbr>gedit</abbr></span> is a free text editor for Linux, Mac and Windows
-        Installation instructions can be found at <a
-            href="https://wiki.gnome.org/Apps/Gedit">wiki.gnome.org/Apps/Gedit</a>.
-    </p>
-</div>
-<div class="box">
-    <p>
-        <em>This tutorial was created by Hannah Pollak and Valentina Erastova and is based upon the <a
-                href="https://tutorials.gromacs.org/docs/md-intro-tutorial.html">Molecular dynamics simulation of a
-            small protein using GROMACS tutorial</a> by Alessandra Villa which was adapted from the
-            <a href="http://www.mdtutorials.com/gmx/lysozyme/index.html">Lysozyme in Water Tutorial</a> by Justin
-            A. Lemkuhl.</em>
-    </p>
-    <p>Every simulation needs to start with a structure. Even though a lot of computational efforts have been done, it
-        is
-        still not possible to computationally predict the tertiary structure of the protein from its primary one, i.e.
-        its
-        amino
-        acid sequence. This would require inaccessible computational powers and times. </p>
+        An user guide for can be found at
+        <a href="https://plasma-gate.weizmann.ac.il/Grace/doc/UsersGuide.html">plasma&dash;gate.weizmann.ac.il/Grace/doc/UsersGuide.html</a>.</p>
 
-    <p>For this reason, normally a 3D structure predicted from X&dash;ray diffraction is used as a starting point. Here,
-        we
-        will
-        be downloading a protein structure from the <abbr>PDB</abbr> (Protein Data Dank) <a
-                href="https://www.rcsb.org">www.rcsb.org</a></p>
+    <p><span style="font-weight: bolder"><abbr>gedit</abbr></span> is a free text editor for Linux, Mac and Windows. Installation instructions can be found at
+        <a href="https://wiki.gnome.org/Apps/Gedit">wiki.gnome.org/Apps/Gedit</a>.</p>
+
+</div>
+
+<div class="box">
+    <h2 class="enum" id="toc_1">Introduction</h2>
+
+    <p><em>This tutorial was created by Hannah Pollak and Valentina Erastova and is based upon the
+        <a href="https://tutorials.gromacs.org/docs/md-intro-tutorial.html">Molecular dynamics simulation of a small protein using GROMACS tutorial</a>
+        by Alessandra Villa which was adapted from the <a href="http://www.mdtutorials.com/gmx/lysozyme/index.html">Lysozyme in Water Tutorial</a>
+        by Justin A. Lemkuhl.</em> </p>
+
+    <p>Every simulation needs to start with a structure. Even though a lot of computational efforts have been done, it is still not possible to
+        computationally predict the tertiary structure of the protein from its primary one, i.e. its amino acid sequence. This would require
+        inaccessible computational powers and times. </p>
+
+    <p>For this reason, normally a 3D structure predicted from X&dash;ray diffraction is used as a starting point. Here, we will be downloading a protein
+        structure from the <a href="https://www.rcsb.org"><abbr>PDB</abbr> (Protein Data Bank)</a> </p>
 
     <blockquote>
-        <p>A quick word of warning is appropriate. Experimental data is not perfect. Therefore, it is possible for
-            crystal
-            structures in the PDB database to contain errors such as missing atoms. These &ldquo;errors&ldquo; are
-            usually caused by
-            experiment
-            being unable to clearly &ldquo;see&ldquo; amino acid side&dash;chains within the protein crystal because of
-            its
-            molecular
-            motion.
-            In some cases, it is necessary to &ldquo;clean up&ldquo; a protein structure before using it in a simulation
-            study. Good
-            programs for doing this include, coot <a
-                    href="https://sbcb.bioch.ox.ac.uk/teaching/coot_tutorial.pdf">sbcb.bioch.ox.ac.uk/teaching/coot_tutorial.pdf</a>
-            and the Swiss&dash;PdbViewer
-            (DeepView) <a href="https://spdbv.unil.ch/">spdbv.unil.ch</a></p>
+        <p><strong><em>WARNING</em></strong> ⚠️ Experimental data is not perfect. Therefore, it is possible for crystal structures in the PDB
+            database to contain errors such as missing atoms. These &ldquo;errors&ldquo; are usually caused by an experiment being unable to clearly &ldquo;see&ldquo; amino
+            acid side&dash;chains within the protein crystal because of its molecular motion. In some cases, it is necessary to &ldquo;clean up&ldquo; a protein
+            structure before using it in a simulation study. Good programs for doing this include
+            <a href="https://sbcb.bioch.ox.ac.uk/teaching/coot_tutorial.pdf">coot</a> and the <a href="https://spdbv.unil.ch/">Swiss&dash;PDBViewer
+                (DeepView)</a></p>
     </blockquote>
-
-    <p>The structures in the PDB are stored by a codename. Here is a selection of structures that do not require any
-        further
-        processing, so make a pick for a structure to work with: </p>
-
-    <ul>
-        <li>Human prion &dash; <a href="https://www.rcsb.org/structure/1QLZ">1QLZ</a></li>
-        <li>Elk prion &dash; <a href="https://www.rcsb.org/structure/1XYW">1XYW</a></li>
-        <li>Chicken prion &dash; <a href="https://www.rcsb.org/structure/1U3M">1U3M</a></li>
-        <li>Clawed frog prion &dash; <a href="https://www.rcsb.org/structure/1XU0">1XU0</a></li>
-        <li>Hen egg&dash;white lysozyme &dash; <a href="https://www.rcsb.org/structure/1AKI">1AKI</a></li>
-        <li>Spider toxin &dash; <a href="https://www.rcsb.org/structure/1OMB">1OMB</a></li>
-        <li>Ubiquin &dash; <a href="https://www.rcsb.org/structure/1UBQ">1UBQ</a></li>
-    </ul>
-
 
     <p>The figure below shows a typical protocol for the simulation of protein in the box. In this tutorial, we will
         follow
@@ -392,7 +343,7 @@ mdrun -> energy [
     <p style="font-weight: bold">In this session, all the commands will need to be typed. If you copy them from this
         document, they won't work! Use <code>Tab</code> to autocomplete and save time.</p>
     <div class="bbox">
-        <h3 id="Creating_the_working_directory"></h3>
+        <h3 id="Create the working directory"></h3>
         <ul>
             <li>Create the working directory for this session</li>
             <li>Move to your home directory:
@@ -407,9 +358,21 @@ mdrun -> energy [
             </li>
         </ul>
     </div>
+
     <p>
-        Let's get started! Choose your favourite protein structure from the list above and go through the tasks below.
-    </p>
+        Let's get started! The structures in the PDB are stored by a codename. Here is a selection of structures that do not require any further
+        processing, so select a structure to work with: </p>
+
+    <ul>
+        <li>Human prion &dash; <a href="https://www.rcsb.org/structure/1QLZ">1QLZ</a></li>
+        <li>Elk prion &dash; <a href="https://www.rcsb.org/structure/1XYW">1XYW</a></li>
+        <li>Chicken prion &dash; <a href="https://www.rcsb.org/structure/1U3M">1U3M</a></li>
+        <li>Clawed frog prion &dash; <a href="https://www.rcsb.org/structure/1XU0">1XU0</a></li>
+        <li>Hen egg&dash;white lysozyme &dash; <a href="https://www.rcsb.org/structure/1AKI">1AKI</a></li>
+        <li>Spider toxin &dash; <a href="https://www.rcsb.org/structure/1OMB">1OMB</a></li>
+        <li>Ubiquin &dash; <a href="https://www.rcsb.org/structure/1UBQ">1UBQ</a></li>
+    </ul>
+
     <div class="bbox">
         <h3 id="Downloading_the_protein_structure"></h3>
         <ol>

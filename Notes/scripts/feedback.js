@@ -19,7 +19,7 @@ function addFeedback(link, imgFile) {
     // Set attributes and content
     newDiv.className = "box";
     newH2.id = "toc_" + (maxNumber + 1);
-    newH2.className = 'enum';// Set id based on the maximum number
+    // newH2.className = 'enum';// Set id based on the maximum number
     newH2.textContent = "Feedback";
     newP1.textContent = "We would like to ask you for a favour to give us regular feedback on this course and the session. This is the first time we are running the course and your feedback will help us improve it.";
     newP2.textContent = "Please fill in this ";

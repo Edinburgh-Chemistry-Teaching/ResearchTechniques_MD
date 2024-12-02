@@ -21,7 +21,7 @@ function generateHeader() {
             div.appendChild(h1);
 
             let pContact = document.createElement('p');
-            pContact.innerHTML = '<strong>Contact:</strong><br/> Dr Valentina Erastova (<a href="mailto:valentina.erastova@ed.ac.uk">valentina.erastova@ed.ac.uk</a>)<br/> Office B21 (Office hours Wed 10.00&dash;12.00 in weeks 3, 4 and 5)';
+            pContact.innerHTML = '<strong>Contact:</strong><br/> Dr Valentina Erastova (<a href="mailto:valentina.erastova@ed.ac.uk">valentina.erastova@ed.ac.uk</a>)<br/> Office B21';
             div.appendChild(pContact);
 
             let pDemonstrators = document.createElement('p');
