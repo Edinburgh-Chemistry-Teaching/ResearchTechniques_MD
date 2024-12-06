@@ -3,7 +3,7 @@ function scrollUp() {
     let button = document.createElement('button');
     button.className = 'scrollUpButton';
     button.id = 'scrollUpButton';
-    button.innerHTML = '&uarr; Back to overview';
+    button.innerHTML = '&uarr; Back to Contents';
     button.style.display = 'none';
     button.style.position = 'fixed'; // Position the button
     button.style.right = '20px'; // Position the button

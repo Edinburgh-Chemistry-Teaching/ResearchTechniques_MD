@@ -83,12 +83,15 @@
 
     <p>Into the terminal type without brackets:</p>
 
-    <pre><code class="language-bash">$ ssh &lt;UUN&gt;@eddie.ecdf.ed.ac.uk</code></pre>
+    <pre><code class="language-bash">$ ssh -X &lt;UUN&gt;@eddie.ecdf.ed.ac.uk</code></pre>
 
     <p>where <code>&lt;UUN&gt;</code> should be replaced with your university credentials, typically starting with
     <code>s</code>, for example:</p>
 
-    <pre><code class="language-none">$ ssh s1234567@eddie.ecdf.ed.ac.uk</code></pre>
+    <pre><code class="language-none">$ ssh -X s1234567@eddie.ecdf.ed.ac.uk</code></pre>
+
+    <p class="note">The <code>&dash;X</code> option is used to enable X11 forwarding, which allows you to use the graphical
+        interface needed to display plots on Eddie HPC. </p>
 
     <p>The terminal will prompt you for the password, which is your university password. Note, that there will be no
     spaces/stars/symbols filling up when you are typing the password in, the display will not change. When you are done,

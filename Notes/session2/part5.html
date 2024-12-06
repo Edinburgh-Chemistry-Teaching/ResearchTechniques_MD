@@ -26,7 +26,56 @@
     <h2 id="overview">Contents</h2>
 </div>
 
+<h2 class="enum" id="toc_6">Reporting on the procedure</h2>
+        <p>
+            A handy tool to produce a summary of your system info is <a
+                href="https://manual.gromacs.org/current/onlinehelp/gmx-report-methods.html"><code>report-methods</code></a>.
+        </p>
+        <div class="bbox">
+            <h3 id="Generating_a_report_of_the_procedure"></h3>
+            <ul>
+                <li>Use <a
+                        href="https://manual.gromacs.org/current/onlinehelp/gmx-report-methods.html"><code>report-methods</code></a>
+                    to print a report of the procedure:
+                </li>
+                <li>Usage of <code>report-methods</code>:
+                    <blockquote>
+                        <pre>$ gmx report-methods &dash;s md.tpr</pre>
+                        <p class="note">Use the <code>&dash;o</code> option to write the report as a plain
+                            <code>.out</code>
+                            text file and the <code>&dash;m</code> option to write the report as a LaTeX formatted
+                            <code>.tex</code>.
+                            You will hear more about writing documents in LaTeX in the upcoming sessions.</p>
+                        <p>Your output will look similar to this:</p>
+                        <pre>           :-) GROMACS - gmx report-methods, 2023.3 (-:
 
+Executable:   /exports/applications/apps/SL7/gromacs/2023.3/gromacs_final/bin/gmx
+Data prefix:  /exports/applications/apps/SL7/gromacs/2023.3/gromacs_final
+Working dir:  /exports/eddie/scratch/s2123329
+Command line:
+    gmx report-methods &dash;s md.tpr
+
+Reading file md.tpr, VERSION 2023.3 (single precision)
+section: Methods
+subsection: Simulation system
+A system of 9246 molecules (29398 atoms) was simulated.
+
+subsection: Simulation settings
+A total of 1 ns were simulated with a time step of 2 fs.
+Neighbor searching was performed every 10 steps.
+The PME algorithm was used for electrostatic interactions.
+with a cut-off of 1.2 nm.
+A reciprocal grid of 64 x 64 x 64 cells was used with 4th order B-spline interpolation.
+A single cut-off of 1.2 nm was used for Van der Waals interactions.
+Temperature coupling was done with the V-rescale algorithm.
+Pressure coupling was done with the Berendsen algorithm.
+
+GROMACS reminds you: &quot;Furious activity is no substitute for understanding.&quot; (H.H. Williams)</pre>
+                    </blockquote>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 <div class="box">
     <p> &uarr; <a href="session2.html">Go to the main menu</a> <br>

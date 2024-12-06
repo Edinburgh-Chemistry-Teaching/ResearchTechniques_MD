@@ -27,7 +27,140 @@
     <h2 id="overview">Contents</h2>
 </div>
 
+ <div class="box">
+        <h2 class='enum' id="toc_5">Rendering a figure with VMD</h2>
+        <p>
+            It is useful to be able to produce an image of your simulation, for a report or a publication.
+            For example, the image below is rendered with VMD.</p>
+        <p>
+            In this section we will learn how to do it. For this step you will use the <code>em.gro</code> file on
+            your
+            VM.
+        </p>
 
+        <div class="bbox">
+            <h3 id="Rendering_a_figure_with_VMD"></h3>
+            <ol>
+                <li>Render a figure of the protein in the simulation box with VMD</li>
+                <li>On the VM, load your system into the VMD.<br>
+                    <pre>$ vmd em.gro</pre>
+                    <p class="note">You can use the <code>em.gro</code> file as the input coordinate
+                        file for this exercise. Once the production run has finished, you can copy the final
+                        coordinate
+                        file, <code>md.gro</code>
+                        to your VM and render another figure.</p>
+                </li>
+                <li>Use <code>pbc wrap</code> to enter the protein in the box and wrap all atoms into the box:<br>
+                    <blockquote id="wrap_protein">
+                        <pre>vmd &gt; pbc wrap &dash;center com &dash;centersel &quot;protein&quot; &dash;compound residue &dash;all</pre>
+                        <p>
+                            <code>-center</code> specifies the centering method. Here, the center of mass the
+                            protein
+                            will be used as the center of the box.
+                        </p>
+                        <p>
+                            <code>-centersel</code> specifies the selection of atoms that should be in the centre.
+                        </p>
+                        <p>
+                            <code>-compound</code> specifies the grouping method. Here, the protein will be grouped
+                            by
+                            residue.
+                        </p>
+                        <p>
+                            <code>-all</code> specifies that all atoms should be wrapped into the box.
+                        </p>
+                    </blockquote>
+                </li>
+                <li>Use <code>pbc box_draw</code> to draw the simulation box:<br>
+                    <blockquote>
+                        <pre>vmd &gt; pbc box_draw &dash;width 2 &dash;color black &dash;resolution 30</pre>
+                    </blockquote>
+                </li>
+                <li>Change the background colour to white<br>
+                    Select <code>Graphics</code> &rightarrow; <code>Colors...</code> then in the <code>Color
+                        Controls</code>
+                    window select <code>Display</code> in <code>Categories</code>
+                    then <code>Background</code> in <code>Names</code> and <code>8 white</code> in
+                    <code>Colors</code>.
+
+                </li>
+                <li>Change the display method to orthographic<br>
+                    Select <code>Display</code> &rightarrow; <code>Orthographic</code>
+                </li>
+                <li>Turn off the axis display<br>
+                    Select <code>Display</code> &rightarrow; <code>Axes</code> &rightarrow; <code>Off</code>
+                </li>
+                <li>Change the default representation style.<br>
+                    <p>Like <a href="#change_rep">before</a> go to the <code>Graphics</code> menu and select <code>Representations...</code>
+                    </p>
+                    <ul>
+
+                        <li>
+                            Add new representations ions and the protein and change the Coloring Method, Drawing
+                            Method
+                            and Material.
+                        </li>
+                        <li>
+                            Turn off the default representation.<br>
+                            Double-click on the first line with selection <code>all</code> in the <code>Graphical
+                            Representations</code> window.
+                        </li>
+
+                    </ul>
+                <li>
+                    Take a snapshot of the representation:<br>
+                    <ul>
+                        <li>Exit the full screen mode of the virtual machine<br></li>
+                        <li>Open the Snipping Tool application<br></li>
+                        <li>Click on <code>New</code> and select the area of the screen you want to capture<br></li>
+                        <li>Save the image as <code>protein.png</code>
+                        </li>
+                    </ul>
+                    <div style="color: darkslategray; border: darkslategray; border-width: 1px; border-style: solid; background: aliceblue; padding: 10px">
+                        <p class="note">The virtual machine does not have access to a GPU to produce really nice
+                            renderings.
+                            If you have access to a computer with a GPU, you can install VMD on it and use the
+                            <code>Tachyon
+                                (internal, in-memory)</code> option to render
+                            high-quality images:</p>
+                        <ul style="text-align: left">
+                            <li>Select <code>File</code> &rightarrow; <code>Render...</code></li>
+                            <li>
+                                In the <code>File Render Controls</code> window, select <code>Tachyon
+                                (internal, in-memory)</code> as the rendering engine and
+                                select an output file name.
+                            </li>
+                            <li>
+                                You can then add the <code>&dash;res</code> and <code>&dash;aasamples</code> options
+                                to
+                                specify
+                                the
+                                resolution and
+                                anti&dash;aliasing samples, respectively.
+                            </li>
+                            <li>A rendering example with more advanced instructions can be found at <a
+                                    href="https://skblnw.github.io/mkvmd_render/" rel="noopener" target="_blank">skblnw.github.io/mkvmd_render/</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ol>
+            <div class="flex-figure">
+                <div class="flex-figure-item" style="width: 50%">
+                    <figure>
+                        <img alt="render.png" src="img/render_2.png" width="100%">
+                        <figcaption>
+                            Elk prion protein in a simulation box created with VMD: Backbone is shown in red, Na
+                            ions
+                            as
+                            blue spheres, Cl ions as green spheres, water is shown as a surface representation, also
+                            highlighting
+                            the size of the simulation box.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
 
 <div class="box">
     <p> &uarr; <a href="session2.html">Go to the main menu</a> <br>

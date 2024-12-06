@@ -1,9 +1,9 @@
-; Lines starting with ';' ARE COMMENTS
+; Lines starting with ';' are comments
 ; Everything following ';' is also a comment
 
 ; Parameters describing what to do, when to stop and what to save
 integrator	= steep					; Algorithm (steep = steepest descent minimization)
-emtol		= 1000  				; Stop minimization when the maximum force < 50.0 kJ/mol
+emtol		= 1000  				; Stop minimization when the maximum force < 1000 kJ/mol
 nsteps		= 50000					; Maximum number of (minimization) steps to perform
 nstenergy	= 500					; Write energies to disk every nstenergy steps
 energygrps	= System				; Which energy group(s) to write to disk

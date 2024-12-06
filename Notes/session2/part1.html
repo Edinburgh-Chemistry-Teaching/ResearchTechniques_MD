@@ -174,7 +174,7 @@
                 </blockquote>
             </li>
         </ol>
-        <div class="flex-figure">
+        <div class="flex-figure" style="margin-top:-4mm;">
             <div class="figure" style="width: 50%">
                 <figure>
                     <img alt="1xyw.pdb in VMD" src="img/1xyw.png" width="100%">
@@ -251,7 +251,7 @@
         force field used in the simulation. GROMACS comes with a range of internal force fields and the
         <code>pdb2gmx</code> command can assign them to protein structures.
     </p>
-    <p class="note"> This only works on perfect proteins.</p>
+    <p class="note" style="margin-top:-2mm"> This only works on perfect proteins.</p>
 
     <div class="bbox">
         <h3 id="Creating_a_topology"></h3>
@@ -260,24 +260,18 @@
                 create a topology for the protein structure
             </li>
             <li>
-                <p>
-                    To run a <abbr>GROMACS</abbr> command in the terminal, you need to type <code>gmx</code> followed by
-                    the
-                    name of the command and its options.
-                <p>
-                    A useful resource when getting started with GROMACS is the <a
-                        href="https://manual.gromacs.org/documentation/current/user-guide/mdp-options.html">GROMACS user
-                    guide</a>.
-                </p>
-                <p class="note" style="margin-top:2mm"> A help menu for all commands can be displayed with <code>&dash;h</code> (
+                <p> To run a <abbr>GROMACS</abbr> command in the terminal, you need to type <code>gmx</code> followed by the name of the command
+                    and its options. </p>
+                <p> A useful resource when getting started with GROMACS is the <a
+                        href="https://manual.gromacs.org/documentation/current/user-guide/mdp-options.html">GROMACS user guide</a>. </p>
+                <p class="note" style="margin-top:1mm"> A help menu for all commands can be displayed with <code>&dash;h</code> (
                     e.g. <code>gmx pdb2gmx &dash;h</code>).</p>
-                </p>
-                <blockquote>
-                    <pre>$ gmx pdb2gmx &dash;f protein.pdb &dash;o protein.gro &dash;p protein.top &dash;ignh</pre>
+                <pre>$ gmx pdb2gmx &dash;f protein.pdb &dash;o protein.gro &dash;p protein.top &dash;ignh</pre>
+                <blockquote style="margin-top:-1mm;">
                     <code>&dash;f</code> specifies the input <code>.pdb</code> file<br>
                     <code>&dash;o</code> specifies the output coordinate <code>.gro</code> file<br>
                     <code>&dash;p</code> specifies the output topology <code>.top</code> file<br>
-                    <code>&dash;ignh</code> specifies that hydrogen atoms should be ignored<br>
+                    <code>&dash;ignh</code> specifies that <strong>h</strong>ydrogen atoms should be <strong>ign</strong>ored<br>
                 </blockquote>
                 <p>GROMACS will ask you to choose a force field. Select <code>CHARMM27</code> by <b>typing the
                     corresponding number</b>, then hit <code>Enter</code>.</p>
@@ -291,15 +285,15 @@
             <li>Inspect the <code>pdb2gmx</code> output files</li>
             <li >Use the <code>ls &dash;lrth</code> command to list all files in your working directory.<br>
                 <blockquote style="margin-top:1mm">
-                    <code>-l</code> uses a long listing format <br>
-                    <code>-r</code> reverses the order of the files <br>
-                    <code>-t</code> sorts by time, with the newest first <br>
-                    <code>-h</code> makes the output in a human-readable format <br>
+                    <code>-l</code> uses a <strong>l</strong>ong listing format <br>
+                    <code>-r</code> <strong>r</strong>everses the order of the files <br>
+                    <code>-t</code> sorts by <strong>t</strong>me, with the newest first <br>
+                    <code>-h</code> makes the output in a <strong>h</strong>uman-readable format <br>
                 </blockquote>
                 <p style="margin-top:-3mm">You should find the newly generated files at the bottom of the list. Which files were generated?</p>
             </li>
             <li style="margin-bottom:-0.1mm;">Inspect the output files using <code>more</code> or <code>less</code>.
-                <blockquote>
+                <blockquote style="margin-top:2mm">
                     <p style="margin-top:-1mm;">E.g. for protein.gro:</p>
                     <pre style="margin-top:2mm;">$ more protein.gro</pre>
                     <pre style="margin-top:-1mm;">$ less protein.gro</pre>
@@ -310,12 +304,13 @@
                 <p>What information does each of these files contain?
                 <ol>
                     <li><code>protein.gro</code> contains the protein coordinates in GROMACS format.<br>
-                        <blockquote>The file contains information about the protein amino acid residue names (e.g.&nbsp;<code>LEU</code>,
+                        <blockquote style="margin-top:2mm">The file contains information about the protein amino acid residue names
+                            (e.g.&nbsp;<code>LEU</code>,
                             <code>GLY</code>, ...) and atom names (e.g.&nbsp;<code>C</code>, <code>CA</code>, <code>O</code>, <code>N</code>, ...) inside
                             the residues. These descriptors link to the force field parameters included in the topology file. </blockquote>
                     </li>
                     <li><code>protein.top</code> contains information about the topology of your system.
-                        <blockquote>
+                        <blockquote style="margin-top:2mm">
                             <p>It includes the information on the connectivity between atoms and the force field parameters used to calculate bonded
                                  and non&dash;bonded interactions between atoms. As you use <code>Space</code> to scroll down in the topology file,
                                 you will see entries for atom types, charges, bonds, angles, dihedral types, etc. </p>
@@ -357,18 +352,16 @@ Protein_chain_A     1</pre> </blockquote> </li>
             <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-editconf.html"><code>editconf</code></a>
                 to create a box around the protein
             </li>
-            <li>Add a dodecahedron shaped box with a minimum distance of 1.0&nbsp;nm between the protein and box
-                edge.<br>
+            <li>Add a dodecahedron shaped box with a minimum distance of 1.0&nbsp;nm between the protein and box edge.<br>
                 This minimal distance is necessary to avoid direct interactions between periodic protein images. In this
-                case,
-                no two neighbour proteins in adjacent boxes will be closer than 2.0&nbsp;nm to each other.
-                <blockquote>
-                    <pre>$ gmx editconf &dash;f protein.gro &dash;o protein&dash;pbc.gro &dash;bt dodecahedron &dash;d 1.0 &dash;c</pre>
+                case, no two neighbour proteins in adjacent boxes will be closer than 2.0&nbsp;nm to each other.
+                <pre>$ gmx editconf &dash;f protein.gro &dash;o protein&dash;pbc.gro &dash;bt dodecahedron &dash;d 1.0 &dash;c</pre>
+                <blockquote style="margin-top:1mm">
                     <code>&dash;f</code> specifies the input coordinate file<br>
                     <code>&dash;o</code> specifies the output coordinate file<br>
-                    <code>&dash;bt</code> specifies the box type<br>
-                    <code>&dash;d</code> specifies the minimum distance in nm between the protein and the box edge<br>
-                    <code>&dash;c</code> specifies that the protein should be centred in the box<br>
+                    <code>&dash;bt</code> specifies the <strong>b</strong>ox <strong>t</strong>ype<br>
+                    <code>&dash;d</code> specifies the minimum <strong>d</strong>istance in nm between the protein and the box edge<br>
+                    <code>&dash;c</code> specifies that the protein should be <strong>c</strong>entred in the box<br>
 
                     <p class="note" style="margin-top:2mm;">The box does not have to be cubic in order to be periodic (think of honeycombs).
                         For spherical proteins, an obvious choice might be a rhombic dodecahedron, because it corresponds closely to a spherical
@@ -379,7 +372,7 @@ Protein_chain_A     1</pre> </blockquote> </li>
             <li>
                 Use the <code>tail</code> command to inspect the end of the new <code>protein-pbc.gro</code> file and
                 check how the box is defined.<br>
-                <blockquote>
+                <blockquote style="margin-top:2mm">
                     <p>
                         GROMACS uses a triclinic matrix representation, with the first three numbers specifying the
                         diagonal
@@ -396,13 +389,13 @@ Protein_chain_A     1</pre> </blockquote> </li>
                     Then, after the <abbr>VMD</abbr> window opens, add the box to the visualisation:
                     Inside the same terminal/console window, type <code>pbc box</code> after <code>vmd &gt;</code>.
                 </p>
-                <blockquote>
+                <blockquote style="margin-top:2mm">
                     <p class="note">You might need to first hit <code>Enter</code> to get the <abbr>VMD</abbr> window to
                         update and
                         display the <code>vmd &gt;</code> line.</p></blockquote>
             </li>
         </ol>
-        <div class="flex-figure">
+        <div class="flex-figure" style="margin-top:-4mm;">
             <div class="figure" style="width: 50%">
                 <figure>
                     <img src="img/protein-pbc.png" width="100%">
@@ -423,19 +416,19 @@ Protein_chain_A     1</pre> </blockquote> </li>
         <ol>
             <li>Solvate the protein with <abbr>SPC</abbr> water</li>
             <li>Make a copy of the topology <code>protein.top</code> file:
-                <blockquote>
-                    <pre>$ cp protein.top protein-solvated.top</pre>
+                <pre style="margin-top:1mm">$ cp protein.top protein-solvated.top</pre>
+                <blockquote style="margin-top:1mm">
                     <p class="note"><code>solvate</code> will overwrite the <code>.top</code> file so it is good to make
                         a copy of the unsolvated topology.</p>
                 </blockquote>
             </li>
             <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-solvate.html"><code>solvate</code></a> to
                 solvate the protein with <abbr>SPC</abbr> water:
-                <blockquote>
-                    <pre>$ gmx solvate &dash;cp protein-pbc.gro &dash;cs spc216.gro &dash;o protein&dash;solvated.gro &dash;p protein&dash;solvated.top</pre>
-                    <code>&dash;cp</code> specifies the coordinate file of the system to solvate.<br>
-                    <code>&dash;cs</code> specifies the water model coordinate file.<br>
-                    <code>&dash;o</code> specifies the output coordinate file.<br>
+                <pre style="margin-top:1mm">$ gmx solvate &dash;cp protein-pbc.gro &dash;cs spc216.gro &dash;o protein&dash;solvated.gro &dash;p protein&dash;solvated.top</pre>
+                <blockquote style="margin-top:1mm">
+                    <code>&dash;cp</code> specifies the coordinate file of the system to solvate<br>
+                    <code>&dash;cs</code> specifies the water model coordinate file<br>
+                    <code>&dash;o</code> specifies the output coordinate file<br>
                     <code>&dash;p</code> specifies the input and output topology file<br>
                     <p class="note" style="margin-top:2mm;">If a name for the topology file is NOT specified with <code>&dash;p</code>, the solvent
                         molecules won't be added to the topology file, so you will need to add them yourself.</p>
@@ -444,7 +437,7 @@ Protein_chain_A     1</pre> </blockquote> </li>
                     output topology file.</p>
             </li>
             <li>Inspect the last 10 lines of the output <code>.top</code> file using the <code>tail</code> command.<br>
-                How many water molecules were added??
+                How many water molecules were added?
             </li>
         </ol>
     </div>
@@ -452,11 +445,12 @@ Protein_chain_A     1</pre> </blockquote> </li>
 
 <div class="box">
     <h2 class="enum" id="toc_7">Adding ions to the box</h2>
-    <p>Under physiological conditions, the protein will be surrounded by ions. To mimic this, we will add 0.15&nbsp;mol&nbsp;L<sup>-1</sup> of NaCl to the
+    <p>Under physiological conditions, the protein will be surrounded by ions. To mimic this, we will add 0.15&nbsp;mol&nbsp;dm<sup>-3</sup> of NaCl
+        to the
         system. In addition, because proteins are often charged, it is important to neutralise the total charge before proceeding to the next
         simulation step. This can be done with the <code>&dash;neutral</code> option of the <code>genion</code> command.
     </p>
-    <blockquote>
+    <blockquote style="margin-top:-1mm">
         <p class="note"><code>genion</code> is treated as a type of <abbr>MD</abbr> run. This means that for this step
             you will need an <code>.mdp</code> file which specifies the <abbr>MD</abbr> run parameters.<br>
             All <code>.mdp</code> files that you are going to need for this tutorial are stored in the
@@ -468,44 +462,38 @@ Protein_chain_A     1</pre> </blockquote> </li>
     <div class="bbox">
         <h3 id="Adding_ions_to the system"></h3>
         <ol>
-            <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-genion.html"><code>genion</code></a> to
-                add 0.15&nbsp;mol&nbsp;L<sup>-1</sup> of NaCl to the system and neutralise
+            <li>Add 0.15&nbsp;mol&nbsp;dm<sup>-3</sup> of NaCl to the system and neutralise
                 the total charge
             </li>
             <li>
                 Make a copy of the topology <code>protein-solvated.top</code> file:
-                <blockquote>
-                    <pre>$ cp protein-solvated.top protein-solvated-ions.top</pre>
-                </blockquote>
+                <pre style="margin-top:1mm">$ cp protein-solvated.top protein-solvated-ions.top</pre>
             </li>
             <li>Use <code>grompp</code> to generate a <abbr>TPR</abbr> file for the system:
                 <p>
-                    The contents of the <code>.mdp</code> input file are not important
-                    for this step, but it has to be given.
+                    The contents of the <code>.mdp</code> input file are not important for <code>genion</code>, but it has to be given.
                 </p>
-                <blockquote>
-                    <pre>$ gmx grompp &dash;f MDP/genion.mdp &dash;c protein&dash;solvated.gro &dash;p protein&dash;solvated&dash;ions.top &dash;maxwarn 1</pre>
-                    <code>&dash;f</code> specifies the input run parameter file.<br>
-                    <code>&dash;c</code> specifies the coordinate file of the system to solvate.<br>
-                    <code>&dash;p</code> specifies the topology file.<br>
+                <pre style="margin-top:1mm">$ gmx grompp &dash;f MDP/genion.mdp &dash;c protein&dash;solvated.gro &dash;p protein&dash;solvated&dash;ions.top &dash;maxwarn 1</pre>
+                <blockquote style="margin-top:1mm">
+                    <code>&dash;f</code> specifies the input run parameter file<br>
+                    <code>&dash;c</code> specifies the coordinate file of the system<br>
+                    <code>&dash;p</code> specifies the topology file<br>
                     <code>&dash;maxwarn</code> specifies the maximum number of warnings that can be ignored.
                     If the protein has a charge, <code>grompp</code> will generate a warning that needs to be
                     ignored.<br>
-                    <!--                    <code>&dash;o</code> specifies the compiled run <code>.tpr</code> file.<br>-->
-                    <!--                    <p class="note"> Because <code>genion</code> is an <abbr>MD</abbr> run, the <code>&dash;pp</code>-->
-                    <!--                        option-->
-                    <!--                        to generate a new topology file with ions is used here rather than with the <code>genion</code>-->
-                    <!--                        command.</p>-->
-                    <p class="note">This step will generate a compiled topology with the default name <code>topol.tpr</code> and an <code>.mdp
-                    </code> file with all the run parameters and the default name <code>mdout.mdp</code>. Any old files with the same name will be
-                        first backed up to <code>#topol.tpr.1#</code> or <code>#mdout.mdp.1#</code> and then overwritten.
+                    <p class="note" style="margin-top:2mm">This step will generate a compiled topology with the default name <code>topol.tpr</code>
+                        and a <code>mdout.mdp</code> file with all the run parameters. Any old files with
+                        the same name will be first backed up to <code>#topol.tpr.1#</code> or <code>#mdout.mdp.1#</code> and then overwritten. <br>
+                        Instead, you can add the <code>-o</code> and <code>-po</code> arguments to <code>gmx grompp</code> to specify the output
+                        names of the <code>.tpr</code> and <code>.mdp</code> files respectively.
                     </p>
                 </blockquote>
             </li>
             <li>
-                Usage of <code>genion</code>:
-                <blockquote>
-                    <pre>$ gmx genion &dash;o protein&dash;solvated&dash;ions.gro &dash;p protein&dash;solvated&dash;ions.top &dash;pname NA &dash;nname CL &dash;conc 0.15 &dash;neutral</pre>
+                Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-genion.html"><code>genion</code></a> to add NaCl:
+                <pre style="margin-top:1mm">$ gmx genion &dash;o protein&dash;solvated&dash;ions.gro &dash;p protein&dash;solvated&dash;ions.top &dash;pname NA &dash;nname CL &dash;conc 0.15
+  &dash;neutral</pre>
+                <blockquote style="margin-top:1mm">
                     <!--                    <code>&dash;s</code> specifies the compiled input <code>.tpr</code> file of the system to-->
                     <!--                    solvate.<br>-->
                     <!--                    <code>&dash;s</code> specifies the compiled input <code>.tpr</code> file.<br>-->
@@ -513,7 +501,7 @@ Protein_chain_A     1</pre> </blockquote> </li>
                     <code>&dash;p</code> specifies the input and output topology file<br>
                     <code>&dash;pname</code> specifies the name of the positive ion<br>
                     <code>&dash;nname</code> specifies the name of the negative ion<br>
-                    <code>&dash;conc</code> specifies the concentration of ions in mol&nbsp;L<sup>-1</sup><br>
+                    <code>&dash;conc</code> specifies the concentration of ions in mol&nbsp;dm<sup>-3</sup><br>
                     <code>&dash;neutral</code> specifies that the system should be neutralised<br>
                     <p>When asked which group of molecules should be replaced select the number for the <code>SOL</code>
                         group.</p>
@@ -522,14 +510,17 @@ Protein_chain_A     1</pre> </blockquote> </li>
                     </p>
                 </blockquote>
             </li>
-            <li>Use <code>grep</code> to check how many <em>NA</em> and <em>CL</em> ions were added to the system.<br>
-                <code>grep</code> can be used to search for specific words in a file:<br>
-                <blockquote>
-                    For the topology file you can use:
-                    <pre>$ grep NA protein-solvated-ions.top</pre>
-                    For the coordinate file it can also be useful to pipe the output of <code>grep</code> into the
-                    <code>wc &dash;l </code> command to count the number of lines that contain a specific word:
-                    <pre>$ grep NA protein-solvated-ions.gro | wc &dash;l</pre>
+            <li>Use <code>grep</code> to check how many <em>NA</em> and <em>CL</em> ions were added to the system:
+                <blockquote style="margin-top:2mm">
+                    <p>The command searches through an input file for matches to a pattern, and prints the line. It requires two arguments: first the
+                        pattern to search for, and then the file to look in. </p>
+                    <p style="margin-top:2mm">E.g. to check for NA in the topology file you can use:</p>
+                    <pre style="margin-top:1mm">$ grep NA protein-solvated-ions.top</pre>
+                    <p>For the coordinate file it can also be useful to pipe the output of <code>grep</code> into the
+                    <code>wc &dash;l</code> command to count the number of lines that contain a specific word:</p>
+                    <pre style="margin-top:1mm">$ grep NA protein-solvated-ions.gro | wc &dash;l</pre>
+                    <p>The output for the <code>.top</code> file and the number of lines counted from the <code>.gro</code> file should be the
+                        same.</p>
                 </blockquote>
             </li>
         </ol>
@@ -537,6 +528,7 @@ Protein_chain_A     1</pre> </blockquote> </li>
 </div>
 
 <div class="box">
+    <h2>Now that the system has been created and prepared, it is time to run the simulation.</h2>
     <p> &uarr; <a href="session2.html">Go to the main menu</a> <br>
         &rarr; <a href="part2.html">Go to the next part &ndash; Running a Molecular Dynamics Simulation</a> </p>
 </div>

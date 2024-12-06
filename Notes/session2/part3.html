@@ -27,7 +27,84 @@
     <h2 id="overview">Contents</h2>
 </div>
 
+<!--    <p>For some of the analyses it can be useful to have a trajectory file that contains only the protein atoms. You-->
+<!--        can-->
+<!--        use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-trjconv.html"><code>trjconv</code></a> to-->
+<!--        extract-->
+<!--        the protein atoms from the trajectory file.</p>-->
+<div class="box">
+    <h2 class='enum' id="toc_4">Analysis of the simulation data</h2>
+    <p>
+        In this section you will learn some ways to inspect the data generated in an <abbr>MD</abbr> simulation.
+        You will
+        <!--        :-->
+        <!--    <ol>-->
+        <!--        <li>-->
+        calculate the root&dash;mean&dash;square deviation (<abbr>RMSD</abbr>).
+    </p>
+    <!--        <li>-->
+    <!--            Extract the evolution of <em>x</em>, <em>y</em> and <em>z</em> coordinates and velocities of the protein-->
+    <!--            over the duration of the simulation-->
+    <!--        </li>-->
+    <!--        <li>-->
+    <!--            Calculate the radius of gyration of the protein-->
+    <!--        </li>-->
+    <!--            <li>-->
+    <!--                Perform a hydrogen bond analysis for different parts of the protein-->
+    <!--            </li>-->
+    <!--    </ol>-->
+    <h3 class="enum" id="toc_4_1">Calculating the root-mean-square deviation (<abbr>RMSD</abbr>)</h3>
+    <p>
+        The <abbr>RMSD</abbr> is a measure of the deviation of the protein structure from a reference structure.
+        It is calculated as the square root of the average of the squared distances between the atoms of the protein
+        in
+        the reference structure and the atoms of the protein in the structure of interest.
+    </p>
+    <p>
+        The <abbr>RMSD</abbr> is also an important measure to determine when a simulation has reached equilibrium.
+        When the <abbr>RMSD</abbr> has reached a plateau, the system has reached equilibrium.
+    </p>
+    <p>
+        It is only after the system has reached equilibrium that you are producing meaningful data that can be
+        representative of the simulated system.
+    </p>
+    <div class="bbox">
+        <h3 id="Calculating_the_RMSD"></h3>
+        <ul>
+            <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-rms.html"><code>rms</code></a> to
+                calculate the <abbr>RMSD</abbr> of the entire system, only the protein and only the backbone atoms
+                of the
+                protein.
+            </li>
+            <li>E.g.
+                <blockquote>
+                    <pre>$ gmx rms &dash;s md.tpr &dash;f md.xtc &dash;o rmsd_system.xvg &dash;tu ns</pre>
+                    <p class="note">Use the <code>&dash;o</code> option to specify a name under which you can find
+                        the output file
+                        again later.</p>
+                    <p class="note">Use the <code>&dash; tu</code> option to specify the time unit for the output.
+                    </p>
+                </blockquote>
+            </li>
+            <li>
+                Use xmgrace to plot and compare the <abbr>RMSD</abbr> of the entire system, the protein and the
+                protein backbone.
+            </li>
+        </ul>
+        <div class="flex-figure">
+            <div class="figure" style="width: 100%">
+                <figure>
+                    <img src="img/rmsd_system.png" width="100%">
+                    <figcaption>
+                        Example Xmgrace plot of the RMSD evolution for the entire system during an unrestrained
+                        equilibration run.
+                    </figcaption>
+                </figure>
 
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="box">
     <p> &uarr; <a href="session2.html">Go to the main menu</a> <br>
