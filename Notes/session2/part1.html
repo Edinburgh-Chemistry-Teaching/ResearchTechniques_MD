@@ -18,7 +18,7 @@
 
 <div class="box">
     <h1 id="title">Part 1 &ndash; Preparing the System for Simulation</h1>
-    <p> &uarr; <a href="session2.html">Go to the main menu</a> <br>
+    <p> &uarr; <a href="Session2.html">Go to the main menu</a> <br>
         &rarr; <a href="part2.html">Go to the next part &ndash; Running a Molecular Dynamics Simulation</a> </p>
 </div>
 
@@ -44,7 +44,7 @@
                 <pre style="margin-top:-0.1mm;">$ cd </pre></li>
 
             <li style="margin-bottom:-0.1mm;">Copy the <code>session2</code> folder from practicals to your home directory:
-                <pre style="margin-top:-0.1mm;">$ cp &dash;r /home/student/practicals/session2 .</pre></li>
+                <pre style="margin-top:-0.1mm;">$ cp -r /home/student/practicals/session2 .</pre></li>
 
             <li style="margin-bottom:-0.1mm;">Change into the <code>session2</code> directory:
                 <pre style="margin-top:-0.1mm;">$ cd session2</pre></li>
@@ -264,9 +264,9 @@
                     and its options. </p>
                 <p> A useful resource when getting started with GROMACS is the <a
                         href="https://manual.gromacs.org/documentation/current/user-guide/mdp-options.html">GROMACS user guide</a>. </p>
-                <p class="note" style="margin-top:1mm"> A help menu for all commands can be displayed with <code>&dash;h</code> (
-                    e.g. <code>gmx pdb2gmx &dash;h</code>).</p>
-                <pre>$ gmx pdb2gmx &dash;f protein.pdb &dash;o protein.gro &dash;p protein.top &dash;ignh</pre>
+                <p class="note" style="margin-top:1mm"> A help menu for all commands can be displayed with <code>-h</code> (
+                    e.g. <code>gmx pdb2gmx -h</code>).</p>
+                <pre>$ gmx pdb2gmx -f protein.pdb -o protein.gro -p protein.top -ignh</pre>
                 <blockquote style="margin-top:-1mm;">
                     <code>&dash;f</code> specifies the input <code>.pdb</code> file<br>
                     <code>&dash;o</code> specifies the output coordinate <code>.gro</code> file<br>
@@ -283,7 +283,7 @@
         <h3 id="Inspecting_the_pdb2gmx_output_files"></h3>
         <ol>
             <li>Inspect the <code>pdb2gmx</code> output files</li>
-            <li >Use the <code>ls &dash;lrth</code> command to list all files in your working directory.<br>
+            <li >Use the <code>ls -lrth</code> command to list all files in your working directory.<br>
                 <blockquote style="margin-top:1mm">
                     <code>-l</code> uses a <strong>l</strong>ong listing format <br>
                     <code>-r</code> <strong>r</strong>everses the order of the files <br>
@@ -322,7 +322,7 @@
                             <p>At the bottom of the file, within the <code>[ molecules ]</code> section, you will find a list of all molecules that
                                 are present in the system. Keep an eye on how this section changes as you add solvent and ions to the system.
                             <p class="note">A useful command to view the end of a file is <code>tail</code>. For example, to view the last 10 lines
-                                of the <code>protein.top</code> file, you can use the command <code>tail &dash;n 10 protein.top</code>.</p>
+                                of the <code>protein.top</code> file, you can use the command <code>tail -n 10 protein.top</code>.</p>
                             <p>At the moment, the system section only contains one protein chain:</p>
                             <pre>
 [ molecules ]
@@ -355,7 +355,7 @@ Protein_chain_A     1</pre> </blockquote> </li>
             <li>Add a dodecahedron shaped box with a minimum distance of 1.0&nbsp;nm between the protein and box edge.<br>
                 This minimal distance is necessary to avoid direct interactions between periodic protein images. In this
                 case, no two neighbour proteins in adjacent boxes will be closer than 2.0&nbsp;nm to each other.
-                <pre>$ gmx editconf &dash;f protein.gro &dash;o protein&dash;pbc.gro &dash;bt dodecahedron &dash;d 1.0 &dash;c</pre>
+                <pre>$ gmx editconf -f protein.gro -o protein-pbc.gro -bt dodecahedron -d 1.0 -c</pre>
                 <blockquote style="margin-top:1mm">
                     <code>&dash;f</code> specifies the input coordinate file<br>
                     <code>&dash;o</code> specifies the output coordinate file<br>
@@ -383,7 +383,7 @@ Protein_chain_A     1</pre> </blockquote> </li>
             </li>
             <li>Use <abbr>VMD</abbr> to visualise the protein inside the box.<br>
                 <p>
-                    Inside the terminal type <code>vmd protein&dash;pbc.gro</code> to open the protein structure in
+                    Inside the terminal type <code>vmd protein-pbc.gro</code> to open the protein structure in
                     <abbr>VMD</abbr>.
                     <br>
                     Then, after the <abbr>VMD</abbr> window opens, add the box to the visualisation:
@@ -424,7 +424,7 @@ Protein_chain_A     1</pre> </blockquote> </li>
             </li>
             <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-solvate.html"><code>solvate</code></a> to
                 solvate the protein with <abbr>SPC</abbr> water:
-                <pre style="margin-top:1mm">$ gmx solvate &dash;cp protein-pbc.gro &dash;cs spc216.gro &dash;o protein&dash;solvated.gro &dash;p protein&dash;solvated.top</pre>
+                <pre style="margin-top:1mm">$ gmx solvate -cp protein-pbc.gro -cs spc216.gro -o protein-solvated.gro -p protein-solvated.top</pre>
                 <blockquote style="margin-top:1mm">
                     <code>&dash;cp</code> specifies the coordinate file of the system to solvate<br>
                     <code>&dash;cs</code> specifies the water model coordinate file<br>
@@ -473,7 +473,7 @@ Protein_chain_A     1</pre> </blockquote> </li>
                 <p>
                     The contents of the <code>.mdp</code> input file are not important for <code>genion</code>, but it has to be given.
                 </p>
-                <pre style="margin-top:1mm">$ gmx grompp &dash;f MDP/genion.mdp &dash;c protein&dash;solvated.gro &dash;p protein&dash;solvated&dash;ions.top &dash;maxwarn 1</pre>
+                <pre style="margin-top:1mm">$ gmx grompp -f MDP/genion.mdp -c protein-solvated.gro -p protein-solvated-ions.top -maxwarn 1</pre>
                 <blockquote style="margin-top:1mm">
                     <code>&dash;f</code> specifies the input run parameter file<br>
                     <code>&dash;c</code> specifies the coordinate file of the system<br>
@@ -491,8 +491,8 @@ Protein_chain_A     1</pre> </blockquote> </li>
             </li>
             <li>
                 Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-genion.html"><code>genion</code></a> to add NaCl:
-                <pre style="margin-top:1mm">$ gmx genion &dash;o protein&dash;solvated&dash;ions.gro &dash;p protein&dash;solvated&dash;ions.top &dash;pname NA &dash;nname CL &dash;conc 0.15
-  &dash;neutral</pre>
+                <pre style="margin-top:1mm">$ gmx genion -o protein-solvated-ions.gro -p protein-solvated-ions.top -pname NA -nname CL -conc 0.15
+  -neutral</pre>
                 <blockquote style="margin-top:1mm">
                     <!--                    <code>&dash;s</code> specifies the compiled input <code>.tpr</code> file of the system to-->
                     <!--                    solvate.<br>-->
@@ -503,9 +503,9 @@ Protein_chain_A     1</pre> </blockquote> </li>
                     <code>&dash;nname</code> specifies the name of the negative ion<br>
                     <code>&dash;conc</code> specifies the concentration of ions in mol&nbsp;dm<sup>-3</sup><br>
                     <code>&dash;neutral</code> specifies that the system should be neutralised<br>
-                    <p>When asked which group of molecules should be replaced select the number for the <code>SOL</code>
-                        group.</p>
-                    <p class="note">If no input files are specified, <abbr>GROMACS</abbr> will look for files with
+                    <p style="margin-top:2mm">When asked which group of molecules should be replaced, <strong>type the corresponding number</strong>
+                        for the <code>SOL</code> group.</p>
+                    <p class="note" style="margin-top:1mm">If no input files are specified, <abbr>GROMACS</abbr> will look for files with
                         the default names, in this case <code>topol.tpr</code>.
                     </p>
                 </blockquote>
@@ -517,8 +517,8 @@ Protein_chain_A     1</pre> </blockquote> </li>
                     <p style="margin-top:2mm">E.g. to check for NA in the topology file you can use:</p>
                     <pre style="margin-top:1mm">$ grep NA protein-solvated-ions.top</pre>
                     <p>For the coordinate file it can also be useful to pipe the output of <code>grep</code> into the
-                    <code>wc &dash;l</code> command to count the number of lines that contain a specific word:</p>
-                    <pre style="margin-top:1mm">$ grep NA protein-solvated-ions.gro | wc &dash;l</pre>
+                    <code>wc -l</code> command to count the number of lines that contain a specific word:</p>
+                    <pre style="margin-top:1mm">$ grep NA protein-solvated-ions.gro | wc -l</pre>
                     <p>The output for the <code>.top</code> file and the number of lines counted from the <code>.gro</code> file should be the
                         same.</p>
                 </blockquote>
@@ -529,7 +529,7 @@ Protein_chain_A     1</pre> </blockquote> </li>
 
 <div class="box">
     <h2>Now that the system has been created and prepared, it is time to run the simulation.</h2>
-    <p> &uarr; <a href="session2.html">Go to the main menu</a> <br>
+    <p> &uarr; <a href="Session2.html">Go to the main menu</a> <br>
         &rarr; <a href="part2.html">Go to the next part &ndash; Running a Molecular Dynamics Simulation</a> </p>
 </div>
 

@@ -343,7 +343,7 @@ blockquote > :last-child {
 
 .flex-figure figure {
     flex: auto auto 1;
-    max-width: 100%;
+    max-width: 200%;
     object-fit: contain;
     /*height: auto;*/
     /*object-position: 50% 50%;*/
@@ -370,8 +370,8 @@ flex-figure figure img {
 flex-figure-item figure figcaption {
     font-size: 14px;
     font-style: italic;
-    text-align: left;
-    margin: 0;
+    text-align: center;
+    margin: 0 auto;
     padding: 0;
     color: #333f48;
     width: auto;
@@ -395,8 +395,8 @@ flex-figure-item figure figcaption {
 figure figcaption, table caption {
     font-size: 14px;
     font-style: italic;
-    text-align: left;
-    margin: 0;
+    text-align: center;
+    margin: 0 auto;
     padding: 0;
     color: #333f48;
     /*flex-direction: column;*/
@@ -404,7 +404,7 @@ figure figcaption, table caption {
 }
 
 figure figcaption {
-    padding-top: 0.5ex;
+    padding-top: 0.0ex;
 }
 
 table caption {
@@ -462,7 +462,7 @@ table tr th :last-child, table tr td :last-child {
 
 
 img {
-    max-width: 100%;
+    max-width: 200%;
     object-fit: contain;
     height: auto;
     object-position: 50% 50%;
@@ -509,7 +509,7 @@ span.align-center > span {
 }
 
 span.align-center span img {
-    margin: 0 auto;
+    margin: auto;
     text-align: center;
 }
 
@@ -527,7 +527,7 @@ span.align-right > span {
 }
 
 span.align-right span img {
-    margin: 0;
+    margin: auto;
     text-align: right;
 }
 

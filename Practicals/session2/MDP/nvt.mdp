@@ -1,8 +1,8 @@
 ; RUN CONTROL PARAMETERS
 define                   = -DPOSRES  ; position restrain the protein
 integrator               = md
-dt                       = 0.001
-nsteps                   = 5000
+dt                       = 0.002                ; 2 fs
+nsteps                   = 10000                ; 2 * 10000 = 20 ps
 
 ; OUTPUT CONTROL OPTIONS
 nstxout                  = 0                    ; No output, except for last frame (coordinates)
