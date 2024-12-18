@@ -1,0 +1,76 @@
+# This file was created Mon Dec 18 21:22:19 2023
+# Created by:
+#                  :-) GROMACS - gmx hbond, 2023.1-Homebrew (-:
+# 
+# Executable:   /usr/local/bin/../Cellar/gromacs/2023.1/bin/gmx
+# Data prefix:  /usr/local/bin/../Cellar/gromacs/2023.1
+# Working dir:  /Users/valentina/Desktop/PGT_course/Session2/practical
+# Command line:
+#   gmx hbond -f traj_center.xtc -n index.ndx -num hbnum_phil.xvg
+# gmx hbond is part of G R O M A C S:
+#
+# Gravel Rubs Often Many Awfully Cauterized Sores
+#
+@    title "Hydrogen Bonds"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Number"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Hydrogen bonds"
+@ s1 legend "Pairs within 0.35 nm"
+         0         209         261
+         1         204         257
+         2   901176493    41979599
+         3   908127683       34855
+         4    83955929    83955980
+         5       65500       65529
+         6   951316826    41979273
+         7   859232001       34924
+         8   950070349    41978779
+         9   540208398       34920
+        10   901181093    41978847
+        11   909372745       34964
+        12   901176281    41978868
+        13   908127363       35036
+        14   582414732    41978874
+        15   926345895       35066
+        16   951316940    41978904
+        17   859232196       35086
+        18    42005813    41978969
+        19       47027       35090
+        20    41990890    41978813
+        21       47029       35121
+        22    41990900    41978869
+        23       47062       35129
+        24    41990778    41979071
+        25       47103       35129
+        26    41990977    41978886
+        27       47107       35142
+        28    41990868    41978934
+        29       47126       35184
+        30    41990895    41978933
+        31       47145       35210
+        32    41990934    41978948
+        33       47174       35222
+        34    41991125    41979267
+        35       47224       35269
+        36    41991177    41978990
+        37       47253       35292
+        38    41991198    41979328
+        39       47262       35307
+        40    41991223    41979012
+        41       47289       35347
+        42    41991336    41979424
+        43       47321       35332
+        44    41991379    41979256
+        45       47355       35368
+        46    41991427    41979113
+        47       47389       35387
+        48    41991465    41979456
+        49       47405       35426
+        50    41991487    41979174

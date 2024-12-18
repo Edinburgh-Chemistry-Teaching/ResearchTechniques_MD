@@ -1,0 +1,76 @@
+# This file was created Mon Dec 18 21:22:53 2023
+# Created by:
+#                  :-) GROMACS - gmx hbond, 2023.1-Homebrew (-:
+# 
+# Executable:   /usr/local/bin/../Cellar/gromacs/2023.1/bin/gmx
+# Data prefix:  /usr/local/bin/../Cellar/gromacs/2023.1
+# Working dir:  /Users/valentina/Desktop/PGT_course/Session2/practical
+# Command line:
+#   gmx hbond -f traj_center.xtc -n index.ndx -num hbnum_amphi
+# gmx hbond is part of G R O M A C S:
+#
+# Good ROcking Metal Altar for Chronical Sinners
+#
+@    title "Hydrogen Bonds"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "Number"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Hydrogen bonds"
+@ s1 legend "Pairs within 0.35 nm"
+         0          38          58
+         1          34          57
+         2         285       14117
+         3         206       14025
+         4  1040554022   520277050
+         5       65473       32778
+         6         697       14210
+         7         464       14056
+         8         474       14041
+         9         484       14049
+        10         548       14054
+        11         564       14041
+        12         574       14048
+        13         604       14050
+        14         616       14073
+        15         685       14060
+        16         704       14059
+        17         709       14079
+        18         720       14079
+        19         819       14089
+        20         826       14072
+        21        1059       14093
+        22        1078       14086
+        23        1207       14097
+        24        1219       14102
+        25        1360       14094
+        26        1377       14094
+        27        1380       14111
+        28        1396       14099
+        29        1514       14104
+        30        1592       14118
+        31        1611       14115
+        32        1705       14129
+        33        1717       14121
+        34        1728       14130
+        35        1738       14125
+        36        1823       14128
+        37        1823       14149
+        38        1825       14130
+        39        1829       14138
+        40        1827       14141
+        41        1834       14148
+        42        1829       14156
+        43        1836       14156
+        44        1845       14157
+        45        1847       14162
+        46        1850       14155
+        47        1853       14169
+        48        1859       14156
+        49        1854       14162
+        50        1858       14172
