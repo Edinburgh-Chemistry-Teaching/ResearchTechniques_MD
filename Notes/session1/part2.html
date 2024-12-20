@@ -19,8 +19,8 @@
 <div class="box">
     <h1 id="heading">Part 2 &ndash; Working With Files and Directories</h1>
     <p> &uarr; <a href="Session1.html">Go to the main menu</a> <br>
-        &larr; <a href="Intro2BASH_S1.html">Go to the previous part &ndash; Navigating Files and Directories</a> <br>
-        &rarr; <a href="Intro2BASH_S3.html">Go to the next part &ndash; Pipes and Filters</a> </p>
+        &larr; <a href="part1.html">Go to the previous part &ndash; Navigating Files and Directories</a> <br>
+        &rarr; <a href="part3.html">Go to the next part &ndash; Using High-Performance Computers</a> </p>
 </div>
 
 <div class="box">
@@ -35,55 +35,47 @@
         example.</p>
 
     <p>First, let&rsquo;s check which directory we are in:</p>
-    <pre>
-<code class="language-bash">$ pwd
-/Users/nelle/Desktop/session1/shell-lesson-data</code></pre>
-
-    <p> If you are not in the <code>shell-lesson-data</code> directory, use the <code>cd</code> command to navigate there. Then make sure you are in
+    <pre style="margin-top:-4mm">$ pwd
+/Users/nelle/Desktop/session1/shell-lesson-data</pre>
+    <p style="margin-top:-3mm"> If you are not in the <code>shell-lesson-data</code> directory, use the <code>cd</code> command to navigate there. Then make sure you are in
         the right directory by using <code>pwd</code> again.</p>
 
     <p>Now check the contents of the <code>shell-lesson-data</code> directory and move into <code>exercise-data/writing</code></p>
-    <pre>
-<code class="language-bash">$ ls
+    <pre style="margin-top:-4mm">$ ls
 exercise-data/      north-pacific-gyre/
-$ cd exercise-data/writing/</code></pre>
+$ cd exercise-data/writing/</pre>
 
     <p>Now, let&rsquo;s check what is inside the directory:</p>
-    <pre>
-<code class="language-bash">$ ls
-LittleWomen.txt       haiku.txt</code></pre>
+    <pre style="margin-top:-4mm">$ ls
+LittleWomen.txt       haiku.txt</pre>
 
     <p>Let’s create a new directory called thesis (which has no output):</p>
-    <pre><code class="language-bash">$ mkdir thesis</code></pre>
-
-    <p><code>mkdir</code> means <strong>m</strong>a<strong>k</strong>e <strong>dir</strong>ectory. Since <code>thesis</code>
+    <pre style="margin-top:-4mm">$ mkdir thesis</code></pre>
+    <p style="margin-top:-3mm"><code>mkdir</code> means <strong>m</strong>a<strong>k</strong>e <strong>dir</strong>ectory. Since <code>thesis</code>
     is a relative path, the new directory is created in the current working directory:</p>
-    <pre><code class="language-bash">$ ls
-LittleWomen.txt       haiku.txt       thesis/</code></pre>
+    <pre style="margin-top:-4mm">$ ls
+LittleWomen.txt       haiku.txt       thesis/</pre>
 
     <p>Since we’ve just created the thesis directory, there’s nothing in it yet (check using <code>ls</code>)</p>
 
-    <blockquote>
-        <p><strong>How to name files/ directories</strong>:</p>
+    <div style="color: darkslategray; border: darkslategray; border-width: 1px; border-style: solid; background: aliceblue; padding: 10px">
+        <h3 style="margin-top:0"><strong>How to name files/ directories</strong>:</h3>
 
-        <p>no spaces, but can use <code>-</code> or <code>_</code>:</p>
         <ul>
-            <li>❌ <code>north pacific gyre</code></li>
-            <li>✅ <code>north-pacific-gyre</code></li>
-        </ul>
+            <li style="margin-top:-2mm">No spaces, but can use <code>-</code> or <code>_</code>: <br>
+                ❌ <code>north pacific gyre</code> <br>
+                ✅ <code>north-pacific-gyre</code> </li>
 
-        <p>no strange symbols, such as <code>&amp;</code> or <code>-</code>:</p>
-        <ul>
-            <li>❌ <code>Peter &amp; Mary</code></li>
-            <li>✅ <code>Peter_Mary</code></li>
-        </ul>
+            <li style="margin-top:4mm">No strange symbols, such as <code>&amp;</code> or <code>-</code>: <br>
+                ❌ <code>Peter &amp; Mary</code> <br>
+                ✅ <code>Peter_Mary</code> </li>
 
-        <p>with extensions, to help identify file types:</p>
-        <ul>
-            <li>❌ <code>mydocument</code></li>
-            <li>✅ <code>mydocument.txt</code></li>
+            <li style="margin-top:4mm">With extensions, to help identify file types: <br>
+                ❌ <code>mydocument</code> <br>
+                ✅ <code>mydocument.txt</code> </li>
         </ul>
-    </blockquote>
+    </div>
+    <p> </p>
 </div>
 
 <div class="box">
@@ -91,37 +83,58 @@ LittleWomen.txt       haiku.txt       thesis/</code></pre>
 
     <p>Let’s change our working directory to <code>thesis</code> using command <code>cd</code>, then run a text editor called Vim to create a file
         called <code>draft.txt</code>:</p>
-
-    <pre>
-<code class="language-bash">$ cd thesis
-$ vim draft.txt</code></pre>
+    <pre style="margin-top:-4mm">$ cd thesis
+$ vim draft.txt</pre>
 
     <p>Note that there are other text editors available. Nano and <a href="https://www.vim.org/">Vim</a> are the two main text editors for editing
         plain text. They are light and will work directly on the terminal without the need for a graphical interface (which may not always be
         available on remote machines). Alternatively, you can use a basic GUI program called <code>gedit</code> or a little bit more advanced and
         more powerful <code>sublime</code> (may need to be installed).</p>
 
-    <p>Let&rsquo;s type in a couple of words using vim and save into the <code>draft.txt</code>:</p>
+        <p>There are other ways to create files. Often, they are generated as an output of a program we run. </p>
 
-    <p>When you create a new file using vim, you will see a number of lines with a <code>~</code>, and your cursor will be at the top. At the
+
+    <h4>Let&rsquo;s type in a couple of words using vim and save into the <code>draft.txt</code>:</h4>
+    <p style="margin-top:-5mm"> When you create a new file using vim, you will see a number of lines with a <code>~</code>, and your cursor will be
+        at the top. At the
         bottom of the terminal you will see the name of the file, <code>[New]</code> showing that Vim is creating a new file, <code>0, 0-1</code>
         which is the location (line and character number) of your cursor and <code>All</code> which tells you that the entire file is displayed.</p>
-    <p><img alt="vim_empty" src="./img/vim_empty.png"></p>
+    <div class="flex-figure" style="margin-top:-8mm;margin-bottom:-5mm">
+        <div class="figure" style="width: 70%">
+            <figure>
+                <img alt="empty vim" src="img/empty_vim.png" width="100%">
+            </figure>
+        </div>
+    </div>
 
     <p>To start writing, you need to enter <code>insert mode</code>. Do this by pressing the <code>i</code> key, and <code>-- INSERT --</code> will
         appear at the bottom of the terminal.</p>
-    <p><img alt="vim_insert" src="./img/vim_insert.png"></p>
+    <div class="flex-figure" style="margin-top:-8mm;margin-bottom:-5mm">
+        <div class="figure" style="width: 70%">
+            <figure>
+                <img alt="insert vim" src="img/insert_vim.png" width="100%">
+            </figure>
+        </div>
+    </div>
 
-    <p>Once we’re happy with our text, we can press <code>esc</code> (the escape key) to exit <code>insert mode</code> Then type <code>:wq</code>
-        followed by the <code>enter</code> key to <strong>w</strong>rite and <strong>q</strong>uit the file. Vim will tell you the name of the
+    <p>Once we’re happy with our text, we can press <code>esc</code> (the escape key) to exit <code>insert mode</code> Then type <code>:w</code>
+        followed by the <code>enter</code> key to <strong>w</strong>rite the file. Vim will tell you the name of the
         file it just created.</p>
-    <p><img alt="vim_exit" src="./img/vim_exit.png"></p>
+    <div class="flex-figure" style="margin-top:-8mm;margin-bottom:-5mm">
+        <div class="figure" style="width: 70%">
+            <figure>
+                <img alt="insert vim" src="img/exit_vim.png" width="100%">
+            </figure>
+        </div>
+    </div>
 
-    <p><code>Vim</code> doesn’t leave any output on the screen after it exits, but <code>ls</code> now shows that we have
-    created a file called <code>draft.txt</code></p>
-    <pre>
-<code class="language-bash">$ ls
-draft.txt</code></pre>
+    <p>To <strong>q</strong>uit, type <code>:q</code> followed by the <code>enter</code> key. <code>Vim</code> doesn’t leave any output on the
+        screen after it exits, but <code>ls</code> now shows that we have created a file called <code>draft.txt</code></p>
+    <pre style="margin-top:-4mm">$ ls
+draft.txt</pre>
+
+    <h4>A simple <code>Vim</code> cheatsheet can be found <a href="vim_cheat_sheet.html">here</a>. For a more comprehensive list, see <a
+            href="https://www.thegeekdiary.com/basic-vi-commands-cheat-sheet/">here</a>.</h4>
 
 </div>
 
@@ -130,25 +143,19 @@ draft.txt</code></pre>
 
     <p>Make sure you are in the <code>shell-lesson-data/exercise-data/writing</code> directory, which you can do by using
     the absolute path or locate yourself in the directories and navigate up:</p>
-
-    <pre><code class="language-bash">$ cd ~/Desktop/session1/shell-lesson-data/exercise-data/writing</code></pre>
-
-    <p>There are other ways to create files; often, these will be generated as an output of a program we run. </p>
+    <pre style="margin-top:-4mm">$ cd ~/Desktop/session1/shell-lesson-data/exercise-data/writing</pre>
 
     <p>In our <code>thesis</code> directory we have a file <code>draft.txt</code> which isn’t a particularly informative name, so let’s change the
         file’s name using <code>mv</code>, which is short for <strong>m</strong>o<strong>v</strong>e:</p>
-
-    <pre><code class="language-bash">$ mv thesis/draft.txt thesis/quotes.txt</code></pre>
+    <pre style="margin-top:-4mm">$ mv thesis/draft.txt thesis/quotes.txt</pre>
 
     <p>The first argument tells <code>mv</code> <u>what</u> we’re ‘moving’, while the second is <u>where</u> it’s to go. In this case, we’re moving
-        <code>thesis/draft.txt</code> to <code>thesis/quotes.txt</code>. Moving has the same effect as renaming the file. </p>
+        <code>thesis/draft.txt</code> to <code>thesis/quotes.txt</code>. Moving has the same effect as renaming the file. It also works on
+        directories.</p>
 
     <p>Sure enough, <code>ls</code> shows us that <code>thesis</code> now contains one file called <code>quotes.txt</code>: </p>
-    <pre>
-<code class="language-bash">$ ls thesis
-quotes.txt</code></pre>
-
-    <p>Note that <code>mv</code> also works on directories.</p>
+    <pre style="margin-top:-4mm">$ ls thesis
+quotes.txt</pre>
 
 <blockquote>
     <p><strong><em>WARNING</em></strong> ⚠️</p>
@@ -164,13 +171,12 @@ quotes.txt</code></pre>
         name of a directory as the second argument to tell <code>mv</code> that we want to keep the filename but put it into a new place. In this
         case, the directory name we use is the special directory name <code>.</code>, which means the current directory.</p>
 
-    <pre><code class="language-bash">$ mv thesis/quotes.txt .</code></pre>
+    <pre style="margin-top:-4mm">$ mv thesis/quotes.txt .</pre>
 
     <p>If you try to explicitly list this file at its previous location, you will see:</p>
 
-    <pre>
-<code class="language-bash">$ ls thesis/quotes.txt</code>
-<code class="language-none">ls: cannot access &#39;thesis/quotes.txt&#39;: No such file or directory</code></pre>
+    <pre style="margin-top:-4mm">$ ls thesis/quotes.txt
+ls: cannot access &#39;thesis/quotes.txt&#39;: No such file or directory</pre>
 </div>
 
 <div class="box">
@@ -179,27 +185,26 @@ quotes.txt</code></pre>
     <p>The <code>cp</code> command works very much like <code>mv</code>, except it <strong>c</strong>o<strong>p</strong>ies a file instead of moving
         it. We can check that it did the right thing using <code>ls</code></p>
 
-    <pre>
-<code class="language-bash">$ cp quotes.txt thesis/quotations.txt
+    <pre style="margin-top:-4mm">$ cp quotes.txt thesis/quotations.txt
 $ ls quotes.txt
 quotes.txt
 $ ls thesis/quotations.txt
-thesis/quotations.txt</code></pre>
+thesis/quotations.txt</pre>
 
-    <p>We can also copy a directory and all its contents by using the recursive option <code>-r</code> (otherwise you will
-    receive an error <code>cp: -r not specified; omitting directory &#39;thesis&#39;</code>). Lets back up our
-    directory:</p>
-    <pre><code class="language-bash">$ cp -r thesis thesis_backup</code></pre>
+    <p>We can also copy a directory and all its contents by using the recursive option <code>-r</code> (otherwise you will receive an error
+        <code>cp: -r not specified; omitting directory &#39;thesis&#39;</code>). </p>
+
+    <p> Let's back up our directory:</p>
+    <pre style="margin-top:-4mm">$ cp -r thesis thesis_backup</pre>
 
 <p>We can check using <code>ls</code> with two paths as arguments — like most Unix commands, <code>ls</code> can be
     given multiple paths at once:</p>
-    <pre>
-<code class="language-bash">$ ls thesis thesis_backup</code>
-<code class="language-none">thesis:
+    <pre style="margin-top:-4mm">$ ls thesis thesis_backup
+thesis:
 quotations.txt
 
 thesis_backup:
-quotations.txt</code></pre>
+quotations.txt</pre>
 </div>
 
 
@@ -293,39 +298,32 @@ $ ls</code></pre>
     <p>Returning to the <code>shell-lesson-data/exercise-data/writing</code> directory, let’s tidy up this directory by
     removing the <code>quotes.txt</code> file we created. The Unix command we’ll use for this is <code>rm</code> for
     <strong>r</strong>e<strong>m</strong>ove:</p>
-    <pre><code class="language-bash">$ rm quotes.txt</code></pre>
+    <pre style="margin-top:-4mm">$ rm quotes.txt</pre>
 
     <p>Confirm it is gone:</p>
-    <pre>
-<code class="language-bash">$ ls quotes.txt
-ls: cannot access &#39;quotes.txt&#39;: No such file or directory
-</code></pre>
+    <pre style="margin-top:-4mm">$ ls quotes.txt
+ls: cannot access &#39;quotes.txt&#39;: No such file or directory</pre>
 
     <blockquote>
         <p><strong><em>WARNING</em></strong> ⚠️</p>
 
-            <pre><code class="language-bash">$ rm text.txt</code></pre>
+            <pre>$ rm text.txt</code></pre>
+        <p style="margin-top:-3mm">will remove the file completely from the machine (there is no Bin/Trash/&hellip;)</p>
 
-        <p>will remove the file completely from the machine (there is no Bin/Trash/&hellip;)</p>
-
-        <pre>
-<code class="language-bash">$ rm –i text.txt
-rm: remove regular file ‘text.txt’? </code></pre>
-
-
-        <p>prompts you to confirm by typing <code>y</code> or cancel by typing <code>n</code></p>
+        <pre>$ rm –i text.txt
+rm: remove regular file ‘text.txt’?</pre>
+        <p style="margin-top:-3mm">prompts you to confirm by typing <code>y</code> or cancel by typing <code>n</code></p>
     </blockquote>
 
     <p>If we try to remove the thesis directory using <code>rm thesis</code>, we get an error message:</p>
-    <pre>
-<code class="language-bash">$ rm thesis
-rm: cannot remove &#39;thesis&#39;: Is a directory</code></pre>
+    <pre style="margin-top:-4mm">$ rm thesis
+rm: cannot remove &#39;thesis&#39;: Is a directory</pre>
 
     <p>This happens because <code>rm</code> by default only works on files, not directories.</p>
 
     <p><code>rm</code> can remove a directory and all its contents if we use the recursive option <code>-r</code>, and it will do so without any
         confirmation prompts:</p>
-    <pre><code class="language-bash">$ rm -r thesis</code></pre>
+    <pre style="margin-top:-4mm">$ rm -r thesis</pre>
 
     <p>Given that there is no way to retrieve files deleted using the shell, <u><code>rm -r</code> should be used with great caution</u> (consider
         adding the interactive option <code>rm -r -i</code>).</p>
@@ -335,13 +333,12 @@ rm: cannot remove &#39;thesis&#39;: Is a directory</code></pre>
     <h2 class="enum" id="toc_6">Operations with multiple files and directories</h2>
 
     <p>Oftentimes one needs to copy or move several files at once. This can be done by providing a list of individual
-    filenames, or specifying a naming pattern using <em>wildcards</em>. Wildcards are special characters that can be
+    filenames, or specifying a naming pattern using <u><em>wildcards</em></u>. Wildcards are special characters that can be
     used to represent unknown characters or sets of characters when navigating the Unix file system.</p>
 
     <p><code>*</code> is a wildcard, which represents zero or more characters. Let’s consider the <code>shell-lesson-data/exercise-data/alkanes</code>
         directory: </p>
-
-    <ul>
+    <ul style="margin-top:-4mm">
         <li><code>*.pdb</code> represents <code>ethane.pdb</code>, <code>propane.pdb</code>, and every file that ends with
         ‘.pdb’.
         </li>
@@ -351,13 +348,13 @@ rm: cannot remove &#39;thesis&#39;: Is a directory</code></pre>
     </ul>
 
     <p><code>?</code> is also a wildcard, but it represents <u>exactly one</u> character:</p>
-    <ul>
+    <ul style="margin-top:-4mm">
         <li><code>?ethane.pdb</code> could represent <code>methane.pdb</code>,</li>
         <li><code>*ethane.pdb</code> represents both <code>ethane.pdb</code> and <code>methane.pdb</code>.</li>
     </ul>
 
-    <p>Wildcards can be used in combination with each other:</p>
-    <ul>
+    <p>Wildcards can also be used in combination with each other:</p>
+    <ul style="margin-top:-4mm">
         <li><code>???ane.pdb</code> indicates three characters followed by <code>ane.pdb</code>, giving <code>cubane.pdb
         ethane.pdb and octane.pdb</code>.
         </li>
@@ -551,8 +548,8 @@ fructose.dat    sucrose.dat</code></pre>
 
 <div class="box">
 <p> &uarr; <a href="Session1.html">Go to the main menu</a> <br>
-    &larr; <a href="Intro2BASH_S1.html">Go to the previous part &ndash; Navigating Files and Directories</a> <br>
-    &rarr; <a href="Intro2BASH_S3.html">Go to the next part &ndash; Pipes and Filters</a> </p>
+    &larr; <a href="part1.html">Go to the previous part &ndash; Navigating Files and Directories</a> <br>
+    &rarr; <a href="part3.html">Go to the next part &ndash; Using High-Performance Computers</a> </p>
 </div>
 
 <script src="../scripts/generate_header.js"></script>

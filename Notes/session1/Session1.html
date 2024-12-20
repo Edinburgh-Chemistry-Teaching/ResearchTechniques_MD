@@ -21,25 +21,32 @@
 </div>
 
 <div class="box">
-    <h2 id="overview">Session Outline</h2>
+    <h2 id="overview">Contents</h2>
+</div>
+
+<div class="box">
+    <h2 id="toc_1">Session Outline</h2>
 
     <p>This session is based upon <a href="https://swcarpentry.github.io/shell-novice/"><strong>The Unix Shell</strong></a>,
         the <a href="https://www.hpc-carpentry.org/hpc-shell/"><strong>Introduction to Using the Shell in a High-Performance Computing Context</strong></a>
         and <a href="https://epcced.github.io/hpc-intro/"><strong>Introduction to High-Performance Computing</strong></a> courses.</p>
 
-    <p>
-        The material is divided into 7 parts, and for the purpose of this course you are only required to do <strong>Part 1, Part 2</strong> and
-        <strong>Part 7</strong>. The other parts are beneficial, especially if you are planning to use these skills beyond this course, but are not
-        essential for the following sessions.</p>
+    <p> The material is divided into 7 parts, and for the purpose of this course you are only required to do <strong>Parts 1 to 3</strong>. The
+        other parts are beneficial, especially if you are planning to use these skills beyond this course, but are not essential for the following
+        sessions.</p>
 
+    <p>Essential Topics:</p>
     <ol>
-        <li> <a href="Intro2BASH_S1.html"><strong>Navigating Files and Directories</strong></a> </li>
-        <li> <a href="Intro2BASH_S2.html"><strong>Working With Files and Directories</strong></a> </li>
-        <li> <a href="Intro2BASH_S3.html"><strong>Pipes and Filters</strong></a> (Advanced) </li>
-        <li> <a href="Intro2BASH_S4.html"><strong>Loops</strong></a> (Advanced) </li>
-        <li> <a href="Intro2BASH_S5.html"><strong>Shell Scripts</strong></a> (Advanced) </li>
-        <li> <a href="Intro2BASH_S6.html"><strong>Finding Things</strong></a> (Advanced) </li>
-        <li> <a href="Intro2BASH_S7.html"><strong>Using High-Performance Computers</strong></a> </li>
+        <li style="margin-top:-4mm"> <a href="part1.html"><strong>Navigating Files and Directories</strong></a> </li>
+        <li> <a href="part2.html"><strong>Working With Files and Directories</strong></a> </li>
+        <li> <a href="part3.html"><strong>Using High-Performance Computers</strong></a> </li>
+    </ol>
+    <p>Advanced Topics:</p>
+    <ol start="4">
+        <li style="margin-top:-4mm"> <a href="part4.html"><strong>Pipes and Filters</strong></a> </li>
+        <li> <a href="part5.html"><strong>Loops</strong></a> </li>
+        <li> <a href="part6.html"><strong>Shell Scripts</strong></a> </li>
+        <li> <a href="part7.html"><strong>Finding Things</strong></a> </li>
     </ol>
 
     <p>
@@ -49,7 +56,7 @@
 </div>
 
 <div class="box">
-    <h2 id="outcomes">Learning Outcomes</h2>
+    <h2 id="toc_2">Learning Outcomes</h2>
     <p> By the end of this session you should be able to: </p>
 
     <ul>
@@ -67,7 +74,7 @@
 </div>
 
 <div class="box">
-    <h2 id="summary">Overview</h2>
+    <h2 id="toc_3">Overview</h2>
     <p>In computing, a <strong>shell</strong> is a computer programme that allows you to communicate with Unix operating systems (Linux and
         MacOS). We do this using a <strong>command-line interface</strong> where we input lines of text that instruct the shell on what to do. The
         most popular Unix shell is Bash (Bourne Again SHell), which is the default on most modern unix systems. This is what we will be using to
@@ -86,12 +93,12 @@
             Google search</strong> can usually tell you what command and options are needed to do whatever you require.</p>
 
     <p>A summary of some basic Bash commands used during this session can be found <a
-            href="bash_cheat_sheet.html">here</a>.</p>
+            href="bash_cheat_sheet_short.html">here</a>.</p>
 
 </div>
 
 <div class="box">
-    <h3 id="problem">A Typical Problem</h3>
+    <h3 id="toc_4">A Typical Problem</h3>
 
     <p>Nelle Nemo, a marine biologist, has just returned from a six-month survey of the <a
         href="https://en.wikipedia.org/wiki/North_Pacific_Gyre">North Pacific Gyre</a>, where she has been sampling gelatinous marine life in the
@@ -128,6 +135,7 @@
 <script src="../scripts/feedback.js"></script>
 <script src="../scripts/adjust_for_dyslexia.js"></script>
 <script>window.onload = function () {
+    addFeedback('https://forms.office.com/e/NtN4Fmzhj3?origin=lprLink', 'img/FB1.png');
     generateOverview()
     generateHeader();
     adjustForDyslexia()

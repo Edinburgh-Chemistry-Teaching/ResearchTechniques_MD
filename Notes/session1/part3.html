@@ -5,21 +5,22 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
-    <meta content="Session1: part 7" name="description"/>
+    <meta content="Session1: part 3" name="description"/>
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
           rel="stylesheet">
     <link href="../scripts/style.css" rel="stylesheet"/>
-    <title>Part 7 &ndash; Using high performance computers</title>
+    <title>Part 3 &ndash; Using high performance computers</title>
 </head>
 
 <body>
 
 <div class="box">
-    <h1 id="heading">Part 7 &ndash; Using high performance computers</h1>
+    <h1 id="heading">Part 3 &ndash; Using high performance computers</h1>
     <p> &uarr; <a href="Session1.html">Go to the main menu</a> <br>
-        &larr; <a href="Intro2BASH_S6.html">Go to the previous part &ndash; Finding Things</a><br></p>
+        &larr; <a href="part2.html">Go to the previous part &ndash; Working With Files and Directories</a> <br>
+        &rarr; <a href="part4.html">Go to the next part &ndash; Pipes and Filters (Advanced)</a> </p>
 
 </div>
 
@@ -28,19 +29,17 @@
 </div>
 
 <div class="box">
-    <p>We have seen above how using a command-line interface instead of a GUI and creating scripts can save us valuable time
-    running the analysis. Still, depending on the job we need to do, the time-limiting step can be the performance of
-    our laptop/desktop. In this case, we need access to a more powerful machine. There are numerous large computers with
-    shared computing resources available: from smaller machines in research groups, to the University ones, to national
-    facilities. </p>
+    <p>We have seen above how using a command-line interface instead of a GUI can save us valuable time running the analysis. Still, depending on
+        the job we need to do, the time-limiting step can be the performance of our laptop/desktop. In this case, we need access to a more powerful
+        machine. There are numerous large computers with shared computing resources available: from smaller machines in research groups, to the
+        University ones, to national facilities. </p>
 
-    <p>These resources on these machines typically have larger numbers and sizes of central processing units (CPUs), CPUs
-    that operate at higher speeds, more memory, more storage, and faster connections with other computer systems. They
-    are frequently called “clusters”, “supercomputers” or resources for “high-performance computing” or HPC. </p>
+    <p>The resources on these machines typically have larger numbers and sizes of central processing units (CPUs), CPUs that operate at higher
+        speeds, more memory, more storage, and faster connections with other computer systems. They are frequently called “clusters”,
+        “supercomputers” or resources for “high-performance computing” or HPC. </p>
 
     <p>Using a cluster often has the following advantages for researchers:</p>
-
-    <ul>
+    <ul style="margin-top:-3mm">
         <li><strong>Speed</strong>. With many more CPU cores, often with higher performance specs, than a typical laptop or
         desktop, HPC systems can offer significant speed up.
         </li>
@@ -62,12 +61,12 @@
 
     <p>The University of Edinburgh has a supercomputer <a
         href="https://www.ed.ac.uk/information-services/research-support/research-computing/ecdf/high-performance-computing">Eddie</a>,
-    which we will be using during this practical. Furthermore, UoE is a host to national supercomputing facilities <a
+    which we will be using during this practical. Furthermore, UoE is a host for national supercomputing facilities <a
             href="https://www.archer2.ac.uk">ARCHER2</a> and <a href="https://www.cirrus.ac.uk">Cirrus</a>, available to
     researchers in the UK.</p>
 
     <p>In this part of the session we will apply the bash skills we have learned earlier to connect and use Eddie HPC. In
-    the following sessions, we will be using Eddie HPC to run our calculations.</p>
+    the following sessions, we will be using Eddie to run our calculations.</p>
 
 </div>
 
@@ -83,15 +82,15 @@
 
     <p>Into the terminal type without brackets:</p>
 
-    <pre><code class="language-bash">$ ssh -X &lt;UUN&gt;@eddie.ecdf.ed.ac.uk</code></pre>
+    <pre style="margin-top:-4mm">$ ssh -X &lt;UUN&gt;@eddie.ecdf.ed.ac.uk</pre>
 
     <p>where <code>&lt;UUN&gt;</code> should be replaced with your university credentials, typically starting with
     <code>s</code>, for example:</p>
 
-    <pre><code class="language-none">$ ssh -X s1234567@eddie.ecdf.ed.ac.uk</code></pre>
+    <pre style="margin-top:-4mm">$ ssh -X s1234567@eddie.ecdf.ed.ac.uk</pre>
 
-    <p class="note">The <code>&dash;X</code> option is used to enable X11 forwarding, which allows you to use the graphical
-        interface needed to display plots on Eddie HPC. </p>
+    <p class="note" style="margin-top:-3mm">The <code>&dash;X</code> option is used to enable X11 forwarding, which allows you to use the graphical
+        interface needed to display plots on Eddie. </p>
 
     <p>The terminal will prompt you for the password, which is your university password. Note, that there will be no
     spaces/stars/symbols filling up when you are typing the password in, the display will not change. When you are done,
@@ -101,7 +100,7 @@
 
     <p>When successfully logged in, you will see:</p>
 
-    <pre><code class="language-none">         _______    _     _ _
+    <pre style="margin-top:-4mm">         _______    _     _ _
         (_______)  | |   | (_)
          _____   _ | | _ | |_  ____
         |  ___) / || |/ || | |/ _  )
@@ -121,7 +120,7 @@ Service documentation is here:
 https://www.wiki.ed.ac.uk/display/ResearchServices/Eddie
 
 Please report any issues to IS.Helpline@ed.ac.uk
-_____________________________________________________________________</code></pre>
+_____________________________________________________________________</pre>
 </div>
 
 <div class="box">
@@ -146,12 +145,10 @@ _____________________________________________________________________</code></pr
 
     <p>When you log into the machine, you automatically land at your <strong>home directory</strong>. Check what it is by
     typing:</p>
-
-    <pre><code class="language-bash">[nelle@login03(eddie) ~]$ pwd</code></pre>
+    <pre style="margin-top:-4mm">[nelle@login03(eddie) ~]$ pwd</pre>
 
     <p>which will show:</p>
-
-    <pre><code class="language-none">/home/nelle</code></pre>
+    <pre style="margin-top:-4mm">/home/nelle</pre>
 
     <p>This home directory space is small, default only 10 Gb, and can be used to store cluster conimguration files/ job
     scripts and small amounts of persistent data. It is not suitable for the large files produced by the
@@ -167,13 +164,11 @@ _____________________________________________________________________</code></pr
 </blockquote>
 
     <p>Let&rsquo;s explore that space:</p>
-
-    <pre><code class="language-bash">[nelle@login03(eddie) ~]$ cd /exports/eddie/scratch/&lt;UUN&gt;</code></pre>
+    <pre style="margin-top:-4mm">[nelle@login03(eddie) ~]$ cd /exports/eddie/scratch/&lt;UUN&gt;</pre>
 
     <p>Replace <code>&lt;UUN&gt;</code> with your username, for Nelle her username is <code>nelle</code>, and therefore,
     this is:</p>
-
-    <pre><code class="language-bash">[nelle@login03(eddie) ~]$ cd /exports/eddie/scratch/nelle</code></pre>
+    <pre style="margin-top:-4mm">[nelle@login03(eddie) ~]$ cd /exports/eddie/scratch/nelle</pre>
 
     <p><em>Have you noticed that the prompt has changed?</em>
     Instead of <code>~</code>, standing for &lsquo;home directory&rsquo;, it is now showing the directory you are
@@ -181,10 +176,10 @@ _____________________________________________________________________</code></pr
 
     <p>In this directory, let&rsquo;s create a folder <code>session1</code> and descend into it:</p>
 
-    <pre><code class="language-bash">[nelle@login03(eddie) nelle]$ mkdir session1
+    <pre style="margin-top:-4mm">[nelle@login03(eddie) nelle]$ mkdir session1
 [nelle@login03(eddie) nelle]$ cd session1
 [nelle@login03(eddie) session1]$ pwd
-/exports/eddie/scratch/nelle/session1</code></pre>
+/exports/eddie/scratch/nelle/session1</pre>
 
     <p>Let&rsquo;s remember this location, as it will be the destination for the file transfers.</p>
 </div>
@@ -199,33 +194,32 @@ _____________________________________________________________________</code></pr
     <p>To copy a file from your local machine to your remote machine, there are two options:</p>
 
     <p>1. When run on your local machine:
-    <pre><code>$ scp /location/directory/file &lt;YOUR UUN&gt;@eddie.ecdf.ed.ac.uk:/destination/directory/</code></pre>
+    <pre style="margin-top:-4mm">$ scp /location/directory/file &lt;YOUR UUN&gt;@eddie.ecdf.ed.ac.uk:/destination/directory/</pre>
 
     <p>2. When run on your remote machine:</p>
-    <pre><code>[&lt;UUN&gt;@login03(eddie) session1]$ scp &lt;localname&gt;@&lt;localIP&gt;:/location/directory/file /destination/directory/.</code></pre>
+    <pre style="margin-top:-4mm">[&lt;UUN&gt;@login03(eddie) session1]$ scp &lt;localname&gt;@&lt;localIP&gt;:/location/directory/file /destination/directory/.</pre>
 
-    <p>Let&rsquo;s transfer files <code>hello.sh</code> and <code>myjob.sh</code> from the virtual machine onto eddie.
-    These files are located within the <code>session1/eddie-hpc-data</code> on the virtual machine and we need to move
+    <p>Let&rsquo;s transfer the files <code>hello.sh</code> and <code>myjob.sh</code> from the virtual machine onto Eddie. </p>
+    <p>These files are located within <code>session1/eddie-hpc-data</code> on the virtual machine and we need to move
     them to the <code>session1</code> folder we have just created on Eddie. Since both files finish in <code>.sh</code>,
     instead of typing each in we can use a <code>*</code> wildcard.</p>
 
-    <pre><code class="language-bash">$ cd eddie-hpc-data
+    <pre style="margin-top:-4mm">$ cd eddie-hpc-data
 $ scp *.sh nelle@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/nelle/session1</code></pre>
 
 
     <p>You will be prompted for the password, then you will see the report on the file transfer:</p>
-    <pre>
-<code>hello.sh                      100% 271 44.3KB/s 00:00
-myjob.sh                      100% 316 62.2KB/s 00:00</code></pre>
+    <pre style="margin-top:-4mm">hello.sh                      100% 271 44.3KB/s 00:00
+myjob.sh                      100% 316 62.2KB/s 00:00</pre>
 
-<p>If we now check the files from Eddie:</p>
+    <p>If we now check the files from Eddie:</p>
 
-<pre><code class="language-bash">[nelle@login03(eddie) session1]$ pwd
+    <pre style="margin-top:-4mm">[nelle@login03(eddie) session1]$ pwd
 /exports/eddie/scratch/nelle/session1
 [nelle@login03(eddie) session1]$ ls -lrth
 total 1.0K
 -rw-r--r-- 1 nelle eddie_users 271 Jan 17 11:42 hello.sh
--rw-r--r-- 1 nelle eddie_users 316 Jan 17 11:42 myjob.sh</code></pre>
+-rw-r--r-- 1 nelle eddie_users 316 Jan 17 11:42 myjob.sh</pre>
 
 <p>The command <code>ls -lrth</code> lists the contents of the directory in an expanded format <code>-l</code>, ordering
     them by time, <code>-t</code>, in a reverse, <code>-r</code>, order with the newest files at the bottom, and shows
@@ -255,21 +249,28 @@ total 1.0K
 <div class="box">
     <h2 class="enum" id="toc_5">Using the resources</h2>
 
-    <p>The HPC is composed of <em>nodes</em>, which are individual computers, and they come in different types. </p>
+    <p> The HPC is composed of <em>nodes</em>, which are individual computers, and they come in different types. </p>
 
-    <p>The node we are logged into is the <em>head node</em>, which you see in your prompt as <code>login03</code>. This
+    <p> The node we are logged into is the <em>head node</em>, which you see in your prompt as <code>login03</code>. This
     node is made for login, file transfer and manipulation, but it is <u>not for calculations</u>. </p>
 
-    <p>The calculations are done on the <em>compute nodes</em>. There are different types of these nodes available, to cater
-    for various needs. </p>
+    <p> If we need to run simple calculations, we can access a <em>login node</em> using <code>qlogin</code>. For more complex calculations, we
+        access the <em>compute nodes</em> by submitting a job to the <em>scheduler</em> using <code>qsub</code>. </p>
 
-    <p>To run a job, you will need to submit a Grid Engine job submission script, that contains details of the program to
+    <p>To run something, you will need to submit a Grid Engine job submission script, that contains details of the program to
     run as well as requests for resources (compute nodes, memory, time, etc). </p>
 
-    <p>You have just copied over an example job script, <code>myjob.sh</code>. Let&rsquo;s examine it (open it with your
-    favourite command, such as <code>more myjob.sh</code>:</p>
+    <div class="flex-figure" style="margin-top:-4mm;">
+            <div class="figure" style="width: 80%">
+                <figure>
+                    <img src="img/eddie.jpg" width="100%">
+                </figure>
+            </div>
+        </div>
 
-<pre><code class="language-none">#!/bin/sh
+    <p style="margin-top:-3mm">You have just copied over an example job script, <code>myjob.sh</code>. Let&rsquo;s examine it (open it with your
+    favourite command, such as <code>more myjob.sh</code>:</p>
+    <pre style="margin-top:-4mm">#!/bin/sh
 # Grid Engine options (lines prefixed with #$)
 #  job name: -N
 #$ -N hello  
@@ -282,29 +283,26 @@ total 1.0K
 
 
 # Run the program
-bash hello.sh </code></pre>
+bash hello.sh </pre>
 
-    <p>This script tells Eddie to run a job named <code>hello</code> from the current working directory, requesting a
+    <p style="margin-top:-3mm">This script tells Eddie to run a job named <code>hello</code> from the current working directory, requesting a
     maximum of 5 minutes run time and a maximum memory of 1 GB.
     The job itself is a bash script named <code>hello.sh</code>.</p>
 
     <p>We can now submit <code>myjob.sh</code> using the scheduler command <code>qsub</code>. </p>
-
-<pre><code class="language-bash">[nelle@login03(eddie) session1]$ qsub myjob.sh
-Your job 38945036 (&quot;hello&quot;) has been submitted</code></pre>
-
-    <p>The scheduler assigns this job an ID and reports that the job has been submitted. The scheduler will queue the job,
+    <pre style="margin-top:-4mm">[nelle@login03(eddie) session1]$ qsub myjob.sh
+Your job 38945036 (&quot;hello&quot;) has been submitted</pre>
+    <p style="margin-top:-3mm">The scheduler assigns this job an ID and reports that the job has been submitted. The scheduler will queue the job,
     while waiting for the resources to become available.</p>
 
     <p>We can monitor the progress of our job with the command <code>qstat</code>:</p>
-
-<pre><code class="language-bash">[nelle@login03(eddie) session1]$ qstat -u nelle
+    <pre style="margin-top:-4mm">[nelle@login03(eddie) session1]$ qstat -u nelle
 job-ID     prior   name       user         state submit/start at     queue                          jclass                         slots ja-task-ID 
 ------------------------------------------------------------------------------------------------------------------------------------------------
-  38945036 0.00000 hello      nelle     qw    01/17/2024 12:13:09                                                                   1        </code></pre>
+  38945036 0.00000 hello      nelle     qw    01/17/2024 12:13:09                                                                   1        </pre>
 
 
-    <p>This tells us that the job is currently queuing <code>qw</code> for resources; since we are not asking for much, it
+    <p style="margin-top:-3mm">This tells us that the job is currently queuing <code>qw</code> for resources; since we are not asking for much, it
     should not take long for it to run, and then the state will show as <code>r</code>. Nevertheless, the job is very
     small and will take an instance to run, so we may even miss it.</p>
 
@@ -314,28 +312,25 @@ job-ID     prior   name       user         state submit/start at     queue      
     <p>Unlike on a personal machine, running jobs do not print onto your screen (imagine the mess it would make if you were
     running many jobs at the same time). Instead, the two extra files are written:</p>
 
-    <ul>
+    <ul style="margin-top:-4mm">
         <li><code>&lt;name&gt;.o&lt;JobID&gt;</code> that contains the output you would normally receive on the screen;</li>
         <li><code>&lt;name&gt;.e&lt;JobID&gt;</code> that contains any errors or HPC-related info.</li>
     </ul>
 
     <p>Let&rsquo;s examine the files you got:</p>
-
-<pre><code class="language-bash">[nelle@login03(eddie) session1]$ ls -lrth
+    <pre style="margin-top:-4mm">[nelle@login03(eddie) session1]$ ls -lrth
 total 1.5K
 -rw-r--r-- 1 nelle eddie_users 271 Jan 17 11:42 hello.sh
 -rw-r--r-- 1 nelle eddie_users 316 Jan 17 11:42 myjob.sh
 -rw-r--r-- 1 nelle eddie_users   0 Jan 17 12:13 hello.e38945036
--rw-r--r-- 1 nelle eddie_users 104 Jan 17 12:13 hello.o38945036</code></pre>
+-rw-r--r-- 1 nelle eddie_users 104 Jan 17 12:13 hello.o38945036</pre>
 
-    <p>And now read the <code>hello.o38945036</code>:</p>
-
-<pre><code class="language-bash">[nelle@login03(eddie) session1]$ more hello.o38945036
+    <p>And now read <code>hello.o38945036</code>:</p>
+<pre style="margin-top:-4mm">[nelle@login03(eddie) session1]$ more hello.o38945036
 Hello World!
 I am: nelle
 It is now: Wed 17 Jan 12:13:25 GMT 2024
-I am using: node2c01.ecdf.ed.ac.uk
-</code></pre>
+I am using: node2c01.ecdf.ed.ac.uk</pre>
 
 <p>This is the output of our <code>hello.sh</code> script - feel free to modify it to your liking.</p>
 </div>
@@ -347,8 +342,7 @@ I am using: node2c01.ecdf.ed.ac.uk
     logged in for the job to be running. HPC will continue to do its job while you are sleeping, away or on holiday.</p>
 
     <p>To log out from Eddie just type <code>exit</code></p>
-
-    <pre><code class="language-bash">[nelle@login03(eddie) session1]$ exit</code></pre>
+    <pre style="margin-top:-4mm">[nelle@login03(eddie) session1]$ exit</pre>
 </div>
 
 <div class="box">
@@ -367,24 +361,9 @@ I am using: node2c01.ecdf.ed.ac.uk
 </div>
 
 <div class="box">
-    <h3 id="toc_9">Feedback</h3>
-
-    <p>We would like to ask you to give us regular feedback on this course and the session. This is the second
-    time we are running the course and your feedback will help us improve it. </p>
-
-    <p>Please fill in this <a href="https://forms.office.com/e/AQH06hukpu?origin=lprLink">feedback form by clicking the
-    link</a> or use your phone to scan the code:</p>
-
-    <p><img alt="fb" src="./img/FB1.png" width="200"/></p>
-    </div>
-
-<div class="box">
-<h3 id="toc_10">Thank You!</h3>
-</div>
-
-<div class="box">
 <p> &uarr; <a href="Session1.html">Go to the main menu</a> <br>
-    &larr; <a href="Intro2BASH_S6.html">Go to the previous part &ndash; Finding Things</a><br></p>
+    &larr; <a href="part2.html">Go to the previous part &ndash; Working With Files and Directories</a><br>
+    &rarr; <a href="part4.html">Go to the next part &ndash; Pipes and Filters (Advanced)</a> </p>
 </div>
 
 <script src="../scripts/generate_header.js"></script>
