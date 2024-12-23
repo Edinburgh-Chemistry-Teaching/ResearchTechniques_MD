@@ -239,14 +239,13 @@ Norm of force     =  3.5967257e+03</pre>
                     </li>
                     <li>Add the restrained equilibration with <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
                         <code>mdrun</code></a>:<br>
-                        <pre style="margin-top:1mm">$ gmx mdrun -v -s nvt.tpr -deffnm nvt -nt 1 -ntmpi 1</pre>
+                        <pre style="margin-top:1mm">$ gmx mdrun -v -s nvt.tpr -deffnm nvt -ntomp 1</pre>
                         <blockquote style="margin-top:1mm">
                             <code>&dash;v</code> specifies that the output should be "loud and noisy" (i.e. <strong>v</strong>erbose) <br>
                             <code>&dash;s</code> specifies the run input file, which is the output <code>.tpr</code> file from <code>grompp</code><br>
                             <code>&dash;deffnm</code> specifies the <strong>def</strong>ault <strong>f</strong>ile <strong>n</strong>a<strong>m</strong>e
                             for all outputs <br>
-                            <code>-nt</code> specifies the total number of threads <br>
-                            <code>-ntmpi</code> specifies the number of thread-MPI ranks
+                            <code>-ntomp</code> specifies the total number of OpenMP threads <br>
                         </blockquote>
                     </li>
                 </ol>
@@ -319,14 +318,13 @@ job-ID  prior   name       user         state submit/start at     queue         
                             <code>&dash;po</code> specifies the output name of the <code>.mdp</code> file <br>
                             <code>&dash;pp</code> specifies the output name of the <code>.top</code> file
                         </blockquote>
-                        <pre style="margin-top:5mm">$ gmx mdrun -v -s npt.tpr -deffnm npt -nt 1 -ntmpi 1</pre>
+                        <pre style="margin-top:5mm">$ gmx mdrun -v -s npt.tpr -deffnm npt -ntomp 1</pre>
                         <blockquote style="margin-top:0.5mm">
                             <code>&dash;v</code> specifies that the output should be "loud and noisy" (i.e. <strong>v</strong>erbose) <br>
                             <code>&dash;s</code> specifies the run input file, which is the output <code>.tpr</code> file from <code>grompp</code><br>
                             <code>&dash;deffnm</code> specifies the <strong>def</strong>ault <strong>f</strong>ile <strong>n</strong>a<strong>m</strong>e
                             for all outputs <br>
-                            <code>-nt</code> specifies the total number of threads <br>
-                            <code>-ntmpi</code> specifies the number of thread-MPI ranks
+                            <code>-ntomp</code> specifies the total number of OpenMP threads <br>
                         </blockquote>
                     </li>
                 </ol>
@@ -383,14 +381,13 @@ job-ID  prior   name       user         state submit/start at     queue         
                             <code>&dash;po</code> specifies the output name of the <code>.mdp</code> file <br>
                             <code>&dash;pp</code> specifies the output name of the <code>.top</code> file
                         </blockquote>
-                        <pre>$ gmx mdrun -v -s md.tpr -deffnm md -nt 1 -ntmpi 1</pre>
+                        <pre>$ gmx mdrun -v -s md.tpr -deffnm md -ntomp 1</pre>
                         <blockquote style="margin-top:0.5mm">
                             <code>&dash;v</code> specifies that the output should be "loud and noisy" (i.e. <strong>v</strong>erbose) <br>
                             <code>&dash;s</code> specifies the run input file, which is the output <code>.tpr</code> file from <code>grompp</code><br>
                             <code>&dash;deffnm</code> specifies the <strong>def</strong>ault <strong>f</strong>ile <strong>n</strong>a<strong>m</strong>e
                             for all outputs <br>
-                            <code>-nt</code> specifies the total number of threads <br>
-                            <code>-ntmpi</code> specifies the number of thread-MPI ranks
+                            <code>-ntomp</code> specifies the total number of OpenMP threads <br>
                         </blockquote>
                     </li>
                 </ol>
@@ -418,18 +415,14 @@ job-ID  prior   name       user         state submit/start at     queue         
         </ol>
     </div>
     <p>
-        Looking at the output file of a previous simulation of a similar system, you can estimate that this simulation will take about 5&nbsp;hours
-        to complete.
+        Looking at the output file of a previous simulation of a similar system, you can estimate that this simulation should run quickly once it
+        starts.
     </p>
     <pre>               Core t (s)   Wall t (s)        (%)
-       Time:    18317.252    18317.252      100.0
-                         5h05:17
+       Time:      242.724      242.724      100.0
                  (ns/day)    (hour/ns)
-Performance:        4.717        5.088</pre>
-    <p>
-        Since the production run will take a bit longer to finish, you can continue this tutorial using the example files from a previous
-        simulation. You can find them in the <code>/home/practical/session2/example_data</code> directory on your virtual machine.
-    </p>
+Performance:      355.960        0.067</pre>
+
 </div>
 
 <div class="box">

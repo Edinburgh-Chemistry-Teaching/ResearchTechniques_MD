@@ -42,11 +42,9 @@
             <li> To use the <code>gmx energy</code> command, you will need to start an interactive session on a compute node on Eddie HPC.
                 <ol>
                     <li id="interactive_login" style="margin-top:2mm"> Use the <code>qlogin</code> command to request an interactive session with
-                        1&nbsp;G of memory:
-                        <pre style="margin-top:1mm">$ qlogin -q gpu -pe gpu-a100 1 -l h_vmem=1G</pre>
+                        16&nbsp;G of memory:
+                        <pre style="margin-top:1mm">$ qlogin -l h_vmem=16G</pre>
                         <blockquote style="margin-top:1mm">
-                            <code>-q</code> specifies the <strong>q</strong>ueue you want to join <br>
-                            <code>-pe</code> specifies the <stong>p</stong>arallel <strong>e</strong>nvironment <br>
                             <code>-l h_vmem</code> specifies the amount of memory
                         </blockquote>
                     </li>
