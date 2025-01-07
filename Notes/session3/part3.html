@@ -32,7 +32,7 @@
         As in the previous session, you should check that your system has equilibrated by looking at the temperature and pressure evolution.
     </p>
     <div class="bbox">
-        <h3 id="temp_eq"></h3>
+        <h3 id="Calculate_the_temperature_evolution"></h3>
         <ol>
             <li>
                 Visualise the temperature evolution
@@ -61,10 +61,20 @@
                 </ol>
             </li>
         </ol>
+        <div class="flex-figure" style="margin-top:-8mm;">
+            <div class="figure" style="width: 70%">
+                <figure>
+                    <img src="img/eq_temp.png" width="100%">
+                    <figcaption>
+                        Example Xmgrace plot of the temperature evolution during equilibration.
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
     </div>
 
     <div class="bbox">
-        <h3 id="pres_eq"></h3>
+        <h3 id="Calculate_the_pressure_evolution"></h3>
         <ol>
             <li>
                 Visualise the pressure evolution
@@ -83,12 +93,21 @@
                         create a 2-ps running average.</p>
                 </blockquote>
             </li>
-            <li>Visualise the result in xmgrace. Has the pressure of your system equilibrated? If you are unsure, visualise the density evolution
-                like <a href="../session2/part3.html#Calculate_the_density_evolution">before</a>.
+            <li>Visualise the result in xmgrace. Has the pressure of your system equilibrated?
             </li>
             <li>Save the xmgrace plot as a <code>.png</code> file.
             </li>
         </ol>
+         <div class="flex-figure" style="margin-top:-8mm;">
+            <div class="figure" style="width: 70%">
+                <figure>
+                    <img src="img/eq_pres.png" width="100%">
+                    <figcaption>
+                        Example Xmgrace plot of the pressure evolution during equilibration.
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -96,7 +115,7 @@
     <h2 class='enum' id="toc_2">Analysis of the simulation data</h2>
     <p>In this section, you will:</p>
     <ul>
-        <li>Calculate the root&dash;mean&dash;square deviation (<abbr>RMSD</abbr>) of the system to determine from which
+        <li>Calculate the root-mean-square deviation (<abbr>RMSD</abbr>) of the system to determine from which
             point on the system is equilibrated
         </li>
         <li>Determine the radial distribution function (RDF) of the ions to analyse their hydration shell</li>
@@ -134,6 +153,16 @@
             <li>Save the xmgrace plot as a <code>.png</code> file.
             </li>
         </ol>
+        <div class="flex-figure" style="margin-top:-8mm;">
+            <div class="figure" style="width: 70%">
+                <figure>
+                    <img src="img/rmsd.png" width="100%">
+                    <figcaption>
+                        Example Xmgrace plot of the RMSD evolution for the entire system during a production run.
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
     </div>
 
     <h3 class="enum" id="toc_2_2">Calculating the radial distribution function (<abbr>RDF</abbr>)</h3>
@@ -150,16 +179,14 @@
             </li>
             <li>
                 Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-make_ndx.html"
-                               target="_blank"><code>make_ndx</code></a> to create an index file for
-                Na<sup>+</sup> ions and water OW atoms:
-                <p>GROMACS does not have Na<sup>+</sup> and water <code>OW</code> atoms in its default selections.
-                    Therefore, we have to first create a new index <code>.ndx</code> file that also contains these atom
-                    groups:</p>
-                <blockquote>
-                    <pre>$ gmx make_ndx &dash;f prod.gro &dash;o Na_OW.ndx</pre>
-                    <p>Select NA and OW atoms by adding two new groups to the index file:<br>
+                               target="_blank"><code>make_ndx</code></a> to create an index file for water OW atoms:
+                <p>GROMACS does not have water <code>OW</code> atoms in its default selections.
+                    Therefore, we have to first create a new index <code>.ndx</code> file that also contains this atom
+                    group.</p>
+                <pre style="margin-top:1mm">$ gmx make_ndx -f prod.gro -o OW.ndx</pre>
+                <blockquote style="margin-top:1mm">
+                    <p>Select OW atoms by adding the new group to the index file:<br>
                         Type each line and press <code>Enter</code>.</p>
-                    <pre>&gt; a NA</pre>
                     <pre>&gt; a OW</pre>
                     <p>Exit and save the index file by typing <code>q</code> and pressing <code>Enter</code>.
                     </p>
@@ -170,18 +197,18 @@
                            target="_blank"><code>gmx rdf</code></a> tool to calculate the <abbr>RDF</abbr>:
                 <blockquote>
                 <pre>
-$ gmx rdf &dash;f prod.xtc &dash;s prod.tpr &dash;n Na_OW.ndx &dash;o rdf_Na_OW.xvg &dash;seltype atom &dash;selrpos atom &dash;b &lt;analysis_start_time&gt; &dash;tu &lt;time_unit&gt; &dash;norm number_density &dash;rmax 1</pre>
-                    <p><code>&dash;f</code> specifies the trajectory file.</p>
-                    <p><code>&dash;s</code> specifies the input topology <code>.tpr</code> file.</p>
-                    <p><code>&dash;o</code> specifies the ouput file.</p>
-                    <p><code>&dash;seltype</code> specifies the selection type.</p>
-                    <p><code>&dash;selrpos</code> specifies the positions used in the analysis.</p>
-                    <p><code>&dash;b</code> specifies the start time for the analysis.</p>
-                    <p><code>&dash;tu</code> specifies the time unit.</p>
-                    <p><code>&dash;norm</code> specifies if the density should be normalised to 1.
+$ gmx rdf -f prod.xtc -s prod.tpr -n Na_OW.ndx -o rdf_Na_OW.xvg -seltype atom -selrpos atom -b &lt;analysis_start_time&gt; -tu &lt;time_unit&gt; -norm number_density -rmax 1</pre>
+                    <p><code>-f</code> specifies the trajectory file.</p>
+                    <p><code>-s</code> specifies the input topology <code>.tpr</code> file.</p>
+                    <p><code>-o</code> specifies the ouput file.</p>
+                    <p><code>-seltype</code> specifies the selection type.</p>
+                    <p><code>-selrpos</code> specifies the positions used in the analysis.</p>
+                    <p><code>-b</code> specifies the start time for the analysis.</p>
+                    <p><code>-tu</code> specifies the time unit.</p>
+                    <p><code>-norm</code> specifies if the density should be normalised to 1.
                         Here we select to keep the number density which will represent the number of atoms in the
                         hydration shell.</p>
-                    <p><code>&dash;rmax</code> specifies the maximum distance between two atoms in the analysis.</p>
+                    <p><code>-rmax</code> specifies the maximum distance between two atoms in the analysis.</p>
                     <p>Then, first select <code>OW</code> by typing the group number and hitting <code>Enter</code> and
                         then
                         add <code>Na</code> to the selection. Hit <code>Enter</code> again and exit with
@@ -192,6 +219,16 @@ $ gmx rdf &dash;f prod.xtc &dash;s prod.tpr &dash;n Na_OW.ndx &dash;o rdf_Na_OW.
                 Use xmgrace to visualise the result.
             </li>
         </ol>
+        <div class="flex-figure" style="margin-top:-8mm;">
+            <div class="figure" style="width: 70%">
+                <figure>
+                    <img src="img/rdf.png" width="100%">
+                    <figcaption>
+                        Example Xmgrace plot of the RDF evolution for water O<sup>2-</sup> to Na<sup>+</sup> during a production run.
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
     </div>
     <div class="box">
         <h2 class="enum" id="toc_12">Visualising the results</h2>
@@ -206,7 +243,7 @@ $ gmx rdf &dash;f prod.xtc &dash;s prod.tpr &dash;n Na_OW.ndx &dash;o rdf_Na_OW.
                 <li>Load the trajectory file into the molecule.
                     <blockquote>
                         <p>
-                            Right&dash;click on the molecule and select <code>Load Data into Molecule</code>.
+                            Right-click on the molecule and select <code>Load Data into Molecule</code>.
                             Then, select the <code>prod.xtc</code> trajectory file.
                         </p>
                         <p class="note">The loading of all the frames might take some time. You can speed up the

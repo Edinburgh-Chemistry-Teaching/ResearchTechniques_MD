@@ -27,11 +27,12 @@ function addFeedback(link, imgFile) {
     newP3 = document.createElement("p");
     newA.href = link;
     newA.alt = "link to feedback form";
+    newA.target="_blank";
     newA.textContent = "feedback form";
     newImg.alt = "feedback QR code";
     newImg.src = imgFile;
     newImg.width = "200";
-    newP3.textContent = "Thank you!"
+    newP3.textContent = "Thank you!";
     newP3.style = "text-align: center;font-weight: bold;font-size: 2em;color: #041E42;";
 
 
