@@ -27,13 +27,13 @@
 <div class="box">
     <h2 id="toc_1">Session Outline</h2>
 
-    <p>This tutorial was created by Hannah Pollak and Valentina Erastova and is based upon the <a
+    <p>This tutorial was created by Hannah Pollak, Valentina Erastova and Sarah Stewart and is based upon the <a
             href="https://tutorials.gromacs.org/docs/md-intro-tutorial.html">Molecular dynamics simulation of a small protein using GROMACS tutorial</a>
         by Alessandra Villa which was adapted from the <a href="http://www.mdtutorials.com/gmx/lysozyme/index.html">Lysozyme in Water Tutorial</a>
         by Justin A. Lemkuhl.</p>
 
     <p>In this practical session, we will learn the basics of Molecular Dynamics (MD) simulations with GROMACS, and use of assisting software
-        (e.g. VMD, xmgrace, gedit) to visualise and manipulate the data. The material is divided into 3 parts, covering all aspects of simulations
+        (e.g. VMD, xmgrace, vim) to visualise and manipulate the data. The material is divided into 3 parts, covering all aspects of simulations
         .</p>
 
     <ol>
@@ -43,221 +43,14 @@
     </ol>
 
         <p>The figure below shows a typical protocol for the simulation of protein in the box. In this tutorial, we will follow this same protocol.</p>
-    <div class="flex-figure">
-        <div class="flex-figure-img" style="width: 70%">
+    <div class="flex-figure" style="margin-top:-8mm;">
+        <div class="figure" style="width: 70%">
             <figure>
-                <div class="graphviz"><img
-                        alt="digraph flowchart {
-node [ shape=box, width=1.5 ]
-
-input_pdb [
-  label=&quot;eiwit.pdb&quot;
-  tooltip=&quot;Protein Databank file&quot;
-  URL=&quot;../reference-manual/file-formats.html#pdb&quot;
-  shape=none, width=0, height=0, margin=0
-  group=input
-]
-pdb2gmx [
-  label=&quot;Generate a GROMACS topology\ngmx pdb2gmx&quot;
-  tooltip=&quot;Convert PDB file to GROMACS coordinate file and topology&quot;
-  URL=&quot;../onlinehelp/gmx-pdb2gmx.html&quot;
-  width=3
-  group=main
-]
-
-input_pdb -> pdb2gmx [ headport=e ]
-
-editconf [
-  label=&quot;Enlarge the box\ngmx editconf&quot;
-  tooltip=&quot;Adjust box size and placement of molecule&quot;
-  URL=&quot;../onlinehelp/gmx-editconf.html&quot;
-]
-
-pdb2gmx -> editconf [
-  label=&quot;conf.gro&quot;
-  labeltooltip=&quot;GROMACS coordinate file containing molecules from PDB file&quot;
-  URL=&quot;../reference-manual/file-formats.html#gro&quot;
-]
-
-solvate [
-  label=&quot;Solvate protein\ngmx solvate&quot;
-  tooltip=&quot;Fill box with water (solvate molecule)&quot;
-  URL=&quot;../onlinehelp/gmx-solvate.html&quot;
-  width=3
-  group=main
-]
-
-pdb2gmx -> solvate [
-  label=&quot;topol.top&quot;
-  labeltooltip=&quot;GROMACS ascii topology file&quot;
-  URL=&quot;../reference-manual/file-formats.html#top&quot;
-]
-editconf -> solvate [
-  label=&quot;conf.gro&quot;
-  labeltooltip=&quot;GROMACS coordinate file with adjusted box etc.&quot;
-  URL=&quot;../reference-manual/file-formats.html#gro&quot;
-]
-
-input_mdp [
-  label=&quot;grompp.mdp&quot;
-  tooltip=&quot;Parameter file from grompp (controls all MD parameters)&quot;
-  URL=&quot;../reference-manual/file-formats.html#mdp&quot;
-  shape=none, width=0, height=0, margin=0
-  group=input
-]
-grompp [
-  label=&quot;Generate mdrun input file\ngmx grompp&quot;
-  tooltip=&quot;Process parameters, coordinates and topology and write binary topology&quot;
-  URL=&quot;../onlinehelp/gmx-grompp.html&quot;
-  width=3
-  group=main
-]
-
-input_pdb -> input_mdp [ style=invis, minlen=3 ]
-
-input_mdp -> grompp [ headport=e, weight=0 ]
-solvate -> grompp [
-  label=&quot;conf.gro&quot;
-  labeltooltip=&quot;GROMACS coordinate file with water molecules added&quot;
-  URL=&quot;../reference-manual/file-formats.html#gro&quot;
-]
-solvate -> grompp [
-  label=&quot;topol.top&quot;
-  labeltooltip=&quot;GROMACS ascii topology file with water molecules added&quot;
-  URL=&quot;../reference-manual/file-formats.html#top&quot;
-]
-
-mdrun [
-  label=&quot;Run the simulation (EM or MD)\ngmx mdrun&quot;
-  tooltip=&quot;The moment you have all been waiting for! START YOUR MD RUN&quot;
-  URL=&quot;../onlinehelp/gmx-mdrun.html&quot;
-  width=3
-  group=main
-]
-
-grompp -> mdrun [
-  label=&quot;topol.tpr&quot;
-  labeltooltip=&quot;Portable GROMACS binary run input file (contains all information to start MD run)&quot;
-  URL=&quot;../reference-manual/file-formats.html#tpr&quot;
-]
-mdrun -> mdrun [
-  label=&quot;Continuation\nstate.cpt&quot;
-  labeltooltip=&quot;Checkpoint file&quot;
-  URL=&quot;../reference-manual/file-formats.html#cpt&quot;
-]
-
-analysis [
-  label=&quot;Analysis\ngmx ...&quot;
-  tooltip=&quot;Your favourite GROMACS analysis tool&quot;
-  URL=&quot;cmdline.html#commands-by-topic&quot;
-]
-
-mdrun -> analysis [
-  label=&quot;traj.xtc / traj.trr&quot;
-  labeltooltip=&quot;Portable compressed trajectory / full precision portable trajectory&quot;
-  URL=&quot;../reference-manual/file-formats.html#xtc&quot;
-]
-
-energy [
-  label=&quot;Analysis\ngmx energy&quot;
-  tooltip=&quot;Energy plots, averages and fluctuations&quot;
-  URL=&quot;../onlinehelp/gmx-energy.html&quot;
-]
-
-mdrun -> energy [
-  label=&quot;ener.edr&quot;
-  labeltooltip=&quot;Portable energy file&quot;
-  URL=&quot;../reference-manual/file-formats.html#edr&quot;
-]
-}"
-                        class="graphviz"
-                        src="https://manual.gromacs.org/current/_images/graphviz-546f8676b043be7a824d2ab2320a5e60473f82fc.png"
-                        usemap="#flowchart">
-                </div>
-                <map id="flowchart" name="flowchart">
-                    <area alt="" coords="413,5,503,25" href="../reference-manual/file-formats.html#pdb"
-                          id="node1" shape="rect" title="Protein Databank file">
-                    <area alt="" coords="67,75,391,125" href="../onlinehelp/gmx-pdb2gmx.html"
-                          id="node2" shape="rect"
-                          title="Convert PDB file to GROMACS coordinate file and topology">
-                    <area alt="" coords="397,327,519,347" href="../reference-manual/file-formats.html#mdp"
-                          id="node5" shape="rect"
-                          title="Parameter file from grompp (controls all MD parameters)">
-                    <area alt="" coords="5,193,180,244" href="../onlinehelp/gmx-editconf.html"
-                          id="node3" shape="rect" title="Adjust box size and placement of molecule">
-                    <area alt="" coords="169,128,135,151,111,182,107,179,131,147,166,123"
-                          href="../reference-manual/file-formats.html#gro" id="edge2"
-                          shape="poly" title="conf.gro">
-                    <area alt="" coords="133,149,210,169" href="../reference-manual/file-formats.html#gro"
-                          id="edge2-label" shape="rect"
-                          title="GROMACS coordinate file containing molecules from PDB file">
-                    <area alt="" coords="85,312,373,363" href="../onlinehelp/gmx-solvate.html"
-                          id="node4" shape="rect" title="Fill box with water (solvate molecule)">
-                    <area alt="" coords="231,126,231,298,226,298,226,126"
-                          href="../reference-manual/file-formats.html#top" id="edge3"
-                          shape="poly" title="topol.top">
-                    <area alt="" coords="229,209,314,229" href="../reference-manual/file-formats.html#top"
-                          id="edge3-label" shape="rect" title="GROMACS ascii topology file">
-                    <area alt="" coords="105,243,118,265,135,286,157,303,154,307,131,290,113,268,100,246"
-                          href="../reference-manual/file-formats.html#gro" id="edge4"
-                          shape="poly" title="conf.gro">
-                    <area alt="" coords="133,268,210,288" href="../reference-manual/file-formats.html#gro"
-                          id="edge4-label" shape="rect" title="GROMACS coordinate file with adjusted box etc.">
-                    <area alt="" coords="66,431,354,481" href="../onlinehelp/gmx-grompp.html"
-                          id="node6" shape="rect"
-                          title="Process parameters, coordinates and topology and write binary topology">
-                    <area alt="" coords="196,364,179,388,177,403,182,418,177,420,172,403,174,386,192,361"
-                          href="../reference-manual/file-formats.html#gro" id="edge7"
-                          shape="poly" title="conf.gro">
-                    <area alt="" coords="177,387,254,407" href="../reference-manual/file-formats.html#gro"
-                          id="edge7-label" shape="rect" title="GROMACS coordinate file with water molecules added">
-                    <area alt="" coords="249,362,258,384,257,407,250,421,245,418,251,406,253,385,244,364"
-                          href="../reference-manual/file-formats.html#top" id="edge8"
-                          shape="poly" title="topol.top">
-                    <area alt="" coords="255,387,341,407" href="../reference-manual/file-formats.html#top"
-                          id="edge8-label" shape="rect"
-                          title="GROMACS ascii topology file with water molecules added">
-                    <area alt="" coords="49,549,371,600" href="../onlinehelp/gmx-mdrun.html"
-                          id="node7" shape="rect"
-                          title="The moment you have all been waiting for! START YOUR MD RUN">
-                    <area alt="" coords="213,481,213,536,207,536,207,481"
-                          href="../reference-manual/file-formats.html#tpr" id="edge9"
-                          shape="poly" title="topol.tpr">
-                    <area alt="" coords="210,505,294,525" href="../reference-manual/file-formats.html#tpr"
-                          id="edge9-label"
-                          shape="rect"
-                          title="Portable GROMACS binary run input file (contains all information to start MD run)">
-                    <area alt="" coords="372,563,390,567,398,575,386,583,384,579,393,574,388,572,371,569"
-                          href="../reference-manual/file-formats.html#cpt"
-                          id="edge10" shape="poly"
-                          title="Continuation\nstate.cpt">
-                    <area alt="" coords="395,555,519,595" href="../reference-manual/file-formats.html#cpt"
-                          id="edge10-label" shape="rect" title="Checkpoint file">
-                    <area alt="" coords="46,668,190,719" href="cmdline.html#commands-by-topic"
-                          id="node8" shape="rect" title="Your favourite GROMACS analysis tool">
-                    <area alt=""
-                          coords="145,602,132,613,122,625,116,639,115,654,109,654,111,638,117,623,128,609,142,598"
-                          href="../reference-manual/file-formats.html#xtc"
-                          id="edge11" shape="poly"
-                          title="traj.xtc / traj.trr">
-                    <area alt="" coords="119,624,273,644" href="../reference-manual/file-formats.html#xtc"
-                          id="edge11-label" shape="rect"
-                          title="Portable compressed trajectory / full precision portable trajectory">
-                    <area alt="" coords="230,668,374,719" href="../onlinehelp/gmx-energy.html"
-                          id="node9" shape="rect" title="Energy plots, averages and fluctuations">
-                    <area alt="" coords="250,598,275,622,292,654,288,656,271,626,246,602"
-                          href="../reference-manual/file-formats.html#edr" id="edge12"
-                          shape="poly" title="ener.edr">
-                    <area alt="" coords="283,624,363,644" href="../reference-manual/file-formats.html#edr"
-                          id="edge12-label" shape="rect" title="Portable energy file">
-                </map>
+                <object style="margin-left: 32mm" width="70%" data="img/gmx_workflow.svg" type="image/svg+xml"></object>
+<!--                svg made using graphviz and img/gmx_workflow.gv -->
                 <figcaption>
-                    <figcaption>Typical flowchart of a simulation of protein in water, often a number of simulations
-                        have to
-                        be performed
-                        to prepare the system for a production MD run, the interactive flowchart can be found at <a
-                                href="https://manual.gromacs.org/current/user-guide/flow.html">manual.gromacs.org/current/user&dash;guide/flow.html</a>
-                    </figcaption>
+                    Typical flowchart of a simulation of protein in water, often a number of simulations have to be performed to prepare the system
+                    for a production MD run.
                 </figcaption>
             </figure>
         </div>
@@ -316,7 +109,7 @@ mdrun -> energy [
     <p><span style="font-weight: bolder"><abbr>XMGrace</abbr></span> is a free program for plotting data that runs on
         Linux, Mac and Windows. It
         can be downloaded from <a href="https://plasma-gate.weizmann.ac.il/pub/grace/">plasma&dash;gate.weizmann.ac.il/pub/grace</a>.
-        An user guide for can be found at
+        A user guide for can be found at
         <a href="https://plasma-gate.weizmann.ac.il/Grace/doc/UsersGuide.html">plasma&dash;gate.weizmann.ac.il/Grace/doc/UsersGuide.html</a>.</p>
 
     <p><span style="font-weight: bolder"><abbr>gedit</abbr></span> is a free text editor for Linux, Mac and Windows. Installation instructions can be found at

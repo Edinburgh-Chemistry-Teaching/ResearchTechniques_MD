@@ -5,12 +5,11 @@ nsteps                   = COMPLETE HERE    ; Make total run time of 100 ps
 
 ; OUTPUT CONTROL OPTIONS
 nstxout                  = 0
-nstxout-compressed	 = 1000
+nstxout-compressed	     = 1000
 nstvout                  = 0
 nstfout                  = 0
 nstlog                   = 1
 nstenergy                = 1
-nstxtcout                = 0
 xtc_precision            = 1000
 xtc-grps                 = System
 energygrps               = System
@@ -38,3 +37,7 @@ Pcoupltype               = Isotropic
 tau_p                    = 1.0
 compressibility          = 4.5e-5
 ref_p                    = 1.0
+
+; GENERATE VELOCITIES FOR STARTUP RUN
+gen_vel                 = yes                 ; assign velocities from Maxwell distribution
+gen_temp                = 300                 ; temperature for Maxwell distribution

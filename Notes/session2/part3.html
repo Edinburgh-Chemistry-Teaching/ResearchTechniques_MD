@@ -52,17 +52,17 @@
                         <pre style="margin-top:1mm">$ cd /exports/eddie/scratch/&lt;UUN&gt;/session2/</pre>
                         <pre style="margin-top:-2mm">$ source load_gmx.sh</pre>
                     </li>
-                    <li>
-                        Check the potential energy with <code>gmx energy</code>:<br>
-                        <pre style="margin-top:1mm">$ gmx energy -f em.edr -o em.xvg</pre>
-                        <blockquote style="margin-top:1mm">
-                            <code>-f</code> specifies the input <code>.edr</code> file <br>
-                            <code>-o</code> specifies the output file name <br>
-                            <p style="margin-top:2mm">Choose <code>Potential</code> by entering the number next to the desired energy term and
-                                pressing <code>Enter</code> twice.</p>
-                        </blockquote>
-                    </li>
                 </ol>
+            </li>
+            <li>
+                Check the potential energy with <code>gmx energy</code>:<br>
+                <pre style="margin-top:1mm">$ gmx energy -f em.edr -o em.xvg</pre>
+                <blockquote style="margin-top:1mm">
+                    <code>-f</code> specifies the input <code>.edr</code> file <br>
+                    <code>-o</code> specifies the output file name <br>
+                    <p style="margin-top:2mm">Choose <code>Potential</code> by entering the number next to the desired energy term and
+                        pressing <code>Enter</code> twice.</p>
+                </blockquote>
             </li>
             <li>
                 Plot the energy evolution with <code>xmgrace</code>:<br>
@@ -172,6 +172,11 @@
                     <li style="margin-top:2mm">To get a clearer picture of this, you can plot a running average using <code>xmgrace</code>:
                         <p style="margin-top:0mm">Go to <code>Data</code> &rarr; <code>Transformations</code> &rarr; <code>Running averages...</code>. In
                         the pop-up window, set the length of average to 10.
+                        <blockquote style="margin-top:1mm">
+                            <p>From the <code>.mdp</code> file, we know the energy data is written every 500 steps (<code>nstenergy</code> )
+                                and one step is 0.002 ps (<code>dt</code>). Therefore, each data point in the graph is 1 ps and the running average
+                                window size is 10 ps. To learn more about running averages, see <a href="https://en.wikipedia.org/wiki/Moving_average">here</a>. </p>
+                        </blockquote>
                     </li>
                     <li style="margin-top:2mm"> To add this line to the legend:
                         <p style="margin-top:0mm">Go to <code>Plot</code> &rarr; <code>Set appearance...</code> and in the pop-up window, select
@@ -356,6 +361,8 @@
                     <code>-s</code> specifies the reference structure to compare each frame of the trajectory to <br>
                     <code>-f</code> specifies the trajectory file to analyse <br>
                     <code>-o</code> specifies the output file name <br>
+                    <p class="note">If you are using GROMACS 2024 or newer (e.g. on Eddie), you can use <code>-tu ns</code> to change the time unit.
+                    </p>
                 </blockquote>
             </li>
             <li>
@@ -572,7 +579,7 @@ GROMACS reminds you: &quot;Furious activity is no substitute for understanding.&
 </div>
 
 <div class="box">
-    <h2>This brings us to the end of the session. Please return to the main menu and provide feedback if you have no done so already.</h2>
+    <h2>This brings us to the end of the session. Please return to the main menu and provide feedback if you have not done so already.</h2>
     <p> &uarr; <a href="Session2.html">Go to the main menu</a> <br>
         &larr; <a href="part2.html">Go to the previous part &ndash; Running a Molecular Dynamics Simulation</a> </p>
 </div>

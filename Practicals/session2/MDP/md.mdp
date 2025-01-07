@@ -14,8 +14,8 @@ nstfout                  = 0     		 ; Not writing forces
 nstlog                   = 1000  		 ; Writing energies to log file every 1000 steps
 nstenergy                = 1000  		 ; Writing energies to energy file every 1000 steps
 ; Output frequency and precision for .xtc file
-nstxtcout                = COMPLETE HERE ; CHANGE - Make GROMACS write a total 200 points of data
-energygrps               = Protein Non-Protein
+nstxout-compressed       = COMPLETE HERE ; CHANGE - Make GROMACS write a total 200 points of data
+energygrps               = System
 
 
 ; NEIGHBORSEARCHING PARAMETERS
@@ -53,5 +53,3 @@ constraints              = h-bonds
 constraint-algorithm     = LINCS
 lincs_iter               = 1
 lincs_order              = 4
-
-

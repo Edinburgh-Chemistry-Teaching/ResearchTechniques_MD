@@ -9,8 +9,8 @@ nstxout                  = 0                    ; No output, except for last fra
 nstvout                  = 0                    ; No output, except for last frame (velocities)
 nstfout                  = 0                    ; No output, except for last frame (forces)
 nstlog                   = 1                    ; Write every step to the log 
-nstxtcout                = 0                    ; Do not write a compressed trajectory
-energygrps               = Protein Non-Protein  ; Write energy information separately for these groups
+nstxout-compressed       = 0                    ; Do not write a compressed trajectory
+energygrps               = System               ; Write energy information separately for these groups
 
 ; NEIGHBORSEARCHING PARAMETERS
 pbc                      = xyz
