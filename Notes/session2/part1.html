@@ -56,13 +56,13 @@
         processing, so select a structure to work with: </p>
 
     <ul>
-        <li>Human prion &dash; <a href="https://www.rcsb.org/structure/1QLZ">1QLZ</a></li>
-        <li>Elk prion &dash; <a href="https://www.rcsb.org/structure/1XYW">1XYW</a></li>
-        <li>Chicken prion &dash; <a href="https://www.rcsb.org/structure/1U3M">1U3M</a></li>
-        <li>Clawed frog prion &dash; <a href="https://www.rcsb.org/structure/1XU0">1XU0</a></li>
-        <li>Hen egg&dash;white lysozyme &dash; <a href="https://www.rcsb.org/structure/1AKI">1AKI</a></li>
-        <li>Spider toxin &dash; <a href="https://www.rcsb.org/structure/1OMB">1OMB</a></li>
-        <li>Ubiquin &dash; <a href="https://www.rcsb.org/structure/1UBQ">1UBQ</a></li>
+        <li>Human prion &dash; <a target="_blank" href="https://www.rcsb.org/structure/1QLZ">1QLZ</a></li>
+        <li>Elk prion &dash; <a target="_blank" href="https://www.rcsb.org/structure/1XYW">1XYW</a></li>
+        <li>Chicken prion &dash; <a target="_blank" href="https://www.rcsb.org/structure/1U3M">1U3M</a></li>
+        <li>Clawed frog prion &dash; <a target="_blank" href="https://www.rcsb.org/structure/1XU0">1XU0</a></li>
+        <li>Hen egg&dash;white lysozyme &dash; <a target="_blank" href="https://www.rcsb.org/structure/1AKI">1AKI</a></li>
+        <li>Spider toxin &dash; <a target="_blank" href="https://www.rcsb.org/structure/1OMB">1OMB</a></li>
+        <li>Ubiquin &dash; <a target="_blank" href="https://www.rcsb.org/structure/1UBQ">1UBQ</a></li>
     </ul>
 
     <div class="bbox">
@@ -84,7 +84,7 @@
                         </blockquote>
                     </li>
 
-                    <li>Manually from the web (<a href="http://www.rcsb.org">www.rcsb.org</a>) and move it into the<code>session2</code> directory:
+                    <li>Manually from the web (<a target="_blank" href="http://www.rcsb.org">www.rcsb.org</a>) and move it into the<code>session2</code> directory:
                         <pre style="margin-top:-0.05mm;">$ mv ~/Downloads/1xyw.pdb ~/session2/</pre> </li>
                 </ol>
             </li>
@@ -169,7 +169,7 @@
                             all</code> by a selection command. </p>
                     <ul> <li style="margin-top:-2mm;"> E.g. to select all atoms of the residue with the number 10, you can use
                         <code>resid 10</code>, for all atoms of the residue with the name <code>GLY</code> use <code>resname GLY</code>, etc.</li>
-                    <li style="margin-top:-1mm;"> You can find more information about selection commands in the <abbr>VMD</abbr>  <a
+                    <li style="margin-top:-1mm;"> You can find more information about selection commands in the <abbr>VMD</abbr>  <a target="_blank"
                                 href="https://www.ks.uiuc.edu/Research/vmd/current/ug/node89.html">user guide</a>. </li></ul>
                 </blockquote>
             </li>
@@ -256,13 +256,13 @@
     <div class="bbox">
         <h3 id="Creating_a_topology"></h3>
         <ul>
-            <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-pdb2gmx.html"><code>pdb2gmx</code></a> to
+            <li>Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-pdb2gmx.html"><code>pdb2gmx</code></a> to
                 create a topology for the protein structure
             </li>
             <li>
                 <p> To run a <abbr>GROMACS</abbr> command in the terminal, you need to type <code>gmx</code> followed by the name of the command
                     and its options. </p>
-                <p> A useful resource when getting started with GROMACS is the <a
+                <p> A useful resource when getting started with GROMACS is the <a target="_blank"
                         href="https://manual.gromacs.org/documentation/current/user-guide/mdp-options.html">GROMACS user guide</a>. </p>
                 <p class="note" style="margin-top:1mm"> A help menu for all commands can be displayed with <code>-h</code> (
                     e.g. <code>gmx pdb2gmx -h</code>).</p>
@@ -349,7 +349,7 @@ Protein_chain_A     1</pre> </blockquote> </li>
     <div class="bbox">
         <h3 id="Creating_a_box"></h3>
         <ol>
-            <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-editconf.html"><code>editconf</code></a>
+            <li>Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-editconf.html"><code>editconf</code></a>
                 to create a box around the protein
             </li>
             <li>Add a dodecahedron shaped box with a minimum distance of 1.0&nbsp;nm between the protein and box edge.<br>
@@ -422,7 +422,7 @@ Protein_chain_A     1</pre> </blockquote> </li>
                         a copy of the unsolvated topology.</p>
                 </blockquote>
             </li>
-            <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-solvate.html"><code>solvate</code></a> to
+            <li>Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-solvate.html"><code>solvate</code></a> to
                 solvate the protein with <abbr>SPC</abbr> water:
                 <pre style="margin-top:1mm">$ gmx solvate -cp protein-pbc.gro -cs spc216.gro -o protein-solvated.gro -p protein-solvated.top</pre>
                 <blockquote style="margin-top:1mm">
@@ -490,7 +490,7 @@ Protein_chain_A     1</pre> </blockquote> </li>
                 </blockquote>
             </li>
             <li>
-                Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-genion.html"><code>genion</code></a> to add NaCl:
+                Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-genion.html"><code>genion</code></a> to add NaCl:
                 <pre style="margin-top:1mm">$ gmx genion -o protein-solvated-ions.gro -p protein-solvated-ions.top -pname NA -nname CL -conc 0.15
   -neutral</pre>
                 <blockquote style="margin-top:1mm">

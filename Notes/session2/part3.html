@@ -33,7 +33,7 @@
 
     <h3 class="enum" id="toc_1_1">Energy minimisation</h3>
     <p> With energy minimisation, you should have arrived at an <code>Epot</code> with an order of magnitude of 10<sup>4</sup> kJ&nbsp;
-                 mol<sup>-1</sup>. We can check how the potential energy changed during the minimisation run using <a
+                 mol<sup>-1</sup>. We can check how the potential energy changed during the minimisation run using <a target="_blank"
                     href="https://manual.gromacs.org/current/onlinehelp/gmx-energy.html"><code>gmx energy</code></a>.</p>
     <div class="bbox">
         <h3 id="Calculate_the_potential_energy_changes"></h3>
@@ -96,7 +96,7 @@
 
     <h3 class="enum" id="toc_1_2">Temperature equilibration</h3>
     <p>By the end of the <em>NVT</em> equilibration run, the temperature should be constant and at our target (300 K). It should also remain
-        constant during the <em>NPT</em> equilibration run. We can check how the temperature changes using <a
+        constant during the <em>NPT</em> equilibration run. We can check how the temperature changes using <a target="_blank"
                 href="https://manual.gromacs.org/current/onlinehelp/gmx-energy.html"><code>gmx energy</code></a>. </p>
     <div class="bbox">
         <h3 id="Calculate_the_temperature_evolution"></h3>
@@ -145,7 +145,7 @@
 
     <h3 class="enum" id="toc_1_3">Pressure equilibration</h3>
     <p>By the end of the <em>NPT</em> equilibration run, the pressure (and density) should be constant and at our target (1 bar). We can check how
-        the both change using <a href="https://manual.gromacs.org/current/onlinehelp/gmx-energy.html"><code>gmx energy</code></a>. </p>
+        the both change using <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-energy.html"><code>gmx energy</code></a>. </p>
     <div class="bbox">
         <h3 id="Calculate_the_pressure_evolution"></h3>
         <ol>
@@ -175,7 +175,8 @@
                         <blockquote style="margin-top:1mm">
                             <p>From the <code>.mdp</code> file, we know the energy data is written every 500 steps (<code>nstenergy</code> )
                                 and one step is 0.002 ps (<code>dt</code>). Therefore, each data point in the graph is 1 ps and the running average
-                                window size is 10 ps. To learn more about running averages, see <a href="https://en.wikipedia.org/wiki/Moving_average">here</a>. </p>
+                                window size is 10 ps. To learn more about running averages, see <a target="_blank"
+                                        href="https://en.wikipedia.org/wiki/Moving_average">here</a>. </p>
                         </blockquote>
                     </li>
                     <li style="margin-top:2mm"> To add this line to the legend:
@@ -288,7 +289,7 @@
     <div class="bbox">
         <h3 id="Calculating_the_RMSD"></h3>
         <ol>
-            <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-rms.html"><code>gmx rms</code></a> to
+            <li>Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-rms.html"><code>gmx rms</code></a> to
                 calculate the <abbr>RMSD</abbr> of the entire system, the protein and the protein backbone.
             </li>
              <li>
@@ -351,7 +352,7 @@
     <div class="bbox">
         <h3 id="Calculate_the_radius_of_gyration"></h3>
         <ol>
-            <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-gyrate.html"><code>gmx gyrate</code></a> to
+            <li>Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-gyrate.html"><code>gmx gyrate</code></a> to
                 calculate the <abbr>R<sub>g</sub></abbr> of protein.
             </li>
             <li>Make sure you're in an interactive session like <a href="#interactive_login">before</a>. </li>
@@ -436,7 +437,8 @@
                 </ol>
             </li>
             <li style="margin-top:-2mm">Change the visualisation of the atoms.<br>
-                <p style="margin-top:1mm">Like <a href="#change_rep">before</a> go to <code>Graphics</code> &rarr; <code>Representations...</code>
+                <p style="margin-top:1mm">Like <a href="part1.html#change_rep">before</a> go to <code>Graphics</code> &rarr; <code>Representations..
+                    .</code>
                 </p>
                 <ol>
                     <li>
@@ -530,13 +532,13 @@
 <div class="box">
     <h2 class="enum" id="toc_3">Reporting on the procedure</h2>
     <p>
-        A handy tool to produce a summary of your system info is <a
+        A handy tool to produce a summary of your system info is <a target="_blank"
             href="https://manual.gromacs.org/current/onlinehelp/gmx-report-methods.html"><code>gmx report-methods</code></a>.
     </p>
     <div class="bbox">
         <h3 id="Generating_a_report_of_the_procedure"></h3>
         <ul>
-            <li>Use <a
+            <li>Use <a target="_blank"
                     href="https://manual.gromacs.org/current/onlinehelp/gmx-report-methods.html"><code>report-methods</code></a>
                 to print a report of the procedure:
             </li>

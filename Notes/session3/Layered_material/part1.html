@@ -10,7 +10,7 @@
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
           rel="stylesheet">
-    <link href="../scripts/style.css" rel="stylesheet"/>
+    <link href="../../scripts/style.css" rel="stylesheet"/>
     <title>Part 1 &ndash; Preparing the System for Simulation</title>
 </head>
 
@@ -54,12 +54,13 @@
 
     <p> Let's get started! The clay model will consist of a single montmorillonite clay sheet. The first step is to create a sheet by
         multiplying a single <abbr>MMT</abbr> <abbr>UC</abbr>.
-        This can be done with GROMACS using <a href="https://manual.gromacs.org/current/onlinehelp/gmx-genconf.html"><code>genconf</code></a>. </p>
+        This can be done with GROMACS using <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-genconf.html"><code>genconf</code></a>. </p>
 
     <div class="bbox">
         <h3 id="Create_a_clay_sheet"></h3>
         <ul>
-            <li> Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-genconf.html"><code>genconf</code></a> to create a single clay sheet
+            <li> Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-genconf.html"><code>genconf</code></a> to create a
+                single clay sheet
                 from the <abbr>MMT</abbr> <abbr>UC</abbr>
             </li>
             <li> <pre style="margin-top:1mm">$ gmx genconf -f STRUCTURES/MMT.gro -nbox &lt;x_ucs&gt; &lt;y_ucs&gt; &lt;z_ucs&gt; -o MMT_slab.gro</pre>
@@ -133,13 +134,13 @@
             </li>
         </ul>
     </div>
-    <p>  Now that you have space, you can use <a
+    <p>  Now that you have space, you can use <a target="_blank"
             href="https://manual.gromacs.org/current/onlinehelp/gmx-insert-molecules.html"><code>insert-molecules</code></a> to insert decanoic
         acid molecules into the vacuum space. </p>
     <div class="bbox">
         <h3 id="Insert_decanoic_acid_molecules"></h3>
         <ul>
-            <li>Use <a
+            <li>Use <a target="_blank"
             href="https://manual.gromacs.org/current/onlinehelp/gmx-insert-molecules.html"><code>insert-molecules</code></a> to insert 10 decanoic
                 acid molecules
             </li>
@@ -190,8 +191,7 @@
             target="_blank">topology files</a>,
         <a href="https://manual.gromacs.org/current/reference-manual/topologies/topologies.html" rel="noopener"
            target="_blank">topologies</a> and
-        <a
-                href="https://manual.gromacs.org/current/reference-manual/functions/functions.html#ff"
+        <a href="https://manual.gromacs.org/current/reference-manual/functions/functions.html#ff"
                 rel="noopener"
                 target="_blank">force fields</a>.<br>
     </p>
@@ -272,7 +272,7 @@ DECA           1</pre>
                         a copy of the unsolvated topology.</p>
                 </blockquote>
             </li>
-            <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-solvate.html"><code>solvate</code></a> to
+            <li>Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-solvate.html"><code>solvate</code></a> to
                 solvate the box with <abbr>SPC</abbr> water: <br>
                 <pre style="margin-top:1mm">$ gmx solvate -cp MMT_dec.gro -cs spc216.gro -o MMT_dec_solv.gro -p MMT_dec_solv.top</pre>
                 <blockquote style="margin-top:1mm">
@@ -394,7 +394,8 @@ information for each atom.
                     this message.
                 </p>
             </li>
-            <li>Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-genion.html"><code>genion</code></a> to neutralise the system with Na<sup>+</sup> ions:
+            <li>Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-genion.html"><code>genion</code></a> to neutralise the system with
+                Na<sup>+</sup> ions:
                 <pre style="margin-top:1mm">gmx genion -s MMT_dec_solv_ions.tpr -o MMT_dec_solv_ions.gro -p MMT_dec_solv_ions.top -pname Na -neutral</pre>
                 <blockquote>
                     <code>-s</code> specifies the input coordinate file of the system to solvate.<br>
@@ -430,11 +431,11 @@ information for each atom.
         &rarr; <a href="part2.html">Go to the next part &ndash; Running a Molecular Dynamics Simulation</a> </p>
 </div>
 
-<script src="../scripts/generate_header.js"></script>
-<script src="../scripts/generate_overview.js"></script>
-<script src="../scripts/scroll_up.js"></script>
-<script src="../scripts/feedback.js"></script>
-<script src="../scripts/adjust_for_dyslexia.js"></script>
+<script src="../../scripts/generate_header.js"></script>
+<script src="../../scripts/generate_overview.js"></script>
+<script src="../../scripts/scroll_up.js"></script>
+<script src="../../scripts/feedback.js"></script>
+<script src="../../scripts/adjust_for_dyslexia.js"></script>
 <script>window.onload = function () {
     generateOverview();
     generateHeader();

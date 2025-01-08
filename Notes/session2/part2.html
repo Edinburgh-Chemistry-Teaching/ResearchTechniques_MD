@@ -27,6 +27,7 @@
     <h2 id="overview">Contents</h2>
 </div>
 
+<div class="box">
     <p>
         Now that the solvated protein system is prepared, you can get started with the <abbr>MD</abbr> simulations.
         Before running the actual simulation to generate data that can be analysed, it is important to first run some
@@ -48,7 +49,7 @@
     <h2 class="enum" id="toc_1">Energy minimisation</h2>
     <p> In molecular dynamics, the goal of energy minimisation is to <strong>minimise</strong> the forces acting on each atom. The total potential
         energy of the system is reduced by changing the atomic coordinates until a minimum is found. <br>
-        With GROMACS, this is usually done with the <a
+        With GROMACS, this is usually done with the <a target="_blank"
                 href="https://manual.gromacs.org/current/reference-manual/algorithms/energy-minimization.html"><em>steepest descent</em></a>
         algorithm, an iterative method where at each step the coordinates are adjusted such that the energy of the system lowers. </p>
     <p> Energy minimisation is treated as a type of <code>MD</code> run, and so a run parameter <code>.mdp</code> file is required. The key parameters
@@ -69,7 +70,7 @@
         <ol>
             <li>Run an energy minimisation of the solvated protein structure
             <li>
-                Use <a href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a> to
+                Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a> to
                 prepare the <code>.tpr</code> input file for the energy minimisation:<p>
             <pre style="margin-top:1mm">$ gmx grompp -v -f MDP/minim.mdp -c protein-solvated-ions.gro -p protein-solvated-ions.top -o em.tpr
   -po em.mdp -pp em.top</pre>
@@ -84,7 +85,7 @@
                 </blockquote>
             </li>
             <li>
-                Run the energy minimisation with <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
+                Run the energy minimisation with <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
                 <code>mdrun</code></a>:
                 <pre style="margin-top:1mm">$ gmx mdrun -v -s em.tpr -deffnm em</pre>
                 <blockquote style="margin-top:1mm">
@@ -221,7 +222,7 @@ Norm of force     =  3.5967257e+03</pre>
                     <li>Open run_nvt.sh and navigate to the end of the file:
                         <pre style="margin-top:1mm">$ vim run_nvt.sh</pre>
                     </li>
-                    <li> Add the required options to <a href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
+                    <li> Add the required options to <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
                         to prepare the <code>.tpr</code> input file for the restrained equilibration:<br>
                         <pre style="margin-top:1mm">$ gmx grompp -v -f MDP/nvt.mdp -c em.gro -p protein-solvated-ions.top -r em.gro -o nvt.tpr
   -po nvt.mdp -pp nvt.top</pre>
@@ -236,7 +237,7 @@ Norm of force     =  3.5967257e+03</pre>
                             <code>&dash;pp</code> specifies the output name of the <code>.top</code> file
                         </blockquote>
                     </li>
-                    <li>Add the restrained equilibration with <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
+                    <li>Add the restrained equilibration with <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html">
                         <code>mdrun</code></a>:<br>
                         <pre style="margin-top:1mm">$ gmx mdrun -v -s nvt.tpr -deffnm nvt -ntomp 1</pre>
                         <blockquote style="margin-top:1mm">
@@ -294,10 +295,10 @@ job-ID  prior   name       user         state submit/start at     queue         
                     <li>Open run_npt.sh and navigate to the end of the file:
                         <pre style="margin-top:0.5mm">$ vim run_npt.sh</pre>
                     </li>
-                    <li>Add the required options for <a
+                    <li>Add the required options for <a target="_blank"
                             href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
                         and
-                        <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html"><code>mdrun</code></a>:
+                        <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html"><code>mdrun</code></a>:
                         <pre style="margin-top:0.5mm">$ gmx grompp -v -f MDP/npt.mdp -c nvt.gro -p protein-solvated-ions.top -r nvt.gro -t nvt.cpt
   -o npt.tpr -po npt.mdp -pp npt.top</pre>
                         <blockquote style="margin-top:0.5mm">
@@ -361,10 +362,10 @@ job-ID  prior   name       user         state submit/start at     queue         
                     <li>Open run_md.sh and navigate to the end of the file:
                         <pre style="margin-top:0.5mm">$ vim run_md.sh</pre>
                     </li>
-                    <li>Add the required options for <a
+                    <li>Add the required options for <a target="_blank"
                             href="https://manual.gromacs.org/current/onlinehelp/gmx-grompp.html"><code>grompp</code></a>
                         and
-                        <a href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html"><code>mdrun</code></a>.
+                        <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-mdrun.html"><code>mdrun</code></a>.
                         <pre style="margin-top:0.5mm">$ gmx grompp -v -f MDP/md.mdp -c npt.gro -p protein-solvated-ions.top -o md.tpr -t npt.cpt
   -po md.mdp -pp md.top</pre>
                         <blockquote>

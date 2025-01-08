@@ -27,9 +27,9 @@
 <div class="box">
     <h2 id="toc_1">Session Outline</h2>
 
-    <p>This tutorial was created by Hannah Pollak, Valentina Erastova and Sarah Stewart and is based upon the <a
+    <p>This tutorial was created by Hannah Pollak, Valentina Erastova and Sarah Stewart and is based upon the <a target="_blank"
             href="https://tutorials.gromacs.org/docs/md-intro-tutorial.html">Molecular dynamics simulation of a small protein using GROMACS tutorial</a>
-        by Alessandra Villa which was adapted from the <a href="http://www.mdtutorials.com/gmx/lysozyme/index.html">Lysozyme in Water Tutorial</a>
+        by Alessandra Villa which was adapted from the <a target="_blank" href="http://www.mdtutorials.com/gmx/lysozyme/index.html">Lysozyme in Water Tutorial</a>
         by Justin A. Lemkuhl.</p>
 
     <p>In this practical session, we will learn the basics of Molecular Dynamics (MD) simulations with GROMACS, and use of assisting software
@@ -83,12 +83,12 @@
             lipids and nucleic acids that have a lot of complicated bonded interactions, but since GROMACS is extremely fast at calculating the
             nonbonded interactions (that usually dominate simulations) many groups are also using it for research on non&dash;biological systems, e.g.
             polymers.</p>
-        <footer>from <cite>About GROMACS (<a href="https://www.gromacs.org/about.html">www.gromacs.org/about.html</a>)</cite></footer>
+        <footer>from <cite>About GROMACS (<a target="_blank" href="https://www.gromacs.org/about.html">www.gromacs.org/about.html</a>)</cite></footer>
     </blockquote>
 
     <p>For everyday general molecular simulations, GROMACS is one of the fastest MD programs. It is also quite flexible, so apart from proteins and
         biomolecules in general, it can be used to simulate a vast range of different types of molecules. If you want to use it on your own machine,
-        you can download GROMACS from <a href="https://manual.gromacs.org/current/download.html">manual.gromacs.org/current/download.html</a> or
+        you can download GROMACS from <a target="_blank" href="https://manual.gromacs.org/current/download.html">manual.gromacs.org/current/download.html</a> or
         on Linux use <code>apt&dash;get install gromacs</code> and on Mac via homebrew <code>brew install gromacs</code>.</p>
 
     <p>GROMACS is commonly available on <abbr>HPCs</abbr> (high performance computers), including the University&rsquo;s Eddie <abbr>HPC</abbr>, and also
@@ -97,23 +97,24 @@
     <p>It was originally developed in the University of Groningen, but now is maintained and extended at different places, including the University
         of Uppsala, University of Stockholm and the Max Planck Institute for Polymer Research. It is an open source software, released under the
         <abbr>GPL</abbr> (general public licence), which means that it is free to use. There are many more tutorials for GROMACS available. Some can
-        be found on: <a href="http://www.mdtutorials.com/gmx/">www.mdtutorials.com/gmx</a>.</p>
+        be found on: <a target="_blank" href="http://www.mdtutorials.com/gmx/">www.mdtutorials.com/gmx</a>.</p>
 
     <p><span style="font-weight: bolder"><abbr>VMD</abbr></span> (Visual Molecular Dynamics) is a program for visualising molecules, and can be used to view the
         output of GROMACS simulations. It is also free and can run on Linux, Mac and Windows. It can be downloaded from
-        <a href="https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD">www.ks.uiuc.edu/Development/Download/</a>. An extensive
+        <a target="_blank" href="https://www.ks.uiuc.edu/Development/Download/download.cgi?PackageName=VMD">www.ks.uiuc.edu/Development/Download
+            /</a>. An extensive
         user guide and tutorials are available at
-        <a href="https://www.ks.uiuc.edu/Research/vmd/current/ug/">www.ks.uiuc.edu/Research/vmd/current/ug</a>and
-        <a href="https://www.ks.uiuc.edu/Training/Tutorials/">www.ks.uiuc.edu/Training/Tutorials</a>.</p>
+        <a target="_blank" href="https://www.ks.uiuc.edu/Research/vmd/current/ug/">www.ks.uiuc.edu/Research/vmd/current/ug</a>and
+        <a target="_blank" href="https://www.ks.uiuc.edu/Training/Tutorials/">www.ks.uiuc.edu/Training/Tutorials</a>.</p>
 
     <p><span style="font-weight: bolder"><abbr>XMGrace</abbr></span> is a free program for plotting data that runs on
         Linux, Mac and Windows. It
-        can be downloaded from <a href="https://plasma-gate.weizmann.ac.il/pub/grace/">plasma&dash;gate.weizmann.ac.il/pub/grace</a>.
+        can be downloaded from <a target="_blank" href="https://plasma-gate.weizmann.ac.il/pub/grace/">plasma&dash;gate.weizmann.ac.il/pub/grace</a>.
         A user guide for can be found at
-        <a href="https://plasma-gate.weizmann.ac.il/Grace/doc/UsersGuide.html">plasma&dash;gate.weizmann.ac.il/Grace/doc/UsersGuide.html</a>.</p>
+        <a target="_blank" href="https://plasma-gate.weizmann.ac.il/Grace/doc/UsersGuide.html">plasma&dash;gate.weizmann.ac.il/Grace/doc/UsersGuide.html</a>.</p>
 
     <p><span style="font-weight: bolder"><abbr>gedit</abbr></span> is a free text editor for Linux, Mac and Windows. Installation instructions can be found at
-        <a href="https://wiki.gnome.org/Apps/Gedit">wiki.gnome.org/Apps/Gedit</a>.</p>
+        <a target="_blank" href="https://wiki.gnome.org/Apps/Gedit">wiki.gnome.org/Apps/Gedit</a>.</p>
 
 </div>
 
@@ -125,14 +126,15 @@
         inaccessible computational powers and times. </p>
 
     <p>For this reason, normally a 3D structure predicted from X&dash;ray diffraction is used as a starting point. Here, we will be downloading a protein
-        structure from the <a href="https://www.rcsb.org"><abbr>PDB</abbr> (Protein Data Bank)</a> </p>
+        structure from the <a target="_blank" href="https://www.rcsb.org"><abbr>PDB</abbr> (Protein Data Bank)</a> </p>
 
     <blockquote>
         <p><strong><em>WARNING</em></strong> ⚠️ Experimental data is not perfect. Therefore, it is possible for crystal structures in the PDB
             database to contain errors such as missing atoms. These &ldquo;errors&ldquo; are usually caused by an experiment being unable to clearly &ldquo;see&ldquo; amino
             acid side&dash;chains within the protein crystal because of its molecular motion. In some cases, it is necessary to &ldquo;clean up&ldquo; a protein
             structure before using it in a simulation study. Good programs for doing this include
-            <a href="https://sbcb.bioch.ox.ac.uk/teaching/coot_tutorial.pdf">coot</a> and the <a href="https://spdbv.unil.ch/">Swiss&dash;PDBViewer
+            <a target="_blank" href="https://sbcb.bioch.ox.ac.uk/teaching/coot_tutorial.pdf">coot</a> and the <a target="_blank"
+                    href="https://spdbv.unil.ch/">Swiss&dash;PDBViewer
                 (DeepView)</a></p>
     </blockquote>
 

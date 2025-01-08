@@ -10,7 +10,7 @@
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
           rel="stylesheet">
-    <link href="../scripts/style.css" rel="stylesheet"/>
+    <link href="../../scripts/style.css" rel="stylesheet"/>
     <title>Part 2 &ndash; Running a Molecular Dynamics Simulation</title>
 </head>
 
@@ -133,7 +133,7 @@ Norm of force     =  1.6491472e+06
     </p>
     <h2 class="enum" id="toc_3">Equilibrating the system</h2>
     <p>
-        As in <a href="../session2/part2.html#toc_2">Session 2</a>, in order to let your system reach
+        As in <a href="../../session2/part2.html#toc_2">Session 2</a>, in order to let your system reach
         a stable state, you need an equilibration run. For this system, you will only perform one equilibration run with
         temperature and pressure coupling (NPT ensemble).
     </p>
@@ -142,7 +142,7 @@ Norm of force     =  1.6491472e+06
         <ol>
             <li>Equilibrate the system at constant temperature and pressure</li>
             <li>Prepare the run script (<code>run_eq.sh</code>) for the equilibration run, referring to the <a
-                    href="../session2/part2.html#Equilibrating_the_system_at_constant_temperature">Session
+                    href="../../session2/part2.html#Equilibrating_the_system_at_constant_temperature">Session
                     2</a> instructions:
                 <pre style="margin-top:1mm">$ gmx grompp -f MDP/eq.mdp -c em.gro -p em.top -o eq.tpr -pp eq.top</pre>
                 <pre style="margin-top:1mm">$ gmx mdrun -v -s eq.tpr -deffnm eq -ntomp 1</pre>
@@ -210,11 +210,11 @@ Performance:     1328.669        0.018</pre>
         &rarr; <a href="part3.html">Go to the next part &ndash; Analysis of the Simulation Data</a> </p>
 </div>
 
-<script src="../scripts/generate_header.js"></script>
-<script src="../scripts/generate_overview.js"></script>
-<script src="../scripts/scroll_up.js"></script>
-<script src="../scripts/feedback.js"></script>
-<script src="../scripts/adjust_for_dyslexia.js"></script>
+<script src="../../scripts/generate_header.js"></script>
+<script src="../../scripts/generate_overview.js"></script>
+<script src="../../scripts/scroll_up.js"></script>
+<script src="../../scripts/feedback.js"></script>
+<script src="../../scripts/adjust_for_dyslexia.js"></script>
 <script>window.onload = function () {
     generateOverview();
     generateHeader();
