@@ -21,9 +21,17 @@ tc-grps                  = System               ; Use one heat bath for the whol
 tau_t                    = 0.1                  ; Coupling time constant, controlling strength of coupling
 ref_t                    = 300                  ; Temperature of heat bath
 
+; pressure coupling
+Pcoupl                   = C-rescale
+Pcoupltype               = semiisotropic
+tau_P                    = 1.0
+compressibility          = 4.5e-5 4.5e-5
+ref_P                    = 1.0 1.0
+refcoord-scaling         = No
+
 ; GENERATE VELOCITIES FOR STARTUP RUN
 gen_vel                  = no    				; Assign velocities to particles by taking them randomly from a Maxwell distribution
 continuation             = yes
 
 ; OPTIONS FOR BONDS    
-constraints              = all-bonds 			; All bonds will be treated as constraints (fixed length)
+constraints              = h-bonds

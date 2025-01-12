@@ -2,6 +2,12 @@ function generateHeader() {
     fetch('../scripts/demonstrators.txt')
         .then(response => {
             if (!response.ok) {
+                return fetch('../../scripts/demonstrators.txt')
+                    } else {
+                return response;
+            }
+        }).then(response => {
+            if (!response.ok) {
                 return fetch('scripts/demonstrators.txt')
                     } else {
                 return response;

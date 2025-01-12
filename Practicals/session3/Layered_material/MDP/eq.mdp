@@ -1,0 +1,46 @@
+; RUN CONTROL PARAMETERS
+integrator               = md
+dt                       = COMPLETE HERE    ; Make time step of 1 fs
+nsteps                   = COMPLETE HERE    ; Make total run time of 100 ps
+
+; OUTPUT CONTROL OPTIONS
+nstxout                  = 0
+nstxout-compressed	     = 1000
+nstvout                  = 0
+nstfout                  = 0
+nstlog                   = 1
+nstenergy                = 1
+xtc_precision            = 1000
+xtc-grps                 = System
+energygrps               = System
+
+; NEIGHBORSEARCHING PARAMETERS
+cutoff-scheme			 = Verlet
+pbc                      = xyz
+rlist                    = 1.2
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+coulombtype              = PME
+rcoulomb                 = 1.2
+vdw-type                 = Cut-off
+rvdw                     = 1.2
+
+; Temperature coupling  
+Tcoupl                   = V-rescale
+tc-grps                  = System
+tau_t                    = 0.1
+ref_t                    = 300
+
+; Pressure coupling     
+Pcoupl                   = C-rescale           ; for GMX before 2023 use Berendsen
+Pcoupltype               = Semiisotropic
+tau_p                    = 1.0
+compressibility          = 4.5e-5 4.5e-5
+ref_p                    = 1.0 1.0
+
+; GENERATE VELOCITIES FOR STARTUP RUN
+gen_vel                 = yes                 ; assign velocities from Maxwell distribution
+gen_temp                = 300                 ; temperature for Maxwell distribution
+
+; OPTIONS FOR BONDS
+constraints              = h-bonds

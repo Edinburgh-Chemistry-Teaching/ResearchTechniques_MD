@@ -47,12 +47,20 @@
         </div>
     </div>
 
+    <p>When you first open the terminal, you will be prompted for your university UUN and password. This is so that the Datastore can be accessed
+        by the machine, which is how you will get the course materials. The course materials you require will be copied to two locations:</p>
+    <ul style="margin-top:-4mm">
+        <li><code>Desktop/Sessions/</code> - the course notes that you will work through</li>
+        <li><code>practicals/</code> - any data you require to do the workshop</li>
+    </ul>
+    <p style="margin-top:-4mm">Each time a new terminal is opened, these folders will update to the most recent Datastore versions.</p>
+
     <p> When the terminal is opened, the prompt <code>$</code> shows that the shell is waiting for an input. This is where you will type
         commands e.g. </p>
     <pre style="margin-top:-3mm;">$ date</pre>
     <p style="margin-top:-3mm;"> will print the date and time according to the operating system.</p>
     <blockquote style="margin-top:-2mm;">
-        <p><u><strong>IMPORTANT</strong>: Do not type the prompt<code>$</code>when typing commands!</u>
+        <p><u><strong>IMPORTANT</strong>: Do not type the prompt<code>$</code> when typing commands!</u>
         Only type the command that follows the prompt. This rule applies both in these lessons and in lessons from other sources.
         After you type a command, you have to press the <code>Enter</code> key to execute it.</p>
     </blockquote>
@@ -156,6 +164,10 @@ $ pwd
         <code>practicals/session1</code> is the source location <br>
         <code>Desktop/</code> is the destination
     </blockquote>
+
+    <p><strong><em>WARNING</em></strong> ⚠️<br>
+    <strong>Every time you open a new terminal, the <code>practicals/</code> folder will revert back to the original copy. Therefore, you will lose
+        any work if you don't copy it to a new folder.</strong></p>
 
     <p>To navigate to this new directory, first go to <code>Desktop</code>:</p>
     <pre style="margin-top:-4mm">$ cd Desktop</pre>

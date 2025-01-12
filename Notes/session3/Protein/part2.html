@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
-    <meta content="Session 3: Layered material simulations" name="description"/>
+    <meta content="Session 3: Advanced Protein Simulation" name="description"/>
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
@@ -51,11 +51,14 @@
             <li>Complete the missing sections in the <code>MDP</code> template files
             </li>
             <li>Energy minimisation: <code>em.mdp</code>
-                <br>Set the maximum number of steps to 5000 and the force tolerance to 500&nbsp;
+                <br>Set the maximum number of steps to 5000 and the force tolerance to 1000&nbsp;
                 kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
             </li>
-            <li>Equilibration: <code>eq.mdp</code><br>
-                Set the run time to 100&nbsp;ps and the time step to 1&nbsp;fs.
+            <li><em>NVT </em>equilibration: <code>nvt.mdp</code><br>
+                Set the run time to 100&nbsp;ps and the time step to 2&nbsp;fs.
+            </li>
+            <li><em>NPT </em>equilibration: <code>npt.mdp</code><br>
+                Set the pressure to 1&nbsp;bar and the temperature to 300&nbsp;K.
             </li>
             <li>Production: <code>prod.mdp</code><br>
                 Set the run time to 5&nbsp;ns and the time step to 2&nbsp;fs.
@@ -80,22 +83,20 @@
         <ol>
             <li>Perform an energy minimisation</li>
             <li>Compile the run topology file for the energy minimisation:
-                <pre style="margin-top:1mm">$ gmx grompp -f MDP/em.mdp -c MMT_dec_solv_ions.gro -p MMT_dec_solv_ions.top -o em.tpr -pp em.top</pre>
+                <pre style="margin-top:1mm">$ gmx grompp -f MDP/em.mdp -c protein_solv_ions.gro -p protein_solv_ions.top -o em.tpr</pre>
                 <blockquote style="margin-top:1mm">
                     <code>-f</code> specifies the input run parameter <code>.mdp</code> file <br>
                     <code>-c</code> specifies the input coordinate file <br>
                     <code>-p</code> specifies the input topology file <br>
                     <code>-o</code> specifies the compiled output <code>.tpr</code> file <br>
-                    <code>-pp</code> specifies the output topology file <br>
                 </blockquote>
             </li>
             <li>Run the energy minimisation:
-                <pre style="margin-top:1mm">$ gmx mdrun -s em.tpr -deffnm em </pre>
+                <pre style="margin-top:1mm">$ gmx mdrun -v -s em.tpr -deffnm em </pre>
                 <blockquote style="margin-top:1mm">
+                    <code>&dash;v</code> specifies that the output should be "loud and noisy" <br>
                     <code>-s</code> specifies the compiled input <code>.tpr</code> file <br>
                     <code>-deffnm</code> specifies the output file naming pattern <br>
-                    <p style="margin-bottom:-5mm;"> <br> </p>
-                    <p class="note">You can include the <code>-v</code> option to print the log to the screen.</p>
                 </blockquote>
             </li>
             <li>Ensure that <code>Fmax</code> reached <code>emtol</code>:
@@ -104,25 +105,23 @@
                     If the energy minimisation was successful, the log file should end with a message similar to this
                     one:</p>
                 <pre style="margin-top:1mm">
-Steepest Descents converged to Fmax &lt; 500 in 1209 steps
-Potential Energy  = -4.5789000e+06
-Maximum force     =  4.9707333e+02 on atom 2904
-Norm of force     =  2.2770223e+01
+Steepest Descents converged to Fmax < 1000 in 673 steps
+Potential Energy  = -6.7293094e+05
+Maximum force     =  9.9000800e+02 on atom 1788
+Norm of force     =  3.3367692e+01
 </pre>
                 <p>
                     <strong>If instead you find something along these lines:</strong>
                 </p>
                 <pre style="margin-top:1mm">
-Steepest Descents converged to machine precision in 192 steps,
-but did not reach the requested Fmax &lt; 500.
+Steepest Descents converged to machine precision in 1920 steps,
+but did not reach the requested Fmax &lt; 1000.
 Potential Energy  = -6.8659256e+05
-Maximum force     =  6.5820524e+07 on atom 715
+Maximum force     =  11.5820524e+07 on atom 715
 Norm of force     =  1.6491472e+06
 </pre>
                 <p>This means that GROMACS was not able to reach a minimum where the maximum force was below the specified threshold. In this case,
-                    you will probably need to repeat parts of the assembly procedure or remove water molecules that are too close to the clay,
-                    organics or other waters. Before repeating, follow the <a
-                            href="part1.html#EM_toubleshoot"><em>EM Troubleshoot</em></a> instructions.
+                    you will probably need to repeat parts of the assembly procedure, such as solvating the system.
                 </p>
             </li>
         </ol>
@@ -137,18 +136,18 @@ Norm of force     =  1.6491472e+06
     <h2 class="enum" id="toc_3">Equilibrating the system</h2>
     <p>
         As in <a href="../../session2/part2.html#toc_2">Session 2</a>, in order to let your system reach
-        a stable state, you need an equilibration run. For this system, you will only perform one equilibration run with
-        temperature and pressure coupling (NPT ensemble).
+        a stable state, you need an equilibration run. For this system, you will again perform two restrained equilibrations: <em>NVT</em> and <em>NPT
+    </em>.
     </p>
     <div class="bbox">
-        <h3 id="Equilibrating_the_system_at_constant_temperature_and_pressure"></h3>
+        <h3 id="Equilibrating_the_system_at_constant_temperature"></h3>
         <ol>
-            <li>Equilibrate the system at constant temperature and pressure</li>
-            <li>Prepare the run script (<code>run_eq.sh</code>) for the equilibration run, referring to the <a
+            <li>Equilibrate the system at constant temperature</li>
+            <li>Prepare the run script (<code>run_nvt.sh</code>) for the equilibration run, referring to the <a
                     href="../../session2/part2.html#Equilibrating_the_system_at_constant_temperature">Session
                     2</a> instructions:
-                <pre style="margin-top:1mm">$ gmx grompp -f MDP/eq.mdp -c em.gro -p em.top -o eq.tpr -pp eq.top</pre>
-                <pre style="margin-top:1mm">$ gmx mdrun -v -s eq.tpr -deffnm eq -ntomp 1</pre>
+                <pre style="margin-top:1mm">$ gmx grompp -f MDP/nvt.mdp -c em.gro -p protein_solv_ions.top -r em.gro -o nvt.tpr</pre>
+                <pre style="margin-top:1mm">$ gmx mdrun -v -s nvt.tpr -deffnm nvt -ntomp 1</pre>
             </li>
             <li> Copy the input files to your Eddie scratch directory:
                 <pre style="margin-top:1mm">$ scp -r ~/session3 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/</pre>
@@ -161,7 +160,32 @@ Norm of force     =  1.6491472e+06
                 Navigate to the <code>session3</code> folder inside your directory
             </li>
             <li>Submit the job to the queue:
-                <pre style="margin-top:1mm">$ qsub run_eq.sh</pre>
+                <pre style="margin-top:1mm">$ qsub run_nvt.sh</pre>
+            </li>
+            <li>Use <code>qstat</code> to check the status of your job.
+                <pre style="margin-top:1mm">qstat -u &lt;UUN&gt;</pre>
+            </li>
+        </ol>
+    </div>
+
+     <div class="bbox">
+        <h3 id="Equilibrating_the_system_at_constant_temperature_pressure"></h3>
+        <ol>
+            <li>Equilibrate the system at constant temperature and pressure</li>
+            <li>Prepare the run script (<code>run_npt.sh</code>) for the equilibration run, referring to the <a
+                    href="../../session2/part2.html#Equilibrating_the_system_at_constant_temperature_and_pressure">Session
+                    2</a> instructions:
+                <pre style="margin-top:1mm">$ gmx grompp -f MDP/npt.mdp -c nvt.gro -p protein_solv_ions.top -r nvt.gro -t nvt.cpt -o npt.tpr</pre>
+                <pre style="margin-top:1mm">$ gmx mdrun -v -s npt.tpr -deffnm npt -ntomp 1</pre>
+            </li>
+            <li>Submit the job to the queue:
+                <pre style="margin-top:1mm">$ qsub run_npt.sh</pre>
+                <blockquote style="margin-top:1mm">
+                    <p class="note">
+                        Make sure that the <code>run_nvt.sh</code> script has finished before submitting the <code>run_npt.sh</code>
+                        script.
+                    </p>
+                </blockquote>
             </li>
             <li>Use <code>qstat</code> to check the status of your job.
                 <pre style="margin-top:1mm">qstat -u &lt;UUN&gt;</pre>
@@ -185,16 +209,15 @@ Norm of force     =  1.6491472e+06
                 Prepare the run script (<code>run_prod.sh</code>) for the production run:
                 <p style="margin-top:1mm">
                     Adjust the parameters from <a
-                    href="#Equilibrating_the_system_at_constant_temperature_and_pressure">before</a> so that the output files all have the
-                    name <code>prod</code> and the input files are the output files from the equilibration run.
+                    href="#Equilibrating_the_system_at_constant_temperature_pressure">before</a> so that the output files all have the
+                    name <code>prod</code> and the input files are the output files from the <em>NPT</em> equilibration run.
                 </p>
                 <blockquote style="margin-top:1mm">
-                    <p class="note">Make sure you use the <code>-t</code>
-                        option to conserve the velocities produced during the equilibration.</p>
+                    <p><em>Remember</em>: position restraints are removed, so you don't need the <code>-r</code> option</p>
                 </blockquote>
             </li>
             <li>
-                After the equilibration run has finished, submit the job to the queue:
+                After the <em>NPT</em> equilibration run has finished, submit the job to the queue:
                 <pre style="margin-top:1mm">$ qsub run_prod.sh</pre>
             </li>
         </ol>

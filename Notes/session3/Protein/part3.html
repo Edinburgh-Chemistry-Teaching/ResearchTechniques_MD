@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
-    <meta content="Session 3: Layered material simulations" name="description"/>
+    <meta content="Session 3: Advanced Protein Simulation" name="description"/>
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
@@ -66,7 +66,7 @@
                 <figure>
                     <img src="img/eq_temp.png" width="100%">
                     <figcaption>
-                        Example Xmgrace plot of the temperature evolution during equilibration.
+                        Example Xmgrace plot of the temperature evolution during <em>NVT</em> equilibration.
                     </figcaption>
                 </figure>
             </div>
@@ -163,133 +163,6 @@
             </div>
         </div>
     </div>
-
-    <h3 class="enum" id="toc_2_2">Calculating the radial distribution function (<abbr>RDF</abbr>)</h3>
-    <p>
-        The radial distribution function (<abbr>RDF</abbr>) is a measure of the probability of finding a particle at a
-        certain distance from another particle. We are going to use it to analyse the hydration shell of Na<sup>+</sup>
-        ions.
-    </p>
-    <div class="bbox">
-        <h3 id="Calculating_the_RDF"></h3>
-        <ol>
-            <li>
-                Calculate the radial distribution function of the ions
-            </li>
-            <li>
-                Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-make_ndx.html"
-                               target="_blank"><code>make_ndx</code></a> to create an index file for water OW atoms:
-                <p>GROMACS does not have water <code>OW</code> atoms in its default selections.
-                    Therefore, we have to first create a new index <code>.ndx</code> file that also contains this atom
-                    group.</p>
-                <pre style="margin-top:1mm">$ gmx make_ndx -f prod.gro -o OW.ndx</pre>
-                <blockquote style="margin-top:1mm">
-                    <p>Select OW atoms by adding the new group to the index file:<br>
-                        Type the line and press <code>Enter</code>.</p>
-                    <pre style="margin-top:1mm">&gt; a OW</pre>
-                    <p style="margin-top:-3mm">Exit and save the index file by typing <code>q</code> and pressing <code>Enter</code>.
-                    </p>
-                </blockquote>
-            </li>
-            <li>
-                Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-rdf.html" rel="noopener"
-                           target="_blank"><code>gmx rdf</code></a> to calculate the <abbr>RDF</abbr>:
-                <pre style="margin-top:1mm">
-$ gmx rdf -f prod.xtc -s prod.tpr -n OW.ndx -o rdf_Na_OW.xvg -seltype atom -selrpos atom
-  -b &lt;analysis_start_time&gt; -tu &lt;time_unit&gt; -norm number_density -rmax 1</pre>
-                <blockquote style="margin-top:1mm">
-                    <code>-f</code> specifies the trajectory file <br>
-                    <code>-s</code> specifies the input topology <code>.tpr</code> file <br>
-                    <code>-o</code> specifies the output file <br>
-                    <code>-seltype</code> specifies the selection type <br>
-                    <code>-selrpos</code> specifies the positions used in the analysis <br>
-                    <code>-b</code> specifies the start time for the analysis <br>
-                    <code>-tu</code> specifies the time unit <br>
-                    <code>-norm</code> specifies if the density should be normalised to 1.
-                        Here we select to keep the number density which will represent the number of atoms in the
-                        hydration shell <br>
-                    <code>-rmax</code> specifies the maximum distance between two atoms in the analysis <br>
-                    <p style="margin-top:2mm">Then, first select <code>OW</code> by typing the group number and hitting <code>Enter</code> and
-                        then add <code>Na</code> to the selection. Hit <code>Enter</code> again and exit with <code>Ctrl+D</code> <br>
-                </blockquote>
-            </li>
-            <li>
-                Use xmgrace to visualise the result.
-                <p>You should see a sharp peak followed by a smaller, broader peak with the plot then leveling off at the bulk density. The peaks
-                    correspond to the first and second hydration spheres of Na<sup>+</sup>. Compare the peak values from your graph to literature
-                    values (e.g. <i>ab initio</i> calculations from <a target="_blank" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8487239/">this</a> paper).
-                </p>
-            </li>
-        </ol>
-        <div class="flex-figure" style="margin-top:-8mm;">
-            <div class="figure" style="width: 70%">
-                <figure>
-                    <img src="img/rdf.png" width="100%">
-                    <figcaption>
-                        Example Xmgrace plot of the RDF evolution for water O<sup>2-</sup> to Na<sup>+</sup> during a production run.
-                    </figcaption>
-                </figure>
-            </div>
-        </div>
-    </div>
-
-    <h3 class="enum" id="toc_2_3">Calculating the linear number density</h3>
-    <p>
-        The linear number density is a measure of the distribution of components per unit length along one axis. When simulating minerals, the
-        density is perpendicular to the interfacial surface (i.e. along z). We are going to analyse the density of the decanoic acid molecules and
-        Na<sup>+</sup> ions.
-    </p>
-    <div class="bbox">
-        <h3 id="Calculating_the_linear_density"></h3>
-        <ol>
-            <li>
-                Calculate the linear density of decanoic acid and Na<sup>+</sup>
-            </li>
-            <li>
-                Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-density.html" rel="noopener"
-                           target="_blank"><code>gmx density</code></a> to calculate the decanoic acid density:
-                <pre style="margin-top:1mm">$ gmx density -s prod.tpr -f prod.xtc -o lindens_dec.xvg -b &lt;analysis_start_time&gt; -d Z -dens number</pre>
-                <blockquote style="margin-top:1mm">
-                    <code>-s</code> specifies the input topology <code>.tpr</code> file <br>
-                    <code>-f</code> specifies the trajectory file <br>
-                    <code>-o</code> specifies the output file <br>
-                    <code>-b</code> specifies the start time for the analysis (in ps) <br>
-                    <code>-d</code> specifies the direction to perform the analysis in <br>
-                    <code>-dens</code> specifies the type of density to calculate <br>
-                    <p style="margin-top:2mm">Then, select <code>DECA</code> by typing the group number and hitting <code>Enter</code> </p>
-                </blockquote>
-            </li>
-            <li>
-                Repeat the calculation for Na<sup>+</sup> and the clay (MMT).
-                <blockquote style="margin-top:1mm">
-                    <p>Remember to change the name of the output file each time. </p>
-                </blockquote>
-            </li>
-            <li>
-                Use xmgrace to visualise the result, plotting the graphs separately or together.
-                <blockquote style="margin-top:1mm">
-                    <p class="note">If plotting the clay density with another, you may want to zoom in on the y-axis. You can do this by setting
-                        the y-axis bounds using the <code>Plot</code> &rarr; <code>Axis properties</code> and selecting the <code>Y-axis</code> in
-                        the pop-up menu.
-                    </p>
-                </blockquote>
-                <p>You should see that each component mainly occupies a distinct area of the box, with some overlap between decanoic acid and
-                    Na<sup>+</sup>. Why do you think that is? Why are the cations close to the clay surface? Why do you think
-                    the decanoic acid is not found at the clay surface? Ask the demonstrators if you're unsure.
-                </p>
-            </li>
-        </ol>
-        <div class="flex-figure" style="margin-top:-8mm;">
-            <div class="figure" style="width: 70%">
-                <figure>
-                    <img src="img/lindens.png" width="100%">
-                    <figcaption style="width:165mm; margin-left:-8mm">
-                        Example Xmgrace plot of the linear number density of clay, decanoic acid and Na<sup>+</sup> during a production run.
-                    </figcaption>
-                </figure>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div class="box">
@@ -306,14 +179,15 @@ $ gmx rdf -f prod.xtc -s prod.tpr -n OW.ndx -o rdf_Na_OW.xvg -seltype atom -selr
                 <pre style="margin-top:-2mm">$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/prod.xtc ~/session3/</pre>
             </li>
             <li>Follow the same procedure as in the <a href="../../session2/part3.html#Rendering_a_figure_with_VMD">previous session</a> to render
-                a figure of the system.
+                    a figure of the system.
             </li>
             <li>Follow the same procedure as in the <a href="../../session2/part3.html#Visualise_a_trajectory_with_VMD">previous session</a> to
-                visualise the trajectory.
+                    visualise the trajectory.
             </li>
         </ol>
     </div>
 </div>
+
 
 <div class="box">
     <h2>This brings us to the end of the session. Please return to the main menu and provide feedback if you have not done so already.</h2>
