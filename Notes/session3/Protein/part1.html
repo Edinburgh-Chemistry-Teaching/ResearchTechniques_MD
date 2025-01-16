@@ -56,8 +56,9 @@
 
     </div>
 
-    <p> Let's get started! The protein we will model for this tutorial is Factor Xa, which plays a critical role in the formation of blood clots.
-        The first step is to download the PDB file for 1FJS and check it for errors.
+    <p> Let's get started! The protein we will model for this tutorial is the ligand-binding core of a glutamate receptor, which is
+        often targeted for the treatment of neurological diseases.
+        The first step is to download the PDB file for 4FAT and check it for errors.
     </p>
 
     <div class="bbox">
@@ -66,26 +67,28 @@
             <li> Download the protein structure file into the <code>session3</code> directory
             </li>
             <li> Download the structure:
-                <pre style="margin-top:1mm;">$ wget http://www.rcsb.org/pdb/files/1fjs.pdb . </pre>
+                <pre style="margin-top:1mm;">$ wget https://www.rcsb.org/pdb/files/4fat.pdb . </pre>
             </li>
             <li>
                 Read through the file using either <code>vim</code> or <code>more</code>. Do you notice any new line types that weren't present in
                 the PDB file you used in <a href="../../session2/part1.html#Download the protein structure" target="_blank">session 2</a>? If
-                you're unsure, check the <a href="https://www.rcsb.org/structure/1FJS" target="_blank">RCSB webpage</a> for hints.
+                you're unsure, check the <a href="https://www.rcsb.org/structure/1FJS" target="_blank">RCSB webpage</a> for details about the
+                structure.
             </li>
             <li>
                 Check there are no <code>MISSING</code> entries, which detail either atoms or whole residues that are not present in the crystal
                 structure:
-                <pre style="margin-top:1mm;">$ grep MISSING 1fjs.pdb </pre>
+                <pre style="margin-top:1mm;">$ grep MISSING 4fat.pdb </pre>
                 <p style="margin-top:-3mm">If nothing is returned, this <em>should</em> indicate that the stucture is complete, although it is not a
                     guarantee.</p>
             </li>
             <li>Visualise the protein in VMD. Can you identify which atoms belong to the new <code>HETATM</code> lines?
-                <pre style="margin-top:1mm;">$ vmd 1fjs.pdb</pre>
+                <pre style="margin-top:1mm;">$ vmd 4fat.pdb</pre>
                 <p> Change the representation of the structure as <a href="../../session2/part1.html#change_rep" target="_blank">before</a>.
                     Change the <code>Drawing Method</code> to <code>CPK</code> and in the <code>Selected Atoms</code> field type <code>not protein</code>.
-                    The atoms shown are the inhibitor ZK that is complexed with the protein, glycerol, Ca<sup>2+</sup> cations, Cl<sup>-</sup>
-                    anions and water.
+                    The atoms shown are tan aollosteric modulator (JAMI1001A) complexed with the protein, glutamic acid, glycerol, Li<sup>+</sup> cations,
+                    SO<sub>4
+                    </sub><sup>2-</sup> anions and water.
                 <blockquote style="margin-top:1mm">
                     To understand where the non-protein atoms are located relative to the protein, you can create a new rep with:
                     <code>Selected Atoms</code> as <code>protein</code>, <code>Drawing Method</code> as <code>New Cartoon</code> and
@@ -100,8 +103,8 @@
         <div class="flex-figure" style="margin-top:-8mm;">
             <div class="figure" style="width: 50%">
                 <figure>
-                    <img src="img/1fjs_extra.png" width="100%">
-                    <figcaption>1fjs non-protein atoms visualised in <abbr>VMD</abbr>.
+                    <img src="img/4fat_extra.png" width="100%">
+                    <figcaption>4fat non-protein atoms visualised in <abbr>VMD</abbr>.
                     </figcaption>
                 </figure>
             </div>
@@ -132,7 +135,7 @@
             <li> Clean the PDB file
             </li>
             <li> Remove non-protein atoms:
-                <pre style="margin-top:1mm;">$ grep -v HETATM 1fjs.pdb > protein_bonds.pdb</pre>
+                <pre style="margin-top:1mm;">$ grep -v HETATM 4fat.pdb > protein_bonds.pdb</pre>
                 <blockquote style="margin-top:1mm">
                     <code>-v</code> specifies that non-matching lines should be returned
                 </blockquote>
@@ -142,16 +145,14 @@
                 <pre style="margin-top:1mm;">$ grep -v CONECT protein_bonds.pdb > protein.pdb</pre>
             </li>
             <li>
-                Visualise the cleaned structure in VMD. Change the representation so that the <code>Coloring Method</code> is <code>chain</code>
-                and the <code>Drawing Method</code> is <code>New Cartoon</code>. <br> How many chains are there? Can you identify what they are
-                called, using either <code>VMD</code> or the PDB file?
+                Visualise the cleaned structure in VMD. Change the representation so that the <code>Drawing Method</code> is <code>New Cartoon</code>.
             </li>
         </ol>
         <div class="flex-figure" style="margin-top:-8mm;">
             <div class="figure" style="width: 50%">
                 <figure>
                     <img src="img/protein.png" width="100%">
-                    <figcaption>1fjs protein structure visualised in <abbr>VMD</abbr>.
+                    <figcaption>4fat protein structure visualised in <abbr>VMD</abbr>.
                     </figcaption>
                 </figure>
             </div>

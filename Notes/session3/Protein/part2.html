@@ -51,7 +51,7 @@
             <li>Complete the missing sections in the <code>MDP</code> template files
             </li>
             <li>Energy minimisation: <code>em.mdp</code>
-                <br>Set the maximum number of steps to 5000 and the force tolerance to 1000&nbsp;
+                <br>Set the maximum number of steps to 5000 and the force tolerance to 500&nbsp;
                 kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
             </li>
             <li><em>NVT </em>equilibration: <code>nvt.mdp</code><br>
@@ -105,19 +105,19 @@
                     If the energy minimisation was successful, the log file should end with a message similar to this
                     one:</p>
                 <pre style="margin-top:1mm">
-Steepest Descents converged to Fmax < 1000 in 673 steps
-Potential Energy  = -6.7293094e+05
-Maximum force     =  9.9000800e+02 on atom 1788
-Norm of force     =  3.3367692e+01
+Steepest Descents converged to Fmax < 500 in 1740 steps
+Potential Energy  = -6.8017556e+05
+Maximum force     =  4.9374719e+02 on atom 3978
+Norm of force     =  1.3234327e+01
 </pre>
                 <p>
                     <strong>If instead you find something along these lines:</strong>
                 </p>
                 <pre style="margin-top:1mm">
-Steepest Descents converged to machine precision in 1920 steps,
-but did not reach the requested Fmax &lt; 1000.
-Potential Energy  = -6.8659256e+05
-Maximum force     =  11.5820524e+07 on atom 715
+Steepest Descents converged to machine precision in 2920 steps,
+but did not reach the requested Fmax &lt; 500.
+Potential Energy  = -2.8659256e+06
+Maximum force     =  11.5820524e+02 on atom 715
 Norm of force     =  1.6491472e+06
 </pre>
                 <p>This means that GROMACS was not able to reach a minimum where the maximum force was below the specified threshold. In this case,
@@ -223,13 +223,14 @@ Norm of force     =  1.6491472e+06
         </ol>
     </div>
     <p>
-        Looking at the output file of a previous simulation of a similar system, you can estimate that this simulation should run quickly once it
-        starts.
+        Looking at the output file of a previous simulation of a similar system, you can estimate that this simulation should take ~40 minutes to
+        finish once it starts.
     </p>
     <pre style="margin-top:-3mm">               Core t (s)   Wall t (s)        (%)
-       Time:      325.137      325.138      100.0
+       Time:     2403.451     2403.451      100.0
+                         40:03
                  (ns/day)    (hour/ns)
-Performance:     1328.669        0.018</pre>
+Performance:      179.742        0.134</pre>
 </div>
 
 <div class="box">
