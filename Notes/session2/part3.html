@@ -43,8 +43,9 @@
                 <ol>
                     <li id="interactive_login" style="margin-top:2mm"> Use the <code>qlogin</code> command to request an interactive session with
                         16&nbsp;G of memory:
-                        <pre style="margin-top:1mm">$ qlogin -l h_vmem=16G</pre>
+                        <pre style="margin-top:1mm">$ qlogin -l h='node1b09' -l h_vmem=16G</pre>
                         <blockquote style="margin-top:1mm">
+                            <code>-l h</code> specifies the node to use. Here we use one set aside for the course <br>
                             <code>-l h_vmem</code> specifies the amount of memory
                         </blockquote>
                     </li>
@@ -551,15 +552,16 @@
                         writing documents in LaTeX in the upcoming sessions.</p>
                     </blockquote>
                 <p>Your output will look similar to this:</p>
-                <pre style="margin-top:1mm">           :-) GROMACS - gmx report-methods, 2023.3 (-:
+                <pre style="margin-top:1mm">                  :-) GROMACS - gmx report-methods, 2024.4 (-:
 
-Executable:   /exports/applications/apps/SL7/gromacs/2023.3/gromacs_final/bin/gmx
-Data prefix:  /exports/applications/apps/SL7/gromacs/2023.3/gromacs_final
-Working dir:  /exports/eddie/scratch/s2123329
+Executable:   /exports/applications/apps/RL9/gromacs/2024.4/bin/gmx
+Data prefix:  /exports/applications/apps/RL9/gromacs/2024.4
+Working dir:  /exports/csce/eddie/chem/groups/Erastova/Sarah/session2
 Command line:
-    gmx report-methods -s md.tpr
+  gmx report-methods -s md/md.tpr
 
-Reading file md.tpr, VERSION 2023.3 (single precision)
+Reading file md/md.tpr, VERSION 2023.3 (single precision)
+Note: file tpx version 129, software tpx version 134
 section: Methods
 subsection: Simulation system
 A system of 9246 molecules (29398 atoms) was simulated.
@@ -569,12 +571,12 @@ A total of 1 ns were simulated with a time step of 2 fs.
 Neighbor searching was performed every 10 steps.
 The PME algorithm was used for electrostatic interactions.
 with a cut-off of 1.2 nm.
-A reciprocal grid of 64 x 64 x 64 cells was used with 4th order B-spline interpolation.
+A reciprocal grid of 52 x 52 x 52 cells was used with 4th order B-spline interpolation.
 A single cut-off of 1.2 nm was used for Van der Waals interactions.
 Temperature coupling was done with the V-rescale algorithm.
-Pressure coupling was done with the Berendsen algorithm.
+Pressure coupling was done with the C-rescale algorithm.
 
-GROMACS reminds you: &quot;Furious activity is no substitute for understanding.&quot; (H.H. Williams)</pre>
+GROMACS reminds you: "I think everybody should like everybody." (Andy Warhol)</pre>
             </li>
         </ul>
     </div>
