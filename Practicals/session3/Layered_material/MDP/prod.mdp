@@ -33,7 +33,7 @@ Pcoupl                   = C-rescale
 Pcoupltype               = semiisotropic
 tau_P                    = 2.0
 compressibility          = 4.5e-5 4.5e-5
-ref_P                    = 1.0 1.0
+ref_P                    = 1.0 10.0
 
 ; GENERATE VELOCITIES FOR STARTUP RUN
 gen_vel                  = no    				; Assign velocities to particles by taking them randomly from a Maxwell distribution
