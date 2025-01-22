@@ -7,18 +7,20 @@
 
 # Request the gpu queue
 #$ -q gpu
+#$ -l gpu=1
 
-# Request one slot on the gpu-a100 parallel environment
-#$ -pe gpu-a100 1
+# Request one GPU on the gpu-a100 parallel environment
+#$ -pe sharedmem 1
 
-# Request 512 GB system RAM
+# Request 16 GB system RAM
 # the total system RAM available to the job is the value specified here multiplied by  the number of requested GPUs (above)
-#$ -l h_vmem=512G
+#$ -l h_vmem=16G
 
 # Combine standard output and error files into a single job file with job ID
 #$ -j y
 
 # Initialise the environment modules and load CUDA and Gromacs
+export CUDA_VISIBLE_DEVICES=$SGE_HGR_gpu
 . /etc/profile.d/modules.sh
 module load gromacs/2024.4
 

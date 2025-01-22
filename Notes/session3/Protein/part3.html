@@ -64,9 +64,9 @@
         <div class="flex-figure" style="margin-top:-8mm;">
             <div class="figure" style="width: 70%">
                 <figure>
-                    <img src="img/eq_temp.png" width="100%">
+                    <img src="img/temp.png" width="100%">
                     <figcaption>
-                        Example Xmgrace plot of the temperature evolution during <em>NVT</em> equilibration.
+                        Example Xmgrace plot of the temperature evolution during <em>NVT</em> and <em>NPT</em> equilibration.
                     </figcaption>
                 </figure>
             </div>
@@ -100,9 +100,9 @@
          <div class="flex-figure" style="margin-top:-8mm;">
             <div class="figure" style="width: 70%">
                 <figure>
-                    <img src="img/eq_pres.png" width="100%">
+                    <img src="img/pres.png" width="100%">
                     <figcaption>
-                        Example Xmgrace plot of the pressure evolution during equilibration.
+                        Example Xmgrace plot of the pressure evolution during <em>NPT</em> equilibration.
                     </figcaption>
                 </figure>
             </div>
@@ -120,6 +120,8 @@
         <li>Determine the root-mean-square fluctuation (RMSF) of the protein to assess its flexibility </li>
         <li>Perform a principal component analysis (PCA) to determine the fundamental motions in the protein </li>
     </ul>
+    <p><strong>For this section, you will first use the <code>example_data</code> we have provided. This is a 50 ns simulation of the system
+        .</strong></p>
     <p>
         Before the analysis can begin, we must ensure that the protein molecule is whole, and not "jumping" from one edge of the central image to
         the other. For the analysis, we also need <code>.gro</code> and <code>.tpr</code> files with the protein centered.
@@ -139,7 +141,7 @@
             </li>
             <li>
                 Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-trjconv.html" rel="noopener"
-                           target="_blank"><code>gmx trjconv</code></a> to center the protein in the trajectory <code>.xtc</code> file
+                       target="_blank"><code>gmx trjconv</code></a> to center the protein in the trajectory <code>.xtc</code> file
                 <pre style="margin-top:1mm">$ gmx trjconv -s prod.tpr -f prod.xtc -o prod_centered.xtc -pbc mol -ur compact -center</pre>
                 <blockquote style="margin-top:1mm">
                     <code>-s</code> specifies the input topology <code>.tpr</code> file <br>
@@ -175,16 +177,10 @@
                            target="_blank"><code>gmx grompp</code></a> to generate a <code>.tpr</code> file of the centered protein
                 <pre style="margin-top:1mm">$ gmx grompp -f MDP/prod.mdp -c prod_centered.gro -p protein_solv_ions.top -o prod_centered.tpr</pre>
                 <blockquote style="margin-top:1mm">
-                    <code>-s</code> specifies the input topology <code>.tpr</code> file <br>
-                    <code>-f</code> specifies the input coordinate file <br>
-                    <code>-o</code> specifies the output coordinate file <br>
-                    <code>-pbc</code> specifies the type of periodic boundary condition treatment. We select <code>mol</code> which puts the center
-                    of mass of the molecule in the box <br>
-                    <code>-ur</code> specifies the unit cell representation for <code>-pbc</code> <br>
-                    <code>-center</code> specifies that the system should be centered in the box <br>
-                    <p style="margin-top:2mm">Then, for centering select <code>protein</code> by typing the group number and hitting <code>Enter
-                    </code> and for output select <code>system</code> by typing the group number and hitting <code>Enter
-                    </code> </p>
+                    <code>-f</code> specifies the input parameter file <br>
+                    <code>-c</code> specifies the input coordinate file <br>
+                    <code>-p</code> specifies the input topology file <br>
+                    <code>-o</code> specifies the output binary file <br>
                 </blockquote>
             </li>
         </ol>
@@ -200,7 +196,7 @@
         It is only after the system has reached equilibrium that you are producing meaningful data that can be representative of the simulated system.
     </p>
     <div class="bbox">
-        <h3 id="Calculating_the_RMSD"></h3>
+        <h3 id="Calculate_the_RMSD"></h3>
         <ol>
             <li>
                 Calculate the <abbr>RMSD</abbr> of the protein backbone
@@ -238,7 +234,7 @@
         usually computed for the alpha-carbon atoms and displayed as "per residue".
     </p>
     <div class="bbox">
-        <h3 id="Calculating_the_RMSF"></h3>
+        <h3 id="Calculate_the_RMSF"></h3>
         <ol>
             <li>
                 Calculate the <abbr>RMSF</abbr> of the alpha-carbons
@@ -283,13 +279,17 @@
     </div>
     <h3 class="enum" id="toc_2_3">Performing principal component analysis (<abbr>PCA</abbr>)</h3>
     <p>
-        The RMSF is
+        Principal component analysis is a dimensionality reduction technique, that is used to determine fundamental motions in biomolecules. It is
+        often difficult to identify these motions visually as both slow global motions and fast local fluctuations occur simultaneously. PCA involves
+        computing a positional covariance matrix and diagonalising it to determine characteristic eigenvectors and their eigenvalues. The
+        eigenvectors can then be used to visualise the slow motions in the biomolecule. The eigenvectors corresponding to the largest eigenvalues
+        are called "principal components".
     </p>
     <div class="bbox">
-        <h3 id="Calculating_the_PCA"></h3>
+        <h3 id="Calculate_the_covariance matrix"></h3>
         <ol>
             <li>
-                Calculate the <abbr>RMSF</abbr> of the alpha-carbons
+                Calculate the covariance matrix of the alpha-carbons
             </li>
             <li>
                 Start an interactive session on Eddie:
@@ -299,36 +299,85 @@
                 </p>
             </li>
             <li>
-                Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-density.html" rel="noopener"
-                           target="_blank"><code>gmx density</code></a> to calculate the decanoic acid density:
-                <pre style="margin-top:1mm">$ gmx density -s prod.tpr -f prod.xtc -o lindens_dec.xvg -b &lt;analysis_start_time&gt; -d Z -dens number</pre>
+                Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-covar.html" rel="noopener"
+                           target="_blank"><code>gmx covar</code></a> to compute the covariance matrix:
+                <pre style="margin-top:1mm">$ gmx covar -s prod_centered.tpr -f prod_centered.xtc -tu ns -mwa</pre>
                 <blockquote style="margin-top:1mm">
                     <code>-s</code> specifies the input topology <code>.tpr</code> file <br>
                     <code>-f</code> specifies the trajectory file <br>
-                    <code>-o</code> specifies the output file <br>
-                    <code>-b</code> specifies the start time for the analysis (in ps) <br>
-                    <code>-d</code> specifies the direction to perform the analysis in <br>
-                    <code>-dens</code> specifies the type of density to calculate <br>
-                    <p style="margin-top:2mm">Then, select <code>DECA</code> by typing the group number and hitting <code>Enter</code> </p>
+                    <code>-tu</code> specifies the time unit <br>
+                    <code>-mwa</code> specifies that mass-weighted analysis should be performed <br>
+                    <p style="margin-top:2mm">Then, select <code>C-alpha</code> by typing the group number and hitting <code>Enter</code> for both
+                    fitting and covariance analysis</p>
                 </blockquote>
+                <p>This will output the eigenvalues as <code>eigenval.xvg</code> and eigenvectors as <code>eigenvec.trr</code></p>
             </li>
-            <li>Visualise the result in xmgrace and determine the time point at which the system is equilibrated. You will <strong>begin the
-                subsequent analyses starting from this time point</strong>.
-            </li>
-            <li>Save the xmgrace plot as a <code>.png</code> file.
+            <li>Visualise the eigenvalues in xmgrace. You should see that the magnitudes get much smaller as the eigenvalue increases, with only a
+                few contributing meaningfully to the dynamics of the protein.
             </li>
         </ol>
         <div class="flex-figure" style="margin-top:-8mm;">
             <div class="figure" style="width: 70%">
                 <figure>
-                    <img src="img/rmsf.png" width="100%">
+                    <img src="img/eigenval.png" width="100%">
                     <figcaption>
-                        Example Xmgrace plot of the RMSD evolution for the protein backbone during a production run.
+                        Example Xmgrace plot of the first 20 eigenvalues for the alpha carbons during a production run.
                     </figcaption>
                 </figure>
             </div>
         </div>
     </div>
+    <div class="bbox">
+        <h3 id="Diagonalise_the_matrix"></h3>
+        <ol>
+            <li>
+                Diagonalise the matrix
+            </li>
+            <li>
+                Start an interactive session on Eddie:
+                <p>
+                    Use the instructions from <a href="../../session2/part3.html#interactive_login">Session 2</a> to
+                    start an interactive session on Eddie and load the GROMACS module.
+                </p>
+            </li>
+            <li>
+                Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-anaeig.html" rel="noopener"
+                           target="_blank"><code>gmx anaeig</code></a> to diagonalise the matrix:
+                <pre style="margin-top:1mm">$ gmx anaeig -s prod_centered.tpr -f prod_centered.xtc -v eigenvec.trr -proj proj.xvg -2d 2dproj.xvg
+                -extr extreme.pdb -filt filtered.xtc -first 1 -last 1 -tu ns</pre>
+                <blockquote style="margin-top:1mm">
+                    <code>-s</code> specifies the input topology <code>.tpr</code> file <br>
+                    <code>-f</code> specifies the trajectory file <br>
+                    <code>-v</code> specifies the trajectory file <br>
+                    <code>-proj</code> calculates projections of the trajectory on the eigenvectors <br>
+                    <code>-2d</code> calculates a 2d projection of the trajectory on <code>-first</code> and <code>-last</code> eigenvectors<br>
+                    <code>-extr</code> calculates two extreme projections along the trajectory on the average structure<br>
+                    <code>-filt</code> filters the trajectory to show the motion only between the specified eigenvectors <br>
+                    <code>-first</code> specifies the first eigenvector for analysis <br>
+                    <code>-last</code> specifies the last eigenvector for analysis <br>
+                    <code>-tu</code> specifies the time unit <br>
+                    <p style="margin-top:2mm">Then, select <code>C-alpha</code> by typing the group number and hitting <code>Enter</code> for both
+                    fitting and covariance analysis</p>
+                </blockquote>
+            </li>
+            <li>Visualise
+            </li>
+        </ol>
+        <div class="flex-figure" style="margin-top:-8mm;">
+            <div class="figure" style="width: 70%">
+                <figure>
+                    <img src="img/eigenval.png" width="100%">
+                    <figcaption>
+                        Example Xmgrace plot of the first 20 eigenvalues for the alpha carbons during a production run.
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <h3 class="enum" id="toc_2_4">Analyse your own simulation</h3>
+    <p> Once your simulation has finished running, perform the above analysis on your system and compare the results. In what ways are they
+        similar, and in what ways are they different? Do you think 5 ns is long enough to capture the main movements of this system?
+    </p>
 </div>
 
 <div class="box">
@@ -341,8 +390,8 @@
         <ol>
             <li>Visualise the system in <abbr>VMD</abbr></li>
             <li>Transfer the files you want to visualise to your VM:
-                <pre style="margin-top:1mm">$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/prod.gro ~/session3/</pre>
-                <pre style="margin-top:-2mm">$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/prod.xtc ~/session3/</pre>
+                <pre style="margin-top:1mm">$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/prod.gro ~/Desktop/session3/</pre>
+                <pre style="margin-top:-2mm">$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/prod.xtc ~/Desktop/session3/</pre>
             </li>
             <li>Follow the same procedure as in the <a href="../../session2/part3.html#Rendering_a_figure_with_VMD">previous session</a> to render
                     a figure of the system.

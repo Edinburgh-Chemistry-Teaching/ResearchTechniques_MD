@@ -44,10 +44,12 @@
                 <pre style="margin-top:-0.1mm;">$ cd </pre></li>
 
             <li style="margin-bottom:-0.1mm;">Copy the <code>session3</code> folder from practicals to your home directory:
-                <pre style="margin-top:-0.1mm;">$ cp -r /home/student/practicals/session3 .</pre></li>
+                <pre style="margin-top:-0.1mm;">$ cp -r /home/student??/practicals/session3 /home/student??/Desktop/</pre>
+                <blockquote style="margin-top:1mm">Remember to replace <code>student??</code> with your login username</blockquote>
+            </li>
 
             <li style="margin-bottom:-0.1mm;">Change into the <code>session3</code> directory:
-                <pre style="margin-top:-0.1mm;">$ cd session3</pre></li>
+                <pre style="margin-top:-0.1mm;">$ cd Desktop/session3</pre></li>
         </ol>
 
         <p><strong><em>WARNING</em></strong> ⚠️<br>
@@ -56,9 +58,9 @@
 
     </div>
 
-    <p> Let's get started! The protein we will model for this tutorial is the ligand-binding core of a glutamate receptor, which is
-        often targeted for the treatment of neurological diseases.
-        The first step is to download the PDB file for 4FAT and check it for errors.
+    <p> Let's get started! The protein we will model for this tutorial is a bacteriophage T4 lysozyme. Lysozymes degrade polysaccharides that are
+        part of bacterial cell walls and so they are targeted for their antibacterial function. The first step is to download the PDB file for 148L
+        and check it for errors.
     </p>
 
     <div class="bbox">
@@ -67,44 +69,42 @@
             <li> Download the protein structure file into the <code>session3</code> directory
             </li>
             <li> Download the structure:
-                <pre style="margin-top:1mm;">$ wget https://www.rcsb.org/pdb/files/4fat.pdb . </pre>
+                <pre style="margin-top:1mm;">$ wget https://www3.mpibpc.mpg.de/groups/de_groot/compbio1/p4/148L.pdb </pre>
             </li>
             <li>
                 Read through the file using either <code>vim</code> or <code>more</code>. Do you notice any new line types that weren't present in
                 the PDB file you used in <a href="../../session2/part1.html#Download the protein structure" target="_blank">session 2</a>? If
-                you're unsure, check the <a href="https://www.rcsb.org/structure/1FJS" target="_blank">RCSB webpage</a> for details about the
+                you're unsure, check the <a href="https://www.rcsb.org/structure/148L" target="_blank">RCSB webpage</a> for details about the
                 structure.
             </li>
             <li>
                 Check there are no <code>MISSING</code> entries, which detail either atoms or whole residues that are not present in the crystal
                 structure:
-                <pre style="margin-top:1mm;">$ grep MISSING 4fat.pdb </pre>
+                <pre style="margin-top:1mm;">$ grep MISSING 148L.pdb </pre>
                 <p style="margin-top:-3mm">If nothing is returned, this <em>should</em> indicate that the stucture is complete, although it is not a
                     guarantee.</p>
             </li>
             <li>Visualise the protein in VMD. Can you identify which atoms belong to the new <code>HETATM</code> lines?
-                <pre style="margin-top:1mm;">$ vmd 4fat.pdb</pre>
+                <pre style="margin-top:1mm;">$ vmd 148L.pdb</pre>
                 <p> Change the representation of the structure as <a href="../../session2/part1.html#change_rep" target="_blank">before</a>.
-                    Change the <code>Drawing Method</code> to <code>CPK</code> and in the <code>Selected Atoms</code> field type <code>not protein</code>.
-                    The atoms shown are tan aollosteric modulator (JAMI1001A) complexed with the protein, glutamic acid, glycerol, Li<sup>+</sup> cations,
-                    SO<sub>4
-                    </sub><sup>2-</sup> anions and water.
+                    Change the <code>Drawing Method</code> to <code>CPK</code> and in the <code>Selected Atoms</code> field type <code>not
+                        chain E</code>.
+                    The atoms shown are part of a cell wall (a protein which you can visualise using <code>chain S</code>, thioethylene glycol and
+                    water </p>
                 <blockquote style="margin-top:1mm">
                     To understand where the non-protein atoms are located relative to the protein, you can create a new rep with:
-                    <code>Selected Atoms</code> as <code>protein</code>, <code>Drawing Method</code> as <code>New Cartoon</code> and
+                    <code>Selected Atoms</code> as <code>chain E</code>, <code>Drawing Method</code> as <code>New Cartoon</code> and
                     <code>Material</code> as <code>Ghost</code>.
                     <p class="note" style="margin-top:2mm">Most PDB files do not contain hydrogen atoms as they are too light to be detected with
-                        X-ray
-                        crystallography.
-                        Therefore, only the oxygen atoms in the water molecules are present.</p>
+                        X-ray crystallography. Therefore, only the oxygen atoms in the water molecules are present.</p>
                 </blockquote>
             </li>
         </ol>
         <div class="flex-figure" style="margin-top:-8mm;">
             <div class="figure" style="width: 50%">
                 <figure>
-                    <img src="img/4fat_extra.png" width="100%">
-                    <figcaption>4fat non-protein atoms visualised in <abbr>VMD</abbr>.
+                    <img src="img/148L_extra.png" width="100%">
+                    <figcaption>148L non-protein atoms visualised in <abbr>VMD</abbr>.
                     </figcaption>
                 </figure>
             </div>
@@ -116,9 +116,8 @@
                 href="https://server.poissonboltzmann.org/pdb2pqr" target="_blank">PDB2PQR</a>, has been developed to tackle the different
         problems.
     </p>
-    <p>For our PDB, the only issues are the extra atoms, which can be removed be simply deleting the lines that being with <code>HETATM
-        </code> followed by the <code>CONECT</code> lines. The <code>HETATM</code> bonds cannot be easily distinguished from the protein bonds, and
-        so all bond information must be deleted. GROMACS can infer the bond information, so it is not needed.
+    <p>For our PDB, the issues are the extra atoms, which can be removed be simply deleting the lines that they're coordinates are on, and the
+        <code>TER</code> record for the protein of interest is incorrect.
     </p>
     <p>
         Other errors that can be solved by simple text editing are:</p>
@@ -135,7 +134,7 @@
             <li> Clean the PDB file
             </li>
             <li> Remove non-protein atoms:
-                <pre style="margin-top:1mm;">$ grep -v HETATM 4fat.pdb > protein_bonds.pdb</pre>
+                <pre style="margin-top:1mm;">$ grep -v HETATM 148L.pdb > protein_bonds.pdb</pre>
                 <blockquote style="margin-top:1mm">
                     <code>-v</code> specifies that non-matching lines should be returned
                 </blockquote>
@@ -143,6 +142,20 @@
             <li>
                 Remove bond information:
                 <pre style="margin-top:1mm;">$ grep -v CONECT protein_bonds.pdb > protein.pdb</pre>
+                <blockquote style="margin-top:1mm;">
+                    The <code>HETATM</code> bonds cannot be easily distinguished from the protein bonds, and so all bond information must be
+                    deleted. GROMACS can infer the bond information, so it is not needed.
+                </blockquote>
+            </li>
+            <li>Remove protein chain S:
+                <p>Open the <code>.pdb</code> file. At the bottom you should see <code>ATOM</code> entries with <code>S</code> after
+                    the resname. You should delete these so that only chain E remains. Ensure you also deleted the <code>TER</code> entry for chain S.
+                </p>
+            </li>
+            <li>
+                Correct the <code>TER</code> for chain E:
+                <p>Open the <code>.pdb</code> file and navigate to the bottom. Remove the entry for <code>N ASN E</code> and change
+                    the <code>TER</code> entry so that it reads <code>TER    1317      LYS E 162</code></p>
             </li>
             <li>
                 Visualise the cleaned structure in VMD. Change the representation so that the <code>Drawing Method</code> is <code>New Cartoon</code>.
@@ -152,7 +165,7 @@
             <div class="figure" style="width: 50%">
                 <figure>
                     <img src="img/protein.png" width="100%">
-                    <figcaption>4fat protein structure visualised in <abbr>VMD</abbr>.
+                    <figcaption>148L protein structure visualised in <abbr>VMD</abbr>.
                     </figcaption>
                 </figure>
             </div>

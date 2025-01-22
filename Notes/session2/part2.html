@@ -130,7 +130,7 @@ Norm of force     =  3.5967257e+03</pre>
                         <code>water</code>
                         Set the coloring method to ColorID, select white as the colour, set the drawing method to <code>QuickSurf</code>
                         and the
-                        Material to <code>Transparent</code>
+                        Material to <code>Ghost</code>
                     </li>
                     <li>
                         Create a new representation for the ions with the selection command <code> type NA CL</code>.
@@ -194,10 +194,10 @@ Norm of force     =  3.5967257e+03</pre>
                 on the protein
             </li>
             <li>
-                Open the topology file <code>em.top</code> in a text editor and find the line that specifies the position restraints for the protein.
+                Open the topology file <code>protein-solvated-ions.top</code> in a text editor and find the line that specifies the position restraints for the protein.
             </li>
             <li>Copy the input files to your Eddie HPC scratch directory:<br>
-                <pre style="margin-top:1mm">$ scp -r ~/session2 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/</pre>
+                <pre style="margin-top:1mm">$ scp -r ~/Desktop/session2 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/</pre>
                 <blockquote style="margin-top:1mm">
                     <p class="note"> Replace <code>&lt;UUN&gt;</code> with your own university username. </p>
                 </blockquote>
