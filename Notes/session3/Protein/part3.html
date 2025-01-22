@@ -120,8 +120,8 @@
         <li>Determine the root-mean-square fluctuation (RMSF) of the protein to assess its flexibility </li>
         <li>Perform a principal component analysis (PCA) to determine the fundamental motions in the protein </li>
     </ul>
-    <p><strong>For this section, you will first use the <code>example_data</code> we have provided. This is a 50 ns simulation of the system
-        .</strong></p>
+    <p><strong>For this section, you will first use the <code>example_data</code> we have provided, which is a 50 ns simulation of the system
+        . Therefore, you can run the analysis on the virtual machine.</strong></p>
     <p>
         Before the analysis can begin, we must ensure that the protein molecule is whole, and not "jumping" from one edge of the central image to
         the other. For the analysis, we also need <code>.gro</code> and <code>.tpr</code> files with the protein centered.
@@ -131,13 +131,6 @@
         <ol>
             <li>
                 Remove periodic boundary effects
-            </li>
-            <li>
-                Start an interactive session on Eddie:
-                <p>
-                    Use the instructions from <a href="../../session2/part3.html#interactive_login">Session 2</a> to
-                    start an interactive session on Eddie and load the GROMACS module.
-                </p>
             </li>
             <li>
                 Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-trjconv.html" rel="noopener"
@@ -200,19 +193,11 @@
         <ol>
             <li>
                 Calculate the <abbr>RMSD</abbr> of the protein backbone
-            </li>
-            <li>
-                Start an interactive session on Eddie:
-                <p>
-                    Use the instructions from <a href="../../session2/part3.html#interactive_login">Session 2</a> to
-                    start an interactive session on Eddie and load the GROMACS module.
-                </p>
-            </li>
+            </li
             <li>Refer to the <a href="../../session2/part3.html#Calculating_the_RMSD">Session 2</a> for instructions on
                 how to calculate the <abbr>RMSD</abbr> of the protein backbone.
             </li>
-            <li>Visualise the result in xmgrace and determine the time point at which the system is equilibrated. You will <strong>begin the
-                subsequent analyses starting from this time point</strong>.
+            <li>Visualise the result in xmgrace and determine the time point at which the system is equilibrated.
             </li>
             <li>Save the xmgrace plot as a <code>.png</code> file.
             </li>
@@ -238,13 +223,6 @@
         <ol>
             <li>
                 Calculate the <abbr>RMSF</abbr> of the alpha-carbons
-            </li>
-            <li>
-                Start an interactive session on Eddie:
-                <p>
-                    Use the instructions from <a href="../../session2/part3.html#interactive_login">Session 2</a> to
-                    start an interactive session on Eddie and load the GROMACS module.
-                </p>
             </li>
             <li>
                 Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-rmsf.html" rel="noopener"
@@ -289,14 +267,7 @@
         <h3 id="Calculate_the_covariance matrix"></h3>
         <ol>
             <li>
-                Calculate the covariance matrix of the alpha-carbons
-            </li>
-            <li>
-                Start an interactive session on Eddie:
-                <p>
-                    Use the instructions from <a href="../../session2/part3.html#interactive_login">Session 2</a> to
-                    start an interactive session on Eddie and load the GROMACS module.
-                </p>
+                Calculate the covariance matrix of the backbone
             </li>
             <li>
                 Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-covar.html" rel="noopener"
@@ -307,13 +278,22 @@
                     <code>-f</code> specifies the trajectory file <br>
                     <code>-tu</code> specifies the time unit <br>
                     <code>-mwa</code> specifies that mass-weighted analysis should be performed <br>
-                    <p style="margin-top:2mm">Then, select <code>C-alpha</code> by typing the group number and hitting <code>Enter</code> for both
+                    <p style="margin-top:2mm">Then, select <code>Backbone</code> by typing the group number and hitting <code>Enter</code> for both
                     fitting and covariance analysis</p>
                 </blockquote>
                 <p>This will output the eigenvalues as <code>eigenval.xvg</code> and eigenvectors as <code>eigenvec.trr</code></p>
             </li>
             <li>Visualise the eigenvalues in xmgrace. You should see that the magnitudes get much smaller as the eigenvalue increases, with only a
                 few contributing meaningfully to the dynamics of the protein.
+                <blockquote style="margin-top:1mm">
+                    <p>Xmgrace defaults to a line graph, so to plot a bar chart go to <code>Plot</code> &rarr; <code>Set appearance...</code> and
+                        change the type from <code>XY</code> to <code>BAR</code>. Set the <code>Line properties</code> to <code>None</code> to
+                        remove the line. In the same window, select the <code>Symbols</code> tab and change the pattern for <code>Symbol
+                            fill</code> to fill in the bars. Ensure that <code>Symbol skip</code> is zero so all data is plotted.</p>
+                    <p style="margin-top:1mm"> To zoom in on the first few eigenvalues, go to <code>Plot</code> &rarr; <code>Axis properties..
+                        .</code> and change the <code>Stop</code> value. Ensure you also change the <code>Tick properties</code> to display the
+                        values on the axis.</p>
+                </blockquote>
             </li>
         </ol>
         <div class="flex-figure" style="margin-top:-8mm;">
@@ -328,45 +308,100 @@
         </div>
     </div>
     <div class="bbox">
-        <h3 id="Diagonalise_the_matrix"></h3>
+        <h3 id="one_eigenvector"></h3>
         <ol>
             <li>
-                Diagonalise the matrix
-            </li>
-            <li>
-                Start an interactive session on Eddie:
-                <p>
-                    Use the instructions from <a href="../../session2/part3.html#interactive_login">Session 2</a> to
-                    start an interactive session on Eddie and load the GROMACS module.
-                </p>
+                Analyse the trajectory along an eigenvector
             </li>
             <li>
                 Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-anaeig.html" rel="noopener"
-                           target="_blank"><code>gmx anaeig</code></a> to diagonalise the matrix:
-                <pre style="margin-top:1mm">$ gmx anaeig -s prod_centered.tpr -f prod_centered.xtc -v eigenvec.trr -proj proj.xvg -2d 2dproj.xvg
-                -extr extreme.pdb -filt filtered.xtc -first 1 -last 1 -tu ns</pre>
+                           target="_blank"><code>gmx anaeig</code></a> to filter the trajectory along the first eigenvector:
+                <pre style="margin-top:1mm">$ gmx anaeig -s prod_centered.tpr -f prod_centered.xtc -v eigenvec.trr -filt filter1.pdb -first 1 -last
+                    1 -tu ns -skip 100</pre>
                 <blockquote style="margin-top:1mm">
                     <code>-s</code> specifies the input topology <code>.tpr</code> file <br>
                     <code>-f</code> specifies the trajectory file <br>
                     <code>-v</code> specifies the trajectory file <br>
-                    <code>-proj</code> calculates projections of the trajectory on the eigenvectors <br>
-                    <code>-2d</code> calculates a 2d projection of the trajectory on <code>-first</code> and <code>-last</code> eigenvectors<br>
-                    <code>-extr</code> calculates two extreme projections along the trajectory on the average structure<br>
-                    <code>-filt</code> filters the trajectory to show the motion only between the specified eigenvectors <br>
+                    <code>-filt</code> filters the trajectory to show the motion only along the selected eigenvector <br>
                     <code>-first</code> specifies the first eigenvector for analysis <br>
                     <code>-last</code> specifies the last eigenvector for analysis <br>
                     <code>-tu</code> specifies the time unit <br>
-                    <p style="margin-top:2mm">Then, select <code>C-alpha</code> by typing the group number and hitting <code>Enter</code> for both
+                    <code>-skip</code> specifies that only every n-th frame should be analysed <br>
+                    <p style="margin-top:2mm">Then, select <code>Backbone</code> by typing the group number and hitting <code>Enter</code> for both
                     fitting and covariance analysis</p>
                 </blockquote>
             </li>
-            <li>Visualise
+            <li>Visualise the motion in VMD. What type of motion does the first eigenvector represent. Compare it to the unprocessed trajectory.
+            </li>
+            <li>
+                To get a clearer picture we can use the extreme conformations and interpolate between them:
+                <pre style="margin-top:1mm">$ gmx anaeig -s prod_centered.tpr -f prod_centered.xtc -v eigenvec.trr -extr extreme1.pdb -first 1 -last
+                    1 -tu ns -nframes 30</pre>
+                <blockquote style="margin-top:1mm">
+                    <code>-s</code> specifies the input topology <code>.tpr</code> file <br>
+                    <code>-f</code> specifies the trajectory file <br>
+                    <code>-v</code> specifies the trajectory file <br>
+                    <code>-extr</code> calculates two extreme projections on the trajectory along the selected eigenvector <br>
+                    <code>-first</code> specifies the first eigenvector for analysis <br>
+                    <code>-last</code> specifies the last eigenvector for analysis <br>
+                    <code>-tu</code> specifies the time unit <br>
+                    <code>-nframes</code> specifies how many frames to include in the output. Here we use 30, so the middle 28 frames will be
+                    interpolated <br>
+                    <p style="margin-top:2mm">Select <code>Backbone</code> by typing the group number and hitting <code>Enter</code> for both
+                    fitting and covariance analysis</p>
+                </blockquote>
+            </li>
+            <li>Visualise the motion in VMD. What part of the molecule is involved in the movement? Are the residues the same as those identified
+                with RMSF?
+            </li>
+            <li> Repeat the analysis for eigenvector 2. How similar/different are the motions? What happens with the substrate-binding cleft in
+                these two motions?
+                <blockquote style="margin-top:1mm">
+                    <p> <em>Remember:</em> Change the name of the outputs so you don't overwrite the ones for eigenvector 1 </p>
+                    <p style="margin-top:1mm"> Compare the structure to the uncleaned <code>.pdb</code> file to see where the substrate-binding
+                        cleft is if you are
+                        unsure
+                        .</p>
+                </blockquote>
+            </li>
+            <li> To contrast these motions with the smaller, less impactful motions you can repeat the analysis using any eigenvector greater than 15.
+            </li>
+        </ol>
+    </div>
+    <div class="bbox">
+        <h3 id="two_eigenvector"></h3>
+        <ol>
+            <li>
+                Analyse the trajectory along two eigenvectors
+            </li>
+            <li>
+               Another way to visualise the sampled conformations along the eigenvectors is two-dimensional projection:
+                <pre style="margin-top:1mm">$ gmx anaeig -s prod_centered.tpr -f prod_centered.xtc -v eigenvec.trr -2d 2dproj.xvg -first 1 -last 1
+                </pre>
+                <blockquote style="margin-top:1mm">
+                    <code>-s</code> specifies the input topology <code>.tpr</code> file <br>
+                    <code>-f</code> specifies the trajectory file <br>
+                    <code>-v</code> specifies the trajectory file <br>
+                    <code>-2d</code> calculates a 2d projection of the trajectory on <code>-first</code> and <code>-last</code> eigenvectors <br>
+                    <code>-first</code> specifies the first eigenvector for analysis <br>
+                    <code>-last</code> specifies the last eigenvector for analysis <br>
+                    <p style="margin-top:2mm">Select <code>Backbone</code> by typing the group number and hitting <code>Enter</code> for both
+                    fitting and covariance analysis</p>
+                </blockquote>
+            </li>
+            <li>Visualise the 2D projection in xmgrace. Each point represents a snapshot from the simulation, and the distribution
+                    shows the sampled region along the first two eigenvectors during the simulation.
+                <blockquote style="margin-top:1mm">
+                    <p>To plot the data as a scatter graph, go to <code>Plot</code> &rarr; <code>Set appearance...</code> and
+                        change the symbol to a circle and the size to 16. Set the <code>Line properties</code> to <code>None</code> to
+                        remove the line. Ensure that <code>Symbol skip</code> is zero so all data is plotted.</p>
+                </blockquote>
             </li>
         </ol>
         <div class="flex-figure" style="margin-top:-8mm;">
             <div class="figure" style="width: 70%">
                 <figure>
-                    <img src="img/eigenval.png" width="100%">
+                    <img src="img/2dproj.png" width="100%">
                     <figcaption>
                         Example Xmgrace plot of the first 20 eigenvalues for the alpha carbons during a production run.
                     </figcaption>
@@ -374,31 +409,22 @@
             </div>
         </div>
     </div>
-    <h3 class="enum" id="toc_2_4">Analyse your own simulation</h3>
-    <p> Once your simulation has finished running, perform the above analysis on your system and compare the results. In what ways are they
-        similar, and in what ways are they different? Do you think 5 ns is long enough to capture the main movements of this system?
-    </p>
 </div>
 
 <div class="box">
-    <h2 class="enum" id="toc_3">Visualising the results</h2>
+    <h2 class="enum" id="toc_3">Compare to your results</h2>
     <p>
-        You can use the same procedures as in the previous session to visualise the trajectory.
+        Once your simulation has finished running, perform the above analysis on your system and compare the results. In what ways are they
+        similar, and in what ways are they different? Do you think 5 ns is long enough to capture the main movements of this system?
     </p>
     <div class="bbox">
         <h3 id="Render_trajectory_in_VMD"></h3>
         <ol>
-            <li>Visualise the system in <abbr>VMD</abbr></li>
-            <li>Transfer the files you want to visualise to your VM:
-                <pre style="margin-top:1mm">$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/prod.gro ~/Desktop/session3/</pre>
-                <pre style="margin-top:-2mm">$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/prod.xtc ~/Desktop/session3/</pre>
+            <li>Analyse your results</li>
+            <li>Transfer the files you need to your VM:
+            <pre style="margin-top:1mm">$ scp -r  &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/session3/ ~/Desktop/session3/</pre>
             </li>
-            <li>Follow the same procedure as in the <a href="../../session2/part3.html#Rendering_a_figure_with_VMD">previous session</a> to render
-                    a figure of the system.
-            </li>
-            <li>Follow the same procedure as in the <a href="../../session2/part3.html#Visualise_a_trajectory_with_VMD">previous session</a> to
-                    visualise the trajectory.
-            </li>
+            <li>Follow the same procedure as in <a href="#toc_2">section 2</a>
         </ol>
     </div>
 </div>
