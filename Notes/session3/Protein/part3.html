@@ -193,11 +193,16 @@
         <ol>
             <li>
                 Calculate the <abbr>RMSD</abbr> of the protein backbone
-            </li
+            </li>
             <li>Refer to the <a href="../../session2/part3.html#Calculating_the_RMSD">Session 2</a> for instructions on
                 how to calculate the <abbr>RMSD</abbr> of the protein backbone.
             </li>
             <li>Visualise the result in xmgrace and determine the time point at which the system is equilibrated.
+                <blockquote>
+                    To see the trend in RMSD more easily, you can plot a 1-ns running average <a href="../../session2/part3.html#running_average">like before</a>,
+                    but using a 500-pt length. The <code>dt</code> is 0.002 and the output is written every 1000 steps, so to get 1 ns, we need 500
+                    data points.
+                </blockquote>
             </li>
             <li>Save the xmgrace plot as a <code>.png</code> file.
             </li>
