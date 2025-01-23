@@ -1,0 +1,47 @@
+; VARIOUS PREPROCESSING OPTIONS
+title                    = eq
+
+; RUN CONTROL PARAMETERS
+integrator               = md
+dt                       = COMPLETE HERE
+nsteps                   = COMPLETE HERE
+
+; OUTPUT CONTROL OPTIONS
+nstxout                  = 0
+nstvout                  = 0
+nstfout                  = 0
+nstlog                   = 1000
+nstenergy                = 1000
+nstxout-compressed       = 1000
+xtc_precision            = 1000
+xtc-grps                 = System
+energygrps               = System
+
+; Bond parameters
+constraints             = h-bonds
+constraint-algorithm    = lincs
+; NEIGHBORSEARCHING PARAMETERS
+cutoff-scheme			 = Verlet
+pbc                      = xyz
+rlist                    = 1.2
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+coulombtype              = PME
+rcoulomb                 = 1.2
+vdw-type                 = Cut-off
+rvdw                     = 1.2
+
+; Temperature coupling  
+Tcoupl                   = V-rescale
+tc-grps                  = System
+tau_t                    = 0.1
+ref_t                    = 300 
+
+; Pressure coupling     
+Pcoupl                   = C-rescale           ; for GMX before 2023 use Berendsen
+Pcoupltype               = Isotropic
+tau_p                    = 1.0
+compressibility          = 4.5e-5
+ref_p                    = 1.0
+
+

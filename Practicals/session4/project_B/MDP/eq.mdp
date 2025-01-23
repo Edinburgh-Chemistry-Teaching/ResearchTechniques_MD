@@ -1,0 +1,39 @@
+; VARIOUS PREPROCESSING OPTIONS
+title                    = Equilibration
+
+; RUN CONTROL PARAMETERS
+integrator               = md
+dt                       = COMPLETE HERE
+nsteps                   = COMPLETE HERE
+
+; OUTPUT CONTROL OPTIONS
+nstenergy                = 1000
+; Output frequency and precision for .xtc file
+nstxout-compressed       = 1000
+energygrps               = System
+
+; NEIGHBORSEARCHING PARAMETERS
+cutoff-scheme			 = Verlet
+pbc                      = xyz
+rlist                    = 1.2
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+coulombtype              = PME
+rcoulomb                 = 1.2
+vdw-type                 = Cut-off
+rvdw                     = 1.2
+
+; Temperature coupling  
+Tcoupl                   = V-rescale
+tc-grps                  = System
+tau_t                    = 0.1
+ref_t                    = 300
+
+; Pressure coupling     
+Pcoupl                   = C-rescale           ; for GMX before 2023 use Berendsen
+Pcoupltype               = Isotropic
+tau_p                    = 1.0
+compressibility          = 4.5e-5
+ref_p                    = 1.0
+
+
