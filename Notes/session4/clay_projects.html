@@ -1181,6 +1181,57 @@
         </div>
     </div>
 </div>
+<div class="box">
+    <h2 class='enum' id="toc_2">Useful information</h2>
+    <h3 class='enum' id="toc_2_1">Calculating the number of organic molecules to reach a certain concentration</h3>
+    <p>
+        To calculate the volume of the simulation box that is occupied by the solvent. The height of the solvent
+        layer can be obtained by subtracting the height of the clay unit cell from the total height of the expanded
+        simulation box.<br>
+        Remember to keep the units of the volume and the concentration to be consistent in your calculations.
+    </p>
+    <h3 class='enum' id="toc_2_2">Calculating the linear density of organic molecules</h3>
+    <p style="line-height: 1.5">
+        Use <code>gmx density</code> to calculate the linear densities of molecules or ions along the
+        <em>z</em>-axis.<br>
+        Usage:</p>
+    <blockquote>
+        <pre>gmx density &dash;f &lt;trajectory&gt; &dash;s &lt;tpr file&gt; &dash;n &lt;index file&gt; &dash;o &lt;output file&gt; &dash;d z &dash;sl &lt;number of slices&gt; &dash;ng 2 &dash;dens number &dash;b &lt;beginning time&gt; &dash;e &lt;end time&gt;&gt;</pre>
+        <p><code>&dash;f</code> specifies the input trajectory file (<code>.xtc</code> or <code>.trr</code>)</p>
+        <p><code>&dash;s</code> specifies the input <code>.tpr</code> file</p>
+        <p><code>&dash;n</code> specifies the input index file (<code>.ndx</code>)</p>
+        <p><code>&dash;o</code> specifies the output file (<code>.xvg</code>)</p>
+        <p><code>&dash;d</code> specifies the direction of the density calculation</p>
+        <p><code>&dash;sl</code> specifies the number of slices along the density profile. Setting it to 1&dash;2 times the box height
+            in &Aring; usually gives a good resolution.</p>
+        <p><code>&dash;ng</code> specifies the number of groups to calculate the density for</p>
+        <p><code>&dash;dens</code> specifies the type of density to calculate (number, mass, charge, etc.)</p>
+        <p><code>&dash;b</code> specifies the beginning time of the trajectory to consider</p>
+        <p><code>&dash;e</code> specifies the end time of the trajectory to consider</p>
+    </blockquote>
+    <p>
+        Before running <code>gmx density</code> you will need to use <code>gmx make_ndx</code> to create an index file
+        with the
+        atoms of interest.
+    </p>
+    <h3 class='enum' id="toc_2_3">Input files</h3>
+    <p>
+        Organic molecule structures and molecule definitions are located inside the <code>STRUCTURES</code> folders of
+        each project.
+        Force fields are inside the <code>FF</code> and clay unit cells inside the <code>CLAYS</code> folders.
+        Run parameter <code>.mdp</code> files are inside <code>MDP</code>. Use <code>em.mdp</code> for energy
+        minimisation, <code>nvt.mdp</code>
+        for equilibration at constant temperature and volume, <code>npt.mdp</code> for equilibration at constant
+        tempoerature and pressure
+        and <code>prod.mdp</code> for the production run. Make sure to fill in any missing values for the keywords of
+        the <code>.mdp</code> files
+        that are marked with <code>COMPLETE HERE</code>.
+    </p>
+    <p>
+        You will find template scripts for submitting your simulation on eddie inside the project folder.<br>
+        <em>Remember to run all of your simulations on eddie!</em>
+    </p>
+</div>
 
 </body>
 <script>
