@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en-UK">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+    <meta content="Session 4: Projects" name="description"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
+          rel="stylesheet">
+    <link href="../scripts/style.css" media="screen" rel="stylesheet" type="text/css"/>
+    <link href="../scripts/print_style.css" media="print" rel='stylesheet' type="text/css">
+    <title>Session 4</title>
+</head>
+
+<body>
+
+<div class="box">
+    <h1 id="title">Session 4: Projects</h1>
+</div>
+
+<div class="box">
+    <h2 id="overview">Contents</h2>
+</div>
+
+<div class="box">
+    <h2 class='enum' id="toc_1">Projects</h2>
+    <p>
+        The following section contains short introductions to the projects for this course.
+        All projects investigate adsorption onto a clay mineral for a variety of applications. Clays constitute a
+        significant part of soils and sediments, and due to their high specific surface area and charge, they play an
+        important role in the retention and migration of environmental pollutants.
+    </p>
+    <p>
+        All projects in this course are dedicated to examining the adsorption onto clay minerals.
+        These minerals are a significant constituent of soils and sediments. Their high specific surface area and cation
+        exchange capacity enables them to engage effectively with a variety of molecules and ions. Such capabilities are
+        crucial in the context of environmental pollution control, where clay minerals play a vital role in the
+        adsorption and immobilisation of contaminants, thereby influencing their migration and bioavailability in soils
+        and
+        aquatic systems.
+    </p>
+    <p>
+        Furthermore, the inherent adsorptive properties of clay minerals extend their applicability beyond environmental
+        remediation. In pharmaceutical formulations, their ability to adsorb therapeutic agents and release them in a
+        controlled manner can
+        be used to control drug release kinetics. Another application of clay minerals is in the field of hazardous
+        waste management,
+        particularly concerning nuclear waste. They are employed to prevent the dispersal of radioactive materials into
+        the environment and act as a natural barrier to contain and isolate contaminants.
+    </p>
+    <div class="tbox">
+        <h3 class="pcollapsible" id="pH-dependent_adsorption_of_apigenin_onto_montmorillonite">pH-dependent adsorption
+            of apigenin onto
+            montmorillonite</h3>
+        <div class="pcontent">
+            <h4>Introduction</h4>
+            <p>
+                This project investigates the pH-dependent adsorption of apigenin (APG) onto montmorillonite (MMT)
+                clays.
+                APG is a naturally occurring flavonoid of bright yellow colour has been used in natural dyes. It is only
+                poorly degraded in soil and plays an important role in microbe-plant communication. Depending on the pH
+                of
+                the environment, it can be present in four different protonation states (<a href="#apg_protonation">Figure
+                1</a>), which can affect its adsorption behaviour.
+                The project aims to investigate the adsorption of APG onto MMT clays at different pH values and to
+                determine
+                the effect of pH on the adsorption capacity and mechanisms.
+            </p>
+            <div class="flex-figure">
+                <figure id="apg_protonation">
+                    <img alt="APG protonation states" src="img/apigenin_protonation.jpeg">
+                    <figcaption>Figure 1: Chemical structures of apigenin species at different protonation states and
+                        corresponding pH ranges where more than 15% occurrence of the species is observed. The atom
+                        numbering for hydroxyl groups is given over the neutral apigenin only, and the hydroxyl group
+                        naming
+                        is shown for all species. (from
+                        <a href="https://doi.org/10.1016/j.jcis.2013.07.062">https://doi.org/10.1016/j.jcis.2013.07.062</a>)
+                    </figcaption>
+                </figure>
+            </div>
+            <h4>Suggested reading</h4>
+            <ul>
+                <li>
+                    <a href="https://doi.org/10.1021/acs.jpcc.3c00174">https://doi.org/10.1021/acs.jpcc.3c00174</a>
+                </li>
+            </ul>
+            <h4>Tasks</h4>
+            <p>
+                All required files for this project are located inside the <code>practicals/projects/project_A</code>
+                folder.
+            </p>
+            <p>
+                The following list provides a general description for the tasks of this project. You can find the
+                details on
+                the different project options in the <a href="#options_3">Options</a> section below.
+            </p>
+            <ol>
+                <li>
+
+                    Copy the <code>project_A</code> folder to your home directory.
+                </li>
+                <li>
+                    Use the <code>MMT</code> unit cells to assemble a clay sheet.<br>
+                    All clay unit cells can be found inside the <code>CLAYS</code> folder.<br>
+                    The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm.
+                </li>
+                <li>
+                    Extend the simulation box to 100&nbsp;&Aring; in the z-direction.
+                </li>
+                <li>
+                    <p>
+                    Add the number of APG molecules to the simulation box that corresponds to a concentration of
+                    0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
+                    Use the prevalent protonation state at the pH-value of your option.</p>
+                    <table style="background: none; width: 70%; margin-bottom: 10px; margin-top: 10px">
+                        <caption>
+                            Table 1: Protonation states of APG (see <a href="#apg_protonation">figure 1</a>) and
+                            corresponding structure files.
+                        </caption>
+                        <tr>
+                            <th>protonation state</th>
+                            <th>structure file</th>
+                        </tr>
+                        <tr>
+                            <td>Api<sup>0</sup></td>
+                            <td><code>api2</code></td>
+                        </tr>
+                        <tr>
+                            <td>Api<sup>-</sup></td>
+                            <td><code>api0</code></td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <td>Api<sup>2-</sup></td>
+                            <td><code>api3</code></td>
+                        </tr>
+                        <tr>
+                            <td>Api<sup>3-</sup></td>
+                            <td><code>api4</code></td>
+                    </table>
+                </li>
+                <li>
+                    Solvate the box with SPC water.
+                </li>
+                <li>
+                    Add 0.1 mol&nbsp;L<sup>-1</sup> of the ion combination specified in your option and neutralise any
+                    excess charge. If your cation has a charge different from +1, you need to add the <code>-pq</code> flag to specify the cation charge.
+                </li>
+                <li>
+                    Perform an energy minimisation with a force tolerance of
+                    500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
+                </li>
+                <li>
+                    Equilibrate the system for 100&nbsp;ps in the NVT ensemble at 300&nbsp;K.
+                </li>
+                <li>
+                    Equilibrate the system for 100&nbsp;ps in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
+                </li>
+                <li>
+                    Run a 20&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
+                </li>
+                <li>
+                    Determine the point where the system reached equilibrium.
+                </li>
+                <li>
+                    Calculate the linear density of the APG molecules.
+                </li>
+                <li>
+                    Calculate the linear density of the clay sheet.
+                </li>
+                <li>
+                    Calculate the linear density of the added cation species.
+                </li>
+                <li>
+                    Calculate the linear density of the Cl<sup>-</sup> ions.
+                </li>
+                <li>
+                    Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
+                </li>
+                <li>
+                    Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions
+                    between APG and the clay sheet.
+                </li>
+            </ol>
+            <h4 class="options" id="options_3"></h4>
+            <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 5</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 5</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 7</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 7</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 8</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 8</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in NaCl solution at pH 10</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 10</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in CaCl<sub>2</sub> solution at pH 5</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 5</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in CaCl<sub>2</sub> solution at pH 7</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 7</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in CaCl<sub>2</sub> solution at pH 8</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 8</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of APG onto MMT in CaCl<sub>2</sub> solution at pH 10</button>
+            <div class="content">
+                <ul>
+                    <li>pH: 10</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="tbox">
+        <h3 class="pcollapsible" id=pH-dependent_adsorption_ciprofloxacine_onto_montmorillonite_and_kaolinite>
+            pH-dependent adsorption of
+            ciprofloxacine
+            onto montmorillonite and kaolinite</h3>
+        <div class="pcontent">
+            <h4>
+                Introduction
+            </h4>
+            <p>
+                This project investigates the pH-dependent adsorption of ciprofloxacin (CIP) onto montmorillonite (MMT)
+                and
+                kaolinite (KAO) clays.
+                CIP is a broad-spectrum antibiotic that is widely used in the treatment of bacterial infections.
+                Depending
+                on the pH of the environment, it can be present in four different protonation states (<a
+                    href="#cip_protonation">Figure 3</a>), which can affect its
+                adsorption behaviour. The project aims to investigate the adsorption of CIP onto MMT and
+                KAO
+                clays at different pH values and to determine the effect of pH on the adsorption capacity and
+                mechanisms.
+            </p>
+            <div class="flex-figure" style="width:80%">
+                <figure id="cip_protonation">
+                    <img alt="CIP protonation states" src="img/cip_protonation.jpg">
+                    <figcaption>Figure 3: Molecular structure of CIP (a) and speciation of CIP under different pHs
+                        (b)<br>(from
+                        <a href="https://doi.org/10.1016/j.watres.2012.10.010">https://doi.org/10.1016/j.watres.2012.10.010</a>).
+                    </figcaption>
+                </figure>
+            </div>
+            <h4>Suggested reading</h4>
+            <ul>
+                <li>
+                    <a href="https://doi.org/10.1016/j.watres.2012.10.010">https://doi.org/10.1016/j.watres.2012.10.010</a>
+                </li>
+            </ul>
+            <h4>Tasks</h4>
+            <p>
+                All required files for this project are located inside the <code>practicals/projects/project_B</code>
+                folder.
+            </p>
+            <p>
+                The following list provides a general description for the tasks of this project. You can find the
+                details on
+                the different project options in the <a href=#options_1">Options</a> section below.
+            </p>
+
+            <ol>
+                <li>Copy the <code>project_B</code> folder to your home directory.</li>
+                <li>
+                    Use the unit cell type of your project option to assemble a clay sheet.<br>
+                    All clay unit cells can be found inside the <code>CLAYS</code> folder.<br>
+                    The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm.
+                </li>
+                <li>Extend the simulation box to 100&nbsp;&Aring; in the z-direction.</li>
+                <li><p>Add the number of CIP molecules to the simulation box that corresponds to a concentration of
+                    0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>Use the prevalent protonation state at the pH-value of your
+                    option.</p>
+                    <table style="background: none; width: 70%; margin-bottom: 10px; margin-top: 10px">
+                        <caption>
+                            Table 1: Protonation states of CIP (see <a href="#cip_protonation">figure 3</a>) and
+                            corresponding structure files.
+                        </caption>
+                        <tr>
+                            <th>protonation state</th>
+                            <th>structure file</th>
+                        </tr>
+                        <tr>
+                            <td>CIP<sup>-</sup></td>
+                            <td><code>cip2</code></td>
+                        </tr>
+                        <tr>
+                            <td>CIP<sup>+</sup></td>
+                            <td><code>cip3</code></td>
+                        </tr>
+                        <tr>
+                            <td>CIP<sup>+-</sup></td>
+                            <td><code>cip4</code></td>
+                        </tr>
+                    </table>
+                </li>
+                <li>Solvate the box with SPC water.</li>
+                <li>Add 0.1 mol&nbsp;L<sup>-1</sup> of the ion combination specified in your option to neutralise any
+                    excess
+                    charge. If your cation has a charge different from +1, you need to add the <code>-pq</code> flag to specify the cation charge.
+                </li>
+                <li>Perform an energy minimisation with a force tolerance of
+                    500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
+                </li>
+                <li>Equilibrate the system for 100&nbsp;ps in the NVT ensemble at 300&nbsp;K.</li>
+                <li>Equilibrate the system for 100&nbsp;ps in the NPT ensemble at 300&nbsp;K and 1&nbsp;atm.</li>
+                <li>Run a 10&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;atm.</li>
+                <li>Determine the point where the system reached equilibrium.</li>
+                <li>Calculate the linear density of the CIP molecules</li>
+                <li>Calculate the linear density of the clay sheet.</li>
+                <li>Calculate the linear density of the added cation species.</li>
+                <li>Calculate the linear density of the Cl<sup>-</sup> ions.</li>
+                <li>Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.</li>
+                <li>Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions
+                    between CIP and the clay sheet.
+                </li>
+            </ol>
+
+            <h4 class="options" id="options_1"></h4>
+            <button class="collapsible" type="button">Adsorption of CIP onto MMT in NaCl solution at pH 3</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 3</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible" type="button">Adsorption of CIP onto MMT in NaCl solution at pH 7</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 7</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of CIP onto MMT in NaCl solution at pH 11</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 11</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of CIP onto MMT in CaCl<sub>2</sub> solution at pH 3</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 3</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of CIP onto MMT in CaCl<sub>2</sub> solution at pH 7</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 7</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of CIP onto MMT in CaCl<sub>2</sub> solution at pH 11</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 11</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of CIP onto KAO in NaCl solution at pH 3</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>KAO</code></li>
+                    <li>pH: 3</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of CIP onto KAO in NaCl solution at pH 7</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>KAO</code></li>
+                    <li>pH: 7</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of CIP onto KAO in NaCl solution at pH 11</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>KAO</code></li>
+                    <li>pH: 11</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of CIP onto KAO in CaCl<sub>2</sub> solution at pH 3</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>KAO</code></li>
+                    <li>pH: 3</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of CIP onto KAO in CaCl<sub>2</sub> solution at pH 7</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>KAO</code></li>
+                    <li>pH: 7</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of CIP onto KAO in CaCl<sub>2</sub> solution at pH 11</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>KAO</code></li>
+                    <li>pH: 11</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="tbox">
+        <h3 class="pcollapsible" id="pH-dependent_adsorption_of_tetracycline_onto_montmorillonite">pH-dependent
+            adsorption of tetracycline
+            onto montmorillonite</h3>
+        <div class="pcontent">
+            <h4>Introduction</h4>
+            <p>
+                This project investigates the pH-dependent adsorption of tetracycline (TC) onto montmorillonite (MMT)
+                clays.
+                TC is a broad-spectrum antibiotic that is widely used in the treatment of bacterial infections.
+                Depending on
+                the pH of the environment, it can be present in four different protonation states (<a
+                    href="#tc_protonation">Figure 2</a>), which can affect its adsorption behaviour. The project aims to
+                investigate the adsorption of TC onto MMT clays at different pH values and to determine the effect of pH
+                on
+                the adsorption capacity and mechanisms.
+            </p>
+            <div class="flex-figure">
+                <figure id="tc_protonation">
+                    <img alt="TC protonation states" src="img/ttc_protonation_structures.jpg">
+                    <figcaption>Figure 2: Molecular structure of TC (TC<sup>+00</sup>, TC<sup>+-0</sup>,
+                        TC<sup>+--</sup>,
+                        TC<sup>0--</sup>)
+                        and speciation of TC under different pHs<br>(b, adapted from
+                        <a href="https://doi.org/10.1016/j.geoderma.2012.03.004">https://doi.org/10.1016/j.geoderma.2012.03.004</a>).
+                    </figcaption>
+                </figure>
+            </div>
+            <h4>Suggested reading</h4>
+            <ul>
+                <li>
+                    <a href="https://doi.org/10.1016/j.geoderma.2012.03.004">https://doi.org/10.1016/j.geoderma.2012.03.004</a>
+                </li>
+            </ul>
+            <h4>Tasks</h4>
+            <p>
+                All required files for this project are located inside the <code>practicals/projects/project_C</code>
+                folder.
+            </p>
+            <p>
+                The following list provides a general description for the tasks of this project. You can find the
+                details on
+                the different project options in the <a href="#options_2">Options</a> section below.
+            </p>
+            <ol>
+                <li>
+                    Copy the <code>project_C</code> folder to your home directory.
+                </li>
+                <li>
+                    Use the <code>MMT</code> unit cells to assemble a clay sheet.<br>
+                    All clay unit cells can be found inside the <code>CLAYS</code> folder.<br>
+                    The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm.
+                </li>
+                <li>
+                    Extend the simulation box to 100&nbsp;&Aring; in the z-direction.
+                </li>
+                <li>
+                    <p>Add the number of TC molecules to the simulation box that corresponds to a concentration of
+                        0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
+                        Use the prevalent protonation state at the pH-value of your option.</p>
+                    <table style="background: none; width: 70%; margin-bottom: 10px; margin-top: 10px">
+                        <caption>
+                            Table 1: Protonation states of TC (see <a href="#tc_protonation">figure 2</a>) and
+                            corresponding structure files.
+                        </caption>
+                        <tr>
+                            <th>protonation state</th>
+                            <th>structure file</th>
+                        </tr>
+                        <tr>
+                            <td>TC<sup>+00</sup></td>
+                            <td><code>ttc4</code></td>
+                        </tr>
+                        <tr>
+                            <td>TC<sup>+-0</sup></td>
+                            <td><code>ttc3</code></td>
+                        </tr>
+                        <tr>
+                            <td>TC<sup>+--</sup></td>
+                            <td><code>ttc7</code></td>
+                        </tr>
+                        <tr>
+                            <td>TC<sup>0--</sup></td>
+                            <td><code>ttc11</code></td>
+                    </table>
+                </li>
+                <li>
+                    Solvate the box with SPC water.
+                </li>
+                <li>
+                    Add 0.1 mol&nbsp;L<sup>-1</sup> of the ion combination specified in your option and neutralise any
+                    excess charge. If your cation has a charge different from +1, you need to add the <code>-pq</code> flag to specify the cation charge.
+                </li>
+                <li>
+                    Perform an energy minimisation with a force tolerance of
+                    500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
+
+                </li>
+                <li>
+                    Equilibrate the system for 100&nbsp;ps in the NVT ensemble at 300&nbsp;K.
+                </li>
+                <li>
+                    Equilibrate the system for 100&nbsp;ps in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
+                </li>
+                <li>
+                    Run a 20&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
+                </li>
+                <li>
+                    Determine the point where the system reached equilibrium.
+                </li>
+                <li>
+                    Calculate the linear density of the TC molecules.
+                </li>
+                <li>
+                    Calculate the linear density of the clay sheet.
+                </li>
+                <li>
+                    Calculate the linear density of the added cation species.
+                </li>
+                <li>
+                    Calculate the linear density of the Cl<sup>-</sup> ions.
+                </li>
+                <li>
+                    Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
+                </li>
+                <li>
+                    Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions
+                    between TC and the clay sheet.
+                </li>
+
+            </ol>
+            <h4 class="options" id="options_2"></h4>
+            <button class="collapsible">Adsorption of TC onto MMT in NaCl solution at pH 2</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 2</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in NaCl solution at pH 5</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 5</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in NaCl solution at pH 9</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 9</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in NaCl solution at pH 11</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 11</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in KCl solution at pH 2</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 2</li>
+                    <li>Salt atom types: <code>K</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in KCl solution at pH 5</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 5</li>
+                    <li>Salt atom types: <code>K</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in KCl solution at pH 9</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 9</li>
+                    <li>Salt atom types: <code>K</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in KCl solution at pH 11</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 11</li>
+                    <li>Salt atom types: <code>K</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in CaCl<sub>2</sub> solution at pH 2</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 2</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in CaCl<sub>2</sub> solution at pH 5</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 5</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in CaCl<sub>2</sub> solution at pH 9</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 9</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in CaCl<sub>2</sub> solution at pH 11</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 11</li>
+                    <li>Salt atom types: <code>Ca</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in MgCl<sub>2</sub> solution at pH 2</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 2</li>
+                    <li>Salt atom types: <code>Mg</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in MgCl<sub>2</sub> solution at pH 5</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 5</li>
+                    <li>Salt atom types: <code>Mg</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in MgCl<sub>2</sub> solution at pH 9</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 9</li>
+                    <li>Salt atom types: <code>Mg</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of TC onto MMT in MgCl<sub>2</sub> solution at pH 11</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 11</li>
+                    <li>Salt atom types: <code>Mg</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tbox">
+        <h3 class='pcollapsible'
+            id="pH-dependent_adsorption_of_glyphosate_and_aminomethyl_phosphonic_acid_onto_montmorillonite_and kaolinite">
+            pH-dependent adsorption of
+            glyphosate and aminomethyl phosphonic acid onto montmorillonite and kaolinite</h3>
+        <div class="pcontent">
+            <h4>Introduction</h4>
+            <p>
+                This project investigates the pH-dependent adsorption of glyphosate (G) and its breakdown product
+                aminomethyl phosphonic acid (AMPA) onto montmorillonite (MMT) and kaolinite (KAO) clays. G is a
+                broad-spectrum herbicide that is widely used in agriculture. Depending on the pH of the environment, the
+                two
+                species can be present in different protonation states (<a href="#ampa_protonation">Figure 4</a>)
+                which can affect their adsorption behaviour. The project aims to
+                investigate the adsorption of G and AMPA onto MMT and KAO clays at different pH values and to determine
+                the
+                effect of pH on the adsorption capacity and mechanisms.
+            </p>
+            <div class="flex-figure">
+                <figure id="ampa_protonation">
+                    <img alt="AMPA protonation states" src="img/gly_ampa_deprotonation.webp">
+                    <figcaption>Figure 4: Molecular structures of G and AMPA and speciation under different pHs.<br>(from
+                        <a href="https://doi.org/10.1007/s11356-015-5796-5">https://doi.org/10.1007/s11356-015-5796-5</a>)
+                    </figcaption>
+                </figure>
+            </div>
+            <h4>Suggested reading</h4>
+            <ul>
+                <li>
+                    <a href="https://doi.org/10.1021/es970341l">https://doi.org/10.1021/es970341l</a>
+                </li>
+                <li>
+                    <a href="https://doi.org/10.1007%2Fs11356-022-22927-8">
+                       https://doi.org/10.1007%2Fs11356-022-22927-8</a>
+                </li>
+            </ul>
+            <h4>Tasks</h4>
+            <p>
+                All required files for this project are located inside the <code>practicals/projects/project_D</code>
+                folder.
+            </p>
+            <p>
+                The following list provides a general description for the tasks of this project. You can find the
+                details on
+                the different project options in the <a href="#options_4">Options</a> section below.
+            </p>
+            <ol>
+                <li>Copy the <code>project_D</code> folder to your home directory.</li>
+                <li>
+                    Use the unit cell type of your project option to assemble a clay sheet.<br>
+                    All clay unit cells can be found inside the <code>CLAYS</code> folder.<br>
+                    The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm.
+                </li>
+                <li>Extend the simulation box to 100&nbsp;&Aring; in the z-direction.</li>
+                <li><p>Add the number of G or AMPA molecules to the simulation box that corresponds to a concentration
+                    of
+                    0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
+                    Use the prevalent protonation state at the pH-value of your option.</p>
+                    <table style="background: none; width: 70%; margin-bottom: 10px; margin-top: 10px">
+                        <caption>
+                            Table 1: Protonation states of G and AMPA (see <a href="#ampa_protonation">figure 4</a>) and
+                            corresponding structure files.
+                        </caption>
+                        <tr>
+                            <th>protonation state</th>
+                            <th>structure file</th>
+                        </tr>
+                        <tr>
+                            <td>GH<sub>2</sub><sup>-</sup></td>
+                            <td><code>gly2</code></td>
+                        </tr>
+                        <tr>
+                            <td>G<sup>2-</sup></td>
+                            <td><code>gly4</code></td>
+                        </tr>
+                        <tr>
+                            <td>AMPAH</td>
+                            <td><code>ampa4</code></td>
+                        </tr>
+                        <tr>
+                            <td>AMPA<sup>-</sup></td>
+                            <td><code>ampa5</code></td>
+                        </tr>
+                    </table>
+                </li>
+                <li>Solvate the box with SPC water.</li>
+                <li>Add 0.1 mol&nbsp;L<sup>-1</sup> of the ion combination specified in your option to neutralise any
+                    excess charge. If your cation has a charge different from +1, you need to add the <code>-pq</code> flag to specify the cation charge.
+                </li>
+                <li>Perform an energy minimisation with a force tolerance of
+                    500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
+                </li>
+                <li>Equilibrate the system for 100&nbsp;ps in the NVT ensemble at 300&nbsp;K.</li>
+                <li>Equilibrate the system for 100&nbsp;ps in the NPT ensemble at 300&nbsp;K and 1&nbsp;atm.</li>
+                <li>Run a 10&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;atm.</li>
+                <li>Determine the point where the system reached equilibrium.</li>
+                <li>Calculate the linear density of the G or AMPA molecules</li>
+                <li>Calculate the linear density of the clay sheet.</li>
+                <li>Calculate the linear density of the added cation species.</li>
+                <li>Calculate the linear density of the Cl<sup>-</sup> ions.</li>
+
+                <li>Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.</li>
+
+                <li>Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions
+                    between G or AMPA and the clay sheet.
+                </li>
+            </ol>
+            <h4 class="options" id="options_4"></h4>
+            <button class="collapsible">Adsorption of G onto MMT in NaCl solution at pH 3</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 3</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of G onto MMT in NaCl solution at pH 6</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 6</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+
+            <button class="collapsible">Adsorption of G onto KAO in NaCl solution at pH 3</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>KAO</code></li>
+                    <li>pH: 3</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of G onto KAO in NaCl solution at pH 3</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>KAO</code></li>
+                    <li>pH: 6</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of G onto MMT in CuCl<sub>2</sub> solution at pH 3</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 3</li>
+                    <li>Salt atom types: <code>Cu</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of G onto MMT in CuCl<sub>2</sub> solution at pH 6</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 6</li>
+                    <li>Salt atom types: <code>Cu</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of G onto KAO in CuCl<sub>2</sub> solution at pH 3</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>KAO</code></li>
+                    <li>pH: 3</li>
+                    <li>Salt atom types: <code>Cu</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of G onto KAO in CuCl<sub>2</sub> solution at pH 6</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>KAO</code></li>
+                    <li>pH: 6</li>
+                    <li>Salt atom types: <code>Cu</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of AMPA onto MMT in NaCl solution at pH 3</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 3</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of AMPA onto MMT in NaCl solution at pH 6</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 6</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of AMPA onto KAO in NaCl solution at pH 3</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>KAO</code></li>
+                    <li>pH: 3</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of AMPA onto KAO in NaCl solution at pH 6</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>KAO</code></li>
+                    <li>pH: 6</li>
+                    <li>Salt atom types: <code>Na</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of AMPA onto MMT in CuCl<sub>2</sub> solution at pH 3</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 3</li>
+                    <li>Salt atom types: <code>Cu</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of AMPA onto MMT in CuCl<sub>2</sub> solution at pH 6</button>
+            <div class="content">
+                <ul>
+                    <li>Unit cell: <code>MMT</code></li>
+                    <li>pH: 6</li>
+                    <li>Salt atom types: <code>Cu</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="tbox">
+        <h3 class="pcollapsible" id="Adsorption_of_radioactive_ions onto_montmorillonite">Adsorption of radioactive ions
+            onto montmorillonite</h3>
+        <div class="pcontent">
+            <h4>Introduction</h4>
+            <p>
+
+                Radioactive ions are of interest due to their potential release from nuclear waste repositories and
+                their
+                potential migration into the environment. The project aims to investigate the adsorption of radioactive
+                Cs<sup>+</sup>, Sr<sup>2+</sup>, and Ba<sup>2+</sup> and Ra<sup>2+</sup> ions onto montmorillonite (MMT)
+                clays.
+            </p>
+            <h4>
+                Suggested reading
+            </h4>
+            <ul>
+                <li><a href="https://www.nature.com/articles/s41598-022-18202-y">https://www.nature.com/articles/s41598-022-18202-y</a>
+                </li>
+                <li><a href="https://doi.org/10.1016/j.apgeochem.2021.105117">https://doi.org/10.1016/j.apgeochem.2021.105117</a>
+                </li>
+                <li><a href="https://doi.org/10.1021/acsearthspacechem.2c00222">https://doi.org/10.1021/acsearthspacechem.2c00222</a>
+                </li>
+            </ul>
+            <h4>Tasks</h4>
+            <p>
+                All required files for this project are located inside the <code>practicals/projects/project_E</code>
+                folder.
+            </p>
+            <p>
+                The following list provides a general description for the tasks of this project. You can find the
+                details on
+                the different project options in the <a href="#options_5">Options</a> section below.
+            </p>
+            <ol>
+                <li>
+                    Copy the <code>project_E</code> folder to your home directory.
+
+                </li>
+                <li>
+                    Use the <code>MMT</code> unit cells to assemble a clay sheet.<br>
+                    All clay unit cells can be found inside the <code>CLAYS</code> folder.<br>
+                    The dimensions should be at least 3&nbsp;&times;&nbsp;3&nbsp;&nbsp;nm.
+                </li>
+                <li>
+                    Extend the simulation box to 50&nbsp;&Aring; in the z-direction.
+                </li>
+                <li>
+                    Solvate the box with SPC water.
+                </li>
+                <li>
+                    Add 0.25 mol&nbsp;L<sup>-1</sup> of the ion combination specified in your option to neutralise any
+                    excess
+                    charge. If your cation has a charge different from +1, you need to add the <code>-pq</code> flag to specify the cation charge.
+                </li>
+                <li>
+                    Perform an energy minimisation with a force tolerance of
+                    500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
+                </li>
+                <li>
+                    Equilibrate the system for 100&nbsp;ps in the NVT ensemble at 300&nbsp;K.
+                </li>
+                <li>
+                    Equilibrate the system for 100&nbsp;ps in the NPT ensemble at 300&nbsp;K and 1&nbsp;atm.
+                </li>
+                <li>
+                    Run a 10&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;atm.
+                </li>
+                <li>
+                    Determine the point where the system reached equilibrium.
+                </li>
+                <li>
+                    Calculate the linear density of the ions.
+                </li>
+                <li>
+                    Calculate the linear density of the clay sheet.
+                </li>
+                <li>
+                    Calculate the linear density of the Cl<sup>-</sup> ions.
+                </li>
+                <li>
+                    Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
+                </li>
+                <li>
+                    Calculate the radial distribution function (RDF) of the radioactive cation species and
+                    water molecule oxygen atoms.
+                </li>
+                <li>
+                    Open and the RDF plots with xmgrace and save the plot in <code>.jpeg</code> format.
+                <li>
+                    Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions between the radioactive ions and the clay sheet.
+                </li>
+
+            </ol>
+
+            <h4 class="options" id="options_5"></h4>
+            <button class="collapsible">Adsorption of Cs<sup>+</sup> onto MMT</button>
+            <div class="content">
+                <ul>
+                    <li>Ion types <code>Cs</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of Sr<sup>2+</sup> onto MMT</button>
+            <div class="content">
+                <ul>
+                    <li>Ion types <code>Sr</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of Ba<sup>2+</sup> onto MMT</button>
+            <div class="content">
+                <ul>
+                    <li>Ion types <code>Ba</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of Ra<sup>2+</sup> onto MMT</button>
+            <div class="content">
+                <ul>
+                    <li>Ion types <code>Ra</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="tbox">
+        <h3 class="pcollapsible" id="Adsorption_of_heavy_metal_ions_onto_kaolinite">Adsorption of heavy metal ions onto
+            kaolinite</h3>
+        <div class="pcontent">
+            <h4>Introduction</h4>
+            <p>
+                Heavy metal ions are of interest due to their potential release from industrial waste and their
+                potential
+                migration into the environment. The project aims to investigate the adsorption of Pb<sup>2+</sup>,
+                Cu<sup>2+</sup>, and Zn<sup>2+</sup> and Ni<sup>2+</sup>
+                ions onto
+                kaolinite (KAO) clays.
+            </p>
+            <h4>
+                Suggested reading
+            </h4>
+            <ul>
+                <li>
+                    <a href="https://doi.org/10.1016/j.desal.2009.11.005">https://doi.org/10.1016/j.desal.2009.11.005</a>
+                </li>
+            </ul>
+            <h4>
+                Tasks
+            </h4>
+            <p>
+                All required files for this project are located inside the <code>practicals/projects/project_F</code>
+                folder.
+            </p>
+            <p>
+                The following list provides a general description for the tasks of this project. You can find the
+                details on
+                the different project options in the <a href="#options_6">Options</a> section below.
+            </p>
+            <ol>
+                <li>
+                    Copy the <code>project_F</code> folder to your home directory.
+
+                </li>
+                <li>
+                    Use the <code>KAO</code> unit cells to assemble a clay sheet.<br>
+                    All clay unit cells can be found inside the <code>CLAYS</code> folder.<br>
+                    The dimensions should be at least 3&nbsp;&times;&nbsp;3&nbsp;&nbsp;nm.
+                </li>
+                <li>
+                    Extend the simulation box to 50&nbsp;&Aring; in the z-direction.
+                </li>
+                <li>
+                    Solvate the box with SPC water.
+                </li>
+                <li>
+                    Add 0.25 mol&nbsp;L<sup>-1</sup> of the ion combination specified in your option to neutralise any
+                    excess
+                    charge. If your cation has a charge different from +1, you need to add the <code>-pq</code> flag to specify the cation charge.
+                </li>
+                <li>
+                    Perform an energy minimisation with a force tolerance of
+                    500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
+                </li>
+                <li>
+                    Equilibrate the system for 100&nbsp;ps in the NVT ensemble at 300&nbsp;K.
+                </li>
+                <li>
+                    Equilibrate the system for 100&nbsp;ps in the NPT ensemble at 300&nbsp;K and 1&nbsp;atm.
+                </li>
+                <li>
+                    Run a 10&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;atm.
+                </li>
+                <li>
+                    Determine the point where the system reached equilibrium.
+                </li>
+                <li>
+                    Calculate the linear density of the ions.
+                </li>
+                <li>
+                    Calculate the linear density of the clay sheet.
+                </li>
+                <li>
+                    Calculate the linear density of the Cl<sup>-</sup> ions.
+                </li>
+                <li>
+                    Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
+                </li>
+                <li>
+                    Calculate the radial distribution function (RDF) of the heavy metal cation species and
+                    water molecule oxygen atoms.
+                </li>
+                <li>
+                    Open the RDF plots with xmgrace and save the plot in <code>.jpeg</code> format.
+                <li>
+                    Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
+                    interactions between the heavy metal ions and the clay sheet.
+                </li>
+            </ol>
+
+            <h4 class="options" id="options_6"></h4>
+            <button class="collapsible">Adsorption of Cu<sup>2+</sup> onto KAO</button>
+            <div class="content">
+                <ul>
+                    <li>Ion types <code>Cu</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of Pb<sup>2+</sup> onto KAO</button>
+            <div class="content">
+                <ul>
+                    <li>Ion types <code>Pb</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of Zn<sup>2+</sup> onto KAO</button>
+            <div class="content">
+                <ul>
+                    <li>Ion types <code>Zn</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+            <button class="collapsible">Adsorption of Ni<sup>2+</sup> onto KAO</button>
+            <div class="content">
+                <ul>
+                    <li>Ion types <code>Ni</code>, <code>Cl</code></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+
+    var pcoll = document.getElementsByClassName("pcollapsible");
+    var j;
+
+    for (j = 0; j < pcoll.length; j++) {
+        pcoll[j].addEventListener("click", function () {
+            this.classList.toggle("active");
+            let content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+
+</script>
+<script src="../scripts/generate_header.js"></script>
+<script src="../scripts/generate_overview.js"></script>
+<script src="../scripts/scroll_up.js"></script>
+<script src="../scripts/feedback.js"></script>
+<script src="../scripts/adjust_for_dyslexia.js"></script>
+<script>window.onload = function () {
+    addFeedback('https://app.wooclap.com/XREESD/questionnaires/676aa1ed398c0ecbb813a7e9', 'img/session_4.png')
+    generateOverview();
+    generateHeader();
+    scrollUp();
+    adjustForDyslexia();
+}</script>
+</html>
