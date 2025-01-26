@@ -157,7 +157,7 @@
                 <figure>
                     <img src="img/rmsd.png" width="100%">
                     <figcaption>
-                        Example Xmgrace plot of the RMSD evolution for the entire system during a production run.
+                        Example Xmgrace plot of the RMSD evolution for the entire system and its components during a production run.
                     </figcaption>
                 </figure>
             </div>
@@ -189,21 +189,19 @@
                 <p>GROMACS does not have water <code>OW</code> atoms in its default selections.
                     Therefore, we have to first create a new index <code>.ndx</code> file that also contains this atom
                     group.</p>
-                <pre style="margin-top:1mm">$ gmx make_ndx -f prod.gro -o OW.ndx</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx make_ndx -f prod.gro -o OW.ndx</code>
                 <blockquote style="margin-top:1mm">
                     <p>Select OW atoms by adding the new group to the index file:<br>
                         Type the line and press <code>Enter</code>.</p>
-                    <pre style="margin-top:1mm">&gt; a OW</pre>
-                    <p style="margin-top:-3mm">Exit and save the index file by typing <code>q</code> and pressing <code>Enter</code>.
+                    <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">&gt; a OW</code>
+                    <p style="margin-top:1mm">Exit and save the index file by typing <code>q</code> and pressing <code>Enter</code>.
                     </p>
                 </blockquote>
             </li>
             <li>
                 Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-rdf.html" rel="noopener"
                            target="_blank"><code>gmx rdf</code></a> to calculate the <abbr>RDF</abbr>:
-                <pre style="margin-top:1mm">
-$ gmx rdf -f prod.xtc -s prod.tpr -n OW.ndx -o rdf_Na_OW.xvg -seltype atom -selrpos atom
-  -b &lt;analysis_start_time&gt; -tu &lt;time_unit&gt; -norm number_density -rmax 1</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx rdf -f prod.xtc -s prod.tpr -n OW.ndx -o rdf_Na_OW.xvg -seltype atom -selrpos atom -b &lt;analysis_start_time&gt; -tu &lt;time_unit&gt; -norm number_density -rmax 1</code>
                 <blockquote style="margin-top:1mm">
                     <code>-f</code> specifies the trajectory file <br>
                     <code>-s</code> specifies the input topology <code>.tpr</code> file <br>
@@ -262,7 +260,7 @@ $ gmx rdf -f prod.xtc -s prod.tpr -n OW.ndx -o rdf_Na_OW.xvg -seltype atom -selr
             <li>
                 Use <a href="https://manual.gromacs.org/documentation/2019/onlinehelp/gmx-density.html" rel="noopener"
                            target="_blank"><code>gmx density</code></a> to calculate the decanoic acid density:
-                <pre style="margin-top:1mm">$ gmx density -s prod.tpr -f prod.xtc -o lindens_dec.xvg -b &lt;analysis_start_time&gt; -d Z -dens number</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx density -s prod.tpr -f prod.xtc -o lindens_dec.xvg -b &lt;analysis_start_time&gt; -d Z -dens number</code>
                 <blockquote style="margin-top:1mm">
                     <code>-s</code> specifies the input topology <code>.tpr</code> file <br>
                     <code>-f</code> specifies the trajectory file <br>
@@ -316,8 +314,8 @@ $ gmx rdf -f prod.xtc -s prod.tpr -n OW.ndx -o rdf_Na_OW.xvg -seltype atom -selr
         <ol>
             <li>Visualise the system in <abbr>VMD</abbr></li>
             <li>Transfer the files you want to visualise to your VM:
-                <pre style="margin-top:1mm">$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/prod.gro ~/session3/</pre>
-                <pre style="margin-top:-2mm">$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/prod.xtc ~/session3/</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/prod.gro ~/Desktop/session3/</code>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ scp &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/prod.xtc ~/Desktop/session3/</code>
             </li>
             <li>Follow the same procedure as in the <a href="../../session2/part3.html#Rendering_a_figure_with_VMD">previous session</a> to render
                 a figure of the system.

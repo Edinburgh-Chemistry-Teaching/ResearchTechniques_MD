@@ -40,16 +40,16 @@
         <ol>
             <li>Create the working directory for this session </li>
 
-            <li style="margin-bottom:-0.1mm;">Move to your home directory:
-                <pre style="margin-top:-0.1mm;">$ cd </pre></li>
+            <li style="margin-bottom:4mm;">Move to your home directory:
+                <code style="display:block;white-space:pre;margin-top:-0.1mm;padding: 6px 10px">$ cd </code></li>
 
             <li style="margin-bottom:-0.1mm;">Copy the <code>session3</code> folder from practicals to your home directory:
-                <pre style="margin-top:-0.1mm;">$ cp -r /home/student??/practicals/session3 /home/student??/Desktop/</pre>
+                <code style="display:block;white-space:pre-wrap;margin-top:-0.1mm;padding: 6px 10px">$ cp -r /home/student??/practicals/session3 /home/student??/Desktop/</code>
                 <blockquote style="margin-top:1mm">Remember to replace <code>student??</code> with your login username</blockquote>
             </li>
 
             <li style="margin-bottom:-0.1mm;">Change into the <code>session3</code> directory:
-                <pre style="margin-top:-0.1mm;">$ cd Desktop/session3</pre></li>
+                <code style="display:block;white-space:pre-wrap;margin-top:-0.1mm;padding: 6px 10px">$ cd Desktop/session3</code></li>
         </ol>
 
         <p><strong><em>WARNING</em></strong> ⚠️<br>
@@ -69,8 +69,8 @@
                 single clay sheet
                 from the <abbr>MMT</abbr> <abbr>UC</abbr>
             </li>
-            <li> <pre style="margin-top:1mm">$ gmx genconf -f STRUCTURES/MMT.gro -nbox &lt;x_ucs&gt; &lt;y_ucs&gt; &lt;z_ucs&gt; -o MMT_slab.gro</pre>
-                    <blockquote style="margin-top:-1mm;">
+            <li> <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx genconf -f STRUCTURES/MMT.gro -nbox &lt;x_ucs&gt; &lt;y_ucs&gt; &lt;z_ucs&gt; -o MMT_slab.gro</code>
+                    <blockquote style="margin-top:1mm;">
                     <code>-f</code> specifies the structure file of the system to insert into <br>
                     <code>-nbox</code> defines the number of unit cells to put in each of the <em>x y z</em>
                     directions <br>
@@ -121,7 +121,7 @@
         <ul>
             <li>Increase the box height</li>
             <li>
-                <pre style="margin-top:1mm">$ vim MMT_slab.gro</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ vim MMT_slab.gro</code>
                 <blockquote style="margin-top:1mm">
                     Where in the <code>.gro</code> file is the box size specified? Adjust the <em>z</em> cell length to 50&nbsp;&#8491;. <br>
                     <i>Remember:</i> the vim cheat sheet can help you navigate the file quickly.
@@ -150,7 +150,7 @@
             href="https://manual.gromacs.org/current/onlinehelp/gmx-insert-molecules.html"><code>insert-molecules</code></a> to insert 10 decanoic
                 acid molecules
             </li>
-            <li><pre style="margin-top:1mm">$ gmx insert-molecules -f MMT_slab.gro -ci STRUCTURES/decanoic_acid.gro -nmol 10 -o MMT_dec.gro</pre>
+            <li><code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx insert-molecules -f MMT_slab.gro -ci STRUCTURES/decanoic_acid.gro -nmol 10 -o MMT_dec.gro</code>
                 <blockquote style="margin-top:1mm">
                     <code>-f</code> specifies the coordinate file of the system to insert into <br>
                     <code>-ci</code> specifies the coordinate file of the molecule to insert <br>
@@ -225,7 +225,7 @@
         <ol>
             <li> Generate a topology file for the system</li>
             <li> Open the topology file <code>MMT_slab.top</code> to fill in the missing sections.<br>
-                <pre style="margin-top:1mm">$ vim MMT_slab.top</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ vim MMT_slab.top</code>
                 <blockquote style="margin-top:1mm">
                     All force field folders (<code>&lt;ForceFieldName.ff&gt;</code>) are located within the <code>FF</code> directory. The force
                     field for clay and water is <code>ClayFF</code>, for organics it is <code>CHARMM36</code>, and for ions it is <code>Ions</code>.
@@ -272,7 +272,7 @@ DECA           1</pre>
         <ol>
             <li>Solvate the box with SPC water</li>
             <li>Make a copy of the topology <code>MMT_slab.top</code> file: <br>
-                <pre style="margin-top:1mm">$ cp MMT_slab.top MMT_dec_solv.top</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ cp MMT_slab.top MMT_dec_solv.top</code>
                 <blockquote style="margin-top:1mm">
                     <p class="note"><code>solvate</code> will overwrite the <code>.top</code> file so it is good to make
                         a copy of the unsolvated topology.</p>
@@ -280,7 +280,7 @@ DECA           1</pre>
             </li>
             <li>Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-solvate.html"><code>solvate</code></a> to
                 solvate the box with <abbr>SPC</abbr> water: <br>
-                <pre style="margin-top:1mm">$ gmx solvate -cp MMT_dec.gro -cs spc216.gro -o MMT_dec_solv.gro -p MMT_dec_solv.top</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx solvate -cp MMT_dec.gro -cs spc216.gro -o MMT_dec_solv.gro -p MMT_dec_solv.top</code>
                 <blockquote style="margin-top:1mm">
                     <code>&dash;cp</code> specifies the coordinate file of the system to solvate<br>
                     <code>&dash;cs</code> specifies the water model coordinate file<br>
@@ -332,7 +332,7 @@ DECA           1</pre>
                      style="padding: 20px;background: aliceblue; border: darkslategray;border-width: 1px;border-style: solid;color: darkslategray">
                     <p><em style="font-weight: bold">EM Troubleshooting:</em> Note which atom has the highest forces in the
                         energy minimisation output of GROMACS.<br>
-                        E.g.: <pre>Step= 1836, Dmax= 6.0e-05 nm, Epot= -5.42894e+05 Fmax= 1.94476e+02, atom= 19894</pre>
+                        E.g.: <code>Step= 1836, Dmax= 6.0e-05 nm, Epot= -5.42894e+05 Fmax= 1.94476e+02, atom= 19894</code>
                     In VMD, go to the <code>Graphical Representations</code> window.
                     Create a new representation and for <code>Selected Atoms</code> choose <code>serial &lt;problem_atom_number&gt;</code>, set
                     the <code>Drawing Method</code> to <code>VDW</code> and the <code>Coloring Method</code> to <code>ColorID</code>.
@@ -368,8 +368,7 @@ DECA           1</pre>
         <ol>
             <li>Neutralise the system with Na<sup>+</sup> ions</li>
             <li>Use <code>grompp</code> to generate a <abbr>TPR</abbr> file for the system:
-                <pre style="margin-top:1mm">$ gmx grompp -f MDP/genion.mdp -c MMT_dec_solv.gro -p MMT_dec_solv.top -o MMT_dec_solv_ions.tpr
-  -pp MMT_dec_solv_ions.top -maxwarn 1</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx grompp -f MDP/genion.mdp -c MMT_dec_solv.gro -p MMT_dec_solv.top -o MMT_dec_solv_ions.tpr -pp MMT_dec_solv_ions.top -maxwarn 1</code>
                 <blockquote style="margin-top:1mm">
                     <code>-f</code> specifies the input run parameter file <br>
                     <code>-c</code> specifies the coordinate file of the system to solvate <br>
@@ -402,7 +401,7 @@ information for each atom.
             </li>
             <li>Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-genion.html"><code>genion</code></a> to neutralise the system with
                 Na<sup>+</sup> ions:
-                <pre style="margin-top:1mm">gmx genion -s MMT_dec_solv_ions.tpr -o MMT_dec_solv_ions.gro -p MMT_dec_solv_ions.top -pname Na -neutral</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm;word-break: break-word">$ gmx genion -s MMT_dec_solv_ions.tpr -o MMT_dec_solv_ions.gro -p MMT_dec_solv_ions.top -pname Na &#8209;neutral</code>
                 <blockquote>
                     <code>-s</code> specifies the input coordinate file of the system to solvate.<br>
                     <code>-o</code> specifies the output coordinate file<br>

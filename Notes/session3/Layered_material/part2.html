@@ -58,7 +58,7 @@
                 Set the run time to 100&nbsp;ps and the time step to 1&nbsp;fs.
             </li>
             <li>Production: <code>prod.mdp</code><br>
-                Set the run time to 5&nbsp;ns and the time step to 2&nbsp;fs.
+                Set the run time to 10&nbsp;ns and the time step to 2&nbsp;fs.
             </li>
         </ol>
         <p class="note"> Make sure you provide the parameters for the <code>.mdp</code> file in the correct
@@ -80,7 +80,7 @@
         <ol>
             <li>Perform an energy minimisation</li>
             <li>Compile the run topology file for the energy minimisation:
-                <pre style="margin-top:1mm">$ gmx grompp -f MDP/em.mdp -c MMT_dec_solv_ions.gro -p MMT_dec_solv_ions.top -o em.tpr -pp em.top</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx grompp -f MDP/em.mdp -c MMT_dec_solv_ions.gro -p MMT_dec_solv_ions.top -o em.tpr -pp em.top</code>
                 <blockquote style="margin-top:1mm">
                     <code>-f</code> specifies the input run parameter <code>.mdp</code> file <br>
                     <code>-c</code> specifies the input coordinate file <br>
@@ -90,7 +90,7 @@
                 </blockquote>
             </li>
             <li>Run the energy minimisation:
-                <pre style="margin-top:1mm">$ gmx mdrun -s em.tpr -deffnm em </pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx mdrun -s em.tpr -deffnm em </code>
                 <blockquote style="margin-top:1mm">
                     <code>-s</code> specifies the compiled input <code>.tpr</code> file <br>
                     <code>-deffnm</code> specifies the output file naming pattern <br>
@@ -147,24 +147,24 @@ Norm of force     =  1.6491472e+06
             <li>Prepare the run script (<code>run_eq.sh</code>) for the equilibration run, referring to the <a
                     href="../../session2/part2.html#Equilibrating_the_system_at_constant_temperature">Session
                     2</a> instructions:
-                <pre style="margin-top:1mm">$ gmx grompp -f MDP/eq.mdp -c em.gro -p em.top -o eq.tpr -pp eq.top</pre>
-                <pre style="margin-top:1mm">$ gmx mdrun -v -s eq.tpr -deffnm eq -ntomp 1</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx grompp -f MDP/eq.mdp -c em.gro -p em.top -o eq.tpr -pp eq.top</code>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx mdrun -v -s eq.tpr -deffnm eq -ntomp 1</code>
             </li>
             <li> Copy the input files to your Eddie scratch directory:
-                <pre style="margin-top:1mm">$ scp -r ~/Desktop/session3 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/</pre>
-                <p class="note" style="margin-top:-2mm">Replace <code>&lt;UUN&gt;</code> with your university username.</p>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ scp -r ~/Desktop/session3 &lt;UUN&gt;@eddie.ecdf.ed.ac.uk:/exports/eddie/scratch/&lt;UUN&gt;/</code>
+                <p class="note" style="margin-top:1mm">Replace <code>&lt;UUN&gt;</code> with your university username.</p>
             </li>
             <li> Log into Eddie:
-                <pre style="margin-top:1mm">$ ssh -X &lt;UUN&gt;@eddie.ecdf.ed.ac.uk</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ ssh -X &lt;UUN&gt;@eddie.ecdf.ed.ac.uk</code>
             </li>
             <li>
                 Navigate to the <code>session3</code> folder inside your directory
             </li>
             <li>Submit the job to the queue:
-                <pre style="margin-top:1mm">$ qsub run_eq.sh</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ qsub run_eq.sh</code>
             </li>
             <li>Use <code>qstat</code> to check the status of your job.
-                <pre style="margin-top:1mm">qstat -u &lt;UUN&gt;</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">qstat -u &lt;UUN&gt;</code>
             </li>
         </ol>
     </div>
@@ -195,18 +195,18 @@ Norm of force     =  1.6491472e+06
             </li>
             <li>
                 After the equilibration run has finished, submit the job to the queue:
-                <pre style="margin-top:1mm">$ qsub run_prod.sh</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ qsub run_prod.sh</code>
             </li>
         </ol>
     </div>
     <p>
-        Looking at the output file of a previous simulation of a similar system, you can estimate that this simulation should run quickly once it
-        starts.
+        Looking at the output file of a previous simulation of a similar system, you can estimate that this simulation should finish in ~7 minutes
+        once it starts.
     </p>
-    <pre style="margin-top:-3mm">               Core t (s)   Wall t (s)        (%)
-       Time:      340.081      340.082      100.0
+    <pre style="margin-top:-3mm">Core t (s)   Wall t (s)        (%)
+       Time:      675.194      675.195      100.0
                  (ns/day)    (hour/ns)
-Performance:     1270.283        0.019</pre>
+Performance:     1279.631        0.019</pre>
 </div>
 
 <div class="box">
