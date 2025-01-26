@@ -13,12 +13,16 @@
     <link href="../scripts/print_style.css" media="print" rel='stylesheet' type="text/css">
     <title>Session 4</title>
 </head>
+
+<body>
+
 <div class="box">
     <h1 id="title">Session 4: Projects</h1>
 </div>
+
 <div class="box">
     <h2>Learning Outcomes</h2>
-    <p>Session 4 is the final session of the course. In this session, you will choose your final modelling project.
+    <p>Session 4 is the final session of the course. In this session, your modelling project will be discussed and allocated.
         This will give you the opportunity to apply the skills you have acquired during the previous sessions to
         real-world problems.
     </p>
@@ -26,6 +30,7 @@
         You will select your project depending on your cohort, with one student per project.
     </p>
 </div>
+
 <div class="box">
     <h2 id="overview">Contents</h2>
 </div>
@@ -42,51 +47,34 @@
 </div>
 
 <div class="box">
-    <h2 class="enum" id="toc_3">
-        Writing your report
-    </h2>
-    <p>
-        Your final project work will be evaluated based on the report that you hand in. We are providing you with
+    <h2 class="enum" id="toc_2"> Writing your report </h2>
+
+    <p>Your final project work will be evaluated based on the report that you hand in. The project should be submitted as a PDF file. We are providing you with
         templates for <a href="templates/PgT_ResearchTechniques_CompChem.docx">Microsoft Word</a> and <a
-            href="https://overleaf.com/read/bypxzfbvhnxw#eaf10b">Overleaf</a>.
-        We strongly
-        encourage you to choose the Overleaf template and become familiar with writing in LaTeX.<br>
-        Explanations on expected content, structure and word counts are provided in the documents.
-    </p>
+            href="https://overleaf.com/read/bypxzfbvhnxw#eaf10b">Overleaf</a>. We strongly encourage you to choose the Overleaf template and become
+        familiar with writing in LaTeX. Explanations on expected content, structure and word counts are provided in the documents.</p>
+
+    <ul>
+        <li> <a href="./Template_PgT_ResearchTechniques_CompChem.dotx">Microsoft Word template</a></li>
+        <li> <a href="https://www.overleaf.com/read/bypxzfbvhnxw#eaf10b">OverLeaf LaTex template</a></li>
+    </ul>
+
+    <h3>Using an OverLeaf Template</h3>
+
+    <ol>
+        <li>Register with your University email at <a href="https://www.overleaf.com/">Overleaf.com</a></li>
+        <li>Click on the link to the <a href="https://www.overleaf.com/read/bypxzfbvhnxw#eaf10b">OverLeaf Template</a>; you will be prompted to &lsquo;Join the Project&rsquo;, click yes, and it will open in your browser.</li>
+        <li>This is a template and is not editable. </li>
+        <li>To make an editable copy, click on the &lsquo;Menu&rsquo; (top left) </li>
+        <li>Select &lsquo;Copy Project&rsquo; and give it a name, click &lsquo;Copy&rsquo; </li>
+        <li>The project will now appear in your project list </li>
+        <li>Click on the project to open it. You can now edit the text. Make sure to click compile to see the changes appear on the PDF </li>
+        <li>When you are ready to submit, you can download a PDF (make sure to do a final recompile!) </li>
+    </ol>
 </div>
+
 </body>
-<script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
 
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function () {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-        });
-    }
-
-    var pcoll = document.getElementsByClassName("pcollapsible");
-    var j;
-
-    for (j = 0; j < pcoll.length; j++) {
-        pcoll[j].addEventListener("click", function () {
-            this.classList.toggle("active");
-            let content = this.nextElementSibling;
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-        });
-    }
-
-</script>
 <script src="../scripts/generate_header.js"></script>
 <script src="../scripts/generate_overview.js"></script>
 <script src="../scripts/scroll_up.js"></script>
