@@ -40,16 +40,16 @@
         <ol>
             <li>Create the working directory for this session </li>
 
-            <li style="margin-bottom:-0.1mm;">Move to your home directory:
-                <pre style="margin-top:-0.1mm;">$ cd </pre></li>
+            <li style="margin-bottom:4mm;">Move to your home directory:
+                <code style="display:block;white-space:pre;margin-top:-0.1mm;padding: 6px 10px">$ cd </code></li>
 
             <li style="margin-bottom:-0.1mm;">Copy the <code>session3</code> folder from practicals to your home directory:
-                <pre style="margin-top:-0.1mm;">$ cp -r /home/student??/practicals/session3 /home/student??/Desktop/</pre>
+                <code style="display:block;white-space:pre-wrap;margin-top:-0.1mm;padding: 6px 10px">$ cp -r /home/student??/practicals/session3/Protein /home/student??/Desktop/session3</code>
                 <blockquote style="margin-top:1mm">Remember to replace <code>student??</code> with your login username</blockquote>
             </li>
 
             <li style="margin-bottom:-0.1mm;">Change into the <code>session3</code> directory:
-                <pre style="margin-top:-0.1mm;">$ cd Desktop/session3</pre></li>
+                <code style="display:block;white-space:pre-wrap;margin-top:-0.1mm;padding: 6px 10px">$ cd Desktop/session3</code></li>
         </ol>
 
         <p><strong><em>WARNING</em></strong> ⚠️<br>
@@ -69,7 +69,7 @@
             <li> Download the protein structure file into the <code>session3</code> directory
             </li>
             <li> Download the structure:
-                <pre style="margin-top:1mm;">$ wget https://www3.mpibpc.mpg.de/groups/de_groot/compbio1/p4/148L.pdb </pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm;">$ wget https://www3.mpibpc.mpg.de/groups/de_groot/compbio1/p4/148L.pdb </code>
             </li>
             <li>
                 Read through the file using either <code>vim</code> or <code>more</code>. Do you notice any new line types that weren't present in
@@ -80,12 +80,12 @@
             <li>
                 Check there are no <code>MISSING</code> entries, which detail either atoms or whole residues that are not present in the crystal
                 structure:
-                <pre style="margin-top:1mm;">$ grep MISSING 148L.pdb </pre>
-                <p style="margin-top:-3mm">If nothing is returned, this <em>should</em> indicate that the stucture is complete, although it is not a
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm;">$ grep MISSING 148L.pdb </code>
+                <p style="margin-top:1mm">If nothing is returned, this <em>should</em> indicate that the stucture is complete, although it is not a
                     guarantee.</p>
             </li>
             <li>Visualise the protein in VMD. Can you identify which atoms belong to the new <code>HETATM</code> lines?
-                <pre style="margin-top:1mm;">$ vmd 148L.pdb</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm;">$ vmd 148L.pdb</code>
                 <p> Change the representation of the structure as <a href="../../session2/part1.html#change_rep" target="_blank">before</a>.
                     Change the <code>Drawing Method</code> to <code>CPK</code> and in the <code>Selected Atoms</code> field type <code>not
                         chain E</code>.
@@ -134,14 +134,14 @@
             <li> Clean the PDB file
             </li>
             <li> Remove non-protein atoms:
-                <pre style="margin-top:1mm;">$ grep -v HETATM 148L.pdb > protein_bonds.pdb</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm;">$ grep -v HETATM 148L.pdb > protein_bonds.pdb</code>
                 <blockquote style="margin-top:1mm">
                     <code>-v</code> specifies that non-matching lines should be returned
                 </blockquote>
             </li>
             <li>
                 Remove bond information:
-                <pre style="margin-top:1mm;">$ grep -v CONECT protein_bonds.pdb > protein.pdb</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm;">$ grep -v CONECT protein_bonds.pdb > protein.pdb</code>
                 <blockquote style="margin-top:1mm;">
                     The <code>HETATM</code> bonds cannot be easily distinguished from the protein bonds, and so all bond information must be
                     deleted. GROMACS can infer the bond information, so it is not needed.
@@ -187,8 +187,8 @@
             </li>
             <li> Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-pdb2gmx.html"><code>pdb2gmx</code></a> to
                 create a topology for the protein structure
-                <pre style="margin-top:1mm;">$ gmx pdb2gmx -f protein.pdb -o protein.gro -p protein.top -ignh</pre>
-                <blockquote style="margin-top:-1mm;">
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm;">$ gmx pdb2gmx -f protein.pdb -o protein.gro -p protein.top -ignh</code>
+                <blockquote style="margin-top:1mm;">
                     <code>&dash;f</code> specifies the input <code>.pdb</code> file<br>
                     <code>&dash;o</code> specifies the output coordinate <code>.gro</code> file<br>
                     <code>&dash;p</code> specifies the output topology <code>.top</code> file<br>
@@ -200,7 +200,7 @@
                 <p class="note" style="margin-top:3mm">As there are two protein chains, two position restraint files are generated.</p>
             </li>
             <li>Add a box around the protein:<br>
-                <pre style="margin-top:1mm">$ gmx editconf -f protein.gro -o protein_pbc.gro -bt dodecahedron -d 1.0 -c</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx editconf -f protein.gro -o protein_pbc.gro -bt dodecahedron -d 1.0 -c</code>
                 <blockquote style="margin-top:1mm">
                     <code>&dash;f</code> specifies the input coordinate file<br>
                     <code>&dash;o</code> specifies the output coordinate file<br>
@@ -221,11 +221,11 @@
         <ol>
             <li>Solvate the protein with <abbr>SPC</abbr> water</li>
             <li>Make a copy of the topology <code>protein.top</code> file:
-                <pre style="margin-top:1mm">$ cp protein.top protein_solv.top</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ cp protein.top protein_solv.top</code>
             </li>
             <li>Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-solvate.html"><code>solvate</code></a> to
                 solvate the protein with <abbr>SPC</abbr> water:
-                <pre style="margin-top:1mm">$ gmx solvate -cp protein_pbc.gro -cs spc216.gro -o protein_solv.gro -p protein_solv.top</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx solvate -cp protein_pbc.gro -cs spc216.gro -o protein_solv.gro -p protein_solv.top</code>
                 <blockquote style="margin-top:1mm">
                     <code>&dash;cp</code> specifies the coordinate file of the system to solvate<br>
                     <code>&dash;cs</code> specifies the water model coordinate file<br>
@@ -256,11 +256,10 @@
             </li>
             <li>
                 Make a copy of the topology <code>protein_solv.top</code> file:
-                <pre style="margin-top:1mm">$ cp protein_solv.top protein_solv_ions.top</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ cp protein_solv.top protein_solv_ions.top</code>
             </li>
             <li> Use <code>grompp</code> to generate a <abbr>TPR</abbr> file for the system:
-                <pre style="margin-top:1mm">$ gmx grompp -f MDP/genion.mdp -c protein_solv.gro -p protein_solv.top -o protein_solv_ions.tpr
-  -maxwarn 1</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx grompp -f MDP/genion.mdp -c protein_solv.gro -p protein_solv.top -o protein_solv_ions.tpr &#8209;maxwarn 1</code>
                 <blockquote style="margin-top:1mm">
                     <code>-f</code> specifies the input run parameter file <br>
                     <code>-c</code> specifies the coordinate file of the system to solvate <br>
@@ -274,8 +273,7 @@
             </li>
             <li>
                 Use <a target="_blank" href="https://manual.gromacs.org/current/onlinehelp/gmx-genion.html"><code>genion</code></a> to add NaCl:
-                <pre style="margin-top:1mm">$ gmx genion -s protein_solv_ions.tpr -o protein_solv_ions.gro -p protein_solv_ions.top -pname NA
-  -nname CL -conc 0.15 -neutral</pre>
+                <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm">$ gmx genion -s protein_solv_ions.tpr -o protein_solv_ions.gro -p protein_solv_ions.top -pname NA &#8209;nname CL -conc 0.15 -neutral</code>
                 <blockquote style="margin-top:1mm">
                     <code>-s</code> specifies the input coordinate file of the system to solvate.<br>
                     <code>-o</code> specifies the output coordinate file<br>

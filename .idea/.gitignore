@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+.DS_Store
+
+/Practicals/session3/Protein/example_data/prod_50ns.xtc
+/Practicals/session3/Layered_material/example_data/prod.xtc
