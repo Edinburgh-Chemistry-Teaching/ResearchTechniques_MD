@@ -26,24 +26,20 @@
 
 <div class="box">
     <h2 class='enum' id="toc_1">Projects</h2>
-    <p>
-        The following section contains short introductions to the projects for this course. All projects investigate adsorption onto a clay mineral
-        for a variety of applications. Clays constitute a significant part of soils and sediments, and due to their high specific surface area and
-        charge, they play an important role in the retention and migration of environmental pollutants.
-    </p>
-    <p>
-        All projects in this course are dedicated to examining adsorption onto clay minerals. These minerals are a significant constituent of soils
-        and sediments. Their high specific surface area and cation exchange capacity enables them to engage effectively with a variety of molecules
-        and ions. Such capabilities are crucial in the context of environmental pollution control, where clay minerals play a vital role in the
-        adsorption and immobilisation of contaminants, thereby influencing their migration and bioavailability in soils and aquatic systems.
-    </p>
-    <p>
-        Furthermore, the inherent adsorption properties of clay minerals extend their applicability beyond environmental remediation. In
-        pharmaceutical formulations, their ability to adsorb therapeutic agents and release them in a controlled manner can be used to control drug
-        release kinetics. Another application of clay minerals is in the field of hazardous waste management, particularly concerning nuclear
-        waste. They are employed to prevent the dispersal of radioactive materials into the environment and act as a natural barrier to contain and
-        isolate contaminants.
-    </p>
+
+    <p> The following section contains short introductions to the projects for this course. All projects investigate adsorption onto a clay mineral
+        for a variety of applications. Each project consists of multiple options, with each option requiring you to perform and compare two
+        simulations. Rank your preference for the projects using <a href="https://forms.gle/Q8Uo6tXPksSR13CG7">this form</a>, and we will assign
+        you to a project option. </p>
+    <p> Clay minerals are a significant constituent of soils and sediments. Their high specific surface area and cation exchange capacity enables
+        them to engage effectively with a variety of molecules and ions. </p>
+    <p> Such capabilities are crucial in the context of environmental pollution
+        control, where clay minerals play a vital role in the adsorption and immobilisation of contaminants, thereby influencing their migration
+        and bioavailability in soils and aquatic systems. In pharmaceutical formulations, their ability to adsorb therapeutic agents and release
+        them in a controlled manner can be used to control drug release kinetics. Another application of clay minerals is in the field of hazardous
+        waste management, particularly concerning nuclear waste. They are employed to prevent the dispersal of radioactive materials into the
+        environment and act as a natural barrier to contain and isolate contaminants. </p>
+
     <div class="tbox">
         <h3 class="pcollapsible" id="pH-dependent_adsorption_of_apigenin_onto_montmorillonite">pH-dependent adsorption of apigenin onto
             montmorillonite</h3>
@@ -58,26 +54,28 @@
                 capacity and mechanisms.
             </p>
             <div class="flex-figure">
-                <figure id="apg_protonation">
-                    <img alt="APG protonation states" src="img/apigenin_protonation.jpeg">
-                    <figcaption>Figure 1: Chemical structures of apigenin species at different protonation states and
-                        corresponding pH ranges where more than 15% occurrence of the species is observed. The atom
-                        numbering for hydroxyl groups is given over the neutral apigenin only, and the hydroxyl group
-                        naming
-                        is shown for all species. (from
-                        <a href="https://doi.org/10.1016/j.jcis.2013.07.062">https://doi.org/10.1016/j.jcis.2013.07.062</a>)
-                    </figcaption>
-                </figure>
+                <div class="figure" style="width: 100%">
+                    <figure id="apg_protonation">
+                        <img alt="APG protonation states" src="img/apigenin_protonation.jpeg" width="100%">
+                        <figcaption>Figure 1: Chemical structures of apigenin species at different protonation states and corresponding pH ranges
+                            where more than 15% occurrence of the species is observed. (From
+                            <a href="https://doi.org/10.1021/acs.jpcc.3c00174" target="_blank">Nuruzade <em>et al.,</em> <strong>J. Phys. Chem.
+                                C</strong>, 2023.</a>)
+                        </figcaption>
+                    </figure>
+                </div>
             </div>
+
             <h4>Suggested reading</h4>
-            <ul>
+
+            <ul style="margin-top:-4mm">
                 <li>
                     <a href="https://doi.org/10.1021/acs.jpcc.3c00174">https://doi.org/10.1021/acs.jpcc.3c00174</a>
                 </li>
             </ul>
             <h4>Tasks</h4>
             <p>
-                All required files for this project are located inside the <code>practicals/projects/project_A</code>
+                All required files for this project are located inside the <code>practicals/projects/layered_material/project_A</code>
                 folder.
             </p>
             <p>
@@ -88,12 +86,12 @@
             <ol>
                 <li>
 
-                    Copy the <code>project_A</code> folder to your home directory.
+                    Copy the <code>project_A</code> folder to your Desktop.
                 </li>
                 <li>
                     Use the <code>MMT</code> unit cells to assemble a clay sheet.<br>
                     All clay unit cells can be found inside the <code>CLAYS</code> folder.<br>
-                    The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm.
+                    The dimensions should be around 3.5&nbsp;&times;&nbsp5.0&nbsp;&nbsp;nm in x and y.
                 </li>
                 <li>
                     Extend the simulation box to 100&nbsp;&Aring; in the z-direction.
@@ -103,31 +101,36 @@
                     Add the number of APG molecules to the simulation box that corresponds to a concentration of
                     0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
                     Use the prevalent protonation state at the pH-value of your option.</p>
-                    <table style="background: none; width: 70%; margin-bottom: 10px; margin-top: 10px">
+                    <table style="background: none; width: 50%; margin-bottom: 10px; margin-top: 10px">
                         <caption>
                             Table 1: Protonation states of APG (see <a href="#apg_protonation">figure 1</a>) and
                             corresponding structure files.
                         </caption>
                         <tr>
-                            <th>protonation state</th>
-                            <th>structure file</th>
+                            <th>pH</th>
+                            <th>Protonation state</th>
+                            <th>Structure file</th>
                         </tr>
                         <tr>
+                            <td>5</td>
                             <td>Api<sup>0</sup></td>
                             <td><code>api2</code></td>
                         </tr>
                         <tr>
+                            <td>7</td>
                             <td>Api<sup>-</sup></td>
                             <td><code>api0</code></td>
                         </tr>
                         <tr>
-                        <tr>
+                            <td>8</td>
                             <td>Api<sup>2-</sup></td>
                             <td><code>api3</code></td>
                         </tr>
                         <tr>
+                            <td>10</td>
                             <td>Api<sup>3-</sup></td>
                             <td><code>api4</code></td>
+                        </tr>
                     </table>
                 </li>
                 <li>
@@ -151,27 +154,29 @@
                     Run a 20&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
                 </li>
                 <li>
-                    Determine the point where the system reached equilibrium.
+                    Determine the point where the system reaches equilibrium.
                 </li>
                 <li>
-                    Calculate the linear density of the APG molecules.
+                    Calculate the linear density of all components.
                 </li>
                 <li>
-                    Calculate the linear density of the clay sheet.
+                    Determine the hydration shell of the ions.
                 </li>
                 <li>
-                    Calculate the linear density of the added cation species.
+                    Calculate the RDF of the interactions between the ions and the charged sites on the organics.
                 </li>
                 <li>
-                    Calculate the linear density of the Cl<sup>-</sup> ions.
+                    Open all results in xmgrace and save the plot in <code>.jpeg</code> format.
                 </li>
                 <li>
-                    Open all linear density results in xmgrace and save the plot in <code>.jpeg</code> format.
+                    Inspect the final coordinates and trajectory in VMD and take snapshot(s) that illustrates the important
+                    interactions within the system.
                 </li>
                 <li>
-                    Inspect the final coordinates and trajectory in VMD and take a snapshot that illustrates
-                    interactions
-                    between APG and the clay sheet.
+                    Repeat the above steps for your second simulation.
+                </li>
+                <li>
+                    Compare the results from the simulations.
                 </li>
             </ol>
             <h4 class="options" id="options_3"></h4>

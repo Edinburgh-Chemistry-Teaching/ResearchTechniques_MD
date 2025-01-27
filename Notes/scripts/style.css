@@ -412,7 +412,7 @@ table caption {
 }
 
 table {
-    text-align: left;
+    text-align: center;
     padding: 0;
     border-collapse: collapse;
     align-self: center;
