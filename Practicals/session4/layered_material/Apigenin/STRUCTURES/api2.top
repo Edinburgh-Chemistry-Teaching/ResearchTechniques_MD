@@ -1,12 +1,12 @@
 ; additional params for the molecule
-#include "api2.prm"
-#include "api2.itp"
+#include "api0.prm"
+#include "api0.itp"
 
 [ system ]
 ; Name
-apigenin2
+apigenin0
 
 [ molecules ]
 ; Compound		  #mols
-API2			1
+API0			1
 

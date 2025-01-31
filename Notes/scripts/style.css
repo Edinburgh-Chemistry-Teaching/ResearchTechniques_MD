@@ -984,7 +984,7 @@ h4.options {
 
 .tbox .collapsible::before {
     counter-increment: options 1;
-    content: counter(project, upper-alpha)'.'counter(options, lower-alpha) " - ";
+    content: counter(project, upper-alpha)'.'counter(options, lower-roman) " - ";
     font-weight: bold;
     font-size: 16px;
 }

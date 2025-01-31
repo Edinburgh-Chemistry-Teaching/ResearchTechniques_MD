@@ -14,7 +14,7 @@
 
 [ dihedraltypes ]
 ;      i        j        k        l  func         phi0         kphi  mult
-  CG2R62   CG2R61   CG2R61    OG311     9   180.000000    12.970400     2
+  CG2R62   CG2R61   CG2R61    OG312     9   180.000000    12.970400     2
    OG311   CG2R61   CG2R62   CG2R62     9   180.000000    12.970400     2
    OG311   CG2R61   CG2R62   CG2R63     9   180.000000    12.970400     2
   CG2R62   CG2R61    OG311     HGP1     9   180.000000     4.142160     2
