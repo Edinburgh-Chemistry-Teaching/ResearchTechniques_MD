@@ -1,13 +1,12 @@
 ; additional params for the molecule
-#include "ttc4.prm"
-#include "ttc4.itp"
+#include "ttc1.prm"
+#include "ttc1.itp"
 
 
 [ system ]
 ; Name
-tetracycline4
+tetracycline1
 
 [ molecules ]
 ; Compound		  #mols
-TTC4			1
-
+TTC1			1
