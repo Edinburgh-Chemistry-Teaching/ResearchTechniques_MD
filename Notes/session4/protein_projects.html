@@ -126,13 +126,51 @@
             For the protein from <strong>your option</strong>, clean the pdb file so that it only contains the chain of interest.
         </li>
         <li>
-            Create a dodecahedron box containing the protein chain
+            Create a dodecahedron box containing the protein chain.
+        </li>
+        <li>
+            Solvate the box with SPC water.
+        </li>
+        <li>
+            Add 0.15 mol&nbsp;L<sup>-1</sup> of NaCl and neutralise any excess charge.
+        </li>
+        <li>
+            Perform an energy minimisation with a force tolerance of 500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
+        </li>
+        <li>
+            Equilibrate the system for 100&nbsp;ps in the NVT ensemble at 300&nbsp;K.
+        </li>
+        <li>
+            Equilibrate the system for 100&nbsp;ps in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
+        </li>
+        <li>
+            Run a 100&nbsp;ns production simulation in the NPT ensemble at 300&nbsp;K and 1&nbsp;bar.
+        </li>
+        <li>
+            Ensure that the protein does not cross periodic boundaries during the period of analysis.
+        </li>
+        <li>
+            Determine the point where the system reaches equilibrium. Use only the equilibrated portion for subsequent analysis.
+        </li>
+        <li>
+            Calculate the RMSF of the alpha-carbons.
+        </li>
+        <li>
+            Perform PCA on the protein backbone
+        </li>
+        <li>
+            Inspect the final coordinates and trajectory in VMD and take snapshot(s) that illustrate the important
+            dynamics within the system.
+        </li>
+        <li>
+            Compare and discuss your simulation with the bound-state enzyme structure, providing illustrations from your analysis and VMD as needed.
         </li>
     </ol>
 </div>
 
 <div class="box">
     <h2 class='enum' id="toc_2">Useful information</h2>
+
     <h3 class='enum' id="toc_2_1">Input files</h3>
     <p>
         Run parameter <code>.mdp</code> files are inside <code>MDP</code>. Use <code>em.mdp</code> for energy
@@ -146,6 +184,11 @@
     <p>
         You will find template scripts for submitting your simulation on eddie inside the project folder.<br>
         <em>Remember to run all of your simulations on eddie!</em>
+    </p>
+
+    <h3 class='enum' id="toc_2_2">Cleaning PDB files</h3>
+    <p>
+
     </p>
 </div>
 
