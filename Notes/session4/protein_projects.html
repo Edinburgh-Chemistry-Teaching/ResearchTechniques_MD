@@ -188,8 +188,15 @@
 
     <h3 class='enum' id="toc_2_2">Cleaning PDB files</h3>
     <p>
-
+        To remove all chains except the one of interest, we can use <code>grep</code> and knowledge of PDB file structure. The chain identifier is
+        always in column 5 of the <code>ATOM</code> and <code>HETATM</code> entries, and so we can search the file for where column 5 is the chain
+        letter of interest.
     </p>
+    <p>First, identify the number of characters that occur before character we want to search for. Use <code>grep</code> to search for that
+        many characters followed by the chain identifier. E.g. if there were 15 characters and we wanted chain C the command would be:</p>
+    <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:-3mm;">grep "^.\{15\}C" input.pdb > chain_C.pdb</code>
+    <p>Then, remove any non-protein atoms as before: </p>
+    <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:-3mm;margin-bottom:2mm">grep -v HETATM chain_C.pdb > protein.pdb</code>
 </div>
 
 </body>
@@ -231,7 +238,7 @@
 <script src="../scripts/feedback.js"></script>
 <script src="../scripts/adjust_for_dyslexia.js"></script>
 <script>window.onload = function () {
-    addFeedback('https://app.wooclap.com/XREESD/questionnaires/676aa1ed398c0ecbb813a7e9', 'img/session_4.png')
+    addFeedback('https://app.wooclap.com/XREESD/questionnaires/676aa1ed398c0ecbb813a7e9', 'img/session4_pro.png')
     generateOverview();
     generateHeader();
     scrollUp();
