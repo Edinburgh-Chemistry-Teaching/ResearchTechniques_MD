@@ -1282,10 +1282,13 @@
 
     <h3 class='enum' id="toc_2_2">Calculating the number of organic molecules to reach a certain concentration</h3>
     <p>
-        To calculate the volume of the simulation box that is occupied by the solvent. The height of the solvent
-        layer can be obtained by subtracting the height of the clay unit cell from the total height of the expanded
-        simulation box.<br>
-        Remember to keep the units of the volume and the concentration consistent in your calculations.
+        First, you will need to calculate the volume of the simulation box that is occupied by the solvent only. For that, take the total height of
+        the box (in z-direction) and subtract from it the height of the clay unit cell. This will be the height of your solvent box, By multiplying
+        it by the simulation box dimensions in the x and y directions, you will obtain the volume of the solvent.
+    </p>
+    <p>
+        Remember to keep the units of the volume and the concentration consistent in your calculations. Note, that for length GROMACS uses nm and
+        VMD uses Å.
     </p>
     <h3 class
                 ='enum' id="toc_2_3">Making index files</h3>
@@ -1300,7 +1303,8 @@
     <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:-3mm;"> r &lt;residue_name&gt; & a &lt;atom_name&gt; </code>
     <p class="note" style="margin-top:0mm">You may be required to use wildcards (<code>*</code> or <code>?</code>) as part of the residue or atom
         name</p>
-    <p>E.g. to make an index file containing the oxygen atoms in decanoic acid from session 3, you would do the following:</p>
+    <p>E.g. to make an index file containing the oxygen atoms in decanoic acid from session 3, you would select the atoms belonging to DECA
+        residues, and filter for only oxygen atoms:</p>
     <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:-3mm;">$ gmx make_ndx -f prod.gro -o analysis_groups.ndx </code>
     <code style="display:block;white-space:pre-wrap;padding: 6px 10px;margin-top:1mm;"> r DECA & a O*</code>
     <p style="margin-top:0mm">Then, press <code>q</code> to quit and save the index file</p>
