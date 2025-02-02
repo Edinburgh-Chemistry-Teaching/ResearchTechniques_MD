@@ -820,7 +820,7 @@ pre[class*="language-"] {
     border-bottom-width: 1px;
 }
 
-.bbox, .tbox, .hbox {
+.bbox, .tbox, .hbox, .pbox {
     max-width: 960px;
     padding: 0.5ex 20px;
     border: 1px solid #041E42;
@@ -828,7 +828,7 @@ pre[class*="language-"] {
 }
 
 
-.bbox ul, .bbox ol, .tbox ul, .tbox ol, .hbox ul, .hbox ol {
+.bbox ul, .bbox ol, .tbox ul, .tbox ol, .hbox ul, .hbox ol, .pbox ul, .pbox ol {
     padding-left: 20px;
     list-style-position: outside;
     line-height: inherit;
@@ -969,6 +969,10 @@ body {
     counter-reset: options;
 }
 
+.pbox {
+    counter-reset: options;
+}
+
 h3.enum::before {
     counter-increment: subsection 1;
     content: counter(section) "." counter(subsection) " ";
@@ -985,6 +989,13 @@ h4.options {
 .tbox .collapsible::before {
     counter-increment: options 1;
     content: counter(project, upper-alpha)'.'counter(options, lower-roman) " - ";
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.pbox .collapsible::before {
+    counter-increment: options 1;
+    content: counter(options, lower-roman) " - ";
     font-weight: bold;
     font-size: 16px;
 }
@@ -1123,6 +1134,18 @@ h4 + collapsible:first-of-type {
     margin-bottom: 10px;
 }
 .tbox ol > li:last-child {
+    margin-bottom: 0;
+}
+
+.pbox ol {
+    list-style-position: outside;
+    margin-left: 20px;
+
+}
+.pbox ol > li {
+    margin-bottom: 10px;
+}
+.pbox ol > li:last-child {
     margin-bottom: 0;
 }
 

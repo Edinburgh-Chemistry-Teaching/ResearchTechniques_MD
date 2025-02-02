@@ -1,0 +1,20 @@
+; additional params for the molecule
+
+#include "/Users/s1828492/ResearchTechniques_MD/Practicals/session4/layered_material/Tetracycline/FF/ClayFF.ff/forcefield.itp"
+#include "/Users/s1828492/ResearchTechniques_MD/Practicals/session4/layered_material/Tetracycline/FF/CHARMM36.ff/ffnonbonded.itp"
+
+; bonded parameters
+#include "/Users/s1828492/ResearchTechniques_MD/Practicals/session4/layered_material/Tetracycline/FF/CHARMM36.ff/ffbonded.itp"
+
+
+; #include "ttc3.prm"
+#include "ttc3.itp"
+
+[ system ]
+; Name
+tetracycline
+
+[ molecules ]
+; Compound		  #mols
+TTC3			1
+
