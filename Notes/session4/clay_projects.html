@@ -292,10 +292,11 @@
                     The dimensions should be around 3.5 &times; 5.0 nm in <em>x</em> and <em>y</em>.
                 </li>
                 <li>
-                    Extend the simulation box to 50 &Aring; in the <em>z</em>-direction.
+                    Extend the simulation box <u>by</u> 50 &Aring; in the <em>z</em>-direction.
                 </li>
                 <li>
-                    <p> Add the number of APG molecules to the simulation box that corresponds to a concentration of 0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
+                    <p> Add the number of APG molecules to the simulation box that corresponds to a concentration of 0.1&nbsp;mol&nbsp;L<sup>-1
+                    </sup>.<br>
                         Use the prevalent protonation state at the pH-value of <strong>your option</strong>.</p>
 
                     <table style="background: none; width: 50%; margin-bottom: 10px; margin-top: 10px">
@@ -336,6 +337,7 @@
                 <li>
                     Add 0.1 mol&nbsp;L<sup>-1</sup> of the ion combination specified in <strong>your option</strong> and neutralise any excess
                     charge. If your cation has a charge different from +1, you need to add the <code>-pq</code> flag to specify the cation charge.
+                    <strong>Make sure you name the ions with their periodic table name</strong>, i.e. use <code>Na</code> and not <code>NA</code>.
                 </li>
                 <li>
                     Perform an energy minimisation with a force tolerance of 500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
@@ -626,10 +628,11 @@
                     The dimensions should be around 3.5 &times; 5.0 nm in <em>x</em> and <em>y</em>.
                 </li>
                 <li>
-                    Extend the simulation box to 50 &Aring; in the <em>z</em>-direction.
+                    Extend the simulation box <u>by</u> 50 &Aring; in the <em>z</em>-direction.
                 </li>
                 <li>
-                    <p>Add the number of TC molecules to the simulation box that corresponds to a concentration of 0.1&nbsp;mol&nbsp;L<sup>-1</sup>.<br>
+                    <p>Add the number of TC molecules to the simulation box that corresponds to a concentration of 0.1&nbsp;mol&nbsp;L<sup>-1
+                    </sup>.<br>
                         Use the prevalent protonation state at the pH-value of <strong>your option</strong>.</p>
 
                     <table style="background: none; width: 70%; margin-bottom: 10px; margin-top: 10px">
@@ -669,6 +672,7 @@
                 <li>
                     Add 0.1 mol&nbsp;L<sup>-1</sup> of the ion combination specified in <strong>your option</strong> and neutralise any excess
                     charge. If your cation has a charge different from +1, you need to add the <code>-pq</code> flag to specify the cation charge.
+                    <strong>Make sure you name the ions with their periodic table name</strong>, i.e. use <code>Na</code> and not <code>NA</code>.
                 </li>
                 <li>
                     Perform an energy minimisation with a force tolerance of 500&nbsp;kJ&nbsp;mol<sup>-1</sup>&nbsp;nm<sup>-1</sup>.
@@ -904,11 +908,13 @@
                 </li>
                 <li>
                     Add 0.05 mol&nbsp;L<sup>-1</sup> of the salt ion combination specified in <strong>your option</strong> to neutralise any
-                    excess charge.
+                    excess charge. <strong>Make sure you name the ions with their periodic table name</strong>, i.e. use <code>Na</code> and not <code>NA</code>.
                 </li>
                 <li>
                     Add 0.25 mol&nbsp;L<sup>-1</sup> of the radioactive ion combination specified in <strong>your option</strong>. If your cation has a charge
-                    different from +1, you need to add the <code>-pq</code> flag to specify the cation charge.
+                    different from +1, you need to add the <code>-pq</code> flag to specify the cation charge. <strong>Make sure you name the metals
+                    with their periodic table name and charge</strong>, i.e. use <code>Cu2</code> and not <code>CU</code>. Check your ion name from
+                    <code>FF/Ions.ff/ions.itp</code>
                 </li>
                 <li>
                     Perform an energy minimisation with a force tolerance of
@@ -1215,11 +1221,14 @@
                 </li>
                 <li>
                     Add 0.05 mol&nbsp;L<sup>-1</sup> of the salt ion combination specified in <strong>your option</strong> to neutralise any
-                    excess charge.
+                    excess charge. <strong>Make sure you name the ions with their periodic table name</strong>, i.e. use <code>Na</code> and not <code>NA</code>.
                 </li>
                 <li>
                     Add 0.25 mol&nbsp;L<sup>-1</sup> of the heavy metal ion combination specified in <strong>your option</strong>. If your cation
-                    has a charge different from +1, you need to add the <code>-pq</code> flag to specify the cation charge.
+                    has a charge different from +1, you need to add the <code>-pq</code> flag to specify the cation charge. <strong>Make sure you
+                    name the metals with their periodic table name and charge</strong>, i.e. use <code>Cu2</code> and not <code>CU</code>. Check
+                    your ion name from
+                    <code>FF/Ions.ff/ions.itp</code>
                 </li>
                 <li>
                     Perform an energy minimisation with a force tolerance of
@@ -1282,16 +1291,14 @@
 
     <h3 class='enum' id="toc_2_2">Calculating the number of organic molecules to reach a certain concentration</h3>
     <p>
-        First, you will need to calculate the volume of the simulation box that is occupied by the solvent only. For that, take the total height of
-        the box (in z-direction) and subtract from it the height of the clay unit cell. This will be the height of your solvent box, By multiplying
-        it by the simulation box dimensions in the x and y directions, you will obtain the volume of the solvent.
+        First, you will need to calculate the volume of the simulation box that is occupied by the solvent only. As you extended the box by 5 nm,
+        this will be the height of your solvent box, By multiplying it by the simulation box dimensions in the x and y directions, you will obtain
+        the volume of the solvent.
     </p>
-    <p>
-        Remember to keep the units of the volume and the concentration consistent in your calculations. Note, that for length GROMACS uses nm and
-        VMD uses Å.
-    </p>
-    <h3 class
-                ='enum' id="toc_2_3">Making index files</h3>
+    <p> You can then use Avogadro's number, the volume of the solvent (in dm<sup>3</sup>) and the target concentration (in mol dm<sup>-3</sup>) to
+    calculate the number of molecules you need to add. Remember to round the value to the nearest whole number.</p>
+
+    <h3 class='enum' id="toc_2_3">Making index files</h3>
     <p style="line-height: 1.5">
         Some of the analysis you are tasked with performing will require you to make an index file. You can do this using <code>gmx
         make_ndx</code>, and selecting the atoms you want. To determine the names of the atoms you want to add to the index file, you should
